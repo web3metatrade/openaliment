@@ -1,0 +1,118 @@
+name: Verify repository and local application
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: Also run isolated Chromium desktop/mobile browser checks
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  local:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        mariadb: ['10.6', '11.4']
+    services:
+      database:
+        image: mariadb:${{ matrix.mariadb }}
+        env:
+          MARIADB_DATABASE: openaliment_tests
+          MARIADB_USER: openaliment_tests
+          MARIADB_PASSWORD: synthetic-ci-only
+          MARIADB_ROOT_PASSWORD: synthetic-ci-root-only
+        ports:
+          - 3306/tcp
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    env:
+      OA_GS1_REFERENCE_DIR: tests/runtime/reference-gs1
+      OA_TEST_DB_HOST: 127.0.0.1
+      OA_TEST_DB_PORT: ${{ job.services.database.ports['3306'] }}
+      OA_TEST_DB_USER: openaliment_tests
+      OA_TEST_DB_PASSWORD: synthetic-ci-only
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mbstring, fileinfo, openssl, curl, zip
+          coverage: none
+          tools: none
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python tools/standards/fetch.py --only uri-syntax --directory tests/runtime/reference-gs1
+      - run: python tools/qa/security_sources.py --check
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - if: inputs.browser == true
+        run: npx playwright install --with-deps chromium
+      - if: inputs.browser != true
+        run: python tools/qa/run.py --suite local --reset-test-db
+      - if: inputs.browser == true
+        run: python tools/qa/run.py --suite browser --reset-test-db
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sanitized-results-mariadb-${{ matrix.mariadb }}
+          path: tests/runtime/reports/*.json
+          retention-days: 7
+          if-no-files-found: ignore
+
+  advisories:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python tools/qa/advisories.py
+
+  package:
+    name: Build verified cPanel package
+    needs: [local, advisories]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python tools/package-release.py --profile app
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: cpanel-app-${{ github.sha }}
+          path: |
+            release/*_app_cPanel.zip
+            release/*_app_cPanel.zip.sha256
+          retention-days: 30
+          if-no-files-found: error

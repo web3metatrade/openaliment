@@ -1,0 +1,93 @@
+{
+  "executed_at": "2026-10-25T09:30:14.958991+00:00",
+  "environment": "production HTTPS, read-only; no credentials or user data retained",
+  "pending_schema": false,
+  "passed": 21,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Public discovery and CORS",
+      "passed": true
+    },
+    {
+      "name": "Documented operation count and no crawling required",
+      "passed": true
+    },
+    {
+      "name": "OAuth migration state",
+      "passed": true
+    },
+    {
+      "name": "Published contract hash matches tested artifact",
+      "passed": true
+    },
+    {
+      "name": "Developer portal includes search and revocation",
+      "passed": true
+    },
+    {
+      "name": "Human and AI text guide",
+      "passed": true
+    },
+    {
+      "name": "Exact SDK source python",
+      "passed": true
+    },
+    {
+      "name": "Exact SDK source javascript",
+      "passed": true
+    },
+    {
+      "name": "Exact SDK source kotlin",
+      "passed": true
+    },
+    {
+      "name": "Schema downloadable",
+      "passed": true
+    },
+    {
+      "name": "Public allergen vocabulary",
+      "passed": true
+    },
+    {
+      "name": "Anonymous producer access rejected",
+      "passed": true
+    },
+    {
+      "name": "Invalid key rejected, no HTML login",
+      "passed": true
+    },
+    {
+      "name": "Public catalog schema state",
+      "passed": true
+    },
+    {
+      "name": "Read-only public catalog",
+      "passed": true
+    },
+    {
+      "name": "HEAD no body, bounded read headers",
+      "passed": true
+    },
+    {
+      "name": "Unregistered private browser origin refused",
+      "passed": true
+    },
+    {
+      "name": "Demonstration bread lookup works without AI",
+      "passed": true
+    },
+    {
+      "name": "GS1 demonstration linkset preserved",
+      "passed": true
+    },
+    {
+      "name": "Consumer application publishes updated cache generation",
+      "passed": true
+    },
+    {
+      "name": "OAuth metadata declares PKCE and exact live origin",
+      "passed": true
+    }
+  ]
+}

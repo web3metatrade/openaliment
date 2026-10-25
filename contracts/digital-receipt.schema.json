@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment private digital receipt v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "merchant",
+    "receipt_external_id",
+    "issued_at",
+    "lines",
+    "simulation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "openaliment.receipt.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "merchant": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180
+    },
+    "receipt_external_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "simulation": {
+      "type": "boolean"
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "required": [
+          "line_id",
+          "name",
+          "gtin14",
+          "lot_code",
+          "quantity",
+          "unit",
+          "expiry"
+        ],
+        "properties": {
+          "line_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180
+          },
+          "gtin14": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9]{14}$"
+          },
+          "lot_code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 120
+          },
+          "quantity": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 100000
+          },
+          "unit": {
+            "enum": [
+              "pack",
+              "g",
+              "ml"
+            ]
+          },
+          "expiry": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "/api/schemas/food-date.schema.json"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

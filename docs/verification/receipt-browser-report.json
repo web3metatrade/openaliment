@@ -1,0 +1,28 @@
+{
+  "environment": "local Codex in-app browser; no physical phone or retail POS",
+  "date": "2026-10-24",
+  "checks": [
+    {
+      "name": "Private simulated receipt preview shows two lines and one confirmation",
+      "passed": true
+    },
+    {
+      "name": "One confirmation creates three separate packages",
+      "passed": true
+    },
+    {
+      "name": "Reload preserves three packages",
+      "passed": true
+    },
+    {
+      "name": "Opening same receipt while app is open processes the fragment and clears it",
+      "passed": true
+    },
+    {
+      "name": "Repeated confirmation creates no duplicates and shows explicit result",
+      "passed": true
+    }
+  ],
+  "passed": 5,
+  "failed": 0
+}

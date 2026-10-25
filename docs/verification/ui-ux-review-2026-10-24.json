@@ -1,0 +1,4480 @@
+{
+  "date": "2026-10-24",
+  "recorded_at": "2026-10-24T17:59:16.469472+00:00",
+  "release": "0.5.3",
+  "scope": "UI/UX framing, alignment, spacing, responsive layout and visual hierarchy; analysis only",
+  "production_mutations": false,
+  "source_application_changes": false,
+  "database_changes": false,
+  "camera_activated": false,
+  "credentials_entered": false,
+  "grants_created": false,
+  "viewport_reset_after_audit": true,
+  "browser_probe_count": 125,
+  "unique_browser_paths": 27,
+  "templates_reviewed": 29,
+  "api_documentation_pages_mapped": 225,
+  "sampled_api_documentation_urls": 6,
+  "viewports": {
+    "narrow": [
+      320,
+      568
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "tablet": [
+      768,
+      1024
+    ],
+    "landscape": [
+      1024,
+      768
+    ],
+    "desktop": [
+      1440,
+      1000
+    ]
+  },
+  "environment_limits": [
+    "One Chromium in-app browser with responsive viewport overrides, not physical Android/iOS/tablet devices",
+    "Traditional scrollbar gutter may reduce document client width by 15 CSS px",
+    "Real touch, virtual keyboards, screen-reader operation, browser zoom, print/PDF output, camera and notifications were not exercised",
+    "Some full-page images contain offscreen lazy-loading content; lazy loading was checked separately, blank offscreen regions are not treated as missing assets",
+    "No populated real product, lot, connector, recipe or OAuth consent was created solely for this audit",
+    "The shared API template is sampled at six URLs; 225 pages were not each visually opened",
+    "Geometry is a supplement to visual/source review, not a WCAG certification or usability study"
+  ],
+  "findings": [
+    {
+      "id": "UX-01",
+      "priority": "P1",
+      "title": "Carduri fără spațiu lateral",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "security",
+        "privacy",
+        "updates"
+      ]
+    },
+    {
+      "id": "UX-02",
+      "priority": "P1",
+      "title": "Titlul actualizărilor apare după primele două carduri, pe altă axă",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "updates"
+      ]
+    },
+    {
+      "id": "UX-03",
+      "priority": "P1",
+      "title": "Tabele API comprimate excesiv și câmpuri rupte în fragmente",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "api-reference",
+        "api-large-schema"
+      ]
+    },
+    {
+      "id": "UX-04",
+      "priority": "P1",
+      "title": "Închiderea preferințelor Acasă dispare după derulare",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "consumer-settings"
+      ]
+    },
+    {
+      "id": "UX-05",
+      "priority": "P1",
+      "title": "Formulare și butoane pentru acțiuni diferite fără distanță între ele",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "import"
+      ]
+    },
+    {
+      "id": "UX-06",
+      "priority": "P2",
+      "title": "Navigare de producător neuniformă și pagină activă nemarcată",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "manage",
+        "feedback",
+        "api-keys",
+        "import",
+        "connectors",
+        "developers",
+        "security"
+      ]
+    },
+    {
+      "id": "UX-07",
+      "priority": "P1",
+      "title": "Acțiuni de scriere afișate și rolurilor care vor fi refuzate",
+      "evidence_level": "source-only",
+      "affected_states": [
+        "manage-product",
+        "manage-item",
+        "manage-label",
+        "manage-batch",
+        "api-keys"
+      ]
+    },
+    {
+      "id": "UX-08",
+      "priority": "P1",
+      "title": "Erorile serverului scot utilizatorul din formular",
+      "evidence_level": "source-only",
+      "affected_states": [
+        "forms",
+        "message"
+      ]
+    },
+    {
+      "id": "UX-09",
+      "priority": "P2",
+      "title": "Regula globală pentru details deformează meniul Copy Page",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "api-menu"
+      ]
+    },
+    {
+      "id": "UX-10",
+      "priority": "P2",
+      "title": "Titluri administrative mai mari pe telefon decât pe desktop",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "security",
+        "privacy",
+        "updates",
+        "linkset"
+      ]
+    },
+    {
+      "id": "UX-11",
+      "priority": "P2",
+      "title": "Hero înghesuit pe tabletă și acțiune principală târzie pe telefon",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "home",
+        "gs1-guide"
+      ]
+    },
+    {
+      "id": "UX-12",
+      "priority": "P2",
+      "title": "Densitate mare a linkurilor și câmpuri cu text mic",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "layout",
+        "manage",
+        "api-keys",
+        "developers",
+        "consumer-settings"
+      ]
+    },
+    {
+      "id": "UX-13",
+      "priority": "P2",
+      "title": "QR-ul demonstrativ este prea jos pe telefon",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "demo-product",
+        "demo-lot"
+      ]
+    },
+    {
+      "id": "UX-14",
+      "priority": "P2",
+      "title": "Stări goale cu structură și greutate vizuală neuniforme",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "catalog",
+        "manage",
+        "feedback",
+        "api-keys",
+        "connectors",
+        "developers",
+        "admin"
+      ]
+    },
+    {
+      "id": "UX-15",
+      "priority": "P2",
+      "title": "Formulare tehnice lungi și grupare insuficientă a etapelor",
+      "evidence_level": "source-only",
+      "affected_states": [
+        "manage-item",
+        "food-data-form",
+        "connector-detail",
+        "resolver-manage"
+      ]
+    },
+    {
+      "id": "UX-16",
+      "priority": "P2",
+      "title": "Ierarhia paginii reale de produs/lot necesită validare cu date populate",
+      "evidence_level": "source-only",
+      "affected_states": [
+        "product",
+        "manage-batch"
+      ]
+    },
+    {
+      "id": "UX-17",
+      "priority": "P2",
+      "title": "Verificările administrative cer context și grupare mai clare",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "admin",
+        "updates"
+      ]
+    },
+    {
+      "id": "UX-18",
+      "priority": "P3",
+      "title": "Rândurile interne ale celor două etichete de probă nu sunt aliniate",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "demo-print"
+      ]
+    },
+    {
+      "id": "UX-19",
+      "priority": "P2",
+      "title": "Documentația rețetei este prezentată în principal ca JSON",
+      "evidence_level": "source-only",
+      "affected_states": [
+        "recipe"
+      ]
+    },
+    {
+      "id": "UX-20",
+      "priority": "P2",
+      "title": "Documentația API lungă are prea puține repere pe mobil",
+      "evidence_level": "browser-and-source",
+      "affected_states": [
+        "api-overview",
+        "api-guide",
+        "api-reference",
+        "api-large-schema"
+      ]
+    }
+  ],
+  "priority_counts": {
+    "P1": 7,
+    "P2": 12,
+    "P3": 1
+  },
+  "measurements": [
+    {
+      "page": "home",
+      "path": "/",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 5698,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 236,
+        "w": 587,
+        "h": 198,
+        "font": "63.36px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "catalog",
+      "path": "/produse",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 132,
+        "y": 189,
+        "w": 612,
+        "h": 75,
+        "font": "66.24px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "manage",
+      "path": "/manage",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1049,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 125,
+          "y": 454,
+          "w": 602,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 753,
+          "y": 454,
+          "w": 548,
+          "h": 345,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "feedback",
+      "path": "/manage/feedback",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 132,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 132,
+          "y": 372,
+          "w": 1176,
+          "h": 104,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-keys",
+      "path": "/manage/api",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1351,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 125,
+          "y": 361,
+          "w": 1176,
+          "h": 83,
+          "padding": "28px"
+        },
+        {
+          "x": 125,
+          "y": 469,
+          "w": 602,
+          "h": 138,
+          "padding": "28px"
+        },
+        {
+          "x": 753,
+          "y": 469,
+          "w": 548,
+          "h": 632,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "import",
+      "path": "/manage/import",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1079,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 125,
+          "y": 315,
+          "w": 602,
+          "h": 514,
+          "padding": "28px"
+        },
+        {
+          "x": 753,
+          "y": 315,
+          "w": 548,
+          "h": 285,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "connectors",
+      "path": "/manage/connectors",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 132,
+        "y": 229,
+        "w": 1176,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 132,
+          "y": 376,
+          "w": 602,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 760,
+          "y": 376,
+          "w": 548,
+          "h": 344,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "security",
+      "path": "/manage/security",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1342,
+        "width": 1425
+      },
+      "heading": {
+        "x": 320,
+        "y": 188,
+        "w": 786,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 320,
+          "y": 259,
+          "w": 786,
+          "h": 508,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 793,
+          "w": 786,
+          "h": 299,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "developers",
+      "path": "/manage/developers",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1495,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 229,
+        "w": 1176,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 125,
+          "y": 324,
+          "w": 602,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 753,
+          "y": 324,
+          "w": 548,
+          "h": 739,
+          "padding": "28px"
+        },
+        {
+          "x": 125,
+          "y": 1088,
+          "w": 1176,
+          "h": 157,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "admin",
+      "path": "/admin",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1332,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 189,
+        "w": 1176,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 125,
+          "y": 324,
+          "w": 602,
+          "h": 366,
+          "padding": "28px"
+        },
+        {
+          "x": 753,
+          "y": 324,
+          "w": 548,
+          "h": 111,
+          "padding": "28px"
+        },
+        {
+          "x": 125,
+          "y": 715,
+          "w": 1176,
+          "h": 366,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "about",
+      "path": "/despre",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1754,
+        "width": 1425
+      },
+      "heading": {
+        "x": 320,
+        "y": 189,
+        "w": 786,
+        "h": 150,
+        "font": "66.24px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "privacy",
+      "path": "/confidentialitate",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1873,
+        "width": 1425
+      },
+      "heading": {
+        "x": 320,
+        "y": 189,
+        "w": 786,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 320,
+          "y": 261,
+          "w": 786,
+          "h": 249,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 535,
+          "w": 786,
+          "h": 355,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 915,
+          "w": 786,
+          "h": 328,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 1268,
+          "w": 786,
+          "h": 355,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "gs1-guide",
+      "path": "/gs1-digital-link",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 5932,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 243,
+        "w": 577,
+        "h": 205,
+        "font": "63.36px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "resolver-profile",
+      "path": "/resolver/profile",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1834,
+        "width": 1425
+      },
+      "heading": {
+        "x": 320,
+        "y": 189,
+        "w": 786,
+        "h": 150,
+        "font": "66.24px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-product",
+      "path": "/demo/paine-buna-tehnic",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1631,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 254,
+        "w": 586,
+        "h": 151,
+        "font": "70px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-lot",
+      "path": "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1631,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 254,
+        "w": 586,
+        "h": 151,
+        "font": "70px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-print",
+      "path": "/demo/paine-buna-tehnic/etichete",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1233,
+        "width": 1425
+      },
+      "heading": {
+        "x": 125,
+        "y": 250,
+        "w": 1176,
+        "h": 45,
+        "font": "40px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "linkset",
+      "path": "/01/09520000000011",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 327,
+        "y": 189,
+        "w": 786,
+        "h": 75,
+        "font": "66.24px"
+      },
+      "panels": [
+        {
+          "x": 327,
+          "y": 339,
+          "w": 786,
+          "h": 220,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "not-found",
+      "path": "/__openaliment_security_missing__",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 380,
+        "y": 214,
+        "w": 680,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-overview",
+      "path": "/api/docs",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 2739,
+        "width": 1425
+      },
+      "heading": {
+        "x": 338,
+        "y": 269,
+        "w": 829,
+        "h": 45,
+        "font": "38.88px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-guide",
+      "path": "/api/docs/guides/flux-erp",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 4333,
+        "width": 1425
+      },
+      "heading": {
+        "x": 338,
+        "y": 269,
+        "w": 829,
+        "h": 45,
+        "font": "38.88px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-reference",
+      "path": "/api/docs/reference/manageProductCreate",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 4357,
+        "width": 1425
+      },
+      "heading": {
+        "x": 338,
+        "y": 269,
+        "w": 829,
+        "h": 45,
+        "font": "38.88px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px",
+        "13.6px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-long-title",
+      "path": "/api/docs/reference/manageItemResolverLinks",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 4285,
+        "width": 1425
+      },
+      "heading": {
+        "x": 338,
+        "y": 269,
+        "w": 829,
+        "h": 89,
+        "font": "38.88px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-security",
+      "path": "/api/docs/reference/identityChangePassword",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 4820,
+        "width": 1425
+      },
+      "heading": {
+        "x": 338,
+        "y": 269,
+        "w": 829,
+        "h": 45,
+        "font": "38.88px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer",
+      "path": "/acasa/",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 290,
+        "y": 130,
+        "w": 273,
+        "h": 44,
+        "font": "38px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-settings",
+      "path": "/acasa/",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 290,
+        "y": 130,
+        "w": 273,
+        "h": 44,
+        "font": "38px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "15px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "home",
+      "path": "/",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 9214,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 208,
+        "w": 331,
+        "h": 132,
+        "font": "42.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "manage",
+      "path": "/manage",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1377,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 184,
+        "w": 202,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 512,
+          "w": 331,
+          "h": 171,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 708,
+          "w": 331,
+          "h": 333,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "security",
+      "path": "/manage/security",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1574,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 199,
+        "w": 331,
+        "h": 98,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 326,
+          "w": 331,
+          "h": 535,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 886,
+          "w": 331,
+          "h": 352,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "updates",
+      "path": "/admin/updates",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 2970,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 694,
+        "w": 331,
+        "h": 98,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 153,
+          "w": 331,
+          "h": 249,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 427,
+          "w": 331,
+          "h": 171,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 862,
+          "w": 331,
+          "h": 211,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1097,
+          "w": 331,
+          "h": 526,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1649,
+          "w": 331,
+          "h": 185,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1858,
+          "w": 331,
+          "h": 185,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 2068,
+          "w": 331,
+          "h": 215,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 2308,
+          "w": 331,
+          "h": 326,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "catalog",
+      "path": "/produse",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1070,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 331,
+        "h": 87,
+        "font": "38.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "feedback",
+      "path": "/manage/feedback",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 918,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 184,
+        "w": 202,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 420,
+          "w": 331,
+          "h": 92,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-keys",
+      "path": "/manage/api",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1649,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 184,
+        "w": 202,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 425,
+          "w": 331,
+          "h": 71,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 521,
+          "w": 331,
+          "h": 126,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 672,
+          "w": 331,
+          "h": 641,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "import",
+      "path": "/manage/import",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1597,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 184,
+        "w": 202,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 380,
+          "w": 331,
+          "h": 556,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 961,
+          "w": 331,
+          "h": 300,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "connectors",
+      "path": "/manage/connectors",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1250,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 240,
+        "w": 331,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 413,
+          "w": 331,
+          "h": 145,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 583,
+          "w": 331,
+          "h": 332,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "developers",
+      "path": "/manage/developers",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1772,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 240,
+        "w": 331,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 328,
+          "w": 331,
+          "h": 145,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 498,
+          "w": 331,
+          "h": 769,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 1291,
+          "w": 331,
+          "h": 145,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "admin",
+      "path": "/admin",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 1627,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 331,
+        "h": 69,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 362,
+          "w": 331,
+          "h": 376,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 763,
+          "w": 331,
+          "h": 99,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 887,
+          "w": 331,
+          "h": 404,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "about",
+      "path": "/despre",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 2415,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 331,
+        "h": 98,
+        "font": "43.2px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "privacy",
+      "path": "/confidentialitate",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 2694,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 331,
+        "h": 49,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 279,
+          "w": 331,
+          "h": 280,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 584,
+          "w": 331,
+          "h": 566,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1175,
+          "w": 331,
+          "h": 566,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1766,
+          "w": 331,
+          "h": 592,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "gs1-guide",
+      "path": "/gs1-digital-link",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 9399,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 245,
+        "w": 331,
+        "h": 137,
+        "font": "42.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "resolver-profile",
+      "path": "/resolver/profile",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 2425,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 331,
+        "h": 146,
+        "font": "43.2px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-product",
+      "path": "/demo/paine-buna-tehnic",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 2823,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 283,
+        "w": 331,
+        "h": 91,
+        "font": "42px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-lot",
+      "path": "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 2811,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 283,
+        "w": 331,
+        "h": 91,
+        "font": "42px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-print",
+      "path": "/demo/paine-buna-tehnic/etichete",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 2049,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 279,
+        "w": 331,
+        "h": 45,
+        "font": "40px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "linkset",
+      "path": "/01/09520000000011",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 941,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 331,
+        "h": 98,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 373,
+          "w": 331,
+          "h": 231,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "not-found",
+      "path": "/__openaliment_security_missing__",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 918,
+        "width": 375
+      },
+      "heading": {
+        "x": 22,
+        "y": 225,
+        "w": 331,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-overview",
+      "path": "/api/docs",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 4070,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 339,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-guide",
+      "path": "/api/docs/guides/flux-erp",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 6975,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 339,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-reference",
+      "path": "/api/docs/reference/manageProductCreate",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 5631,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 339,
+        "h": 69,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-long-title",
+      "path": "/api/docs/reference/manageItemResolverLinks",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 5209,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 339,
+        "h": 104,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-security",
+      "path": "/api/docs/reference/identityChangePassword",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 6266,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 339,
+        "h": 69,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer",
+      "path": "/acasa/",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 390,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 844,
+        "width": 390
+      },
+      "heading": {
+        "x": 16,
+        "y": 118,
+        "w": 201,
+        "h": 32,
+        "font": "28px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-settings",
+      "path": "/acasa/",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 390,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 844,
+        "width": 390
+      },
+      "heading": {
+        "x": 16,
+        "y": 118,
+        "w": 201,
+        "h": 32,
+        "font": "28px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "15px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "updates",
+      "path": "/admin/updates",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 2522,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 626,
+        "w": 689,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 124,
+          "w": 689,
+          "h": 206,
+          "padding": "28px"
+        },
+        {
+          "x": 32,
+          "y": 355,
+          "w": 689,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 32,
+          "y": 738,
+          "w": 689,
+          "h": 185,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 947,
+          "w": 689,
+          "h": 474,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 1446,
+          "w": 689,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 1630,
+          "w": 689,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 1813,
+          "w": 689,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 1996,
+          "w": 689,
+          "h": 276,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "home",
+      "path": "/",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 6072,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 221,
+        "w": 344,
+        "h": 200,
+        "font": "48px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "catalog",
+      "path": "/produse",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 32,
+        "y": 189,
+        "w": 346,
+        "h": 87,
+        "font": "38.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "manage",
+      "path": "/manage",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1092,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 497,
+          "w": 347,
+          "h": 183,
+          "padding": "28px"
+        },
+        {
+          "x": 405,
+          "y": 497,
+          "w": 316,
+          "h": 345,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "feedback",
+      "path": "/manage/feedback",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 32,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 399,
+          "w": 704,
+          "h": 104,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-keys",
+      "path": "/manage/api",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1415,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 404,
+          "w": 689,
+          "h": 83,
+          "padding": "28px"
+        },
+        {
+          "x": 32,
+          "y": 512,
+          "w": 347,
+          "h": 138,
+          "padding": "28px"
+        },
+        {
+          "x": 405,
+          "y": 512,
+          "w": 316,
+          "h": 653,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "import",
+      "path": "/manage/import",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1177,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 358,
+          "w": 347,
+          "h": 568,
+          "padding": "28px"
+        },
+        {
+          "x": 405,
+          "y": 358,
+          "w": 316,
+          "h": 338,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "connectors",
+      "path": "/manage/connectors",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 32,
+        "y": 229,
+        "w": 704,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 376,
+          "w": 355,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 413,
+          "y": 376,
+          "w": 323,
+          "h": 344,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "security",
+      "path": "/manage/security",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1368,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 188,
+        "w": 689,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 259,
+          "w": 689,
+          "h": 508,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 793,
+          "w": 689,
+          "h": 325,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "developers",
+      "path": "/manage/developers",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1560,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 229,
+        "w": 689,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 324,
+          "w": 347,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 405,
+          "y": 324,
+          "w": 316,
+          "h": 804,
+          "padding": "28px"
+        },
+        {
+          "x": 32,
+          "y": 1153,
+          "w": 689,
+          "h": 157,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "admin",
+      "path": "/admin",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1353,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 189,
+        "w": 689,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 324,
+          "w": 347,
+          "h": 388,
+          "padding": "28px"
+        },
+        {
+          "x": 405,
+          "y": 324,
+          "w": 316,
+          "h": 111,
+          "padding": "28px"
+        },
+        {
+          "x": 32,
+          "y": 737,
+          "w": 689,
+          "h": 366,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "about",
+      "path": "/despre",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1717,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 189,
+        "w": 689,
+        "h": 87,
+        "font": "38.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "privacy",
+      "path": "/confidentialitate",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1953,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 189,
+        "w": 689,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 261,
+          "w": 689,
+          "h": 249,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 535,
+          "w": 689,
+          "h": 355,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 915,
+          "w": 689,
+          "h": 381,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 32,
+          "y": 1321,
+          "w": 689,
+          "h": 381,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "gs1-guide",
+      "path": "/gs1-digital-link",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 6547,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 243,
+        "w": 335,
+        "h": 156,
+        "font": "48px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "resolver-profile",
+      "path": "/resolver/profile",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1771,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 189,
+        "w": 689,
+        "h": 87,
+        "font": "38.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-product",
+      "path": "/demo/paine-buna-tehnic",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1812,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 254,
+        "w": 326,
+        "h": 91,
+        "font": "42px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-lot",
+      "path": "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1779,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 254,
+        "w": 326,
+        "h": 91,
+        "font": "42px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-print",
+      "path": "/demo/paine-buna-tehnic/etichete",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1304,
+        "width": 753
+      },
+      "heading": {
+        "x": 32,
+        "y": 250,
+        "w": 689,
+        "h": 45,
+        "font": "40px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "linkset",
+      "path": "/01/09520000000011",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 32,
+        "y": 189,
+        "w": 704,
+        "h": 43,
+        "font": "38.4px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 308,
+          "w": 704,
+          "h": 220,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "not-found",
+      "path": "/__openaliment_security_missing__",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 44,
+        "y": 214,
+        "w": 680,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-overview",
+      "path": "/api/docs",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 2795,
+        "width": 753
+      },
+      "heading": {
+        "x": 18,
+        "y": 303,
+        "w": 717,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-guide",
+      "path": "/api/docs/guides/flux-erp",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 4646,
+        "width": 753
+      },
+      "heading": {
+        "x": 18,
+        "y": 303,
+        "w": 717,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-reference",
+      "path": "/api/docs/reference/manageProductCreate",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 4467,
+        "width": 753
+      },
+      "heading": {
+        "x": 18,
+        "y": 303,
+        "w": 717,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-long-title",
+      "path": "/api/docs/reference/manageItemResolverLinks",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 4378,
+        "width": 753
+      },
+      "heading": {
+        "x": 18,
+        "y": 303,
+        "w": 717,
+        "h": 69,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-security",
+      "path": "/api/docs/reference/identityChangePassword",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 4865,
+        "width": 753
+      },
+      "heading": {
+        "x": 18,
+        "y": 303,
+        "w": 717,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer",
+      "path": "/acasa/",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 20,
+        "y": 130,
+        "w": 273,
+        "h": 44,
+        "font": "38px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "updates",
+      "path": "/admin/updates",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 3237,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 747,
+        "w": 261,
+        "h": 98,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 153,
+          "w": 261,
+          "h": 275,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 453,
+          "w": 261,
+          "h": 198,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 914,
+          "w": 261,
+          "h": 268,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1207,
+          "w": 261,
+          "h": 567,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1799,
+          "w": 261,
+          "h": 215,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 2039,
+          "w": 261,
+          "h": 215,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 2279,
+          "w": 261,
+          "h": 241,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 2546,
+          "w": 261,
+          "h": 352,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "home",
+      "path": "/",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 10344,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 208,
+        "w": 261,
+        "h": 176,
+        "font": "42.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "catalog",
+      "path": "/produse",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1123,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 261,
+        "h": 87,
+        "font": "38.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "manage",
+      "path": "/manage",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1456,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 199,
+        "w": 162,
+        "h": 69,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 561,
+          "w": 261,
+          "h": 198,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 784,
+          "w": 261,
+          "h": 333,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "feedback",
+      "path": "/manage/feedback",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 927,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 199,
+        "w": 162,
+        "h": 69,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 470,
+          "w": 261,
+          "h": 118,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-keys",
+      "path": "/manage/api",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1701,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 199,
+        "w": 162,
+        "h": 69,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 475,
+          "w": 261,
+          "h": 71,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 570,
+          "w": 261,
+          "h": 126,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 721,
+          "w": 261,
+          "h": 641,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "import",
+      "path": "/manage/import",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1808,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 199,
+        "w": 162,
+        "h": 69,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 429,
+          "w": 261,
+          "h": 627,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 1081,
+          "w": 261,
+          "h": 388,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "connectors",
+      "path": "/manage/connectors",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1313,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 240,
+        "w": 261,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 472,
+          "w": 261,
+          "h": 145,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 642,
+          "w": 261,
+          "h": 332,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "security",
+      "path": "/manage/security",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1660,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 199,
+        "w": 261,
+        "h": 98,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 326,
+          "w": 261,
+          "h": 561,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 912,
+          "w": 261,
+          "h": 409,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "developers",
+      "path": "/manage/developers",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1926,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 240,
+        "w": 261,
+        "h": 34,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 354,
+          "w": 261,
+          "h": 145,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 524,
+          "w": 261,
+          "h": 865,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 1414,
+          "w": 261,
+          "h": 173,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "admin",
+      "path": "/admin",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1699,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 261,
+        "h": 69,
+        "font": "30.4px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 362,
+          "w": 261,
+          "h": 376,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 763,
+          "w": 261,
+          "h": 99,
+          "padding": "22px"
+        },
+        {
+          "x": 22,
+          "y": 887,
+          "w": 261,
+          "h": 473,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "about",
+      "path": "/despre",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 2808,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 261,
+        "h": 195,
+        "font": "43.2px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "privacy",
+      "path": "/confidentialitate",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 3040,
+        "width": 319
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 261,
+        "h": 49,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 279,
+          "w": 261,
+          "h": 306,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 610,
+          "w": 261,
+          "h": 672,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 1307,
+          "w": 261,
+          "h": 698,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 22,
+          "y": 2030,
+          "w": 261,
+          "h": 672,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "gs1-guide",
+      "path": "/gs1-digital-link",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 10196,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 245,
+        "w": 261,
+        "h": 183,
+        "font": "42.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "resolver-profile",
+      "path": "/resolver/profile",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 2772,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 261,
+        "h": 195,
+        "font": "43.2px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-product",
+      "path": "/demo/paine-buna-tehnic",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 3027,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 283,
+        "w": 261,
+        "h": 91,
+        "font": "42px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-lot",
+      "path": "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 3027,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 283,
+        "w": 261,
+        "h": 91,
+        "font": "42px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "demo-print",
+      "path": "/demo/paine-buna-tehnic/etichete",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 2267,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 279,
+        "w": 261,
+        "h": 90,
+        "font": "40px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "linkset",
+      "path": "/01/09520000000011",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 1016,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 200,
+        "w": 261,
+        "h": 98,
+        "font": "43.2px"
+      },
+      "panels": [
+        {
+          "x": 22,
+          "y": 400,
+          "w": 261,
+          "h": 278,
+          "padding": "22px"
+        }
+      ],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "not-found",
+      "path": "/__openaliment_security_missing__",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 779,
+        "width": 305
+      },
+      "heading": {
+        "x": 22,
+        "y": 225,
+        "w": 261,
+        "h": 69,
+        "font": "30.4px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-overview",
+      "path": "/api/docs",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 4665,
+        "width": 305
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 269,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-guide",
+      "path": "/api/docs/guides/flux-erp",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 7807,
+        "width": 305
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 269,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-reference",
+      "path": "/api/docs/reference/manageProductCreate",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 6147,
+        "width": 305
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 269,
+        "h": 69,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-long-title",
+      "path": "/api/docs/reference/manageItemResolverLinks",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 5600,
+        "width": 305
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 269,
+        "h": 104,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-security",
+      "path": "/api/docs/reference/identityChangePassword",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 6820,
+        "width": 305
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 269,
+        "h": 104,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer",
+      "path": "/acasa/",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 670,
+        "width": 305
+      },
+      "heading": {
+        "x": 16,
+        "y": 118,
+        "w": 201,
+        "h": 32,
+        "font": "28px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "home",
+      "path": "/",
+      "viewport_name": "landscape",
+      "viewport": {
+        "client": 1009,
+        "height": 768,
+        "width": 1024
+      },
+      "document": {
+        "height": 5634,
+        "width": 1009
+      },
+      "heading": {
+        "x": 32,
+        "y": 221,
+        "w": 468,
+        "h": 141,
+        "font": "45.056px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "manage",
+      "path": "/manage",
+      "viewport_name": "landscape",
+      "viewport": {
+        "client": 1009,
+        "height": 768,
+        "width": 1024
+      },
+      "document": {
+        "height": 1049,
+        "width": 1009
+      },
+      "heading": {
+        "x": 32,
+        "y": 173,
+        "w": 244,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 454,
+          "w": 481,
+          "h": 183,
+          "padding": "28px"
+        },
+        {
+          "x": 539,
+          "y": 454,
+          "w": 438,
+          "h": 345,
+          "padding": "28px"
+        }
+      ],
+      "input_font_sizes": [
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "updates",
+      "path": "/admin/updates",
+      "viewport_name": "landscape",
+      "viewport": {
+        "client": 1009,
+        "height": 768,
+        "width": 1024
+      },
+      "document": {
+        "height": 2496,
+        "width": 1009
+      },
+      "heading": {
+        "x": 112,
+        "y": 626,
+        "w": 786,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 32,
+          "y": 124,
+          "w": 945,
+          "h": 206,
+          "padding": "28px"
+        },
+        {
+          "x": 32,
+          "y": 355,
+          "w": 945,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 112,
+          "y": 738,
+          "w": 786,
+          "h": 185,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 112,
+          "y": 947,
+          "w": 786,
+          "h": 474,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 112,
+          "y": 1446,
+          "w": 786,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 112,
+          "y": 1630,
+          "w": 786,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 112,
+          "y": 1813,
+          "w": 786,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 112,
+          "y": 1996,
+          "w": 786,
+          "h": 250,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-reference",
+      "path": "/api/docs/reference/manageProductCreate",
+      "viewport_name": "landscape",
+      "viewport": {
+        "client": 1009,
+        "height": 768,
+        "width": 1024
+      },
+      "document": {
+        "height": 4419,
+        "width": 1009
+      },
+      "heading": {
+        "x": 262,
+        "y": 269,
+        "w": 727,
+        "h": 32,
+        "font": "27.648px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px",
+        "13.6px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-long-title",
+      "path": "/api/docs/reference/manageItemResolverLinks",
+      "viewport_name": "landscape",
+      "viewport": {
+        "client": 1009,
+        "height": 768,
+        "width": 1024
+      },
+      "document": {
+        "height": 4283,
+        "width": 1009
+      },
+      "heading": {
+        "x": 262,
+        "y": 269,
+        "w": 727,
+        "h": 32,
+        "font": "27.648px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-menu",
+      "path": "/api/docs/reference/manageProductCreate",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 5655,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 356,
+        "w": 339,
+        "h": 69,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-explorer-open",
+      "path": "/api/docs/reference/manageProductCreate",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 6479,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 339,
+        "h": 69,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "api-large-schema",
+      "path": "/api/docs/reference/homePostApiV2HomeSync",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 375,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 26562,
+        "width": 375
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 339,
+        "h": 69,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "viewport"
+    },
+    {
+      "page": "api-large-schema",
+      "path": "/api/docs/reference/homePostApiV2HomeSync",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 753,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 13832,
+        "width": 753
+      },
+      "heading": {
+        "x": 18,
+        "y": 303,
+        "w": 717,
+        "h": 35,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "viewport"
+    },
+    {
+      "page": "api-large-schema",
+      "path": "/api/docs/reference/homePostApiV2HomeSync",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 13265,
+        "width": 1425
+      },
+      "heading": {
+        "x": 338,
+        "y": 269,
+        "w": 829,
+        "h": 45,
+        "font": "38.88px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "12px",
+        "13.6px",
+        "14px"
+      ],
+      "capture": "viewport"
+    },
+    {
+      "page": "api-large-schema",
+      "path": "/api/docs/reference/homePostApiV2HomeSync",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 26923,
+        "width": 305
+      },
+      "heading": {
+        "x": 18,
+        "y": 332,
+        "w": 269,
+        "h": 104,
+        "font": "30px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "13.6px",
+        "14px",
+        "16px"
+      ],
+      "capture": "viewport"
+    },
+    {
+      "page": "updates",
+      "path": "/admin/updates",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1425,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 2496,
+        "width": 1425
+      },
+      "heading": {
+        "x": 320,
+        "y": 626,
+        "w": 786,
+        "h": 42,
+        "font": "36.8px"
+      },
+      "panels": [
+        {
+          "x": 125,
+          "y": 124,
+          "w": 1176,
+          "h": 206,
+          "padding": "28px"
+        },
+        {
+          "x": 125,
+          "y": 355,
+          "w": 1176,
+          "h": 157,
+          "padding": "28px"
+        },
+        {
+          "x": 320,
+          "y": 738,
+          "w": 786,
+          "h": 185,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 947,
+          "w": 786,
+          "h": 474,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 1446,
+          "w": 786,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 1630,
+          "w": 786,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 1813,
+          "w": 786,
+          "h": 158,
+          "padding": "30px 0px"
+        },
+        {
+          "x": 320,
+          "y": 1996,
+          "w": 786,
+          "h": 250,
+          "padding": "30px 0px"
+        }
+      ],
+      "input_font_sizes": [
+        "13px",
+        "14px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-shopping",
+      "path": "/acasa/",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 390,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 844,
+        "width": 390
+      },
+      "heading": {
+        "x": 16,
+        "y": 118,
+        "w": 201,
+        "h": 32,
+        "font": "28px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "17px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-finished",
+      "path": "/acasa/",
+      "viewport_name": "mobile",
+      "viewport": {
+        "client": 390,
+        "height": 844,
+        "width": 390
+      },
+      "document": {
+        "height": 844,
+        "width": 390
+      },
+      "heading": {
+        "x": 16,
+        "y": 118,
+        "w": 201,
+        "h": 32,
+        "font": "28px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-shopping",
+      "path": "/acasa/",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 20,
+        "y": 130,
+        "w": 273,
+        "h": 44,
+        "font": "38px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "17px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-finished",
+      "path": "/acasa/",
+      "viewport_name": "tablet",
+      "viewport": {
+        "client": 768,
+        "height": 1024,
+        "width": 768
+      },
+      "document": {
+        "height": 1024,
+        "width": 768
+      },
+      "heading": {
+        "x": 20,
+        "y": 130,
+        "w": 273,
+        "h": 44,
+        "font": "38px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-shopping",
+      "path": "/acasa/",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 290,
+        "y": 130,
+        "w": 273,
+        "h": 44,
+        "font": "38px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "17px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-finished",
+      "path": "/acasa/",
+      "viewport_name": "desktop",
+      "viewport": {
+        "client": 1440,
+        "height": 1000,
+        "width": 1440
+      },
+      "document": {
+        "height": 1000,
+        "width": 1440
+      },
+      "heading": {
+        "x": 290,
+        "y": 130,
+        "w": 273,
+        "h": 44,
+        "font": "38px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-shopping",
+      "path": "/acasa/",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 320,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 568,
+        "width": 320
+      },
+      "heading": {
+        "x": 16,
+        "y": 118,
+        "w": 201,
+        "h": 32,
+        "font": "28px"
+      },
+      "panels": [],
+      "input_font_sizes": [
+        "17px"
+      ],
+      "capture": "full-page"
+    },
+    {
+      "page": "consumer-finished",
+      "path": "/acasa/",
+      "viewport_name": "narrow",
+      "viewport": {
+        "client": 305,
+        "height": 568,
+        "width": 320
+      },
+      "document": {
+        "height": 618,
+        "width": 305
+      },
+      "heading": {
+        "x": 16,
+        "y": 118,
+        "w": 201,
+        "h": 32,
+        "font": "28px"
+      },
+      "panels": [],
+      "input_font_sizes": [],
+      "capture": "full-page"
+    }
+  ],
+  "source_sha256": {
+    "app/Views/about.php": "637400db77badf87e82d184e511a8a2cb74621146a8e8041b5266b9d0025e627",
+    "app/Views/account-security.php": "40591691f904de73f86d769d173eb041bf05f9a964c67dec470224101abd5ac8",
+    "app/Views/admin.php": "88fdacf4a24d7d05e8edaa393448e41ab4b16db5b85b7be1e67d413ebdfbc46b",
+    "app/Views/api-docs.php": "2ba6f518cc5a9370578ab4eecb9707b276c950db00b0ecf80a0d7b88dc29ab72",
+    "app/Views/api-explorer.php": "3a5ddfd8db608753beadb4bce2100a1537b943fc2e631d8bf1532d8aa5bccefe",
+    "app/Views/api-fields.php": "84b9826ba5c120fdaf37cf938826666eb11b597c67d4898eca3b4bb47ac786af",
+    "app/Views/api-reference.php": "32ca104adf9efac5082b4e9dc7e147e3dd27ed467103293bdaba78ccf856f390",
+    "app/Views/auth.php": "4540a974f05da43eba556a5523383659e797d2505234088cebd0ea093ff3baee",
+    "app/Views/catalog.php": "5abfdedb926665531f64ffbe31bec29096a66fbf74f759c56979d052c8b147f1",
+    "app/Views/connectors.php": "2e0dc6bfee2eb17c9800cc1e4805bbf097a3735877e07fab0553960a704ae821",
+    "app/Views/consumer-home.php": "72f8a25ce49789686857a6453ab0cb7794dbef7ea9a02f3b53406e7304120498",
+    "app/Views/demo-bread-print.php": "7b1328b0aa4f7f435ea1792d0ea66ed59e79239313f5ceee670984d5c4e3ad96",
+    "app/Views/demo-bread.php": "b6b8306b68ac67ec2e70e8fd11c7c7e517aed9871fff20501443967c59a7723a",
+    "app/Views/developers.php": "eb1263344230ab9efc55e291c5dde4e45abdd73c6e53c6277f6b5536b3f1dd5f",
+    "app/Views/digital-link-guide.php": "f54b9bb5e737cc6c7e44714a4b97f7b327e66ca2357695ca88f6caa991d7faa4",
+    "app/Views/food-data-form.php": "ee9606acfa93c2ccdbebd88fbd8f4e757aad7206e13876315309dffce070e884",
+    "app/Views/food-data-preview.php": "f156d751178fdaeb0bbdb1c7d2f52434bcf6f7959fd984eacf369a235428beee",
+    "app/Views/home.php": "919454421cf223d7a210fa5d3a956600b0f643db5ed34ddd6b3f2536900b5dc1",
+    "app/Views/layout.php": "8af26878e4a404a46b6887b046542f62576c4375918cbfd57437686ee8d56657",
+    "app/Views/manage.php": "6d657ed1ed3ce66279bf9be1a3b6add805055cdf75970b52e9cab2e916282d42",
+    "app/Views/message.php": "376ae4be2aa670f73c469b1d04c48d28e96abdfea3e02436e7a0edd66cea5532",
+    "app/Views/oauth-consent.php": "bcf5b8bbcefdd60264a164d4476b414191ac9d9c7aea91f84f8184fa504aa1ec",
+    "app/Views/privacy.php": "126d529ed0b7ac9971d67d4f474c8b8c1288b29d47b3d46dd39e3c67e91e078a",
+    "app/Views/product.php": "d435ef3be60f32c14f79fadec768fc3e6095a19a22cb890a547821bbecb628ff",
+    "app/Views/recipe.php": "b4b4ff29108ca1193dabee82fcf34090a25951b17c004b36f175f6c9fa3980eb",
+    "app/Views/resolver-linkset.php": "df52e3713ad5a858608c7e2d45ac61349c2a2307779b71b9e0787594dd22da55",
+    "app/Views/resolver-manage.php": "f6d8c7db237740a929b373ecface900babef147f5c9b0c28ee0e74cd316ded13",
+    "app/Views/resolver-profile.php": "70c507e9aeb6d80a7dc60f8924d19c7c4b053cea2e9a351255078ced2ae85c10",
+    "app/Views/updates.php": "a77fa932c40bae3068f112a4d7873a06e79b0fc106bbd4d8a5feab5596a97e9e",
+    "public/assets/api-docs.css": "db65931e800e61b138b30fee1d802019973ecc6ed2ee39642a61ae9503b25a52",
+    "public/assets/api-docs.js": "ec47eb6ae54dfb6a66c771b874c529c04925131bad86dd06baa76dd8c02d9a46",
+    "public/assets/app.css": "abae4535edf7ceadab069a44a003ff4ea825900b4505a39c394b4ffed0db4f36",
+    "public/assets/app.js": "c7497e5ca0b93829c44bf028d6bce4045e6c7d94795b3ee3767bbb9e1eba335f",
+    "public/assets/home/app.js": "788fdcae0e0bab3805b264cf7a76d65df60a98cf94dc20ff2a3100ea263f0269",
+    "public/assets/home/home.css": "f7c4dd6f473ecf63c36ff779343f23d429614d3e99a7bfca35ea3835c9018d14"
+  },
+  "private_evidence_directory": "tests/runtime/ui-ux-audit-2026-10-24",
+  "private_evidence_not_for_github": [
+    "admin screenshots and raw DOM geometry, which can contain account/contact labels"
+  ]
+}

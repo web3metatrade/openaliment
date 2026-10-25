@@ -1,0 +1,22 @@
+{
+  "name": "openaliment/platform",
+  "description": "Lightweight food product, batch and GS1 Digital Link platform",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.4",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*",
+    "ext-mbstring": "*",
+    "ext-fileinfo": "*",
+    "ext-openssl": "*"
+  },
+  "autoload": {
+    "psr-4": { "App\\": "app/" }
+  },
+  "scripts": {
+    "qa": "python tools/qa/run.py --suite quick",
+    "test:local": "python tools/qa/run.py --suite local --reset-test-db"
+  },
+  "config": { "allow-plugins": false }
+}

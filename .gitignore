@@ -1,0 +1,32 @@
+/config/local.php
+/config/*.local.php
+/.tools/
+/storage/*
+!/storage/.htaccess
+/tests/runtime/
+/tests/config.local.php
+/release/
+/output/
+/docs/previews/
+# Historical producer materials stay available locally, outside the source repository.
+/OpenBread_Codex_v1_2026-10-23/
+# Administrative and production screenshots are private verification evidence.
+/docs/**/*.png
+/docs/**/*.jpg
+/docs/**/*.jpeg
+/docs/**/*.webp
+/vendor/
+/node_modules/
+/.npmrc
+/auth.json
+/.env
+/.env.*
+!/.env.example
+/.venv/
+/.idea/
+/.vscode/
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+*.log

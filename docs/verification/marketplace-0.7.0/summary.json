@@ -1,0 +1,26 @@
+{
+  "release": "0.7.0",
+  "local_completed": true,
+  "suites": 51,
+  "checks": 10634,
+  "failed": 0,
+  "documented_operations_with_validated_http_success": 258,
+  "guides": 19,
+  "runtime_files_hashed": 264,
+  "production_state": "0.7.0 published: 69 source files in 12 verified HTTPS deployments",
+  "production_migration_008": "active; authenticated administrator UI and public capabilities verified",
+  "official_local_pdf_count": 4,
+  "official_host_pdf_count": 4,
+  "commercial_payments": false,
+  "physical_printer_pos_load": "not tested; local synthetic agent and QR software decoding only",
+  "ci_remote": "not executed; no Git repository initialized",
+  "credentials_or_notifications_sent": false,
+  "production_https_smoke": {
+    "passed": 32,
+    "failed": 0,
+    "read_only": true
+  },
+  "publication_evidence": "publication.json",
+  "official_host_copy_evidence": "gs1-host-copies.json",
+  "migration_screenshot": "migration-008-confirmed.png"
+}

@@ -1,0 +1,131 @@
+{
+  "production_assets": [
+    {
+      "file": "bootstrap.min.css",
+      "source": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css",
+      "version": "5.3.8",
+      "license": "MIT",
+      "sha256": "d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede",
+      "bytes": 232111
+    },
+    {
+      "file": "qrcodegen.js",
+      "source": "https://www.nayuki.io/res/qr-code-generator-library/qrcodegen.js",
+      "version": "snapshot 2026-10-23",
+      "license": "MIT",
+      "sha256": "2511bc17f40a3c41d4a0578995db956b38997334d3d20113a5d4dc5c49c69480",
+      "bytes": 45350
+    },
+    {
+      "file": "zxing-browser.min.js",
+      "source": "https://registry.npmjs.org/@zxing/browser/-/browser-0.2.1.tgz",
+      "version": "0.2.1",
+      "license": "MIT (browser layer), Apache-2.0 (ZXing core)",
+      "sha256": "066bc34edfcdd4a33f0964aeec967752a0dea1ccaf36e58e319ac9fcb5070f6a",
+      "bytes": 441121,
+      "loading": "only on scanner use; never on public QR page"
+    },
+    {
+      "file": "ocr/tesseract.min.js",
+      "source": "https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "sha256": "000c27d9cd0def655f77b36c72a389c0ab13793aa31cb4d7aab56d09c0afbc7e",
+      "bytes": 62961,
+      "loading": "only for on-device date OCR"
+    },
+    {
+      "file": "ocr/worker.min.js",
+      "source": "https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/worker.min.js",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "sha256": "576b7df7e3393e137e51849357c9adb53fe7ac1bb69bfa06cf3d61520f182c6d",
+      "bytes": 111307,
+      "loading": "only for on-device date OCR"
+    },
+    {
+      "file": "ocr/tesseract-core-lstm.js",
+      "source": "https://cdn.jsdelivr.net/npm/tesseract.js-core@7.0.0/tesseract-core-lstm.js",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "sha256": "6510efc4e8b45c5465df30679b9911ffe0071cd2ee982fa064e6f5136ef2de85",
+      "bytes": 89261,
+      "loading": "only for on-device date OCR"
+    },
+    {
+      "file": "ocr/tesseract-core-lstm.wasm",
+      "source": "https://cdn.jsdelivr.net/npm/tesseract.js-core@7.0.0/tesseract-core-lstm.wasm",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "sha256": "66b17df6e20c5329a17ffa9c202a47eaa3e32500b253d4c7f38e7f2bc01457c3",
+      "bytes": 2855361,
+      "loading": "only for on-device date OCR"
+    },
+    {
+      "file": "ocr/APACHE-LICENSE.txt",
+      "source": "https://cdn.jsdelivr.net/npm/tesseract.js-core@7.0.0/LICENSE",
+      "version": "7.0.0",
+      "license": "Apache-2.0",
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+      "bytes": 11358,
+      "loading": "only for on-device date OCR"
+    },
+    {
+      "file": "ocr/lang/eng.traineddata.gz",
+      "source": "https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int/eng.traineddata.gz",
+      "version": "1.0.0",
+      "license": "MIT package; Apache-2.0 language data",
+      "sha256": "45b4cb346724ac1774f1c36f42f182b887bcdb28ebe63e6fff90ac41f3fcff91",
+      "bytes": 2952873,
+      "loading": "only for on-device date OCR"
+    }
+  ],
+  "php_package_dependencies": [
+    {
+      "package": "phpmailer/phpmailer",
+      "version": "7.1.1",
+      "license": "LGPL-2.1-only",
+      "source": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1bc1716a507a65e039d4ac9d9adebbbd0d346e15",
+      "commit": "1bc1716a507a65e039d4ac9d9adebbbd0d346e15",
+      "archive_sha256": "b40f8f2ceb2bfbcb0fe2010e8961537fbbd81316c620e61c3c4db3b0aa13da08",
+      "files_sha256": {
+        "Exception.php": "22ab858ae438d98f58f41f38ad2191d1b0d59570aebea0463a7948cfae1021b7",
+        "PHPMailer.php": "45599a196ae7944ee2dcd4f3d3da0ac4243513d346b2d77bbd15dbd0c37f7064",
+        "SMTP.php": "522bcf0d07be7e7e00114711db5c9ce2b4d59ac041c5ec36eaadd979d5fa7046"
+      },
+      "runtime": "bundled SMTP classes; Composer not required on host"
+    },
+    {
+      "package": "lbuchs/webauthn",
+      "version": "2.2.0",
+      "license": "MIT",
+      "source": "https://api.github.com/repos/lbuchs/WebAuthn/zipball/v2.2.0",
+      "archive_sha256": "feeb913eb4c325ef181514d5feab41ad24784961a4581ae5e69148c975d20e8f",
+      "path": "app/Vendor/WebAuthn",
+      "files_sha256": {
+        "LICENSE": "2b0936c64a2f78bae10ac2f88361cd7e638fe5f3364ea5e9e633f6945bfd5ecc",
+        "src/Attestation/AttestationObject.php": "1dd9541e45c5d07cdac8a118b5eed7aec6d3d1d2f4442beae9d8701d5556d1d6",
+        "src/Attestation/AuthenticatorData.php": "4539fc9eab08ec38835b332c0afbd09832985c57a421043d12d92bc42e66762d",
+        "src/Attestation/Format/AndroidKey.php": "36b7120a882994914738d7520e2a99d8881c28e5db7ff416395f6dff8d186348",
+        "src/Attestation/Format/AndroidSafetyNet.php": "b469688d02a9af095dce47d22d6560fad583742e03cf7c3f639eed745ff51958",
+        "src/Attestation/Format/Apple.php": "2a3e7a26bf057c0488cbcdf9fa2ae047042a44c0d06eeccd3ebd9eeb32cc44f5",
+        "src/Attestation/Format/FormatBase.php": "426b68c571fbdbc880dc5eea85e61b37738293c6fd49aaa363ed0f1e0f495301",
+        "src/Attestation/Format/None.php": "c1db089954f2450f632b07f95491549ef50112f8cc822d21f72ee49ac1bc4771",
+        "src/Attestation/Format/Packed.php": "42b8740014e9846de50801a476b66c7b65fae4b1844c7e714650ef32e204bb76",
+        "src/Attestation/Format/Tpm.php": "3cfeba175dc6c88e6891a33bfbe8bcb5b5e357f3337439c91a51630402245a4a",
+        "src/Attestation/Format/U2f.php": "595aec3dd2e8985d6a01226a17cba8952881342ce52f99df486c96ac600a96a6",
+        "src/Binary/ByteBuffer.php": "ffc0a9efec90b9744cb2c7e91653b3c57c4bda75fee48cd2c3b4a44583eb227a",
+        "src/CBOR/CborDecoder.php": "3c4d302ce63b76c80350318cfa664db3d0b28fabff73a4560f009ec1ad6acb1f",
+        "src/WebAuthn.php": "6676f1bbdd8daf0b99a57ebd9855c92d36ddf99494106a4e35e5664e6ceb7c75",
+        "src/WebAuthnException.php": "9564ae6ae79a0c201971b7c6f691c76e50a925076d1f4a5a7b0fcf5645bb442c"
+      },
+      "runtime": "Bundled, unchanged upstream WebAuthn verification; Composer not required on host."
+    }
+  ],
+  "node_required_on_host": false,
+  "test_only": [
+    "PHP portable 8.4.27",
+    "MariaDB portable 11.4.10",
+    "ZXing-C++ 3.1.1"
+  ]
+}

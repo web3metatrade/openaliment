@@ -1,0 +1,20 @@
+{
+  "schema_version": "openaliment.ai_review.v1",
+  "feedback_id": "synthetic-feedback",
+  "product_id": "synthetic-product",
+  "recipe_version_id": null,
+  "batch_id": null,
+  "product_info_version_id": "synthetic-label",
+  "themes": ["taste"],
+  "summary": "Observație sintetică despre gust, fără concluzii tehnice.",
+  "urgency": "routine",
+  "personal_data_detected": false,
+  "moderation_recommendation": "eligible_for_publication",
+  "evidence_refs": [],
+  "missing_information": ["Condițiile de consum"],
+  "consumer_reply_draft": "Observația a fost înregistrată pentru evaluare.",
+  "proposed_action": "ask_clarification",
+  "rationale_summary": "O preferință individuală nu stabilește cauza și nu modifică informațiile aprobate.",
+  "human_review_required": true,
+  "limitations": ["Exemplu complet sintetic pentru testare; nu reprezintă o recenzie reală."]
+}

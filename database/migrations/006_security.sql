@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS security_maintenance (
+ id TINYINT PRIMARY KEY,
+ completed_at DATETIME NULL,
+ result_json TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -1,0 +1,19 @@
+{
+  "release": "0.5.5",
+  "date": "2026-10-25",
+  "deployment_state": "applied",
+  "files_verified": 3,
+  "passed": 7,
+  "failed": 0,
+  "checks": {
+    "public policy identifies the initiative": true,
+    "NGO status remains in formation": true,
+    "founder and contact match owner clarification": true,
+    "approved public email preserved": true,
+    "HTML and API share the same public description": true,
+    "old operator labels are absent": true,
+    "policy version updated": true
+  },
+  "local_suites": 14,
+  "local_checks": 9406
+}

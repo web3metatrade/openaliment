@@ -1,0 +1,357 @@
+{
+  "checked_at": "2026-10-25T09:31:09.277582+00:00",
+  "packages": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phpmailer/phpmailer"
+      },
+      "version": "7.1.1"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "bootstrap"
+      },
+      "version": "5.3.8"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@zxing/browser"
+      },
+      "version": "0.2.1"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "tesseract.js"
+      },
+      "version": "7.0.0"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "tesseract.js-core"
+      },
+      "version": "7.0.0"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@tesseract.js-data/eng"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "jsonschema"
+      },
+      "version": "4.23.0"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "jsonschema-specifications"
+      },
+      "version": "2025.9.1"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "referencing"
+      },
+      "version": "0.37.0"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "attrs"
+      },
+      "version": "26.1.0"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "rpds-py"
+      },
+      "version": "2026.9.1"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "typing-extensions"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "Pillow"
+      },
+      "version": "13.0.0"
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "zxing-cpp"
+      },
+      "version": "3.1.1"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@emnapi/runtime"
+      },
+      "version": "1.11.3"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/colour"
+      },
+      "version": "1.1.0"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-darwin-arm64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-darwin-x64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-freebsd-wasm32"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-darwin-arm64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-darwin-x64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linux-arm"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linux-arm64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linux-ppc64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linux-riscv64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linux-s390x"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linux-x64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linuxmusl-arm64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-libvips-linuxmusl-x64"
+      },
+      "version": "1.3.4"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linux-arm"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linux-arm64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linux-ppc64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linux-riscv64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linux-s390x"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linux-x64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linuxmusl-arm64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-linuxmusl-x64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-wasm32"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-webcontainers-wasm32"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-win32-arm64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-win32-ia32"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@img/sharp-win32-x64"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "detect-libc"
+      },
+      "version": "2.1.2"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "fsevents"
+      },
+      "version": "2.3.2"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "playwright"
+      },
+      "version": "1.62.1"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "playwright-core"
+      },
+      "version": "1.62.1"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "semver"
+      },
+      "version": "7.8.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "sharp"
+      },
+      "version": "0.35.5"
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "tslib"
+      },
+      "version": "2.8.1"
+    }
+  ],
+  "manual_review": [
+    {
+      "file": "qrcodegen.js",
+      "reason": "Snapshot without a package version; pinned hash still requires upstream review."
+    }
+  ],
+  "provider": "OSV",
+  "advisories": [],
+  "state": "completed"
+}

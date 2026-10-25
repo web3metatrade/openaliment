@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment declarative partner mapping v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "fields"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "openaliment.mapping.v1"
+    },
+    "fields": {
+      "type": "object",
+      "maxProperties": 100,
+      "propertyNames": {
+        "pattern": "^/",
+        "maxLength": 240
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "value": {},
+          "op": {
+            "enum": [
+              "copy",
+              "text",
+              "decimal",
+              "integer",
+              "gtin",
+              "date_iso",
+              "date_dmy",
+              "boolean"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "from"
+            ],
+            "not": {
+              "required": [
+                "value"
+              ]
+            }
+          },
+          {
+            "required": [
+              "value"
+            ],
+            "not": {
+              "required": [
+                "from"
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "arrays": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "to",
+          "fields"
+        ],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "fields": {
+            "type": "object",
+            "maxProperties": 100,
+            "propertyNames": {
+              "pattern": "^/",
+              "maxLength": 240
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                },
+                "value": {},
+                "op": {
+                  "enum": [
+                    "copy",
+                    "text",
+                    "decimal",
+                    "integer",
+                    "gtin",
+                    "date_iso",
+                    "date_dmy",
+                    "boolean"
+                  ]
+                },
+                "required": {
+                  "type": "boolean"
+                }
+              },
+              "oneOf": [
+                {
+                  "required": [
+                    "from"
+                  ],
+                  "not": {
+                    "required": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "required": [
+                    "value"
+                  ],
+                  "not": {
+                    "required": [
+                      "from"
+                    ]
+                  }
+                }
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

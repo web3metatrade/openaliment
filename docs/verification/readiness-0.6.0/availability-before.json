@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-10-25T11:09:45.578933+00:00",
+  "origin": "https://openaliment.ro",
+  "passed": true,
+  "checks": [
+    {
+      "path": "/api/v2/public/status",
+      "status": 200,
+      "milliseconds": 313,
+      "passed": true
+    },
+    {
+      "path": "/.well-known/gs1resolver",
+      "status": 200,
+      "milliseconds": 140,
+      "passed": true
+    },
+    {
+      "path": "/acasa/",
+      "status": 200,
+      "milliseconds": 110,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "milliseconds": 187,
+      "passed": true
+    },
+    {
+      "path": "TLS",
+      "days_remaining": 87,
+      "passed": true
+    }
+  ],
+  "sends_notifications": false
+}

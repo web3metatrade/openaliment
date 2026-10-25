@@ -1,0 +1,28 @@
+{
+  "schema_version": "openaliment.receipt.v1",
+  "merchant": "Magazin fictiv · simulator",
+  "receipt_external_id": "RECEIPT-002",
+  "issued_at": "2026-10-24T13:30:00+03:00",
+  "lines": [
+    {
+      "line_id": "1",
+      "name": "Pâine Bună Tehnic · demonstrație",
+      "gtin14": "09520000000011",
+      "lot_code": null,
+      "quantity": 2,
+      "unit": "pack",
+      "expiry": null
+    },
+    {
+      "line_id": "2",
+      "name": "Aliment necunoscut · demonstrație",
+      "gtin14": "09506000134352",
+      "lot_code": null,
+      "quantity": 1,
+      "unit": "pack",
+      "expiry": null
+    }
+  ],
+  "simulation": true,
+  "id": "326023f9c67da954a5bf42928ccfc103"
+}

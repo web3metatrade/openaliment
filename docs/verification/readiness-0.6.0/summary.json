@@ -1,0 +1,32 @@
+{
+  "release": "0.6.0",
+  "local_completed": true,
+  "suites": 47,
+  "checks": 12799,
+  "failed": 0,
+  "documented_operations_with_validated_http_success": 229,
+  "guides": 18,
+  "runtime_files_hashed": 261,
+  "production_state": "0.6.0 published with explicit approval; 123 files in 15 verified deployments",
+  "production_migration_007": "activated through authenticated administrator action; public readiness flags verified",
+  "external_backup": "not configured or verified",
+  "real_antivirus_engine": "not installed by this release",
+  "ci_remote": "not executed; no Git repository initialized",
+  "physical_pos_mobile_authenticator_load": "not claimed",
+  "production_https_smoke": {
+    "passed": 23,
+    "failed": 0,
+    "read_only": true
+  },
+  "post_publication_availability_tls": {
+    "passed": 5,
+    "failed": 0
+  },
+  "post_template_adjustment": {
+    "repository_checks": 403,
+    "php_lint": true,
+    "original_tokens_unchanged": true
+  },
+  "publication_evidence": "publication.json",
+  "migration_screenshot": "migration-007-confirmed.jpg"
+}

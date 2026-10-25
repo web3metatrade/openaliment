@@ -1,0 +1,80 @@
+{
+  "suite": "User-selected homepage concept image",
+  "base": "https://openaliment.ro",
+  "executed_at": "2026-10-24T06:29:26.464534+00:00",
+  "passed": 15,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Homepage replacement is the bread checkout scene",
+      "passed": true
+    },
+    {
+      "name": "Single H1 explains movement from barcode to QR",
+      "passed": true
+    },
+    {
+      "name": "Copy mentions compatible POS and coexistence",
+      "passed": true
+    },
+    {
+      "name": "Selected image explicitly presented as a concept",
+      "passed": true
+    },
+    {
+      "name": "Responsive hero is prioritized and reserves image space",
+      "passed": true
+    },
+    {
+      "name": "Scene links to real demo resolver",
+      "passed": true
+    },
+    {
+      "name": "Existing commercial title and integration remain",
+      "passed": true
+    },
+    {
+      "name": "Anonymous homepage does not create session",
+      "passed": true
+    },
+    {
+      "name": "768 image matches release",
+      "passed": true
+    },
+    {
+      "name": "768 asset is cacheable and lightweight",
+      "passed": true
+    },
+    {
+      "name": "768 dimensions",
+      "passed": true
+    },
+    {
+      "name": "1200 image matches release",
+      "passed": true
+    },
+    {
+      "name": "1200 asset is cacheable and lightweight",
+      "passed": true
+    },
+    {
+      "name": "1200 dimensions",
+      "passed": true
+    },
+    {
+      "name": "Photograph is linked to actual separately hosted demo QR",
+      "passed": true
+    }
+  ],
+  "photo_qr_assessment": [
+    {
+      "width": 768,
+      "decoded": []
+    },
+    {
+      "width": 1200,
+      "decoded": []
+    }
+  ],
+  "note": "The selected photograph is illustrative; functional QR assets are verified by test_demo_bread.py."
+}

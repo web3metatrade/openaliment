@@ -1,0 +1,3568 @@
+{
+  "date": "2026-10-24",
+  "release": "0.5.3",
+  "views": [
+    {
+      "template": "layout",
+      "purpose": "Antet, subsol, flash",
+      "routes_or_states": [
+        "all shared-layout pages"
+      ],
+      "coverage": "browser",
+      "findings": [
+        "UX-06",
+        "UX-08",
+        "UX-09",
+        "UX-12"
+      ]
+    },
+    {
+      "template": "home",
+      "purpose": "Landing comercial",
+      "routes_or_states": [
+        "/"
+      ],
+      "coverage": "browser",
+      "findings": [
+        "UX-11",
+        "UX-12"
+      ]
+    },
+    {
+      "template": "digital-link-guide",
+      "purpose": "Ghid GS1 Digital Link și exemple interactive",
+      "routes_or_states": [
+        "/gs1-digital-link"
+      ],
+      "coverage": "browser; interactive switches source-reviewed",
+      "findings": [
+        "UX-11",
+        "UX-12"
+      ]
+    },
+    {
+      "template": "about",
+      "purpose": "Despre platformă",
+      "routes_or_states": [
+        "/despre"
+      ],
+      "coverage": "browser",
+      "findings": [
+        "UX-10"
+      ]
+    },
+    {
+      "template": "privacy",
+      "purpose": "Confidențialitate",
+      "routes_or_states": [
+        "/confidentialitate"
+      ],
+      "coverage": "browser",
+      "findings": [
+        "UX-01",
+        "UX-10"
+      ]
+    },
+    {
+      "template": "catalog",
+      "purpose": "Catalog gol / populat",
+      "routes_or_states": [
+        "/produse"
+      ],
+      "coverage": "empty state browser; populated state source-only",
+      "findings": [
+        "UX-14"
+      ]
+    },
+    {
+      "template": "product",
+      "purpose": "Produs, articol, lot, alerte, feedback, propuneri",
+      "routes_or_states": [
+        "/p/{id}",
+        "/t/{id}",
+        "/b/{id}"
+      ],
+      "coverage": "source-only; demonstration template is distinct",
+      "findings": [
+        "UX-08",
+        "UX-12",
+        "UX-16"
+      ]
+    },
+    {
+      "template": "recipe",
+      "purpose": "Versiune publică de rețetă",
+      "routes_or_states": [
+        "/p/{id}/v/{version_key}"
+      ],
+      "coverage": "source-only",
+      "findings": [
+        "UX-10",
+        "UX-19"
+      ]
+    },
+    {
+      "template": "demo-bread",
+      "purpose": "Pâine demonstrativă: produs / lot / lot necunoscut",
+      "routes_or_states": [
+        "/demo/paine-buna-tehnic",
+        "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+        "/demo/paine-buna-tehnic/lot-necunoscut"
+      ],
+      "coverage": "product and lot browser; unknown-lot notice source-only",
+      "findings": [
+        "UX-13"
+      ]
+    },
+    {
+      "template": "demo-bread-print",
+      "purpose": "Fișă de scanare și tipărire",
+      "routes_or_states": [
+        "/demo/paine-buna-tehnic/etichete"
+      ],
+      "coverage": "screen browser; print media source-only",
+      "findings": [
+        "UX-18"
+      ]
+    },
+    {
+      "template": "resolver-profile",
+      "purpose": "Profilul resolverului",
+      "routes_or_states": [
+        "/resolver/profile"
+      ],
+      "coverage": "browser",
+      "findings": [
+        "UX-10"
+      ]
+    },
+    {
+      "template": "resolver-linkset",
+      "purpose": "Selecția legăturilor resolverului",
+      "routes_or_states": [
+        "/01/{gtin}?linkType=linkset",
+        "300 multiple choices / 404 unavailable link type"
+      ],
+      "coverage": "demo linkset browser; other response states source-only",
+      "findings": [
+        "UX-10",
+        "UX-12"
+      ]
+    },
+    {
+      "template": "auth",
+      "purpose": "Conectare, înregistrare, instalare",
+      "routes_or_states": [
+        "/login",
+        "/register",
+        "/setup"
+      ],
+      "coverage": "source-only in this audit; existing producer session preserved; setup closed",
+      "findings": [
+        "UX-08",
+        "UX-12"
+      ]
+    },
+    {
+      "template": "manage",
+      "purpose": "Spațiul producătorului, cu nouă secțiuni",
+      "routes_or_states": [
+        "/manage",
+        "/manage/products/{id}",
+        "/manage/items/{id}",
+        "/manage/labels/{id}",
+        "/manage/batches/{id}",
+        "/manage/qr/item/{id}",
+        "/manage/qr/batch/{id}",
+        "/manage/api",
+        "/manage/import",
+        "/manage/feedback"
+      ],
+      "coverage": "overview, API, import, empty feedback browser; resource details source-only",
+      "findings": [
+        "UX-05",
+        "UX-06",
+        "UX-07",
+        "UX-08",
+        "UX-12",
+        "UX-14",
+        "UX-15",
+        "UX-16"
+      ]
+    },
+    {
+      "template": "food-data-form",
+      "purpose": "Partial: alergeni, nutriție și după deschidere",
+      "routes_or_states": [
+        "manage item label form"
+      ],
+      "coverage": "source-only",
+      "findings": [
+        "UX-12",
+        "UX-15"
+      ]
+    },
+    {
+      "template": "food-data-preview",
+      "purpose": "Partial: previzualizarea datelor structurate",
+      "routes_or_states": [
+        "manage label preview"
+      ],
+      "coverage": "source-only",
+      "findings": [
+        "UX-15",
+        "UX-16"
+      ]
+    },
+    {
+      "template": "resolver-manage",
+      "purpose": "Destinații, versiuni, aprobare, retragere",
+      "routes_or_states": [
+        "/manage/resolver/{id}"
+      ],
+      "coverage": "source-only",
+      "findings": [
+        "UX-06",
+        "UX-12",
+        "UX-15"
+      ]
+    },
+    {
+      "template": "connectors",
+      "purpose": "Listă / conector, mapare, verificare, import",
+      "routes_or_states": [
+        "/manage/connectors",
+        "/manage/connectors/{id}"
+      ],
+      "coverage": "empty list and create form browser; existing connector source-only",
+      "findings": [
+        "UX-06",
+        "UX-14",
+        "UX-15"
+      ]
+    },
+    {
+      "template": "developers",
+      "purpose": "Aplicații OAuth și accesuri acordate",
+      "routes_or_states": [
+        "/manage/developers"
+      ],
+      "coverage": "empty lists and registration form browser; active/revoked entries source-only",
+      "findings": [
+        "UX-06",
+        "UX-12",
+        "UX-14"
+      ]
+    },
+    {
+      "template": "oauth-consent",
+      "purpose": "Consimțământ producător / Acasă",
+      "routes_or_states": [
+        "/oauth/authorize?request={id}",
+        "/api/v2/home/oauth/authorize?request={id}"
+      ],
+      "coverage": "source-only; no grants created or approved",
+      "findings": [
+        "UX-08",
+        "UX-10",
+        "UX-12"
+      ]
+    },
+    {
+      "template": "account-security",
+      "purpose": "Parolă și retragere accesuri",
+      "routes_or_states": [
+        "/manage/security"
+      ],
+      "coverage": "browser; no password or access changes",
+      "findings": [
+        "UX-01",
+        "UX-06",
+        "UX-08",
+        "UX-10",
+        "UX-12"
+      ]
+    },
+    {
+      "template": "admin",
+      "purpose": "Organizații, GTIN și contacte",
+      "routes_or_states": [
+        "/admin"
+      ],
+      "coverage": "browser with existing account; no decisions submitted",
+      "findings": [
+        "UX-14",
+        "UX-17"
+      ]
+    },
+    {
+      "template": "updates",
+      "purpose": "Actualizări, transport și verificări",
+      "routes_or_states": [
+        "/admin/updates"
+      ],
+      "coverage": "browser, migration already active; no cleanup or update actions",
+      "findings": [
+        "UX-01",
+        "UX-02",
+        "UX-10",
+        "UX-17"
+      ]
+    },
+    {
+      "template": "message",
+      "purpose": "404, refuzuri, validare și confirmări",
+      "routes_or_states": [
+        "HTML errors / success confirmations"
+      ],
+      "coverage": "404 browser; server validation/success source-only",
+      "findings": [
+        "UX-08"
+      ]
+    },
+    {
+      "template": "api-docs",
+      "purpose": "Cadru comun pentru 225 pagini API",
+      "routes_or_states": [
+        "/api/docs",
+        "/api/docs/guides/{slug}",
+        "/api/docs/reference/{operationId}"
+      ],
+      "coverage": "six representative URLs browser; all 225 mapped by source",
+      "findings": [
+        "UX-03",
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "template": "api-reference",
+      "purpose": "Partial: operație și răspunsuri",
+      "routes_or_states": [
+        "208 API operation pages"
+      ],
+      "coverage": "four operation URLs browser; remaining source mapped",
+      "findings": [
+        "UX-03",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "template": "api-fields",
+      "purpose": "Partial: tabelul câmpurilor",
+      "routes_or_states": [
+        "request and response tables"
+      ],
+      "coverage": "browser, including largest request with 114 fields",
+      "findings": [
+        "UX-03",
+        "UX-20"
+      ]
+    },
+    {
+      "template": "api-explorer",
+      "purpose": "Partial: exemple și cereri reale",
+      "routes_or_states": [
+        "operation explorer"
+      ],
+      "coverage": "collapsed/open browser; no requests submitted or tokens entered",
+      "findings": [
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "template": "consumer-home",
+      "purpose": "Acasă: inventar, cumpărături, modale, sincronizare",
+      "routes_or_states": [
+        "/acasa/"
+      ],
+      "coverage": "empty inventory, shopping and finished tabs plus guest preferences browser; remaining states source-only",
+      "findings": [
+        "UX-04",
+        "UX-12",
+        "UX-14"
+      ]
+    }
+  ],
+  "api_documentation_pages": [
+    {
+      "id": "overview",
+      "title": "Prezentare generală",
+      "path": "/api/docs",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [
+        "desktop",
+        "mobile",
+        "narrow",
+        "tablet"
+      ],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "acces",
+      "title": "Acces și permisiuni",
+      "path": "/api/docs/guides/acces",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "api-public",
+      "title": "Citire publică",
+      "path": "/api/docs/guides/api-public",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "flux-erp",
+      "title": "Primul produs și lot",
+      "path": "/api/docs/guides/flux-erp",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [
+        "desktop",
+        "mobile",
+        "narrow",
+        "tablet"
+      ],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "alerte",
+      "title": "Alerte și retrageri",
+      "path": "/api/docs/guides/alerte",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "documente-feedback",
+      "title": "Documente și feedback",
+      "path": "/api/docs/guides/documente-feedback",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "chei",
+      "title": "Chei, rotație și revocare",
+      "path": "/api/docs/guides/chei",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "oauth",
+      "title": "OAuth pentru aplicații",
+      "path": "/api/docs/guides/oauth",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "acasa",
+      "title": "Acasă și sincronizare",
+      "path": "/api/docs/guides/acasa",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "conectoare",
+      "title": "Conectoare, export și import",
+      "path": "/api/docs/guides/conectoare",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "limite",
+      "title": "Limite și erori",
+      "path": "/api/docs/guides/limite",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "ai",
+      "title": "Integrare cu AI",
+      "path": "/api/docs/guides/ai",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "compatibilitate",
+      "title": "Compatibilitate și publicare",
+      "path": "/api/docs/guides/compatibilitate",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "modele-date",
+      "title": "Modele de date și reguli de integrare",
+      "path": "/api/docs/guides/modele-date",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "erori-recuperare",
+      "title": "Erori, reîncercări și depanare",
+      "path": "/api/docs/guides/erori-recuperare",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "exemple-executabile",
+      "title": "Integrare completă și exemple executabile",
+      "path": "/api/docs/guides/exemple-executabile",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "testare",
+      "title": "Testare, medii și întreținerea contractelor",
+      "path": "/api/docs/guides/testare",
+      "kind": "guide",
+      "template": "api-docs.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20"
+      ]
+    },
+    {
+      "id": "v1PostManageProducts",
+      "title": "Creează un produs alimentar",
+      "path": "/api/docs/reference/v1PostManageProducts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageProducts",
+      "title": "Listează produsele organizației prin API v1",
+      "path": "/api/docs/reference/v1GetManageProducts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageProductsIdTradeItems",
+      "title": "Creează un articol comercial al produsului",
+      "path": "/api/docs/reference/v1PostManageProductsIdTradeItems",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageTradeItemsIdLabels",
+      "title": "Creează o versiune de etichetă în ciornă",
+      "path": "/api/docs/reference/v1PostManageTradeItemsIdLabels",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageLabelsIdPublish",
+      "title": "Publică versiunea de etichetă",
+      "path": "/api/docs/reference/v1PostManageLabelsIdPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageTradeItemsIdBatches",
+      "title": "Creează un lot fără rețetă obligatorie",
+      "path": "/api/docs/reference/v1PostManageTradeItemsIdBatches",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageBatchesIdPublish",
+      "title": "Publică pagina lotului",
+      "path": "/api/docs/reference/v1PostManageBatchesIdPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageBatchesIdRelease",
+      "title": "Eliberează lotul",
+      "path": "/api/docs/reference/v1PostManageBatchesIdRelease",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageBatchesIdAlerts",
+      "title": "Înregistrează o alertă curentă a lotului",
+      "path": "/api/docs/reference/v1PostManageBatchesIdAlerts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageAlertsIdResolve",
+      "title": "Închide o alertă cu motiv documentat",
+      "path": "/api/docs/reference/v1PostManageAlertsIdResolve",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageTradeItemsIdResolverLinks",
+      "title": "Creează o versiune de destinație Digital Link",
+      "path": "/api/docs/reference/v1PostManageTradeItemsIdResolverLinks",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageTradeItemsIdResolverLinks",
+      "title": "Citește istoricul destinațiilor prin API v1",
+      "path": "/api/docs/reference/v1GetManageTradeItemsIdResolverLinks",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageResolverLinksIdPublish",
+      "title": "Publică versiunea destinației resolverului",
+      "path": "/api/docs/reference/v1PostManageResolverLinksIdPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageResolverLinksIdWithdraw",
+      "title": "Retrage destinația curentă cu istoric",
+      "path": "/api/docs/reference/v1PostManageResolverLinksIdWithdraw",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetProducts",
+      "title": "Listează produsele publicate prin API v1",
+      "path": "/api/docs/reference/v1GetProducts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetProductsId",
+      "title": "Citește produsul publicat prin API v1",
+      "path": "/api/docs/reference/v1GetProductsId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetTradeItemsId",
+      "title": "Citește produsul publicat prin API v1",
+      "path": "/api/docs/reference/v1GetTradeItemsId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetBatchesId",
+      "title": "Citește lotul publicat prin API v1",
+      "path": "/api/docs/reference/v1GetBatchesId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageQrItemId",
+      "title": "Obține adresa QR de produs",
+      "path": "/api/docs/reference/v1GetManageQrItemId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageQrBatchId",
+      "title": "Obține adresa QR de lot",
+      "path": "/api/docs/reference/v1GetManageQrBatchId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageExport",
+      "title": "Exportă organizația prin API v1",
+      "path": "/api/docs/reference/v1GetManageExport",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetRecipeVersionsId",
+      "title": "Citește rețeta publică prin API v1",
+      "path": "/api/docs/reference/v1GetRecipeVersionsId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetFeedbackIdStatus",
+      "title": "Citește starea feedbackului cu secretul propriu",
+      "path": "/api/docs/reference/v1GetFeedbackIdStatus",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostFeedback",
+      "title": "Trimite feedback prin API v1",
+      "path": "/api/docs/reference/v1PostFeedback",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageProductsId",
+      "title": "Citește resursa privată prin API v1: products",
+      "path": "/api/docs/reference/v1GetManageProductsId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageTradeItemsId",
+      "title": "Citește resursa privată prin API v1: trade-items",
+      "path": "/api/docs/reference/v1GetManageTradeItemsId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageLabelsId",
+      "title": "Citește resursa privată prin API v1: labels",
+      "path": "/api/docs/reference/v1GetManageLabelsId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageBatchesId",
+      "title": "Citește resursa privată prin API v1: batches",
+      "path": "/api/docs/reference/v1GetManageBatchesId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageRecipesId",
+      "title": "Citește resursa privată prin API v1: recipes",
+      "path": "/api/docs/reference/v1GetManageRecipesId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1GetManageDocumentsId",
+      "title": "Citește resursa privată prin API v1: documents",
+      "path": "/api/docs/reference/v1GetManageDocumentsId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageProductsIdRecipes",
+      "title": "Adaugă o versiune opțională de rețetă",
+      "path": "/api/docs/reference/v1PostManageProductsIdRecipes",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageProductsIdProposals",
+      "title": "Înregistrează o propunere de schimbare",
+      "path": "/api/docs/reference/v1PostManageProductsIdProposals",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageProposalsIdDecide",
+      "title": "Înregistrează decizia asupra propunerii",
+      "path": "/api/docs/reference/v1PostManageProposalsIdDecide",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageDocumentsIdPublish",
+      "title": "Aprobă publicarea unui document",
+      "path": "/api/docs/reference/v1PostManageDocumentsIdPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageFeedbackIdModerate",
+      "title": "Moderează copia publicabilă a feedbackului",
+      "path": "/api/docs/reference/v1PostManageFeedbackIdModerate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageImport",
+      "title": "Verifică sau importă date prin API v1",
+      "path": "/api/docs/reference/v1PostManageImport",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "v1PostManageImportPbt",
+      "title": "Verifică sau importă date prin API v1",
+      "path": "/api/docs/reference/v1PostManageImportPbt",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "consumerGetApiV2PublicFood",
+      "title": "Citește profilul alimentar al codului scanat",
+      "path": "/api/docs/reference/consumerGetApiV2PublicFood",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "consumerGetApiV2PublicCapabilities",
+      "title": "Citește capabilitățile aplicației Acasă",
+      "path": "/api/docs/reference/consumerGetApiV2PublicCapabilities",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "integrationGetApiV2ManageConnectors",
+      "title": "Listează conectorii organizației",
+      "path": "/api/docs/reference/integrationGetApiV2ManageConnectors",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectors",
+      "title": "Creează un conector partener",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectors",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "integrationGetApiV2ManageConnectorsConnectorIdMappings",
+      "title": "Listează versiunile mapării",
+      "path": "/api/docs/reference/integrationGetApiV2ManageConnectorsConnectorIdMappings",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectorsConnectorIdMappings",
+      "title": "Adaugă o versiune imutabilă de mapare",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectorsConnectorIdMappings",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectorsConnectorIdPreview",
+      "title": "Validează maparea unui eveniment fără scrieri",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectorsConnectorIdPreview",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectorsConnectorIdIngest",
+      "title": "Importă atomic un eveniment al partenerului",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectorsConnectorIdIngest",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "integrationPostApiV2HomeReceiptsPreview",
+      "title": "Citește bonul digital confidențial",
+      "path": "/api/docs/reference/integrationPostApiV2HomeReceiptsPreview",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homeGetApiV2HomeSession",
+      "title": "Citește sesiunea personală Acasă",
+      "path": "/api/docs/reference/homeGetApiV2HomeSession",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeLoginRequest",
+      "title": "Solicită legătura de conectare prin email",
+      "path": "/api/docs/reference/homePostApiV2HomeLoginRequest",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeLoginPreview",
+      "title": "Verifică legătura de conectare fără consumare",
+      "path": "/api/docs/reference/homePostApiV2HomeLoginPreview",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeInvitesPreview",
+      "title": "Previzualizează invitația fără acceptare",
+      "path": "/api/docs/reference/homePostApiV2HomeInvitesPreview",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeLoginConfirm",
+      "title": "Confirmă legătura și conectează dispozitivul",
+      "path": "/api/docs/reference/homePostApiV2HomeLoginConfirm",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homeGetApiV2HomeChanges",
+      "title": "Citește schimbările inventarului personal",
+      "path": "/api/docs/reference/homeGetApiV2HomeChanges",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeSync",
+      "title": "Sincronizează atomic inventarul și istoricul",
+      "path": "/api/docs/reference/homePostApiV2HomeSync",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [
+        "desktop",
+        "mobile",
+        "narrow",
+        "tablet"
+      ],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomePhotosId",
+      "title": "Încarcă fotografia privată",
+      "path": "/api/docs/reference/homePostApiV2HomePhotosId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homeGetApiV2HomePhotosId",
+      "title": "Descarcă fotografia privată",
+      "path": "/api/docs/reference/homeGetApiV2HomePhotosId",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homeGetApiV2HomeMembers",
+      "title": "Listează membrii familiei curente",
+      "path": "/api/docs/reference/homeGetApiV2HomeMembers",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homeGetApiV2HomeHouseholds",
+      "title": "Listează familiile accesibile",
+      "path": "/api/docs/reference/homeGetApiV2HomeHouseholds",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeInvites",
+      "title": "Creează o invitație de familie",
+      "path": "/api/docs/reference/homePostApiV2HomeInvites",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeJoin",
+      "title": "Acceptă invitația de familie",
+      "path": "/api/docs/reference/homePostApiV2HomeJoin",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeSwitch",
+      "title": "Selectează familia sesiunii personale",
+      "path": "/api/docs/reference/homePostApiV2HomeSwitch",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeRename",
+      "title": "Redenumește familia curentă",
+      "path": "/api/docs/reference/homePostApiV2HomeRename",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeMembersIdRemove",
+      "title": "Elimină un editor din familie",
+      "path": "/api/docs/reference/homePostApiV2HomeMembersIdRemove",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeDevicesIdRevoke",
+      "title": "Revocă un dispozitiv propriu",
+      "path": "/api/docs/reference/homePostApiV2HomeDevicesIdRevoke",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeLogout",
+      "title": "Deconectează dispozitivul Acasă",
+      "path": "/api/docs/reference/homePostApiV2HomeLogout",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homeGetApiV2HomeGrants",
+      "title": "Listează aplicațiile autorizate pentru Acasă",
+      "path": "/api/docs/reference/homeGetApiV2HomeGrants",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "homePostApiV2HomeGrantsIdRevoke",
+      "title": "Revocă autorizarea personală a unei aplicații",
+      "path": "/api/docs/reference/homePostApiV2HomeGrantsIdRevoke",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicGetTradeItems",
+      "title": "Citește articolul comercial publicat",
+      "path": "/api/docs/reference/publicGetTradeItems",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicGetProducts",
+      "title": "Citește produsul publicat",
+      "path": "/api/docs/reference/publicGetProducts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicGetBatches",
+      "title": "Citește lotul publicat și alertele curente",
+      "path": "/api/docs/reference/publicGetBatches",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicGetLabels",
+      "title": "Citește versiunea istorică publicată a etichetei",
+      "path": "/api/docs/reference/publicGetLabels",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicGetRecipeVersions",
+      "title": "Citește rețeta cu publicare și licență aprobate",
+      "path": "/api/docs/reference/publicGetRecipeVersions",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicGetDocuments",
+      "title": "Citește metadatele documentului public",
+      "path": "/api/docs/reference/publicGetDocuments",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicGetProposals",
+      "title": "Citește propunerea publică și numărul voturilor",
+      "path": "/api/docs/reference/publicGetProposals",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicListTradeItems",
+      "title": "Caută articolele alimentare publicate",
+      "path": "/api/docs/reference/publicListTradeItems",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicProductTradeItems",
+      "title": "Listează articolele publicate ale produsului",
+      "path": "/api/docs/reference/publicProductTradeItems",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicProductRecipeVersions",
+      "title": "Listează rețetele publice asociate",
+      "path": "/api/docs/reference/publicProductRecipeVersions",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicProductProposals",
+      "title": "Listează propunerile publice ale produsului",
+      "path": "/api/docs/reference/publicProductProposals",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicBatchRecipes",
+      "title": "Listează rețetele publice asociate",
+      "path": "/api/docs/reference/publicBatchRecipes",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicBatchAlerts",
+      "title": "Listează alertele active ale lotului",
+      "path": "/api/docs/reference/publicBatchAlerts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicLabelDocuments",
+      "title": "Listează documentele aprobate ale etichetei istorice",
+      "path": "/api/docs/reference/publicLabelDocuments",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicListFeedback",
+      "title": "Listează feedbackul public moderat al articolului",
+      "path": "/api/docs/reference/publicListFeedback",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicDownloadDocument",
+      "title": "Descarcă documentul public",
+      "path": "/api/docs/reference/publicDownloadDocument",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicPrivacyPolicy",
+      "title": "Citește informarea privind confidențialitatea",
+      "path": "/api/docs/reference/publicPrivacyPolicy",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicVocabularyLicenses",
+      "title": "Citește licențele acceptate",
+      "path": "/api/docs/reference/publicVocabularyLicenses",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicVocabularyAllergens",
+      "title": "Citește codurile alergenilor",
+      "path": "/api/docs/reference/publicVocabularyAllergens",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicVocabularyNutrition",
+      "title": "Citește câmpurile și bazele nutriționale",
+      "path": "/api/docs/reference/publicVocabularyNutrition",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicVocabularyLinktypes",
+      "title": "Citește vocabularul tipurilor de legături",
+      "path": "/api/docs/reference/publicVocabularyLinktypes",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicVocabularyUnits",
+      "title": "Citește unitățile acceptate",
+      "path": "/api/docs/reference/publicVocabularyUnits",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicFoodLookupBatch",
+      "title": "Caută mai multe coduri alimentare",
+      "path": "/api/docs/reference/publicFoodLookupBatch",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identifierParse",
+      "title": "Validează și interpretează identificatorul alimentar",
+      "path": "/api/docs/reference/identifierParse",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identifierValidate",
+      "title": "Validează și interpretează identificatorul alimentar",
+      "path": "/api/docs/reference/identifierValidate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "communitySubmitFeedback",
+      "title": "Trimite feedback pentru produs sau lot",
+      "path": "/api/docs/reference/communitySubmitFeedback",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "communityMyVotes",
+      "title": "Listează voturile proprii",
+      "path": "/api/docs/reference/communityMyVotes",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "communityVote",
+      "title": "Susține propunerea",
+      "path": "/api/docs/reference/communityVote",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "communityRemoveVote",
+      "title": "Retrage votul propriu",
+      "path": "/api/docs/reference/communityRemoveVote",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListProducts",
+      "title": "Listează produsele ale organizației",
+      "path": "/api/docs/reference/manageListProducts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProductCreate",
+      "title": "Creează un produs alimentar",
+      "path": "/api/docs/reference/manageProductCreate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [
+        "desktop",
+        "landscape",
+        "mobile",
+        "narrow",
+        "tablet"
+      ],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetProducts",
+      "title": "Citește produsele după ID",
+      "path": "/api/docs/reference/manageGetProducts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListTradeItems",
+      "title": "Listează articolele comerciale ale organizației",
+      "path": "/api/docs/reference/manageListTradeItems",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetTradeItems",
+      "title": "Citește articolele comerciale după ID",
+      "path": "/api/docs/reference/manageGetTradeItems",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListLabels",
+      "title": "Listează versiunile de etichetă ale organizației",
+      "path": "/api/docs/reference/manageListLabels",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetLabels",
+      "title": "Citește versiunile de etichetă după ID",
+      "path": "/api/docs/reference/manageGetLabels",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListBatches",
+      "title": "Listează loturile ale organizației",
+      "path": "/api/docs/reference/manageListBatches",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetBatches",
+      "title": "Citește loturile după ID",
+      "path": "/api/docs/reference/manageGetBatches",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListRecipes",
+      "title": "Listează rețetele ale organizației",
+      "path": "/api/docs/reference/manageListRecipes",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetRecipes",
+      "title": "Citește rețetele după ID",
+      "path": "/api/docs/reference/manageGetRecipes",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListDocuments",
+      "title": "Listează documentele ale organizației",
+      "path": "/api/docs/reference/manageListDocuments",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetDocuments",
+      "title": "Citește documentele după ID",
+      "path": "/api/docs/reference/manageGetDocuments",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListFeedback",
+      "title": "Listează feedbackul ale organizației",
+      "path": "/api/docs/reference/manageListFeedback",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetFeedback",
+      "title": "Citește feedbackul după ID",
+      "path": "/api/docs/reference/manageGetFeedback",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListProposals",
+      "title": "Listează propunerile ale organizației",
+      "path": "/api/docs/reference/manageListProposals",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetProposals",
+      "title": "Citește propunerile după ID",
+      "path": "/api/docs/reference/manageGetProposals",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListImports",
+      "title": "Listează importurile ale organizației",
+      "path": "/api/docs/reference/manageListImports",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetImports",
+      "title": "Citește importurile după ID",
+      "path": "/api/docs/reference/manageGetImports",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListAuditEvents",
+      "title": "Listează evenimentele de audit ale organizației",
+      "path": "/api/docs/reference/manageListAuditEvents",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetAuditEvents",
+      "title": "Citește evenimentele de audit după ID",
+      "path": "/api/docs/reference/manageGetAuditEvents",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListAiJobs",
+      "title": "Listează joburile AI ale organizației",
+      "path": "/api/docs/reference/manageListAiJobs",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageQueueAiJob",
+      "title": "Programează analiza feedbackului",
+      "path": "/api/docs/reference/manageQueueAiJob",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageGetAiJobs",
+      "title": "Citește joburile AI după ID",
+      "path": "/api/docs/reference/manageGetAiJobs",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageDashboard",
+      "title": "Citește indicatorii organizației",
+      "path": "/api/docs/reference/manageDashboard",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageOrganization",
+      "title": "Citește organizația și rolul curent",
+      "path": "/api/docs/reference/manageOrganization",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageQuotas",
+      "title": "Citește cotele și consumul organizației",
+      "path": "/api/docs/reference/manageQuotas",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProductTradeItems",
+      "title": "Listează articolele comerciale pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductTradeItems",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageTradeCreate",
+      "title": "Creează un articol comercial al produsului",
+      "path": "/api/docs/reference/manageTradeCreate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProductDocuments",
+      "title": "Listează documentele pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductDocuments",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageUploadDocument",
+      "title": "Încarcă un document privat",
+      "path": "/api/docs/reference/manageUploadDocument",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProductRecipes",
+      "title": "Listează rețetele pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductRecipes",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageRecipeCreate",
+      "title": "Adaugă o versiune opțională de rețetă",
+      "path": "/api/docs/reference/manageRecipeCreate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProductProposals",
+      "title": "Listează propunerile pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductProposals",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProposalCreate",
+      "title": "Înregistrează o propunere de schimbare",
+      "path": "/api/docs/reference/manageProposalCreate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageItemLabels",
+      "title": "Listează versiunile de etichetă pentru resursa selectată",
+      "path": "/api/docs/reference/manageItemLabels",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageLabelCreate",
+      "title": "Creează o versiune de etichetă în ciornă",
+      "path": "/api/docs/reference/manageLabelCreate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageItemBatches",
+      "title": "Listează loturile pentru resursa selectată",
+      "path": "/api/docs/reference/manageItemBatches",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageBatchCreate",
+      "title": "Creează un lot fără rețetă obligatorie",
+      "path": "/api/docs/reference/manageBatchCreate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageItemResolverLinks",
+      "title": "Listează destinațiile resolverului pentru resursa selectată",
+      "path": "/api/docs/reference/manageItemResolverLinks",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [
+        "desktop",
+        "landscape",
+        "mobile",
+        "narrow",
+        "tablet"
+      ],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageResolverDraft",
+      "title": "Creează o versiune de destinație Digital Link",
+      "path": "/api/docs/reference/manageResolverDraft",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageBatchEvents",
+      "title": "Listează evenimentele lotului pentru resursa selectată",
+      "path": "/api/docs/reference/manageBatchEvents",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageBatchAlerts",
+      "title": "Listează alertele lotului pentru resursa selectată",
+      "path": "/api/docs/reference/manageBatchAlerts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageAlertCreate",
+      "title": "Înregistrează o alertă curentă a lotului",
+      "path": "/api/docs/reference/manageAlertCreate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageFeedbackDecisions",
+      "title": "Listează deciziile pentru resursa selectată",
+      "path": "/api/docs/reference/manageFeedbackDecisions",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageFeedbackAiResults",
+      "title": "Listează rezultatele AI pentru resursa selectată",
+      "path": "/api/docs/reference/manageFeedbackAiResults",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProposalDecisions",
+      "title": "Listează deciziile pentru resursa selectată",
+      "path": "/api/docs/reference/manageProposalDecisions",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageDownloadDocument",
+      "title": "Descarcă documentul autorizat al organizației",
+      "path": "/api/docs/reference/manageDownloadDocument",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageLabelPreview",
+      "title": "Previzualizează eticheta fără publicare",
+      "path": "/api/docs/reference/manageLabelPreview",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageValidateLabel",
+      "title": "Validează eticheta fără salvare",
+      "path": "/api/docs/reference/manageValidateLabel",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageLabelPublish",
+      "title": "Publică versiunea de etichetă",
+      "path": "/api/docs/reference/manageLabelPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageBatchPublish",
+      "title": "Publică pagina lotului",
+      "path": "/api/docs/reference/manageBatchPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageBatchRelease",
+      "title": "Eliberează lotul",
+      "path": "/api/docs/reference/manageBatchRelease",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageAlertResolve",
+      "title": "Închide o alertă cu motiv documentat",
+      "path": "/api/docs/reference/manageAlertResolve",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageProposalDecide",
+      "title": "Înregistrează decizia asupra propunerii",
+      "path": "/api/docs/reference/manageProposalDecide",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageDocumentPublish",
+      "title": "Aprobă publicarea unui document",
+      "path": "/api/docs/reference/manageDocumentPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageFeedbackModerate",
+      "title": "Moderează copia publicabilă a feedbackului",
+      "path": "/api/docs/reference/manageFeedbackModerate",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageResolverPublish",
+      "title": "Publică versiunea destinației resolverului",
+      "path": "/api/docs/reference/manageResolverPublish",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageResolverWithdraw",
+      "title": "Retrage destinația curentă cu istoric",
+      "path": "/api/docs/reference/manageResolverWithdraw",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageQrItem",
+      "title": "Obține adresa QR de produs",
+      "path": "/api/docs/reference/manageQrItem",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageQrBatch",
+      "title": "Obține adresa QR de lot",
+      "path": "/api/docs/reference/manageQrBatch",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageExport",
+      "title": "Exportă datele organizației cu istoric",
+      "path": "/api/docs/reference/manageExport",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageImport",
+      "title": "Verifică sau importă un pachet de transfer",
+      "path": "/api/docs/reference/manageImport",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageImportpbt",
+      "title": "Verifică sau importă pilotul Pâine Bună Tehnic",
+      "path": "/api/docs/reference/manageImportpbt",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageConnectorEvents",
+      "title": "Citește evenimentele conectorului",
+      "path": "/api/docs/reference/manageConnectorEvents",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageConnectorBindings",
+      "title": "Citește asocierile de ID-uri externe",
+      "path": "/api/docs/reference/manageConnectorBindings",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageConnector",
+      "title": "Citește conectorul organizației",
+      "path": "/api/docs/reference/manageConnector",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageAiCapabilities",
+      "title": "Citește disponibilitatea AI",
+      "path": "/api/docs/reference/manageAiCapabilities",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageListAccessTokens",
+      "title": "Listează cheile fără secrete",
+      "path": "/api/docs/reference/manageListAccessTokens",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageCreateAccessToken",
+      "title": "Emite o cheie API revocabilă",
+      "path": "/api/docs/reference/manageCreateAccessToken",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageRevokeAccessToken",
+      "title": "Revocă o cheie a organizației",
+      "path": "/api/docs/reference/manageRevokeAccessToken",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "manageRotateAccessToken",
+      "title": "Rotește cheia și revocă imediat cheia veche",
+      "path": "/api/docs/reference/manageRotateAccessToken",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "inspectAccessToken",
+      "title": "Inspectează tokenul Bearer folosit",
+      "path": "/api/docs/reference/inspectAccessToken",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "revokeCurrentToken",
+      "title": "Revocă propriul token Bearer",
+      "path": "/api/docs/reference/revokeCurrentToken",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "developerListApps",
+      "title": "Listează aplicațiile OAuth proprii",
+      "path": "/api/docs/reference/developerListApps",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "developerCreateApps",
+      "title": "Înregistrează o aplicație OAuth publică",
+      "path": "/api/docs/reference/developerCreateApps",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "developerSuspendApp",
+      "title": "Suspendă aplicația OAuth proprie",
+      "path": "/api/docs/reference/developerSuspendApp",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identitySession",
+      "title": "Citește sesiunea producătorului și CSRF",
+      "path": "/api/docs/reference/identitySession",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityLogin",
+      "title": "Conectează contul în browserul propriu",
+      "path": "/api/docs/reference/identityLogin",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityLogout",
+      "title": "Închide sesiunea web curentă",
+      "path": "/api/docs/reference/identityLogout",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityChangePassword",
+      "title": "Schimbă parola și retrage accesurile vechi",
+      "path": "/api/docs/reference/identityChangePassword",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [
+        "desktop",
+        "mobile",
+        "narrow",
+        "tablet"
+      ],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityRevokeOtherAccess",
+      "title": "Retrage celelalte accesuri ale contului",
+      "path": "/api/docs/reference/identityRevokeOtherAccess",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityRegister",
+      "title": "Înregistrează contul și organizația",
+      "path": "/api/docs/reference/identityRegister",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityOrganizations",
+      "title": "Listează organizațiile contului propriu",
+      "path": "/api/docs/reference/identityOrganizations",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identitySelectOrganization",
+      "title": "Selectează organizația activă a sesiunii",
+      "path": "/api/docs/reference/identitySelectOrganization",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityListGrants",
+      "title": "Listează autorizările proprii",
+      "path": "/api/docs/reference/identityListGrants",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "identityRevokeGrant",
+      "title": "Retrage autorizarea unei aplicații",
+      "path": "/api/docs/reference/identityRevokeGrant",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "adminListOrganizations",
+      "title": "Listează organizațiile pentru verificare",
+      "path": "/api/docs/reference/adminListOrganizations",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "adminListUsers",
+      "title": "Listează conturile pentru verificarea contactului",
+      "path": "/api/docs/reference/adminListUsers",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "adminListGtinClaims",
+      "title": "Listează revendicările GTIN",
+      "path": "/api/docs/reference/adminListGtinClaims",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "adminOrganizationVerify",
+      "title": "Înregistrează verificarea identității organizației",
+      "path": "/api/docs/reference/adminOrganizationVerify",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "adminContactVerify",
+      "title": "Înregistrează verificarea contactului utilizatorului",
+      "path": "/api/docs/reference/adminContactVerify",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "adminGtinReview",
+      "title": "Înregistrează verificarea mandatului GTIN",
+      "path": "/api/docs/reference/adminGtinReview",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "oauthToken",
+      "title": "Schimbă codul PKCE sau rotește refresh tokenul",
+      "path": "/api/docs/reference/oauthToken",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "oauthRevoke",
+      "title": "Revocă grantul OAuth prin token",
+      "path": "/api/docs/reference/oauthRevoke",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "oauthAuthorize",
+      "title": "Deschide consimțământul OAuth în browser",
+      "path": "/api/docs/reference/oauthAuthorize",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "oauthAuthorizeHome",
+      "title": "Deschide consimțământul OAuth în browser",
+      "path": "/api/docs/reference/oauthAuthorizeHome",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "apiManifest",
+      "title": "Descoperă API-urile și capabilitățile instalate",
+      "path": "/api/docs/reference/apiManifest",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "oauthMetadata",
+      "title": "Descoperă metadatele serverului OAuth",
+      "path": "/api/docs/reference/oauthMetadata",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "publicServiceStatus",
+      "title": "Verifică disponibilitatea serviciului",
+      "path": "/api/docs/reference/publicServiceStatus",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "developerTextGuide",
+      "title": "Descarcă ghidul de integrare Markdown",
+      "path": "/api/docs/reference/developerTextGuide",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "developerPythonClient",
+      "title": "Descarcă clientul Python",
+      "path": "/api/docs/reference/developerPythonClient",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "developerJavascriptClient",
+      "title": "Descarcă clientul JavaScript",
+      "path": "/api/docs/reference/developerJavascriptClient",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "developerKotlinExample",
+      "title": "Descarcă exemplul Android Kotlin",
+      "path": "/api/docs/reference/developerKotlinExample",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1ResolveProduct",
+      "title": "Rezolvă identificatorul GS1 de produs",
+      "path": "/api/docs/reference/gs1ResolveProduct",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1ResolveVariant",
+      "title": "Rezolvă identificatorul GS1 de variantă",
+      "path": "/api/docs/reference/gs1ResolveVariant",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1ResolveLot",
+      "title": "Rezolvă identificatorul GS1 de lot",
+      "path": "/api/docs/reference/gs1ResolveLot",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1ResolveVariantLot",
+      "title": "Rezolvă identificatorul GS1 de lot",
+      "path": "/api/docs/reference/gs1ResolveVariantLot",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1ResolveSerial",
+      "title": "Rezolvă identificatorul GS1 cu serie",
+      "path": "/api/docs/reference/gs1ResolveSerial",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1ResolveTpx",
+      "title": "Rezolvă identificatorul GS1 cu TPX",
+      "path": "/api/docs/reference/gs1ResolveTpx",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1Description",
+      "title": "Citește descrierea resolverului GS1",
+      "path": "/api/docs/reference/gs1Description",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1Contexts",
+      "title": "Listează contextele publicate de producători",
+      "path": "/api/docs/reference/gs1Contexts",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    },
+    {
+      "id": "gs1JsonLdContext",
+      "title": "Descarcă contextul JSON-LD al linksetului",
+      "path": "/api/docs/reference/gs1JsonLdContext",
+      "kind": "operation",
+      "template": "api-docs.php + api-reference.php + api-fields.php + api-explorer.php",
+      "browser_viewports": [],
+      "shared_findings": [
+        "UX-09",
+        "UX-12",
+        "UX-20",
+        "UX-03"
+      ]
+    }
+  ],
+  "other_html": [
+    {
+      "file": "tools/setup-key.html",
+      "coverage": "source-only; local installation helper, not a production page",
+      "recommendation": "Explicitly labelled outputs and independent copy buttons; preserve local-only secret generation"
+    }
+  ],
+  "excluded_non_app_content": [
+    "Historical OpenBread HTML documents and original artifacts",
+    "JSON, Markdown, binaries and file downloads; covered through their navigation affordances, not as HTML page templates"
+  ]
+}

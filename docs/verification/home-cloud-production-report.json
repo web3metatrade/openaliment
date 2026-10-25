@@ -1,0 +1,54 @@
+{
+  "executed_at": "2026-10-24T09:24:46.612882+00:00",
+  "environment": "production HTTPS, read-only guest checks; no account, email or product created",
+  "passed": 11,
+  "failed": 0,
+  "migration_004_observed_in_authenticated_admin": true,
+  "production_magic_link_delivery_verified": false,
+  "checks": [
+    {
+      "name": "Production optional sync available without guest account gate",
+      "passed": true
+    },
+    {
+      "name": "Private session is not cached or exposed by CORS",
+      "passed": true
+    },
+    {
+      "name": "Production household data requires personal authentication",
+      "passed": true
+    },
+    {
+      "name": "Private API refuses external preflight",
+      "passed": true
+    },
+    {
+      "name": "Capabilities distinguish live sync from unfinished integrations",
+      "passed": true
+    },
+    {
+      "name": "Production consumer UI serves current modules without password form",
+      "passed": true
+    },
+    {
+      "name": "Service worker keeps private APIs outside cache",
+      "passed": true
+    },
+    {
+      "name": "Published private API contract contains login, household and conflict routes",
+      "passed": true
+    },
+    {
+      "name": "Published strict sync contract rejects arbitrary root fields",
+      "passed": true
+    },
+    {
+      "name": "PBT public example remains available without AI or account",
+      "passed": true
+    },
+    {
+      "name": "Public data information describes optional sync and local preferences",
+      "passed": true
+    }
+  ]
+}

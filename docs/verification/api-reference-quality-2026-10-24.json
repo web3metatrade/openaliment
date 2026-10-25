@@ -1,0 +1,13 @@
+{
+  "release": "0.5.2",
+  "local_suites": 34,
+  "local_checks": 9805,
+  "local_complete": true,
+  "production_checks": 42,
+  "production_failed": 0,
+  "operations": 206,
+  "guides": 17,
+  "pages": 223,
+  "generated_contracts": 57,
+  "production_writes": "scoped code/documentation files only; no domain records, credentials, email or SQL changes"
+}

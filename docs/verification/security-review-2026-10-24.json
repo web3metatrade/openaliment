@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-24",
+  "scope": "Synthetic localhost authorization probes and public HTTPS GET headers; no production authentication or mutation",
+  "password_probe": {
+    "password_algorithm": "bcrypt",
+    "different_password_same_first_72_bytes_accepted": true,
+    "fixtures": "created",
+    "private_material_printed": false
+  },
+  "local": [
+    {
+      "test": "Anonymous browser session",
+      "authenticated": false,
+      "http": 200
+    },
+    {
+      "test": "Read-only key via v2 mutation",
+      "http": 403,
+      "error_code": "scope"
+    },
+    {
+      "test": "Same read-only key via HTML manage product.create",
+      "http": 303,
+      "redirect_to_created_product": true
+    },
+    {
+      "test": "Synthetic unauthorized product persisted",
+      "http": 200,
+      "created": true
+    },
+    {
+      "test": "Same read-only key via HTML manage label.publish",
+      "http": 303,
+      "redirect_present": true
+    },
+    {
+      "test": "Synthetic label became public after read-only key",
+      "http": 200
+    },
+    {
+      "test": "Read-only key can use HTML export without export scope",
+      "http": 200,
+      "transfer_schema": "openaliment.transfer.v1"
+    }
+  ],
+  "production": [
+    {
+      "path": "/",
+      "http": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "cache-control": "no-store, max-age=0",
+        "server": "LiteSpeed"
+      },
+      "cookie_attributes": []
+    },
+    {
+      "path": "/api/docs",
+      "http": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "cache-control": "no-store, max-age=0",
+        "server": "LiteSpeed"
+      },
+      "cookie_attributes": []
+    },
+    {
+      "path": "/login",
+      "http": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "cache-control": "no-store, no-cache, must-revalidate",
+        "server": "LiteSpeed"
+      },
+      "cookie_attributes": [
+        "path=/",
+        "secure",
+        "HttpOnly",
+        "SameSite=Lax"
+      ]
+    },
+    {
+      "path": "/setup",
+      "http": 404,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "cache-control": "no-store, max-age=0",
+        "server": "LiteSpeed"
+      },
+      "cookie_attributes": []
+    },
+    {
+      "path": "/hosting-check.php",
+      "http": 404,
+      "headers": {
+        "content-security-policy": "default-src 'none'; form-action 'self'; frame-ancestors 'none'",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "cache-control": "no-store",
+        "server": "LiteSpeed",
+        "x-powered-by": "PHP/8.4.27"
+      },
+      "cookie_attributes": []
+    },
+    {
+      "path": "/assets/api-docs.css",
+      "http": 200,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "cache-control": "public, max-age=604800",
+        "server": "LiteSpeed"
+      },
+      "cookie_attributes": []
+    },
+    {
+      "path": "/01/09520000000011",
+      "http": 307,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "cache-control": "no-store, max-age=0",
+        "server": "LiteSpeed",
+        "location": "https://openaliment.ro/demo/paine-buna-tehnic"
+      },
+      "cookie_attributes": []
+    }
+  ],
+  "local_fixtures_cleanup_ok": true
+}

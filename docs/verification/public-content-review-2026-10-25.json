@@ -1,0 +1,2439 @@
+{
+  "schema_version": "openaliment.public-content-review.v1",
+  "date": "2026-10-25",
+  "release": "0.5.4",
+  "views": [
+    {
+      "template": "layout",
+      "purpose": "Antet, subsol, flash",
+      "routes_or_states": [
+        "all shared-layout pages"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "8af26878e4a404a46b6887b046542f62576c4375918cbfd57437686ee8d56657"
+    },
+    {
+      "template": "home",
+      "purpose": "Landing comercial",
+      "routes_or_states": [
+        "/"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "92a2e2a0412f4f798c1101b4f3fa10396f2c4c5c8e5d6c40bbba9f05713adc49"
+    },
+    {
+      "template": "digital-link-guide",
+      "purpose": "Ghid GS1 Digital Link și exemple interactive",
+      "routes_or_states": [
+        "/gs1-digital-link"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "f54b9bb5e737cc6c7e44714a4b97f7b327e66ca2357695ca88f6caa991d7faa4"
+    },
+    {
+      "template": "about",
+      "purpose": "Despre platformă",
+      "routes_or_states": [
+        "/despre"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "cd2f1811572a5dc897f936aba3eae00eb42382ad467df41a17fe0b5be7458106"
+    },
+    {
+      "template": "privacy",
+      "purpose": "Confidențialitate",
+      "routes_or_states": [
+        "/confidentialitate"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "126d529ed0b7ac9971d67d4f474c8b8c1288b29d47b3d46dd39e3c67e91e078a"
+    },
+    {
+      "template": "catalog",
+      "purpose": "Catalog gol / populat",
+      "routes_or_states": [
+        "/produse"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "cc4f503399b7229f1e1d51e4f552554f0bded1af611d81fdd0ab678834db2bf5"
+    },
+    {
+      "template": "product",
+      "purpose": "Produs, articol, lot, alerte, feedback, propuneri",
+      "routes_or_states": [
+        "/p/{id}",
+        "/t/{id}",
+        "/b/{id}"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "d435ef3be60f32c14f79fadec768fc3e6095a19a22cb890a547821bbecb628ff"
+    },
+    {
+      "template": "recipe",
+      "purpose": "Versiune publică de rețetă",
+      "routes_or_states": [
+        "/p/{id}/v/{version_key}"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "b4b4ff29108ca1193dabee82fcf34090a25951b17c004b36f175f6c9fa3980eb"
+    },
+    {
+      "template": "demo-bread",
+      "purpose": "Pâine demonstrativă: produs / lot / lot necunoscut",
+      "routes_or_states": [
+        "/demo/paine-buna-tehnic",
+        "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+        "/demo/paine-buna-tehnic/lot-necunoscut"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "b6b8306b68ac67ec2e70e8fd11c7c7e517aed9871fff20501443967c59a7723a"
+    },
+    {
+      "template": "demo-bread-print",
+      "purpose": "Fișă de scanare și tipărire",
+      "routes_or_states": [
+        "/demo/paine-buna-tehnic/etichete"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "7b1328b0aa4f7f435ea1792d0ea66ed59e79239313f5ceee670984d5c4e3ad96"
+    },
+    {
+      "template": "resolver-profile",
+      "purpose": "Profilul resolverului",
+      "routes_or_states": [
+        "/resolver/profile"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "70c507e9aeb6d80a7dc60f8924d19c7c4b053cea2e9a351255078ced2ae85c10"
+    },
+    {
+      "template": "resolver-linkset",
+      "purpose": "Selecția legăturilor resolverului",
+      "routes_or_states": [
+        "/01/{gtin}?linkType=linkset",
+        "300 multiple choices / 404 unavailable link type"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "df52e3713ad5a858608c7e2d45ac61349c2a2307779b71b9e0787594dd22da55"
+    },
+    {
+      "template": "auth",
+      "purpose": "Conectare, înregistrare, instalare",
+      "routes_or_states": [
+        "/login",
+        "/register",
+        "/setup"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "4540a974f05da43eba556a5523383659e797d2505234088cebd0ea093ff3baee"
+    },
+    {
+      "template": "manage",
+      "purpose": "Spațiul producătorului, cu nouă secțiuni",
+      "routes_or_states": [
+        "/manage",
+        "/manage/products/{id}",
+        "/manage/items/{id}",
+        "/manage/labels/{id}",
+        "/manage/batches/{id}",
+        "/manage/qr/item/{id}",
+        "/manage/qr/batch/{id}",
+        "/manage/api",
+        "/manage/import",
+        "/manage/feedback"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "6d657ed1ed3ce66279bf9be1a3b6add805055cdf75970b52e9cab2e916282d42"
+    },
+    {
+      "template": "food-data-form",
+      "purpose": "Partial: alergeni, nutriție și după deschidere",
+      "routes_or_states": [
+        "manage item label form"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "ee9606acfa93c2ccdbebd88fbd8f4e757aad7206e13876315309dffce070e884"
+    },
+    {
+      "template": "food-data-preview",
+      "purpose": "Partial: previzualizarea datelor structurate",
+      "routes_or_states": [
+        "manage label preview"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "9b52f9c130a8338317fd2572aced18a8b6eb4ba7a4f74cf604ca5260114533d0"
+    },
+    {
+      "template": "resolver-manage",
+      "purpose": "Destinații, versiuni, aprobare, retragere",
+      "routes_or_states": [
+        "/manage/resolver/{id}"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "6ae91854f49140fcb0146e32e958916dc5f2f5eab44b105c4811443c102f503e"
+    },
+    {
+      "template": "connectors",
+      "purpose": "Listă / conector, mapare, verificare, import",
+      "routes_or_states": [
+        "/manage/connectors",
+        "/manage/connectors/{id}"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "c48cb36b0e1c2148f19148971fee9cd22566eec64ccdd398e42b28ff241f55ab"
+    },
+    {
+      "template": "developers",
+      "purpose": "Aplicații OAuth și accesuri acordate",
+      "routes_or_states": [
+        "/manage/developers"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "eb1263344230ab9efc55e291c5dde4e45abdd73c6e53c6277f6b5536b3f1dd5f"
+    },
+    {
+      "template": "oauth-consent",
+      "purpose": "Consimțământ producător / Acasă",
+      "routes_or_states": [
+        "/oauth/authorize?request={id}",
+        "/api/v2/home/oauth/authorize?request={id}"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "bcf5b8bbcefdd60264a164d4476b414191ac9d9c7aea91f84f8184fa504aa1ec"
+    },
+    {
+      "template": "account-security",
+      "purpose": "Parolă și retragere accesuri",
+      "routes_or_states": [
+        "/manage/security"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "40591691f904de73f86d769d173eb041bf05f9a964c67dec470224101abd5ac8"
+    },
+    {
+      "template": "admin",
+      "purpose": "Organizații, GTIN și contacte",
+      "routes_or_states": [
+        "/admin"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "c58edffe667a6970811a22a2eb147c26b9d276b473673ff0810df2d285d17e9d"
+    },
+    {
+      "template": "updates",
+      "purpose": "Actualizări, transport și verificări",
+      "routes_or_states": [
+        "/admin/updates"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": true,
+      "sha256": "1b80aca67f5874f30cffd98ea2e7bd477738abe179f0d6737cdfc61a8cda93d6"
+    },
+    {
+      "template": "message",
+      "purpose": "404, refuzuri, validare și confirmări",
+      "routes_or_states": [
+        "HTML errors / success confirmations"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "376ae4be2aa670f73c469b1d04c48d28e96abdfea3e02436e7a0edd66cea5532"
+    },
+    {
+      "template": "api-docs",
+      "purpose": "Cadru comun pentru 225 pagini API",
+      "routes_or_states": [
+        "/api/docs",
+        "/api/docs/guides/{slug}",
+        "/api/docs/reference/{operationId}"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "2ba6f518cc5a9370578ab4eecb9707b276c950db00b0ecf80a0d7b88dc29ab72"
+    },
+    {
+      "template": "api-reference",
+      "purpose": "Partial: operație și răspunsuri",
+      "routes_or_states": [
+        "208 API operation pages"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "32ca104adf9efac5082b4e9dc7e147e3dd27ed467103293bdaba78ccf856f390"
+    },
+    {
+      "template": "api-fields",
+      "purpose": "Partial: tabelul câmpurilor",
+      "routes_or_states": [
+        "request and response tables"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "84b9826ba5c120fdaf37cf938826666eb11b597c67d4898eca3b4bb47ac786af"
+    },
+    {
+      "template": "api-explorer",
+      "purpose": "Partial: exemple și cereri reale",
+      "routes_or_states": [
+        "operation explorer"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "3a5ddfd8db608753beadb4bce2100a1537b943fc2e631d8bf1532d8aa5bccefe"
+    },
+    {
+      "template": "consumer-home",
+      "purpose": "Acasă: inventar, cumpărături, modale, sincronizare",
+      "routes_or_states": [
+        "/acasa/"
+      ],
+      "copy_review": "source reviewed; local HTTP checks cover applicable flows",
+      "copy_changed": false,
+      "sha256": "72f8a25ce49789686857a6453ab0cb7794dbef7ea9a02f3b53406e7304120498"
+    }
+  ],
+  "api_pages": [
+    {
+      "id": "overview",
+      "title": "Prezentare generală",
+      "path": "/api/docs",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "acces",
+      "title": "Acces și permisiuni",
+      "path": "/api/docs/guides/acces",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "api-public",
+      "title": "Citire publică",
+      "path": "/api/docs/guides/api-public",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "flux-erp",
+      "title": "Primul produs și lot",
+      "path": "/api/docs/guides/flux-erp",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "alerte",
+      "title": "Alerte și retrageri",
+      "path": "/api/docs/guides/alerte",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "documente-feedback",
+      "title": "Documente și feedback",
+      "path": "/api/docs/guides/documente-feedback",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "chei",
+      "title": "Chei, rotație și revocare",
+      "path": "/api/docs/guides/chei",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "oauth",
+      "title": "OAuth pentru aplicații",
+      "path": "/api/docs/guides/oauth",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "acasa",
+      "title": "Acasă și sincronizare",
+      "path": "/api/docs/guides/acasa",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "conectoare",
+      "title": "Conectoare, export și import",
+      "path": "/api/docs/guides/conectoare",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "limite",
+      "title": "Limite și erori",
+      "path": "/api/docs/guides/limite",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "ai",
+      "title": "Integrare cu AI",
+      "path": "/api/docs/guides/ai",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "compatibilitate",
+      "title": "Compatibilitate și publicare",
+      "path": "/api/docs/guides/compatibilitate",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "modele-date",
+      "title": "Modele de date și reguli de integrare",
+      "path": "/api/docs/guides/modele-date",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "erori-recuperare",
+      "title": "Erori, reîncercări și depanare",
+      "path": "/api/docs/guides/erori-recuperare",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "exemple-executabile",
+      "title": "Integrare completă și exemple executabile",
+      "path": "/api/docs/guides/exemple-executabile",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "testare",
+      "title": "Testarea integrării și mediile de lucru",
+      "path": "/api/docs/guides/testare",
+      "kind": "guide",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageProducts",
+      "title": "Creează un produs alimentar",
+      "path": "/api/docs/reference/v1PostManageProducts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageProducts",
+      "title": "Listează produsele organizației prin API v1",
+      "path": "/api/docs/reference/v1GetManageProducts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageProductsIdTradeItems",
+      "title": "Creează un articol comercial al produsului",
+      "path": "/api/docs/reference/v1PostManageProductsIdTradeItems",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageTradeItemsIdLabels",
+      "title": "Creează o versiune de etichetă în ciornă",
+      "path": "/api/docs/reference/v1PostManageTradeItemsIdLabels",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageLabelsIdPublish",
+      "title": "Publică versiunea de etichetă",
+      "path": "/api/docs/reference/v1PostManageLabelsIdPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageTradeItemsIdBatches",
+      "title": "Creează un lot fără rețetă obligatorie",
+      "path": "/api/docs/reference/v1PostManageTradeItemsIdBatches",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageBatchesIdPublish",
+      "title": "Publică pagina lotului",
+      "path": "/api/docs/reference/v1PostManageBatchesIdPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageBatchesIdRelease",
+      "title": "Eliberează lotul",
+      "path": "/api/docs/reference/v1PostManageBatchesIdRelease",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageBatchesIdAlerts",
+      "title": "Înregistrează o alertă curentă a lotului",
+      "path": "/api/docs/reference/v1PostManageBatchesIdAlerts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageAlertsIdResolve",
+      "title": "Închide o alertă cu motiv documentat",
+      "path": "/api/docs/reference/v1PostManageAlertsIdResolve",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageTradeItemsIdResolverLinks",
+      "title": "Creează o versiune de destinație Digital Link",
+      "path": "/api/docs/reference/v1PostManageTradeItemsIdResolverLinks",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageTradeItemsIdResolverLinks",
+      "title": "Citește istoricul destinațiilor prin API v1",
+      "path": "/api/docs/reference/v1GetManageTradeItemsIdResolverLinks",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageResolverLinksIdPublish",
+      "title": "Publică versiunea destinației resolverului",
+      "path": "/api/docs/reference/v1PostManageResolverLinksIdPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageResolverLinksIdWithdraw",
+      "title": "Retrage destinația curentă cu istoric",
+      "path": "/api/docs/reference/v1PostManageResolverLinksIdWithdraw",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetProducts",
+      "title": "Listează produsele publicate prin API v1",
+      "path": "/api/docs/reference/v1GetProducts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetProductsId",
+      "title": "Citește produsul publicat prin API v1",
+      "path": "/api/docs/reference/v1GetProductsId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetTradeItemsId",
+      "title": "Citește produsul publicat prin API v1",
+      "path": "/api/docs/reference/v1GetTradeItemsId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetBatchesId",
+      "title": "Citește lotul publicat prin API v1",
+      "path": "/api/docs/reference/v1GetBatchesId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageQrItemId",
+      "title": "Obține adresa QR de produs",
+      "path": "/api/docs/reference/v1GetManageQrItemId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageQrBatchId",
+      "title": "Obține adresa QR de lot",
+      "path": "/api/docs/reference/v1GetManageQrBatchId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageExport",
+      "title": "Exportă organizația prin API v1",
+      "path": "/api/docs/reference/v1GetManageExport",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetRecipeVersionsId",
+      "title": "Citește rețeta publică prin API v1",
+      "path": "/api/docs/reference/v1GetRecipeVersionsId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetFeedbackIdStatus",
+      "title": "Citește starea feedbackului cu secretul propriu",
+      "path": "/api/docs/reference/v1GetFeedbackIdStatus",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostFeedback",
+      "title": "Trimite feedback prin API v1",
+      "path": "/api/docs/reference/v1PostFeedback",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageProductsId",
+      "title": "Citește resursa privată prin API v1: products",
+      "path": "/api/docs/reference/v1GetManageProductsId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageTradeItemsId",
+      "title": "Citește resursa privată prin API v1: trade-items",
+      "path": "/api/docs/reference/v1GetManageTradeItemsId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageLabelsId",
+      "title": "Citește resursa privată prin API v1: labels",
+      "path": "/api/docs/reference/v1GetManageLabelsId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageBatchesId",
+      "title": "Citește resursa privată prin API v1: batches",
+      "path": "/api/docs/reference/v1GetManageBatchesId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageRecipesId",
+      "title": "Citește resursa privată prin API v1: recipes",
+      "path": "/api/docs/reference/v1GetManageRecipesId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1GetManageDocumentsId",
+      "title": "Citește resursa privată prin API v1: documents",
+      "path": "/api/docs/reference/v1GetManageDocumentsId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageProductsIdRecipes",
+      "title": "Adaugă o versiune opțională de rețetă",
+      "path": "/api/docs/reference/v1PostManageProductsIdRecipes",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageProductsIdProposals",
+      "title": "Înregistrează o propunere de schimbare",
+      "path": "/api/docs/reference/v1PostManageProductsIdProposals",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageProposalsIdDecide",
+      "title": "Înregistrează decizia asupra propunerii",
+      "path": "/api/docs/reference/v1PostManageProposalsIdDecide",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageDocumentsIdPublish",
+      "title": "Aprobă publicarea unui document",
+      "path": "/api/docs/reference/v1PostManageDocumentsIdPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageFeedbackIdModerate",
+      "title": "Moderează copia publicabilă a feedbackului",
+      "path": "/api/docs/reference/v1PostManageFeedbackIdModerate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageImport",
+      "title": "Verifică sau importă date prin API v1",
+      "path": "/api/docs/reference/v1PostManageImport",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "v1PostManageImportPbt",
+      "title": "Verifică sau importă date prin API v1",
+      "path": "/api/docs/reference/v1PostManageImportPbt",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "consumerGetApiV2PublicFood",
+      "title": "Citește profilul alimentar al codului scanat",
+      "path": "/api/docs/reference/consumerGetApiV2PublicFood",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "consumerGetApiV2PublicCapabilities",
+      "title": "Citește capabilitățile aplicației Acasă",
+      "path": "/api/docs/reference/consumerGetApiV2PublicCapabilities",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "integrationGetApiV2ManageConnectors",
+      "title": "Listează conectorii organizației",
+      "path": "/api/docs/reference/integrationGetApiV2ManageConnectors",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectors",
+      "title": "Creează un conector partener",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectors",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "integrationGetApiV2ManageConnectorsConnectorIdMappings",
+      "title": "Listează versiunile mapării",
+      "path": "/api/docs/reference/integrationGetApiV2ManageConnectorsConnectorIdMappings",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectorsConnectorIdMappings",
+      "title": "Adaugă o versiune imutabilă de mapare",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectorsConnectorIdMappings",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectorsConnectorIdPreview",
+      "title": "Validează maparea unui eveniment fără scrieri",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectorsConnectorIdPreview",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "integrationPostApiV2ManageConnectorsConnectorIdIngest",
+      "title": "Importă atomic un eveniment al partenerului",
+      "path": "/api/docs/reference/integrationPostApiV2ManageConnectorsConnectorIdIngest",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "integrationPostApiV2HomeReceiptsPreview",
+      "title": "Citește bonul digital confidențial",
+      "path": "/api/docs/reference/integrationPostApiV2HomeReceiptsPreview",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homeGetApiV2HomeSession",
+      "title": "Citește sesiunea personală Acasă",
+      "path": "/api/docs/reference/homeGetApiV2HomeSession",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeLoginRequest",
+      "title": "Solicită legătura de conectare prin email",
+      "path": "/api/docs/reference/homePostApiV2HomeLoginRequest",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeLoginPreview",
+      "title": "Verifică legătura de conectare fără consumare",
+      "path": "/api/docs/reference/homePostApiV2HomeLoginPreview",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeInvitesPreview",
+      "title": "Previzualizează invitația fără acceptare",
+      "path": "/api/docs/reference/homePostApiV2HomeInvitesPreview",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeLoginConfirm",
+      "title": "Confirmă legătura și conectează dispozitivul",
+      "path": "/api/docs/reference/homePostApiV2HomeLoginConfirm",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homeGetApiV2HomeChanges",
+      "title": "Citește schimbările inventarului personal",
+      "path": "/api/docs/reference/homeGetApiV2HomeChanges",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeSync",
+      "title": "Sincronizează atomic inventarul și istoricul",
+      "path": "/api/docs/reference/homePostApiV2HomeSync",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomePhotosId",
+      "title": "Încarcă fotografia privată",
+      "path": "/api/docs/reference/homePostApiV2HomePhotosId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homeGetApiV2HomePhotosId",
+      "title": "Descarcă fotografia privată",
+      "path": "/api/docs/reference/homeGetApiV2HomePhotosId",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homeGetApiV2HomeMembers",
+      "title": "Listează membrii familiei curente",
+      "path": "/api/docs/reference/homeGetApiV2HomeMembers",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homeGetApiV2HomeHouseholds",
+      "title": "Listează familiile accesibile",
+      "path": "/api/docs/reference/homeGetApiV2HomeHouseholds",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeInvites",
+      "title": "Creează o invitație de familie",
+      "path": "/api/docs/reference/homePostApiV2HomeInvites",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeJoin",
+      "title": "Acceptă invitația de familie",
+      "path": "/api/docs/reference/homePostApiV2HomeJoin",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeSwitch",
+      "title": "Selectează familia sesiunii personale",
+      "path": "/api/docs/reference/homePostApiV2HomeSwitch",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeRename",
+      "title": "Redenumește familia curentă",
+      "path": "/api/docs/reference/homePostApiV2HomeRename",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeMembersIdRemove",
+      "title": "Elimină un editor din familie",
+      "path": "/api/docs/reference/homePostApiV2HomeMembersIdRemove",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeDevicesIdRevoke",
+      "title": "Revocă un dispozitiv propriu",
+      "path": "/api/docs/reference/homePostApiV2HomeDevicesIdRevoke",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeLogout",
+      "title": "Deconectează dispozitivul Acasă",
+      "path": "/api/docs/reference/homePostApiV2HomeLogout",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homeGetApiV2HomeGrants",
+      "title": "Listează aplicațiile autorizate pentru Acasă",
+      "path": "/api/docs/reference/homeGetApiV2HomeGrants",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "homePostApiV2HomeGrantsIdRevoke",
+      "title": "Revocă autorizarea personală a unei aplicații",
+      "path": "/api/docs/reference/homePostApiV2HomeGrantsIdRevoke",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicGetTradeItems",
+      "title": "Citește articolul comercial publicat",
+      "path": "/api/docs/reference/publicGetTradeItems",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicGetProducts",
+      "title": "Citește produsul publicat",
+      "path": "/api/docs/reference/publicGetProducts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicGetBatches",
+      "title": "Citește lotul publicat și alertele curente",
+      "path": "/api/docs/reference/publicGetBatches",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicGetLabels",
+      "title": "Citește versiunea istorică publicată a etichetei",
+      "path": "/api/docs/reference/publicGetLabels",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicGetRecipeVersions",
+      "title": "Citește rețeta cu publicare și licență aprobate",
+      "path": "/api/docs/reference/publicGetRecipeVersions",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicGetDocuments",
+      "title": "Citește metadatele documentului public",
+      "path": "/api/docs/reference/publicGetDocuments",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicGetProposals",
+      "title": "Citește propunerea publică și numărul voturilor",
+      "path": "/api/docs/reference/publicGetProposals",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicListTradeItems",
+      "title": "Caută articolele alimentare publicate",
+      "path": "/api/docs/reference/publicListTradeItems",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicProductTradeItems",
+      "title": "Listează articolele publicate ale produsului",
+      "path": "/api/docs/reference/publicProductTradeItems",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicProductRecipeVersions",
+      "title": "Listează rețetele publice asociate",
+      "path": "/api/docs/reference/publicProductRecipeVersions",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicProductProposals",
+      "title": "Listează propunerile publice ale produsului",
+      "path": "/api/docs/reference/publicProductProposals",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicBatchRecipes",
+      "title": "Listează rețetele publice asociate",
+      "path": "/api/docs/reference/publicBatchRecipes",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicBatchAlerts",
+      "title": "Listează alertele active ale lotului",
+      "path": "/api/docs/reference/publicBatchAlerts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicLabelDocuments",
+      "title": "Listează documentele aprobate ale etichetei istorice",
+      "path": "/api/docs/reference/publicLabelDocuments",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicListFeedback",
+      "title": "Listează feedbackul public moderat al articolului",
+      "path": "/api/docs/reference/publicListFeedback",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicDownloadDocument",
+      "title": "Descarcă documentul public",
+      "path": "/api/docs/reference/publicDownloadDocument",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicPrivacyPolicy",
+      "title": "Citește informarea privind confidențialitatea",
+      "path": "/api/docs/reference/publicPrivacyPolicy",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicVocabularyLicenses",
+      "title": "Citește licențele acceptate",
+      "path": "/api/docs/reference/publicVocabularyLicenses",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicVocabularyAllergens",
+      "title": "Citește codurile alergenilor",
+      "path": "/api/docs/reference/publicVocabularyAllergens",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicVocabularyNutrition",
+      "title": "Citește câmpurile și bazele nutriționale",
+      "path": "/api/docs/reference/publicVocabularyNutrition",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicVocabularyLinktypes",
+      "title": "Citește vocabularul tipurilor de legături",
+      "path": "/api/docs/reference/publicVocabularyLinktypes",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicVocabularyUnits",
+      "title": "Citește unitățile acceptate",
+      "path": "/api/docs/reference/publicVocabularyUnits",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicFoodLookupBatch",
+      "title": "Caută mai multe coduri alimentare",
+      "path": "/api/docs/reference/publicFoodLookupBatch",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identifierParse",
+      "title": "Validează și interpretează identificatorul alimentar",
+      "path": "/api/docs/reference/identifierParse",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identifierValidate",
+      "title": "Validează și interpretează identificatorul alimentar",
+      "path": "/api/docs/reference/identifierValidate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "communitySubmitFeedback",
+      "title": "Trimite feedback pentru produs sau lot",
+      "path": "/api/docs/reference/communitySubmitFeedback",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "communityMyVotes",
+      "title": "Listează voturile proprii",
+      "path": "/api/docs/reference/communityMyVotes",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "communityVote",
+      "title": "Susține propunerea",
+      "path": "/api/docs/reference/communityVote",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "communityRemoveVote",
+      "title": "Retrage votul propriu",
+      "path": "/api/docs/reference/communityRemoveVote",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListProducts",
+      "title": "Listează produsele ale organizației",
+      "path": "/api/docs/reference/manageListProducts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProductCreate",
+      "title": "Creează un produs alimentar",
+      "path": "/api/docs/reference/manageProductCreate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetProducts",
+      "title": "Citește produsele după ID",
+      "path": "/api/docs/reference/manageGetProducts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListTradeItems",
+      "title": "Listează articolele comerciale ale organizației",
+      "path": "/api/docs/reference/manageListTradeItems",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetTradeItems",
+      "title": "Citește articolele comerciale după ID",
+      "path": "/api/docs/reference/manageGetTradeItems",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListLabels",
+      "title": "Listează versiunile de etichetă ale organizației",
+      "path": "/api/docs/reference/manageListLabels",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetLabels",
+      "title": "Citește versiunile de etichetă după ID",
+      "path": "/api/docs/reference/manageGetLabels",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListBatches",
+      "title": "Listează loturile ale organizației",
+      "path": "/api/docs/reference/manageListBatches",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetBatches",
+      "title": "Citește loturile după ID",
+      "path": "/api/docs/reference/manageGetBatches",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListRecipes",
+      "title": "Listează rețetele ale organizației",
+      "path": "/api/docs/reference/manageListRecipes",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetRecipes",
+      "title": "Citește rețetele după ID",
+      "path": "/api/docs/reference/manageGetRecipes",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListDocuments",
+      "title": "Listează documentele ale organizației",
+      "path": "/api/docs/reference/manageListDocuments",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetDocuments",
+      "title": "Citește documentele după ID",
+      "path": "/api/docs/reference/manageGetDocuments",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListFeedback",
+      "title": "Listează feedbackul ale organizației",
+      "path": "/api/docs/reference/manageListFeedback",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetFeedback",
+      "title": "Citește feedbackul după ID",
+      "path": "/api/docs/reference/manageGetFeedback",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListProposals",
+      "title": "Listează propunerile ale organizației",
+      "path": "/api/docs/reference/manageListProposals",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetProposals",
+      "title": "Citește propunerile după ID",
+      "path": "/api/docs/reference/manageGetProposals",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListImports",
+      "title": "Listează importurile ale organizației",
+      "path": "/api/docs/reference/manageListImports",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetImports",
+      "title": "Citește importurile după ID",
+      "path": "/api/docs/reference/manageGetImports",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListAuditEvents",
+      "title": "Listează evenimentele de audit ale organizației",
+      "path": "/api/docs/reference/manageListAuditEvents",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetAuditEvents",
+      "title": "Citește evenimentele de audit după ID",
+      "path": "/api/docs/reference/manageGetAuditEvents",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListAiJobs",
+      "title": "Listează joburile AI ale organizației",
+      "path": "/api/docs/reference/manageListAiJobs",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageQueueAiJob",
+      "title": "Programează analiza feedbackului",
+      "path": "/api/docs/reference/manageQueueAiJob",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageGetAiJobs",
+      "title": "Citește joburile AI după ID",
+      "path": "/api/docs/reference/manageGetAiJobs",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageDashboard",
+      "title": "Citește indicatorii organizației",
+      "path": "/api/docs/reference/manageDashboard",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageOrganization",
+      "title": "Citește organizația și rolul curent",
+      "path": "/api/docs/reference/manageOrganization",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageQuotas",
+      "title": "Citește cotele și consumul organizației",
+      "path": "/api/docs/reference/manageQuotas",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProductTradeItems",
+      "title": "Listează articolele comerciale pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductTradeItems",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageTradeCreate",
+      "title": "Creează un articol comercial al produsului",
+      "path": "/api/docs/reference/manageTradeCreate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProductDocuments",
+      "title": "Listează documentele pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductDocuments",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageUploadDocument",
+      "title": "Încarcă un document privat",
+      "path": "/api/docs/reference/manageUploadDocument",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProductRecipes",
+      "title": "Listează rețetele pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductRecipes",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageRecipeCreate",
+      "title": "Adaugă o versiune opțională de rețetă",
+      "path": "/api/docs/reference/manageRecipeCreate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProductProposals",
+      "title": "Listează propunerile pentru resursa selectată",
+      "path": "/api/docs/reference/manageProductProposals",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProposalCreate",
+      "title": "Înregistrează o propunere de schimbare",
+      "path": "/api/docs/reference/manageProposalCreate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageItemLabels",
+      "title": "Listează versiunile de etichetă pentru resursa selectată",
+      "path": "/api/docs/reference/manageItemLabels",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageLabelCreate",
+      "title": "Creează o versiune de etichetă în ciornă",
+      "path": "/api/docs/reference/manageLabelCreate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageItemBatches",
+      "title": "Listează loturile pentru resursa selectată",
+      "path": "/api/docs/reference/manageItemBatches",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageBatchCreate",
+      "title": "Creează un lot fără rețetă obligatorie",
+      "path": "/api/docs/reference/manageBatchCreate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageItemResolverLinks",
+      "title": "Listează destinațiile resolverului pentru resursa selectată",
+      "path": "/api/docs/reference/manageItemResolverLinks",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageResolverDraft",
+      "title": "Creează o versiune de destinație Digital Link",
+      "path": "/api/docs/reference/manageResolverDraft",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageBatchEvents",
+      "title": "Listează evenimentele lotului pentru resursa selectată",
+      "path": "/api/docs/reference/manageBatchEvents",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageBatchAlerts",
+      "title": "Listează alertele lotului pentru resursa selectată",
+      "path": "/api/docs/reference/manageBatchAlerts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageAlertCreate",
+      "title": "Înregistrează o alertă curentă a lotului",
+      "path": "/api/docs/reference/manageAlertCreate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageFeedbackDecisions",
+      "title": "Listează deciziile pentru resursa selectată",
+      "path": "/api/docs/reference/manageFeedbackDecisions",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageFeedbackAiResults",
+      "title": "Listează rezultatele AI pentru resursa selectată",
+      "path": "/api/docs/reference/manageFeedbackAiResults",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProposalDecisions",
+      "title": "Listează deciziile pentru resursa selectată",
+      "path": "/api/docs/reference/manageProposalDecisions",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageDownloadDocument",
+      "title": "Descarcă documentul autorizat al organizației",
+      "path": "/api/docs/reference/manageDownloadDocument",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageLabelPreview",
+      "title": "Previzualizează eticheta fără publicare",
+      "path": "/api/docs/reference/manageLabelPreview",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageValidateLabel",
+      "title": "Validează eticheta fără salvare",
+      "path": "/api/docs/reference/manageValidateLabel",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageLabelPublish",
+      "title": "Publică versiunea de etichetă",
+      "path": "/api/docs/reference/manageLabelPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageBatchPublish",
+      "title": "Publică pagina lotului",
+      "path": "/api/docs/reference/manageBatchPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageBatchRelease",
+      "title": "Eliberează lotul",
+      "path": "/api/docs/reference/manageBatchRelease",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageAlertResolve",
+      "title": "Închide o alertă cu motiv documentat",
+      "path": "/api/docs/reference/manageAlertResolve",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageProposalDecide",
+      "title": "Înregistrează decizia asupra propunerii",
+      "path": "/api/docs/reference/manageProposalDecide",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageDocumentPublish",
+      "title": "Aprobă publicarea unui document",
+      "path": "/api/docs/reference/manageDocumentPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageFeedbackModerate",
+      "title": "Moderează copia publicabilă a feedbackului",
+      "path": "/api/docs/reference/manageFeedbackModerate",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageResolverPublish",
+      "title": "Publică versiunea destinației resolverului",
+      "path": "/api/docs/reference/manageResolverPublish",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageResolverWithdraw",
+      "title": "Retrage destinația curentă cu istoric",
+      "path": "/api/docs/reference/manageResolverWithdraw",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageQrItem",
+      "title": "Obține adresa QR de produs",
+      "path": "/api/docs/reference/manageQrItem",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageQrBatch",
+      "title": "Obține adresa QR de lot",
+      "path": "/api/docs/reference/manageQrBatch",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageExport",
+      "title": "Exportă datele organizației cu istoric",
+      "path": "/api/docs/reference/manageExport",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageImport",
+      "title": "Verifică sau importă un pachet de transfer",
+      "path": "/api/docs/reference/manageImport",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageImportpbt",
+      "title": "Verifică sau importă pilotul Pâine Bună Tehnic",
+      "path": "/api/docs/reference/manageImportpbt",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageConnectorEvents",
+      "title": "Citește evenimentele conectorului",
+      "path": "/api/docs/reference/manageConnectorEvents",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageConnectorBindings",
+      "title": "Citește asocierile de ID-uri externe",
+      "path": "/api/docs/reference/manageConnectorBindings",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageConnector",
+      "title": "Citește conectorul organizației",
+      "path": "/api/docs/reference/manageConnector",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageAiCapabilities",
+      "title": "Citește disponibilitatea AI",
+      "path": "/api/docs/reference/manageAiCapabilities",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageListAccessTokens",
+      "title": "Listează cheile fără secrete",
+      "path": "/api/docs/reference/manageListAccessTokens",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageCreateAccessToken",
+      "title": "Emite o cheie API revocabilă",
+      "path": "/api/docs/reference/manageCreateAccessToken",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageRevokeAccessToken",
+      "title": "Revocă o cheie a organizației",
+      "path": "/api/docs/reference/manageRevokeAccessToken",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "manageRotateAccessToken",
+      "title": "Rotește cheia și revocă imediat cheia veche",
+      "path": "/api/docs/reference/manageRotateAccessToken",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "inspectAccessToken",
+      "title": "Inspectează tokenul Bearer folosit",
+      "path": "/api/docs/reference/inspectAccessToken",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "revokeCurrentToken",
+      "title": "Revocă propriul token Bearer",
+      "path": "/api/docs/reference/revokeCurrentToken",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "developerListApps",
+      "title": "Listează aplicațiile OAuth proprii",
+      "path": "/api/docs/reference/developerListApps",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "developerCreateApps",
+      "title": "Înregistrează o aplicație OAuth publică",
+      "path": "/api/docs/reference/developerCreateApps",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "developerSuspendApp",
+      "title": "Suspendă aplicația OAuth proprie",
+      "path": "/api/docs/reference/developerSuspendApp",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identitySession",
+      "title": "Citește sesiunea producătorului și CSRF",
+      "path": "/api/docs/reference/identitySession",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityLogin",
+      "title": "Conectează contul în browserul propriu",
+      "path": "/api/docs/reference/identityLogin",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityLogout",
+      "title": "Închide sesiunea web curentă",
+      "path": "/api/docs/reference/identityLogout",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityChangePassword",
+      "title": "Schimbă parola și retrage accesurile vechi",
+      "path": "/api/docs/reference/identityChangePassword",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityRevokeOtherAccess",
+      "title": "Retrage celelalte accesuri ale contului",
+      "path": "/api/docs/reference/identityRevokeOtherAccess",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityRegister",
+      "title": "Înregistrează contul și organizația",
+      "path": "/api/docs/reference/identityRegister",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityOrganizations",
+      "title": "Listează organizațiile contului propriu",
+      "path": "/api/docs/reference/identityOrganizations",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identitySelectOrganization",
+      "title": "Selectează organizația activă a sesiunii",
+      "path": "/api/docs/reference/identitySelectOrganization",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityListGrants",
+      "title": "Listează autorizările proprii",
+      "path": "/api/docs/reference/identityListGrants",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "identityRevokeGrant",
+      "title": "Retrage autorizarea unei aplicații",
+      "path": "/api/docs/reference/identityRevokeGrant",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "adminListOrganizations",
+      "title": "Listează organizațiile pentru verificare",
+      "path": "/api/docs/reference/adminListOrganizations",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "adminListUsers",
+      "title": "Listează conturile pentru verificarea contactului",
+      "path": "/api/docs/reference/adminListUsers",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "adminListGtinClaims",
+      "title": "Listează revendicările GTIN",
+      "path": "/api/docs/reference/adminListGtinClaims",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "adminOrganizationVerify",
+      "title": "Înregistrează verificarea identității organizației",
+      "path": "/api/docs/reference/adminOrganizationVerify",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "adminContactVerify",
+      "title": "Înregistrează verificarea contactului utilizatorului",
+      "path": "/api/docs/reference/adminContactVerify",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "adminGtinReview",
+      "title": "Înregistrează verificarea mandatului GTIN",
+      "path": "/api/docs/reference/adminGtinReview",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "oauthToken",
+      "title": "Schimbă codul PKCE sau rotește refresh tokenul",
+      "path": "/api/docs/reference/oauthToken",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "oauthRevoke",
+      "title": "Revocă grantul OAuth prin token",
+      "path": "/api/docs/reference/oauthRevoke",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "oauthAuthorize",
+      "title": "Deschide consimțământul OAuth în browser",
+      "path": "/api/docs/reference/oauthAuthorize",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "oauthAuthorizeHome",
+      "title": "Deschide consimțământul OAuth în browser",
+      "path": "/api/docs/reference/oauthAuthorizeHome",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "apiManifest",
+      "title": "Descoperă API-urile și capabilitățile instalate",
+      "path": "/api/docs/reference/apiManifest",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "oauthMetadata",
+      "title": "Descoperă metadatele serverului OAuth",
+      "path": "/api/docs/reference/oauthMetadata",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "publicServiceStatus",
+      "title": "Verifică disponibilitatea serviciului",
+      "path": "/api/docs/reference/publicServiceStatus",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "developerTextGuide",
+      "title": "Descarcă ghidul de integrare Markdown",
+      "path": "/api/docs/reference/developerTextGuide",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "developerPythonClient",
+      "title": "Descarcă clientul Python",
+      "path": "/api/docs/reference/developerPythonClient",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "developerJavascriptClient",
+      "title": "Descarcă clientul JavaScript",
+      "path": "/api/docs/reference/developerJavascriptClient",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "developerKotlinExample",
+      "title": "Descarcă exemplul Android Kotlin",
+      "path": "/api/docs/reference/developerKotlinExample",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1ResolveProduct",
+      "title": "Rezolvă identificatorul GS1 de produs",
+      "path": "/api/docs/reference/gs1ResolveProduct",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1ResolveVariant",
+      "title": "Rezolvă identificatorul GS1 de variantă",
+      "path": "/api/docs/reference/gs1ResolveVariant",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1ResolveLot",
+      "title": "Rezolvă identificatorul GS1 de lot",
+      "path": "/api/docs/reference/gs1ResolveLot",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1ResolveVariantLot",
+      "title": "Rezolvă identificatorul GS1 de lot",
+      "path": "/api/docs/reference/gs1ResolveVariantLot",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1ResolveSerial",
+      "title": "Rezolvă identificatorul GS1 cu serie",
+      "path": "/api/docs/reference/gs1ResolveSerial",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1ResolveTpx",
+      "title": "Rezolvă identificatorul GS1 cu TPX",
+      "path": "/api/docs/reference/gs1ResolveTpx",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1Description",
+      "title": "Citește descrierea resolverului GS1",
+      "path": "/api/docs/reference/gs1Description",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1Contexts",
+      "title": "Listează contextele publicate de producători",
+      "path": "/api/docs/reference/gs1Contexts",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    },
+    {
+      "id": "gs1JsonLdContext",
+      "title": "Descarcă contextul JSON-LD al linksetului",
+      "path": "/api/docs/reference/gs1JsonLdContext",
+      "kind": "operation",
+      "coverage": "local HTML and Markdown; complete production Markdown corpus"
+    }
+  ],
+  "sources": [
+    {
+      "path": "app/Views/about.php",
+      "sha256": "cd2f1811572a5dc897f936aba3eae00eb42382ad467df41a17fe0b5be7458106"
+    },
+    {
+      "path": "app/Views/account-security.php",
+      "sha256": "40591691f904de73f86d769d173eb041bf05f9a964c67dec470224101abd5ac8"
+    },
+    {
+      "path": "app/Views/admin.php",
+      "sha256": "c58edffe667a6970811a22a2eb147c26b9d276b473673ff0810df2d285d17e9d"
+    },
+    {
+      "path": "app/Views/api-docs.php",
+      "sha256": "2ba6f518cc5a9370578ab4eecb9707b276c950db00b0ecf80a0d7b88dc29ab72"
+    },
+    {
+      "path": "app/Views/api-explorer.php",
+      "sha256": "3a5ddfd8db608753beadb4bce2100a1537b943fc2e631d8bf1532d8aa5bccefe"
+    },
+    {
+      "path": "app/Views/api-fields.php",
+      "sha256": "84b9826ba5c120fdaf37cf938826666eb11b597c67d4898eca3b4bb47ac786af"
+    },
+    {
+      "path": "app/Views/api-reference.php",
+      "sha256": "32ca104adf9efac5082b4e9dc7e147e3dd27ed467103293bdaba78ccf856f390"
+    },
+    {
+      "path": "app/Views/auth.php",
+      "sha256": "4540a974f05da43eba556a5523383659e797d2505234088cebd0ea093ff3baee"
+    },
+    {
+      "path": "app/Views/catalog.php",
+      "sha256": "cc4f503399b7229f1e1d51e4f552554f0bded1af611d81fdd0ab678834db2bf5"
+    },
+    {
+      "path": "app/Views/connectors.php",
+      "sha256": "c48cb36b0e1c2148f19148971fee9cd22566eec64ccdd398e42b28ff241f55ab"
+    },
+    {
+      "path": "app/Views/consumer-home.php",
+      "sha256": "72f8a25ce49789686857a6453ab0cb7794dbef7ea9a02f3b53406e7304120498"
+    },
+    {
+      "path": "app/Views/demo-bread-print.php",
+      "sha256": "7b1328b0aa4f7f435ea1792d0ea66ed59e79239313f5ceee670984d5c4e3ad96"
+    },
+    {
+      "path": "app/Views/demo-bread.php",
+      "sha256": "b6b8306b68ac67ec2e70e8fd11c7c7e517aed9871fff20501443967c59a7723a"
+    },
+    {
+      "path": "app/Views/developers.php",
+      "sha256": "eb1263344230ab9efc55e291c5dde4e45abdd73c6e53c6277f6b5536b3f1dd5f"
+    },
+    {
+      "path": "app/Views/digital-link-guide.php",
+      "sha256": "f54b9bb5e737cc6c7e44714a4b97f7b327e66ca2357695ca88f6caa991d7faa4"
+    },
+    {
+      "path": "app/Views/food-data-form.php",
+      "sha256": "ee9606acfa93c2ccdbebd88fbd8f4e757aad7206e13876315309dffce070e884"
+    },
+    {
+      "path": "app/Views/food-data-preview.php",
+      "sha256": "9b52f9c130a8338317fd2572aced18a8b6eb4ba7a4f74cf604ca5260114533d0"
+    },
+    {
+      "path": "app/Views/home.php",
+      "sha256": "92a2e2a0412f4f798c1101b4f3fa10396f2c4c5c8e5d6c40bbba9f05713adc49"
+    },
+    {
+      "path": "app/Views/layout.php",
+      "sha256": "8af26878e4a404a46b6887b046542f62576c4375918cbfd57437686ee8d56657"
+    },
+    {
+      "path": "app/Views/manage.php",
+      "sha256": "6d657ed1ed3ce66279bf9be1a3b6add805055cdf75970b52e9cab2e916282d42"
+    },
+    {
+      "path": "app/Views/message.php",
+      "sha256": "376ae4be2aa670f73c469b1d04c48d28e96abdfea3e02436e7a0edd66cea5532"
+    },
+    {
+      "path": "app/Views/oauth-consent.php",
+      "sha256": "bcf5b8bbcefdd60264a164d4476b414191ac9d9c7aea91f84f8184fa504aa1ec"
+    },
+    {
+      "path": "app/Views/privacy.php",
+      "sha256": "126d529ed0b7ac9971d67d4f474c8b8c1288b29d47b3d46dd39e3c67e91e078a"
+    },
+    {
+      "path": "app/Views/product.php",
+      "sha256": "d435ef3be60f32c14f79fadec768fc3e6095a19a22cb890a547821bbecb628ff"
+    },
+    {
+      "path": "app/Views/recipe.php",
+      "sha256": "b4b4ff29108ca1193dabee82fcf34090a25951b17c004b36f175f6c9fa3980eb"
+    },
+    {
+      "path": "app/Views/resolver-linkset.php",
+      "sha256": "df52e3713ad5a858608c7e2d45ac61349c2a2307779b71b9e0787594dd22da55"
+    },
+    {
+      "path": "app/Views/resolver-manage.php",
+      "sha256": "6ae91854f49140fcb0146e32e958916dc5f2f5eab44b105c4811443c102f503e"
+    },
+    {
+      "path": "app/Views/resolver-profile.php",
+      "sha256": "70c507e9aeb6d80a7dc60f8924d19c7c4b053cea2e9a351255078ced2ae85c10"
+    },
+    {
+      "path": "app/Views/updates.php",
+      "sha256": "1b80aca67f5874f30cffd98ea2e7bd477738abe179f0d6737cdfc61a8cda93d6"
+    },
+    {
+      "path": "app/Controllers/AccountSecurityController.php",
+      "sha256": "a364eb63c8c4d3169095e9ed382eca8a4763c2689ce11660e939f56ba906194f"
+    },
+    {
+      "path": "app/Controllers/AdminController.php",
+      "sha256": "79024d823f53af502ee32312d992f3b1fd86e011b73d6e65496fd67242aa8def"
+    },
+    {
+      "path": "app/Controllers/ApiController.php",
+      "sha256": "b05e84e7e89773ce94db9d53acd62464f45bee43ab85bba37af3c0b4feff89eb"
+    },
+    {
+      "path": "app/Controllers/ApiDocumentationController.php",
+      "sha256": "e6da70f87f2338a1f034567f2d54cb62dd079b6e126b455d8f4b930d8b760518"
+    },
+    {
+      "path": "app/Controllers/ConsumerController.php",
+      "sha256": "f162cfa65d52a306120cbc524806518ad7646e5e773926845a285d5fa86c8abc"
+    },
+    {
+      "path": "app/Controllers/DemoBreadController.php",
+      "sha256": "994cb2d13d84a383d937a12aa7780bae5a35beb384649a8af6a6453e66e58df2"
+    },
+    {
+      "path": "app/Controllers/DeveloperController.php",
+      "sha256": "03c7c642131f554647e5c74e796af59d6178629136bc6204493aeba2126a7bf5"
+    },
+    {
+      "path": "app/Controllers/DiscoveryController.php",
+      "sha256": "6aaaa8367c14cd12bba0753958f443401881981d50261008547652df6437f2c8"
+    },
+    {
+      "path": "app/Controllers/HomeController.php",
+      "sha256": "29393af978ca9994dd232acbc4c9772fed8638e8a936eb1aed888536db5f0cce"
+    },
+    {
+      "path": "app/Controllers/IntegrationController.php",
+      "sha256": "736d6aa361cd7c74b46fd788e2ba0277e8021ce08fcf2c189cba05ba94571621"
+    },
+    {
+      "path": "app/Controllers/IntegrationManageController.php",
+      "sha256": "149e762dca56489a7cf2cb8e36cfde8a20cfe74c3d887edc58b6b6a424bf0746"
+    },
+    {
+      "path": "app/Controllers/ManageController.php",
+      "sha256": "f76c76321681128d13f199039c5bd338a0470615164480afbb9b2bc000c24cdc"
+    },
+    {
+      "path": "app/Controllers/OAuthController.php",
+      "sha256": "632c04abb1019b572770c80c3173598576d63bb3658a0e86abfc0b816d2e9217"
+    },
+    {
+      "path": "app/Controllers/PlatformApiController.php",
+      "sha256": "f71de0b49d1427f1da36bf9fc54e8bdee6925ae008f1fd6a1dc462ad748f0036"
+    },
+    {
+      "path": "app/Controllers/PublicController.php",
+      "sha256": "0d5aca9170406f48a381408b6d8da38aa119325eb14acdd25e043bb060fc1471"
+    },
+    {
+      "path": "app/Controllers/ReceiptController.php",
+      "sha256": "dcbdf39e2ffab0cca8de779120af06c20bbc31a2e1679a9cf635ea1dc26ea0d5"
+    },
+    {
+      "path": "app/Controllers/ResolverController.php",
+      "sha256": "62b4a08f8bc27750022bb68c5a36c76464500f80e23175ed81a9582936ea52f0"
+    },
+    {
+      "path": "app/Controllers/ResolverManageController.php",
+      "sha256": "0ee61355d1bfeb11c9d27f3ebd5723b1ad12b848d748a7ec69b615da38adc4c6"
+    },
+    {
+      "path": "app/Controllers/SetupController.php",
+      "sha256": "03df91c06a0dee145d548fbe05e295534f246b0622a2d13ef916df828fe15859"
+    },
+    {
+      "path": "app/Controllers/UpdatesController.php",
+      "sha256": "de855873874836ca3e9c011e37bf4d055d7e197f23887e2733204b2f4f7032ab"
+    },
+    {
+      "path": "app/Domain/Accounts.php",
+      "sha256": "f47727c9e1c63a1819a744d4651f8bc1e15ff76f21f7e9c13480c2f7a268fd6d"
+    },
+    {
+      "path": "app/Domain/Administration.php",
+      "sha256": "90347e536f9895ea9926a9941daf2828b0af502af727dceba7d66fa4905553c2"
+    },
+    {
+      "path": "app/Domain/Ai.php",
+      "sha256": "24884c1a733b50a144be692876111567340fbada1ab5003c1bcfe7adaf6cd050"
+    },
+    {
+      "path": "app/Domain/ApiDocumentation.php",
+      "sha256": "cbebf4af74511f8baad52b19176531c25e6b1ed0742800cab33684c16ecad55b"
+    },
+    {
+      "path": "app/Domain/ApiKeys.php",
+      "sha256": "ec13fb7eff0796e7aa0f3ca8ebb8bbb03f642391ab1d13a2d0279ba29205fef2"
+    },
+    {
+      "path": "app/Domain/ApiManage.php",
+      "sha256": "fb2f6c9133c7d2fd0a0efc5b2bdc86e58785e0e7b8043aeef8539e9cf3b81558"
+    },
+    {
+      "path": "app/Domain/ApiPublic.php",
+      "sha256": "a7f2d96d54de66909c7a109e9c6114a76864f8f9a6650465a14fbab39631827e"
+    },
+    {
+      "path": "app/Domain/ApiPublicIndex.php",
+      "sha256": "2aeb39fa9d2a17649ac143eb5d3c1a8e6fe87196e19ef1ef976b75d32d035aec"
+    },
+    {
+      "path": "app/Domain/Catalog.php",
+      "sha256": "64e66eef9d67961dc0ee74c59a6a8bb9978ec1fa3f99845ce427b7f99a83eb26"
+    },
+    {
+      "path": "app/Domain/Community.php",
+      "sha256": "ffb1849b4927cfbed0217532cb65ed3a18ff8460b7c75d37852a954c4e04d879"
+    },
+    {
+      "path": "app/Domain/ConsumerAssets.php",
+      "sha256": "84a2f124c3061480dbb680f9e9a707fd5c5b3e2dc4d81855eeb55c5cd094fd1f"
+    },
+    {
+      "path": "app/Domain/ConsumerFood.php",
+      "sha256": "16b4b6d8bfa0c7f4f1108dfbbaf74c6a1065112e620ec81b0b9306e12bb35407"
+    },
+    {
+      "path": "app/Domain/DemoBread.php",
+      "sha256": "fa624e69e2161d132dda26753c9cc9eb15cd031db75124e56540f59a291f98b9"
+    },
+    {
+      "path": "app/Domain/DigitalLink.php",
+      "sha256": "efb7ef441930c8de569919947248f1ab430cbe9f4bfa824bc52f55da9b6fbf5a"
+    },
+    {
+      "path": "app/Domain/DigitalReceipt.php",
+      "sha256": "a2394f17963b3fcfbfd3ddfd7583a23242f0bcec67bbe1bbed287af24ba7ec90"
+    },
+    {
+      "path": "app/Domain/Documents.php",
+      "sha256": "08308a484374c5c1b322188c14b54bf48fc6dc0e031de5050263aaa883fc74a7"
+    },
+    {
+      "path": "app/Domain/EpcDecoder.php",
+      "sha256": "f8bce4a35c921be6bfe985ba2f7ae373f51dbc0b791892e737d41cd2ee80ebe6"
+    },
+    {
+      "path": "app/Domain/FoodData.php",
+      "sha256": "c01723f07176e94b6253762e5373a8b2a9f6fd0fff70fb3a05f1ff2fecdfaa26"
+    },
+    {
+      "path": "app/Domain/FoodDate.php",
+      "sha256": "eb23df57d1015e0c3c7b5d26bda1389d048b71333e913e0aa8fe8b5607ad806e"
+    },
+    {
+      "path": "app/Domain/HomeAudit.php",
+      "sha256": "af47a7d8e8c2d265fb0d8688217ac93a17073585d3e53f1f33a7a10d825a7e4c"
+    },
+    {
+      "path": "app/Domain/HomeHouseholds.php",
+      "sha256": "f03ea94aed4f93bc150f79733d79ba721e3eac6236e36b4fb9ae67094abd54c8"
+    },
+    {
+      "path": "app/Domain/HomeIdentity.php",
+      "sha256": "a55eb6178e0d00f081838372ca15cd3a1666bb1360c80c0bf8e704ce9d0e5922"
+    },
+    {
+      "path": "app/Domain/HomeInventory.php",
+      "sha256": "525788191e4d5be7675cb5a79ba88ed34f47190007dac54c96bf8dc77d372f55"
+    },
+    {
+      "path": "app/Domain/HomePhotos.php",
+      "sha256": "811b7fbce04ddb098399a459471ae649c23289b7c5583e28bbe17c388138681a"
+    },
+    {
+      "path": "app/Domain/HomeSync.php",
+      "sha256": "0674267e9cd311c67188efa9d82db6171ba800ded0a27badbdc1a841f0da8e26"
+    },
+    {
+      "path": "app/Domain/Integrations.php",
+      "sha256": "c5edc93c7459136db6b1df12ee01e68e157f3ac498e027ccea2479de400ffd3b"
+    },
+    {
+      "path": "app/Domain/MailSettings.php",
+      "sha256": "4f8e09982da189021f54b3c9a01fdcd06e2fe03f3e892c10f394bb73ddc29171"
+    },
+    {
+      "path": "app/Domain/Maintenance.php",
+      "sha256": "821b7124a1892f8d830c014c2d78557b20599bf22c7defb7eed3c5f66e1681d5"
+    },
+    {
+      "path": "app/Domain/Mutations.php",
+      "sha256": "2279d1b93b10128df8f4b8a1e145cea871f2da37dedd9e2d6c6947ccc6196f42"
+    },
+    {
+      "path": "app/Domain/OAuth.php",
+      "sha256": "5fcb2fb1fd0ef6ebbb29c714e5affed6168a743e3a30a89a7c0f0b1b29ce9c16"
+    },
+    {
+      "path": "app/Domain/PartnerMapping.php",
+      "sha256": "0aeda1ad63b0466c582d8aafebad1aa95d880be1ad0f4f536b4b11985f3da06d"
+    },
+    {
+      "path": "app/Domain/Portability.php",
+      "sha256": "e781e99192a9694285cf2378e23488ee0f54ba8b7fa616212c35caf88e642a27"
+    },
+    {
+      "path": "app/Domain/ProducerQuota.php",
+      "sha256": "ac89a217049ae5756d946f9b45b184c2bb78627f303bcb54f6e8ac0289822e3c"
+    },
+    {
+      "path": "app/Domain/Resolver.php",
+      "sha256": "1a0761ccf8e25a33adbfae9b2345c305abeda51cb24a21ae2be68cfddeab65ae"
+    },
+    {
+      "path": "app/Domain/ResolverRegistry.php",
+      "sha256": "f1e9ade7be866890e31ceefd45dc1073d28c54ae619b804a9ecb716fff204b11"
+    },
+    {
+      "path": "app/Domain/ResolverUri.php",
+      "sha256": "103186061688c13aebd1d06d02bcfd0f0c1982d281d0f8ecef90bca3e4d2249d"
+    },
+    {
+      "path": "app/Core/Api.php",
+      "sha256": "27eaac83d0400b6b7ea43ccc4499f322f3b93efac8c9468cca4c6502226b08a1"
+    },
+    {
+      "path": "app/Core/ApiGateway.php",
+      "sha256": "09716aec7f945564931650b8d54a04d8b853e534aca42e197083a20ca124f6ed"
+    },
+    {
+      "path": "app/Core/ApiInput.php",
+      "sha256": "bceb1dff3be4b9bb7ca5ab8af357e4842963b710ec95f57560077b0a4ede2d3a"
+    },
+    {
+      "path": "app/Core/ApiRoutes.php",
+      "sha256": "df50b534ccaaa4a6c9fcabc3e44c28b1b3191af562e940218bd5b12845f43cbe"
+    },
+    {
+      "path": "app/Core/Auth.php",
+      "sha256": "990f811f1e6ee51b3717df45fcb7482ea7a7b64a11eec997f968c7fc93ae9126"
+    },
+    {
+      "path": "app/Core/Config.php",
+      "sha256": "6a19cf0870542018d799b9f2c08bb71b0ff2582d1b32d1458a503b597f852bd1"
+    },
+    {
+      "path": "app/Core/Db.php",
+      "sha256": "a0086c644c1cfc75fec825527fc3ff1471cdbe1654382ee224511771cbb9c416"
+    },
+    {
+      "path": "app/Core/FilePolicy.php",
+      "sha256": "923e97bd67f2802e34cb100ad4b26f25e727c3fe5f5c79e1d9a0d39020535353"
+    },
+    {
+      "path": "app/Core/Http.php",
+      "sha256": "5a758fe3a09cfeed725e620a2e7450778be5cc0bd46abb6d8f64c09339b5aebf"
+    },
+    {
+      "path": "app/Core/Mailer.php",
+      "sha256": "08ed37d7a74ec40746b8e1702a5374ced1c3d1a62dd51bb49e27d1dd548af0bb"
+    },
+    {
+      "path": "app/Core/Migrations.php",
+      "sha256": "ad9335bf7b8655dd1b51c6f702e3c710c064e6d4454a65b54ce89d89f811e106"
+    },
+    {
+      "path": "app/Core/Passwords.php",
+      "sha256": "19628bedc4c89a7f5c4ea8c9374f6f2676fcdb81bee104072bb360790a7d9fb1"
+    },
+    {
+      "path": "app/Core/Problem.php",
+      "sha256": "875ff0cfce7d8940f8bd7b78cd0f929e53d39844dd34dfd6909e72e8d2ede8e2"
+    },
+    {
+      "path": "app/Core/RateLimit.php",
+      "sha256": "de75d6c8c4ea4941971369e7b9f0625ad51820f216f9fdb06e6d973b1ee864ee"
+    },
+    {
+      "path": "app/Core/Schema.php",
+      "sha256": "00e3a11a80149f04f307d41dea981882c961eebe7c2ebdc94c74569f168dd0af"
+    },
+    {
+      "path": "app/Core/SecurityBudget.php",
+      "sha256": "621147d093fa56cbca8c2f6018be872ee887f15bb74a1e8dbd87be131a6b8cd1"
+    },
+    {
+      "path": "app/Core/SecurityLog.php",
+      "sha256": "a9bd95f46d35cc1cd3fc1a048be346706b055ceae202de9e22ffa78b7f542a27"
+    },
+    {
+      "path": "app/Core/Seo.php",
+      "sha256": "c7e1c82d9ed2d18c86e9e289b67034c47dbbfdd778ae4c9118c61e389686fae4"
+    },
+    {
+      "path": "app/Core/Session.php",
+      "sha256": "b94d67264e5b9f3b87a70c52f3f58d449f70282d3b208c0d6f6ba4cf5f1ffea4"
+    },
+    {
+      "path": "app/Support/view_helpers.php",
+      "sha256": "d31e34e45c1ef136726ec7f51e9002eba7c4da3ee5c5f385caee797dda592d7e"
+    },
+    {
+      "path": "public/assets/api-docs.js",
+      "sha256": "ec47eb6ae54dfb6a66c771b874c529c04925131bad86dd06baa76dd8c02d9a46"
+    },
+    {
+      "path": "public/assets/api-explorer.js",
+      "sha256": "3f306d48d753f052c25a64fc28ac9512bb410ce3855d43bbfb3f6d475aae8cf1"
+    },
+    {
+      "path": "public/assets/app.js",
+      "sha256": "c7497e5ca0b93829c44bf028d6bce4045e6c7d94795b3ee3767bbb9e1eba335f"
+    },
+    {
+      "path": "public/assets/demo-print.js",
+      "sha256": "8077d868ea612506788aa8aae8f9692da21d0b56f4a65ff20ba15588faea0f70"
+    },
+    {
+      "path": "public/assets/digital-link-guide.js",
+      "sha256": "6832e7428274d78b48ecf22a0c8d4ae4c27718bd67153135df3032a846d8801d"
+    },
+    {
+      "path": "public/assets/qr.js",
+      "sha256": "ea0695136269cea16f604aeef36d9af4640b0ffba2aedd60d01dad65f6b07386"
+    },
+    {
+      "path": "public/assets/home/app.js",
+      "sha256": "788fdcae0e0bab3805b264cf7a76d65df60a98cf94dc20ff2a3100ea263f0269"
+    },
+    {
+      "path": "public/assets/home/cloud-domain.js",
+      "sha256": "16101144e8aabeea0d43525c556745ddfd005f679004ba40840ff3e5860d7dac"
+    },
+    {
+      "path": "public/assets/home/cloud.js",
+      "sha256": "dac0a2b11d5a5413a845c28b70f46afc9f059adc233c55b6bababa3ede5b6d37"
+    },
+    {
+      "path": "public/assets/home/domain.js",
+      "sha256": "72022f2393fb6c0f23dc8984b4ebbeeb16e867f07abfdf68c34174e6a400aa50"
+    },
+    {
+      "path": "public/assets/home/entry.js",
+      "sha256": "ea777b2e0d397a04bbee82374974c00fe69591a92c4993d48bdd1bde2729290d"
+    },
+    {
+      "path": "public/assets/home/ocr.js",
+      "sha256": "3c533d2a0892a39b3e25cc122fa0f54219306f7152176355e48be46425f1baba"
+    },
+    {
+      "path": "public/assets/home/receipt.js",
+      "sha256": "8f0d9d9280fc48abb1190a0e35e2ee5dde34b80f4e062a720ea055f55076c08f"
+    },
+    {
+      "path": "public/assets/home/scanner.js",
+      "sha256": "9d0d1dfeccca1d1b92515779be9f78054aab107127b86dd285e014c44fd3319e"
+    },
+    {
+      "path": "public/assets/home/store.js",
+      "sha256": "f842d88a53261493a42d040f32549a7288d14e299c535cc0f070bf36c9460373"
+    },
+    {
+      "path": "public/assets/home/sw.js",
+      "sha256": "2b7482232683639b92563538b06d83a00ee3146db8b67075e9b9ef30da358893"
+    },
+    {
+      "path": "public/assets/home/transfer.js",
+      "sha256": "6d65b2c4d34b9ab57478cb71ad6923d75d71f1abd5e23e80b78b694021ab0e7b"
+    },
+    {
+      "path": "public/assets/digital-link-journey.svg",
+      "sha256": "f3e5bfa3c4aaf4945951bcb7e1b0e483704417e1f7abb411487cca2fb325f8ef"
+    },
+    {
+      "path": "public/assets/mark.svg",
+      "sha256": "4091a02e480525623b6a492c59e584a07be485fa388b34fed80b56be8852a074"
+    }
+  ],
+  "resolved": [
+    "Public portal no longer embeds internal implementation reports, QA procedures or delivery plans.",
+    "Public integration sections are maintained explicitly under docs/api/sections; historical reports stay in repository documentation.",
+    "The combined Markdown guide includes all 17 portal guides and serves canonical links.",
+    "Outdated v1 multipart-upload guidance is replaced by the available v2 upload route.",
+    "Idempotency retention is consistently documented as 90 days; connector deduplication remains distinct.",
+    "Postman operation count is derived from the contract instead of a hardcoded number.",
+    "Landing shows the actual demonstration GTIN and lot rather than GTIN/LOT placeholders.",
+    "Organization verification fields explain the evidence to record; no automatic verification is claimed.",
+    "Administrative messages distinguish active capabilities, missing activation, configuration and SMTP probes.",
+    "Unavailable services no longer claim an update or development activity is in progress.",
+    "Public states use Romanian labels, while API enum values and identifiers remain unchanged.",
+    "Badge assessment is explicitly unavailable; hosting and GTIN checks do not grant a badge.",
+    "Real limits remain explicit: external sources, custom domains, notifications, mobile distribution and unknown food data.",
+    "PBT remains a marked demonstration, R1 remains experimental, and COST3 estimates and original provenance remain unchanged."
+  ],
+  "preserved": {
+    "routes": true,
+    "operation_ids": true,
+    "payloads_and_permissions": true,
+    "historical_openbread": true,
+    "recipe_and_document_licenses": true,
+    "database_migration_required": false
+  },
+  "validation": {
+    "local_suites": 40,
+    "local_checks": 11332,
+    "local_failed": 0,
+    "public_copy_checks": 1329,
+    "production_content_checks": 247,
+    "production_api_checks": 21,
+    "production_docs_checks": 42,
+    "production_security_checks": 52,
+    "final_remote_files_verified": 59
+  },
+  "pending_owner_information": [],
+  "evidence": [
+    "updates/evidence/2026-10-25/api-public-guide.png"
+  ],
+  "owner_clarification": {
+    "date": "2026-10-25",
+    "NGO_status": "în curs de înființare",
+    "founder_and_contact": "Alex Patrut",
+    "public_contact": "alex@patrut.com",
+    "release": "0.5.5",
+    "verification": "public-identity-2026-10-25.json"
+  }
+}

@@ -1,0 +1,5 @@
+<?php declare(strict_types=1); ?>
+<div class="container page-space reading-page"><div class="auth-card" data-account-recovery><a class="back-link" href="/login">← Conectare</a><h1 class="page-title">Recuperează accesul</h1>
+<form class="form-stack" data-recovery-request><label>Emailul contului<input class="form-control" name="email" type="email" required maxlength="190" autocomplete="username"></label><button class="btn btn-primary">Trimite legătura</button></form>
+<form class="form-stack" data-recovery-reset hidden><label>Parola nouă<input class="form-control" name="password" type="password" required minlength="12" maxlength="<?=\App\Core\Passwords::maxBytes()?>" autocomplete="new-password"></label><label>Repetă parola<input class="form-control" name="confirmation" type="password" required autocomplete="new-password"></label><p>Cheia de acces a contului rămâne activă.</p><button class="btn btn-primary">Schimbă parola</button></form>
+<p role="status" aria-live="polite" data-account-status></p><noscript>Activează JavaScript pentru a confirma legătura de recuperare.</noscript></div></div><script type="module" src="/assets/account-access.js?v=1"></script>

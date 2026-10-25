@@ -1,0 +1,34 @@
+<?php declare(strict_types=1);
+require __DIR__.'/bootstrap.php';
+use App\Core\{Db,Config,Session};
+use App\Domain\{Catalog,Mutations,Documents,Community,Portability,Integrations,ResolverRegistry,HomeIdentity};
+if(in_array('--reset-rates',$argv,true)){Db::run('DELETE FROM rate_limits');echo "Reset isolated test rate counters.\n";exit;}
+$f=json_decode(file_get_contents(__DIR__.'/runtime/api-platform-fixtures.json'),true);$p=$f['a'];Session::login($p['user']);
+$pid=Catalog::product($p,['name'=>'Referință API sintetică','category'=>'lactate'])['id'];
+$digits='952'.str_pad((string)random_int(1,999999999),9,'0',STR_PAD_LEFT);$sum=0;for($i=0;$i<12;$i++)$sum+=(int)$digits[$i]*($i%2?3:1);$gtin=$digits.(string)((10-$sum%10)%10);
+$item=Catalog::trade($p,$pid,['name'=>'Pahar exemplu','gtin'=>$gtin])['id'];
+// Synthetic verification confined by bootstrap.php to openaliment_tests.
+Db::run("UPDATE trade_items SET gtin_status='verified',verified_by=?,verified_at=? WHERE id=?",[$p['user'],Db::now(),$item]);
+Db::insert('gtin_registry',['gtin14'=>'0'.$gtin,'tenant_id'=>$p['tenant'],'trade_item_id'=>$item]);
+$label=Catalog::label($p,$item,['version_key'=>'E1','name'=>'Iaurt de test','category'=>'lactate','ingredients'=>'Lapte.','allergens'=>'Lapte.','net_quantity'=>'200 g','operator'=>'Operator sintetic'])['id'];Catalog::publishLabel($p,$label);
+$recipe=Mutations::recipe($p,$pid,['version_key'=>'R-REF','visibility'=>'public','license_id'=>'CC0-1.0','rights_confirmed'=>true,'license_confirmed'=>true,'public_projection_confirmed'=>true,'snapshot'=>['formula'=>[],'process'=>[]]])['id'];
+$batch=Catalog::batch($p,$item,['product_info_version_id'=>$label,'recipe_version_id'=>$recipe,'lot_code'=>'REF-'.substr(Db::id(),0,10)])['id'];Catalog::publishBatch($p,$batch);
+$alert=Catalog::alert($p,$batch,['message'=>'Alertă exclusiv sintetică.','state'=>'on_hold'])['id'];
+$doc=Db::id();$bytes="Fișier sintetic pentru referința API.\n";$key=$p['tenant'].'/'.$doc;$dir=Config::get('storage').'/private/'.$p['tenant'];if(!is_dir($dir))mkdir($dir,0700,true);file_put_contents(Config::get('storage').'/private/'.$key,$bytes);
+Db::insert('documents',['id'=>$doc,'tenant_id'=>$p['tenant'],'product_id'=>$pid,'title'=>'Fișă sintetică','sha256'=>hash('sha256',$bytes),'storage_key'=>$key,'mime'=>'text/plain','size_bytes'=>strlen($bytes),'provenance_json'=>Db::json(['method'=>'test_fixture']),'created_at'=>Db::now()]);\App\Domain\DocumentScanner::scan(Catalog::owned('documents',$doc,$p));Documents::publish($p,$doc,['rights_confirmed'=>true,'public_projection_confirmed'=>true]);
+$feedback=Community::feedback(['trade_item_id'=>$item,'text'=>'Observație sintetică pentru documentație.','consent'=>true,'submission_key'=>'reference-'.Db::id()]);Community::moderate($p,$feedback['id'],['status'=>'published','public_text'=>'Copie publică sintetică.','reason'=>'Test']);
+$ai=Db::id();Db::insert('ai_jobs',['id'=>$ai,'tenant_id'=>$p['tenant'],'feedback_id'=>$feedback['id'],'available_at'=>Db::now(),'created_at'=>Db::now()]);
+$proposal=Community::proposal($p,$pid,['title'=>'Propunere sintetică','body'=>'Justificare de test.','public'=>true])['id'];
+$connector=Integrations::create($p,['name'=>'Conector de test referință','kind'=>'catalog'])['id'];
+$mapping=Integrations::mapping($p,$connector,['version_key'=>'M1','mapping'=>['schema_version'=>'openaliment.mapping.v1','fields'=>['/trade_external_id'=>['value'=>'ERP-REF'],'/label_version_key'=>['value'=>'E1'],'/lot_code'=>['from'=>'/lot','op'=>'text','required'=>true]]]])['id'];
+$link=ResolverRegistry::draft($p,$item,['href'=>'https://example.invalid/produs','title'=>'Destinație sintetică','types'=>['gs1:pip']])['id'];ResolverRegistry::publish($p,$link,['public_projection_confirmed'=>true]);
+$data=array_fill_keys(['products','trade_items','product_info_versions','recipe_versions','batches','alerts','documents'],[]);$package=['schema_version'=>'openaliment.transfer.v1','source_base_url'=>'https://example.invalid/'.Db::id(),'exported_at'=>gmdate(DATE_ATOM),'data'=>$data,'data_sha256'=>hash('sha256',Db::json($data))];Portability::import($p,$package,false);
+$import=Db::one('SELECT id FROM imports WHERE tenant_id=? ORDER BY created_at DESC,id DESC LIMIT 1',[$p['tenant']])['id'];
+$audit=Db::one('SELECT id FROM audit_events WHERE tenant_id=? ORDER BY id LIMIT 1',[$p['tenant']])['id'];
+$homeToken=bin2hex(random_bytes(32));Db::insert('home_login_tokens',['token_hash'=>hash('sha256',$homeToken),'email'=>'reference-home-'.Db::id().'@example.invalid','expires_at'=>gmdate('Y-m-d H:i:s',time()+900),'created_at'=>Db::now()]);
+$home=HomeIdentity::confirm($homeToken,'Dispozitiv sintetic');
+$preview_token=bin2hex(random_bytes(32));Db::insert('home_login_tokens',['token_hash'=>hash('sha256',$preview_token),'email'=>$home['email'],'expires_at'=>gmdate('Y-m-d H:i:s',time()+900),'created_at'=>Db::now()]);
+$grant_device=Db::id();Db::insert('home_devices',['id'=>$grant_device,'account_id'=>$home['account_id'],'household_id'=>$home['household_id'],'name'=>'Aplicație sintetică','token_hash'=>hash('sha256',random_bytes(32)),'expires_at'=>gmdate('Y-m-d H:i:s',time()+900),'last_seen_at'=>Db::now(),'created_at'=>Db::now()]);
+$home_grant=Db::id();Db::insert('api_oauth_grants',['id'=>$home_grant,'client_id'=>$f['client_id'],'realm'=>'home','home_account_id'=>$home['account_id'],'household_id'=>$home['household_id'],'home_device_id'=>$grant_device,'scopes_json'=>'["home:read"]','expires_at'=>gmdate('Y-m-d H:i:s',time()+900),'created_at'=>Db::now()]);
+file_put_contents(__DIR__.'/runtime/api-reference-fixtures.json',Db::json(compact('pid','item','label','recipe','batch','alert','doc','feedback','ai','proposal','connector','mapping','link','import','audit','home','package','preview_token','home_grant')));
+echo Db::json(['passed'=>1,'failed'=>0]).PHP_EOL;

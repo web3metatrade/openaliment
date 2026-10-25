@@ -1,0 +1,28 @@
+{
+  "schema_version": "openaliment.category_profile.v1",
+  "profile_id": "bread",
+  "version": "0.1",
+  "initiative": "OpenBread",
+  "scope": "optional_technical_documentation_and_assessment",
+  "applies_to_qr_service": false,
+  "status": "proposed",
+  "legacy_standard_ref": "OB-STD-0.1",
+  "technical_fields": [
+    "hydration_pct_with_basis",
+    "preferment_composition",
+    "proofing_time_target_and_actual",
+    "dough_mass_g",
+    "bakers_percent_with_basis"
+  ],
+  "pilot": {
+    "project_key": "pbt",
+    "recipe_key": "R1",
+    "nominal_external_input_g": 3790,
+    "technical_status": "experimental"
+  },
+  "rules": [
+    "Nu se impun altor categorii.",
+    "Țintele de fermentare/coacere nu sunt rezultate măsurate.",
+    "Formula și procesul sunt opționale pentru serviciul QR."
+  ]
+}

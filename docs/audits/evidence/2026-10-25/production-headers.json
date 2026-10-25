@@ -1,0 +1,298 @@
+{
+  "executed_at": "2026-10-25T09:30:13.364824+00:00",
+  "environment": "production HTTPS, read-only; no credentials, user data or mutations",
+  "passed": 52,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Status /",
+      "passed": true
+    },
+    {
+      "name": "HSTS /",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /",
+      "passed": true
+    },
+    {
+      "name": "Status /login",
+      "passed": true
+    },
+    {
+      "name": "HSTS /login",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /login",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /login",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /login",
+      "passed": true
+    },
+    {
+      "name": "Producer session cookie Secure HttpOnly SameSite",
+      "passed": true
+    },
+    {
+      "name": "Login CSP disallows external scripts",
+      "passed": true
+    },
+    {
+      "name": "Status /api/docs",
+      "passed": true
+    },
+    {
+      "name": "HSTS /api/docs",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /api/docs",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /api/docs",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /api/docs",
+      "passed": true
+    },
+    {
+      "name": "Status /assets/api-docs.css",
+      "passed": true
+    },
+    {
+      "name": "HSTS /assets/api-docs.css",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /assets/api-docs.css",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /assets/api-docs.css",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /assets/api-docs.css",
+      "passed": true
+    },
+    {
+      "name": "Status /01/09520000000011",
+      "passed": true
+    },
+    {
+      "name": "HSTS /01/09520000000011",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /01/09520000000011",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /01/09520000000011",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /01/09520000000011",
+      "passed": true
+    },
+    {
+      "name": "Status /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "HSTS /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "Status /hosting-check.php",
+      "passed": true
+    },
+    {
+      "name": "HSTS /hosting-check.php",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /hosting-check.php",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /hosting-check.php",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /hosting-check.php",
+      "passed": true
+    },
+    {
+      "name": "Status /setup",
+      "passed": true
+    },
+    {
+      "name": "HSTS /setup",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /setup",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /setup",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /setup",
+      "passed": true
+    },
+    {
+      "name": "Status /__openaliment_security_missing__",
+      "passed": true
+    },
+    {
+      "name": "HSTS /__openaliment_security_missing__",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /__openaliment_security_missing__",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /__openaliment_security_missing__",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /__openaliment_security_missing__",
+      "passed": true
+    },
+    {
+      "name": "Status /assets/__openaliment_security_probe.php",
+      "passed": true
+    },
+    {
+      "name": "HSTS /assets/__openaliment_security_probe.php",
+      "passed": true
+    },
+    {
+      "name": "No PHP disclosure /assets/__openaliment_security_probe.php",
+      "passed": true
+    },
+    {
+      "name": "No MIME sniffing /assets/__openaliment_security_probe.php",
+      "passed": true
+    },
+    {
+      "name": "Bounded body /assets/__openaliment_security_probe.php",
+      "passed": true
+    }
+  ],
+  "responses": [
+    {
+      "path": "/",
+      "status": 200,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/login",
+      "status": 200,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/api/docs",
+      "status": 200,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/assets/api-docs.css",
+      "status": 200,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/01/09520000000011",
+      "status": 307,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+      "status": 200,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/hosting-check.php",
+      "status": 404,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/setup",
+      "status": 404,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/__openaliment_security_missing__",
+      "status": 404,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    },
+    {
+      "path": "/assets/__openaliment_security_probe.php",
+      "status": 403,
+      "hsts": [
+        "max-age=86400"
+      ],
+      "powered_by_absent": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "name": "PHP syntax",
+      "files": 79,
+      "passed": true
+    },
+    {
+      "name": "Home JavaScript syntax",
+      "passed": true
+    },
+    {
+      "name": "New schema compiles as JSON Schema 2020-12",
+      "passed": true
+    }
+  ]
+}

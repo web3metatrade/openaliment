@@ -1,0 +1,335 @@
+{
+  "/.well-known/oauth-authorization-server": {
+    "title": "Descoperă metadatele serverului OAuth",
+    "description": "Metadate Authorization Code + PKCE S256 și refresh cu rotație. Nu declară OIDC, JWT, client credentials sau înregistrare dinamică. Verifică separat available în manifest pentru activarea instalării.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "issuer": {
+          "type": "string",
+          "format": "uri"
+        },
+        "authorization_endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "token_endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "revocation_endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "response_types_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "grant_types_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "code_challenge_methods_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "token_endpoint_auth_methods_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scopes_supported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "issuer",
+        "authorization_endpoint",
+        "token_endpoint",
+        "revocation_endpoint",
+        "response_types_supported",
+        "grant_types_supported",
+        "code_challenge_methods_supported",
+        "token_endpoint_auth_methods_supported",
+        "scopes_supported"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "/.well-known/gs1resolver": {
+    "title": "Citește descrierea resolverului GS1",
+    "description": "Declară cheia primară 01, vocabularul GS1, lista contextelor și profilul implementat. Profilul și probele sunt separate de orice certificare externă.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "resolverRoot": {
+          "type": "string"
+        },
+        "supportedPrimaryKeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "supportedLinkType": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "namespace": {
+                "type": "string"
+              },
+              "prefix": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "namespace",
+              "prefix"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "linkTypeDefaultCanBeLinkset": {
+          "type": "boolean"
+        },
+        "supportedContextValuesExternal": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "nameOfList": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "nameOfList",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "jsonLdContextLocation": {
+          "type": "string"
+        },
+        "extensionProfile": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "resolverRoot",
+        "supportedPrimaryKeys",
+        "name",
+        "supportedLinkType",
+        "linkTypeDefaultCanBeLinkset",
+        "supportedContextValuesExternal",
+        "jsonLdContextLocation",
+        "extensionProfile"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "/resolver/contexts": {
+    "title": "Listează contextele publicate de producători",
+    "description": "Uniunea valorilor context din destinațiile curente publicate. Lista poate fi goală și nu acordă acces la destinații private.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "contexts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "contexts"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "/resolver/linkset-context": {
+    "title": "Descarcă contextul JSON-LD al linksetului",
+    "description": "Context JSON-LD public pentru interpretarea relațiilor și a metadatelor din linkset. Tip media application/ld+json.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "object",
+          "properties": {
+            "schema": {
+              "type": "string"
+            },
+            "gs1": {
+              "type": "string"
+            },
+            "rdf": {
+              "type": "string"
+            },
+            "rdfs": {
+              "type": "string"
+            },
+            "owl": {
+              "type": "string"
+            },
+            "dcterms": {
+              "type": "string"
+            },
+            "xsd": {
+              "type": "string"
+            },
+            "skos": {
+              "type": "string"
+            },
+            "gs1:value": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@type"
+              ],
+              "additionalProperties": false
+            },
+            "@protected": {
+              "type": "boolean"
+            },
+            "href": {
+              "type": "string"
+            },
+            "hreflang": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string"
+                },
+                "@container": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id",
+                "@container"
+              ],
+              "additionalProperties": false
+            },
+            "title": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id"
+              ],
+              "additionalProperties": false
+            },
+            "title*": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string"
+                },
+                "@container": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id",
+                "@container"
+              ],
+              "additionalProperties": false
+            },
+            "type": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id"
+              ],
+              "additionalProperties": false
+            },
+            "modified": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id"
+              ],
+              "additionalProperties": false
+            },
+            "itemDescription": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id"
+              ],
+              "additionalProperties": false
+            },
+            "linkset": {
+              "type": "string"
+            },
+            "anchor": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema",
+            "gs1",
+            "rdf",
+            "rdfs",
+            "owl",
+            "dcterms",
+            "xsd",
+            "skos",
+            "gs1:value",
+            "@protected",
+            "href",
+            "hreflang",
+            "title",
+            "title*",
+            "type",
+            "modified",
+            "itemDescription",
+            "linkset",
+            "anchor"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "@context"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,43 @@
+* text=auto eol=lf
+*.php text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.sql text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.css text eol=lf
+*.svg text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.pdf binary
+*.docx binary
+*.zip binary
+*.gz binary
+*.wasm binary
+*.woff2 binary
+
+# Preserve the exact bytes covered by provenance and dependency manifests.
+OpenBread_Codex_v1_2026-10-23/** -text
+app/Vendor/** -text
+public/assets/vendor/** -text
+public/assets/ocr/** -text
+contracts/gs1/** -text
+database/migrations/** -text
+# These files are embedded byte-for-byte in contracts/operations-assets.json.
+tools/ops/backup.php -text
+tools/ops/restore.php -text
+tools/ops/reconcile-erasure.php -text
+tools/ops/monitor.py -text
+config/backup.local.example.php -text
+config/migrations.local.example.php -text
+config/restore.local.example.php -text
+THIRD_PARTY_NOTICES.md -text
+release.json -text
+LICENSING.md -text
+tools/standards/fetch.py -text

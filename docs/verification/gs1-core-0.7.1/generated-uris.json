@@ -1,0 +1,1342 @@
+[
+    {
+        "name": "ordered qualifiers",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/2A\/10\/000Lot\/21\/Serial-A"
+    },
+    {
+        "name": "stem and trailing slash",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/LotA"
+    },
+    {
+        "name": "literal encoded slash preserved once",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%252FB"
+    },
+    {
+        "name": "TPX maximum length",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/TTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+    },
+    {
+        "name": "X82 AI 22 U+0021",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2100b"
+    },
+    {
+        "name": "X82 AI 22 U+0022",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2200b"
+    },
+    {
+        "name": "X82 AI 22 U+0025",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2500b"
+    },
+    {
+        "name": "X82 AI 22 U+0026",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2600b"
+    },
+    {
+        "name": "X82 AI 22 U+0027",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2700b"
+    },
+    {
+        "name": "X82 AI 22 U+0028",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2800b"
+    },
+    {
+        "name": "X82 AI 22 U+0029",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2900b"
+    },
+    {
+        "name": "X82 AI 22 U+002A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2A00b"
+    },
+    {
+        "name": "X82 AI 22 U+002B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2B00b"
+    },
+    {
+        "name": "X82 AI 22 U+002C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2C00b"
+    },
+    {
+        "name": "X82 AI 22 U+002D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A-00b"
+    },
+    {
+        "name": "X82 AI 22 U+002E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A.00b"
+    },
+    {
+        "name": "X82 AI 22 U+002F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%2F00b"
+    },
+    {
+        "name": "X82 AI 22 U+003A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%3A00b"
+    },
+    {
+        "name": "X82 AI 22 U+003B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%3B00b"
+    },
+    {
+        "name": "X82 AI 22 U+003C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%3C00b"
+    },
+    {
+        "name": "X82 AI 22 U+003D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%3D00b"
+    },
+    {
+        "name": "X82 AI 22 U+003E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%3E00b"
+    },
+    {
+        "name": "X82 AI 22 U+003F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A%3F00b"
+    },
+    {
+        "name": "X82 AI 22 U+005F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A_00b"
+    },
+    {
+        "name": "X82 AI 22 U+0030",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A000b"
+    },
+    {
+        "name": "X82 AI 22 U+0031",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A100b"
+    },
+    {
+        "name": "X82 AI 22 U+0032",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A200b"
+    },
+    {
+        "name": "X82 AI 22 U+0033",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A300b"
+    },
+    {
+        "name": "X82 AI 22 U+0034",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A400b"
+    },
+    {
+        "name": "X82 AI 22 U+0035",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A500b"
+    },
+    {
+        "name": "X82 AI 22 U+0036",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A600b"
+    },
+    {
+        "name": "X82 AI 22 U+0037",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A700b"
+    },
+    {
+        "name": "X82 AI 22 U+0038",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A800b"
+    },
+    {
+        "name": "X82 AI 22 U+0039",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/A900b"
+    },
+    {
+        "name": "X82 AI 22 U+0041",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AA00b"
+    },
+    {
+        "name": "X82 AI 22 U+0042",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AB00b"
+    },
+    {
+        "name": "X82 AI 22 U+0043",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AC00b"
+    },
+    {
+        "name": "X82 AI 22 U+0044",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AD00b"
+    },
+    {
+        "name": "X82 AI 22 U+0045",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AE00b"
+    },
+    {
+        "name": "X82 AI 22 U+0046",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AF00b"
+    },
+    {
+        "name": "X82 AI 22 U+0047",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AG00b"
+    },
+    {
+        "name": "X82 AI 22 U+0048",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AH00b"
+    },
+    {
+        "name": "X82 AI 22 U+0049",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AI00b"
+    },
+    {
+        "name": "X82 AI 22 U+004A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AJ00b"
+    },
+    {
+        "name": "X82 AI 22 U+004B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AK00b"
+    },
+    {
+        "name": "X82 AI 22 U+004C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AL00b"
+    },
+    {
+        "name": "X82 AI 22 U+004D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AM00b"
+    },
+    {
+        "name": "X82 AI 22 U+004E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AN00b"
+    },
+    {
+        "name": "X82 AI 22 U+004F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AO00b"
+    },
+    {
+        "name": "X82 AI 22 U+0050",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AP00b"
+    },
+    {
+        "name": "X82 AI 22 U+0051",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AQ00b"
+    },
+    {
+        "name": "X82 AI 22 U+0052",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AR00b"
+    },
+    {
+        "name": "X82 AI 22 U+0053",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AS00b"
+    },
+    {
+        "name": "X82 AI 22 U+0054",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AT00b"
+    },
+    {
+        "name": "X82 AI 22 U+0055",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AU00b"
+    },
+    {
+        "name": "X82 AI 22 U+0056",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AV00b"
+    },
+    {
+        "name": "X82 AI 22 U+0057",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AW00b"
+    },
+    {
+        "name": "X82 AI 22 U+0058",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AX00b"
+    },
+    {
+        "name": "X82 AI 22 U+0059",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AY00b"
+    },
+    {
+        "name": "X82 AI 22 U+005A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/AZ00b"
+    },
+    {
+        "name": "X82 AI 22 U+0061",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Aa00b"
+    },
+    {
+        "name": "X82 AI 22 U+0062",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ab00b"
+    },
+    {
+        "name": "X82 AI 22 U+0063",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ac00b"
+    },
+    {
+        "name": "X82 AI 22 U+0064",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ad00b"
+    },
+    {
+        "name": "X82 AI 22 U+0065",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ae00b"
+    },
+    {
+        "name": "X82 AI 22 U+0066",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Af00b"
+    },
+    {
+        "name": "X82 AI 22 U+0067",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ag00b"
+    },
+    {
+        "name": "X82 AI 22 U+0068",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ah00b"
+    },
+    {
+        "name": "X82 AI 22 U+0069",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ai00b"
+    },
+    {
+        "name": "X82 AI 22 U+006A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Aj00b"
+    },
+    {
+        "name": "X82 AI 22 U+006B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ak00b"
+    },
+    {
+        "name": "X82 AI 22 U+006C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Al00b"
+    },
+    {
+        "name": "X82 AI 22 U+006D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Am00b"
+    },
+    {
+        "name": "X82 AI 22 U+006E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/An00b"
+    },
+    {
+        "name": "X82 AI 22 U+006F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ao00b"
+    },
+    {
+        "name": "X82 AI 22 U+0070",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ap00b"
+    },
+    {
+        "name": "X82 AI 22 U+0071",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Aq00b"
+    },
+    {
+        "name": "X82 AI 22 U+0072",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ar00b"
+    },
+    {
+        "name": "X82 AI 22 U+0073",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/As00b"
+    },
+    {
+        "name": "X82 AI 22 U+0074",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/At00b"
+    },
+    {
+        "name": "X82 AI 22 U+0075",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Au00b"
+    },
+    {
+        "name": "X82 AI 22 U+0076",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Av00b"
+    },
+    {
+        "name": "X82 AI 22 U+0077",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Aw00b"
+    },
+    {
+        "name": "X82 AI 22 U+0078",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ax00b"
+    },
+    {
+        "name": "X82 AI 22 U+0079",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Ay00b"
+    },
+    {
+        "name": "X82 AI 22 U+007A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/22\/Az00b"
+    },
+    {
+        "name": "X82 AI 10 U+0021",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2100b"
+    },
+    {
+        "name": "X82 AI 10 U+0022",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2200b"
+    },
+    {
+        "name": "X82 AI 10 U+0025",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2500b"
+    },
+    {
+        "name": "X82 AI 10 U+0026",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2600b"
+    },
+    {
+        "name": "X82 AI 10 U+0027",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2700b"
+    },
+    {
+        "name": "X82 AI 10 U+0028",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2800b"
+    },
+    {
+        "name": "X82 AI 10 U+0029",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2900b"
+    },
+    {
+        "name": "X82 AI 10 U+002A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2A00b"
+    },
+    {
+        "name": "X82 AI 10 U+002B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2B00b"
+    },
+    {
+        "name": "X82 AI 10 U+002C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2C00b"
+    },
+    {
+        "name": "X82 AI 10 U+002D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A-00b"
+    },
+    {
+        "name": "X82 AI 10 U+002E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A.00b"
+    },
+    {
+        "name": "X82 AI 10 U+002F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%2F00b"
+    },
+    {
+        "name": "X82 AI 10 U+003A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%3A00b"
+    },
+    {
+        "name": "X82 AI 10 U+003B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%3B00b"
+    },
+    {
+        "name": "X82 AI 10 U+003C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%3C00b"
+    },
+    {
+        "name": "X82 AI 10 U+003D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%3D00b"
+    },
+    {
+        "name": "X82 AI 10 U+003E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%3E00b"
+    },
+    {
+        "name": "X82 AI 10 U+003F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A%3F00b"
+    },
+    {
+        "name": "X82 AI 10 U+005F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A_00b"
+    },
+    {
+        "name": "X82 AI 10 U+0030",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A000b"
+    },
+    {
+        "name": "X82 AI 10 U+0031",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A100b"
+    },
+    {
+        "name": "X82 AI 10 U+0032",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A200b"
+    },
+    {
+        "name": "X82 AI 10 U+0033",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A300b"
+    },
+    {
+        "name": "X82 AI 10 U+0034",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A400b"
+    },
+    {
+        "name": "X82 AI 10 U+0035",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A500b"
+    },
+    {
+        "name": "X82 AI 10 U+0036",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A600b"
+    },
+    {
+        "name": "X82 AI 10 U+0037",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A700b"
+    },
+    {
+        "name": "X82 AI 10 U+0038",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A800b"
+    },
+    {
+        "name": "X82 AI 10 U+0039",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/A900b"
+    },
+    {
+        "name": "X82 AI 10 U+0041",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AA00b"
+    },
+    {
+        "name": "X82 AI 10 U+0042",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AB00b"
+    },
+    {
+        "name": "X82 AI 10 U+0043",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AC00b"
+    },
+    {
+        "name": "X82 AI 10 U+0044",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AD00b"
+    },
+    {
+        "name": "X82 AI 10 U+0045",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AE00b"
+    },
+    {
+        "name": "X82 AI 10 U+0046",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AF00b"
+    },
+    {
+        "name": "X82 AI 10 U+0047",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AG00b"
+    },
+    {
+        "name": "X82 AI 10 U+0048",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AH00b"
+    },
+    {
+        "name": "X82 AI 10 U+0049",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AI00b"
+    },
+    {
+        "name": "X82 AI 10 U+004A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AJ00b"
+    },
+    {
+        "name": "X82 AI 10 U+004B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AK00b"
+    },
+    {
+        "name": "X82 AI 10 U+004C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AL00b"
+    },
+    {
+        "name": "X82 AI 10 U+004D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AM00b"
+    },
+    {
+        "name": "X82 AI 10 U+004E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AN00b"
+    },
+    {
+        "name": "X82 AI 10 U+004F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AO00b"
+    },
+    {
+        "name": "X82 AI 10 U+0050",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AP00b"
+    },
+    {
+        "name": "X82 AI 10 U+0051",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AQ00b"
+    },
+    {
+        "name": "X82 AI 10 U+0052",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AR00b"
+    },
+    {
+        "name": "X82 AI 10 U+0053",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AS00b"
+    },
+    {
+        "name": "X82 AI 10 U+0054",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AT00b"
+    },
+    {
+        "name": "X82 AI 10 U+0055",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AU00b"
+    },
+    {
+        "name": "X82 AI 10 U+0056",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AV00b"
+    },
+    {
+        "name": "X82 AI 10 U+0057",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AW00b"
+    },
+    {
+        "name": "X82 AI 10 U+0058",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AX00b"
+    },
+    {
+        "name": "X82 AI 10 U+0059",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AY00b"
+    },
+    {
+        "name": "X82 AI 10 U+005A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/AZ00b"
+    },
+    {
+        "name": "X82 AI 10 U+0061",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Aa00b"
+    },
+    {
+        "name": "X82 AI 10 U+0062",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ab00b"
+    },
+    {
+        "name": "X82 AI 10 U+0063",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ac00b"
+    },
+    {
+        "name": "X82 AI 10 U+0064",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ad00b"
+    },
+    {
+        "name": "X82 AI 10 U+0065",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ae00b"
+    },
+    {
+        "name": "X82 AI 10 U+0066",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Af00b"
+    },
+    {
+        "name": "X82 AI 10 U+0067",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ag00b"
+    },
+    {
+        "name": "X82 AI 10 U+0068",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ah00b"
+    },
+    {
+        "name": "X82 AI 10 U+0069",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ai00b"
+    },
+    {
+        "name": "X82 AI 10 U+006A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Aj00b"
+    },
+    {
+        "name": "X82 AI 10 U+006B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ak00b"
+    },
+    {
+        "name": "X82 AI 10 U+006C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Al00b"
+    },
+    {
+        "name": "X82 AI 10 U+006D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Am00b"
+    },
+    {
+        "name": "X82 AI 10 U+006E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/An00b"
+    },
+    {
+        "name": "X82 AI 10 U+006F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ao00b"
+    },
+    {
+        "name": "X82 AI 10 U+0070",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ap00b"
+    },
+    {
+        "name": "X82 AI 10 U+0071",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Aq00b"
+    },
+    {
+        "name": "X82 AI 10 U+0072",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ar00b"
+    },
+    {
+        "name": "X82 AI 10 U+0073",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/As00b"
+    },
+    {
+        "name": "X82 AI 10 U+0074",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/At00b"
+    },
+    {
+        "name": "X82 AI 10 U+0075",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Au00b"
+    },
+    {
+        "name": "X82 AI 10 U+0076",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Av00b"
+    },
+    {
+        "name": "X82 AI 10 U+0077",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Aw00b"
+    },
+    {
+        "name": "X82 AI 10 U+0078",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ax00b"
+    },
+    {
+        "name": "X82 AI 10 U+0079",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Ay00b"
+    },
+    {
+        "name": "X82 AI 10 U+007A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/Az00b"
+    },
+    {
+        "name": "X82 AI 21 U+0021",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2100b"
+    },
+    {
+        "name": "X82 AI 21 U+0022",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2200b"
+    },
+    {
+        "name": "X82 AI 21 U+0025",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2500b"
+    },
+    {
+        "name": "X82 AI 21 U+0026",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2600b"
+    },
+    {
+        "name": "X82 AI 21 U+0027",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2700b"
+    },
+    {
+        "name": "X82 AI 21 U+0028",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2800b"
+    },
+    {
+        "name": "X82 AI 21 U+0029",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2900b"
+    },
+    {
+        "name": "X82 AI 21 U+002A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2A00b"
+    },
+    {
+        "name": "X82 AI 21 U+002B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2B00b"
+    },
+    {
+        "name": "X82 AI 21 U+002C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2C00b"
+    },
+    {
+        "name": "X82 AI 21 U+002D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A-00b"
+    },
+    {
+        "name": "X82 AI 21 U+002E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A.00b"
+    },
+    {
+        "name": "X82 AI 21 U+002F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%2F00b"
+    },
+    {
+        "name": "X82 AI 21 U+003A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%3A00b"
+    },
+    {
+        "name": "X82 AI 21 U+003B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%3B00b"
+    },
+    {
+        "name": "X82 AI 21 U+003C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%3C00b"
+    },
+    {
+        "name": "X82 AI 21 U+003D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%3D00b"
+    },
+    {
+        "name": "X82 AI 21 U+003E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%3E00b"
+    },
+    {
+        "name": "X82 AI 21 U+003F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A%3F00b"
+    },
+    {
+        "name": "X82 AI 21 U+005F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A_00b"
+    },
+    {
+        "name": "X82 AI 21 U+0030",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A000b"
+    },
+    {
+        "name": "X82 AI 21 U+0031",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A100b"
+    },
+    {
+        "name": "X82 AI 21 U+0032",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A200b"
+    },
+    {
+        "name": "X82 AI 21 U+0033",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A300b"
+    },
+    {
+        "name": "X82 AI 21 U+0034",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A400b"
+    },
+    {
+        "name": "X82 AI 21 U+0035",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A500b"
+    },
+    {
+        "name": "X82 AI 21 U+0036",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A600b"
+    },
+    {
+        "name": "X82 AI 21 U+0037",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A700b"
+    },
+    {
+        "name": "X82 AI 21 U+0038",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A800b"
+    },
+    {
+        "name": "X82 AI 21 U+0039",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/A900b"
+    },
+    {
+        "name": "X82 AI 21 U+0041",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AA00b"
+    },
+    {
+        "name": "X82 AI 21 U+0042",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AB00b"
+    },
+    {
+        "name": "X82 AI 21 U+0043",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AC00b"
+    },
+    {
+        "name": "X82 AI 21 U+0044",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AD00b"
+    },
+    {
+        "name": "X82 AI 21 U+0045",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AE00b"
+    },
+    {
+        "name": "X82 AI 21 U+0046",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AF00b"
+    },
+    {
+        "name": "X82 AI 21 U+0047",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AG00b"
+    },
+    {
+        "name": "X82 AI 21 U+0048",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AH00b"
+    },
+    {
+        "name": "X82 AI 21 U+0049",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AI00b"
+    },
+    {
+        "name": "X82 AI 21 U+004A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AJ00b"
+    },
+    {
+        "name": "X82 AI 21 U+004B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AK00b"
+    },
+    {
+        "name": "X82 AI 21 U+004C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AL00b"
+    },
+    {
+        "name": "X82 AI 21 U+004D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AM00b"
+    },
+    {
+        "name": "X82 AI 21 U+004E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AN00b"
+    },
+    {
+        "name": "X82 AI 21 U+004F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AO00b"
+    },
+    {
+        "name": "X82 AI 21 U+0050",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AP00b"
+    },
+    {
+        "name": "X82 AI 21 U+0051",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AQ00b"
+    },
+    {
+        "name": "X82 AI 21 U+0052",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AR00b"
+    },
+    {
+        "name": "X82 AI 21 U+0053",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AS00b"
+    },
+    {
+        "name": "X82 AI 21 U+0054",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AT00b"
+    },
+    {
+        "name": "X82 AI 21 U+0055",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AU00b"
+    },
+    {
+        "name": "X82 AI 21 U+0056",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AV00b"
+    },
+    {
+        "name": "X82 AI 21 U+0057",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AW00b"
+    },
+    {
+        "name": "X82 AI 21 U+0058",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AX00b"
+    },
+    {
+        "name": "X82 AI 21 U+0059",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AY00b"
+    },
+    {
+        "name": "X82 AI 21 U+005A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/AZ00b"
+    },
+    {
+        "name": "X82 AI 21 U+0061",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Aa00b"
+    },
+    {
+        "name": "X82 AI 21 U+0062",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ab00b"
+    },
+    {
+        "name": "X82 AI 21 U+0063",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ac00b"
+    },
+    {
+        "name": "X82 AI 21 U+0064",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ad00b"
+    },
+    {
+        "name": "X82 AI 21 U+0065",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ae00b"
+    },
+    {
+        "name": "X82 AI 21 U+0066",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Af00b"
+    },
+    {
+        "name": "X82 AI 21 U+0067",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ag00b"
+    },
+    {
+        "name": "X82 AI 21 U+0068",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ah00b"
+    },
+    {
+        "name": "X82 AI 21 U+0069",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ai00b"
+    },
+    {
+        "name": "X82 AI 21 U+006A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Aj00b"
+    },
+    {
+        "name": "X82 AI 21 U+006B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ak00b"
+    },
+    {
+        "name": "X82 AI 21 U+006C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Al00b"
+    },
+    {
+        "name": "X82 AI 21 U+006D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Am00b"
+    },
+    {
+        "name": "X82 AI 21 U+006E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/An00b"
+    },
+    {
+        "name": "X82 AI 21 U+006F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ao00b"
+    },
+    {
+        "name": "X82 AI 21 U+0070",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ap00b"
+    },
+    {
+        "name": "X82 AI 21 U+0071",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Aq00b"
+    },
+    {
+        "name": "X82 AI 21 U+0072",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ar00b"
+    },
+    {
+        "name": "X82 AI 21 U+0073",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/As00b"
+    },
+    {
+        "name": "X82 AI 21 U+0074",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/At00b"
+    },
+    {
+        "name": "X82 AI 21 U+0075",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Au00b"
+    },
+    {
+        "name": "X82 AI 21 U+0076",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Av00b"
+    },
+    {
+        "name": "X82 AI 21 U+0077",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Aw00b"
+    },
+    {
+        "name": "X82 AI 21 U+0078",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ax00b"
+    },
+    {
+        "name": "X82 AI 21 U+0079",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Ay00b"
+    },
+    {
+        "name": "X82 AI 21 U+007A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/21\/Az00b"
+    },
+    {
+        "name": "X82 AI 235 U+0021",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2100b"
+    },
+    {
+        "name": "X82 AI 235 U+0022",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2200b"
+    },
+    {
+        "name": "X82 AI 235 U+0025",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2500b"
+    },
+    {
+        "name": "X82 AI 235 U+0026",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2600b"
+    },
+    {
+        "name": "X82 AI 235 U+0027",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2700b"
+    },
+    {
+        "name": "X82 AI 235 U+0028",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2800b"
+    },
+    {
+        "name": "X82 AI 235 U+0029",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2900b"
+    },
+    {
+        "name": "X82 AI 235 U+002A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2A00b"
+    },
+    {
+        "name": "X82 AI 235 U+002B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2B00b"
+    },
+    {
+        "name": "X82 AI 235 U+002C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2C00b"
+    },
+    {
+        "name": "X82 AI 235 U+002D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A-00b"
+    },
+    {
+        "name": "X82 AI 235 U+002E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A.00b"
+    },
+    {
+        "name": "X82 AI 235 U+002F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%2F00b"
+    },
+    {
+        "name": "X82 AI 235 U+003A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%3A00b"
+    },
+    {
+        "name": "X82 AI 235 U+003B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%3B00b"
+    },
+    {
+        "name": "X82 AI 235 U+003C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%3C00b"
+    },
+    {
+        "name": "X82 AI 235 U+003D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%3D00b"
+    },
+    {
+        "name": "X82 AI 235 U+003E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%3E00b"
+    },
+    {
+        "name": "X82 AI 235 U+003F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A%3F00b"
+    },
+    {
+        "name": "X82 AI 235 U+005F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A_00b"
+    },
+    {
+        "name": "X82 AI 235 U+0030",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A000b"
+    },
+    {
+        "name": "X82 AI 235 U+0031",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A100b"
+    },
+    {
+        "name": "X82 AI 235 U+0032",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A200b"
+    },
+    {
+        "name": "X82 AI 235 U+0033",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A300b"
+    },
+    {
+        "name": "X82 AI 235 U+0034",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A400b"
+    },
+    {
+        "name": "X82 AI 235 U+0035",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A500b"
+    },
+    {
+        "name": "X82 AI 235 U+0036",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A600b"
+    },
+    {
+        "name": "X82 AI 235 U+0037",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A700b"
+    },
+    {
+        "name": "X82 AI 235 U+0038",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A800b"
+    },
+    {
+        "name": "X82 AI 235 U+0039",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/A900b"
+    },
+    {
+        "name": "X82 AI 235 U+0041",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AA00b"
+    },
+    {
+        "name": "X82 AI 235 U+0042",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AB00b"
+    },
+    {
+        "name": "X82 AI 235 U+0043",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AC00b"
+    },
+    {
+        "name": "X82 AI 235 U+0044",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AD00b"
+    },
+    {
+        "name": "X82 AI 235 U+0045",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AE00b"
+    },
+    {
+        "name": "X82 AI 235 U+0046",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AF00b"
+    },
+    {
+        "name": "X82 AI 235 U+0047",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AG00b"
+    },
+    {
+        "name": "X82 AI 235 U+0048",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AH00b"
+    },
+    {
+        "name": "X82 AI 235 U+0049",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AI00b"
+    },
+    {
+        "name": "X82 AI 235 U+004A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AJ00b"
+    },
+    {
+        "name": "X82 AI 235 U+004B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AK00b"
+    },
+    {
+        "name": "X82 AI 235 U+004C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AL00b"
+    },
+    {
+        "name": "X82 AI 235 U+004D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AM00b"
+    },
+    {
+        "name": "X82 AI 235 U+004E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AN00b"
+    },
+    {
+        "name": "X82 AI 235 U+004F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AO00b"
+    },
+    {
+        "name": "X82 AI 235 U+0050",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AP00b"
+    },
+    {
+        "name": "X82 AI 235 U+0051",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AQ00b"
+    },
+    {
+        "name": "X82 AI 235 U+0052",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AR00b"
+    },
+    {
+        "name": "X82 AI 235 U+0053",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AS00b"
+    },
+    {
+        "name": "X82 AI 235 U+0054",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AT00b"
+    },
+    {
+        "name": "X82 AI 235 U+0055",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AU00b"
+    },
+    {
+        "name": "X82 AI 235 U+0056",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AV00b"
+    },
+    {
+        "name": "X82 AI 235 U+0057",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AW00b"
+    },
+    {
+        "name": "X82 AI 235 U+0058",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AX00b"
+    },
+    {
+        "name": "X82 AI 235 U+0059",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AY00b"
+    },
+    {
+        "name": "X82 AI 235 U+005A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/AZ00b"
+    },
+    {
+        "name": "X82 AI 235 U+0061",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Aa00b"
+    },
+    {
+        "name": "X82 AI 235 U+0062",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ab00b"
+    },
+    {
+        "name": "X82 AI 235 U+0063",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ac00b"
+    },
+    {
+        "name": "X82 AI 235 U+0064",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ad00b"
+    },
+    {
+        "name": "X82 AI 235 U+0065",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ae00b"
+    },
+    {
+        "name": "X82 AI 235 U+0066",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Af00b"
+    },
+    {
+        "name": "X82 AI 235 U+0067",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ag00b"
+    },
+    {
+        "name": "X82 AI 235 U+0068",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ah00b"
+    },
+    {
+        "name": "X82 AI 235 U+0069",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ai00b"
+    },
+    {
+        "name": "X82 AI 235 U+006A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Aj00b"
+    },
+    {
+        "name": "X82 AI 235 U+006B",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ak00b"
+    },
+    {
+        "name": "X82 AI 235 U+006C",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Al00b"
+    },
+    {
+        "name": "X82 AI 235 U+006D",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Am00b"
+    },
+    {
+        "name": "X82 AI 235 U+006E",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/An00b"
+    },
+    {
+        "name": "X82 AI 235 U+006F",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ao00b"
+    },
+    {
+        "name": "X82 AI 235 U+0070",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ap00b"
+    },
+    {
+        "name": "X82 AI 235 U+0071",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Aq00b"
+    },
+    {
+        "name": "X82 AI 235 U+0072",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ar00b"
+    },
+    {
+        "name": "X82 AI 235 U+0073",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/As00b"
+    },
+    {
+        "name": "X82 AI 235 U+0074",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/At00b"
+    },
+    {
+        "name": "X82 AI 235 U+0075",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Au00b"
+    },
+    {
+        "name": "X82 AI 235 U+0076",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Av00b"
+    },
+    {
+        "name": "X82 AI 235 U+0077",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Aw00b"
+    },
+    {
+        "name": "X82 AI 235 U+0078",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ax00b"
+    },
+    {
+        "name": "X82 AI 235 U+0079",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Ay00b"
+    },
+    {
+        "name": "X82 AI 235 U+007A",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/235\/Az00b"
+    },
+    {
+        "name": "Printing date production_date",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/DEMO-PBT-01\/21\/DEMO000001?11=261025"
+    },
+    {
+        "name": "Printing date best_before",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/DEMO-PBT-01\/21\/DEMO000001?15=261025"
+    },
+    {
+        "name": "Printing date use_by",
+        "uri": "https:\/\/openaliment.ro\/01\/09520000000011\/10\/DEMO-PBT-01\/21\/DEMO000001?17=261025"
+    }
+]

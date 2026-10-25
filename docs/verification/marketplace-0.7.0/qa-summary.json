@@ -1,0 +1,315 @@
+{
+  "executed_at": "2026-10-25T14:28:00.743025+00:00",
+  "environment": "isolated local QA; no production access or real email",
+  "suite": "browser",
+  "suites": [
+    {
+      "suite": "repository checks",
+      "passed": 422,
+      "exit_code": 0,
+      "seconds": 33.86
+    },
+    {
+      "suite": "generated contracts",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 2.42
+    },
+    {
+      "suite": "tests/test_repository.py",
+      "passed": 5,
+      "exit_code": 0,
+      "seconds": 7.03
+    },
+    {
+      "suite": "tests/test_security_sources.py",
+      "passed": 5,
+      "exit_code": 0,
+      "seconds": 0.19
+    },
+    {
+      "suite": "focused source security checks",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 1.55
+    },
+    {
+      "suite": "tests/bootstrap-unit.php",
+      "passed": 9,
+      "exit_code": 0,
+      "seconds": 0.16
+    },
+    {
+      "suite": "tests/security-unit.php",
+      "passed": 33,
+      "exit_code": 0,
+      "seconds": 0.27
+    },
+    {
+      "suite": "tests/operations-unit.php",
+      "passed": 13,
+      "exit_code": 0,
+      "seconds": 0.16
+    },
+    {
+      "suite": "tests/api-documentation.php",
+      "passed": 545,
+      "exit_code": 0,
+      "seconds": 2.62
+    },
+    {
+      "suite": "tests/test_api_reference_quality.py",
+      "passed": 5254,
+      "exit_code": 0,
+      "seconds": 0.42
+    },
+    {
+      "suite": "tests/test_public_content.py",
+      "passed": 1626,
+      "exit_code": 0,
+      "seconds": 0.47
+    },
+    {
+      "suite": "tests/consumer-domain.mjs",
+      "passed": 35,
+      "exit_code": 0,
+      "seconds": 0.2
+    },
+    {
+      "suite": "tests/cloud-client-domain.mjs",
+      "passed": 14,
+      "exit_code": 0,
+      "seconds": 0.19
+    },
+    {
+      "suite": "tests/receipt-domain.mjs",
+      "passed": 11,
+      "exit_code": 0,
+      "seconds": 0.17
+    },
+    {
+      "suite": "tests/api-explorer.mjs",
+      "passed": 14,
+      "exit_code": 0,
+      "seconds": 0.17
+    },
+    {
+      "suite": "tests/generators/fixtures.py",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.16
+    },
+    {
+      "suite": "tests/integration.php",
+      "passed": 70,
+      "exit_code": 0,
+      "seconds": 2.3
+    },
+    {
+      "suite": "tests/resolver.php",
+      "passed": 54,
+      "exit_code": 0,
+      "seconds": 0.31
+    },
+    {
+      "suite": "tests/demo-bread.php",
+      "passed": 18,
+      "exit_code": 0,
+      "seconds": 0.17
+    },
+    {
+      "suite": "tests/consumer.php",
+      "passed": 43,
+      "exit_code": 0,
+      "seconds": 0.24
+    },
+    {
+      "suite": "tests/integrations.php",
+      "passed": 30,
+      "exit_code": 0,
+      "seconds": 0.31
+    },
+    {
+      "suite": "tests/mailer.php",
+      "passed": 11,
+      "exit_code": 0,
+      "seconds": 0.19
+    },
+    {
+      "suite": "tests/home-cloud.php",
+      "passed": 32,
+      "exit_code": 0,
+      "seconds": 0.48
+    },
+    {
+      "suite": "tests/api-platform.php",
+      "passed": 53,
+      "exit_code": 0,
+      "seconds": 0.53
+    },
+    {
+      "suite": "tests/security.php",
+      "passed": 37,
+      "exit_code": 0,
+      "seconds": 0.72
+    },
+    {
+      "suite": "tests/readiness.php",
+      "passed": 49,
+      "exit_code": 0,
+      "seconds": 2.61
+    },
+    {
+      "suite": "tests/marketplace.php",
+      "passed": 53,
+      "exit_code": 0,
+      "seconds": 0.5
+    },
+    {
+      "suite": "tests/gs1-reference.php",
+      "passed": 8,
+      "exit_code": 0,
+      "seconds": 0.44
+    },
+    {
+      "suite": "tests/api-reference-fixtures.php",
+      "passed": 1,
+      "exit_code": 0,
+      "seconds": 0.28
+    },
+    {
+      "suite": "tests/test_http.py",
+      "passed": 58,
+      "exit_code": 0,
+      "seconds": 3.69
+    },
+    {
+      "suite": "tests/test_resolver_http.py",
+      "passed": 117,
+      "exit_code": 0,
+      "seconds": 3.19
+    },
+    {
+      "suite": "tests/test_demo_bread.py",
+      "passed": 48,
+      "exit_code": 0,
+      "seconds": 0.95
+    },
+    {
+      "suite": "tests/test_integrations_http.py",
+      "passed": 18,
+      "exit_code": 0,
+      "seconds": 0.66
+    },
+    {
+      "suite": "tests/test_home_http.py",
+      "passed": 16,
+      "exit_code": 0,
+      "seconds": 0.67
+    },
+    {
+      "suite": "tests/test_api_platform_http.py",
+      "passed": 87,
+      "exit_code": 0,
+      "seconds": 5.44
+    },
+    {
+      "suite": "tests/test_security_http.py",
+      "passed": 28,
+      "exit_code": 0,
+      "seconds": 1.92
+    },
+    {
+      "suite": "reset isolated reference rate counters",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.16
+    },
+    {
+      "suite": "tests/test_api_reference_http.py",
+      "passed": 220,
+      "exit_code": 0,
+      "seconds": 9.55
+    },
+    {
+      "suite": "tests/test_api_documentation.py",
+      "passed": 1121,
+      "exit_code": 0,
+      "seconds": 22.59
+    },
+    {
+      "suite": "tests/test_readiness_http.py",
+      "passed": 31,
+      "exit_code": 0,
+      "seconds": 2.77
+    },
+    {
+      "suite": "tests/test_marketplace_http.py",
+      "passed": 13,
+      "exit_code": 0,
+      "seconds": 3.05
+    },
+    {
+      "suite": "tests/test_api_coverage.py",
+      "passed": 258,
+      "exit_code": 0,
+      "seconds": 0.12
+    },
+    {
+      "suite": "tests/test_api_sdk.py",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.42
+    },
+    {
+      "suite": "tests/api-sdk.mjs",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.56
+    },
+    {
+      "suite": "tests/qr-matrices.cjs",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.2
+    },
+    {
+      "suite": "tests/test_qr.py",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.17
+    },
+    {
+      "suite": "tests/test_deploy_bridge.py",
+      "passed": 66,
+      "exit_code": 0,
+      "seconds": 2.06
+    },
+    {
+      "suite": "tests/consumer-browser.cjs",
+      "passed": 27,
+      "exit_code": 0,
+      "seconds": 6.05
+    },
+    {
+      "suite": "tests/account-access-browser.cjs",
+      "passed": 9,
+      "exit_code": 0,
+      "seconds": 3.83
+    },
+    {
+      "suite": "tests/marketplace-browser.cjs",
+      "passed": 39,
+      "exit_code": 0,
+      "seconds": 4.64
+    },
+    {
+      "suite": "tests/backup.php",
+      "passed": 15,
+      "exit_code": 0,
+      "seconds": 3.03
+    }
+  ],
+  "failed_suites": 0,
+  "completed": true
+}

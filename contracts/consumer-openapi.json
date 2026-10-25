@@ -1,0 +1,451 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAliment — API public pentru alimente",
+    "version": "2.0.0",
+    "description": "Informații alimentare publicate și aprobate, identificare de produs și lot și alerte curente. Aceste operații nu accesează rețete private, inventare personale sau preferințe de sănătate."
+  },
+  "servers": [
+    {
+      "url": "https://openaliment.ro"
+    }
+  ],
+  "paths": {
+    "/api/v2/public/food": {
+      "get": {
+        "summary": "Read the approved projection for a barcode, native page or GS1 Digital Link",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 4096
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Public approved data, or explicit unavailable fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "/api/schemas/consumer-product-profile.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid URI syntax"
+          },
+          "404": {
+            "description": "Native object not public"
+          },
+          "422": {
+            "description": "Invalid barcode, date or value"
+          },
+          "503": {
+            "description": "Service unavailable"
+          },
+          "401": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "403": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "429": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "operationId": "consumerGetApiV2PublicFood"
+      }
+    },
+    "/api/v2/public/capabilities": {
+      "get": {
+        "summary": "Runtime availability of optional consumer capabilities",
+        "responses": {
+          "200": {
+            "description": "Capability flags; not a conformance assertion"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "401": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "403": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "422": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "429": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "503": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "operationId": "consumerGetApiV2PublicCapabilities"
+      }
+    }
+  }
+}

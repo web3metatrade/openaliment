@@ -1,0 +1,95 @@
+{
+  "release": "PBT demonstration QR 2026-10-24",
+  "deployment_id": "4631ffede00f48b8820928d73c042a1a",
+  "requires": "Existing OpenAliment resolver 1.2.1 and public guide",
+  "files": [
+    {
+      "path": "app/Domain/DemoBread.php",
+      "sha256": "1831e315bf835ce767b7824b30c8072f62bfc69b6c339ea490bfefd775369ccd"
+    },
+    {
+      "path": "app/Controllers/DemoBreadController.php",
+      "sha256": "994cb2d13d84a383d937a12aa7780bae5a35beb384649a8af6a6453e66e58df2"
+    },
+    {
+      "path": "app/Views/demo-bread.php",
+      "sha256": "cac897e6f633700c8f9e6c7c2425c2209e80de1679f8824819494ce0b9f1d83d"
+    },
+    {
+      "path": "app/Views/demo-bread-print.php",
+      "sha256": "7b1328b0aa4f7f435ea1792d0ea66ed59e79239313f5ceee670984d5c4e3ad96"
+    },
+    {
+      "path": "public/assets/demo/pbt-produs-qr.svg",
+      "sha256": "dbc3f164b310bb5753d94a33375439c6c4a92a9fca16caee5470aff4637e59c8"
+    },
+    {
+      "path": "public/assets/demo/pbt-lot-qr.svg",
+      "sha256": "6fdbbf4baa266e758ad060139567948b37d0a7cf5d038e283892c5ec2e3ed2d8"
+    },
+    {
+      "path": "public/assets/demo-print.js",
+      "sha256": "8077d868ea612506788aa8aae8f9692da21d0b56f4a65ff20ba15588faea0f70"
+    },
+    {
+      "path": "public/assets/app.css",
+      "sha256": "00b66d1d172656e2fe419a89ff50be24496a6a60b89165458ef5271acdfd71d8"
+    },
+    {
+      "path": "app/Domain/Catalog.php",
+      "sha256": "14cde8fdb5fec9f95ac077423fba644b6d4ec6c816037241dea4bfd8e2027632"
+    },
+    {
+      "path": "app/Domain/Portability.php",
+      "sha256": "e4a7516128f43889a788838bd904c1de8bf05fabb7d8d7c315bcf34aab7b2e3b"
+    },
+    {
+      "path": "app/Controllers/ResolverController.php",
+      "sha256": "0316c1b02ac7aeebb93a8dc0795492bd1c741443af1afed3398b4cd14cb2de08"
+    },
+    {
+      "path": "app/Controllers/PublicController.php",
+      "sha256": "7e20c334d0588a2ab9fd4d99c93b8f59eea2217d731d462ddb2df80b8d8c5ad9"
+    },
+    {
+      "path": "app/Views/digital-link-guide.php",
+      "sha256": "f54b9bb5e737cc6c7e44714a4b97f7b327e66ca2357695ca88f6caa991d7faa4"
+    },
+    {
+      "path": "app/Views/layout.php",
+      "sha256": "5ab2d9cefee10bfb8425f767cb7b20fd3daee6242f9ce945030671f01329ac12"
+    },
+    {
+      "path": "tools/build-demo-qr.cjs",
+      "sha256": "354c919a35ecae5233afe86f509fe6777e6337a798e2bb414e8243e2fe53eedc"
+    },
+    {
+      "path": "tests/demo-bread.php",
+      "sha256": "08e583f59cf5ba469da9a82c013d1e06743a25578b4cbd2d230daa4c3f200e65"
+    },
+    {
+      "path": "tests/test_demo_bread.py",
+      "sha256": "b36e12510fd07e9f27ce24ffa758b47382c6034a40047e9d1d4e67503e011fd9"
+    },
+    {
+      "path": "tests/test_landing_production.py",
+      "sha256": "47da98ff4c4f9edd956fda22d12df548fbebf5a6bfb36763c02b14f1e3251cc8"
+    },
+    {
+      "path": "docs/updates/PBT_DEMO_QR_2026-10-24.md",
+      "sha256": "de8e9220fd313e3519cc3603820214092bd8e9dfc08ca8d3c171a045cc9ae57e"
+    },
+    {
+      "path": "docs/verification/demo-bread-domain-report.json",
+      "sha256": "7895f249a8115364acfcf3704cbe13c0aa10bb1a1c62edcee808a30c03ec389d"
+    },
+    {
+      "path": "docs/verification/demo-bread-local-report.json",
+      "sha256": "862103399535312820a8409494907a21bbe8101ea38e185c9f477f1046ea1537"
+    },
+    {
+      "path": "docs/verification/demo-bread-production-report.json",
+      "sha256": "a7e1536776f75cc06404be14ad469b180cab30cd034ee7d5b6a333b3b2699805"
+    }
+  ]
+}

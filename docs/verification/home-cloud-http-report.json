@@ -1,0 +1,71 @@
+{
+  "environment": "isolated local HTTP with private test cookies; no real email sent",
+  "passed": 16,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Guest has local use without authentication gate",
+      "passed": true
+    },
+    {
+      "name": "Private cookie authenticates only consumer principal",
+      "passed": true
+    },
+    {
+      "name": "Private session never permits credentialed CORS",
+      "passed": true
+    },
+    {
+      "name": "Consumer cookie cannot authenticate as producer",
+      "passed": true
+    },
+    {
+      "name": "Anonymous user cannot list household",
+      "passed": true
+    },
+    {
+      "name": "Private changes are paginated",
+      "passed": true
+    },
+    {
+      "name": "Invalid cursor rejected",
+      "passed": true
+    },
+    {
+      "name": "Cookie alone cannot mutate without separate CSRF",
+      "passed": true
+    },
+    {
+      "name": "Valid CSRF permits bounded sync",
+      "passed": true
+    },
+    {
+      "name": "Health preferences cannot be uploaded through sync",
+      "passed": true
+    },
+    {
+      "name": "Cross-origin household write blocked",
+      "passed": true
+    },
+    {
+      "name": "Authorized household can fetch private JPEG",
+      "passed": true
+    },
+    {
+      "name": "Anonymous user cannot fetch private photo",
+      "passed": true
+    },
+    {
+      "name": "Email scanner GET cannot consume a magic link",
+      "passed": true
+    },
+    {
+      "name": "Invalid magic link returns generic expired response",
+      "passed": true
+    },
+    {
+      "name": "Private API exposes no cross-origin preflight",
+      "passed": true
+    }
+  ]
+}

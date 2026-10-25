@@ -1,0 +1,11 @@
+{
+  "executed_on": "2026-10-24",
+  "environment": "production openaliment.ro, authenticated admin panel",
+  "transport": "SMTPS port 465",
+  "tls_certificate_verification": true,
+  "authentication_succeeded": true,
+  "email_sent": false,
+  "inbox_delivery_verified": false,
+  "credentials_read_or_logged": false,
+  "evidence": "docs/previews/smtp-authentication-production-2026-10-24.jpg"
+}

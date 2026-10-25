@@ -1,0 +1,46 @@
+{
+  "passed": 10,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Local route /",
+      "passed": true
+    },
+    {
+      "name": "Local route /gs1-digital-link",
+      "passed": true
+    },
+    {
+      "name": "Anonymous guide creates no session",
+      "passed": true
+    },
+    {
+      "name": "Development guide is noindex",
+      "passed": true
+    },
+    {
+      "name": "Guide semantic graph is valid JSON",
+      "passed": true
+    },
+    {
+      "name": "Local route /sitemap.xml",
+      "passed": true
+    },
+    {
+      "name": "Guide included in valid sitemap",
+      "passed": true
+    },
+    {
+      "name": "Local route /assets/digital-link-journey.svg",
+      "passed": true
+    },
+    {
+      "name": "Vector illustration contains no external image dependencies",
+      "passed": true
+    },
+    {
+      "name": "Local route /assets/digital-link-guide.js",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "openaliment.consumer-assets.v1",
+  "assets": [
+    {
+      "path": "public/assets/ocr/tesseract-core-lstm.wasm",
+      "url": "https://cdn.jsdelivr.net/npm/tesseract.js-core@7.0.0/tesseract-core-lstm.wasm",
+      "sha256": "66b17df6e20c5329a17ffa9c202a47eaa3e32500b253d4c7f38e7f2bc01457c3",
+      "bytes": 2855361,
+      "package": "tesseract.js-core",
+      "version": "7.0.0",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "public/assets/ocr/lang/eng.traineddata.gz",
+      "url": "https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int/eng.traineddata.gz",
+      "sha256": "45b4cb346724ac1774f1c36f42f182b887bcdb28ebe63e6fff90ac41f3fcff91",
+      "bytes": 2952873,
+      "package": "@tesseract.js-data/eng",
+      "version": "1.0.0",
+      "license": "MIT package; Apache-2.0 language data"
+    }
+  ]
+}

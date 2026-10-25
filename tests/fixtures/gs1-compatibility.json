@@ -1,0 +1,3532 @@
+{
+  "sources": [
+    "GS1 URI Syntax 1.7.0 sections 4.2,4.6,4.9,4.11",
+    "GS1 Resolver 1.2.1 sections 2.5.10,2.13",
+    "GS1 General Specifications 26.0.0 dates"
+  ],
+  "reference_year": 2026,
+  "cases": [
+    {
+      "name": "generic product",
+      "url": "https://openaliment.ro/01/09520000000011",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": null,
+      "expiry": null
+    },
+    {
+      "name": "short GTIN is padded outside URI",
+      "url": "9520000000011",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": null,
+      "expiry": null
+    },
+    {
+      "name": "ordered qualifiers",
+      "url": "https://openaliment.ro/01/09520000000011/22/2A/10/000Lot/21/Serial-A",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "2A",
+        "10": "000Lot",
+        "21": "Serial-A"
+      },
+      "expiry": null
+    },
+    {
+      "name": "stem and trailing slash",
+      "url": "https://example.org/catalog/01/09520000000011/10/LotA/",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "LotA"
+      },
+      "expiry": null
+    },
+    {
+      "name": "literal encoded slash preserved once",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%252FB",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A%2FB"
+      },
+      "expiry": null
+    },
+    {
+      "name": "dot segment value preserved by scanner",
+      "url": "https://openaliment.ro/01/09520000000011/10/%2E%2E",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": ".."
+      },
+      "expiry": null
+    },
+    {
+      "name": "TPX maximum length",
+      "url": "https://openaliment.ro/01/09520000000011/235/TTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "TTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+      },
+      "expiry": null
+    },
+    {
+      "name": "ampersand date",
+      "url": "https://openaliment.ro/01/09520000000011?15=261030",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": null,
+      "expiry": {
+        "kind": "best_before",
+        "value": "2026-10-30",
+        "precision": "day",
+        "raw": "261030",
+        "source": "barcode"
+      }
+    },
+    {
+      "name": "semicolon date",
+      "url": "https://openaliment.ro/01/09520000000011?x=1;17=261029",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": null,
+      "expiry": {
+        "kind": "use_by",
+        "value": "2026-10-29",
+        "precision": "day",
+        "raw": "261029",
+        "source": "barcode"
+      }
+    },
+    {
+      "name": "both observed dates keep use-by priority",
+      "url": "https://openaliment.ro/01/09520000000011?17=261029;15=261030",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": null,
+      "expiry": {
+        "kind": "use_by",
+        "value": "2026-10-29",
+        "precision": "day",
+        "raw": "261029",
+        "source": "barcode"
+      }
+    },
+    {
+      "name": "month-end precision",
+      "url": "https://openaliment.ro/01/09520000000011?15=280200",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": null,
+      "expiry": {
+        "kind": "best_before",
+        "value": "2028-02",
+        "precision": "month",
+        "raw": "280200",
+        "source": "barcode"
+      }
+    },
+    {
+      "name": "duplicate extension is forwarded",
+      "url": "https://openaliment.ro/01/09520000000011?custom=one&custom=two",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": null,
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0021",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A!00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0022",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A\"00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0025",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A%00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0026",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A&00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0027",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A'00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0028",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A(00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0029",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A)00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+002A",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A*00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+002B",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A+00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+002C",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A,00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+002D",
+      "url": "https://openaliment.ro/01/09520000000011/22/A-00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A-00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+002E",
+      "url": "https://openaliment.ro/01/09520000000011/22/A.00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A.00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+002F",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%2F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A/00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+003A",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%3A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A:00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+003B",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%3B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A;00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+003C",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%3C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A<00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+003D",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%3D00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A=00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+003E",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%3E00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A>00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+003F",
+      "url": "https://openaliment.ro/01/09520000000011/22/A%3F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A?00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+005F",
+      "url": "https://openaliment.ro/01/09520000000011/22/A_00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A_00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0030",
+      "url": "https://openaliment.ro/01/09520000000011/22/A000b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A000b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0031",
+      "url": "https://openaliment.ro/01/09520000000011/22/A100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A100b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0032",
+      "url": "https://openaliment.ro/01/09520000000011/22/A200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A200b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0033",
+      "url": "https://openaliment.ro/01/09520000000011/22/A300b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A300b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0034",
+      "url": "https://openaliment.ro/01/09520000000011/22/A400b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A400b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0035",
+      "url": "https://openaliment.ro/01/09520000000011/22/A500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A500b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0036",
+      "url": "https://openaliment.ro/01/09520000000011/22/A600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A600b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0037",
+      "url": "https://openaliment.ro/01/09520000000011/22/A700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A700b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0038",
+      "url": "https://openaliment.ro/01/09520000000011/22/A800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A800b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0039",
+      "url": "https://openaliment.ro/01/09520000000011/22/A900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "A900b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0041",
+      "url": "https://openaliment.ro/01/09520000000011/22/AA00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AA00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0042",
+      "url": "https://openaliment.ro/01/09520000000011/22/AB00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AB00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0043",
+      "url": "https://openaliment.ro/01/09520000000011/22/AC00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AC00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0044",
+      "url": "https://openaliment.ro/01/09520000000011/22/AD00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AD00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0045",
+      "url": "https://openaliment.ro/01/09520000000011/22/AE00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AE00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0046",
+      "url": "https://openaliment.ro/01/09520000000011/22/AF00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AF00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0047",
+      "url": "https://openaliment.ro/01/09520000000011/22/AG00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AG00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0048",
+      "url": "https://openaliment.ro/01/09520000000011/22/AH00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AH00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0049",
+      "url": "https://openaliment.ro/01/09520000000011/22/AI00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AI00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+004A",
+      "url": "https://openaliment.ro/01/09520000000011/22/AJ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AJ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+004B",
+      "url": "https://openaliment.ro/01/09520000000011/22/AK00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AK00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+004C",
+      "url": "https://openaliment.ro/01/09520000000011/22/AL00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AL00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+004D",
+      "url": "https://openaliment.ro/01/09520000000011/22/AM00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AM00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+004E",
+      "url": "https://openaliment.ro/01/09520000000011/22/AN00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AN00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+004F",
+      "url": "https://openaliment.ro/01/09520000000011/22/AO00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AO00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0050",
+      "url": "https://openaliment.ro/01/09520000000011/22/AP00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AP00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0051",
+      "url": "https://openaliment.ro/01/09520000000011/22/AQ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AQ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0052",
+      "url": "https://openaliment.ro/01/09520000000011/22/AR00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AR00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0053",
+      "url": "https://openaliment.ro/01/09520000000011/22/AS00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AS00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0054",
+      "url": "https://openaliment.ro/01/09520000000011/22/AT00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AT00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0055",
+      "url": "https://openaliment.ro/01/09520000000011/22/AU00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AU00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0056",
+      "url": "https://openaliment.ro/01/09520000000011/22/AV00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AV00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0057",
+      "url": "https://openaliment.ro/01/09520000000011/22/AW00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AW00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0058",
+      "url": "https://openaliment.ro/01/09520000000011/22/AX00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AX00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0059",
+      "url": "https://openaliment.ro/01/09520000000011/22/AY00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AY00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+005A",
+      "url": "https://openaliment.ro/01/09520000000011/22/AZ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "AZ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0061",
+      "url": "https://openaliment.ro/01/09520000000011/22/Aa00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Aa00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0062",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ab00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ab00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0063",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ac00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ac00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0064",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ad00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ad00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0065",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ae00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ae00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0066",
+      "url": "https://openaliment.ro/01/09520000000011/22/Af00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Af00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0067",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ag00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ag00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0068",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ah00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ah00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0069",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ai00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ai00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+006A",
+      "url": "https://openaliment.ro/01/09520000000011/22/Aj00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Aj00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+006B",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ak00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ak00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+006C",
+      "url": "https://openaliment.ro/01/09520000000011/22/Al00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Al00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+006D",
+      "url": "https://openaliment.ro/01/09520000000011/22/Am00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Am00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+006E",
+      "url": "https://openaliment.ro/01/09520000000011/22/An00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "An00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+006F",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ao00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ao00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0070",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ap00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ap00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0071",
+      "url": "https://openaliment.ro/01/09520000000011/22/Aq00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Aq00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0072",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ar00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ar00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0073",
+      "url": "https://openaliment.ro/01/09520000000011/22/As00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "As00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0074",
+      "url": "https://openaliment.ro/01/09520000000011/22/At00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "At00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0075",
+      "url": "https://openaliment.ro/01/09520000000011/22/Au00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Au00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0076",
+      "url": "https://openaliment.ro/01/09520000000011/22/Av00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Av00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0077",
+      "url": "https://openaliment.ro/01/09520000000011/22/Aw00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Aw00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0078",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ax00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ax00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+0079",
+      "url": "https://openaliment.ro/01/09520000000011/22/Ay00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Ay00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 22 U+007A",
+      "url": "https://openaliment.ro/01/09520000000011/22/Az00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "22": "Az00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0021",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A!00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0022",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A\"00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0025",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A%00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0026",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A&00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0027",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A'00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0028",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A(00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0029",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A)00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+002A",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A*00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+002B",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A+00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+002C",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A,00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+002D",
+      "url": "https://openaliment.ro/01/09520000000011/10/A-00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A-00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+002E",
+      "url": "https://openaliment.ro/01/09520000000011/10/A.00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A.00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+002F",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%2F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A/00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+003A",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%3A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A:00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+003B",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%3B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A;00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+003C",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%3C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A<00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+003D",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%3D00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A=00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+003E",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%3E00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A>00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+003F",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%3F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A?00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+005F",
+      "url": "https://openaliment.ro/01/09520000000011/10/A_00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A_00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0030",
+      "url": "https://openaliment.ro/01/09520000000011/10/A000b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A000b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0031",
+      "url": "https://openaliment.ro/01/09520000000011/10/A100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A100b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0032",
+      "url": "https://openaliment.ro/01/09520000000011/10/A200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A200b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0033",
+      "url": "https://openaliment.ro/01/09520000000011/10/A300b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A300b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0034",
+      "url": "https://openaliment.ro/01/09520000000011/10/A400b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A400b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0035",
+      "url": "https://openaliment.ro/01/09520000000011/10/A500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A500b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0036",
+      "url": "https://openaliment.ro/01/09520000000011/10/A600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A600b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0037",
+      "url": "https://openaliment.ro/01/09520000000011/10/A700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A700b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0038",
+      "url": "https://openaliment.ro/01/09520000000011/10/A800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A800b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0039",
+      "url": "https://openaliment.ro/01/09520000000011/10/A900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "A900b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0041",
+      "url": "https://openaliment.ro/01/09520000000011/10/AA00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AA00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0042",
+      "url": "https://openaliment.ro/01/09520000000011/10/AB00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AB00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0043",
+      "url": "https://openaliment.ro/01/09520000000011/10/AC00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AC00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0044",
+      "url": "https://openaliment.ro/01/09520000000011/10/AD00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AD00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0045",
+      "url": "https://openaliment.ro/01/09520000000011/10/AE00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AE00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0046",
+      "url": "https://openaliment.ro/01/09520000000011/10/AF00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AF00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0047",
+      "url": "https://openaliment.ro/01/09520000000011/10/AG00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AG00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0048",
+      "url": "https://openaliment.ro/01/09520000000011/10/AH00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AH00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0049",
+      "url": "https://openaliment.ro/01/09520000000011/10/AI00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AI00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+004A",
+      "url": "https://openaliment.ro/01/09520000000011/10/AJ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AJ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+004B",
+      "url": "https://openaliment.ro/01/09520000000011/10/AK00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AK00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+004C",
+      "url": "https://openaliment.ro/01/09520000000011/10/AL00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AL00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+004D",
+      "url": "https://openaliment.ro/01/09520000000011/10/AM00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AM00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+004E",
+      "url": "https://openaliment.ro/01/09520000000011/10/AN00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AN00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+004F",
+      "url": "https://openaliment.ro/01/09520000000011/10/AO00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AO00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0050",
+      "url": "https://openaliment.ro/01/09520000000011/10/AP00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AP00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0051",
+      "url": "https://openaliment.ro/01/09520000000011/10/AQ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AQ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0052",
+      "url": "https://openaliment.ro/01/09520000000011/10/AR00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AR00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0053",
+      "url": "https://openaliment.ro/01/09520000000011/10/AS00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AS00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0054",
+      "url": "https://openaliment.ro/01/09520000000011/10/AT00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AT00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0055",
+      "url": "https://openaliment.ro/01/09520000000011/10/AU00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AU00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0056",
+      "url": "https://openaliment.ro/01/09520000000011/10/AV00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AV00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0057",
+      "url": "https://openaliment.ro/01/09520000000011/10/AW00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AW00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0058",
+      "url": "https://openaliment.ro/01/09520000000011/10/AX00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AX00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0059",
+      "url": "https://openaliment.ro/01/09520000000011/10/AY00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AY00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+005A",
+      "url": "https://openaliment.ro/01/09520000000011/10/AZ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "AZ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0061",
+      "url": "https://openaliment.ro/01/09520000000011/10/Aa00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Aa00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0062",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ab00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ab00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0063",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ac00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ac00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0064",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ad00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ad00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0065",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ae00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ae00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0066",
+      "url": "https://openaliment.ro/01/09520000000011/10/Af00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Af00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0067",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ag00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ag00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0068",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ah00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ah00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0069",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ai00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ai00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+006A",
+      "url": "https://openaliment.ro/01/09520000000011/10/Aj00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Aj00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+006B",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ak00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ak00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+006C",
+      "url": "https://openaliment.ro/01/09520000000011/10/Al00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Al00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+006D",
+      "url": "https://openaliment.ro/01/09520000000011/10/Am00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Am00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+006E",
+      "url": "https://openaliment.ro/01/09520000000011/10/An00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "An00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+006F",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ao00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ao00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0070",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ap00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ap00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0071",
+      "url": "https://openaliment.ro/01/09520000000011/10/Aq00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Aq00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0072",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ar00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ar00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0073",
+      "url": "https://openaliment.ro/01/09520000000011/10/As00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "As00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0074",
+      "url": "https://openaliment.ro/01/09520000000011/10/At00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "At00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0075",
+      "url": "https://openaliment.ro/01/09520000000011/10/Au00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Au00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0076",
+      "url": "https://openaliment.ro/01/09520000000011/10/Av00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Av00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0077",
+      "url": "https://openaliment.ro/01/09520000000011/10/Aw00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Aw00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0078",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ax00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ax00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+0079",
+      "url": "https://openaliment.ro/01/09520000000011/10/Ay00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Ay00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 10 U+007A",
+      "url": "https://openaliment.ro/01/09520000000011/10/Az00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "10": "Az00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0021",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A!00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0022",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A\"00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0025",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A%00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0026",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A&00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0027",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A'00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0028",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A(00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0029",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A)00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+002A",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A*00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+002B",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A+00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+002C",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A,00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+002D",
+      "url": "https://openaliment.ro/01/09520000000011/21/A-00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A-00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+002E",
+      "url": "https://openaliment.ro/01/09520000000011/21/A.00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A.00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+002F",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%2F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A/00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+003A",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%3A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A:00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+003B",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%3B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A;00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+003C",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%3C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A<00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+003D",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%3D00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A=00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+003E",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%3E00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A>00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+003F",
+      "url": "https://openaliment.ro/01/09520000000011/21/A%3F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A?00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+005F",
+      "url": "https://openaliment.ro/01/09520000000011/21/A_00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A_00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0030",
+      "url": "https://openaliment.ro/01/09520000000011/21/A000b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A000b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0031",
+      "url": "https://openaliment.ro/01/09520000000011/21/A100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A100b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0032",
+      "url": "https://openaliment.ro/01/09520000000011/21/A200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A200b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0033",
+      "url": "https://openaliment.ro/01/09520000000011/21/A300b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A300b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0034",
+      "url": "https://openaliment.ro/01/09520000000011/21/A400b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A400b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0035",
+      "url": "https://openaliment.ro/01/09520000000011/21/A500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A500b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0036",
+      "url": "https://openaliment.ro/01/09520000000011/21/A600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A600b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0037",
+      "url": "https://openaliment.ro/01/09520000000011/21/A700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A700b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0038",
+      "url": "https://openaliment.ro/01/09520000000011/21/A800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A800b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0039",
+      "url": "https://openaliment.ro/01/09520000000011/21/A900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "A900b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0041",
+      "url": "https://openaliment.ro/01/09520000000011/21/AA00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AA00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0042",
+      "url": "https://openaliment.ro/01/09520000000011/21/AB00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AB00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0043",
+      "url": "https://openaliment.ro/01/09520000000011/21/AC00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AC00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0044",
+      "url": "https://openaliment.ro/01/09520000000011/21/AD00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AD00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0045",
+      "url": "https://openaliment.ro/01/09520000000011/21/AE00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AE00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0046",
+      "url": "https://openaliment.ro/01/09520000000011/21/AF00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AF00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0047",
+      "url": "https://openaliment.ro/01/09520000000011/21/AG00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AG00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0048",
+      "url": "https://openaliment.ro/01/09520000000011/21/AH00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AH00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0049",
+      "url": "https://openaliment.ro/01/09520000000011/21/AI00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AI00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+004A",
+      "url": "https://openaliment.ro/01/09520000000011/21/AJ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AJ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+004B",
+      "url": "https://openaliment.ro/01/09520000000011/21/AK00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AK00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+004C",
+      "url": "https://openaliment.ro/01/09520000000011/21/AL00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AL00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+004D",
+      "url": "https://openaliment.ro/01/09520000000011/21/AM00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AM00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+004E",
+      "url": "https://openaliment.ro/01/09520000000011/21/AN00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AN00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+004F",
+      "url": "https://openaliment.ro/01/09520000000011/21/AO00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AO00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0050",
+      "url": "https://openaliment.ro/01/09520000000011/21/AP00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AP00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0051",
+      "url": "https://openaliment.ro/01/09520000000011/21/AQ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AQ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0052",
+      "url": "https://openaliment.ro/01/09520000000011/21/AR00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AR00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0053",
+      "url": "https://openaliment.ro/01/09520000000011/21/AS00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AS00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0054",
+      "url": "https://openaliment.ro/01/09520000000011/21/AT00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AT00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0055",
+      "url": "https://openaliment.ro/01/09520000000011/21/AU00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AU00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0056",
+      "url": "https://openaliment.ro/01/09520000000011/21/AV00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AV00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0057",
+      "url": "https://openaliment.ro/01/09520000000011/21/AW00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AW00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0058",
+      "url": "https://openaliment.ro/01/09520000000011/21/AX00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AX00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0059",
+      "url": "https://openaliment.ro/01/09520000000011/21/AY00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AY00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+005A",
+      "url": "https://openaliment.ro/01/09520000000011/21/AZ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "AZ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0061",
+      "url": "https://openaliment.ro/01/09520000000011/21/Aa00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Aa00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0062",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ab00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ab00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0063",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ac00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ac00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0064",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ad00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ad00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0065",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ae00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ae00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0066",
+      "url": "https://openaliment.ro/01/09520000000011/21/Af00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Af00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0067",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ag00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ag00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0068",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ah00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ah00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0069",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ai00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ai00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+006A",
+      "url": "https://openaliment.ro/01/09520000000011/21/Aj00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Aj00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+006B",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ak00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ak00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+006C",
+      "url": "https://openaliment.ro/01/09520000000011/21/Al00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Al00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+006D",
+      "url": "https://openaliment.ro/01/09520000000011/21/Am00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Am00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+006E",
+      "url": "https://openaliment.ro/01/09520000000011/21/An00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "An00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+006F",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ao00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ao00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0070",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ap00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ap00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0071",
+      "url": "https://openaliment.ro/01/09520000000011/21/Aq00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Aq00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0072",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ar00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ar00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0073",
+      "url": "https://openaliment.ro/01/09520000000011/21/As00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "As00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0074",
+      "url": "https://openaliment.ro/01/09520000000011/21/At00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "At00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0075",
+      "url": "https://openaliment.ro/01/09520000000011/21/Au00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Au00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0076",
+      "url": "https://openaliment.ro/01/09520000000011/21/Av00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Av00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0077",
+      "url": "https://openaliment.ro/01/09520000000011/21/Aw00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Aw00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0078",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ax00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ax00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+0079",
+      "url": "https://openaliment.ro/01/09520000000011/21/Ay00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Ay00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 21 U+007A",
+      "url": "https://openaliment.ro/01/09520000000011/21/Az00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "21": "Az00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0021",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A!00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0022",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A\"00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0025",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A%00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0026",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A&00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0027",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A'00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0028",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A(00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0029",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A)00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+002A",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A*00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+002B",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A+00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+002C",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A,00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+002D",
+      "url": "https://openaliment.ro/01/09520000000011/235/A-00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A-00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+002E",
+      "url": "https://openaliment.ro/01/09520000000011/235/A.00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A.00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+002F",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%2F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A/00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+003A",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%3A00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A:00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+003B",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%3B00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A;00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+003C",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%3C00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A<00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+003D",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%3D00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A=00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+003E",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%3E00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A>00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+003F",
+      "url": "https://openaliment.ro/01/09520000000011/235/A%3F00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A?00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+005F",
+      "url": "https://openaliment.ro/01/09520000000011/235/A_00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A_00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0030",
+      "url": "https://openaliment.ro/01/09520000000011/235/A000b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A000b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0031",
+      "url": "https://openaliment.ro/01/09520000000011/235/A100b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A100b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0032",
+      "url": "https://openaliment.ro/01/09520000000011/235/A200b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A200b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0033",
+      "url": "https://openaliment.ro/01/09520000000011/235/A300b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A300b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0034",
+      "url": "https://openaliment.ro/01/09520000000011/235/A400b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A400b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0035",
+      "url": "https://openaliment.ro/01/09520000000011/235/A500b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A500b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0036",
+      "url": "https://openaliment.ro/01/09520000000011/235/A600b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A600b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0037",
+      "url": "https://openaliment.ro/01/09520000000011/235/A700b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A700b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0038",
+      "url": "https://openaliment.ro/01/09520000000011/235/A800b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A800b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0039",
+      "url": "https://openaliment.ro/01/09520000000011/235/A900b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "A900b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0041",
+      "url": "https://openaliment.ro/01/09520000000011/235/AA00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AA00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0042",
+      "url": "https://openaliment.ro/01/09520000000011/235/AB00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AB00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0043",
+      "url": "https://openaliment.ro/01/09520000000011/235/AC00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AC00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0044",
+      "url": "https://openaliment.ro/01/09520000000011/235/AD00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AD00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0045",
+      "url": "https://openaliment.ro/01/09520000000011/235/AE00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AE00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0046",
+      "url": "https://openaliment.ro/01/09520000000011/235/AF00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AF00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0047",
+      "url": "https://openaliment.ro/01/09520000000011/235/AG00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AG00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0048",
+      "url": "https://openaliment.ro/01/09520000000011/235/AH00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AH00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0049",
+      "url": "https://openaliment.ro/01/09520000000011/235/AI00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AI00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+004A",
+      "url": "https://openaliment.ro/01/09520000000011/235/AJ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AJ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+004B",
+      "url": "https://openaliment.ro/01/09520000000011/235/AK00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AK00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+004C",
+      "url": "https://openaliment.ro/01/09520000000011/235/AL00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AL00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+004D",
+      "url": "https://openaliment.ro/01/09520000000011/235/AM00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AM00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+004E",
+      "url": "https://openaliment.ro/01/09520000000011/235/AN00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AN00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+004F",
+      "url": "https://openaliment.ro/01/09520000000011/235/AO00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AO00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0050",
+      "url": "https://openaliment.ro/01/09520000000011/235/AP00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AP00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0051",
+      "url": "https://openaliment.ro/01/09520000000011/235/AQ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AQ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0052",
+      "url": "https://openaliment.ro/01/09520000000011/235/AR00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AR00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0053",
+      "url": "https://openaliment.ro/01/09520000000011/235/AS00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AS00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0054",
+      "url": "https://openaliment.ro/01/09520000000011/235/AT00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AT00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0055",
+      "url": "https://openaliment.ro/01/09520000000011/235/AU00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AU00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0056",
+      "url": "https://openaliment.ro/01/09520000000011/235/AV00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AV00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0057",
+      "url": "https://openaliment.ro/01/09520000000011/235/AW00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AW00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0058",
+      "url": "https://openaliment.ro/01/09520000000011/235/AX00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AX00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0059",
+      "url": "https://openaliment.ro/01/09520000000011/235/AY00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AY00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+005A",
+      "url": "https://openaliment.ro/01/09520000000011/235/AZ00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "AZ00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0061",
+      "url": "https://openaliment.ro/01/09520000000011/235/Aa00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Aa00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0062",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ab00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ab00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0063",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ac00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ac00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0064",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ad00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ad00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0065",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ae00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ae00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0066",
+      "url": "https://openaliment.ro/01/09520000000011/235/Af00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Af00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0067",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ag00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ag00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0068",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ah00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ah00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0069",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ai00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ai00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+006A",
+      "url": "https://openaliment.ro/01/09520000000011/235/Aj00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Aj00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+006B",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ak00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ak00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+006C",
+      "url": "https://openaliment.ro/01/09520000000011/235/Al00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Al00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+006D",
+      "url": "https://openaliment.ro/01/09520000000011/235/Am00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Am00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+006E",
+      "url": "https://openaliment.ro/01/09520000000011/235/An00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "An00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+006F",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ao00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ao00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0070",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ap00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ap00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0071",
+      "url": "https://openaliment.ro/01/09520000000011/235/Aq00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Aq00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0072",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ar00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ar00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0073",
+      "url": "https://openaliment.ro/01/09520000000011/235/As00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "As00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0074",
+      "url": "https://openaliment.ro/01/09520000000011/235/At00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "At00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0075",
+      "url": "https://openaliment.ro/01/09520000000011/235/Au00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Au00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0076",
+      "url": "https://openaliment.ro/01/09520000000011/235/Av00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Av00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0077",
+      "url": "https://openaliment.ro/01/09520000000011/235/Aw00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Aw00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0078",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ax00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ax00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+0079",
+      "url": "https://openaliment.ro/01/09520000000011/235/Ay00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Ay00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "X82 AI 235 U+007A",
+      "url": "https://openaliment.ro/01/09520000000011/235/Az00b",
+      "valid": true,
+      "gtin14": "09520000000011",
+      "qualifiers": {
+        "235": "Az00b"
+      },
+      "expiry": null
+    },
+    {
+      "name": "wrong qualifier order",
+      "url": "https://openaliment.ro/01/09520000000011/21/S/10/L",
+      "valid": false
+    },
+    {
+      "name": "unknown qualifier",
+      "url": "https://openaliment.ro/01/09520000000011/99/X",
+      "valid": false
+    },
+    {
+      "name": "repeated qualifier",
+      "url": "https://openaliment.ro/01/09520000000011/10/A/10/B",
+      "valid": false
+    },
+    {
+      "name": "TPX plus lot",
+      "url": "https://openaliment.ro/01/09520000000011/10/A/235/T",
+      "valid": false
+    },
+    {
+      "name": "empty qualifier",
+      "url": "https://openaliment.ro/01/09520000000011/10/",
+      "valid": false
+    },
+    {
+      "name": "oversized lot",
+      "url": "https://openaliment.ro/01/09520000000011/10/LLLLLLLLLLLLLLLLLLLLL",
+      "valid": false
+    },
+    {
+      "name": "oversized serial",
+      "url": "https://openaliment.ro/01/09520000000011/21/SSSSSSSSSSSSSSSSSSSSS",
+      "valid": false
+    },
+    {
+      "name": "oversized CPV",
+      "url": "https://openaliment.ro/01/09520000000011/22/VVVVVVVVVVVVVVVVVVVVV",
+      "valid": false
+    },
+    {
+      "name": "oversized TPX",
+      "url": "https://openaliment.ro/01/09520000000011/235/TTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+      "valid": false
+    },
+    {
+      "name": "forbidden space",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%20B",
+      "valid": false
+    },
+    {
+      "name": "forbidden hash",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%23B",
+      "valid": false
+    },
+    {
+      "name": "forbidden tilde",
+      "url": "https://openaliment.ro/01/09520000000011/21/A~B",
+      "valid": false
+    },
+    {
+      "name": "forbidden UTF8",
+      "url": "https://openaliment.ro/01/09520000000011/10/%C8%99",
+      "valid": false
+    },
+    {
+      "name": "malformed percent",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%Q1",
+      "valid": false
+    },
+    {
+      "name": "encoded control",
+      "url": "https://openaliment.ro/01/09520000000011/10/A%0AB",
+      "valid": false
+    },
+    {
+      "name": "duplicate selection",
+      "url": "https://openaliment.ro/01/09520000000011?linkType=gs1:pip;linkType=gs1:masterData",
+      "valid": false
+    },
+    {
+      "name": "duplicate date",
+      "url": "https://openaliment.ro/01/09520000000011?17=261029;17=261030",
+      "valid": false
+    },
+    {
+      "name": "invalid calendar",
+      "url": "https://openaliment.ro/01/09520000000011?17=260231",
+      "valid": false
+    },
+    {
+      "name": "control query",
+      "url": "https://openaliment.ro/01/09520000000011?x=%0A",
+      "valid": false
+    },
+    {
+      "name": "malformed query encoding",
+      "url": "https://openaliment.ro/01/09520000000011?x=%Q1",
+      "valid": false
+    },
+    {
+      "name": "missing query value",
+      "url": "https://openaliment.ro/01/09520000000011?x",
+      "valid": false
+    },
+    {
+      "name": "bad GTIN check digit",
+      "url": "https://openaliment.ro/01/09520000000012",
+      "valid": false
+    }
+  ]
+}

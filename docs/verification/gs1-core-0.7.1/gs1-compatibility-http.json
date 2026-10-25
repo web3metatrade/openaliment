@@ -1,0 +1,42 @@
+{
+  "passed": 9,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Public projection preserves all qualifiers once",
+      "passed": true
+    },
+    {
+      "name": "Semicolon has the same date semantics over HTTP",
+      "passed": true
+    },
+    {
+      "name": "Malformed GS1 request rejected /21/S/10/L",
+      "passed": true
+    },
+    {
+      "name": "Malformed GS1 request rejected /99/X",
+      "passed": true
+    },
+    {
+      "name": "Malformed GS1 request rejected /10/L/235/T",
+      "passed": true
+    },
+    {
+      "name": "Malformed GS1 request rejected /10/%20",
+      "passed": true
+    },
+    {
+      "name": "Private sync accepts additive GS1 metadata",
+      "passed": true
+    },
+    {
+      "name": "Private change feed retains serial CPV lot and original URL",
+      "passed": true
+    },
+    {
+      "name": "Observed date survives sync without becoming producer approved",
+      "passed": true
+    }
+  ]
+}

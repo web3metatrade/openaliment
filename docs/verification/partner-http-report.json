@@ -1,0 +1,79 @@
+{
+  "environment": "isolated local HTTP; simulated ERP/retailer",
+  "passed": 18,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Public CORS without credentials /api/v2/public/food?code=9520000000011",
+      "passed": true
+    },
+    {
+      "name": "Public preflight /api/v2/public/food?code=9520000000011",
+      "passed": true
+    },
+    {
+      "name": "Public CORS without credentials /api/v2/public/capabilities",
+      "passed": true
+    },
+    {
+      "name": "Public preflight /api/v2/public/capabilities",
+      "passed": true
+    },
+    {
+      "name": "Public CORS without credentials /api/schemas/partner-mapping.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Public preflight /api/schemas/partner-mapping.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Public CORS without credentials /api/integration-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Public preflight /api/integration-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Public read API rejects mutation with correct Allow",
+      "passed": true
+    },
+    {
+      "name": "Validation errors preserve public CORS",
+      "passed": true
+    },
+    {
+      "name": "Connector requires producer authentication",
+      "passed": true
+    },
+    {
+      "name": "Producer lists its connectors by scoped token",
+      "passed": true
+    },
+    {
+      "name": "Cross-origin producer mutation blocked",
+      "passed": true
+    },
+    {
+      "name": "Receipt capability never accepted in GET URL",
+      "passed": true
+    },
+    {
+      "name": "Guest can preview private receipt through POST",
+      "passed": true
+    },
+    {
+      "name": "Receipt cross-origin lookup blocked",
+      "passed": true
+    },
+    {
+      "name": "Unknown capability is not enumerable",
+      "passed": true
+    },
+    {
+      "name": "Receipt app markup has one confirmation action",
+      "passed": true
+    }
+  ]
+}

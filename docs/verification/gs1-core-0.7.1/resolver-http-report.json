@@ -1,0 +1,476 @@
+{
+  "suite": "GS1 resolver HTTP conformance",
+  "standard": "GS1-Conformant Resolver 1.2.1; GTIN profile; EPC TDS 2.3",
+  "passed": 117,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Descriptor validates against official GS1 schema",
+      "passed": true
+    },
+    {
+      "name": "Descriptor and public response expose permissive read-only CORS",
+      "passed": true
+    },
+    {
+      "name": "Context is locally served JSON-LD",
+      "passed": true
+    },
+    {
+      "name": "OPTIONS and CORS preflight /01/09506000134352",
+      "passed": true
+    },
+    {
+      "name": "OPTIONS and CORS preflight /.well-known/gs1resolver",
+      "passed": true
+    },
+    {
+      "name": "OPTIONS and CORS preflight /eh30164596f40c0e5cbe991a83",
+      "passed": true
+    },
+    {
+      "name": "Default GET redirects once to public product page",
+      "passed": true
+    },
+    {
+      "name": "HEAD preserves redirect without response body",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09506000134352/21/serial-unknown",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09506000134352/22/variant/10/unknown/21/serial",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09506000134352/235/tpx",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09506000134352/",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09506000134353",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09506000134352/21/S/10/L",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09506000134352/10/L/235/T",
+      "passed": true
+    },
+    {
+      "name": "Identifier status /01/09521234000006",
+      "passed": true
+    },
+    {
+      "name": "Unsupported mutation returns 405 with Allow",
+      "passed": true
+    },
+    {
+      "name": "Official linkset schema /01/09506000134352?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "JSON-LD context header supplied /01/09506000134352?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "Private recipe and tenant identifiers excluded /01/09506000134352?linkType=linkset",
+      "passed": true
+    },
+    {
+      "name": "Official linkset schema /01/09506000134352",
+      "passed": true
+    },
+    {
+      "name": "JSON-LD context header supplied /01/09506000134352",
+      "passed": true
+    },
+    {
+      "name": "Private recipe and tenant identifiers excluded /01/09506000134352",
+      "passed": true
+    },
+    {
+      "name": "Official linkset schema /01/09506000134352?linkType=all",
+      "passed": true
+    },
+    {
+      "name": "JSON-LD context header supplied /01/09506000134352?linkType=all",
+      "passed": true
+    },
+    {
+      "name": "Private recipe and tenant identifiers excluded /01/09506000134352?linkType=all",
+      "passed": true
+    },
+    {
+      "name": "Human-readable linkset includes hyperlinks and JSON-LD",
+      "passed": true
+    },
+    {
+      "name": "Explicit JSON-LD embeds context",
+      "passed": true
+    },
+    {
+      "name": "Linkset representation honors media preference quality",
+      "passed": true
+    },
+    {
+      "name": "HEAD linkset has no body",
+      "passed": true
+    },
+    {
+      "name": "Unavailable requested relation returns 404",
+      "passed": true
+    },
+    {
+      "name": "q=0 linkset preference does not force linkset",
+      "passed": true
+    },
+    {
+      "name": "Lot redirect retains exact historical batch",
+      "passed": true
+    },
+    {
+      "name": "All query values and duplicate extension keys are forwarded exactly",
+      "passed": true
+    },
+    {
+      "name": "Unknown lot inherits product links without selecting another batch",
+      "passed": true
+    },
+    {
+      "name": "ERP API creates a private resolver draft",
+      "passed": true
+    },
+    {
+      "name": "Draft cannot influence public resolution",
+      "passed": true
+    },
+    {
+      "name": "ERP API approves resolver destination separately",
+      "passed": true
+    },
+    {
+      "name": "Specific serial relation resolves with target query and fragment intact",
+      "passed": true
+    },
+    {
+      "name": "Other tenant cannot read owner resolver history",
+      "passed": true
+    },
+    {
+      "name": "ERP API withdrawal preserves history and removes active destination",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 0 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 0 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 1 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 1 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 2 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 2 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 3 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 3 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 4 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 4 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 5 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 5 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 6 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-96 partition 6 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-198 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN-198 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 0 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 0 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 1 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 1 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 2 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 2 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 3 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 3 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 4 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 4 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 5 eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ encoding 5 ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "DSGTIN+ eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "DSGTIN+ ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN++ ASCII hostname eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN++ ASCII hostname ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN++ optimized hostname eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "Custom EPC hostname retained in uncompressed anchor eh",
+      "passed": true
+    },
+    {
+      "name": "SGTIN++ optimized hostname ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "Custom EPC hostname retained in uncompressed anchor ex",
+      "passed": true
+    },
+    {
+      "name": "DSGTIN++ Code40 hostname eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "DSGTIN++ Code40 hostname ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ plus data eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ plus data ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "DSGTIN+ unspecified day eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "DSGTIN+ unspecified day ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute fixed numeric eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute fixed numeric ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute fixed numeric long eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute fixed numeric long ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute fixed BCD eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute fixed BCD ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute delimited numeric eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute delimited numeric ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute mixed numeric alphanumeric eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute mixed numeric alphanumeric ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute single bit eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute single bit ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute date eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute date ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute date time midnight eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute date time midnight ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute date range eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute date range ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision date eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision date ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision hour eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision hour ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision minute eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision minute ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision seconds eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable precision seconds ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute country eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute country ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable numeric eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute variable numeric ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute optional negative sign eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute optional negative sign ex resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute sequence indicator eh resolves to decompressed identity",
+      "passed": true
+    },
+    {
+      "name": "SGTIN+ attribute sequence indicator ex resolves to decompressed identity",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "host": "mail.openaliment.ro",
+  "port": 465,
+  "authentication_attempted": false,
+  "email_sent": false,
+  "certificate_verification": "system trust and hostname verification enabled",
+  "executed_at": "2026-10-24T09:05:37.058532+00:00",
+  "connected": true,
+  "tls_version": "TLSv1.3",
+  "certificate_expires": "Jan 21 06:49:22 2027 GMT",
+  "passed": true
+}

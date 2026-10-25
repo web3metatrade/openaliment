@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment public consumer product v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "name",
+    "food_data",
+    "expiry",
+    "alerts",
+    "alerts_checked_at",
+    "source",
+    "simulation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "openaliment.consumer-product.v1"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 180
+    },
+    "food_data": {
+      "$ref": "food-data.schema.json"
+    },
+    "expiry": {
+      "anyOf": [
+        {
+          "$ref": "food-date.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "alerts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "alerts_checked_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "type": "object"
+    },
+    "simulation": {
+      "type": "boolean"
+    },
+    "gs1_qualifiers": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "22": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            },
+            "10": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            },
+            "21": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            },
+            "235": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Observed GS1 key qualifiers, decoded exactly once; not a producer approval or proof of purchase. TPX is exclusive; serial + lot + CPV are permitted in a request URI."
+    }
+  },
+  "additionalProperties": true
+}

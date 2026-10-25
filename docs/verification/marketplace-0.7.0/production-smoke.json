@@ -1,0 +1,299 @@
+{
+  "release": "0.7.0",
+  "checked_at": "2026-10-25T14:37:41.258531+00:00",
+  "production_migration_008": "active: authenticated admin confirmation and public capability flags",
+  "read_only": true,
+  "passed": true,
+  "count": 32,
+  "checks": [
+    {
+      "path": "/api/v2/public/status",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "2208fa7c79f52fe261a552e3321d4db6e1491dc329485a90dcea2776f6487c9b"
+    },
+    {
+      "path": "/api/manifest.json",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 93,
+      "body_sha256": "6a0dc0009f794ca2f9582126c49738aa527e3202c4a3b3f5b2192e142b087896"
+    },
+    {
+      "path": "/api/docs/index.json",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 172,
+      "body_sha256": "d7b715d2cbddb21135ea6821371dd4311a5086daac238dc306bd4e06efa4ccd7"
+    },
+    {
+      "path": "/api/platform-openapi.json",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 797,
+      "body_sha256": "461bd4a938c64e684fbb431afcc095bb20fd4fa8de3229663cb3cd2becc00871"
+    },
+    {
+      "path": "/api/docs",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 359,
+      "body_sha256": "f2fca9dd6d232347aa0cc11b9aceb4e9ad2645b0a9fb8d920826cab65fea18b4"
+    },
+    {
+      "path": "/api/docs/guides/marketplace",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 375,
+      "body_sha256": "5871cbb5156ddf5e1b50395e1375ddc5e8426612ab876d6037f97a8f18b0d1d5"
+    },
+    {
+      "path": "/api/docs/guides/marketplace.md",
+      "method": "GET",
+      "accept": "text/markdown",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 110,
+      "body_sha256": "3e42be6260d768ccf4a1086f131b33d2e815a4fd85ec637447a5fbff3a1073a0"
+    },
+    {
+      "path": "/api/v2/public/standards/gs1",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 109,
+      "body_sha256": "347f0da9036a53975e869960b7d7d6e5f1ceba8f54c5ff52d1661271aec4e50f"
+    },
+    {
+      "path": "/standarde/gs1",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "1b0f9cf78d24a01da8552788fe37650b5bddf9c741e93b5af696bf022bcf0810"
+    },
+    {
+      "path": "/standarde/gs1",
+      "method": "HEAD",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/marketplace",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 78,
+      "body_sha256": "6b98fe28f2b35d5555241e397aef8bb89a0710b60588e4bd7ae6a301bfa78f2d"
+    },
+    {
+      "path": "/api/v2/public/marketplace/apps",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 109,
+      "body_sha256": "d8d2fcffbe9783a3038ae23fd75dca5d4a5041f03a8656c16f924c544dfd2f32"
+    },
+    {
+      "path": "/.well-known/gs1resolver",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "374f9b630935aa9f09b6cf0437b35607abf8f25178824911cd174ddf222b123f"
+    },
+    {
+      "path": "/01/09520000000011",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 307,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/01/09520000000011",
+      "method": "GET",
+      "accept": "application/linkset+json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 109,
+      "body_sha256": "efd6a0d821006718e5b5a745327e4491fadca34bdd8409b8ab3ec2c653b3f863"
+    },
+    {
+      "path": "/demo/paine-buna-tehnic",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 78,
+      "body_sha256": "b1404bb50e7b49b5ad346854370aacc6646312368a7c4c081fc40af155c9eeb3"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 307,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01",
+      "method": "GET",
+      "accept": "application/linkset+json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 110,
+      "body_sha256": "e984766ec3d566da522e8a6b5ed4a4fb88e03dd3349a72a0d356545120d90f94"
+    },
+    {
+      "path": "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 93,
+      "body_sha256": "0a6a974f383d6b1c50aac4d69b3f47f9a5297d6cdf7e6a85c9eebcee870dd519"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01/21/DEMO000001?11=261025&15=261030",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 307,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01/21/DEMO000001?11=261025&15=261030",
+      "method": "GET",
+      "accept": "application/linkset+json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "120d1d5cd58a9cc329b9b54b27958e889fecfd749b72e1bf36139d66f3be9da4"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01/21/DEMO000001?11=261025&15=261030",
+      "method": "HEAD",
+      "accept": "text/html",
+      "status": 307,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01/21/DEMO000001?11=261025&15=261030",
+      "method": "OPTIONS",
+      "accept": "text/html",
+      "status": 204,
+      "passed": true,
+      "milliseconds": 78,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/acasa/",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 109,
+      "body_sha256": "d8fd0699aac29cd5afe41c94ec0f86394ef54fd76ce37ea2d58e1bf8fd8a14ed"
+    },
+    {
+      "path": "/api/v2/admin/standards/gs1",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 403,
+      "passed": true,
+      "milliseconds": 110,
+      "body_sha256": "b32860ecbbdb06740762c2a0e55e1a05c932e9f2c510c0f19d88d578096251d0"
+    },
+    {
+      "path": "/api/v2/developer/marketplace/apps",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 401,
+      "passed": true,
+      "milliseconds": 93,
+      "body_sha256": "3a9df3cf1b7d60ef30bf56fd83c28bd09bc379fc60013d9d89616d310520ccfa"
+    },
+    {
+      "path": "/api/v2/manage/printing/devices",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 401,
+      "passed": true,
+      "milliseconds": 172,
+      "body_sha256": "5d75dee69204908abbafa579a7409915be3ca55cdafd162e001e879ea9471824"
+    },
+    {
+      "path": "/api/v2/manage/printing/jobs",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 401,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "626358872f6d197fb3504505f9b3208d2b49c1b8c06e7bb49ad6eeb919eebc6e"
+    },
+    {
+      "path": "/api/v2/printing-agent/claims",
+      "method": "POST",
+      "accept": "application/json",
+      "status": 401,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "b5df06c26d828d76cade0ba5a2df8445f0be9625ec07e6cb8aef8fe5a0fa477c"
+    },
+    {
+      "path": "/storage/private/standards/gs1/uri-syntax-1.7.0.pdf",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 404,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "d4af17796d87bec8f228e5f7c36d1bed4578e4fd22c0389252ca9584cdeb7636"
+    },
+    {
+      "path": "/contracts/gs1/standards-catalog.json",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 404,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "c2f8aa95e345a107670ecbc73249ded876e1fb751d31f12a1f37f0e1f208c2ea"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 140,
+      "body_sha256": "cf6cdd8f987c0bfb45a26bc5afeecb8085ff3c41ace8dbce67e517a4292cd326"
+    }
+  ],
+  "credentials_or_notifications_sent": false
+}

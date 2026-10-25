@@ -1,0 +1,74 @@
+{
+  "schema_version": "openaliment.release_files.v1",
+  "runtime_directories": [
+    "app",
+    "contracts",
+    "database/migrations",
+    "public/assets",
+    "tools/deploy",
+    "tools/ops"
+  ],
+  "runtime_files": [
+    ".htaccess",
+    "public/index.php",
+    "public/.htaccess",
+    "public/hosting-check.php",
+    "config/config.example.php",
+    "config/mail.local.example.php",
+    "storage/.htaccess",
+    "LICENSE",
+    "LICENSING.md",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md",
+    "release.json",
+    "tools/worker.php",
+    "tools/partner-agent.py",
+    "tools/sdk/openaliment.py",
+    "tools/sdk/openaliment.mjs",
+    "tools/sdk/OpenAlimentClient.kt",
+    "tools/examples/erp_workflow.py",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md",
+    "CHANGELOG.md",
+    "config/backup.local.example.php",
+    "config/migrations.local.example.php",
+    "config/restore.local.example.php",
+    "tools/standards/fetch.py"
+  ],
+  "documentation_directories": [
+    "docs"
+  ],
+  "full_directories": [
+    "OpenBread_Codex_v1_2026-10-23",
+    "tools/build"
+  ],
+  "full_files": [
+    "OPENALIMENT_CHANGE_REQUEST_01.md",
+    "tools/setup-key.html",
+    "tools/package-release.py",
+    "tools/build-contracts.py",
+    "tools/build-consumer-contracts.py",
+    "tools/build-integration-contracts.py",
+    "tools/build-home-contracts.py"
+  ],
+  "excluded_directory_names": [
+    "__pycache__",
+    "previews",
+    "runtime",
+    ".tools",
+    "node_modules",
+    ".git"
+  ],
+  "excluded_suffixes": [
+    ".pyc",
+    ".log",
+    ".bak",
+    ".env"
+  ],
+  "profiles": [
+    "app",
+    "full",
+    "pilot"
+  ]
+}

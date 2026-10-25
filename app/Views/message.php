@@ -1,0 +1,1 @@
+<div class="container page-space"><div class="message-panel"><div class="eyebrow">OPENALIMENT</div><h1 class="page-title"><?=e($title)?></h1><p class="preserve-lines"><?=e($message)?></p><?php if(isset($requestId)):?><p class="muted small">Referință: <?=e($requestId)?></p><?php endif?><a class="btn btn-primary" href="/">Prima pagină <?=icon('arrow')?></a></div></div>

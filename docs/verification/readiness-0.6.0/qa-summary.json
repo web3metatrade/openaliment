@@ -1,0 +1,291 @@
+{
+  "executed_at": "2026-10-25T11:14:58.510341+00:00",
+  "environment": "isolated local QA; no production access or real email",
+  "suite": "browser",
+  "suites": [
+    {
+      "suite": "repository checks",
+      "passed": 403,
+      "exit_code": 0,
+      "seconds": 40.31
+    },
+    {
+      "suite": "generated contracts",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 3.95
+    },
+    {
+      "suite": "tests/test_repository.py",
+      "passed": 5,
+      "exit_code": 0,
+      "seconds": 8.34
+    },
+    {
+      "suite": "tests/test_security_sources.py",
+      "passed": 4,
+      "exit_code": 0,
+      "seconds": 0.28
+    },
+    {
+      "suite": "focused source security checks",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 1.94
+    },
+    {
+      "suite": "tests/bootstrap-unit.php",
+      "passed": 9,
+      "exit_code": 0,
+      "seconds": 0.17
+    },
+    {
+      "suite": "tests/security-unit.php",
+      "passed": 33,
+      "exit_code": 0,
+      "seconds": 0.33
+    },
+    {
+      "suite": "tests/operations-unit.php",
+      "passed": 11,
+      "exit_code": 0,
+      "seconds": 0.19
+    },
+    {
+      "suite": "tests/api-documentation.php",
+      "passed": 486,
+      "exit_code": 0,
+      "seconds": 2.69
+    },
+    {
+      "suite": "tests/test_api_reference_quality.py",
+      "passed": 7929,
+      "exit_code": 0,
+      "seconds": 0.58
+    },
+    {
+      "suite": "tests/test_public_content.py",
+      "passed": 1459,
+      "exit_code": 0,
+      "seconds": 0.53
+    },
+    {
+      "suite": "tests/consumer-domain.mjs",
+      "passed": 35,
+      "exit_code": 0,
+      "seconds": 0.23
+    },
+    {
+      "suite": "tests/cloud-client-domain.mjs",
+      "passed": 14,
+      "exit_code": 0,
+      "seconds": 0.22
+    },
+    {
+      "suite": "tests/receipt-domain.mjs",
+      "passed": 11,
+      "exit_code": 0,
+      "seconds": 0.62
+    },
+    {
+      "suite": "tests/api-explorer.mjs",
+      "passed": 14,
+      "exit_code": 0,
+      "seconds": 0.2
+    },
+    {
+      "suite": "tests/generators/fixtures.py",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.22
+    },
+    {
+      "suite": "tests/integration.php",
+      "passed": 70,
+      "exit_code": 0,
+      "seconds": 2.97
+    },
+    {
+      "suite": "tests/resolver.php",
+      "passed": 54,
+      "exit_code": 0,
+      "seconds": 0.69
+    },
+    {
+      "suite": "tests/demo-bread.php",
+      "passed": 18,
+      "exit_code": 0,
+      "seconds": 0.45
+    },
+    {
+      "suite": "tests/consumer.php",
+      "passed": 43,
+      "exit_code": 0,
+      "seconds": 0.41
+    },
+    {
+      "suite": "tests/integrations.php",
+      "passed": 30,
+      "exit_code": 0,
+      "seconds": 0.56
+    },
+    {
+      "suite": "tests/mailer.php",
+      "passed": 11,
+      "exit_code": 0,
+      "seconds": 0.36
+    },
+    {
+      "suite": "tests/home-cloud.php",
+      "passed": 32,
+      "exit_code": 0,
+      "seconds": 0.94
+    },
+    {
+      "suite": "tests/api-platform.php",
+      "passed": 53,
+      "exit_code": 0,
+      "seconds": 1.23
+    },
+    {
+      "suite": "tests/security.php",
+      "passed": 37,
+      "exit_code": 0,
+      "seconds": 1.36
+    },
+    {
+      "suite": "tests/readiness.php",
+      "passed": 49,
+      "exit_code": 0,
+      "seconds": 3.66
+    },
+    {
+      "suite": "tests/api-reference-fixtures.php",
+      "passed": 1,
+      "exit_code": 0,
+      "seconds": 0.33
+    },
+    {
+      "suite": "tests/test_http.py",
+      "passed": 58,
+      "exit_code": 0,
+      "seconds": 4.42
+    },
+    {
+      "suite": "tests/test_resolver_http.py",
+      "passed": 117,
+      "exit_code": 0,
+      "seconds": 3.69
+    },
+    {
+      "suite": "tests/test_demo_bread.py",
+      "passed": 48,
+      "exit_code": 0,
+      "seconds": 0.95
+    },
+    {
+      "suite": "tests/test_integrations_http.py",
+      "passed": 18,
+      "exit_code": 0,
+      "seconds": 0.58
+    },
+    {
+      "suite": "tests/test_home_http.py",
+      "passed": 16,
+      "exit_code": 0,
+      "seconds": 0.69
+    },
+    {
+      "suite": "tests/test_api_platform_http.py",
+      "passed": 87,
+      "exit_code": 0,
+      "seconds": 5.41
+    },
+    {
+      "suite": "tests/test_security_http.py",
+      "passed": 28,
+      "exit_code": 0,
+      "seconds": 1.99
+    },
+    {
+      "suite": "reset isolated reference rate counters",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.22
+    },
+    {
+      "suite": "tests/test_api_reference_http.py",
+      "passed": 220,
+      "exit_code": 0,
+      "seconds": 9.53
+    },
+    {
+      "suite": "tests/test_api_documentation.py",
+      "passed": 1001,
+      "exit_code": 0,
+      "seconds": 19.01
+    },
+    {
+      "suite": "tests/test_readiness_http.py",
+      "passed": 31,
+      "exit_code": 0,
+      "seconds": 3.03
+    },
+    {
+      "suite": "tests/test_api_coverage.py",
+      "passed": 229,
+      "exit_code": 0,
+      "seconds": 0.16
+    },
+    {
+      "suite": "tests/test_api_sdk.py",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.48
+    },
+    {
+      "suite": "tests/api-sdk.mjs",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.61
+    },
+    {
+      "suite": "tests/qr-matrices.cjs",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.27
+    },
+    {
+      "suite": "tests/test_qr.py",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.2
+    },
+    {
+      "suite": "tests/test_deploy_bridge.py",
+      "passed": 66,
+      "exit_code": 0,
+      "seconds": 2.49
+    },
+    {
+      "suite": "tests/consumer-browser.cjs",
+      "passed": 27,
+      "exit_code": 0,
+      "seconds": 8.58
+    },
+    {
+      "suite": "tests/account-access-browser.cjs",
+      "passed": 9,
+      "exit_code": 0,
+      "seconds": 5.06
+    },
+    {
+      "suite": "tests/backup.php",
+      "passed": 15,
+      "exit_code": 0,
+      "seconds": 3.92
+    }
+  ],
+  "failed_suites": 0,
+  "completed": true
+}

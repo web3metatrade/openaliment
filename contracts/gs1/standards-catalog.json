@@ -1,0 +1,69 @@
+{
+  "schema_version": "openaliment.gs1-standards.v1",
+  "verified_on": "2026-10-25",
+  "authoritative_format": "official_pdf",
+  "rights_url": "https://ref.gs1.org/gs1/standards-disclaimer/",
+  "local_copies": "private_unmodified_reference_copies",
+  "documents": [
+    {
+      "id": "uri-syntax",
+      "title": "GS1 Digital Link URI Syntax",
+      "version": "1.7.0",
+      "source_url": "https://ref.gs1.org/standards/digital-link/uri-syntax/1.7.0/",
+      "pdf_url": "https://ref.gs1.org/standards/digital-link/uri-syntax/1.7.0/GS1-Digital-Link-Standard-URI-Syntax-i1-7-r-2026-08-06.pdf",
+      "filename": "uri-syntax-1.7.0.pdf",
+      "sha256": "25496249fac90657b63e5430dc264e57e462638eab69361765713ae4537a744e",
+      "size_bytes": 768801,
+      "downloaded_at": "2026-10-25T13:42:43.580022+00:00",
+      "summary": "Sintaxa adresei HTTPS, GTIN, lot, serie și atributele GS1.",
+      "publisher": "GS1 AISBL",
+      "rights": "GS1 copyright; not covered by OpenAliment MIT license",
+      "public_distribution": "official_gs1_url"
+    },
+    {
+      "id": "resolver",
+      "title": "GS1-Conformant Resolver",
+      "version": "1.2.1",
+      "source_url": "https://ref.gs1.org/standards/resolver/1.2.1/",
+      "pdf_url": "https://ref.gs1.org/standards/resolver/1.2.1/GS1_Conformant_Resolver_standard_i1.2.1-r-2026-08-07",
+      "filename": "resolver-1.2.1.pdf",
+      "sha256": "853627e9f31cf93985c8085f91a84bff01036a677b7ff655e347ae81e379ca97",
+      "size_bytes": 652693,
+      "downloaded_at": "2026-10-25T13:42:44.522292+00:00",
+      "summary": "Rezoluție, negociere, linkset, moștenire și transport HTTPS.",
+      "publisher": "GS1 AISBL",
+      "rights": "GS1 copyright; not covered by OpenAliment MIT license",
+      "public_distribution": "official_gs1_url"
+    },
+    {
+      "id": "epc-compression",
+      "title": "GS1 Digital Link URI: Compression",
+      "version": "1.0.0",
+      "source_url": "https://ref.gs1.org/standards/digital-link/compression/",
+      "pdf_url": "https://ref.gs1.org/standards/digital-link/compression/",
+      "filename": "epc-compression-1.0.0.pdf",
+      "sha256": "a40154f5edf52701a4818a8c8d27fd07ba9e92d651d1138a6179dd162a1b6da3",
+      "size_bytes": 1478806,
+      "downloaded_at": "2026-10-25T13:42:45.548237+00:00",
+      "summary": "Expresia șirurilor binare EPC în adrese Digital Link comprimate.",
+      "publisher": "GS1 AISBL",
+      "rights": "GS1 copyright; not covered by OpenAliment MIT license",
+      "public_distribution": "official_gs1_url"
+    },
+    {
+      "id": "general-specifications",
+      "title": "GS1 General Specifications",
+      "version": "26.0.0",
+      "source_url": "https://ref.gs1.org/standards/genspecs/26.0.0/",
+      "pdf_url": "https://ref.gs1.org/standards/genspecs/26.0.0/",
+      "filename": "general-specifications-26.0.0.pdf",
+      "sha256": "d32eae37039bdce4931714d6eae73fd682d060c692edecc23620233b0733efe6",
+      "size_bytes": 12175796,
+      "downloaded_at": "2026-10-25T13:42:48.946959+00:00",
+      "summary": "Identificatori, atribute, simboluri, dimensiuni și cerințe de imprimare.",
+      "publisher": "GS1 AISBL",
+      "rights": "GS1 copyright; not covered by OpenAliment MIT license",
+      "public_distribution": "official_gs1_url"
+    }
+  ]
+}

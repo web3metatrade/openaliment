@@ -1,0 +1,876 @@
+{
+  "release": "0.5.3",
+  "local_qa": {
+    "executed_at": "2026-10-24T17:20:18.496830+00:00",
+    "environment": "isolated local QA; no production access or real email",
+    "suite": "local",
+    "suites": [
+      {
+        "suite": "repository checks",
+        "passed": 325,
+        "exit_code": 0,
+        "seconds": 22.92
+      },
+      {
+        "suite": "generated contracts",
+        "passed": 0,
+        "exit_code": 0,
+        "seconds": 2.25
+      },
+      {
+        "suite": "tests/test_repository.py",
+        "passed": 5,
+        "exit_code": 0,
+        "seconds": 5.14
+      },
+      {
+        "suite": "tests/test_security_sources.py",
+        "passed": 4,
+        "exit_code": 0,
+        "seconds": 0.19
+      },
+      {
+        "suite": "focused source security checks",
+        "passed": 0,
+        "exit_code": 0,
+        "seconds": 2.67
+      },
+      {
+        "suite": "tests/bootstrap-unit.php",
+        "passed": 7,
+        "exit_code": 0,
+        "seconds": 0.14
+      },
+      {
+        "suite": "tests/security-unit.php",
+        "passed": 33,
+        "exit_code": 0,
+        "seconds": 0.25
+      },
+      {
+        "suite": "tests/api-documentation.php",
+        "passed": 443,
+        "exit_code": 0,
+        "seconds": 1.91
+      },
+      {
+        "suite": "tests/test_api_reference_quality.py",
+        "passed": 7181,
+        "exit_code": 0,
+        "seconds": 0.44
+      },
+      {
+        "suite": "tests/consumer-domain.mjs",
+        "passed": 35,
+        "exit_code": 0,
+        "seconds": 0.2
+      },
+      {
+        "suite": "tests/cloud-client-domain.mjs",
+        "passed": 14,
+        "exit_code": 0,
+        "seconds": 0.19
+      },
+      {
+        "suite": "tests/receipt-domain.mjs",
+        "passed": 11,
+        "exit_code": 0,
+        "seconds": 0.17
+      },
+      {
+        "suite": "tests/api-explorer.mjs",
+        "passed": 14,
+        "exit_code": 0,
+        "seconds": 0.17
+      },
+      {
+        "suite": "tests/generators/fixtures.py",
+        "passed": 0,
+        "exit_code": 0,
+        "seconds": 0.19
+      },
+      {
+        "suite": "tests/integration.php",
+        "passed": 70,
+        "exit_code": 0,
+        "seconds": 2.2
+      },
+      {
+        "suite": "tests/resolver.php",
+        "passed": 54,
+        "exit_code": 0,
+        "seconds": 0.34
+      },
+      {
+        "suite": "tests/demo-bread.php",
+        "passed": 18,
+        "exit_code": 0,
+        "seconds": 0.16
+      },
+      {
+        "suite": "tests/consumer.php",
+        "passed": 43,
+        "exit_code": 0,
+        "seconds": 0.22
+      },
+      {
+        "suite": "tests/integrations.php",
+        "passed": 30,
+        "exit_code": 0,
+        "seconds": 0.3
+      },
+      {
+        "suite": "tests/mailer.php",
+        "passed": 11,
+        "exit_code": 0,
+        "seconds": 0.17
+      },
+      {
+        "suite": "tests/home-cloud.php",
+        "passed": 32,
+        "exit_code": 0,
+        "seconds": 0.44
+      },
+      {
+        "suite": "tests/api-platform.php",
+        "passed": 53,
+        "exit_code": 0,
+        "seconds": 0.53
+      },
+      {
+        "suite": "tests/security.php",
+        "passed": 37,
+        "exit_code": 0,
+        "seconds": 0.49
+      },
+      {
+        "suite": "tests/api-reference-fixtures.php",
+        "passed": 1,
+        "exit_code": 0,
+        "seconds": 0.22
+      },
+      {
+        "suite": "tests/test_http.py",
+        "passed": 58,
+        "exit_code": 0,
+        "seconds": 3.17
+      },
+      {
+        "suite": "tests/test_resolver_http.py",
+        "passed": 117,
+        "exit_code": 0,
+        "seconds": 2.3
+      },
+      {
+        "suite": "tests/test_demo_bread.py",
+        "passed": 48,
+        "exit_code": 0,
+        "seconds": 0.7
+      },
+      {
+        "suite": "tests/test_integrations_http.py",
+        "passed": 18,
+        "exit_code": 0,
+        "seconds": 0.45
+      },
+      {
+        "suite": "tests/test_home_http.py",
+        "passed": 16,
+        "exit_code": 0,
+        "seconds": 0.53
+      },
+      {
+        "suite": "tests/test_api_platform_http.py",
+        "passed": 86,
+        "exit_code": 0,
+        "seconds": 4.12
+      },
+      {
+        "suite": "tests/test_security_http.py",
+        "passed": 28,
+        "exit_code": 0,
+        "seconds": 1.34
+      },
+      {
+        "suite": "reset isolated reference rate counters",
+        "passed": 0,
+        "exit_code": 0,
+        "seconds": 0.17
+      },
+      {
+        "suite": "tests/test_api_reference_http.py",
+        "passed": 214,
+        "exit_code": 0,
+        "seconds": 7.16
+      },
+      {
+        "suite": "tests/test_api_documentation.py",
+        "passed": 912,
+        "exit_code": 0,
+        "seconds": 13.39
+      },
+      {
+        "suite": "tests/test_api_sdk.py",
+        "passed": 6,
+        "exit_code": 0,
+        "seconds": 0.34
+      },
+      {
+        "suite": "tests/api-sdk.mjs",
+        "passed": 6,
+        "exit_code": 0,
+        "seconds": 0.41
+      },
+      {
+        "suite": "tests/qr-matrices.cjs",
+        "passed": 0,
+        "exit_code": 0,
+        "seconds": 0.19
+      },
+      {
+        "suite": "tests/test_qr.py",
+        "passed": 6,
+        "exit_code": 0,
+        "seconds": 0.17
+      },
+      {
+        "suite": "tests/test_deploy_bridge.py",
+        "passed": 65,
+        "exit_code": 0,
+        "seconds": 2.11
+      }
+    ],
+    "failed_suites": 0,
+    "completed": true
+  },
+  "security_checks": {
+    "security-unit.json": 33,
+    "security-domain.json": 37,
+    "security-http.json": 28
+  },
+  "deployment_client": {
+    "passed": 66,
+    "skipped": 1,
+    "production_access": false
+  },
+  "dependency_review": {
+    "state": "completed",
+    "packages": 49,
+    "advisories": [],
+    "manual_review": [
+      {
+        "file": "qrcodegen.js",
+        "reason": "Snapshot without a package version; pinned hash still requires upstream review."
+      }
+    ]
+  },
+  "production": {
+    "recorded_at": "2026-10-24T17:28:43.221413+00:00",
+    "published": true,
+    "schema_006_activated": true,
+    "authorization": "Explicit human approval for release 0.5.3 and additive migration 006 after initial automatic review rejection",
+    "files": 46,
+    "bytes": 3299206,
+    "baseline_conflicts": 0,
+    "transfer_hash_verification": true,
+    "deployments": [
+      {
+        "phase": "foundation",
+        "id": "e7d65ccd4eaf4de689a60936d8b3ad8b",
+        "state": "applied",
+        "files": 9
+      },
+      {
+        "phase": "contracts",
+        "id": "951ab6982923493bbcfbd96394ff41cf",
+        "state": "applied",
+        "files": 10
+      },
+      {
+        "phase": "runtime",
+        "id": "1bd11a88a25445e790d48157a9a5efb0",
+        "state": "applied",
+        "files": 27
+      }
+    ],
+    "migration_verification": {
+      "method": "Authenticated administrator UI; success message and schema-dependent ready state",
+      "message": "Protecțiile sunt pregătite. Curățarea nu a fost executată încă.",
+      "database_shell_access_used": false
+    },
+    "read_only_https_checks": {
+      "api": {
+        "executed_at": "2026-10-24T17:26:31.172755+00:00",
+        "environment": "production HTTPS, read-only; no credentials or user data retained",
+        "pending_schema": false,
+        "passed": 21,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "Public discovery and CORS",
+            "passed": true
+          },
+          {
+            "name": "Documented operation count and no crawling required",
+            "passed": true
+          },
+          {
+            "name": "OAuth migration state",
+            "passed": true
+          },
+          {
+            "name": "Published contract hash matches tested artifact",
+            "passed": true
+          },
+          {
+            "name": "Developer portal includes search and revocation",
+            "passed": true
+          },
+          {
+            "name": "Human and AI text guide",
+            "passed": true
+          },
+          {
+            "name": "Exact SDK source python",
+            "passed": true
+          },
+          {
+            "name": "Exact SDK source javascript",
+            "passed": true
+          },
+          {
+            "name": "Exact SDK source kotlin",
+            "passed": true
+          },
+          {
+            "name": "Schema downloadable",
+            "passed": true
+          },
+          {
+            "name": "Public allergen vocabulary",
+            "passed": true
+          },
+          {
+            "name": "Anonymous producer access rejected",
+            "passed": true
+          },
+          {
+            "name": "Invalid key rejected, no HTML login",
+            "passed": true
+          },
+          {
+            "name": "Public catalog schema state",
+            "passed": true
+          },
+          {
+            "name": "Read-only public catalog",
+            "passed": true
+          },
+          {
+            "name": "HEAD no body, bounded read headers",
+            "passed": true
+          },
+          {
+            "name": "Unregistered private browser origin refused",
+            "passed": true
+          },
+          {
+            "name": "Demonstration bread lookup works without AI",
+            "passed": true
+          },
+          {
+            "name": "GS1 demonstration linkset preserved",
+            "passed": true
+          },
+          {
+            "name": "Consumer application publishes updated cache generation",
+            "passed": true
+          },
+          {
+            "name": "OAuth metadata declares PKCE and exact live origin",
+            "passed": true
+          }
+        ]
+      },
+      "documentation": {
+        "environment": "read-only HTTPS; no credentials, email or production mutations",
+        "passed": 42,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "HTTPS read /api/docs/index.json",
+            "passed": true
+          },
+          {
+            "name": "Operation and guide counts match tested release",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/platform-openapi.json",
+            "passed": true
+          },
+          {
+            "name": "Published OpenAPI hash matches tested artifact",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/manageProductCreate",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/manageProductCreate.md",
+            "passed": true
+          },
+          {
+            "name": "Copy Page equals Markdown manageProductCreate",
+            "passed": true
+          },
+          {
+            "name": "Response example and explorer manageProductCreate",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/manageBatchCreate",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/manageBatchCreate.md",
+            "passed": true
+          },
+          {
+            "name": "Copy Page equals Markdown manageBatchCreate",
+            "passed": true
+          },
+          {
+            "name": "Response example and explorer manageBatchCreate",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/homePostApiV2HomeSync",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/homePostApiV2HomeSync.md",
+            "passed": true
+          },
+          {
+            "name": "Copy Page equals Markdown homePostApiV2HomeSync",
+            "passed": true
+          },
+          {
+            "name": "Response example and explorer homePostApiV2HomeSync",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/consumerGetApiV2PublicFood",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/reference/consumerGetApiV2PublicFood.md",
+            "passed": true
+          },
+          {
+            "name": "Copy Page equals Markdown consumerGetApiV2PublicFood",
+            "passed": true
+          },
+          {
+            "name": "Response example and explorer consumerGetApiV2PublicFood",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/guides/modele-date",
+            "passed": true
+          },
+          {
+            "name": "New guide modele-date",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/guides/erori-recuperare",
+            "passed": true
+          },
+          {
+            "name": "New guide erori-recuperare",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/guides/exemple-executabile",
+            "passed": true
+          },
+          {
+            "name": "New guide exemple-executabile",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/guides/testare",
+            "passed": true
+          },
+          {
+            "name": "New guide testare",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/postman.json",
+            "passed": true
+          },
+          {
+            "name": "Postman full collection has all requests",
+            "passed": true
+          },
+          {
+            "name": "Postman contains response examples",
+            "passed": true
+          },
+          {
+            "name": "Postman contains no real access token",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/docs/examples/erp-workflow.py",
+            "passed": true
+          },
+          {
+            "name": "Executable workflow downloadable",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /llms.txt",
+            "passed": true
+          },
+          {
+            "name": "AI index complete",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /llms-full.txt",
+            "passed": true
+          },
+          {
+            "name": "AI corpus includes detailed guides and operations",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/v2/public/food?code=9520000000011",
+            "passed": true
+          },
+          {
+            "name": "PBT remains an explicit demonstration",
+            "passed": true
+          },
+          {
+            "name": "HTTPS read /api/manifest.json",
+            "passed": true
+          },
+          {
+            "name": "API remains activated and independent of private recipes",
+            "passed": true
+          }
+        ]
+      },
+      "security_transport": {
+        "executed_at": "2026-10-24T17:27:49.790805+00:00",
+        "environment": "production HTTPS, read-only; no credentials, user data or mutations",
+        "passed": 52,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "Status /",
+            "passed": true
+          },
+          {
+            "name": "HSTS /",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /",
+            "passed": true
+          },
+          {
+            "name": "Status /login",
+            "passed": true
+          },
+          {
+            "name": "HSTS /login",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /login",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /login",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /login",
+            "passed": true
+          },
+          {
+            "name": "Producer session cookie Secure HttpOnly SameSite",
+            "passed": true
+          },
+          {
+            "name": "Login CSP disallows external scripts",
+            "passed": true
+          },
+          {
+            "name": "Status /api/docs",
+            "passed": true
+          },
+          {
+            "name": "HSTS /api/docs",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /api/docs",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /api/docs",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /api/docs",
+            "passed": true
+          },
+          {
+            "name": "Status /assets/api-docs.css",
+            "passed": true
+          },
+          {
+            "name": "HSTS /assets/api-docs.css",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /assets/api-docs.css",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /assets/api-docs.css",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /assets/api-docs.css",
+            "passed": true
+          },
+          {
+            "name": "Status /01/09520000000011",
+            "passed": true
+          },
+          {
+            "name": "HSTS /01/09520000000011",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /01/09520000000011",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /01/09520000000011",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /01/09520000000011",
+            "passed": true
+          },
+          {
+            "name": "Status /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+            "passed": true
+          },
+          {
+            "name": "HSTS /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+            "passed": true
+          },
+          {
+            "name": "Status /hosting-check.php",
+            "passed": true
+          },
+          {
+            "name": "HSTS /hosting-check.php",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /hosting-check.php",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /hosting-check.php",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /hosting-check.php",
+            "passed": true
+          },
+          {
+            "name": "Status /setup",
+            "passed": true
+          },
+          {
+            "name": "HSTS /setup",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /setup",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /setup",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /setup",
+            "passed": true
+          },
+          {
+            "name": "Status /__openaliment_security_missing__",
+            "passed": true
+          },
+          {
+            "name": "HSTS /__openaliment_security_missing__",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /__openaliment_security_missing__",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /__openaliment_security_missing__",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /__openaliment_security_missing__",
+            "passed": true
+          },
+          {
+            "name": "Status /assets/__openaliment_security_probe.php",
+            "passed": true
+          },
+          {
+            "name": "HSTS /assets/__openaliment_security_probe.php",
+            "passed": true
+          },
+          {
+            "name": "No PHP disclosure /assets/__openaliment_security_probe.php",
+            "passed": true
+          },
+          {
+            "name": "No MIME sniffing /assets/__openaliment_security_probe.php",
+            "passed": true
+          },
+          {
+            "name": "Bounded body /assets/__openaliment_security_probe.php",
+            "passed": true
+          }
+        ],
+        "responses": [
+          {
+            "path": "/",
+            "status": 200,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/login",
+            "status": 200,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/api/docs",
+            "status": 200,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/assets/api-docs.css",
+            "status": 200,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/01/09520000000011",
+            "status": 307,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/01/09520000000011/10/DEMO-PBT-01?linkType=linkset",
+            "status": 200,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/hosting-check.php",
+            "status": 404,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/setup",
+            "status": 404,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/__openaliment_security_missing__",
+            "status": 404,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          },
+          {
+            "path": "/assets/__openaliment_security_probe.php",
+            "status": 403,
+            "hsts": [
+              "max-age=86400"
+            ],
+            "powered_by_absent": true
+          }
+        ]
+      }
+    },
+    "passed": 115,
+    "failed": 0,
+    "cleanup_executed": false,
+    "cron_configured": false,
+    "production_test_records_created": false,
+    "private_config_replaced": false
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "passed": 31,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Password login explicitly reports pending MFA",
+      "passed": true
+    },
+    {
+      "name": "Pending MFA cannot open producer data",
+      "passed": true
+    },
+    {
+      "name": "Pending MFA cannot inspect sessions",
+      "passed": true
+    },
+    {
+      "name": "Recovery code verifies MFA and rotates CSRF",
+      "passed": true
+    },
+    {
+      "name": "Verified MFA opens producer data",
+      "passed": true
+    },
+    {
+      "name": "Account metadata excludes secrets",
+      "passed": true
+    },
+    {
+      "name": "HTTP registration verifies CBOR and registers the real EC public key",
+      "passed": true
+    },
+    {
+      "name": "HTTP assertion verifies EC signature and rotates the session",
+      "passed": true
+    },
+    {
+      "name": "Recovery code regeneration returns one-time codes",
+      "passed": true
+    },
+    {
+      "name": "An enrolled replacement permits explicit key removal",
+      "passed": true
+    },
+    {
+      "name": "Unknown session cannot be revoked",
+      "passed": true
+    },
+    {
+      "name": "Public recovery rejects unexpected input",
+      "passed": true
+    },
+    {
+      "name": "Cross-origin recovery rejected",
+      "passed": true
+    },
+    {
+      "name": "Invalid reset token is not consumed or accepted",
+      "passed": true
+    },
+    {
+      "name": "Revoking current session succeeds",
+      "passed": true
+    },
+    {
+      "name": "Revoked session cannot inspect account",
+      "passed": true
+    },
+    {
+      "name": "Password recovery request has uniform acceptance",
+      "passed": true
+    },
+    {
+      "name": "Password recovery preview is read-only",
+      "passed": true
+    },
+    {
+      "name": "HTTP password reset preserves second factor",
+      "passed": true
+    },
+    {
+      "name": "Public ratings use only approved criterion responses",
+      "passed": true
+    },
+    {
+      "name": "NDJSON preview validates exact digest before writes",
+      "passed": true
+    },
+    {
+      "name": "NDJSON application is private and keeps provenance",
+      "passed": true
+    },
+    {
+      "name": "Changed NDJSON transport fails final checksum",
+      "passed": true
+    },
+    {
+      "name": "Truncated NDJSON cannot import",
+      "passed": true
+    },
+    {
+      "name": "Licensed archive has standalone reading copy",
+      "passed": true
+    },
+    {
+      "name": "Archive excludes public unlicensed documents",
+      "passed": true
+    },
+    {
+      "name": "Archive preserves exact recipe snapshot digest",
+      "passed": true
+    },
+    {
+      "name": "Archive does not invent validated results",
+      "passed": true
+    },
+    {
+      "name": "Personal sensitive action sends confirmation separately",
+      "passed": true
+    },
+    {
+      "name": "Personal erasure preview does not consume confirmation",
+      "passed": true
+    },
+    {
+      "name": "Personal erasure confirms once over HTTP",
+      "passed": true
+    }
+  ],
+  "environment": "isolated HTTP; no production, no real SMTP",
+  "response_checks": 35,
+  "successful_operations": [
+    "accountPasskeyCreateConfirm",
+    "accountPasskeyCreateOptions",
+    "accountPasskeyGetConfirm",
+    "accountPasskeyGetOptions",
+    "accountPasskeyRecover",
+    "accountPasskeyRemove",
+    "accountPasswordPreview",
+    "accountPasswordRequest",
+    "accountPasswordReset",
+    "accountRecoveryCodes",
+    "accountSecurity",
+    "accountSessionRevoke",
+    "homeGetApiV2HomeSession",
+    "homePostApiV2HomeAccountActionConfirm",
+    "homePostApiV2HomeAccountActionPreview",
+    "homePostApiV2HomeAccountActionRequest",
+    "homePostApiV2HomeLoginConfirm",
+    "homePostApiV2HomeLoginRequest",
+    "identityLogin",
+    "identitySession",
+    "manageDashboard",
+    "manageImportStream",
+    "publicRatings",
+    "publicRecipeArchive"
+  ]
+}

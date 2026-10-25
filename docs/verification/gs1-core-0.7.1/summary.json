@@ -1,0 +1,33 @@
+{
+  "release": "0.7.1",
+  "standards": {
+    "uri_syntax": "1.7.0",
+    "resolver": "1.2.1",
+    "epc_compression": "1.0.0",
+    "general_specifications": "26.0.0"
+  },
+  "local_completed": true,
+  "suites": 54,
+  "checks": 12790,
+  "failed_suites": 0,
+  "documented_operations_with_validated_http_success": 258,
+  "shared_vectors": 362,
+  "official_gs1_engine": {
+    "version": "1.4.1",
+    "generated_uris_accepted": 335,
+    "failed": 0,
+    "production_dependency_added": false
+  },
+  "sql_migration_required": false,
+  "persistent_uri_rewrite": false,
+  "inventory_database_reset": false,
+  "production_state": "0.7.1 published and fixed operations manifest installed through authenticated administrator action",
+  "physical_printer_pos_certification": "not claimed",
+  "independent_gs1_certification": "not claimed",
+  "production_https_checks": 540,
+  "production_https_failed": 0,
+  "transport_attestation_recorded": true,
+  "transport_confirmation": "transport-confirmed.png",
+  "publication_evidence": "publication.json",
+  "final_repository_checks": 425
+}

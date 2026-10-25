@@ -1,0 +1,71 @@
+{
+  "executed_at": "2026-10-24T10:19:45.361771+00:00",
+  "scope": "Repository organization and reproducible verification; existing application contracts retained",
+  "software_license": "MIT, explicitly selected by owner",
+  "clean_source_copy": {
+    "files": 380,
+    "excluded_private_tools_and_configs": true,
+    "steps": 23,
+    "passed_checks": 914,
+    "failed_steps": 0,
+    "static_checker_rerun_after_relative_path_fix": true
+  },
+  "targeted_final_packaging_tests": {
+    "passed": 5,
+    "failed": 0,
+    "identical_input_zip_verified": true
+  },
+  "node_lock_installation": {
+    "npm_ci_ignore_scripts_succeeded": true,
+    "playwright": "1.62.1",
+    "sharp": "0.35.5",
+    "browser_launched": false
+  },
+  "production": {
+    "runtime_files_deployed": 7,
+    "hashes_verified": true,
+    "database_migrations_applied": false,
+    "private_configs_written": false,
+    "anonymous_page_checks": [
+      {
+        "path": "/",
+        "status": 200,
+        "body_unchanged": true
+      },
+      {
+        "path": "/acasa/",
+        "status": 200,
+        "body_unchanged": true
+      },
+      {
+        "path": "/demo/paine-buna-tehnic",
+        "status": 200,
+        "body_unchanged": true
+      }
+    ],
+    "read_only_api_checks_passed": 11,
+    "email_sent": false,
+    "deployment_batches": 3
+  },
+  "preserved": {
+    "historical_and_private_files": 82,
+    "all_protected_hashes_unchanged": true,
+    "migration_bytes_unchanged": true,
+    "public_assets_unchanged": true,
+    "historical_verification_reports_not_rewritten": true
+  },
+  "limitations": {
+    "github_repository_created": false,
+    "github_workflow_executed": false,
+    "linux_execution_verified": false,
+    "browser_suite_rerun_in_this_increment": false,
+    "windows_maintenance_test_skipped": 1,
+    "historical_and_image_redistribution_rights_separate_from_MIT": true
+  },
+  "final_source_verification": {
+    "steps": 23,
+    "passed_checks": 915,
+    "failed_steps": 0,
+    "explicit_empty_configuration_guard_verified": true
+  }
+}

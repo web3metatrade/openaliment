@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment batch creation v1",
+  "type": "object",
+  "required": [
+    "product_info_version_id",
+    "lot_code"
+  ],
+  "properties": {
+    "product_info_version_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "recipe_version_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "lot_code": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "public_notes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2000
+    },
+    "production_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "best_before": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "use_by": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    }
+  },
+  "additionalProperties": false
+}

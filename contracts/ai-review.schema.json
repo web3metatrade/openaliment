@@ -1,0 +1,152 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "openaliment.ai_review.v1"
+      ]
+    },
+    "feedback_id": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "recipe_version_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "batch_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "taste",
+          "aroma",
+          "texture",
+          "freshness",
+          "packaging",
+          "price",
+          "documentation",
+          "label",
+          "allergen_concern",
+          "possible_food_safety",
+          "accessibility",
+          "idea",
+          "other"
+        ]
+      }
+    },
+    "summary": {
+      "type": "string"
+    },
+    "urgency": {
+      "type": "string",
+      "enum": [
+        "routine",
+        "time_sensitive",
+        "quality_escalation"
+      ]
+    },
+    "personal_data_detected": {
+      "type": "boolean"
+    },
+    "moderation_recommendation": {
+      "type": "string",
+      "enum": [
+        "eligible_for_publication",
+        "human_review",
+        "suspected_spam_or_abuse"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "document_revision_id": {
+            "type": "string"
+          },
+          "source_locator": {
+            "type": "string"
+          },
+          "supports_claim": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "document_revision_id",
+          "source_locator",
+          "supports_claim"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "missing_information": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "consumer_reply_draft": {
+      "type": "string"
+    },
+    "proposed_action": {
+      "type": "string",
+      "enum": [
+        "acknowledge",
+        "ask_clarification",
+        "aggregate_signal",
+        "create_experiment_proposal",
+        "escalate_quality",
+        "escalate_moderation",
+        "no_action"
+      ]
+    },
+    "rationale_summary": {
+      "type": "string"
+    },
+    "human_review_required": {
+      "type": "boolean"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "product_info_version_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "feedback_id",
+    "product_id",
+    "recipe_version_id",
+    "batch_id",
+    "themes",
+    "summary",
+    "urgency",
+    "personal_data_detected",
+    "moderation_recommendation",
+    "evidence_refs",
+    "missing_information",
+    "consumer_reply_draft",
+    "proposed_action",
+    "rationale_summary",
+    "human_review_required",
+    "limitations",
+    "product_info_version_id"
+  ],
+  "additionalProperties": false
+}

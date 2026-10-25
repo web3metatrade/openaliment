@@ -1,0 +1,175 @@
+{
+  "environment": "read-only HTTPS; no credentials, email or production mutations",
+  "passed": 42,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "HTTPS read /api/docs/index.json",
+      "passed": true
+    },
+    {
+      "name": "Operation and guide counts match tested release",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/platform-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Published OpenAPI hash matches tested artifact",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/manageProductCreate",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/manageProductCreate.md",
+      "passed": true
+    },
+    {
+      "name": "Copy Page equals Markdown manageProductCreate",
+      "passed": true
+    },
+    {
+      "name": "Response example and explorer manageProductCreate",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/manageBatchCreate",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/manageBatchCreate.md",
+      "passed": true
+    },
+    {
+      "name": "Copy Page equals Markdown manageBatchCreate",
+      "passed": true
+    },
+    {
+      "name": "Response example and explorer manageBatchCreate",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/homePostApiV2HomeSync",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/homePostApiV2HomeSync.md",
+      "passed": true
+    },
+    {
+      "name": "Copy Page equals Markdown homePostApiV2HomeSync",
+      "passed": true
+    },
+    {
+      "name": "Response example and explorer homePostApiV2HomeSync",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/consumerGetApiV2PublicFood",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/reference/consumerGetApiV2PublicFood.md",
+      "passed": true
+    },
+    {
+      "name": "Copy Page equals Markdown consumerGetApiV2PublicFood",
+      "passed": true
+    },
+    {
+      "name": "Response example and explorer consumerGetApiV2PublicFood",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/guides/modele-date",
+      "passed": true
+    },
+    {
+      "name": "New guide modele-date",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/guides/erori-recuperare",
+      "passed": true
+    },
+    {
+      "name": "New guide erori-recuperare",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/guides/exemple-executabile",
+      "passed": true
+    },
+    {
+      "name": "New guide exemple-executabile",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/guides/testare",
+      "passed": true
+    },
+    {
+      "name": "New guide testare",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/postman.json",
+      "passed": true
+    },
+    {
+      "name": "Postman full collection has all requests",
+      "passed": true
+    },
+    {
+      "name": "Postman contains response examples",
+      "passed": true
+    },
+    {
+      "name": "Postman contains no real access token",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/docs/examples/erp-workflow.py",
+      "passed": true
+    },
+    {
+      "name": "Executable workflow downloadable",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /llms.txt",
+      "passed": true
+    },
+    {
+      "name": "AI index complete",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /llms-full.txt",
+      "passed": true
+    },
+    {
+      "name": "AI corpus includes detailed guides and operations",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/v2/public/food?code=9520000000011",
+      "passed": true
+    },
+    {
+      "name": "PBT remains an explicit demonstration",
+      "passed": true
+    },
+    {
+      "name": "HTTPS read /api/manifest.json",
+      "passed": true
+    },
+    {
+      "name": "API remains activated and independent of private recipes",
+      "passed": true
+    }
+  ]
+}

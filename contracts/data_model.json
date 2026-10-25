@@ -1,0 +1,555 @@
+{
+  "artifact_type": "active_implementation_model",
+  "schema_version": "openaliment.logical_model.v1.2",
+  "created_on": "2026-10-23",
+  "updated_on": "2026-10-24",
+  "source_of_truth": "database/migrations/*.sql",
+  "source_sha256": "ca2b2a96cbd34980d49d2301e9afaed80b9d3b240cfc70acac54a49310d2892f",
+  "source_sha256_basis": "canonical JSON of ordered migration paths and SHA-256 hashes",
+  "id_representation": "128 random bits, 32 lower-case hexadecimal characters",
+  "modules": {
+    "A": "product + trade item + immutable label + nullable recipe + batch + QR + ERP API",
+    "B": "optional explicit licensed documentation",
+    "C": "retained specification, assessment not issued in release 1"
+  },
+  "batch_contract": {
+    "required": [
+      "tenant_id",
+      "product_id",
+      "trade_item_id",
+      "product_info_version_id",
+      "lot_code"
+    ],
+    "optional": [
+      "recipe_version_id"
+    ],
+    "historical_label_immutable": true,
+    "alerts_current_overlay": true,
+    "publication_releases_batch": false
+  },
+  "gs1_level": "gs1_conformant_resolver_1.2.1",
+  "gs1_profile": {
+    "primary_keys": [
+      "01"
+    ],
+    "qualifiers": [
+      "22",
+      "10",
+      "21",
+      "235"
+    ],
+    "epc": [
+      "SGTIN-96",
+      "SGTIN-198",
+      "SGTIN+",
+      "DSGTIN+",
+      "SGTIN++",
+      "DSGTIN++"
+    ],
+    "evidence": "docs/GS1_IMPLEMENTATION.md"
+  },
+  "migrations": [
+    {
+      "path": "database/migrations/001_initial.sql",
+      "sha256": "1f0177ece5e9e62f6af2a2821d2df09e9d9c5d044c020d8e9dd29b6b926fbb4e"
+    },
+    {
+      "path": "database/migrations/002_resolver.sql",
+      "sha256": "e0736f1ac2619ff8cc48e6eb63c9e3f737966f32599a92eeea55d2aeb6bbb44a"
+    },
+    {
+      "path": "database/migrations/003_integrations.sql",
+      "sha256": "9e6c26b87c01381c6d9ce421114987fc382cb1197f7532e61c4eb940b53ff597"
+    },
+    {
+      "path": "database/migrations/004_home.sql",
+      "sha256": "f00ff92c7dc029d2806161dc57219c36048bddad11f3966fcbb47453471d5955"
+    },
+    {
+      "path": "database/migrations/005_api.sql",
+      "sha256": "46ac7f63ad7e895af672b78992c86868cddf14e683f40126d9f36fd2da0e3112"
+    },
+    {
+      "path": "database/migrations/006_security.sql",
+      "sha256": "c0c293301ba7e9113b454727506746afbe4ed6dcf46a9470a3e231039c432e27"
+    },
+    {
+      "path": "database/migrations/007_readiness.sql",
+      "sha256": "94683acc68dbf15603c1fbf4048ec9cb03367af45be0242c65ee4933d1343871"
+    },
+    {
+      "path": "database/migrations/008_marketplace.sql",
+      "sha256": "8e29b174103949866f139377d1c935e91f2c71cc87c28c2a8df61925f50047ee"
+    }
+  ],
+  "category_profiles": [
+    "bread"
+  ],
+  "tables": [
+    {
+      "name": "schema_migrations",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "organizations",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "users",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "memberships",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "api_tokens",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "products",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "recipe_versions",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "trade_items",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "gtin_registry",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "product_info_versions",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "batches",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "batch_events",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "alerts",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "documents",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "feedback",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "change_proposals",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "votes",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "ai_jobs",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "ai_runs",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "audit_events",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "imports",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "url_mappings",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "producer_domains",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "idempotency_keys",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "rate_limits",
+      "definition_source": "database/migrations/001_initial.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "resolver_links",
+      "definition_source": "database/migrations/002_resolver.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "resolver_transport",
+      "definition_source": "database/migrations/002_resolver.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "integration_connectors",
+      "definition_source": "database/migrations/003_integrations.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "integration_mappings",
+      "definition_source": "database/migrations/003_integrations.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "integration_bindings",
+      "definition_source": "database/migrations/003_integrations.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "integration_events",
+      "definition_source": "database/migrations/003_integrations.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "consumer_receipts",
+      "definition_source": "database/migrations/003_integrations.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "home_accounts",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "home_households",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "home_members",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "home_devices",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "home_login_tokens",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "home_items",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "home_changes",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "home_photos",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "home_history",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "home_invites",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "home_access_events",
+      "definition_source": "database/migrations/004_home.sql",
+      "tenant_scoped": false,
+      "household_scoped": true
+    },
+    {
+      "name": "api_token_metadata",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "api_public_items",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "api_clients",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "api_client_origins",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "api_oauth_requests",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "api_oauth_grants",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": true,
+      "household_scoped": true
+    },
+    {
+      "name": "api_oauth_codes",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "api_oauth_tokens",
+      "definition_source": "database/migrations/005_api.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "security_maintenance",
+      "definition_source": "database/migrations/006_security.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "producer_sessions",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "account_challenges",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "passkey_credentials",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "account_recovery_codes",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "community_vote_states",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "feedback_criteria",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "document_blobs",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "document_provenance",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "document_scans",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "operation_checks",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "security_outbox",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "home_erasure_requests",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "private_file_deletions",
+      "definition_source": "database/migrations/007_readiness.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "marketplace_apps",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "marketplace_releases",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "marketplace_events",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "marketplace_selections",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "print_devices",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "print_serial_counters",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "print_usage",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "print_units",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "print_jobs",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "print_job_units",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "print_job_events",
+      "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    }
+  ],
+  "future_specification_source": "OpenBread_Codex_v1_2026-10-23/06_contracte/data_model.json",
+  "future_specification_overrides": [
+    "OpenAliment / openaliment.ro and all food categories",
+    "Independent A/B/C modules",
+    "batches.recipe_version_id nullable",
+    "Mandatory immutable product_info_version_id independent from recipe",
+    "Bread-only technical fields are category profile",
+    "No implicit open licence, badge or GS1 rights"
+  ]
+}

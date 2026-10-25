@@ -1,0 +1,13 @@
+{
+  "publisher": "GS1",
+  "license": "Apache-2.0",
+  "version": "1.4.1",
+  "url": "https://github.com/gs1/gs1-syntax-engine/releases/download/1.4.1/gs1encoders-wasm-app.zip",
+  "archive_sha256": "6a43023ae7a1cbba6566c6e963c5ea70ddcdb46ab6ad86d16e8d8f890bfb98cc",
+  "files_sha256": {
+    "gs1encoder.mjs": "dafdafa3bfe1f33c34ac88623fdff38dcc399318c575e52a9a2a49207a80a242",
+    "gs1encoder-wasm.mjs": "a0c254bd2241d5b0921765ac34addff333fcc8b2957f4a758f4a6ef13bd64503",
+    "gs1encoder-wasm.wasm": "345894c7581c63810e8506fa5506374549beafcea83603b041453c316e3b6776"
+  },
+  "scope": "Optional audit oracle only; not a production dependency"
+}

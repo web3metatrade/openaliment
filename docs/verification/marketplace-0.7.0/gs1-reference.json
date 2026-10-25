@@ -1,0 +1,39 @@
+{
+    "passed": 8,
+    "failed": 0,
+    "checks": [
+        {
+            "name": "A changed PDF cannot pass a pinned official hash",
+            "passed": true
+        },
+        {
+            "name": "Failed integrity leaves prior reference untouched",
+            "passed": true
+        },
+        {
+            "name": "Official source redirects are refused",
+            "passed": true
+        },
+        {
+            "name": "Oversized response is bounded during transfer",
+            "passed": true
+        },
+        {
+            "name": "Exact official PDF is preserved without mutation",
+            "passed": true
+        },
+        {
+            "name": "Transport requires HTTPS TLS validation and forbids redirects",
+            "passed": true
+        },
+        {
+            "name": "Verified cache avoids repeated network requests",
+            "passed": true
+        },
+        {
+            "name": "Failed transfers leave no temporary files",
+            "passed": true
+        }
+    ],
+    "network": "process-local transport double; official bytes from pinned cache"
+}

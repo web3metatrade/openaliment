@@ -1,0 +1,1618 @@
+{
+  "passed": 403,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "PHP syntax: app/autoload.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/bootstrap.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/AccountAccessController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/AccountSecurityController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/AdminController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/ApiController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/ApiDocumentationController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/ConsumerController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/DemoBreadController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/DeveloperController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/DiscoveryController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/HomeController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/IntegrationController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/IntegrationManageController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/ManageController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/OAuthController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/PlatformApiController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/PublicController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/ReceiptController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/ResolverController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/ResolverManageController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/SetupController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Controllers/UpdatesController.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Api.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/ApiGateway.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/ApiInput.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/ApiRoutes.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Auth.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Config.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Db.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/FilePolicy.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Http.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Mailer.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Migrations.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Passwords.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/PrivateKey.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Problem.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/RateLimit.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Schema.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/SecurityBudget.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/SecurityLog.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Seo.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Core/Session.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/AccountChallenges.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/AccountRecovery.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Accounts.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Administration.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Ai.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ApiDocumentation.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ApiKeys.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ApiManage.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ApiPublic.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ApiPublicIndex.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Backups.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/BackupSettings.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Catalog.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Community.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ConsumerAssets.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ConsumerFood.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/DemoBread.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/DigitalLink.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/DigitalReceipt.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/DocumentBlobs.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Documents.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/DocumentScanner.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/EpcDecoder.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ErasureRestore.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/FoodData.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/FoodDate.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/HomeAudit.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/HomeHouseholds.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/HomeIdentity.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/HomeInventory.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/HomePhotos.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/HomePrivacy.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/HomeSync.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Integrations.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/MailSettings.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Maintenance.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Mutations.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/OAuth.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Operations.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/OperationsAssets.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/PartnerMapping.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Passkeys.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/PlatformInformation.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Portability.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ProducerQuota.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ProducerSessions.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/PublicArchive.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/Resolver.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ResolverRegistry.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/ResolverUri.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/SecurityOutbox.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Domain/TransferStream.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Support/view_helpers.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/about.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/account-recovery.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/account-security.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/account-verify.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/admin.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/api-docs.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/api-explorer.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/api-fields.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/api-reference.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/auth.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/catalog.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/connectors.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/consumer-home.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/demo-bread-print.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/demo-bread.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/developers.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/digital-link-guide.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/food-data-form.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/food-data-preview.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/home.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/layout.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/manage.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/message.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/oauth-consent.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/operations-panel.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/privacy.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/product.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/recipe.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/resolver-linkset.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/resolver-manage.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/resolver-profile.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Views/updates.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/PHPMailer/Exception.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/PHPMailer/License.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/PHPMailer/PHPMailer.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/PHPMailer/SMTP.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/WebAuthn.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/WebAuthnException.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/AttestationObject.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/AuthenticatorData.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Binary/ByteBuffer.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/CBOR/CborDecoder.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/AndroidKey.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/AndroidSafetyNet.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/Apple.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/FormatBase.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/None.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/Packed.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/Tpm.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: app/Vendor/WebAuthn/src/Attestation/Format/U2f.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: public/hosting-check.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: public/index.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/api-documentation.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/api-platform.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/api-reference-fixtures.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/backup.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/bootstrap-unit.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/bootstrap.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/config.example.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/consumer.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/demo-bread.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/home-cloud.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/integration.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/integrations.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/mailer.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/operations-unit.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/readiness-tools.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/readiness.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/resolver.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/security-unit.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tests/security.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/dev-router.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/worker.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/build/api_registry.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/deploy/bridge.template.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/dev/test-router.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/ops/backup.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/ops/reconcile-erasure.php",
+      "passed": true
+    },
+    {
+      "name": "PHP syntax: tools/ops/restore.php",
+      "passed": true
+    },
+    {
+      "name": "Python sources parse without generated bytecode",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/account-access.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/api-docs.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/api-explorer.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/app.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/demo-print.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/digital-link-guide.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/qr.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/app.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/cloud-domain.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/cloud.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/domain.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/entry.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/ocr.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/privacy.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/receipt.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/scanner.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/store.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/sw.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: public/assets/home/transfer.js",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/api-explorer.mjs",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/api-sdk.mjs",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/cloud-client-domain.mjs",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/consumer-domain.mjs",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/receipt-domain.mjs",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/account-access-browser.cjs",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/consumer-browser.cjs",
+      "passed": true
+    },
+    {
+      "name": "JavaScript syntax: tests/qr-matrices.cjs",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: AccountAccessController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: AccountSecurityController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: AdminController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiDocumentationController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ConsumerController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DemoBreadController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DeveloperController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DiscoveryController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomeController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: IntegrationController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: IntegrationManageController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ManageController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: OAuthController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: PlatformApiController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: PublicController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ReceiptController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ResolverController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ResolverManageController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: SetupController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: UpdatesController",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Api",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiGateway",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiInput",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiRoutes",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Auth",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Config",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Db",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: FilePolicy",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Http",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Mailer",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Migrations",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Passwords",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: PrivateKey",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Problem",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: RateLimit",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Schema",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: SecurityBudget",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: SecurityLog",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Seo",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Session",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: AccountChallenges",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: AccountRecovery",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Accounts",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Administration",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Ai",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiDocumentation",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiKeys",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiManage",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiPublic",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ApiPublicIndex",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Backups",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: BackupSettings",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Catalog",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Community",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ConsumerAssets",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ConsumerFood",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DemoBread",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DigitalLink",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DigitalReceipt",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DocumentBlobs",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Documents",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: DocumentScanner",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: EpcDecoder",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ErasureRestore",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: FoodData",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: FoodDate",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomeAudit",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomeHouseholds",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomeIdentity",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomeInventory",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomePhotos",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomePrivacy",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: HomeSync",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Integrations",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: MailSettings",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Maintenance",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Mutations",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: OAuth",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Operations",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: OperationsAssets",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: PartnerMapping",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Passkeys",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: PlatformInformation",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Portability",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ProducerQuota",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ProducerSessions",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: PublicArchive",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: Resolver",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ResolverRegistry",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: ResolverUri",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: SecurityOutbox",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive PSR-4 path: TransferStream",
+      "passed": true
+    },
+    {
+      "name": "JSON contracts and project manifests parse",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: bootstrap.min.css",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: qrcodegen.js",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: zxing-browser.min.js",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: ocr/tesseract.min.js",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: ocr/worker.min.js",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: ocr/tesseract-core-lstm.js",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: ocr/tesseract-core-lstm.wasm",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: ocr/APACHE-LICENSE.txt",
+      "passed": true
+    },
+    {
+      "name": "Pinned production asset: ocr/lang/eng.traineddata.gz",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: Exception.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: PHPMailer.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: SMTP.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: LICENSE",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/AttestationObject.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/AuthenticatorData.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/AndroidKey.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/AndroidSafetyNet.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/Apple.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/FormatBase.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/None.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/Packed.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/Tpm.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Attestation/Format/U2f.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/Binary/ByteBuffer.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/CBOR/CborDecoder.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/WebAuthn.php",
+      "passed": true
+    },
+    {
+      "name": "Pinned PHP dependency: src/WebAuthnException.php",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/PBT_BT01_Sablon_A3_1la1.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_ACH1_Furnizori_si_ambalare.docx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_ACH1_Furnizori_si_ambalare.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_ACH1_Registru_achizitii.xlsx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_BT01_Macheta_cotata.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_BT01_Pachet_tipografie.zip",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_Brevete_si_formula_experimentala.docx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_COST1_Calculator.xlsx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_COST1_Cost_timp_energie_si_pret.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_COST2_Corectie_si_preturi_verificate.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_COST3_Calculator.xlsx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_COST3_Trei_scenarii.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_Dosar_de_cercetare.docx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_Identitate_Ambalaj_si_Platforma_AI.docx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_Manual_complet_pentru_concurs.docx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_OP1_Transfer_productie.docx",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_OP1_Transfer_productie.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 01_originale/Paine_Buna_Tehnic_Pachet_pregatire_productie_OP1.zip",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/PBT_BT01_Sablon_A3_1la1_pdf.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_ACH1_Furnizori_si_ambalare_docx.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_ACH1_Furnizori_si_ambalare_pdf.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_ACH1_Registru_achizitii.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_BT01_Macheta_cotata_pdf.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_Brevete_si_formula_experimentala_docx.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_COST1_Calculator.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_COST1_Cost_timp_energie_si_pret_pdf.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_COST2_Corectie_si_preturi_verificate_pdf.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_COST3_Calculator.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_COST3_Trei_scenarii_pdf.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_Dosar_de_cercetare_docx.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_Identitate_Ambalaj_si_Platforma_AI_docx.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_Manual_complet_pentru_concurs_docx.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_OP1_Transfer_productie_docx.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_OP1_Transfer_productie_pdf.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 02_extrase_text/Paine_Buna_Tehnic_Pachet_pregatire_productie_OP1_index.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/CITESTE_INAINTE_DE_TIPAR.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/MANIFEST_SHA256.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/PBT_BT01_Grafica_1la1.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/PBT_BT01_Sablon_A3_1la1.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/PBT_BT01_Specificatie.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/PBT_BT01_Sursa_editabila.svg",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/PBT_BT01_Taiere_Biguire_1la1.pdf",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 03_bt01_recuperat/RAPORT_RECUPERARE.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/cost3_scenarios.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/document_catalog.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/field_mapping.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/import_plan.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/product_pbt.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/recipe_r1.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/recipe_r1_general.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 04_import/submission_pbt_draft.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 05_standard/requirements_v0.1.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 06_contracte/ai_review.example.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 06_contracte/ai_review.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 06_contracte/data_model.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 06_contracte/recipe_general.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 06_contracte/recipe_release.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 06_contracte/submission.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/DOSAR_PRODUCATOR_TEMPLATE.md",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/POLITICI_DRAFT.md",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/cost_record.template.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/credential.template.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/decision_record.template.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/lot_record.template.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/recipe_general.template.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 07_sabloane/trial_record.template.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 08_codex/PROMPT_START_CODEX.md",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 08_codex/acceptance_tests.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 08_codex/access_checklist.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 08_codex/env.example",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 08_codex/qr_acceptance_cases.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 09_surse/source_registry.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 10_verificare/VALIDARE_PACHET.md",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 10_verificare/validation_report.json",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: 10_verificare/verify_package.py",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: OPENBREAD_MASTER.html",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: OPENBREAD_MASTER.md",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: START_HERE.txt",
+      "passed": true
+    },
+    {
+      "name": "Historical bytes: source_inventory.json",
+      "passed": true
+    }
+  ]
+}

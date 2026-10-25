@@ -1,0 +1,148 @@
+{
+  "executed_at": "2026-10-24T09:18:47.281Z",
+  "environment": "Node pure client rules, not physical device acceptance",
+  "passed": 35,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "First inventory needs no account",
+      "passed": true
+    },
+    {
+      "name": "Unknown carbohydrate is not zero",
+      "passed": true
+    },
+    {
+      "name": "Actual portion uses total carbohydrate",
+      "passed": true
+    },
+    {
+      "name": "Incompatible volume cannot be converted to mass",
+      "passed": true
+    },
+    {
+      "name": "Preparation and jurisdiction are retained",
+      "passed": true
+    },
+    {
+      "name": "Contains and may contain are distinct",
+      "passed": true
+    },
+    {
+      "name": "Unknown allergens are not declared absent",
+      "passed": true
+    },
+    {
+      "name": "Invalid leap date is rejected",
+      "passed": true
+    },
+    {
+      "name": "Month precision ends on leap month end",
+      "passed": true
+    },
+    {
+      "name": "Calendar day uses Bucharest timezone",
+      "passed": true
+    },
+    {
+      "name": "Bad GTIN is rejected offline",
+      "passed": true
+    },
+    {
+      "name": "Offline GTIN keeps leading zeros",
+      "passed": true
+    },
+    {
+      "name": "Offline encoded lot is decoded only once",
+      "passed": true
+    },
+    {
+      "name": "GS1 00 day does not invent printed day",
+      "passed": true
+    },
+    {
+      "name": "Unsafe QR scheme is rejected",
+      "passed": true
+    },
+    {
+      "name": "Duplicate date in QR is rejected",
+      "passed": true
+    },
+    {
+      "name": "Two identical packages have separate identities",
+      "passed": true
+    },
+    {
+      "name": "Opened time belongs to package",
+      "passed": true
+    },
+    {
+      "name": "Repeat open does not rewrite history",
+      "passed": true
+    },
+    {
+      "name": "Consume and undo restore package",
+      "passed": true
+    },
+    {
+      "name": "Undo add does not affect another package",
+      "passed": true
+    },
+    {
+      "name": "Stale undo cannot overwrite a correction",
+      "passed": true
+    },
+    {
+      "name": "Undo does not hide a newer live recall",
+      "passed": true
+    },
+    {
+      "name": "Expired use-by does not say safe",
+      "passed": true
+    },
+    {
+      "name": "Best before has different meaning",
+      "passed": true
+    },
+    {
+      "name": "Reminder does not become expiry",
+      "passed": true
+    },
+    {
+      "name": "Recall outranks expiry",
+      "passed": true
+    },
+    {
+      "name": "Inventory import preserves opening and history",
+      "passed": true
+    },
+    {
+      "name": "Import keeps orphan history from undone add",
+      "passed": true
+    },
+    {
+      "name": "Import cannot duplicate package identity",
+      "passed": true
+    },
+    {
+      "name": "Unknown fields do not become privileged access",
+      "passed": true
+    },
+    {
+      "name": "OCR proposes one complete date with kind",
+      "passed": true
+    },
+    {
+      "name": "OCR rejects impossible date without salvaging a fake month",
+      "passed": true
+    },
+    {
+      "name": "OCR preserves ambiguity instead of guessing",
+      "passed": true
+    },
+    {
+      "name": "OCR conflicting date labels have unknown kind",
+      "passed": true
+    }
+  ]
+}

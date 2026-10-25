@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment date with precision v1",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "enum": [
+        "use_by",
+        "best_before",
+        "reminder"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    },
+    "precision": {
+      "enum": [
+        "day",
+        "month",
+        "year"
+      ]
+    },
+    "source": {
+      "enum": [
+        "producer",
+        "barcode",
+        "user",
+        "receipt"
+      ]
+    },
+    "raw": {
+      "type": "string",
+      "maxLength": 80
+    }
+  },
+  "required": [
+    "kind",
+    "value",
+    "precision",
+    "source"
+  ],
+  "additionalProperties": false,
+  "description": "Runtime verifies calendar validity and precision. GS1 day 00 preserves month precision and is interpreted as month end. Reminder is never an expiry declaration."
+}

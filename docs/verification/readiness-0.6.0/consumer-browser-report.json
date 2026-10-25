@@ -1,0 +1,116 @@
+{
+  "executed_at": "2026-10-25T11:14:48.994Z",
+  "environment": "Local isolated Edge desktop and mobile emulation; not physical Android/iPhone or POS",
+  "passed": 27,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Guest first screen has no account gate",
+      "passed": true
+    },
+    {
+      "name": "Real UI adds PBT as a clearly marked demonstration",
+      "passed": true
+    },
+    {
+      "name": "Open takes one action",
+      "passed": true
+    },
+    {
+      "name": "Undo opening restores unopened package",
+      "passed": true
+    },
+    {
+      "name": "Consume removes package from active list",
+      "passed": true
+    },
+    {
+      "name": "Undo consume restores package",
+      "passed": true
+    },
+    {
+      "name": "Intentional second package is preserved",
+      "passed": true
+    },
+    {
+      "name": "Unknown allergens are not shown as absent",
+      "passed": true
+    },
+    {
+      "name": "Reload preserves local inventory and preferences",
+      "passed": true
+    },
+    {
+      "name": "No-code product is saved with private photo",
+      "passed": true
+    },
+    {
+      "name": "Actual local OCR reads date from a generated photo",
+      "passed": true
+    },
+    {
+      "name": "OCR result remains a user-confirmed date",
+      "passed": true
+    },
+    {
+      "name": "Producer recall appears on the consumer card",
+      "passed": true
+    },
+    {
+      "name": "Approved historical lot keeps public warning",
+      "passed": true
+    },
+    {
+      "name": "Portion calculator uses approved total carbohydrate",
+      "passed": true
+    },
+    {
+      "name": "Shopping list works without an account",
+      "passed": true
+    },
+    {
+      "name": "Personal export includes photos and complete event history",
+      "passed": true
+    },
+    {
+      "name": "Desktop has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "PWA shell and inventory work offline",
+      "passed": true
+    },
+    {
+      "name": "Offline operation is saved",
+      "passed": true
+    },
+    {
+      "name": "Import on a fresh device reconstructs inventory",
+      "passed": true
+    },
+    {
+      "name": "Imported private photo survives round trip",
+      "passed": true
+    },
+    {
+      "name": "Repeated import does not duplicate packages",
+      "passed": true
+    },
+    {
+      "name": "Mobile emulation has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "No health preference is sent as a network mutation",
+      "passed": true
+    },
+    {
+      "name": "OCR/scanning do not call an external host",
+      "passed": true
+    },
+    {
+      "name": "No unhandled browser exceptions",
+      "passed": true
+    }
+  ]
+}

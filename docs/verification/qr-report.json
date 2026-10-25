@@ -1,0 +1,49 @@
+{
+  "suite": "Independent QR decode",
+  "decoder": "zxing-cpp 3.1.1",
+  "passed": 7,
+  "failed": 0,
+  "checks": [
+    {
+      "url": "https://openaliment.ro/01/09506000134352",
+      "passed": true,
+      "modules": 29,
+      "quiet_zone": 4
+    },
+    {
+      "url": "https://openaliment.ro/01/09506000134352/10/LotA",
+      "passed": true,
+      "modules": 33,
+      "quiet_zone": 4
+    },
+    {
+      "url": "https://openaliment.ro/01/09506000134352/10/A%2FB%2B00%25%3F",
+      "passed": true,
+      "modules": 33,
+      "quiet_zone": 4
+    },
+    {
+      "url": "https://openaliment.ro/01/09506000134352/10/A%252FB",
+      "passed": true,
+      "modules": 33,
+      "quiet_zone": 4
+    },
+    {
+      "url": "https://openaliment.ro/b/00000123456789abcdefabcdef0000000",
+      "passed": true,
+      "modules": 33,
+      "quiet_zone": 4
+    },
+    {
+      "url": "https://openaliment.ro/01/09506000134352/10/00000000000000000001",
+      "passed": true,
+      "modules": 37,
+      "quiet_zone": 4
+    },
+    {
+      "name": "Actual SVG downloaded from browser UI",
+      "passed": true,
+      "url": "http://127.0.0.1:8088/b/4fe53f884858cf95a9cbeb487aa41568"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Initial maintainer. Add a trusted second reviewer before enforcing code-owner
+# approval for the owner's own PRs; authors cannot approve their own PRs.
+* @web3metatrade
+/.github/ @web3metatrade
+/tools/deploy/ @web3metatrade
+/database/migrations/ @web3metatrade
+/contracts/gs1/ @web3metatrade

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment personal inventory v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "items",
+    "events",
+    "preferences",
+    "shopping"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "openaliment.home.v1"
+    },
+    "items": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "revision",
+          "profile",
+          "state",
+          "expiry"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "profile": {
+            "$ref": "consumer-product-profile.schema.json"
+          },
+          "state": {
+            "enum": [
+              "available",
+              "consumed"
+            ]
+          },
+          "expiry": {
+            "anyOf": [
+              {
+                "$ref": "food-date.schema.json"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 50000,
+      "items": {
+        "type": "object"
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "allergens": {
+          "type": "array",
+          "maxItems": 14,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "gluten",
+              "crustaceans",
+              "eggs",
+              "fish",
+              "peanuts",
+              "soy",
+              "milk",
+              "nuts",
+              "celery",
+              "mustard",
+              "sesame",
+              "sulphites",
+              "lupin",
+              "molluscs"
+            ]
+          }
+        }
+      },
+      "required": [
+        "allergens"
+      ],
+      "additionalProperties": false
+    },
+    "shopping": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,722 @@
+{
+  "suite": "Production HTTPS GS1 transport",
+  "base_url": "https://openaliment.ro",
+  "executed_at": "2026-10-24T05:42:24.325775+00:00",
+  "scope": "Descriptor, TLS/CORS, parser and EPC transport for unregistered example identifiers; no production records created. Successful registered resolution and history were tested in the isolated MariaDB environment.",
+  "passed": 178,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "HTTPS resolver descriptor validates official GS1 schema",
+      "passed": true
+    },
+    {
+      "name": "Public CORS is available without credentials",
+      "passed": true
+    },
+    {
+      "name": "Resolver marker identifies deployed implementation",
+      "passed": true
+    },
+    {
+      "name": "HEAD descriptor has headers and no body",
+      "passed": true
+    },
+    {
+      "name": "Cross-origin preflight reaches application over TLS",
+      "passed": true
+    },
+    {
+      "name": "Unknown syntactically valid GTIN returns 404",
+      "passed": true
+    },
+    {
+      "name": "Invalid GTIN returns 400",
+      "passed": true
+    },
+    {
+      "name": "Unsupported primary key returns 404",
+      "passed": true
+    },
+    {
+      "name": "Malformed qualifier order returns 400",
+      "passed": true
+    },
+    {
+      "name": "Encoded control characters return 400",
+      "passed": true
+    },
+    {
+      "name": "Malformed percent encoding returns 400",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0021",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0022",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0025",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0026",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0027",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0028",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0029",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+002A",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+002B",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+002C",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+002D",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+002E",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+002F",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+003A",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+003B",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+003C",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+003D",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+003E",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+003F",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+005F",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0030",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0031",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0032",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0033",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0034",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0035",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0036",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0037",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0038",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0039",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0041",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0042",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0043",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0044",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0045",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0046",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0047",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0048",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0049",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+004A",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+004B",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+004C",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+004D",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+004E",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+004F",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0050",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0051",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0052",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0053",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0054",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0055",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0056",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0057",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0058",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0059",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+005A",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0061",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0062",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0063",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0064",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0065",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0066",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0067",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0068",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0069",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+006A",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+006B",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+006C",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+006D",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+006E",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+006F",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0070",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0071",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0072",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0073",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0074",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0075",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0076",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0077",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0078",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+0079",
+      "passed": true
+    },
+    {
+      "name": "Encoded GS1 X transport U+007A",
+      "passed": true
+    },
+    {
+      "name": "Exact case/zero/literal-percent transport 000001",
+      "passed": true
+    },
+    {
+      "name": "Exact case/zero/literal-percent transport LotA",
+      "passed": true
+    },
+    {
+      "name": "Exact case/zero/literal-percent transport lota",
+      "passed": true
+    },
+    {
+      "name": "Exact case/zero/literal-percent transport A%2FB",
+      "passed": true
+    },
+    {
+      "name": "Exact case/zero/literal-percent transport A/B+00%?",
+      "passed": true
+    },
+    {
+      "name": "Exact case/zero/literal-percent transport AAAAAAAAAAAAAAAAAAAA",
+      "passed": true
+    },
+    {
+      "name": "Qualified GTIN transport /22/CPV/10/L/21/S",
+      "passed": true
+    },
+    {
+      "name": "Qualified GTIN transport /235/TPX-1",
+      "passed": true
+    },
+    {
+      "name": "Qualified GTIN transport /10/A%2FB/",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 0 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 0 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 1 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 1 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 2 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 2 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 3 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 3 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 4 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 4 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 5 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 5 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 6 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-96 partition 6 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-198 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN-198 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 0 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 0 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 1 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 1 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 2 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 2 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 3 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 3 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 4 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 4 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 5 eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ encoding 5 ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport DSGTIN+ eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport DSGTIN+ ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN++ ASCII hostname eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN++ ASCII hostname ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN++ optimized hostname eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN++ optimized hostname ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport DSGTIN++ Code40 hostname eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport DSGTIN++ Code40 hostname ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ plus data eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ plus data ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport DSGTIN+ unspecified day eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport DSGTIN+ unspecified day ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute fixed numeric eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute fixed numeric ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute fixed numeric long eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute fixed numeric long ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute fixed BCD eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute fixed BCD ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute delimited numeric eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute delimited numeric ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute mixed numeric alphanumeric eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute mixed numeric alphanumeric ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute single bit eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute single bit ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute date eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute date ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute date time midnight eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute date time midnight ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute date range eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute date range ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision date eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision date ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision hour eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision hour ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision minute eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision minute ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision seconds eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable precision seconds ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute country eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute country ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable numeric eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute variable numeric ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute optional negative sign eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute optional negative sign ex",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute sequence indicator eh",
+      "passed": true
+    },
+    {
+      "name": "EPC transport SGTIN+ attribute sequence indicator ex",
+      "passed": true
+    },
+    {
+      "name": "JSON-LD context is available over HTTPS",
+      "passed": true
+    },
+    {
+      "name": "Context list is available over HTTPS",
+      "passed": true
+    }
+  ]
+}

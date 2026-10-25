@@ -1,0 +1,52 @@
+{
+  "executed_at": "2026-10-24T09:18:47.456Z",
+  "environment": "pure client domain with simulated retailer fixture",
+  "passed": 11,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Different merchant format arrives as the same receipt contract",
+      "passed": true
+    },
+    {
+      "name": "Two identical packs remain separate physical packages",
+      "passed": true
+    },
+    {
+      "name": "Unknown dates and nutrition remain unknown",
+      "passed": true
+    },
+    {
+      "name": "Simulated receipt is visible as simulation",
+      "passed": true
+    },
+    {
+      "name": "Receipt repeated after consume does not resurrect packages",
+      "passed": true
+    },
+    {
+      "name": "Receipt provenance survives export/import validation",
+      "passed": true
+    },
+    {
+      "name": "Partial package consumption does not affect identical package",
+      "passed": true
+    },
+    {
+      "name": "Receipt without GTIN can still be added",
+      "passed": true
+    },
+    {
+      "name": "Duplicate receipt line IDs rejected before mutation",
+      "passed": true
+    },
+    {
+      "name": "Conflicting receipt and producer dates require confirmation",
+      "passed": true
+    },
+    {
+      "name": "Oversized receipt inventory rejected without partial changes",
+      "passed": true
+    }
+  ]
+}

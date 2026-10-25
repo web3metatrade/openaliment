@@ -1,0 +1,446 @@
+[
+  {
+    "name": "SGTIN-96 partition 0",
+    "path": "/eh3003776f76d1641cbe991a83",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 0",
+    "path": "/exMAN3b3bRZBy-mRqD",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 1",
+    "path": "/eh3006c5f2c574415cbe991a83",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 1",
+    "path": "/exMAbF8sV0QVy-mRqD",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 2",
+    "path": "/eh300a37f56ac30b5cbe991a83",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 2",
+    "path": "/exMAo39WrDC1y-mRqD",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 3",
+    "path": "/eh300f8cbbde00565cbe991a83",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 3",
+    "path": "/exMA-Mu94AVly-mRqD",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 4",
+    "path": "/eh3012d6fcb1824a5cbe991a83",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 4",
+    "path": "/exMBLW_LGCSly-mRqD",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 5",
+    "path": "/eh30164596f40c0e5cbe991a83",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 5",
+    "path": "/exMBZFlvQMDly-mRqD",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 6",
+    "path": "/eh301ba28b01f4565cbe991a83",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-96 partition 6",
+    "path": "/exMBuiiwH0Vly-mRqD",
+    "gtin": "09528765123457",
+    "serial": "123456789123"
+  },
+  {
+    "name": "SGTIN-198",
+    "path": "/eh36164596f40c0e60c286bf265ccad280000000000000000000",
+    "gtin": "09528765123457",
+    "serial": "ABC/def+%"
+  },
+  {
+    "name": "SGTIN-198",
+    "path": "/exNhZFlvQMDmDChr8mXMrSgAAAAAAAAAAAA",
+    "gtin": "09528765123457",
+    "serial": "ABC/def+%"
+  },
+  {
+    "name": "SGTIN+ encoding 0",
+    "path": "/ehf70095287651234570c00075bcd15",
+    "gtin": "09528765123457",
+    "serial": "000123456789"
+  },
+  {
+    "name": "SGTIN+ encoding 0",
+    "path": "/ex9wCVKHZRI0VwwAB1vNFQ",
+    "gtin": "09528765123457",
+    "serial": "000123456789"
+  },
+  {
+    "name": "SGTIN+ encoding 1",
+    "path": "/ehf700952876512345729abcdef123",
+    "gtin": "09528765123457",
+    "serial": "ABCDEF123"
+  },
+  {
+    "name": "SGTIN+ encoding 1",
+    "path": "/ex9wCVKHZRI0Vymrze8SM",
+    "gtin": "09528765123457",
+    "serial": "ABCDEF123"
+  },
+  {
+    "name": "SGTIN+ encoding 2",
+    "path": "/ehf700952876512345749abcdef123",
+    "gtin": "09528765123457",
+    "serial": "abcdef123"
+  },
+  {
+    "name": "SGTIN+ encoding 2",
+    "path": "/ex9wCVKHZRI0V0mrze8SM",
+    "gtin": "09528765123457",
+    "serial": "abcdef123"
+  },
+  {
+    "name": "SGTIN+ encoding 3",
+    "path": "/ehf7009528765123457676be07fd35d8",
+    "gtin": "09528765123457",
+    "serial": "a-B_012"
+  },
+  {
+    "name": "SGTIN+ encoding 3",
+    "path": "/ex9wCVKHZRI0V2dr4H_TXY",
+    "gtin": "09528765123457",
+    "serial": "a-B_012"
+  },
+  {
+    "name": "SGTIN+ encoding 4",
+    "path": "/ehf70095287651234578682be12b4a88",
+    "gtin": "09528765123457",
+    "serial": "A/B+%\""
+  },
+  {
+    "name": "SGTIN+ encoding 4",
+    "path": "/ex9wCVKHZRI0V4aCvhK0qI",
+    "gtin": "09528765123457",
+    "serial": "A/B+%\""
+  },
+  {
+    "name": "SGTIN+ encoding 5",
+    "path": "/ehf7009528765123457a70694adb9ce41",
+    "gtin": "09528765123457",
+    "serial": "ABC-123"
+  },
+  {
+    "name": "SGTIN+ encoding 5",
+    "path": "/ex9wCVKHZRI0V6cGlK25zkE",
+    "gtin": "09528765123457",
+    "serial": "ABC-123"
+  },
+  {
+    "name": "DSGTIN+",
+    "path": "/ehfb0435570952876512345786a7169498330",
+    "gtin": "09528765123457",
+    "serial": "SERIAL"
+  },
+  {
+    "name": "DSGTIN+",
+    "path": "/ex-wQ1VwlSh2USNFeGpxaUmDM",
+    "gtin": "09528765123457",
+    "serial": "SERIAL"
+  },
+  {
+    "name": "SGTIN++ ASCII hostname",
+    "path": "/ehfd00952876512345705003dcedfc32eec3b34edcbbba2ee5bc",
+    "gtin": "09528765123457",
+    "serial": "00123"
+  },
+  {
+    "name": "SGTIN++ ASCII hostname",
+    "path": "/ex_QCVKHZRI0VwUAPc7fwy7sOzTty7ui7lv",
+    "gtin": "09528765123457",
+    "serial": "00123"
+  },
+  {
+    "name": "SGTIN++ optimized hostname",
+    "path": "/ehfd00952876512345784913e9d492832f8c3b786ccb6c",
+    "gtin": "09528765123457",
+    "serial": "HOST"
+  },
+  {
+    "name": "SGTIN++ optimized hostname",
+    "path": "/ex_QCVKHZRI0V4SRPp1JKDL4w7eGzLb",
+    "gtin": "09528765123457",
+    "serial": "HOST"
+  },
+  {
+    "name": "DSGTIN++ Code40 hostname",
+    "path": "/ehfc0435570952876512345786913e9d468c05918129e691d22fe48",
+    "gtin": "09528765123457",
+    "serial": "HOST40"
+  },
+  {
+    "name": "DSGTIN++ Code40 hostname",
+    "path": "/ex_AQ1VwlSh2USNFeGkT6dRowFkYEp5pHSL-S",
+    "gtin": "09528765123457",
+    "serial": "HOST40"
+  },
+  {
+    "name": "SGTIN+ plus data",
+    "path": "/ehf780952876512345784a132ad31085993ea2d622e6aae",
+    "gtin": "09528765123457",
+    "serial": "PLUS"
+  },
+  {
+    "name": "SGTIN+ plus data",
+    "path": "/ex94CVKHZRI0V4ShMq0xCFmT6i1iLmqu",
+    "gtin": "09528765123457",
+    "serial": "PLUS"
+  },
+  {
+    "name": "DSGTIN+ unspecified day",
+    "path": "/ehfb04354009528765123457858906a4560",
+    "gtin": "09528765123457",
+    "serial": "DATE0"
+  },
+  {
+    "name": "DSGTIN+ unspecified day",
+    "path": "/ex-wQ1QAlSh2USNFeFiQakVg",
+    "gtin": "09528765123457",
+    "serial": "DATE0"
+  },
+  {
+    "name": "SGTIN+ attribute fixed numeric",
+    "path": "/ehf7809528765123457848352a52310303039",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute fixed numeric",
+    "path": "/ex94CVKHZRI0V4SDUqUjEDAwOQ",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute fixed numeric long",
+    "path": "/ehf7809528765123457848352a524309156a95319d63e15a4",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute fixed numeric long",
+    "path": "/ex94CVKHZRI0V4SDUqUkMJFWqVMZ1j4VpA",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute fixed BCD",
+    "path": "/ehf7809528765123457848352a52724101",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute fixed BCD",
+    "path": "/ex94CVKHZRI0V4SDUqUnJBAQ",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute delimited numeric",
+    "path": "/ehf7809528765123457848352a52800412345678f",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute delimited numeric",
+    "path": "/ex94CVKHZRI0V4SDUqUoAEEjRWeP",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute mixed numeric alphanumeric",
+    "path": "/ehf7809528765123457848352a528004123e828308",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute mixed numeric alphanumeric",
+    "path": "/ex94CVKHZRI0V4SDUqUoAEEj6Cgwg",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute single bit",
+    "path": "/ehf7809528765123457848352a5243218",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute single bit",
+    "path": "/ex94CVKHZRI0V4SDUqUkMhg",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute date",
+    "path": "/ehf7809528765123457848352a52173540",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute date",
+    "path": "/ex94CVKHZRI0V4SDUqUhc1QA",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute date time midnight",
+    "path": "/ehf7809528765123457848352a5270033557c00",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute date time midnight",
+    "path": "/ex94CVKHZRI0V4SDUqUnADNVfAA",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute date range",
+    "path": "/ehf7809528765123457848352a5270079aab9aa00",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute date range",
+    "path": "/ex94CVKHZRI0V4SDUqUnAHmquaoA",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision date",
+    "path": "/ehf7809528765123457848352a527011cd55c",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision date",
+    "path": "/ex94CVKHZRI0V4SDUqUnARzVX",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision hour",
+    "path": "/ehf7809528765123457848352a5280080d55f0",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision hour",
+    "path": "/ex94CVKHZRI0V4SDUqUoAIDVXw",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision minute",
+    "path": "/ehf7809528765123457848352a5280084d55d968",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision minute",
+    "path": "/ex94CVKHZRI0V4SDUqUoAITVXZa",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision seconds",
+    "path": "/ehf7809528765123457848352a5280088d55d96f6",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable precision seconds",
+    "path": "/ex94CVKHZRI0V4SDUqUoAIjVXZb2",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute country",
+    "path": "/ehf7809528765123457848352a52430744e",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute country",
+    "path": "/ex94CVKHZRI0V4SDUqUkMHRO",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable numeric",
+    "path": "/ehf7809528765123457848352a52308178c29c",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute variable numeric",
+    "path": "/ex94CVKHZRI0V4SDUqUjCBeMKc",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute optional negative sign",
+    "path": "/ehf7809528765123457848352a524330030398",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute optional negative sign",
+    "path": "/ex94CVKHZRI0V4SDUqUkMwAwOY",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute sequence indicator",
+    "path": "/ehf7809528765123457848352a52725819",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  },
+  {
+    "name": "SGTIN+ attribute sequence indicator",
+    "path": "/ex94CVKHZRI0V4SDUqUnJYGQ",
+    "gtin": "09528765123457",
+    "serial": "ATTR"
+  }
+]

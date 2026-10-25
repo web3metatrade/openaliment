@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "OpenAliment Platform API",
+    "description": "258 operații. Exemplele folosesc date demonstrative. Configurează variabilele în mediul privat al clientului și folosește v2 pentru integrări noi. Scrierile modifică datele contului din mediul selectat.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://openaliment.ro"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "connector_id",
+      "value": ""
+    },
+    {
+      "key": "gtin",
+      "value": "09520000000011"
+    },
+    {
+      "key": "id",
+      "value": ""
+    },
+    {
+      "key": "lot",
+      "value": "DEMO-PBT-01"
+    },
+    {
+      "key": "serial",
+      "value": ""
+    },
+    {
+      "key": "tpx",
+      "value": ""
+    },
+    {
+      "key": "variant",
+      "value": ""
+    },
+    {
+      "key": "X-CSRF-Token",
+      "value": ""
+    },
+    {
+      "key": "X-Home-CSRF",
+      "value": ""
+    },
+    {
+      "key": "X-Status-Token",
+      "value": ""
+    }
+  ],
+  "item": [],
+  "x-item-files": [
+    "postman-01.json",
+    "postman-02.json",
+    "postman-03.json",
+    "postman-04.json",
+    "postman-05.json",
+    "postman-06.json",
+    "postman-07.json",
+    "postman-08.json",
+    "postman-09.json",
+    "postman-10.json",
+    "postman-11.json",
+    "postman-12.json",
+    "postman-13.json",
+    "postman-14.json",
+    "postman-15.json",
+    "postman-16.json",
+    "postman-17.json",
+    "postman-18.json"
+  ]
+}

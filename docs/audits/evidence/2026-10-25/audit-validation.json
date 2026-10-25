@@ -1,0 +1,2695 @@
+{
+  "executed_at": "2026-10-25T09:47:35.623828+00:00",
+  "environment": "local documentation validation; no production or application mutations",
+  "passed": 670,
+  "failed": 0,
+  "original_source_files_unchanged": 210,
+  "checks": [
+    {
+      "name": "All IDs exactly once: work_packages",
+      "passed": true
+    },
+    {
+      "name": "All IDs exactly once: requirements",
+      "passed": true
+    },
+    {
+      "name": "All IDs exactly once: acceptance_cases",
+      "passed": true
+    },
+    {
+      "name": "All IDs exactly once: legacy_openbread_cases",
+      "passed": true
+    },
+    {
+      "name": "All IDs exactly once: legacy_qr_cases",
+      "passed": true
+    },
+    {
+      "name": "All IDs exactly once: external_dependencies",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT001",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT001",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT002",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT002",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT003",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT003",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT004",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT004",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT005",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT005",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT006",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT006",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT007",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT007",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT008",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT008",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT009",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT009",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT010",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT010",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT011",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT011",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT012",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT012",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT013",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT013",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT014",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT014",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT015",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT015",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT016",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT016",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT017",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT017",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT018",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT018",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT019",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT019",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT020",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT020",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT021",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT021",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT022",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT022",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT023",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT023",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT024",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT024",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT025",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT025",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT026",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT026",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT027",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT027",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT028",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT028",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT029",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT029",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT030",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT030",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT031",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT031",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT032",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT032",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT033",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT033",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT034",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT034",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT035",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT035",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT036",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT036",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT037",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT037",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT038",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT038",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT039",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT039",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT040",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT040",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT041",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT041",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT042",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT042",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT043",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT043",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT044",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT044",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT045",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT045",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT046",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT046",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT047",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT047",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT048",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT048",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT049",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT049",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT050",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT050",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT051",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT051",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT052",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT052",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT053",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT053",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT054",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT054",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT055",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT055",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT056",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT056",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT057",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT057",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT058",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT058",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT059",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT059",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT060",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT060",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT061",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT061",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT062",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT062",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT063",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT063",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT064",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT064",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT065",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT065",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT066",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT066",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT067",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT067",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT068",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT068",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT069",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT069",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT070",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT070",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT071",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT071",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT072",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT072",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT073",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT073",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT074",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT074",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT075",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT075",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT076",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT076",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT077",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT077",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT078",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT078",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT079",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT079",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT080",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT080",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT081",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT081",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT082",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT082",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT083",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT083",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT084",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT084",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT085",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT085",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT086",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT086",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT087",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT087",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT088",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT088",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT089",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT089",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT090",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT090",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT091",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT091",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT092",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT092",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT093",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT093",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT094",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT094",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT095",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT095",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT096",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT096",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT097",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT097",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT098",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT098",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT099",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT099",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT100",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT100",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT101",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT101",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT102",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT102",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT103",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT103",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT104",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT104",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT105",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT105",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT106",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT106",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT107",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT107",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT108",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT108",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT109",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT109",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT110",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT110",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT111",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT111",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT112",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT112",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT113",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT113",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT114",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT114",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT115",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT115",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT116",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT116",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT117",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT117",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT118",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT118",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT119",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT119",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT120",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT120",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT121",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT121",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT122",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT122",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT123",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT123",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT124",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT124",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT125",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT125",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT126",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT126",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT127",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT127",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT128",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT128",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT129",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT129",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT130",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT130",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT131",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT131",
+      "passed": true
+    },
+    {
+      "name": "Specific assessment: AT132",
+      "passed": true
+    },
+    {
+      "name": "No invented acceptance pass: AT132",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: .github/workflows/ci.yml",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/autoload.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/bootstrap.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/AccountSecurityController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/AdminController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/ApiController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/ApiDocumentationController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/ConsumerController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/DemoBreadController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/DeveloperController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/DiscoveryController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/HomeController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/IntegrationController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/IntegrationManageController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/ManageController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/OAuthController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/PlatformApiController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/PublicController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/ReceiptController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/ResolverController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/ResolverManageController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/SetupController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Controllers/UpdatesController.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Api.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/ApiGateway.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/ApiInput.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/ApiRoutes.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Auth.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Config.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Db.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/FilePolicy.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Http.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Mailer.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Migrations.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Passwords.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Problem.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/RateLimit.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Schema.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/SecurityBudget.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/SecurityLog.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Seo.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Core/Session.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Accounts.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Administration.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Ai.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ApiDocumentation.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ApiKeys.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ApiManage.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ApiPublic.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ApiPublicIndex.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Catalog.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Community.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ConsumerAssets.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ConsumerFood.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/DemoBread.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/DigitalLink.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/DigitalReceipt.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Documents.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/EpcDecoder.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/FoodData.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/FoodDate.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/HomeAudit.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/HomeHouseholds.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/HomeIdentity.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/HomeInventory.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/HomePhotos.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/HomeSync.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Integrations.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/MailSettings.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Maintenance.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Mutations.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/OAuth.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/PartnerMapping.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/PlatformInformation.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Portability.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ProducerQuota.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/Resolver.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ResolverRegistry.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Domain/ResolverUri.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Support/view_helpers.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Vendor/PHPMailer/Exception.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Vendor/PHPMailer/License.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Vendor/PHPMailer/PHPMailer.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Vendor/PHPMailer/SMTP.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/about.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/account-security.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/admin.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/api-docs.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/api-explorer.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/api-fields.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/api-reference.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/auth.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/catalog.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/connectors.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/consumer-home.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/demo-bread-print.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/demo-bread.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/developers.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/digital-link-guide.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/food-data-form.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/food-data-preview.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/home.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/layout.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/manage.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/message.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/oauth-consent.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/privacy.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/product.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/recipe.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/resolver-linkset.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/resolver-manage.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/resolver-profile.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: app/Views/updates.php",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: composer.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/ai-review.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-developer-guide.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/admin.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/ai.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/batches.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/community.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/connectors.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/discovery.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/documents.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/guides.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/home.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/identity.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/keys.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/labels.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/legacy.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/oauth.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-01.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-02.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-03.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-04.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-05.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-06.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-07.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-08.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-09.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-10.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-11.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-12.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-13.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-14.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-15.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-16.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/postman-17.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/products.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/public.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/resolver.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-docs/transfer.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-documentation.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-operation-catalog.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/api-postman-collection.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/batch.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/consumer-assets.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/consumer-inventory.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/consumer-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/consumer-product-profile.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/consumer-transfer.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/data_model.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/digital-receipt.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/food-data.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/food-date.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/gs1/description-schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/gs1/epc-tables.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/gs1/iana-media-types.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/gs1/linkset-context.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/gs1/linkset-schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/gs1/NOTICE.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/home-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/home-sync.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/integration-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/partner-mapping.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/platform-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/product-label.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: contracts/profiles/bread.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: database/migrations/001_initial.sql",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: database/migrations/002_resolver.sql",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: database/migrations/003_integrations.sql",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: database/migrations/004_home.sql",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: database/migrations/005_api.sql",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: database/migrations/006_security.sql",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: docs/implementation/EXECUTION_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: docs/OPENALIMENT_MASTER.md",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: docs/plans/openaliment-backlog-2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: docs/plans/openaliment-plan-consistency-2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: OPENALIMENT_CHANGE_REQUEST_01.md",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: OpenBread_Codex_v1_2026-10-23/08_codex/acceptance_tests.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: OpenBread_Codex_v1_2026-10-23/08_codex/qr_acceptance_cases.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: OpenBread_Codex_v1_2026-10-23/OPENBREAD_MASTER.md",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: OpenBread_Codex_v1_2026-10-23/START_HERE.txt",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: package.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/api-docs.css",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/app.css",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/app.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/cloud-domain.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/cloud.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/domain.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/entry.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/ocr.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/receipt.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/scanner.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/store.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/sw.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: public/assets/home/transfer.js",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: README.md",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: release.json",
+      "passed": true
+    },
+    {
+      "name": "Source remains unchanged: tools/worker.php",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\dependency-advisories.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\inventory.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\local-qa.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\production-api-reference.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\production-api.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\production-content.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\production-discovery.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\evidence\\2026-10-25\\production-headers.json",
+      "passed": true
+    },
+    {
+      "name": "Valid JSON: docs\\audits\\production-readiness-2026-10-25.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: PRODUCTION_READINESS_AUDIT_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: IMPLEMENTATION_COVERAGE_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: production-readiness-2026-10-25.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../plans/OPENALIMENT_ACCEPTANCE_MATRIX_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../OpenBread_Codex_v1_2026-10-23/08_codex/acceptance_tests.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../OpenBread_Codex_v1_2026-10-23/08_codex/qr_acceptance_cases.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../GS1_IMPLEMENTATION.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: PRODUCTION_READINESS_AUDIT_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: production-readiness-2026-10-25.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../release.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/DEPLOY_CPANEL.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/verification/public-identity-2026-10-25.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/ux/UI_UX_REVIEW_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Views/consumer-home.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../public/assets/app.css",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../database/migrations/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../contracts/data_model.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../contracts/food-data.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/integration.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Catalog.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Mutations.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/integration.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/test_api_reference_http.py",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/HomeIdentity.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/HomeSync.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/home-cloud.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/verification/smtp-authentication-report.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/HomeHouseholds.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/HomeInventory.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/HomeSync.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/home-cloud.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../public/assets/home/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Controllers/ConsumerController.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/test_home_http.py",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tools/sdk/OpenAlimentClient.kt",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/OPENALIMENT_IMPLEMENTATION_PLAN_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../public/assets/home/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/FoodDate.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/consumer.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/consumer-domain.mjs",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Controllers/ConsumerController.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Controllers/DiscoveryController.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/ConsumerFood.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/FoodData.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/FoodDate.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../contracts/food-data.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/consumer-domain.mjs",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Controllers/DiscoveryController.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Catalog.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/plans/openaliment-backlog-2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Controllers/ReceiptController.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Integrations.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/receipt-domain.mjs",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/INTEGRARI_PARTENERI.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/PartnerMapping.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Integrations.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tools/partner-agent.py",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/integrations.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../public/assets/home/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Controllers/ConsumerController.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/consumer-domain.mjs",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Community.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Ai.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tools/worker.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../contracts/ai-review.schema.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Mutations.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Views/recipe.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Portability.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../contracts/profiles/bread.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../OpenBread_Codex_v1_2026-10-23/05_standard/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../database/migrations/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Controllers/DiscoveryController.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Portability.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/IMPORT_EXPORT.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/integration.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/home-cloud.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../database/migrations/001_initial.sql",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/GS1_IMPLEMENTATION.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Views/home.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Core/Seo.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/ApiDocumentation.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/verification/public-content-review-2026-10-25.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/DEPLOY_CPANEL.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/SMTP_CPANEL.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tools/worker.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Maintenance.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/GS1_IMPLEMENTATION.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Domain/Resolver.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../app/Core/RateLimit.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/implementation/SECURITY_HARDENING_0.5.3.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/security/SECURITY_IMPROVEMENT_PLAN_02_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/security.php",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../tests/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/plans/OPENALIMENT_ACCEPTANCE_MATRIX_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/ux/UI_UX_REVIEW_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/implementation/EXECUTION_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/OPENALIMENT_IMPLEMENTATION_PLAN_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/plans/OPENALIMENT_ACCEPTANCE_MATRIX_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/updates/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/plans/openaliment-backlog-2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../docs/audits/PRODUCTION_READINESS_AUDIT_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ACCEPTANCE_COVERAGE_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../OpenBread_Codex_v1_2026-10-23/START_HERE.txt",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../OpenBread_Codex_v1_2026-10-23/OPENBREAD_MASTER.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../../OPENALIMENT_CHANGE_REQUEST_01.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../OPENALIMENT_MASTER.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../GS1_IMPLEMENTATION.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../OPENALIMENT_IMPLEMENTATION_PLAN_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../plans/openaliment-backlog-2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../STRUCTURE_AUDIT_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../ux/UI_UX_REVIEW_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../security/SECURITY_REVIEW_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../implementation/SECURITY_HARDENING_0.5.3.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../security/SECURITY_IMPROVEMENT_PLAN_02_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: production-readiness-2026-10-25.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: IMPLEMENTATION_COVERAGE_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ACCEPTANCE_COVERAGE_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/local-qa.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/production-api.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/production-api-reference.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/production-headers.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/production-content.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/dependency-advisories.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/production-discovery.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: evidence/2026-10-25/inventory.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../README.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../CONTRIBUTING.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: development/README.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../LICENSING.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../THIRD_PARTY_NOTICES.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../SECURITY.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: architecture/README.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: OPENALIMENT_MASTER.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: API.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: INTEGRARI_PARTENERI.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ACASA_SINCRONIZARE.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: api/DEVELOPER_GUIDE.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../contracts/platform-openapi.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: api/README.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: api/API_ACTION_INVENTORY_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: api/API_ACTION_INVENTORY_2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: GS1_IMPLEMENTATION.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: IMPORT_EXPORT.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../contracts/",
+      "passed": true
+    },
+    {
+      "name": "Local link: ../database/migrations/",
+      "passed": true
+    },
+    {
+      "name": "Local link: DEPLOY_CPANEL.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: SMTP_CPANEL.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: HTTPS_MAINTENANCE.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: DEPENDENCIES.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: security/SECURITY_OPERATIONS.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: security/SECURITY_IMPROVEMENT_PLAN_02_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: audits/PRODUCTION_READINESS_AUDIT_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: audits/IMPLEMENTATION_COVERAGE_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: audits/production-readiness-2026-10-25.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: audits/ACCEPTANCE_COVERAGE_2026-10-25.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: audits/evidence/2026-10-25/",
+      "passed": true
+    },
+    {
+      "name": "Local link: OPENALIMENT_IMPLEMENTATION_PLAN_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: plans/openaliment-backlog-2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: implementation/EXECUTION_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: STRUCTURE_AUDIT_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: implementation/STRUCTURE_CHANGES_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: security/SECURITY_REVIEW_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: implementation/SECURITY_HARDENING_0.5.3.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ux/UI_UX_REVIEW_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: ux/UI_UX_PAGE_INVENTORY_2026-10-24.json",
+      "passed": true
+    },
+    {
+      "name": "Local link: implementation/API_PLATFORM_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: verification/API_ACTIVATION_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: implementation/API_DOCUMENTATION_PORTAL_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local link: verification/",
+      "passed": true
+    },
+    {
+      "name": "Local link: updates/",
+      "passed": true
+    },
+    {
+      "name": "Local link: history/",
+      "passed": true
+    },
+    {
+      "name": "Local link: implementation/API_REFERENCE_QUALITY_2026-10-24.md",
+      "passed": true
+    },
+    {
+      "name": "Local QA completed: 40 suites, 11337 checks, zero failed suites",
+      "passed": true
+    },
+    {
+      "name": "Production smoke passed: production-api.json",
+      "passed": true
+    },
+    {
+      "name": "Production smoke passed: production-api-reference.json",
+      "passed": true
+    },
+    {
+      "name": "Production smoke passed: production-headers.json",
+      "passed": true
+    },
+    {
+      "name": "Production smoke passed: production-content.json",
+      "passed": true
+    },
+    {
+      "name": "362 read-only production checks",
+      "passed": true
+    },
+    {
+      "name": "Simulation override is explicit",
+      "passed": true
+    },
+    {
+      "name": "Public catalog probe is qualified",
+      "passed": true
+    }
+  ],
+  "audit_document_sha256": {
+    "docs/audits/ACCEPTANCE_COVERAGE_2026-10-25.md": "2c5f6b80c589adaaf0e8601e3dca584ff293c05cc8a7fa2a5cd445e142211e8d",
+    "docs/audits/IMPLEMENTATION_COVERAGE_2026-10-25.md": "935a8f9d0dcb0ad16ccd1a572991330fcc7448bf5b503f531561f634c0f653db",
+    "docs/audits/production-readiness-2026-10-25.json": "ab493186e6f23db2f1c6d0b60fe94eb8ff5575f78488e68dd6febd86e99a4f8f",
+    "docs/audits/PRODUCTION_READINESS_AUDIT_2026-10-25.md": "16821d5d185a650c68efbbf31dcb7954d9e75220377f37bcada229d0c6a599b2"
+  }
+}

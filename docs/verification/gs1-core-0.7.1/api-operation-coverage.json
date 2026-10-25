@@ -1,0 +1,8 @@
+{
+  "passed": 258,
+  "failed": 0,
+  "expected_operations": 258,
+  "successful_operations": 258,
+  "missing": [],
+  "environment": "isolated schema-validated HTTP; no production mutation"
+}

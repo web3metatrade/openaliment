@@ -1,0 +1,44 @@
+{
+  "executed_on": "2026-10-24",
+  "environment": "CUA integrated browser; fake local account and packages; production guest read-only. No real email sent.",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Magic-link preview cleared the fragment without consuming the token",
+      "passed": true
+    },
+    {
+      "name": "Explicit confirmation connected only a simulated consumer account",
+      "passed": true
+    },
+    {
+      "name": "Three existing local packages reached synchronized status",
+      "passed": true
+    },
+    {
+      "name": "Optional family controls were collapsed by default",
+      "passed": true
+    },
+    {
+      "name": "Family rename updated both heading and accessible household list",
+      "passed": true
+    },
+    {
+      "name": "Reload retained connected state and all three packages",
+      "passed": true
+    },
+    {
+      "name": "Production guest inventory has no authentication gate",
+      "passed": true
+    },
+    {
+      "name": "Production optional email form is available without a password field",
+      "passed": true
+    }
+  ],
+  "evidence": [
+    "docs/previews/home-cloud-local-2026-10-24.jpg",
+    "docs/previews/home-cloud-production-2026-10-24.jpg"
+  ]
+}

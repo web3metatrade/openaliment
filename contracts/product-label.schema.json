@@ -1,0 +1,357 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment product label creation v1",
+  "type": "object",
+  "properties": {
+    "version_key": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 180
+    },
+    "category": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2000
+    },
+    "ingredients": {
+      "type": "string",
+      "maxLength": 5000
+    },
+    "allergens": {
+      "type": "string",
+      "maxLength": 1500
+    },
+    "net_quantity": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "operator": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "storage": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 1500
+    },
+    "after_opening": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 1000
+    },
+    "origin": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 300
+    },
+    "nutrition": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 3000
+    },
+    "usage": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2000
+    },
+    "document_ids": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{32}$"
+      }
+    },
+    "food_data": {
+      "title": "OpenAliment structured food data v1",
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "openaliment.food.v1"
+        },
+        "allergens": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "unknown",
+                "declared"
+              ]
+            },
+            "contains": {
+              "type": "array",
+              "maxItems": 14,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "gluten",
+                  "crustaceans",
+                  "eggs",
+                  "fish",
+                  "peanuts",
+                  "soy",
+                  "milk",
+                  "nuts",
+                  "celery",
+                  "mustard",
+                  "sesame",
+                  "sulphites",
+                  "lupin",
+                  "molluscs"
+                ]
+              }
+            },
+            "may_contain": {
+              "type": "array",
+              "maxItems": 14,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "gluten",
+                  "crustaceans",
+                  "eggs",
+                  "fish",
+                  "peanuts",
+                  "soy",
+                  "milk",
+                  "nuts",
+                  "celery",
+                  "mustard",
+                  "sesame",
+                  "sulphites",
+                  "lupin",
+                  "molluscs"
+                ]
+              }
+            }
+          },
+          "required": [
+            "status",
+            "contains",
+            "may_contain"
+          ],
+          "additionalProperties": false
+        },
+        "nutrition": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "unknown"
+                },
+                "basis": {
+                  "type": "null"
+                },
+                "preparation": {
+                  "type": "null"
+                },
+                "jurisdiction": {
+                  "type": "null"
+                },
+                "values": {
+                  "type": "null"
+                },
+                "portion": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "status",
+                "basis",
+                "preparation",
+                "jurisdiction",
+                "values",
+                "portion"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "declared"
+                },
+                "basis": {
+                  "enum": [
+                    "per_100_g",
+                    "per_100_ml",
+                    "per_portion"
+                  ]
+                },
+                "preparation": {
+                  "enum": [
+                    "as_sold",
+                    "as_prepared"
+                  ]
+                },
+                "jurisdiction": {
+                  "enum": [
+                    "EU",
+                    "US",
+                    "other"
+                  ]
+                },
+                "values": {
+                  "type": "object",
+                  "properties": {
+                    "energy_kj": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "energy_kcal": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "fat_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "saturates_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "carbohydrate_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "sugars_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "polyols_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "fibre_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "protein_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    },
+                    "salt_g": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100000
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false,
+                  "minProperties": 1
+                },
+                "portion": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "number",
+                          "exclusiveMinimum": 0,
+                          "maximum": 100000
+                        },
+                        "unit": {
+                          "enum": [
+                            "g",
+                            "ml"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "amount",
+                        "unit"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "status",
+                "basis",
+                "preparation",
+                "jurisdiction",
+                "values"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "after_opening": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "hours": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8760
+                },
+                "conditions": {
+                  "type": "string",
+                  "maxLength": 500,
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "hours",
+                "conditions"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version"
+      ],
+      "additionalProperties": false,
+      "description": "Only explicit producer declarations. Text and historical labels remain intact. Runtime additionally validates status, units, relationships and numeric bounds. Publication is a separate approval."
+    }
+  },
+  "required": [
+    "version_key",
+    "name",
+    "category",
+    "ingredients",
+    "allergens",
+    "net_quantity",
+    "operator"
+  ],
+  "additionalProperties": false
+}

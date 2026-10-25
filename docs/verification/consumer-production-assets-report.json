@@ -1,0 +1,36 @@
+{
+  "environment": "production",
+  "date": "2026-10-24",
+  "deployments": [
+    "4f328f214abf4e0bab07025cf63d20e6",
+    "e8bc68e2ca864e6ca5d2cd9f360f50e7",
+    "ded5fe63187b4054804be8a052c4c8a7"
+  ],
+  "checks": [
+    {
+      "path": "assets/ocr/tesseract-core-lstm.wasm",
+      "status": 200,
+      "bytes": 2855361,
+      "sha256": "66b17df6e20c5329a17ffa9c202a47eaa3e32500b253d4c7f38e7f2bc01457c3",
+      "passed": true
+    },
+    {
+      "path": "assets/ocr/lang/eng.traineddata.gz",
+      "status": 200,
+      "bytes": 2952873,
+      "sha256": "45b4cb346724ac1774f1c36f42f182b887bcdb28ebe63e6fff90ac41f3fcff91",
+      "passed": true
+    },
+    {
+      "name": "production_ocr_capability",
+      "passed": true,
+      "value": {
+        "schema_version": "openaliment.capabilities.v1",
+        "date_ocr": true,
+        "cloud_sync": false,
+        "external_sources": false
+      }
+    }
+  ],
+  "passed": true
+}

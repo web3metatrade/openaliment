@@ -1,0 +1,4194 @@
+{
+  "passed": 1047,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "generic product validity",
+      "passed": true
+    },
+    {
+      "name": "generic product identity",
+      "passed": true
+    },
+    {
+      "name": "generic product date",
+      "passed": true
+    },
+    {
+      "name": "short GTIN is padded outside URI validity",
+      "passed": true
+    },
+    {
+      "name": "short GTIN is padded outside URI identity",
+      "passed": true
+    },
+    {
+      "name": "short GTIN is padded outside URI date",
+      "passed": true
+    },
+    {
+      "name": "ordered qualifiers validity",
+      "passed": true
+    },
+    {
+      "name": "ordered qualifiers identity",
+      "passed": true
+    },
+    {
+      "name": "ordered qualifiers date",
+      "passed": true
+    },
+    {
+      "name": "stem and trailing slash validity",
+      "passed": true
+    },
+    {
+      "name": "stem and trailing slash identity",
+      "passed": true
+    },
+    {
+      "name": "stem and trailing slash date",
+      "passed": true
+    },
+    {
+      "name": "literal encoded slash preserved once validity",
+      "passed": true
+    },
+    {
+      "name": "literal encoded slash preserved once identity",
+      "passed": true
+    },
+    {
+      "name": "literal encoded slash preserved once date",
+      "passed": true
+    },
+    {
+      "name": "dot segment value preserved by scanner validity",
+      "passed": true
+    },
+    {
+      "name": "dot segment value preserved by scanner identity",
+      "passed": true
+    },
+    {
+      "name": "dot segment value preserved by scanner date",
+      "passed": true
+    },
+    {
+      "name": "TPX maximum length validity",
+      "passed": true
+    },
+    {
+      "name": "TPX maximum length identity",
+      "passed": true
+    },
+    {
+      "name": "TPX maximum length date",
+      "passed": true
+    },
+    {
+      "name": "ampersand date validity",
+      "passed": true
+    },
+    {
+      "name": "ampersand date identity",
+      "passed": true
+    },
+    {
+      "name": "ampersand date date",
+      "passed": true
+    },
+    {
+      "name": "semicolon date validity",
+      "passed": true
+    },
+    {
+      "name": "semicolon date identity",
+      "passed": true
+    },
+    {
+      "name": "semicolon date date",
+      "passed": true
+    },
+    {
+      "name": "both observed dates keep use-by priority validity",
+      "passed": true
+    },
+    {
+      "name": "both observed dates keep use-by priority identity",
+      "passed": true
+    },
+    {
+      "name": "both observed dates keep use-by priority date",
+      "passed": true
+    },
+    {
+      "name": "month-end precision validity",
+      "passed": true
+    },
+    {
+      "name": "month-end precision identity",
+      "passed": true
+    },
+    {
+      "name": "month-end precision date",
+      "passed": true
+    },
+    {
+      "name": "duplicate extension is forwarded validity",
+      "passed": true
+    },
+    {
+      "name": "duplicate extension is forwarded identity",
+      "passed": true
+    },
+    {
+      "name": "duplicate extension is forwarded date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0021 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0021 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0021 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0022 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0022 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0022 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0025 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0025 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0025 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0026 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0026 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0026 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0027 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0027 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0027 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0028 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0028 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0028 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0029 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0029 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0029 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+002F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+003F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+005F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+005F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+005F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0030 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0030 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0030 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0031 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0031 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0031 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0032 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0032 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0032 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0033 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0033 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0033 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0034 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0034 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0034 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0035 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0035 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0035 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0036 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0036 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0036 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0037 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0037 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0037 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0038 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0038 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0038 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0039 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0039 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0039 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0041 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0041 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0041 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0042 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0042 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0042 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0043 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0043 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0043 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0044 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0044 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0044 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0045 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0045 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0045 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0046 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0046 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0046 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0047 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0047 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0047 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0048 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0048 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0048 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0049 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0049 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0049 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+004F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0050 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0050 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0050 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0051 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0051 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0051 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0052 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0052 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0052 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0053 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0053 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0053 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0054 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0054 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0054 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0055 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0055 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0055 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0056 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0056 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0056 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0057 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0057 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0057 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0058 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0058 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0058 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0059 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0059 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0059 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+005A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+005A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+005A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0061 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0061 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0061 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0062 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0062 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0062 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0063 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0063 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0063 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0064 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0064 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0064 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0065 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0065 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0065 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0066 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0066 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0066 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0067 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0067 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0067 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0068 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0068 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0068 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0069 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0069 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0069 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+006F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0070 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0070 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0070 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0071 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0071 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0071 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0072 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0072 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0072 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0073 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0073 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0073 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0074 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0074 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0074 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0075 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0075 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0075 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0076 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0076 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0076 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0077 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0077 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0077 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0078 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0078 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0078 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0079 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0079 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+0079 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+007A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+007A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 22 U+007A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0021 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0021 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0021 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0022 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0022 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0022 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0025 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0025 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0025 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0026 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0026 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0026 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0027 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0027 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0027 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0028 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0028 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0028 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0029 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0029 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0029 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+002F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+003F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+005F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+005F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+005F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0030 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0030 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0030 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0031 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0031 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0031 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0032 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0032 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0032 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0033 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0033 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0033 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0034 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0034 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0034 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0035 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0035 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0035 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0036 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0036 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0036 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0037 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0037 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0037 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0038 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0038 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0038 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0039 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0039 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0039 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0041 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0041 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0041 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0042 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0042 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0042 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0043 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0043 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0043 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0044 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0044 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0044 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0045 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0045 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0045 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0046 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0046 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0046 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0047 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0047 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0047 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0048 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0048 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0048 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0049 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0049 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0049 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+004F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0050 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0050 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0050 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0051 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0051 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0051 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0052 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0052 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0052 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0053 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0053 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0053 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0054 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0054 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0054 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0055 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0055 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0055 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0056 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0056 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0056 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0057 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0057 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0057 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0058 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0058 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0058 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0059 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0059 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0059 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+005A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+005A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+005A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0061 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0061 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0061 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0062 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0062 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0062 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0063 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0063 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0063 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0064 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0064 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0064 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0065 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0065 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0065 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0066 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0066 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0066 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0067 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0067 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0067 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0068 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0068 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0068 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0069 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0069 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0069 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+006F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0070 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0070 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0070 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0071 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0071 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0071 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0072 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0072 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0072 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0073 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0073 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0073 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0074 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0074 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0074 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0075 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0075 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0075 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0076 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0076 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0076 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0077 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0077 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0077 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0078 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0078 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0078 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0079 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0079 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+0079 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+007A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+007A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 10 U+007A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0021 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0021 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0021 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0022 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0022 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0022 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0025 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0025 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0025 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0026 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0026 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0026 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0027 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0027 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0027 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0028 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0028 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0028 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0029 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0029 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0029 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+002F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+003F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+005F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+005F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+005F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0030 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0030 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0030 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0031 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0031 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0031 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0032 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0032 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0032 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0033 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0033 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0033 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0034 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0034 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0034 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0035 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0035 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0035 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0036 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0036 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0036 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0037 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0037 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0037 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0038 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0038 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0038 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0039 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0039 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0039 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0041 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0041 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0041 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0042 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0042 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0042 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0043 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0043 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0043 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0044 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0044 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0044 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0045 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0045 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0045 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0046 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0046 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0046 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0047 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0047 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0047 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0048 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0048 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0048 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0049 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0049 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0049 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+004F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0050 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0050 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0050 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0051 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0051 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0051 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0052 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0052 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0052 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0053 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0053 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0053 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0054 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0054 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0054 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0055 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0055 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0055 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0056 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0056 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0056 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0057 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0057 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0057 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0058 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0058 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0058 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0059 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0059 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0059 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+005A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+005A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+005A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0061 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0061 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0061 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0062 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0062 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0062 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0063 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0063 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0063 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0064 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0064 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0064 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0065 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0065 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0065 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0066 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0066 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0066 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0067 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0067 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0067 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0068 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0068 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0068 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0069 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0069 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0069 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+006F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0070 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0070 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0070 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0071 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0071 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0071 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0072 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0072 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0072 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0073 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0073 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0073 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0074 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0074 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0074 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0075 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0075 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0075 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0076 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0076 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0076 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0077 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0077 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0077 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0078 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0078 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0078 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0079 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0079 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+0079 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+007A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+007A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 21 U+007A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0021 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0021 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0021 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0022 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0022 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0022 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0025 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0025 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0025 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0026 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0026 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0026 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0027 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0027 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0027 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0028 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0028 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0028 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0029 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0029 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0029 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+002F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+003F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+005F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+005F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+005F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0030 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0030 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0030 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0031 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0031 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0031 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0032 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0032 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0032 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0033 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0033 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0033 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0034 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0034 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0034 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0035 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0035 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0035 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0036 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0036 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0036 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0037 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0037 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0037 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0038 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0038 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0038 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0039 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0039 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0039 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0041 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0041 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0041 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0042 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0042 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0042 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0043 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0043 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0043 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0044 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0044 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0044 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0045 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0045 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0045 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0046 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0046 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0046 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0047 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0047 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0047 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0048 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0048 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0048 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0049 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0049 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0049 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+004F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0050 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0050 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0050 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0051 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0051 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0051 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0052 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0052 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0052 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0053 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0053 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0053 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0054 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0054 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0054 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0055 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0055 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0055 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0056 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0056 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0056 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0057 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0057 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0057 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0058 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0058 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0058 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0059 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0059 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0059 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+005A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+005A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+005A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0061 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0061 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0061 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0062 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0062 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0062 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0063 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0063 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0063 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0064 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0064 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0064 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0065 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0065 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0065 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0066 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0066 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0066 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0067 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0067 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0067 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0068 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0068 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0068 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0069 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0069 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0069 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006A date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006B validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006B identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006B date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006C validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006C identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006C date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006D validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006D identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006D date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006E validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006E identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006E date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006F validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006F identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+006F date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0070 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0070 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0070 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0071 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0071 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0071 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0072 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0072 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0072 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0073 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0073 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0073 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0074 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0074 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0074 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0075 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0075 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0075 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0076 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0076 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0076 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0077 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0077 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0077 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0078 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0078 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0078 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0079 validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0079 identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+0079 date",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+007A validity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+007A identity",
+      "passed": true
+    },
+    {
+      "name": "X82 AI 235 U+007A date",
+      "passed": true
+    },
+    {
+      "name": "wrong qualifier order validity",
+      "passed": true
+    },
+    {
+      "name": "unknown qualifier validity",
+      "passed": true
+    },
+    {
+      "name": "repeated qualifier validity",
+      "passed": true
+    },
+    {
+      "name": "TPX plus lot validity",
+      "passed": true
+    },
+    {
+      "name": "empty qualifier validity",
+      "passed": true
+    },
+    {
+      "name": "oversized lot validity",
+      "passed": true
+    },
+    {
+      "name": "oversized serial validity",
+      "passed": true
+    },
+    {
+      "name": "oversized CPV validity",
+      "passed": true
+    },
+    {
+      "name": "oversized TPX validity",
+      "passed": true
+    },
+    {
+      "name": "forbidden space validity",
+      "passed": true
+    },
+    {
+      "name": "forbidden hash validity",
+      "passed": true
+    },
+    {
+      "name": "forbidden tilde validity",
+      "passed": true
+    },
+    {
+      "name": "forbidden UTF8 validity",
+      "passed": true
+    },
+    {
+      "name": "malformed percent validity",
+      "passed": true
+    },
+    {
+      "name": "encoded control validity",
+      "passed": true
+    },
+    {
+      "name": "duplicate selection validity",
+      "passed": true
+    },
+    {
+      "name": "duplicate date validity",
+      "passed": true
+    },
+    {
+      "name": "invalid calendar validity",
+      "passed": true
+    },
+    {
+      "name": "control query validity",
+      "passed": true
+    },
+    {
+      "name": "malformed query encoding validity",
+      "passed": true
+    },
+    {
+      "name": "missing query value validity",
+      "passed": true
+    },
+    {
+      "name": "bad GTIN check digit validity",
+      "passed": true
+    },
+    {
+      "name": "Two serials are two scan identities",
+      "passed": true
+    },
+    {
+      "name": "GTIN plus serial remains the same identity across optional qualifiers",
+      "passed": true
+    },
+    {
+      "name": "Offline cache cannot copy another units serial or barcode date",
+      "passed": true
+    },
+    {
+      "name": "Inventory export import retains serial and CPV",
+      "passed": true
+    },
+    {
+      "name": "512-byte QR-L reference leaves a four-module quiet zone outside text",
+      "passed": true
+    }
+  ]
+}

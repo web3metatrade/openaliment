@@ -1,0 +1,2 @@
+<?php declare(strict_types=1); ?>
+<div class="container page-space reading-page"><div class="eyebrow">GS1 DIGITAL LINK</div><h1><?=e($title)?></h1><p class="muted break-word"><?=e($anchor)?></p><div class="panel"><?php foreach($links as$link):?><a class="document-link break-word" href="<?=e($link['href'])?>"><?=icon('file')?> <?=e($link['title'])?> <?=icon('arrow')?></a><?php endforeach?></div><script type="application/ld+json"><?=$linksetJson?></script></div>

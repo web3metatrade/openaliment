@@ -1,0 +1,1337 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAliment — conectoare pentru parteneri și bonuri digitale",
+    "version": "2.1.0",
+    "description": "Mapări declarative versionate pentru produse, loturi și bonuri digitale. Importul catalogului creează ciorne; publicarea, drepturile GS1 și licențierea se aprobă separat. API v1 rămâne compatibil."
+  },
+  "servers": [
+    {
+      "url": "https://openaliment.ro"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "producerToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Producer token with read/write scope; approval uses separate v1 publish routes."
+      }
+    },
+    "schemas": {
+      "Mapping": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "title": "OpenAliment declarative partner mapping v1",
+        "type": "object",
+        "required": [
+          "schema_version",
+          "fields"
+        ],
+        "properties": {
+          "schema_version": {
+            "const": "openaliment.mapping.v1"
+          },
+          "fields": {
+            "type": "object",
+            "maxProperties": 100,
+            "propertyNames": {
+              "pattern": "^/",
+              "maxLength": 240
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                },
+                "value": {},
+                "op": {
+                  "enum": [
+                    "copy",
+                    "text",
+                    "decimal",
+                    "integer",
+                    "gtin",
+                    "date_iso",
+                    "date_dmy",
+                    "boolean"
+                  ]
+                },
+                "required": {
+                  "type": "boolean"
+                }
+              },
+              "oneOf": [
+                {
+                  "required": [
+                    "from"
+                  ],
+                  "not": {
+                    "required": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "required": [
+                    "value"
+                  ],
+                  "not": {
+                    "required": [
+                      "from"
+                    ]
+                  }
+                }
+              ],
+              "additionalProperties": false
+            }
+          },
+          "arrays": {
+            "type": "array",
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "required": [
+                "from",
+                "to",
+                "fields"
+              ],
+              "properties": {
+                "from": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                },
+                "to": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240
+                },
+                "fields": {
+                  "type": "object",
+                  "maxProperties": 100,
+                  "propertyNames": {
+                    "pattern": "^/",
+                    "maxLength": 240
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "from": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 240
+                      },
+                      "value": {},
+                      "op": {
+                        "enum": [
+                          "copy",
+                          "text",
+                          "decimal",
+                          "integer",
+                          "gtin",
+                          "date_iso",
+                          "date_dmy",
+                          "boolean"
+                        ]
+                      },
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "oneOf": [
+                      {
+                        "required": [
+                          "from"
+                        ],
+                        "not": {
+                          "required": [
+                            "value"
+                          ]
+                        }
+                      },
+                      {
+                        "required": [
+                          "value"
+                        ],
+                        "not": {
+                          "required": [
+                            "from"
+                          ]
+                        }
+                      }
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Event": {
+        "type": "object",
+        "required": [
+          "mapping_id",
+          "operation",
+          "payload"
+        ],
+        "properties": {
+          "mapping_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "operation": {
+            "enum": [
+              "product",
+              "batch",
+              "receipt"
+            ]
+          },
+          "payload": {
+            "type": "object"
+          },
+          "event_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "external_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "additionalProperties": false
+      },
+      "Receipt": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "title": "OpenAliment private digital receipt v1",
+        "type": "object",
+        "required": [
+          "schema_version",
+          "id",
+          "merchant",
+          "receipt_external_id",
+          "issued_at",
+          "lines",
+          "simulation"
+        ],
+        "properties": {
+          "schema_version": {
+            "const": "openaliment.receipt.v1"
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "merchant": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180
+          },
+          "receipt_external_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "issued_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "simulation": {
+            "type": "boolean"
+          },
+          "lines": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 500,
+            "items": {
+              "type": "object",
+              "required": [
+                "line_id",
+                "name",
+                "gtin14",
+                "lot_code",
+                "quantity",
+                "unit",
+                "expiry"
+              ],
+              "properties": {
+                "line_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 180
+                },
+                "gtin14": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^[0-9]{14}$"
+                },
+                "lot_code": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 120
+                },
+                "quantity": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 100000
+                },
+                "unit": {
+                  "enum": [
+                    "pack",
+                    "g",
+                    "ml"
+                  ]
+                },
+                "expiry": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "/api/schemas/food-date.schema.json"
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "paths": {
+    "/api/v2/manage/connectors": {
+      "get": {
+        "summary": "List own connectors",
+        "responses": {
+          "200": {
+            "description": "Operation result"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Scope, role or origin denied"
+          },
+          "404": {
+            "description": "Unknown object or other organization"
+          },
+          "409": {
+            "description": "Immutable version, existing lot or idempotency conflict"
+          },
+          "422": {
+            "description": "Validation or required approval missing"
+          },
+          "429": {
+            "description": "Rate limit; retry with identical event"
+          },
+          "503": {
+            "description": "Setup or service unavailable"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "operationId": "integrationGetApiV2ManageConnectors"
+      },
+      "post": {
+        "summary": "Create a catalog or retail receipt connector",
+        "responses": {
+          "201": {
+            "description": "Operation result"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Scope, role or origin denied"
+          },
+          "404": {
+            "description": "Unknown object or other organization"
+          },
+          "409": {
+            "description": "Immutable version, existing lot or idempotency conflict"
+          },
+          "422": {
+            "description": "Validation or required approval missing"
+          },
+          "429": {
+            "description": "Rate limit; retry with identical event"
+          },
+          "503": {
+            "description": "Setup or service unavailable"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "kind"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 180
+                  },
+                  "kind": {
+                    "enum": [
+                      "catalog",
+                      "retail_receipt"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{8,128}$"
+            }
+          }
+        ],
+        "operationId": "integrationPostApiV2ManageConnectors"
+      }
+    },
+    "/api/v2/manage/connectors/{connector_id}/mappings": {
+      "parameters": [
+        {
+          "name": "connector_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "get": {
+        "summary": "List immutable mappings and hashes",
+        "responses": {
+          "200": {
+            "description": "Operation result"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Scope, role or origin denied"
+          },
+          "404": {
+            "description": "Unknown object or other organization"
+          },
+          "409": {
+            "description": "Immutable version, existing lot or idempotency conflict"
+          },
+          "422": {
+            "description": "Validation or required approval missing"
+          },
+          "429": {
+            "description": "Rate limit; retry with identical event"
+          },
+          "503": {
+            "description": "Setup or service unavailable"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "operationId": "integrationGetApiV2ManageConnectorsConnectorIdMappings"
+      },
+      "post": {
+        "summary": "Create a new mapping version",
+        "responses": {
+          "201": {
+            "description": "Operation result"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Scope, role or origin denied"
+          },
+          "404": {
+            "description": "Unknown object or other organization"
+          },
+          "409": {
+            "description": "Immutable version, existing lot or idempotency conflict"
+          },
+          "422": {
+            "description": "Validation or required approval missing"
+          },
+          "429": {
+            "description": "Rate limit; retry with identical event"
+          },
+          "503": {
+            "description": "Setup or service unavailable"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "version_key",
+                  "mapping"
+                ],
+                "properties": {
+                  "version_key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "mapping": {
+                    "$ref": "#/components/schemas/Mapping"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{8,128}$"
+            }
+          }
+        ],
+        "operationId": "integrationPostApiV2ManageConnectorsConnectorIdMappings"
+      }
+    },
+    "/api/v2/manage/connectors/{connector_id}/preview": {
+      "parameters": [
+        {
+          "name": "connector_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "post": {
+        "summary": "Validate/map without writes",
+        "responses": {
+          "200": {
+            "description": "Operation result"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Scope, role or origin denied"
+          },
+          "404": {
+            "description": "Unknown object or other organization"
+          },
+          "409": {
+            "description": "Immutable version, existing lot or idempotency conflict"
+          },
+          "422": {
+            "description": "Validation or required approval missing"
+          },
+          "429": {
+            "description": "Rate limit; retry with identical event"
+          },
+          "503": {
+            "description": "Setup or service unavailable"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "operationId": "integrationPostApiV2ManageConnectorsConnectorIdPreview"
+      }
+    },
+    "/api/v2/manage/connectors/{connector_id}/ingest": {
+      "parameters": [
+        {
+          "name": "connector_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        }
+      ],
+      "post": {
+        "summary": "Ingest one immutable external event atomically",
+        "responses": {
+          "201": {
+            "description": "Operation result"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Scope, role or origin denied"
+          },
+          "404": {
+            "description": "Unknown object or other organization"
+          },
+          "409": {
+            "description": "Immutable version, existing lot or idempotency conflict"
+          },
+          "422": {
+            "description": "Validation or required approval missing"
+          },
+          "429": {
+            "description": "Rate limit; retry with identical event"
+          },
+          "503": {
+            "description": "Setup or service unavailable"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Event"
+                  },
+                  {
+                    "required": [
+                      "event_key",
+                      "external_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{8,128}$"
+            }
+          }
+        ],
+        "operationId": "integrationPostApiV2ManageConnectorsConnectorIdIngest"
+      }
+    },
+    "/api/v2/home/receipts/preview": {
+      "post": {
+        "summary": "Preview confidential receipt by capability; does not add inventory",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "token"
+                ],
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Private receipt; no-store",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown or expired capability"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "401": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "403": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "422": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "503": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "operationId": "integrationPostApiV2HomeReceiptsPreview"
+      }
+    }
+  }
+}

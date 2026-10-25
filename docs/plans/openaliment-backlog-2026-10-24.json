@@ -1,0 +1,3714 @@
+{
+  "schema_version": "openaliment.execution_plan.v1",
+  "plan_id": "OPENALIMENT-FULL-2026-10-24",
+  "prepared_at": "2026-10-24",
+  "timezone": "Europe/Bucharest",
+  "state": "implementation_in_progress",
+  "target": "Complete public release of all described work packages; no required feature deferred",
+  "calendar_assumption": {
+    "start": "2026-10-26",
+    "weeks": 40,
+    "full_release": "2027-07-30",
+    "staffing": "3 engineers plus 1 QA, with UX, security, food and legal specialists as scheduled",
+    "note": "Planning scenario, not a committed deadline without resources and external access."
+  },
+  "owners": {
+    "OWNER": "Proprietarul OpenAliment",
+    "LEAD": "Responsabil tehnic și coordonator",
+    "BE1": "Inginer platformă și API",
+    "BE2": "Inginer date și integrări",
+    "MOBILE": "Inginer Android și iOS",
+    "UX": "Designer și cercetare utilizatori",
+    "QA": "Responsabil testare",
+    "OPS": "Responsabil infrastructură",
+    "SEC": "Responsabil securitate cu specialiști juridici și alimentari"
+  },
+  "requirements": [
+    {
+      "id": "R01",
+      "description": "Păstrarea codului rutelor și contractelor existente",
+      "packages": [
+        "WP00",
+        "WP02",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT001",
+        "AT002",
+        "AT007",
+        "AT110"
+      ]
+    },
+    {
+      "id": "R02",
+      "description": "Serviciul QR pentru orice categorie fără rețetă sau siglă",
+      "packages": [
+        "WP02",
+        "WP03",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT002",
+        "AT004",
+        "AT080",
+        "AT131"
+      ]
+    },
+    {
+      "id": "R03",
+      "description": "Validarea identificatorilor și verificarea separată a mandatului",
+      "packages": [
+        "WP03",
+        "WP08",
+        "WP19"
+      ],
+      "acceptance_cases": [
+        "AT002",
+        "AT003",
+        "AT011",
+        "AT106",
+        "AT130"
+      ]
+    },
+    {
+      "id": "R04",
+      "description": "Versiuni istorice și alerte curente fără rescriere retrospectivă",
+      "packages": [
+        "WP02",
+        "WP03",
+        "WP10",
+        "WP11"
+      ],
+      "acceptance_cases": [
+        "AT005",
+        "AT006",
+        "AT062",
+        "AT116"
+      ]
+    },
+    {
+      "id": "R05",
+      "description": "Date alimentare structurate cu unități surse și precizie",
+      "packages": [
+        "WP02",
+        "WP03",
+        "WP10"
+      ],
+      "acceptance_cases": [
+        "AT010",
+        "AT030",
+        "AT046",
+        "AT049",
+        "AT050"
+      ]
+    },
+    {
+      "id": "R06",
+      "description": "Compatibilitate cu importurile și API v1",
+      "packages": [
+        "WP02",
+        "WP18",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT005",
+        "AT007",
+        "AT010",
+        "AT103"
+      ]
+    },
+    {
+      "id": "R07",
+      "description": "Scanare EAN UPC QR nativ și GS1 Digital Link",
+      "packages": [
+        "WP08",
+        "WP06",
+        "WP07"
+      ],
+      "acceptance_cases": [
+        "AT008",
+        "AT024",
+        "AT025",
+        "AT034",
+        "AT124",
+        "AT129"
+      ]
+    },
+    {
+      "id": "R08",
+      "description": "Loturi și date GS1 cu codificare și validare corecte",
+      "packages": [
+        "WP02",
+        "WP08",
+        "WP10"
+      ],
+      "acceptance_cases": [
+        "AT004",
+        "AT008",
+        "AT009",
+        "AT024",
+        "AT027",
+        "AT129"
+      ]
+    },
+    {
+      "id": "R09",
+      "description": "Produse externe și mai multe resolvere",
+      "packages": [
+        "WP09",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT028",
+        "AT029"
+      ]
+    },
+    {
+      "id": "R10",
+      "description": "Fotografie de dată lipsă și confirmare minimă",
+      "packages": [
+        "WP01",
+        "WP08",
+        "WP10"
+      ],
+      "acceptance_cases": [
+        "AT032",
+        "AT054"
+      ]
+    },
+    {
+      "id": "R11",
+      "description": "Prima utilizare fără cont și acces persistent",
+      "packages": [
+        "WP04",
+        "WP06",
+        "WP07"
+      ],
+      "acceptance_cases": [
+        "AT012",
+        "AT013",
+        "AT019"
+      ]
+    },
+    {
+      "id": "R12",
+      "description": "Recuperare și sincronizare între dispozitive fără pierderi",
+      "packages": [
+        "WP04",
+        "WP05",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT013",
+        "AT014",
+        "AT015",
+        "AT016",
+        "AT017",
+        "AT018",
+        "AT019",
+        "AT022",
+        "AT128"
+      ]
+    },
+    {
+      "id": "R13",
+      "description": "Inventar comun și permisiuni între membrii gospodăriei",
+      "packages": [
+        "WP04",
+        "WP05",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT036",
+        "AT039",
+        "AT040",
+        "AT041",
+        "AT045"
+      ]
+    },
+    {
+      "id": "R14",
+      "description": "Funcționare offline și independență de AI",
+      "packages": [
+        "WP05",
+        "WP06",
+        "WP07",
+        "WP15"
+      ],
+      "acceptance_cases": [
+        "AT029",
+        "AT038",
+        "AT039",
+        "AT043",
+        "AT100",
+        "AT124",
+        "AT131"
+      ]
+    },
+    {
+      "id": "R15",
+      "description": "Buget minim de gesturi și înțelegere rapidă",
+      "packages": [
+        "WP01",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT012",
+        "AT035",
+        "AT069",
+        "AT122"
+      ]
+    },
+    {
+      "id": "R16",
+      "description": "Alergeni declarați posibili și necunoscuți",
+      "packages": [
+        "WP02",
+        "WP10",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT046",
+        "AT047"
+      ]
+    },
+    {
+      "id": "R17",
+      "description": "Carbohidrați porții și informare pentru persoane cu diabet",
+      "packages": [
+        "WP02",
+        "WP10",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT048",
+        "AT049",
+        "AT050",
+        "AT102"
+      ]
+    },
+    {
+      "id": "R18",
+      "description": "Tipuri de termene deschidere congelare și condiții de păstrare",
+      "packages": [
+        "WP05",
+        "WP10"
+      ],
+      "acceptance_cases": [
+        "AT027",
+        "AT032",
+        "AT037",
+        "AT051",
+        "AT052",
+        "AT053",
+        "AT054"
+      ]
+    },
+    {
+      "id": "R19",
+      "description": "Ambalaje distincte cantități consum anulează și prevenirea dublurilor",
+      "packages": [
+        "WP05",
+        "WP08"
+      ],
+      "acceptance_cases": [
+        "AT025",
+        "AT026",
+        "AT036",
+        "AT037",
+        "AT038",
+        "AT042",
+        "AT044",
+        "AT060",
+        "AT068"
+      ]
+    },
+    {
+      "id": "R20",
+      "description": "Notificări locale push rezumat email și preferințe",
+      "packages": [
+        "WP11",
+        "WP21",
+        "WP25"
+      ],
+      "acceptance_cases": [
+        "AT058",
+        "AT059",
+        "AT060",
+        "AT061",
+        "AT063",
+        "AT064"
+      ]
+    },
+    {
+      "id": "R21",
+      "description": "Retrageri la nivelul corect și lot necunoscut tratat explicit",
+      "packages": [
+        "WP09",
+        "WP10",
+        "WP11"
+      ],
+      "acceptance_cases": [
+        "AT055",
+        "AT062",
+        "AT063",
+        "AT065",
+        "AT116"
+      ]
+    },
+    {
+      "id": "R22",
+      "description": "Nicio garanție medicală sau alimentară dedusă din lipsa datelor",
+      "packages": [
+        "WP10",
+        "WP14",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT046",
+        "AT048",
+        "AT051",
+        "AT055",
+        "AT056",
+        "AT102"
+      ]
+    },
+    {
+      "id": "R23",
+      "description": "Bon digital și QR de bon cu contract public propriu",
+      "packages": [
+        "WP02",
+        "WP12",
+        "WP13"
+      ],
+      "acceptance_cases": [
+        "AT066",
+        "AT068",
+        "AT070",
+        "AT071"
+      ]
+    },
+    {
+      "id": "R24",
+      "description": "OCR bon potrivire linii și excluderea produselor nealimentare",
+      "packages": [
+        "WP08",
+        "WP12"
+      ],
+      "acceptance_cases": [
+        "AT066",
+        "AT067",
+        "AT069"
+      ]
+    },
+    {
+      "id": "R25",
+      "description": "Cel puțin o integrare reală cu magazin pilot",
+      "packages": [
+        "WP00",
+        "WP13",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT071"
+      ]
+    },
+    {
+      "id": "R26",
+      "description": "ERP documentat cu automatizare și o integrare reală",
+      "packages": [
+        "WP03",
+        "WP13"
+      ],
+      "acceptance_cases": [
+        "AT034",
+        "AT072",
+        "AT073",
+        "AT074"
+      ]
+    },
+    {
+      "id": "R27",
+      "description": "Listă de cumpărături și recumpărare opțională",
+      "packages": [
+        "WP05",
+        "WP14"
+      ],
+      "acceptance_cases": [
+        "AT057"
+      ]
+    },
+    {
+      "id": "R28",
+      "description": "Sugestii de folosire și alternative verificate",
+      "packages": [
+        "WP10",
+        "WP14",
+        "WP15"
+      ],
+      "acceptance_cases": [
+        "AT056",
+        "AT057",
+        "AT102"
+      ]
+    },
+    {
+      "id": "R29",
+      "description": "Accesibilitate voce și citire asistată",
+      "packages": [
+        "WP01",
+        "WP06",
+        "WP07",
+        "WP08",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT016",
+        "AT033",
+        "AT058",
+        "AT122",
+        "AT123",
+        "AT124"
+      ]
+    },
+    {
+      "id": "R30",
+      "description": "Aplicații Android și iPhone distribuite efectiv",
+      "packages": [
+        "WP07",
+        "WP25"
+      ],
+      "acceptance_cases": [
+        "AT124",
+        "AT127",
+        "AT128"
+      ]
+    },
+    {
+      "id": "R31",
+      "description": "Intrare web PWA cameră și actualitatea datelor",
+      "packages": [
+        "WP06",
+        "WP11",
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT043",
+        "AT064"
+      ]
+    },
+    {
+      "id": "R32",
+      "description": "Imaginea aleasă de proprietar și proveniența vizualurilor",
+      "packages": [
+        "WP20"
+      ],
+      "acceptance_cases": [
+        "AT125"
+      ]
+    },
+    {
+      "id": "R33",
+      "description": "Documentație deschisă formule proces costuri și rezultate",
+      "packages": [
+        "WP16"
+      ],
+      "acceptance_cases": [
+        "AT076",
+        "AT077",
+        "AT078",
+        "AT080",
+        "AT081",
+        "AT082"
+      ]
+    },
+    {
+      "id": "R34",
+      "description": "Evaluare independentă OB-01–OB-24 și registrul siglei",
+      "packages": [
+        "WP17",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT084",
+        "AT085",
+        "AT086",
+        "AT087",
+        "AT088",
+        "AT089",
+        "AT090",
+        "AT091",
+        "AT092",
+        "AT093"
+      ]
+    },
+    {
+      "id": "R35",
+      "description": "Registrul afirmațiilor și aprobarea informațiilor publice",
+      "packages": [
+        "WP03",
+        "WP10",
+        "WP16",
+        "WP17"
+      ],
+      "acceptance_cases": [
+        "AT006",
+        "AT030",
+        "AT047",
+        "AT076",
+        "AT082",
+        "AT084",
+        "AT089",
+        "AT093",
+        "AT096"
+      ]
+    },
+    {
+      "id": "R36",
+      "description": "Recenzii voturi întrebări moderare și propuneri istorice",
+      "packages": [
+        "WP15"
+      ],
+      "acceptance_cases": [
+        "AT094",
+        "AT095",
+        "AT096"
+      ]
+    },
+    {
+      "id": "R37",
+      "description": "Căutare RAG cu acces controlat și citări verificabile",
+      "packages": [
+        "WP15"
+      ],
+      "acceptance_cases": [
+        "AT097",
+        "AT098"
+      ]
+    },
+    {
+      "id": "R38",
+      "description": "Joburi AI complete cu cozi buget și lipsa serviciului tratată",
+      "packages": [
+        "WP15",
+        "WP21"
+      ],
+      "acceptance_cases": [
+        "AT099",
+        "AT100",
+        "AT101",
+        "AT112"
+      ]
+    },
+    {
+      "id": "R39",
+      "description": "Export import și migrare integrală producător și consumator",
+      "packages": [
+        "WP18"
+      ],
+      "acceptance_cases": [
+        "AT083",
+        "AT103",
+        "AT104",
+        "AT105",
+        "AT106",
+        "AT107"
+      ]
+    },
+    {
+      "id": "R40",
+      "description": "Domenii proprii TLS control verificat și continuitate",
+      "packages": [
+        "WP19",
+        "WP21"
+      ],
+      "acceptance_cases": [
+        "AT011",
+        "AT108",
+        "AT109",
+        "AT110"
+      ]
+    },
+    {
+      "id": "R41",
+      "description": "PBT R1 scenarii cost și originale intacte cu stadiul real",
+      "packages": [
+        "WP00",
+        "WP16",
+        "WP18"
+      ],
+      "acceptance_cases": [
+        "AT001",
+        "AT078",
+        "AT079",
+        "AT083"
+      ]
+    },
+    {
+      "id": "R42",
+      "description": "GDPR politici reale și declarații corecte în magazinele de aplicații",
+      "packages": [
+        "WP23",
+        "WP25"
+      ],
+      "acceptance_cases": [
+        "AT021",
+        "AT075",
+        "AT092",
+        "AT113",
+        "AT119",
+        "AT127"
+      ]
+    },
+    {
+      "id": "R43",
+      "description": "Izolare producători gospodării dispozitive și furnizori externi",
+      "packages": [
+        "WP03",
+        "WP04",
+        "WP05",
+        "WP09",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT006",
+        "AT015",
+        "AT018",
+        "AT020",
+        "AT022",
+        "AT031",
+        "AT040",
+        "AT070",
+        "AT073",
+        "AT097",
+        "AT106",
+        "AT109",
+        "AT113",
+        "AT114",
+        "AT121"
+      ]
+    },
+    {
+      "id": "R44",
+      "description": "Capacitate măsurată pentru milioane de scanări",
+      "packages": [
+        "WP21",
+        "WP22"
+      ],
+      "acceptance_cases": [
+        "AT065",
+        "AT115",
+        "AT116",
+        "AT120"
+      ]
+    },
+    {
+      "id": "R45",
+      "description": "Operare cPanel fără root shell sau execuție publică arbitrară",
+      "packages": [
+        "WP21",
+        "WP26"
+      ],
+      "acceptance_cases": [
+        "AT111",
+        "AT112",
+        "AT118",
+        "AT121"
+      ]
+    },
+    {
+      "id": "R46",
+      "description": "Backup restaurare monitorizare incidente și costuri",
+      "packages": [
+        "WP21",
+        "WP22",
+        "WP26"
+      ],
+      "acceptance_cases": [
+        "AT001",
+        "AT111",
+        "AT117",
+        "AT118",
+        "AT120",
+        "AT131"
+      ]
+    },
+    {
+      "id": "R47",
+      "description": "Probe fizice de tipar scanare și integrare POS",
+      "packages": [
+        "WP24"
+      ],
+      "acceptance_cases": [
+        "AT129",
+        "AT130"
+      ]
+    },
+    {
+      "id": "R48",
+      "description": "Documentație versiuni SDK și regresie a contractelor",
+      "packages": [
+        "WP02",
+        "WP13",
+        "WP18",
+        "WP24",
+        "WP27"
+      ],
+      "acceptance_cases": [
+        "AT007",
+        "AT008",
+        "AT074",
+        "AT107",
+        "AT126",
+        "AT132"
+      ]
+    },
+    {
+      "id": "R49",
+      "description": "SEO ofertă comercială ajutor și suport funcțional",
+      "packages": [
+        "WP20"
+      ],
+      "acceptance_cases": [
+        "AT125",
+        "AT126"
+      ]
+    },
+    {
+      "id": "R50",
+      "description": "Finalizare integrală fără funcții obligatorii amânate",
+      "packages": [
+        "WP27"
+      ],
+      "acceptance_cases": [
+        "AT001",
+        "AT132"
+      ]
+    },
+    {
+      "id": "R51",
+      "description": "Interfață română simplă și localizare corectă",
+      "packages": [
+        "WP01",
+        "WP06",
+        "WP07"
+      ],
+      "acceptance_cases": [
+        "AT122",
+        "AT123"
+      ]
+    },
+    {
+      "id": "R52",
+      "description": "Licențe explicite și proveniență a surselor externe",
+      "packages": [
+        "WP09",
+        "WP16",
+        "WP18",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT028",
+        "AT030",
+        "AT081",
+        "AT104"
+      ]
+    },
+    {
+      "id": "R53",
+      "description": "Export ștergere consimțământ și retenție a datelor personale",
+      "packages": [
+        "WP04",
+        "WP05",
+        "WP18",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT021",
+        "AT023",
+        "AT045",
+        "AT075",
+        "AT105",
+        "AT119"
+      ]
+    },
+    {
+      "id": "R54",
+      "description": "Gospodării cu minori și date de sănătate protejate",
+      "packages": [
+        "WP05",
+        "WP10",
+        "WP23"
+      ],
+      "acceptance_cases": [
+        "AT021",
+        "AT041",
+        "AT061",
+        "AT113",
+        "AT119"
+      ]
+    },
+    {
+      "id": "R55",
+      "description": "Produse necunoscute fără cod și completare facultativă",
+      "packages": [
+        "WP05",
+        "WP08",
+        "WP09"
+      ],
+      "acceptance_cases": [
+        "AT033"
+      ]
+    },
+    {
+      "id": "R56",
+      "description": "Informare la raft separată de adăugarea acasă",
+      "packages": [
+        "WP01",
+        "WP06",
+        "WP07",
+        "WP08"
+      ],
+      "acceptance_cases": [
+        "AT035"
+      ]
+    }
+  ],
+  "work_packages": [
+    {
+      "id": "WP00",
+      "title": "Inventar și pregătirea execuției",
+      "owner": "LEAD",
+      "depends_on": [],
+      "target_week": 2,
+      "effort_person_days": {
+        "min": 4,
+        "max": 7
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Baseline cod, DB, rute, rapoarte și originalele PBT",
+        "Registru de acces, bugete, furnizori și parteneri reali",
+        "Mediu de test, dispozitive și plan de resurse"
+      ],
+      "exit_criteria": [
+        "Toate dependențele E01–E12 au responsabil și termen",
+        "Baseline și copie restaurabilă înainte de orice migrare"
+      ],
+      "acceptance_cases": [
+        "AT001"
+      ]
+    },
+    {
+      "id": "WP01",
+      "title": "Fluxuri simple și accesibilitate",
+      "owner": "UX",
+      "depends_on": [
+        "WP00"
+      ],
+      "target_week": 5,
+      "effort_person_days": {
+        "min": 10,
+        "max": 16
+      },
+      "status": "planned",
+      "deliverables": [
+        "Prototip pentru toate fluxurile, inclusiv erori și lipsa datelor",
+        "Texte românești, fotografii, pictograme și citire asistată",
+        "Buget de gesturi și testare fără instruire"
+      ],
+      "exit_criteria": [
+        "Nicio autentificare sau instalare obligatorie înainte de prima salvare",
+        "Minimum 90% dintre participanții finali înțeleg următorul gest în 3 secunde"
+      ],
+      "acceptance_cases": [
+        "AT122"
+      ]
+    },
+    {
+      "id": "WP02",
+      "title": "Contracte de date și migrări compatibile",
+      "owner": "BE1",
+      "depends_on": [
+        "WP00"
+      ],
+      "target_week": 7,
+      "effort_person_days": {
+        "min": 12,
+        "max": 18
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Etichetă structurată v2, profil consumer v1, bon v1 și sincronizare v1",
+        "Dicționare alergeni, nutrienți, unități și precizia datelor",
+        "Migrări aditive și compatibilitate cu importurile vechi"
+      ],
+      "exit_criteria": [
+        "Datele necunoscute rămân necunoscute, distinct de zero sau absent",
+        "Importurile și clienții API v1 continuă să funcționeze"
+      ],
+      "acceptance_cases": [
+        "AT005",
+        "AT010"
+      ]
+    },
+    {
+      "id": "WP03",
+      "title": "API și administrarea informațiilor alimentare",
+      "owner": "BE1",
+      "depends_on": [
+        "WP01",
+        "WP02"
+      ],
+      "target_week": 10,
+      "effort_person_days": {
+        "min": 14,
+        "max": 22
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Editor de etichetă cu date structurate și aprobare explicită",
+        "API public normalizat și API privat pentru client",
+        "Capabilități de date și proveniență pe fiecare câmp"
+      ],
+      "exit_criteria": [
+        "Aliment non-pâine publicat fără rețetă, licență sau siglă",
+        "Numai proiecțiile aprobate sunt expuse; versiunile vechi se păstrează"
+      ],
+      "acceptance_cases": [
+        "AT002",
+        "AT003",
+        "AT004",
+        "AT006"
+      ]
+    },
+    {
+      "id": "WP04",
+      "title": "Identitate și acces persistent",
+      "owner": "BE1",
+      "depends_on": [
+        "WP01",
+        "WP02"
+      ],
+      "target_week": 11,
+      "effort_person_days": {
+        "min": 18,
+        "max": 28
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Mod fără cont și identitate separată pentru consumatori",
+        "Sesiuni persistente, dispozitive, recuperare și migrarea listei locale",
+        "Passkeys, magic link și conectare Apple sau Google ca alternative facultative"
+      ],
+      "exit_criteria": [
+        "Închiderea aplicației și revenirea nu cer autentificare de rutină",
+        "Recuperarea și unirea identităților nu pierd și nu dublează inventarul"
+      ],
+      "acceptance_cases": [
+        "AT012",
+        "AT013",
+        "AT014",
+        "AT015",
+        "AT016",
+        "AT017",
+        "AT018",
+        "AT019",
+        "AT020",
+        "AT022",
+        "AT023"
+      ]
+    },
+    {
+      "id": "WP05",
+      "title": "Inventar personal și gospodării sincronizate",
+      "owner": "BE2",
+      "depends_on": [
+        "WP02",
+        "WP03",
+        "WP04"
+      ],
+      "target_week": 14,
+      "effort_person_days": {
+        "min": 22,
+        "max": 34
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Ambalaje individuale, cantități, locații și evenimente",
+        "Inventar local, coadă offline, sincronizare și rezolvarea conflictelor",
+        "Gospodării, invitații QR, roluri și listă comună"
+      ],
+      "exit_criteria": [
+        "Două ambalaje identice pot avea date și stări diferite",
+        "Operațiile reluate și sincronizarea simultană nu creează dubluri sau acces între gospodării"
+      ],
+      "acceptance_cases": [
+        "AT036",
+        "AT037",
+        "AT038",
+        "AT039",
+        "AT040",
+        "AT041",
+        "AT042",
+        "AT044",
+        "AT045"
+      ]
+    },
+    {
+      "id": "WP06",
+      "title": "Experiența web și PWA",
+      "owner": "BE1",
+      "depends_on": [
+        "WP01",
+        "WP03",
+        "WP04",
+        "WP05",
+        "WP08"
+      ],
+      "target_week": 18,
+      "effort_person_days": {
+        "min": 15,
+        "max": 24
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Zona /acasa și intrare din pagina produsului",
+        "Scanner web, salvare locală și instalare facultativă",
+        "Service worker limitat la datele permise și indicarea actualității"
+      ],
+      "exit_criteria": [
+        "Prima adăugare funcționează fără instalare și fără cont",
+        "Nicio pagină sau alertă veche nu este prezentată ca verificată în prezent"
+      ],
+      "acceptance_cases": [
+        "AT035",
+        "AT043",
+        "AT064"
+      ]
+    },
+    {
+      "id": "WP07",
+      "title": "Aplicații Android și iPhone",
+      "owner": "MOBILE",
+      "depends_on": [
+        "WP01",
+        "WP03",
+        "WP04",
+        "WP05",
+        "WP08"
+      ],
+      "target_week": 21,
+      "effort_person_days": {
+        "min": 30,
+        "max": 48
+      },
+      "status": "planned",
+      "deliverables": [
+        "Aplicații Flutter cu cameră, OCR, stocare locală și sincronizare",
+        "Linkuri către aplicație, partajare, notificări și citire asistată",
+        "Builduri semnate Android și iOS, instalabile pe dispozitive reale"
+      ],
+      "exit_criteria": [
+        "Fluxurile funcționează pe dispozitiv modest, iPhone și în lipsa rețelei",
+        "Aplicațiile folosesc aceleași contracte și reguli alimentare ca webul"
+      ],
+      "acceptance_cases": [
+        "AT124"
+      ]
+    },
+    {
+      "id": "WP08",
+      "title": "Scanare universală și citirea datelor de pe ambalaj",
+      "owner": "MOBILE",
+      "depends_on": [
+        "WP01",
+        "WP02"
+      ],
+      "target_week": 11,
+      "effort_person_days": {
+        "min": 18,
+        "max": 28
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "EAN, UPC, QR nativ, GS1 Digital Link și formate GS1 2D",
+        "Validare identificatori, calificatori, date, loturi și coduri locale de magazin",
+        "OCR local, fotografie de dată, intrare vocală și prevenirea scanărilor repetate"
+      ],
+      "exit_criteria": [
+        "EAN și QR de pe același ambalaj generează o singură adăugare",
+        "Citirea ambiguă cere cel mult o confirmare contextuală și nu inventează termenul"
+      ],
+      "acceptance_cases": [
+        "AT009",
+        "AT024",
+        "AT025",
+        "AT026",
+        "AT027",
+        "AT032",
+        "AT033",
+        "AT034"
+      ]
+    },
+    {
+      "id": "WP09",
+      "title": "Interoperabilitate și surse externe",
+      "owner": "BE2",
+      "depends_on": [
+        "WP02",
+        "WP03",
+        "WP08"
+      ],
+      "target_week": 14,
+      "effort_person_days": {
+        "min": 16,
+        "max": 26
+      },
+      "status": "planned",
+      "deliverables": [
+        "Client resolver pentru linkset și resurse publice",
+        "Adaptor Open Food Facts și două implementări de resolver externe",
+        "Registru de surse, licențe, cache, conflicte și acces extern sigur"
+      ],
+      "exit_criteria": [
+        "Produse din afara OpenAliment pot fi adăugate și îmbogățite",
+        "Un resolver fără resursa cerută nu produce informații fabricate"
+      ],
+      "acceptance_cases": [
+        "AT028",
+        "AT029",
+        "AT030"
+      ]
+    },
+    {
+      "id": "WP10",
+      "title": "Reguli pentru termene alergeni și nutriție",
+      "owner": "BE2",
+      "depends_on": [
+        "WP02",
+        "WP03",
+        "WP09",
+        "WP23",
+        "WP06",
+        "WP07"
+      ],
+      "target_week": 23,
+      "effort_person_days": {
+        "min": 15,
+        "max": 24
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Date de siguranță și de calitate, deschidere și păstrare",
+        "Alergeni declarați, posibili și necunoscuți, plus preferințe individuale",
+        "Carbohidrați și porții, unități și valori pentru alimentul vândut sau preparat"
+      ],
+      "exit_criteria": [
+        "Absența datelor nu înseamnă produs sigur sau valoare zero",
+        "Calculele sunt deterministe și verificate de specialist; nu există dozare de insulină"
+      ],
+      "acceptance_cases": [
+        "AT046",
+        "AT047",
+        "AT048",
+        "AT049",
+        "AT050",
+        "AT051",
+        "AT052",
+        "AT053",
+        "AT054"
+      ]
+    },
+    {
+      "id": "WP11",
+      "title": "Notificări și retrageri de produse",
+      "owner": "BE2",
+      "depends_on": [
+        "WP05",
+        "WP06",
+        "WP07",
+        "WP10",
+        "WP21"
+      ],
+      "target_week": 26,
+      "effort_person_days": {
+        "min": 18,
+        "max": 28
+      },
+      "status": "planned",
+      "deliverables": [
+        "Notificări locale, Web Push, APNs sau FCM și email opțional",
+        "Rezumat zilnic, alerte urgente, preferințe și acces direct la produs",
+        "Sincronizare cu alertele producătorului și surse autorizate de rechemări"
+      ],
+      "exit_criteria": [
+        "Consumul oprește reamintirile pe toate dispozitivele",
+        "Revocarea permisiunii și lipsa rețelei nu sunt confundate cu livrarea unei notificări"
+      ],
+      "acceptance_cases": [
+        "AT055",
+        "AT058",
+        "AT059",
+        "AT060",
+        "AT061",
+        "AT062",
+        "AT063"
+      ]
+    },
+    {
+      "id": "WP12",
+      "title": "Bonuri fotografiate și bonuri digitale",
+      "owner": "BE2",
+      "depends_on": [
+        "WP05",
+        "WP06",
+        "WP07",
+        "WP08",
+        "WP09"
+      ],
+      "target_week": 25,
+      "effort_person_days": {
+        "min": 22,
+        "max": 36
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Fotografiere sau partajare bon, OCR și potrivire de articole",
+        "Import grupat cu anulează și verificare numai pentru liniile incerte",
+        "Contract bon digital, QR securizat și API de import"
+      ],
+      "exit_criteria": [
+        "Același bon importat de două ori nu dublează produsele",
+        "Lotul și data sunt completate numai când există în sursă"
+      ],
+      "acceptance_cases": [
+        "AT066",
+        "AT067",
+        "AT068",
+        "AT069",
+        "AT070"
+      ]
+    },
+    {
+      "id": "WP13",
+      "title": "Integrări reale cu ERP și magazine",
+      "owner": "BE2",
+      "depends_on": [
+        "WP02",
+        "WP03",
+        "WP11",
+        "WP12"
+      ],
+      "target_week": 28,
+      "effort_person_days": {
+        "min": 16,
+        "max": 28
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Conector ERP pe formatul real al partenerului",
+        "Conector bon digital cu cel puțin un magazin pilot",
+        "Webhooks semnate, reluări, mapări și documentație de integrare"
+      ],
+      "exit_criteria": [
+        "Flux de producție asistat ERP către produs, lot și QR demonstrat cu partenerul",
+        "Un bon real autorizat adaugă cumpărăturile în gospodăria corectă"
+      ],
+      "acceptance_cases": [
+        "AT071",
+        "AT072",
+        "AT073",
+        "AT074"
+      ],
+      "execution_override": {
+        "source": "User clarification 2026-10-24",
+        "acceptance_mode": "simulated_contracts_authorized",
+        "required": [
+          "generic versioned integration contract",
+          "partner-specific declarative mapping",
+          "ERP simulator",
+          "retail simulator",
+          "idempotency, retries and authorization tests"
+        ],
+        "real_partner_claim_permitted": false
+      }
+    },
+    {
+      "id": "WP14",
+      "title": "Asistență de consum și cumpărături",
+      "owner": "BE1",
+      "depends_on": [
+        "WP05",
+        "WP06",
+        "WP07",
+        "WP09",
+        "WP10",
+        "WP15"
+      ],
+      "target_week": 29,
+      "effort_person_days": {
+        "min": 12,
+        "max": 20
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Listă de cumpărături și recumpărare facultativă",
+        "Sugestii de folosire a alimentelor disponibile și porții explicate",
+        "Alternative comparabile, filtrate după date și preferințe"
+      ],
+      "exit_criteria": [
+        "Recomandările nu folosesc alimente retrase sau incompatibile cunoscute",
+        "Datele incomplete și rețetele fără drept de reutilizare nu devin recomandări sigure"
+      ],
+      "acceptance_cases": [
+        "AT056",
+        "AT057"
+      ]
+    },
+    {
+      "id": "WP15",
+      "title": "Feedback căutare și analiză AI",
+      "owner": "BE1",
+      "depends_on": [
+        "WP03",
+        "WP04",
+        "WP16"
+      ],
+      "target_week": 24,
+      "effort_person_days": {
+        "min": 20,
+        "max": 32
+      },
+      "status": "planned",
+      "deliverables": [
+        "Cele șase joburi AI ale dosarului, RAG și citări verificabile",
+        "Recenzii, întrebări, voturi, moderare și propuneri versionate",
+        "Explicații personale și OCR asistat, cu limite de cost și permisiuni"
+      ],
+      "exit_criteria": [
+        "Contextul public nu poate recupera sau deduce rețete private",
+        "AI indisponibil nu blochează salvarea, QR-ul, calculele sau alertele"
+      ],
+      "acceptance_cases": [
+        "AT094",
+        "AT095",
+        "AT096",
+        "AT097",
+        "AT098",
+        "AT099",
+        "AT100",
+        "AT101",
+        "AT102"
+      ]
+    },
+    {
+      "id": "WP16",
+      "title": "Documentație alimentară deschisă completă",
+      "owner": "BE1",
+      "depends_on": [
+        "WP02",
+        "WP03"
+      ],
+      "target_week": 18,
+      "effort_person_days": {
+        "min": 18,
+        "max": 28
+      },
+      "status": "planned",
+      "deliverables": [
+        "Editor al formulei, procesului, dovezilor și celor 24 de secțiuni",
+        "Costuri, furnizori, încercări, rezultate, comparații și export",
+        "Profil panificație și profiluri inițiale pentru alte categorii"
+      ],
+      "exit_criteria": [
+        "Publicarea materialelor are licență și drepturi explicite pe versiune",
+        "PBT, R1 și COST1–COST3 păstrează proveniența și stadiul real"
+      ],
+      "acceptance_cases": [
+        "AT076",
+        "AT077",
+        "AT078",
+        "AT079",
+        "AT080",
+        "AT081",
+        "AT082"
+      ]
+    },
+    {
+      "id": "WP17",
+      "title": "Evaluarea documentației și registrul siglei",
+      "owner": "BE1",
+      "depends_on": [
+        "WP16",
+        "WP23"
+      ],
+      "target_week": 25,
+      "effort_person_days": {
+        "min": 20,
+        "max": 32
+      },
+      "status": "planned",
+      "deliverables": [
+        "Standarde și profiluri versionate, evaluatori eligibili și conflicte de interese",
+        "Depunere înghețată, remedieri, decizie și emitere tranzacțională",
+        "Registru public, SVG, PDF, expirare, revocare și contestații"
+      ],
+      "exit_criteria": [
+        "OB-01–OB-23 sunt verificate înaintea deciziei OB-24 și emiterii",
+        "Nicio pagină QR, plată sau verificare GTIN nu acordă automat sigla"
+      ],
+      "acceptance_cases": [
+        "AT084",
+        "AT085",
+        "AT086",
+        "AT087",
+        "AT088",
+        "AT089",
+        "AT090",
+        "AT091",
+        "AT092",
+        "AT093"
+      ]
+    },
+    {
+      "id": "WP18",
+      "title": "Portabilitate și migrare completă",
+      "owner": "BE2",
+      "depends_on": [
+        "WP02",
+        "WP03",
+        "WP05",
+        "WP12",
+        "WP16",
+        "WP17"
+      ],
+      "target_week": 30,
+      "effort_person_days": {
+        "min": 16,
+        "max": 26
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Import și export în flux pentru producători și consumatori",
+        "Adaptori vechi OpenBread, transfer v1 și format de furnizor real",
+        "Mapări de identități, documente, istoric, licențe și continuitate URL"
+      ],
+      "exit_criteria": [
+        "Exportul și reimportul reproduc datele, fișierele și istoricul în mediul țintă",
+        "Importul nu acordă automat roluri, mandat GS1, publicare sau siglă"
+      ],
+      "acceptance_cases": [
+        "AT083",
+        "AT103",
+        "AT104",
+        "AT105",
+        "AT106",
+        "AT107"
+      ]
+    },
+    {
+      "id": "WP19",
+      "title": "Domenii ale producătorilor și continuitate",
+      "owner": "OPS",
+      "depends_on": [
+        "WP00",
+        "WP03",
+        "WP18",
+        "WP21"
+      ],
+      "target_week": 32,
+      "effort_person_days": {
+        "min": 10,
+        "max": 18
+      },
+      "status": "planned",
+      "deliverables": [
+        "Verificarea controlului DNS sau HTTP, TLS și registru de hosturi",
+        "Activare, dezactivare și monitorizare a domeniilor autorizate",
+        "Migrare la sau de la alt furnizor cu mapări și acord de continuitate"
+      ],
+      "exit_criteria": [
+        "Două domenii autorizate rezolvă aceleași identități fără confuzie între producători",
+        "Nicio destinație sau valoare Host arbitrară nu activează un domeniu"
+      ],
+      "acceptance_cases": [
+        "AT011",
+        "AT108",
+        "AT109",
+        "AT110"
+      ]
+    },
+    {
+      "id": "WP20",
+      "title": "Conținut public suport și experiență comercială",
+      "owner": "UX",
+      "depends_on": [
+        "WP01",
+        "WP06",
+        "WP07",
+        "WP16",
+        "WP17",
+        "WP19",
+        "WP23"
+      ],
+      "target_week": 33,
+      "effort_person_days": {
+        "min": 8,
+        "max": 14
+      },
+      "status": "planned",
+      "deliverables": [
+        "Landing, pagini produs, aplicație client, ajutor și contact funcțional",
+        "Documentație API, politici reale, exemple și mesaje despre limitele serviciului",
+        "SEO, accesibilitate și păstrarea imaginii alese de proprietar"
+      ],
+      "exit_criteria": [
+        "Pagina comercială și zona consumatorului au scopuri și acțiuni clare",
+        "Conținutul nu pretinde certificări, rezultate alimentare sau capabilități netestate"
+      ],
+      "acceptance_cases": [
+        "AT125",
+        "AT126"
+      ]
+    },
+    {
+      "id": "WP21",
+      "title": "Infrastructură și operare pe hosting",
+      "owner": "OPS",
+      "depends_on": [
+        "WP00"
+      ],
+      "target_week": 6,
+      "effort_person_days": {
+        "min": 14,
+        "max": 22
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Staging izolat, livrare HTTPS, migrări și gestionarea secretelor",
+        "Cron sau serviciu de joburi autentificat, mail și cozi fiabile",
+        "Backup criptat, restaurare, jurnal și proceduri de operare"
+      ],
+      "exit_criteria": [
+        "Un job programat se execută fără shell sau endpoint de execuție public",
+        "Restaurarea completă este demonstrată într-un mediu separat"
+      ],
+      "acceptance_cases": [
+        "AT111",
+        "AT112",
+        "AT117",
+        "AT121"
+      ]
+    },
+    {
+      "id": "WP22",
+      "title": "Performanță observabilitate și capacitate",
+      "owner": "OPS",
+      "depends_on": [
+        "WP03",
+        "WP05",
+        "WP09",
+        "WP11",
+        "WP19",
+        "WP21"
+      ],
+      "target_week": 34,
+      "effort_person_days": {
+        "min": 14,
+        "max": 24
+      },
+      "status": "planned",
+      "deliverables": [
+        "SLO, măsurători, cache sigur, indici și controlul costurilor",
+        "Test de capacitate și infrastructură adecvată traficului țintă",
+        "Monitorizare, incidente, invalidare și degradare controlată"
+      ],
+      "exit_criteria": [
+        "Ținta de un milion de scanări pe zi este probată pe infrastructura aleasă",
+        "Cache-ul nu ascunde retrageri și nu amestecă date personale"
+      ],
+      "acceptance_cases": [
+        "AT065",
+        "AT115",
+        "AT116",
+        "AT120"
+      ]
+    },
+    {
+      "id": "WP23",
+      "title": "Securitate confidențialitate și reguli de utilizare",
+      "owner": "SEC",
+      "depends_on": [
+        "WP00",
+        "WP01",
+        "WP02",
+        "WP04",
+        "WP05",
+        "WP09"
+      ],
+      "target_week": 15,
+      "effort_person_days": {
+        "min": 18,
+        "max": 30
+      },
+      "status": "in_progress",
+      "deliverables": [
+        "Model de amenințări, politici GDPR, retenție și analiză DPIA",
+        "Revizie a funcțiilor de sănătate, licențelor și schemei de evaluare",
+        "Controale pentru autorizare, acces extern, fișiere și furnizori"
+      ],
+      "exit_criteria": [
+        "Profilurile de sănătate și inventarul nu ajung la producători sau alți membri fără drept",
+        "Temeiurile, acordurile și limitele afirmațiilor sunt stabilite înainte de date reale"
+      ],
+      "acceptance_cases": [
+        "AT021",
+        "AT031",
+        "AT075",
+        "AT113",
+        "AT114",
+        "AT119"
+      ]
+    },
+    {
+      "id": "WP24",
+      "title": "Validare integrală și probe fizice",
+      "owner": "QA",
+      "depends_on": [
+        "WP06",
+        "WP07",
+        "WP08",
+        "WP09",
+        "WP10",
+        "WP11",
+        "WP12",
+        "WP13",
+        "WP14",
+        "WP15",
+        "WP16",
+        "WP17",
+        "WP18",
+        "WP19",
+        "WP20",
+        "WP21",
+        "WP22",
+        "WP23"
+      ],
+      "target_week": 36,
+      "effort_person_days": {
+        "min": 22,
+        "max": 36
+      },
+      "status": "planned",
+      "deliverables": [
+        "Matricea completă de acceptare și regresie",
+        "Probe dispozitive reale, accesibilitate, imprimare și POS",
+        "Revizie de securitate, teste utilizatori și exercițiu de incident"
+      ],
+      "exit_criteria": [
+        "Toate cazurile obligatorii au dovezi și niciun defect critic sau major deschis",
+        "Scanarea optică și recunoașterea articolului la POS sunt probate separat"
+      ],
+      "acceptance_cases": [
+        "AT007",
+        "AT008",
+        "AT123",
+        "AT129",
+        "AT130"
+      ]
+    },
+    {
+      "id": "WP25",
+      "title": "Distribuție Android și iOS",
+      "owner": "MOBILE",
+      "depends_on": [
+        "WP07",
+        "WP20",
+        "WP23",
+        "WP24"
+      ],
+      "target_week": 38,
+      "effort_person_days": {
+        "min": 8,
+        "max": 14
+      },
+      "status": "planned",
+      "deliverables": [
+        "Google Play și App Store, conturi și certificate controlate de operator",
+        "Declarații de confidențialitate și sănătate, materiale și recenzare",
+        "Publicare și test instalare, actualizare, linkuri și ștergere cont"
+      ],
+      "exit_criteria": [
+        "Aplicațiile sunt aprobate și disponibile, nu doar trimise spre verificare",
+        "Instalarea nouă și actualizarea păstrează datele și accesul"
+      ],
+      "acceptance_cases": [
+        "AT127",
+        "AT128"
+      ]
+    },
+    {
+      "id": "WP26",
+      "title": "Lansare și stabilizare",
+      "owner": "LEAD",
+      "depends_on": [
+        "WP18",
+        "WP19",
+        "WP21",
+        "WP22",
+        "WP24",
+        "WP25"
+      ],
+      "target_week": 40,
+      "effort_person_days": {
+        "min": 8,
+        "max": 14
+      },
+      "status": "planned",
+      "deliverables": [
+        "Lansare controlată web, API și aplicații, cu plan de revenire",
+        "Pilot real de producător și gospodării, monitorizare și remedieri",
+        "14 zile de stabilizare și predare a operării"
+      ],
+      "exit_criteria": [
+        "Nu există pierdere de date, funcții promise inaccesibile sau defecte critice",
+        "Responsabilul de operare poate restaura și publica o corecție fără autorul inițial"
+      ],
+      "acceptance_cases": [
+        "AT118",
+        "AT131"
+      ]
+    },
+    {
+      "id": "WP27",
+      "title": "Închiderea completă a planului",
+      "owner": "LEAD",
+      "depends_on": [
+        "WP26"
+      ],
+      "target_week": 40,
+      "effort_person_days": {
+        "min": 3,
+        "max": 5
+      },
+      "status": "planned",
+      "deliverables": [
+        "Registru final al cerințelor, livrabilelor, probelor și dependențelor",
+        "Specificații, contracte, release, surse și accesuri predate",
+        "Decizie nominală de finalizare integrală"
+      ],
+      "exit_criteria": [
+        "Toate pachetele WP00–WP26 și cerințele R01–R56 sunt acceptate",
+        "Un simulator sau o dependență externă nerezolvată nu înlocuiește integrarea reală cerută"
+      ],
+      "acceptance_cases": [
+        "AT132"
+      ]
+    }
+  ],
+  "external_dependencies": [
+    {
+      "id": "E01",
+      "description": "Limite hosting cron backup staging și upgrade de capacitate",
+      "owner": "OPS",
+      "due_week": 2,
+      "packages": [
+        "WP21",
+        "WP22"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Confirmare scrisă a limitelor și probă de execuție programată"
+    },
+    {
+      "id": "E02",
+      "description": "Identitatea operatorului contracte privacy și responsabil de operare",
+      "owner": "OWNER",
+      "due_week": 2,
+      "packages": [
+        "WP23",
+        "WP26"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Date reale, responsabil nominal și documente aprobate"
+    },
+    {
+      "id": "E03",
+      "description": "SMTP sau furnizor email autorizat și control DNS",
+      "owner": "OPS",
+      "due_week": 3,
+      "packages": [
+        "WP04",
+        "WP11",
+        "WP21"
+      ],
+      "status": "smtp_authenticated_delivery_unverified",
+      "closure_evidence": "Email real livrat și autentificarea domeniului verificată",
+      "execution_note": "Owner configured password privately on production. TLS certificate validation and SMTP authentication passed via PHPMailer without sending any email. Inbox delivery and domain authentication remain unverified."
+    },
+    {
+      "id": "E04",
+      "description": "Conturi Apple și Google deținute de operator și acces la build macOS",
+      "owner": "OWNER",
+      "due_week": 2,
+      "packages": [
+        "WP07",
+        "WP25"
+      ],
+      "status": "awaiting_operator_accounts",
+      "closure_evidence": "Build semnat și acces delegat fără secrete în chat",
+      "execution_note": "Owner confirms there are no Apple Developer or Google Play accounts yet."
+    },
+    {
+      "id": "E05",
+      "description": "Cel puțin un ERP cu format real și persoană tehnică disponibilă",
+      "owner": "OWNER",
+      "due_week": 3,
+      "packages": [
+        "WP13"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Export de probă autorizat, contract API și test cu sistemul partener",
+      "execution_note": "ERP/retail contract simulation explicitly authorized. Real physical POS evidence is not provided by a simulator."
+    },
+    {
+      "id": "E06",
+      "description": "Cel puțin un magazin pentru bon digital și POS de test",
+      "owner": "OWNER",
+      "due_week": 3,
+      "packages": [
+        "WP13",
+        "WP24"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Bonuri reale autorizate și acces convenit la mediu sau echipament de test",
+      "execution_note": "ERP/retail contract simulation explicitly authorized. Real physical POS evidence is not provided by a simulator."
+    },
+    {
+      "id": "E07",
+      "description": "Produse și etichete reale cu date publicabile aprobate",
+      "owner": "OWNER",
+      "due_week": 3,
+      "packages": [
+        "WP03",
+        "WP10",
+        "WP24"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Acord și date verificate pentru minimum trei categorii, inclusiv aliment non-pâine"
+    },
+    {
+      "id": "E08",
+      "description": "Specialist nutriție sau siguranță alimentară și revizie juridică",
+      "owner": "OWNER",
+      "due_week": 3,
+      "packages": [
+        "WP10",
+        "WP17",
+        "WP23"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Responsabili contractați și reguli sau afirmații revizuite"
+    },
+    {
+      "id": "E09",
+      "description": "Emitent real standard adoptat și evaluatori fără conflict de interese",
+      "owner": "OWNER",
+      "due_week": 4,
+      "packages": [
+        "WP17"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Roluri numite, procedură și standard aprobate înaintea emiterii reale"
+    },
+    {
+      "id": "E10",
+      "description": "Export autorizat de la furnizor extern inclusiv un serviciu GS1 dacă există",
+      "owner": "OWNER",
+      "due_week": 4,
+      "packages": [
+        "WP18"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Fișiere și dicționar real, cu mandat; lipsa exportului GS1 nu se ascunde printr-un import simulat"
+    },
+    {
+      "id": "E11",
+      "description": "Domeniu de producător și control DNS sau HTTP plus TLS",
+      "owner": "OWNER",
+      "due_week": 4,
+      "packages": [
+        "WP19"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Cel puțin un domeniu real pentru proba de activare și migrare"
+    },
+    {
+      "id": "E12",
+      "description": "Bugete și conturi pentru servicii de date AI push OCR și capacitate",
+      "owner": "OWNER",
+      "due_week": 2,
+      "packages": [
+        "WP09",
+        "WP11",
+        "WP15",
+        "WP22"
+      ],
+      "status": "to_validate",
+      "closure_evidence": "Limite de cost, condiții de utilizare și acreditări gestionate securizat"
+    }
+  ],
+  "total_effort_person_days": {
+    "min": 421,
+    "max": 682
+  },
+  "dependency_semantics": "Dependencies are acceptance/integration prerequisites. Implementation may overlap after the necessary interface or prototype is approved; a dependent package cannot be accepted before its prerequisites. WP00 must level real resources.",
+  "acceptance_state": "All new acceptance scenarios are planned; historical verification reports are baseline evidence only.",
+  "resource_estimate_note": "421–682 person-days is a top-down planning range, not a measured commitment. Three engineers and one QA are core staffing; scheduled UX, operations, security, food and legal specialists are additional capacity. Owner role does not mean one person performs all effort.",
+  "capacity_targets": {
+    "public_scans_per_day": 1000000,
+    "sustained_rps": 250,
+    "sustained_minutes": 60,
+    "burst_rps": 1000,
+    "burst_minutes": 5,
+    "resolver_p95_ms": 300,
+    "internal_error_rate_max": 0.001,
+    "online_sync_p95_seconds": 5,
+    "local_save_p95_seconds": 1,
+    "alert_queue_seconds": 60,
+    "monthly_availability_target": 0.999,
+    "rpo_hours": 1,
+    "rto_hours": 4
+  },
+  "global_exit_gates": [
+    "All WP00–WP27 accepted with evidence",
+    "All R01–R56 covered by passed acceptance cases",
+    "Real ERP, real retail receipt, physical POS and authorized provider import tested",
+    "Android and iOS approved and publicly available; web production release operational",
+    "No open critical or major defects, no privacy or food-safety blockers",
+    "External dependencies closed; evidence and access handed over",
+    "14-day stabilization completed and backup restoration demonstrated"
+  ],
+  "acceptance_cases": [
+    {
+      "group": "Pregătirea execuției",
+      "package": "WP00",
+      "requirements": [
+        "R01",
+        "R41",
+        "R46",
+        "R50"
+      ],
+      "scenario": "Se închide inventarul inițial și se atribuie nominal resursele, bugetele și dependențele E01–E12.",
+      "expected": "Baseline-ul codului și arhivei este identificabil, copia este restaurabilă, iar calendarul cu resurse reale și responsabili este acceptat.",
+      "proof": "Inventar+backup+decizie nominală",
+      "id": "AT001",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP03",
+      "requirements": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "scenario": "Organizație verificată publică un iaurt fără rețetă, licență deschisă sau siglă.",
+      "expected": "Articolul, eticheta aprobată și lotul se publică; QR-ul deschide pagina corectă cu AI oprit.",
+      "proof": "API+UI+HTTPS real",
+      "id": "AT002",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP03",
+      "requirements": [
+        "R03"
+      ],
+      "scenario": "GTIN cu cifră greșită; GTIN valid fără mandat; mandat aprobat sau contestat.",
+      "expected": "Validarea numerică și dreptul sunt decizii distincte; numai organizația autorizată administrează identificatorul.",
+      "proof": "Automat+revizie de mandat",
+      "id": "AT003",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP03",
+      "requirements": [
+        "R02",
+        "R08"
+      ],
+      "scenario": "Se generează QR generic de produs și QR pentru un lot precis.",
+      "expected": "Codurile au destinații și identități distincte; pagina generică nu pretinde că știe lotul cumpărătorului.",
+      "proof": "Decodare+HTTPS",
+      "id": "AT004",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP02",
+      "requirements": [
+        "R04",
+        "R06"
+      ],
+      "scenario": "Se publică versiunea V2 după un lot legat de V1.",
+      "expected": "Lotul vechi păstrează V1; produsul curent poate afișa V2; alertele curente rămân suprapuse.",
+      "proof": "Integrare DB+UI",
+      "id": "AT005",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP03",
+      "requirements": [
+        "R04",
+        "R35",
+        "R43"
+      ],
+      "scenario": "Ciornă, fișier privat și rețetă privată coexistă cu o etichetă aprobată.",
+      "expected": "HTML, JSON, linksetul și documentele publice expun numai proiecțiile aprobate.",
+      "proof": "Contract+test acces negativ",
+      "id": "AT006",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP24",
+      "requirements": [
+        "R01",
+        "R06",
+        "R48"
+      ],
+      "scenario": "Se rulează corpusul actual pentru rute publice, administrare și API v1 după migrări.",
+      "expected": "Rutele și tipurile existente rămân compatibile; orice mapare necesară este explicită și testată.",
+      "proof": "Regresie automată",
+      "id": "AT007",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP24",
+      "requirements": [
+        "R07",
+        "R08",
+        "R48"
+      ],
+      "scenario": "Se execută matricea normativă a resolverului pentru profilul GTIN declarat.",
+      "expected": "Negocierea, linkseturile, decompresia și erorile respectă specificația declarată; raportul indică limitele.",
+      "proof": "Corpus GS1+HTTPS cPanel",
+      "id": "AT008",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP08",
+      "requirements": [
+        "R08"
+      ],
+      "scenario": "Loturi cu litere mici/mari, separator, caractere permise și escape-uri trec prin URI și server.",
+      "expected": "Se păstrează lotul exact, fără dublă decodare, coliziuni sau ocolirea autorizării; formele nepermise se resping clar.",
+      "proof": "Corpus encoding+HTTPS",
+      "id": "AT009",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP02",
+      "requirements": [
+        "R05",
+        "R06"
+      ],
+      "scenario": "Un import v1 cu alergeni și nutriție ca text este migrat și citit și prin v1.",
+      "expected": "Textul original se păstrează; propunerile structurate nu devin aprobate automat; necunoscut nu devine zero.",
+      "proof": "Round-trip+contract",
+      "id": "AT010",
+      "status": "planned"
+    },
+    {
+      "group": "Produs, lot, resolver și compatibilitate",
+      "package": "WP19",
+      "requirements": [
+        "R03",
+        "R40"
+      ],
+      "scenario": "O organizație încearcă să revendice GTIN-ul sau hostul altei organizații.",
+      "expected": "Nu obține acces ori prioritate prin simpla cerere; există audit și rezolvare autorizată a conflictului.",
+      "proof": "Test izolare+revizie",
+      "id": "AT011",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R11",
+        "R15"
+      ],
+      "scenario": "Persoană nouă deschide webul și salvează primul produs.",
+      "expected": "Nu apare formular de cont, parolă sau instalare înainte de salvare; inventarul local este disponibil.",
+      "proof": "UI pe telefon real",
+      "id": "AT012",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R11",
+        "R12"
+      ],
+      "scenario": "Aplicația și browserul sunt închise și redeschise pe dispozitiv autorizat.",
+      "expected": "Inventarul și autorizarea persistă conform politicii; utilizarea obișnuită nu cere login.",
+      "proof": "Android+iPhone+web real",
+      "id": "AT013",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R12"
+      ],
+      "scenario": "Un vizitator cu inventar local se conectează la un cont cu inventar existent.",
+      "expected": "Unirea este idempotentă, fără pierderi; ambalajele distincte nu sunt colapsate ca simple duplicate.",
+      "proof": "Integrare+rețea întreruptă",
+      "id": "AT014",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R12",
+        "R43"
+      ],
+      "scenario": "Se folosește magic link expirat, refolosit, preîncărcat de email sau destinat altui flux.",
+      "expected": "Linkul are utilizare unică și confirmare sigură; prefetchul nu autentifică un atacator și nu consumă inutil accesul.",
+      "proof": "Securitate+email real",
+      "id": "AT015",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R12",
+        "R29"
+      ],
+      "scenario": "Passkey este creat, folosit, pierdut; dispozitivul nu suportă metoda.",
+      "expected": "Autentificarea și recuperarea au alternative accesibile; nu există blocaj permanent sau slăbirea contului.",
+      "proof": "Dispozitive reale+revizie",
+      "id": "AT016",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R12"
+      ],
+      "scenario": "Se activează opțiunile Apple/Google și apoi se leagă/dezleagă o identitate.",
+      "expected": "Verificarea furnizorului este corectă; conturile nu se unesc numai pe baza unui email nevalidat.",
+      "proof": "Integrare reală+negativ",
+      "id": "AT017",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R12",
+        "R43"
+      ],
+      "scenario": "Se revocă un dispozitiv pierdut și se încearcă refolosirea tokenului vechi.",
+      "expected": "Tokenul rotit/revocat nu mai permite acces; celelalte dispozitive autorizate continuă să funcționeze.",
+      "proof": "API+dispozitiv real",
+      "id": "AT018",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R11",
+        "R12"
+      ],
+      "scenario": "Stocarea locală este ștearsă sau aplicația este reinstalată.",
+      "expected": "Datele sincronizate se recuperează; pierderea inventarului exclusiv local nu este ascunsă printr-o promisiune de backup.",
+      "proof": "Reinstalare reală",
+      "id": "AT019",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R43"
+      ],
+      "scenario": "Un cont personal încearcă să intre în administrarea unui producător.",
+      "expected": "Nu primește organizație, rol sau acces doar pentru că este autentificat ca utilizator.",
+      "proof": "Test autorizare",
+      "id": "AT020",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP23",
+      "requirements": [
+        "R42",
+        "R53",
+        "R54"
+      ],
+      "scenario": "Persoana activează, refuză și retrage sincronizarea preferințelor sensibile.",
+      "expected": "Datele locale și cloud au scopuri distincte; retragerea oprește prelucrările aplicabile și urmează politica aprobată.",
+      "proof": "Revizie juridică+API",
+      "id": "AT021",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R12",
+        "R43"
+      ],
+      "scenario": "Se încearcă o schimbare sensibilă din sesiune veche sau de pe dispozitiv comun.",
+      "expected": "Se cere reautentificare adecvată; logoutul și lista dispozitivelor funcționează.",
+      "proof": "Securitate+UI",
+      "id": "AT022",
+      "status": "planned"
+    },
+    {
+      "group": "Identitate personală, persistență și recuperare",
+      "package": "WP04",
+      "requirements": [
+        "R53"
+      ],
+      "scenario": "Persoana cere export și ștergerea contului prin aplicație și canalul web.",
+      "expected": "Cererea este realizabilă, verificată și executată conform retenției; nu șterge datele altor membri fără drept.",
+      "proof": "UI+API+revizie",
+      "id": "AT023",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP08",
+      "requirements": [
+        "R07",
+        "R08"
+      ],
+      "scenario": "Se scanează corpusul EAN/UPC și GS1 2D declarat pe telefoanele din matrice.",
+      "expected": "Identificatorii și semantica sunt corecte; formatele nesuportate sunt comunicate fără valori fabricate.",
+      "proof": "Dispozitive reale+corpus",
+      "id": "AT024",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP08",
+      "requirements": [
+        "R07",
+        "R19"
+      ],
+      "scenario": "Același ambalaj este citit în mai multe cadre, inclusiv cu EAN și QR vizibile.",
+      "expected": "Nu se creează două ambalaje din aceeași scanare continuă; Anulează funcționează.",
+      "proof": "Video+evenimente",
+      "id": "AT025",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP08",
+      "requirements": [
+        "R19"
+      ],
+      "scenario": "Persoana adaugă două ambalaje identice intenționat.",
+      "expected": "Sistemul permite două unități sau cantitatea corectă, cu date/deschideri ulterior distincte.",
+      "proof": "UI+sincronizare",
+      "id": "AT026",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP08",
+      "requirements": [
+        "R08",
+        "R18"
+      ],
+      "scenario": "Codul include date GS1 valide/invalide și precizie specială permisă de standard.",
+      "expected": "Se aplică interpretarea standardului; o dată imposibilă sau incompletă nu devine termen exact inventat.",
+      "proof": "Corpus normativ",
+      "id": "AT027",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP09",
+      "requirements": [
+        "R09",
+        "R52"
+      ],
+      "scenario": "Se scanează produse de pe două resolvere externe independente și din Open Food Facts.",
+      "expected": "Se identifică sursa și licența; produsul poate fi adăugat; lipsa nutriției sau lotului rămâne explicită.",
+      "proof": "HTTPS extern real+manifest",
+      "id": "AT028",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP09",
+      "requirements": [
+        "R09",
+        "R14"
+      ],
+      "scenario": "Resolverul extern răspunde lent, returnează eroare sau nu are resursa cerută.",
+      "expected": "Salvarea personală nu se blochează; îmbogățirea se poate relua și nu inventează câmpuri.",
+      "proof": "Integrare cu fault injection",
+      "id": "AT029",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP09",
+      "requirements": [
+        "R05",
+        "R35",
+        "R52"
+      ],
+      "scenario": "Două surse oferă ingrediente sau nutrienți diferiți pentru piețe/versiuni diferite.",
+      "expected": "Conflictele și proveniența se păstrează; nu se înlocuiește tăcut informația aprobată.",
+      "proof": "Contract+revizie de date",
+      "id": "AT030",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP23",
+      "requirements": [
+        "R43"
+      ],
+      "scenario": "QR-ul extern indică localhost, rețea privată, redirect periculos sau DNS rebinding.",
+      "expected": "Fetchul este blocat și nu divulgă tokenuri, cookie-uri sau preferințe ale persoanei.",
+      "proof": "Test SSRF controlat",
+      "id": "AT031",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP08",
+      "requirements": [
+        "R10",
+        "R18"
+      ],
+      "scenario": "Data lipsește din cod; fotografia conține două date sau este neclară.",
+      "expected": "Aplicația cere cel mult o confirmare contextuală; dacă nu există confirmare, termenul rămâne necunoscut.",
+      "proof": "Fotografii autorizate+UX",
+      "id": "AT032",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP08",
+      "requirements": [
+        "R29",
+        "R55"
+      ],
+      "scenario": "Aliment fără cod este adăugat prin fotografie sau voce.",
+      "expected": "Se salvează privat fără tastare obligatorie; nu se publică și nu primește valori alimentare inventate.",
+      "proof": "Telefon real+permisiuni",
+      "id": "AT033",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP08",
+      "requirements": [
+        "R07",
+        "R26"
+      ],
+      "scenario": "Se scanează un cod local de magazin sau cu greutate variabilă.",
+      "expected": "Se folosește maparea autorizată a comerciantului; codul nu este considerat automat GTIN global.",
+      "proof": "Date reale de partener",
+      "id": "AT034",
+      "status": "planned"
+    },
+    {
+      "group": "Scanare și informații externe",
+      "package": "WP06",
+      "requirements": [
+        "R15",
+        "R56"
+      ],
+      "scenario": "QR-ul este deschis cu camera sistemului la raft și apoi din scannerul aplicației.",
+      "expected": "Consultarea paginii nu adaugă automat în inventar; modul explicit Adaugă permite salvarea directă.",
+      "proof": "Android+iPhone+web real",
+      "id": "AT035",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R13",
+        "R19"
+      ],
+      "scenario": "Două ambalaje din același lot sunt deschise în zile diferite.",
+      "expected": "Au stări și termene după deschidere independente; identitatea lotului nu este duplicată fals.",
+      "proof": "Integrare+UI",
+      "id": "AT036",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R18",
+        "R19"
+      ],
+      "scenario": "Am deschis, mutare în congelator, consum și Anulează sunt folosite succesiv.",
+      "expected": "Evenimentele și istoricul sunt corecte; anularea restabilește starea și programul de notificare.",
+      "proof": "Reguli+UI",
+      "id": "AT037",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R14",
+        "R19"
+      ],
+      "scenario": "Aceleași operațiuni sunt repetate după timeout sau retry de rețea.",
+      "expected": "Operațiunea idempotentă se aplică o singură dată; cantitatea nu devine negativă.",
+      "proof": "Integrare concurentă",
+      "id": "AT038",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R13",
+        "R14"
+      ],
+      "scenario": "Două telefoane modifică offline același ambalaj și apoi se reconectează.",
+      "expected": "Conflictele au rezolvare deterministă sau cerere simplă; niciun eveniment nu dispare fără trasabilitate.",
+      "proof": "Două dispozitive reale",
+      "id": "AT039",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R13",
+        "R43"
+      ],
+      "scenario": "Invitația gospodăriei expiră, este revocată sau este reutilizată de altă persoană.",
+      "expected": "Accesul neautorizat este refuzat; rolul permis este aplicat la fiecare obiect.",
+      "proof": "Securitate+UI",
+      "id": "AT040",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R13",
+        "R54"
+      ],
+      "scenario": "Un membru limitat/minor vede inventarul comun.",
+      "expected": "Nu primește implicit datele sensibile ale altor membri sau drepturi de administrare.",
+      "proof": "Matrice roluri+revizie",
+      "id": "AT041",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R19"
+      ],
+      "scenario": "Se folosesc ambalaje, grame și mililitri, inclusiv cantitate parțială.",
+      "expected": "Unitățile nu sunt amestecate; persoana poate folosi fluxul simplu fără cântărire obligatorie.",
+      "proof": "Corpus unități+UX",
+      "id": "AT042",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP06",
+      "requirements": [
+        "R14",
+        "R31"
+      ],
+      "scenario": "PWA se deschide offline după o alertă și apoi revine online.",
+      "expected": "Arată vechimea datelor; nu declară că nu există alerte actuale; reîmprospătarea corectează starea.",
+      "proof": "Service worker+telefon",
+      "id": "AT043",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R19"
+      ],
+      "scenario": "Un aliment trece de termen fără acțiunea persoanei.",
+      "expected": "Nu este șters sau marcat consumat automat; apare în lista potrivită și poate fi corectat.",
+      "proof": "Timp simulat+UI",
+      "id": "AT044",
+      "status": "planned"
+    },
+    {
+      "group": "Inventar, gospodării și offline",
+      "package": "WP05",
+      "requirements": [
+        "R13",
+        "R53"
+      ],
+      "scenario": "Membrul părăsește gospodăria sau este eliminat, apoi exportă date.",
+      "expected": "Accesul comun se revocă; exportul respectă proprietatea și drepturile celorlalți.",
+      "proof": "API+verificare export",
+      "id": "AT045",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R05",
+        "R16",
+        "R22"
+      ],
+      "scenario": "Alergen declarat, posibile urme și lipsă de date sunt întâlnite separat.",
+      "expected": "Cele trei stări au mesaje distincte; lipsa nu produce afirmație de absență sau siguranță.",
+      "proof": "Corpus expert+UI",
+      "id": "AT046",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R16",
+        "R35"
+      ],
+      "scenario": "Eticheta V2 schimbă alergeni, iar un lot vechi rămâne la V1.",
+      "expected": "Se păstrează informația aplicabilă lotului și se suprapun eventualele alerte de corecție.",
+      "proof": "Integrare DB+expert",
+      "id": "AT047",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R17",
+        "R22"
+      ],
+      "scenario": "Se compară două produse cu zahăr redus și carbohidrați diferiți.",
+      "expected": "Prezentarea folosește carbohidrații și porția; nu emite verdict medical ori doză de insulină.",
+      "proof": "Revizie nutriție+reguli",
+      "id": "AT048",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R05",
+        "R17"
+      ],
+      "scenario": "Nutriție per 100 g, per 100 ml, per porție și produs preparat.",
+      "expected": "Calculul se face numai cu baza și conversia valide; datele incompatibile rămân separate.",
+      "proof": "Corpus numeric+expert",
+      "id": "AT049",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R05",
+        "R17"
+      ],
+      "scenario": "Date UE și date dintr-un regim cu altă definiție a carbohidraților.",
+      "expected": "Definiția și sursa sunt păstrate; nu se scad fibre sau polioli fără o regulă justificată.",
+      "proof": "Revizie de schemă+expert",
+      "id": "AT050",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R18",
+        "R22"
+      ],
+      "scenario": "Termen de siguranță și termen de calitate în aceeași listă de produse.",
+      "expected": "Mesajele și prioritățile diferă corect; niciun mesaj nu garantează lanțul frigorific.",
+      "proof": "Corpus EFSA+UX",
+      "id": "AT051",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R18"
+      ],
+      "scenario": "Instrucțiune după deschidere depășește data-limită a ambalajului.",
+      "expected": "Aplicația nu prelungește data de siguranță și explică informația aplicabilă.",
+      "proof": "Reguli deterministe+expert",
+      "id": "AT052",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R18"
+      ],
+      "scenario": "Persoana congelează un produs cu termen cunoscut sau necunoscut.",
+      "expected": "Evenimentul se păstrează; nu apare o nouă valabilitate fără instrucțiune și condiții adecvate.",
+      "proof": "Reguli+UI",
+      "id": "AT053",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP10",
+      "requirements": [
+        "R10",
+        "R18"
+      ],
+      "scenario": "Data are numai lună/an sau utilizatorul alege un memento personal.",
+      "expected": "Precizia se păstrează; mementoul nu este prezentat ca termen verificat.",
+      "proof": "Contract+UI",
+      "id": "AT054",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP11",
+      "requirements": [
+        "R21",
+        "R22"
+      ],
+      "scenario": "Există retragere pentru un lot, iar persoana are GTIN cunoscut și lot necunoscut.",
+      "expected": "Primește avertizarea de posibilă afectare și instrucțiunea de verificare, fără verdict fals.",
+      "proof": "Reguli+mesaj expert",
+      "id": "AT055",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP14",
+      "requirements": [
+        "R22",
+        "R28"
+      ],
+      "scenario": "O sugestie ar folosi produs retras sau alergen incompatibil cunoscut.",
+      "expected": "Sugestia este exclusă sau blocată adecvat; datele insuficiente nu sunt ascunse.",
+      "proof": "Corpus recomandări+expert",
+      "id": "AT056",
+      "status": "planned"
+    },
+    {
+      "group": "Reguli alimentare și ajutor pentru persoane cu diabet",
+      "package": "WP14",
+      "requirements": [
+        "R27",
+        "R28"
+      ],
+      "scenario": "Persoana folosește lista de cumpărături, porții și alternative.",
+      "expected": "Acțiunile sunt facultative, sursele/licențele sunt clare, comparațiile folosesc aceeași bază validă.",
+      "proof": "UI+revizie surse",
+      "id": "AT057",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP11",
+      "requirements": [
+        "R20",
+        "R29"
+      ],
+      "scenario": "Permisiunea pentru notificări este cerută după o salvare relevantă și apoi refuzată.",
+      "expected": "Beneficiul este explicat simplu; refuzul nu blochează inventarul și nu provoacă solicitări repetate agresive.",
+      "proof": "Android+iPhone+web real",
+      "id": "AT058",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP11",
+      "requirements": [
+        "R20"
+      ],
+      "scenario": "Se programează memento local, APNs/FCM, Web Push și email facultativ.",
+      "expected": "Canalele sunt testate cu mesaje reale; stările de trimitere și limitele platformelor sunt înregistrate distinct.",
+      "proof": "Livrare pe dispozitiv+email",
+      "id": "AT059",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP11",
+      "requirements": [
+        "R19",
+        "R20"
+      ],
+      "scenario": "Ambalajul este consumat pe alt dispozitiv înaintea notificării.",
+      "expected": "Programarea este anulată/reconciliată; nu se mai notifică acel consum ca produs rămas.",
+      "proof": "Două dispozitive+coadă",
+      "id": "AT060",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP11",
+      "requirements": [
+        "R20",
+        "R54"
+      ],
+      "scenario": "Mai multe produse ajung la termen, cu ore liniștite și profil privat.",
+      "expected": "Sumarul evită spamul; ecranul blocat nu dezvăluie alergii/condiții medicale fără opțiunea persoanei.",
+      "proof": "Telefon real+revizie",
+      "id": "AT061",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP11",
+      "requirements": [
+        "R04",
+        "R21"
+      ],
+      "scenario": "O alertă este emisă, corectată, închisă sau retrasă justificat.",
+      "expected": "Istoricul rămâne; starea curentă se propagă fără a rescrie snapshotul lotului.",
+      "proof": "UI+API+coadă",
+      "id": "AT062",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP11",
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "scenario": "Furnizorul push sau cronul este indisponibil temporar.",
+      "expected": "Există retry limitat, deduplicare, monitorizare și stare reală; nu se pretinde livrare confirmată.",
+      "proof": "Fault injection+monitor",
+      "id": "AT063",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP06",
+      "requirements": [
+        "R20",
+        "R31"
+      ],
+      "scenario": "Pe iPhone este folosit webul simplu și apoi PWA instalată eligibilă.",
+      "expected": "Opțiunile de notificare reflectă suportul real; nu se promite push în condiții nesuportate.",
+      "proof": "Safari/iPhone real",
+      "id": "AT064",
+      "status": "planned"
+    },
+    {
+      "group": "Notificări și retrageri",
+      "package": "WP22",
+      "requirements": [
+        "R21",
+        "R44"
+      ],
+      "scenario": "Alertă aprobată în timp ce paginile sunt servite la încărcarea țintă.",
+      "expected": "Noile citiri arată alerta; cacheul nu o ascunde și cozile ating pragul temporal măsurat.",
+      "proof": "Încărcare autorizată+tracing",
+      "id": "AT065",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP12",
+      "requirements": [
+        "R23",
+        "R24"
+      ],
+      "scenario": "Se fotografiază un bon cu alimente, nealimentare, discounturi, retur și cantitate cântărită.",
+      "expected": "Importul separă liniile corect și cere atenție numai pentru potrivirile ambigue.",
+      "proof": "Bonuri reale anonimizate+UI",
+      "id": "AT066",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP12",
+      "requirements": [
+        "R24"
+      ],
+      "scenario": "Bonul nu are GTIN, lot sau termen.",
+      "expected": "Datele lipsă nu sunt deduse drept certe; numele/SKU au sursă și grad de potrivire.",
+      "proof": "Corpus bonuri+revizie",
+      "id": "AT067",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP12",
+      "requirements": [
+        "R19",
+        "R23"
+      ],
+      "scenario": "Același bon este importat din fotografie, QR și retry API.",
+      "expected": "Idempotenta previne dublarea; eventualele corectări sunt evenimente distincte și trasabile.",
+      "proof": "Integrare+concurență",
+      "id": "AT068",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP12",
+      "requirements": [
+        "R15",
+        "R24"
+      ],
+      "scenario": "Persoana confirmă un bon cu multe potriviri clare și două neclare.",
+      "expected": "Confirmă coșul o singură dată; numai cele două linii cer clarificare; anularea revine corect.",
+      "proof": "UX fără instruire",
+      "id": "AT069",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP12",
+      "requirements": [
+        "R23",
+        "R43"
+      ],
+      "scenario": "Linkul de bon este ghicit, distribuit, expirat sau refolosit de persoană neautorizată.",
+      "expected": "Nu expune coșul sau datele de plată; emitentul și destinatarul sunt autorizați.",
+      "proof": "Securitate+API",
+      "id": "AT070",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP13",
+      "requirements": [
+        "R23",
+        "R25"
+      ],
+      "scenario": "Magazinul pilot emite bon digital real și persoana îl importă în gospodăria sa.",
+      "expected": "Articolele/cantitățile se potrivesc sistemului partener; datele personale inutile sunt eliminate.",
+      "proof": "Sistem real de retailer",
+      "id": "AT071",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP13",
+      "requirements": [
+        "R26"
+      ],
+      "scenario": "ERP-ul pilot creează articol, versiune de etichetă, lot și resurse QR.",
+      "expected": "Fluxul real ajunge la pagina aprobată, cu audit, scopeuri și tratamentul explicit al aprobării.",
+      "proof": "ERP real+HTTPS",
+      "id": "AT072",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP13",
+      "requirements": [
+        "R26",
+        "R43"
+      ],
+      "scenario": "Webhookul este repetat, modificat, întârziat sau semnat greșit.",
+      "expected": "Semnătura/replay sunt verificate; retry și reconcilierea nu dublează și nu modifică neautorizat date.",
+      "proof": "Integrare+negativ",
+      "id": "AT073",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP13",
+      "requirements": [
+        "R26",
+        "R48"
+      ],
+      "scenario": "Un integrator nou folosește numai OpenAPI, exemplele și instrucțiunile livrate.",
+      "expected": "Poate executa fluxul documentat; erorile, rate limitul, idempotenta și versiunile sunt coerente.",
+      "proof": "Probă de integrare independentă",
+      "id": "AT074",
+      "status": "planned"
+    },
+    {
+      "group": "Bonuri și integrări ERP/magazin",
+      "package": "WP23",
+      "requirements": [
+        "R42",
+        "R53"
+      ],
+      "scenario": "Bonurile sursă sunt păstrate, exportate și șterse conform politicii.",
+      "expected": "Nu apar informații de plată inutile în inventar sau rapoarte; retenția este aplicată efectiv.",
+      "proof": "Revizie+verificare storage",
+      "id": "AT075",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP16",
+      "requirements": [
+        "R33",
+        "R35"
+      ],
+      "scenario": "Se completează formula, procesul, furnizorii, controlul, ambalarea și probele unui dosar.",
+      "expected": "Editorul acoperă toate cele 24 de secțiuni; referințele și stadiile se păstrează.",
+      "proof": "UI+export dosar",
+      "id": "AT076",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP16",
+      "requirements": [
+        "R33"
+      ],
+      "scenario": "Se scalează formula și se calculează bilanț, randament, pierderi și scenarii de cost.",
+      "expected": "Calculele deterministe păstrează unități/rotunjiri și separă estimarea de valoarea observată.",
+      "proof": "Corpus numeric+expert",
+      "id": "AT077",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP16",
+      "requirements": [
+        "R33",
+        "R41"
+      ],
+      "scenario": "Se importă și se compară PBT R1, COST1/COST2/COST3 și cercetarea.",
+      "expected": "Originalele și hashurile sunt intacte; COST3 rămâne estimare, R1 experimentală; nu apar rezultate inventate.",
+      "proof": "Manifest+round-trip",
+      "id": "AT078",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP16",
+      "requirements": [
+        "R41"
+      ],
+      "scenario": "Fișier BT01 deteriorat și material recuperat sunt prezentate ca surse.",
+      "expected": "Avertizările și proveniența sunt vizibile; recuperarea nu este promovată automat la probă validată.",
+      "proof": "Revizie manuală+hash",
+      "id": "AT079",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP16",
+      "requirements": [
+        "R02",
+        "R33"
+      ],
+      "scenario": "Se documentează pâine, lactat, băutură și alt aliment folosind profilurile inițiale.",
+      "expected": "Parametrii pâinii nu sunt impuși tuturor; criteriile adoptate și limitele profilului sunt explicite.",
+      "proof": "Expert+UI",
+      "id": "AT080",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP16",
+      "requirements": [
+        "R33",
+        "R52"
+      ],
+      "scenario": "Dosarul este publicat parțial, cu licențe diferite și drepturi neconfirmate la unele fișiere.",
+      "expected": "Numai componentele permise sunt publice; licența este explicită pe versiune, fără extindere implicită.",
+      "proof": "ACL+revizie de licență",
+      "id": "AT081",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP16",
+      "requirements": [
+        "R33",
+        "R35"
+      ],
+      "scenario": "Un rezultat, o fotografie și o afirmație de impact sunt modificate după publicare.",
+      "expected": "Se creează versiune/propunere nouă, cu dovadă și aprobare; istoricul rămâne accesibil conform drepturilor.",
+      "proof": "UI+audit",
+      "id": "AT082",
+      "status": "planned"
+    },
+    {
+      "group": "Documentație deschisă și pilotul PBT",
+      "package": "WP18",
+      "requirements": [
+        "R39",
+        "R41"
+      ],
+      "scenario": "Dosarul PBT este exportat și importat într-un mediu gol.",
+      "expected": "Versiunile, proveniența, fișierele și stadiile se reconstruiesc fără publicare sau siglă automată.",
+      "proof": "Round-trip comparat",
+      "id": "AT083",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34",
+        "R35"
+      ],
+      "scenario": "Emitentul, standardul și evaluatorii eligibili sunt configurați cu roluri reale.",
+      "expected": "Procedura și independența sunt aprobate; configurarea de test nu produce acreditare reală.",
+      "proof": "Revizie nominală+audit",
+      "id": "AT084",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34"
+      ],
+      "scenario": "Autorul sau un evaluator cu conflict încearcă să aprobe dosarul.",
+      "expected": "Decizia este blocată sau rerutată conform procedurii; conflictul este înregistrat.",
+      "proof": "Test roluri+revizie",
+      "id": "AT085",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34"
+      ],
+      "scenario": "O cerință OB-01–OB-23 eșuează ori are problemă blocantă.",
+      "expected": "Emiterea este blocată; completările și noua revizie păstrează istoricul.",
+      "proof": "Integrare DB+UI",
+      "id": "AT086",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34"
+      ],
+      "scenario": "Se încearcă marcarea integrală a unei cerințe OB drept neaplicabilă.",
+      "expected": "Standardul v0.1 nu permite ocolirea cerinței; numai excepțiile de câmp permise au motiv și aprobare.",
+      "proof": "Corpus de standard",
+      "id": "AT087",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34"
+      ],
+      "scenario": "Dosarul eligibil este aprobat de două cereri concurente; una eșuează în tranzacție.",
+      "expected": "Decizia, OB-24 și acreditarea sunt atomice, fără duplicat și fără dependență circulară de certificat.",
+      "proof": "Concurență+rollback DB",
+      "id": "AT088",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34",
+        "R35"
+      ],
+      "scenario": "Publicul deschide sigla SVG, PDF și pagina de verificare.",
+      "expected": "Vede emitentul, standardul, versiunea și aria evaluate, limitele și starea curentă.",
+      "proof": "HTTPS+revizie conținut",
+      "id": "AT089",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34"
+      ],
+      "scenario": "Acreditarea este suspendată, revocată, expirată sau înlocuită.",
+      "expected": "Registrul și verificarea afișează starea actuală și istoricul; badge-ul nu maschează revocarea.",
+      "proof": "Timp simulat+HTTPS",
+      "id": "AT090",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34"
+      ],
+      "scenario": "O versiune nouă, un producător nou sau un import copiază un dosar acreditat.",
+      "expected": "Nu primește automat acreditarea veche; relația și necesitatea reevaluării sunt explicite.",
+      "proof": "Import+reguli",
+      "id": "AT091",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34",
+        "R42"
+      ],
+      "scenario": "Este depusă contestație la decizia evaluatorului.",
+      "expected": "Alt evaluator eligibil gestionează revizia; motivarea este publicabilă cu datele private protejate.",
+      "proof": "Flux integral+revizie",
+      "id": "AT092",
+      "status": "planned"
+    },
+    {
+      "group": "Evaluare, acreditare și contestație",
+      "package": "WP17",
+      "requirements": [
+        "R34",
+        "R35"
+      ],
+      "scenario": "Se încearcă emiterea pentru PBT fără drepturi sau rezultate suficiente, inclusiv după plată.",
+      "expected": "Nu se fabrică eligibilitate; plata, verificarea GTIN și găzduirea nu acordă sigla.",
+      "proof": "Revizie de dosar+negativ",
+      "id": "AT093",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R36"
+      ],
+      "scenario": "Recenzie negativă, întrebare și sesizare sunt asociate produsului și lotului cunoscut.",
+      "expected": "Moderarea și auditul păstrează semnalul; scanarea nu acordă fals achiziție verificată.",
+      "proof": "UI+audit",
+      "id": "AT094",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R36"
+      ],
+      "scenario": "Un utilizator votează repetat și încearcă importul de identități/voturi privilegiate.",
+      "expected": "Unicitatea și autorizarea sunt respectate; importul nu creează autoritate de vot.",
+      "proof": "Integrare+negativ",
+      "id": "AT095",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R35",
+        "R36"
+      ],
+      "scenario": "Feedbackul conduce la o propunere de schimbare a etichetei sau rețetei.",
+      "expected": "Propunerea are versiuni și decizie; datele aprobate nu sunt rescrise direct de recenzie sau AI.",
+      "proof": "Flux integral+audit",
+      "id": "AT096",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R37",
+        "R43"
+      ],
+      "scenario": "Căutarea și public_qa întâlnesc rețetă privată și documente ale altui tenant.",
+      "expected": "Nici conținutul, nici existența sensibilă nu se divulgă prin fragmente, citări sau răspunsuri.",
+      "proof": "Corpus adversarial+ACL",
+      "id": "AT097",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R37"
+      ],
+      "scenario": "Permisiunea sau versiunea documentului se schimbă în timpul jobului.",
+      "expected": "ACL/hashul sunt reverificate; ieșirea neautorizată sau cu citări invalide nu se salvează public.",
+      "proof": "Integrare cu concurență",
+      "id": "AT098",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R38"
+      ],
+      "scenario": "Se execută document_map, dossier_gap_check, feedback_triage, feedback_digest, experiment_proposal, public_qa.",
+      "expected": "Fiecare job respectă schema, sursele, drepturile și fluxul de aprobare; există apel real autorizat documentat.",
+      "proof": "Provider real+corpus",
+      "id": "AT099",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R14",
+        "R38"
+      ],
+      "scenario": "AI este dezactivat, fără buget sau indisponibil în timpul scanării și folosirii inventarului.",
+      "expected": "QR, datele aprobate, inventarul și regulile esențiale funcționează; nu apar fapte generate de avarie.",
+      "proof": "Fault injection+E2E",
+      "id": "AT100",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R38"
+      ],
+      "scenario": "Jobul expiră, se reia, depășește bugetul sau primește prompt injection dintr-un document.",
+      "expected": "Retry/lease/buget sunt aplicate; instrucțiunile din surse nu acordă acces ori puteri de modificare.",
+      "proof": "Securitate+coadă",
+      "id": "AT101",
+      "status": "planned"
+    },
+    {
+      "group": "Comunitate, căutare și AI",
+      "package": "WP15",
+      "requirements": [
+        "R17",
+        "R22",
+        "R28"
+      ],
+      "scenario": "Asistentul personal răspunde unei întrebări despre porție, alergen sau folosirea alimentelor.",
+      "expected": "Explică numai informațiile accesibile și sursele; nu inventează termen, siguranță, diagnostic sau doză medicală.",
+      "proof": "Expert+red team",
+      "id": "AT102",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP18",
+      "requirements": [
+        "R06",
+        "R39"
+      ],
+      "scenario": "Se importă pachete OpenBread vechi, v1 curent și flux NDJSON mare.",
+      "expected": "Dry-run și importul produc mapări/rapoarte; reluarea este sigură și memoria rămâne în buget.",
+      "proof": "Corpus+încărcare de import",
+      "id": "AT103",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP18",
+      "requirements": [
+        "R39",
+        "R52"
+      ],
+      "scenario": "Exportul complet al producătorului este reimportat într-un mediu gol.",
+      "expected": "Datele, versiunile, documentele, licențele și referințele sunt echivalente, cu diferențe explicate.",
+      "proof": "Round-trip+manifest",
+      "id": "AT104",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP18",
+      "requirements": [
+        "R39",
+        "R53"
+      ],
+      "scenario": "Se exportă inventarul personal și datele gospodăriei permise.",
+      "expected": "Pachetul este reutilizabil și nu divulgă date sensibile ale altor membri; ștergerea urmează politica.",
+      "proof": "Round-trip+ACL",
+      "id": "AT105",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP18",
+      "requirements": [
+        "R03",
+        "R39",
+        "R43"
+      ],
+      "scenario": "Pachetul importat include tokenuri, roluri, mandat GTIN sau siglă pretinsă.",
+      "expected": "Nu importă privilegii/secrete; autoritatea și drepturile se verifică separat.",
+      "proof": "Import ostil+revizie",
+      "id": "AT106",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP18",
+      "requirements": [
+        "R39",
+        "R48"
+      ],
+      "scenario": "Se primește un export real autorizat de la furnizor, inclusiv serviciul GS1 vizat dacă este disponibil.",
+      "expected": "Adaptorul mapează câmpurile și pierderile explicit; nu se declară migrare GS1 fără export și probă reală.",
+      "proof": "Fișier real+reconciliere",
+      "id": "AT107",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP19",
+      "requirements": [
+        "R40"
+      ],
+      "scenario": "Se activează domeniu de producător prin DNS/HTTP și TLS.",
+      "expected": "Controlul și certificatul sunt probate; identitatea și tenantul sunt corecte pe hosturile autorizate.",
+      "proof": "DNS+HTTPS real",
+      "id": "AT108",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP19",
+      "requirements": [
+        "R40",
+        "R43"
+      ],
+      "scenario": "Cererea folosește Host fals, certificat expirat sau domeniu cu control retras.",
+      "expected": "Hostul neautorizat nu este servit ca tenant; se alertează și se aplică procedura sigură.",
+      "proof": "Securitate+TLS",
+      "id": "AT109",
+      "status": "planned"
+    },
+    {
+      "group": "Portabilitate și domenii",
+      "package": "WP19",
+      "requirements": [
+        "R01",
+        "R40"
+      ],
+      "scenario": "Clientul mută datele și destinația păstrând QR-uri deja imprimate.",
+      "expected": "Proba distinge domeniul propriu de openaliment.ro; continuitatea se asigură prin control DNS sau acordul aplicabil.",
+      "proof": "Migrare reală+HTTPS",
+      "id": "AT110",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP21",
+      "requirements": [
+        "R45",
+        "R46"
+      ],
+      "scenario": "Se instalează și actualizează release-ul pe staging cPanel fără root/shell.",
+      "expected": "Configurația rămâne în afara publicului; migrarea și revenirea sunt repetabile, fără secrete în pachet.",
+      "proof": "Staging real+manifest",
+      "id": "AT111",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP21",
+      "requirements": [
+        "R38",
+        "R45"
+      ],
+      "scenario": "Cronul/runnerul programat execută cozi, iar cereri neautorizate încearcă execuții arbitrare.",
+      "expected": "Joburile fixe rulează în limite și sunt monitorizate; nu există shell/exec/upload public arbitrar.",
+      "proof": "Hosting real+negativ",
+      "id": "AT112",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP23",
+      "requirements": [
+        "R42",
+        "R43",
+        "R54"
+      ],
+      "scenario": "Se execută matricea de acces pentru tenant, gospodărie, fișiere și administrare.",
+      "expected": "Accesul orizontal/vertical și datele sensibile sunt protejate; nu rămân defecte critice sau majore.",
+      "proof": "Audit securitate",
+      "id": "AT113",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP23",
+      "requirements": [
+        "R43"
+      ],
+      "scenario": "Se încarcă documente ostile, ZIP bomb, path traversal, SVG activ și document cu XXE.",
+      "expected": "Fișierele sunt respinse/carantinate fără execuție, ieșire din storage sau epuizare necontrolată.",
+      "proof": "Corpus de securitate",
+      "id": "AT114",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP22",
+      "requirements": [
+        "R44"
+      ],
+      "scenario": "Se rulează profilul susținut și rafala de încărcare convenite.",
+      "expected": "Capacitatea, latența, erorile și costurile ating țintele sau se livrează capacitate nouă și retestare.",
+      "proof": "Raport load autorizat",
+      "id": "AT115",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP22",
+      "requirements": [
+        "R04",
+        "R21",
+        "R44"
+      ],
+      "scenario": "Sub încărcare se schimbă destinația resolverului și se aprobă o alertă.",
+      "expected": "Istoricul rămâne, noile citiri sunt corecte, cacheul nu servește stare de siguranță veche.",
+      "proof": "Load+tracing+UI",
+      "id": "AT116",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP21",
+      "requirements": [
+        "R46"
+      ],
+      "scenario": "Se restaurează DB, storage și configurația într-un mediu separat.",
+      "expected": "Se ating RPO/RTO, hashurile și mapările QR sunt corecte; alertele recente sunt reconciliate.",
+      "proof": "Restore real cronometrat",
+      "id": "AT117",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP26",
+      "requirements": [
+        "R45",
+        "R46"
+      ],
+      "scenario": "Se simulează incident DB, AI, email, push sau serviciu extern și se revine.",
+      "expected": "Runbookul este executabil de responsabilul desemnat; monitorizarea și degradarea sunt corecte.",
+      "proof": "Exercițiu operațional",
+      "id": "AT118",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP23",
+      "requirements": [
+        "R42",
+        "R53",
+        "R54"
+      ],
+      "scenario": "Se revizuiesc temeiurile, retenția, furnizorii și necesitatea DPIA.",
+      "expected": "Documentele și implementarea coincid; orice DPIA necesară și acțiunile sale sunt închise înaintea datelor reale.",
+      "proof": "Revizie nominală juridică",
+      "id": "AT119",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP22",
+      "requirements": [
+        "R44",
+        "R46"
+      ],
+      "scenario": "Se verifică pragurile de cost, metricile și alertele operaționale.",
+      "expected": "Responsabilul primește alerta reală; lipsa unui furnizor nu produce cheltuieli sau retry necontrolat.",
+      "proof": "Monitor real+buget",
+      "id": "AT120",
+      "status": "planned"
+    },
+    {
+      "group": "Infrastructură, securitate și capacitate",
+      "package": "WP21",
+      "requirements": [
+        "R43",
+        "R45"
+      ],
+      "scenario": "Se verifică mecanismul HTTPS de mentenanță, tokenurile și fișierele de setup.",
+      "expected": "Numai operații autorizate și căi permise; accesul temporar inutil este eliminat; secretele expuse sunt rotite.",
+      "proof": "Revizie+probe negative",
+      "id": "AT121",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP01",
+      "requirements": [
+        "R15",
+        "R29",
+        "R51"
+      ],
+      "scenario": "Minimum 20 de persoane reprezentative folosesc aplicația fără instruire.",
+      "expected": "Minimum 90% recunosc acțiunea următoare în 3 s și finalizează fluxurile de bază fără ajutor.",
+      "proof": "Studiu UX+raport anonim",
+      "id": "AT122",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP24",
+      "requirements": [
+        "R29",
+        "R51"
+      ],
+      "scenario": "Se folosesc cititor de ecran, tastatură, text mărit, contrast și orientări diferite.",
+      "expected": "Fluxurile esențiale sunt utilizabile, etichetele sunt în română, mesajele nu depind numai de culoare.",
+      "proof": "Audit a11y+dispozitive",
+      "id": "AT123",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP07",
+      "requirements": [
+        "R07",
+        "R14",
+        "R29",
+        "R30"
+      ],
+      "scenario": "Pe Android accesibil ca preț și iPhone se scanează în lumină diferită, offline și în fundal.",
+      "expected": "Funcțiile declarate se probează; limitele de focalizare/permisiuni/baterie au răspuns util și fără pierderi.",
+      "proof": "Matrice dispozitive reale",
+      "id": "AT124",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP20",
+      "requirements": [
+        "R32",
+        "R49"
+      ],
+      "scenario": "Se verifică landingul, imaginea aleasă, exemplul PBT, ghidurile și mesajele comerciale.",
+      "expected": "Imaginea/proveniența sunt păstrate; demo-ul este distinct; afirmațiile corespund implementării probate.",
+      "proof": "Revizie conținut+UI",
+      "id": "AT125",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP20",
+      "requirements": [
+        "R48",
+        "R49"
+      ],
+      "scenario": "Se verifică SEO, sitemap, canonical, metadate, date structurate și suportul de contact.",
+      "expected": "Paginile utile sunt indexabile corect; privatele nu intră în sitemap; contactul ajunge la operator.",
+      "proof": "Audit tehnic+contact test",
+      "id": "AT126",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP25",
+      "requirements": [
+        "R30",
+        "R42"
+      ],
+      "scenario": "Aplicațiile sunt trimise și evaluate în conturile operatorului Apple/Google.",
+      "expected": "Declarațiile și politicile corespund funcțiilor și datelor reale; observațiile magazinelor sunt rezolvate.",
+      "proof": "Aprobări reale ale magazinelor",
+      "id": "AT127",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP25",
+      "requirements": [
+        "R12",
+        "R30"
+      ],
+      "scenario": "O persoană instalează versiunile publice și actualizează o versiune cu inventar existent.",
+      "expected": "Aplicațiile sunt disponibile efectiv în magazine; upgradeul păstrează datele și drepturile.",
+      "proof": "Instalare publică reală",
+      "id": "AT128",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP24",
+      "requirements": [
+        "R07",
+        "R08",
+        "R47"
+      ],
+      "scenario": "QR real este imprimat la dimensiunile și pe ambalajele convenite.",
+      "expected": "Decodarea, conținutul, quiet zone și pagina HTTPS sunt corecte; fotografia ilustrativă nu este proba.",
+      "proof": "Tipar fizic+scanare",
+      "id": "AT129",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP24",
+      "requirements": [
+        "R03",
+        "R47"
+      ],
+      "scenario": "POS-ul partenerului citește QR demo în test și articol comercial autorizat în proba convenită.",
+      "expected": "Se distinge decodarea de înregistrarea articolului; nu se afirmă compatibilitate cu toate magazinele.",
+      "proof": "POS real+confirmare partener",
+      "id": "AT130",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP26",
+      "requirements": [
+        "R02",
+        "R14",
+        "R46"
+      ],
+      "scenario": "Pilotul cu producător non-pâine, parteneri și minimum zece gospodării rulează 14 zile.",
+      "expected": "Fluxurile sunt folosite real, incidentele remediate, datele reconciliate și suportul funcțional.",
+      "proof": "Jurnal de stabilizare",
+      "id": "AT131",
+      "status": "planned"
+    },
+    {
+      "group": "Accesibilitate, conținut și distribuție finală",
+      "package": "WP27",
+      "requirements": [
+        "R48",
+        "R50"
+      ],
+      "scenario": "Se face predarea și auditul final R01–R56/WP00–WP27/E01–E12.",
+      "expected": "Toate probele obligatorii și accesurile sunt predate; nicio integrare cerută nu este înlocuită cu simulator.",
+      "proof": "Proces-verbal+registru dovezi",
+      "id": "AT132",
+      "status": "planned"
+    }
+  ],
+  "execution": {
+    "started_at": "2026-10-24",
+    "status_document": "docs/implementation/EXECUTION_2026-10-24.md",
+    "global_acceptance": false,
+    "scope_clarification": "User explicitly accepts ERP and retailer simulators with flexible connector/mapping architecture. Physical POS tests and app store distribution remain separate unexecuted gates.",
+    "published_increments": [
+      "consumer local-first web/PWA and local OCR",
+      "generic partner mappings, ERP draft ingestion, private digital receipts; migration 003",
+      "optional magic-link identity, private household packages/photos/history sync, device revocation and family controls; migration 004"
+    ],
+    "current_increment": "home sync deployed; production guest smoke passed; actual email delivery pending user inbox test; full plan remains in progress",
+    "evidence": [
+      "docs/verification/home-increment-regression-report.json",
+      "docs/verification/home-cloud-production-report.json",
+      "docs/verification/smtp-authentication-report.json"
+    ]
+  }
+}

@@ -1,0 +1,1697 @@
+{
+  "schema_version": "openaliment.api-operations.v1",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v2/public/standards/gs1",
+      "id": "gs1StandardsCatalog",
+      "auth": "public",
+      "scope": "",
+      "handler": "standards.catalog",
+      "summary": "Citește edițiile oficiale GS1, proveniența și hashurile.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/standards/gs1",
+      "id": "gs1StandardsStatus",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "standards.status",
+      "summary": "Verifică integritatea copiilor private ale standardelor GS1.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/standards/gs1/copies",
+      "id": "gs1StandardsPreserve",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "standards.preserve",
+      "summary": "Păstrează copia privată a unei ediții oficiale cu hash fix.",
+      "body": "Gs1Preserve"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/marketplace/apps",
+      "id": "marketplaceCatalog",
+      "auth": "public",
+      "scope": "",
+      "handler": "marketplace.catalog",
+      "summary": "Citește ofertele de integrări aprobate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/marketplace/apps/{id}",
+      "id": "marketplacePublicApp",
+      "auth": "public",
+      "scope": "",
+      "handler": "marketplace.publicApp",
+      "summary": "Citește oferta aprobată și versiunile publice.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/marketplace/releases/{id}/download",
+      "id": "marketplaceDownload",
+      "auth": "public",
+      "scope": "",
+      "handler": "marketplace.download",
+      "summary": "Deschide pachetul gratuit la dezvoltator după verificarea stării ofertei.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/developer/marketplace/apps",
+      "id": "marketplaceOwnApps",
+      "auth": "session",
+      "scope": "",
+      "handler": "marketplace.own",
+      "summary": "Listează propriile oferte, ciorne și versiuni.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/developer/marketplace/apps",
+      "id": "marketplaceCreateApp",
+      "auth": "session",
+      "scope": "",
+      "handler": "marketplace.save",
+      "summary": "Creează oferta privată a dezvoltatorului.",
+      "body": "MarketplaceListing"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v2/developer/marketplace/apps/{id}",
+      "id": "marketplaceUpdateApp",
+      "auth": "session",
+      "scope": "",
+      "handler": "marketplace.save",
+      "summary": "Salvează o revizie fără înlocuirea ofertei aprobate.",
+      "body": "MarketplaceListing"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/developer/marketplace/apps/{id}/submit",
+      "id": "marketplaceSubmitApp",
+      "auth": "session",
+      "scope": "",
+      "handler": "marketplace.submit",
+      "summary": "Trimite revizia curentă pentru aprobare.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/developer/marketplace/apps/{id}/releases",
+      "id": "marketplaceCreateRelease",
+      "auth": "session",
+      "scope": "",
+      "handler": "marketplace.release",
+      "summary": "Înregistrează manifestul imuabil al unei versiuni.",
+      "body": "MarketplaceRelease"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/developer/marketplace/apps/{id}/releases",
+      "id": "marketplaceOwnReleases",
+      "auth": "session",
+      "scope": "",
+      "handler": "marketplace.releases",
+      "summary": "Parcurge toate versiunile proprii cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/developer/marketplace/apps/{id}/withdraw",
+      "id": "marketplaceWithdraw",
+      "auth": "session",
+      "scope": "",
+      "handler": "marketplace.withdraw",
+      "summary": "Retrage imediat oferta sau o versiune proprie.",
+      "body": "MarketplaceWithdrawal"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/marketplace/apps",
+      "id": "marketplaceReviewQueue",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "marketplace.queue",
+      "summary": "Citește ofertele și versiunile pentru verificare.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/marketplace/apps/{id}/decisions",
+      "id": "marketplaceReview",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "marketplace.review",
+      "summary": "Aprobă revizia sau versiunea explicită ori suspendă oferta.",
+      "body": "MarketplaceReview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/marketplace/apps/{id}/selection",
+      "id": "marketplaceSelect",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "marketplace.select",
+      "summary": "Salvează selecția organizației fără acordarea accesului API.",
+      "body": "MarketplaceSelection"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/marketplace/selections",
+      "id": "marketplaceSelections",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "marketplace.selections",
+      "summary": "Parcurge integrările selectate de organizație.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/printing/devices",
+      "id": "printDevices",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "marketplace.devices",
+      "summary": "Listează echipamentele fără credentiale.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/printing/devices",
+      "id": "printCreateDevice",
+      "auth": "owner-session",
+      "scope": "",
+      "handler": "marketplace.device",
+      "summary": "Înregistrează echipamentul și afișează o singură dată secretul agentului.",
+      "body": "PrintDevice"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/printing/devices/{id}/rotate",
+      "id": "printRotateDevice",
+      "auth": "owner-session",
+      "scope": "",
+      "handler": "marketplace.device",
+      "summary": "Înlocuiește imediat credentialul echipamentului.",
+      "body": "PrintDevice"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/printing/devices/{id}/revoke",
+      "id": "printRevokeDevice",
+      "auth": "owner-session",
+      "scope": "",
+      "handler": "marketplace.revoke",
+      "summary": "Deconectează agentul echipamentului.",
+      "body": "Empty"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/printing/jobs",
+      "id": "printJobs",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "marketplace.jobs",
+      "summary": "Listează comenzile de tipărire ale organizației.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/printing/units",
+      "id": "printUnits",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "marketplace.units",
+      "summary": "Exportă prin paginare identitățile și URL-urile originale ale ambalajelor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/printing/jobs/{id}",
+      "id": "printJob",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "marketplace.job",
+      "summary": "Citește seriile, snapshoturile și istoricul comenzii.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/printing/jobs",
+      "id": "printCreateJob",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "marketplace.createJob",
+      "summary": "Alocă serii distincte și creează o comandă de tipărire.",
+      "body": "PrintJob"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/printing/jobs/{id}/cancel",
+      "id": "printCancelJob",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "marketplace.cancel",
+      "summary": "Anulează exclusiv o comandă încă nepreluată.",
+      "body": "PrintReason"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/printing/jobs/{id}/reprint",
+      "id": "printReprintJob",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "marketplace.reprint",
+      "summary": "Retipărește explicit aceleași serii cu motiv și istoric.",
+      "body": "PrintReprint"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/printing-agent/claims",
+      "id": "printAgentClaim",
+      "auth": "print-agent",
+      "scope": "",
+      "handler": "marketplace.claim",
+      "summary": "Preia o comandă exclusiv pentru echipamentul credentialului.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/printing-agent/jobs/{id}/acknowledgements",
+      "id": "printAgentAcknowledge",
+      "auth": "print-agent",
+      "scope": "",
+      "handler": "marketplace.ack",
+      "summary": "Confirmă expedierea sau rezultatul echipamentului, separat.",
+      "body": "PrintAcknowledgement"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/account/security",
+      "id": "accountSecurity",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.security",
+      "summary": "Citește cheile de acces și sesiunile proprii.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/password/request",
+      "id": "accountPasswordRequest",
+      "auth": "session-optional",
+      "scope": "",
+      "handler": "account.recovery",
+      "summary": "Recuperează parola fără dezactivarea cheilor de acces.",
+      "body": "AccountEmail"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/password/preview",
+      "id": "accountPasswordPreview",
+      "auth": "session-optional",
+      "scope": "",
+      "handler": "account.recovery",
+      "summary": "Recuperează parola fără dezactivarea cheilor de acces.",
+      "body": "AccountToken"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/password/reset",
+      "id": "accountPasswordReset",
+      "auth": "session-optional",
+      "scope": "",
+      "handler": "account.recovery",
+      "summary": "Recuperează parola fără dezactivarea cheilor de acces.",
+      "body": "AccountReset"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/passkeys/create/options",
+      "id": "accountPasskeyCreateOptions",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.passkey",
+      "summary": "Înregistrează sau verifică o cheie de acces.",
+      "body": "PasskeyCreateOptions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/passkeys/create/confirm",
+      "id": "accountPasskeyCreateConfirm",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.passkey",
+      "summary": "Înregistrează sau verifică o cheie de acces.",
+      "body": "PasskeyRegistration"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/passkeys/get/options",
+      "id": "accountPasskeyGetOptions",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.passkey",
+      "summary": "Înregistrează sau verifică o cheie de acces.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/passkeys/get/confirm",
+      "id": "accountPasskeyGetConfirm",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.passkey",
+      "summary": "Înregistrează sau verifică o cheie de acces.",
+      "body": "PasskeyAssertion"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/passkeys/recover",
+      "id": "accountPasskeyRecover",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.passkey",
+      "summary": "Folosește o singură dată un cod de recuperare.",
+      "body": "RecoveryCode"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/passkeys/recovery-codes",
+      "id": "accountRecoveryCodes",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.passkey",
+      "summary": "Înlocuiește codurile de recuperare; sunt afișate o singură dată.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/passkeys/{id}/remove",
+      "id": "accountPasskeyRemove",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.passkey",
+      "summary": "Elimină o cheie proprie, păstrând cel puțin o cheie verificată.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/account/sessions/{id}/revoke",
+      "id": "accountSessionRevoke",
+      "auth": "session",
+      "scope": "",
+      "handler": "account.session",
+      "summary": "Deconectează o sesiune proprie.",
+      "body": "Empty"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/operations",
+      "id": "adminOperations",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "admin.operations",
+      "summary": "Citește starea workerului, emailului, backupului și configurației.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/documents/{id}/scan",
+      "id": "manageDocumentScanStatus",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.documentScan",
+      "summary": "Citește verificarea de securitate a documentului.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/documents/{id}/scan",
+      "id": "manageDocumentScan",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "manage.documentScan",
+      "summary": "Verifică documentul prin scanerul privat configurat.",
+      "body": "Empty"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/trade-items/{id}",
+      "id": "publicGetTradeItems",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.get",
+      "summary": "Citește proiecția publică aprobată.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/products/{id}",
+      "id": "publicGetProducts",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.get",
+      "summary": "Citește proiecția publică aprobată.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/batches/{id}",
+      "id": "publicGetBatches",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.get",
+      "summary": "Citește proiecția publică aprobată.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/labels/{id}",
+      "id": "publicGetLabels",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.get",
+      "summary": "Citește proiecția publică aprobată.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/recipe-versions/{id}",
+      "id": "publicGetRecipeVersions",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.get",
+      "summary": "Citește proiecția publică aprobată.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/documents/{id}",
+      "id": "publicGetDocuments",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.get",
+      "summary": "Citește proiecția publică aprobată.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/proposals/{id}",
+      "id": "publicGetProposals",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.get",
+      "summary": "Citește proiecția publică aprobată.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/trade-items",
+      "id": "publicListTradeItems",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.catalog",
+      "summary": "Caută și parcurge articolele publicate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/products/{id}/trade-items",
+      "id": "publicProductTradeItems",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.children",
+      "summary": "Listează resursele publice ale produsului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/products/{id}/recipe-versions",
+      "id": "publicProductRecipeVersions",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.children",
+      "summary": "Listează resursele publice ale produsului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/products/{id}/proposals",
+      "id": "publicProductProposals",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.children",
+      "summary": "Listează resursele publice ale produsului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/batches/{id}/recipe-versions",
+      "id": "publicBatchRecipes",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.children",
+      "summary": "Listează exclusiv rețeta publică asociată lotului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/batches/{id}/alerts",
+      "id": "publicBatchAlerts",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.children",
+      "summary": "Citește alertele active ale lotului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/labels/{id}/documents",
+      "id": "publicLabelDocuments",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.children",
+      "summary": "Listează documentele publice ale versiunii istorice.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/trade-items/{id}/feedback",
+      "id": "publicListFeedback",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.feedback",
+      "summary": "Listează copiile moderate pentru versiunea și lotul selectate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/trade-items/{id}/ratings",
+      "id": "publicRatings",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.ratings",
+      "summary": "Citește mediile, numărul de răspunsuri și distribuția notelor publicate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/documents/{id}/content",
+      "id": "publicDownloadDocument",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.download",
+      "summary": "Descarcă documentul public.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/recipe-versions/{id}/archive",
+      "id": "publicRecipeArchive",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.archive",
+      "summary": "Descarcă documentația publică licențiată într-o arhivă autonomă.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/policies/privacy",
+      "id": "publicPrivacyPolicy",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.vocabulary",
+      "summary": "Citește informarea de confidențialitate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/vocabularies/licenses",
+      "id": "publicVocabularyLicenses",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.vocabulary",
+      "summary": "Citește dicționarul și valorile acceptate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/vocabularies/allergens",
+      "id": "publicVocabularyAllergens",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.vocabulary",
+      "summary": "Citește dicționarul și valorile acceptate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/vocabularies/nutrition",
+      "id": "publicVocabularyNutrition",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.vocabulary",
+      "summary": "Citește dicționarul și valorile acceptate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/vocabularies/link-types",
+      "id": "publicVocabularyLinktypes",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.vocabulary",
+      "summary": "Citește dicționarul și valorile acceptate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/vocabularies/units",
+      "id": "publicVocabularyUnits",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.vocabulary",
+      "summary": "Citește dicționarul și valorile acceptate.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/public/food-lookups",
+      "id": "publicFoodLookupBatch",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.lookup",
+      "summary": "Caută maximum 20 coduri publice; fiecare cod consumă o unitate din cotă.",
+      "body": "FoodLookups"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/tools/identifiers/parse",
+      "id": "identifierParse",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.identifier",
+      "summary": "Interpretează codul fără verificarea mandatului GS1.",
+      "body": "Identifier"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/tools/identifiers/validate",
+      "id": "identifierValidate",
+      "auth": "public",
+      "scope": "",
+      "handler": "public.identifier",
+      "summary": "Interpretează codul fără verificarea mandatului GS1.",
+      "body": "Identifier"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/community/feedback",
+      "id": "communitySubmitFeedback",
+      "auth": "public",
+      "scope": "",
+      "handler": "community.feedback",
+      "summary": "Trimite feedback cu acord și cheie de deduplicare.",
+      "body": "Feedback"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/community/me/votes",
+      "id": "communityMyVotes",
+      "auth": "producer",
+      "scope": "community",
+      "handler": "community.votes",
+      "summary": "Citește voturile proprii.",
+      "body": ""
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v2/community/proposals/{id}/vote",
+      "id": "communityVote",
+      "auth": "producer",
+      "scope": "community",
+      "handler": "community.vote",
+      "summary": "Susține propunerea publică, un singur vot per persoană.",
+      "body": "VoteMutation"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v2/community/proposals/{id}/vote",
+      "id": "communityRemoveVote",
+      "auth": "producer",
+      "scope": "community",
+      "handler": "community.vote",
+      "summary": "Retrage votul propriu.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/products",
+      "id": "manageListProducts",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/products/{id}",
+      "id": "manageGetProducts",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/trade-items",
+      "id": "manageListTradeItems",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/trade-items/{id}",
+      "id": "manageGetTradeItems",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/labels",
+      "id": "manageListLabels",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/labels/{id}",
+      "id": "manageGetLabels",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/batches",
+      "id": "manageListBatches",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/batches/{id}",
+      "id": "manageGetBatches",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/recipes",
+      "id": "manageListRecipes",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/recipes/{id}",
+      "id": "manageGetRecipes",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/documents",
+      "id": "manageListDocuments",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/documents/{id}",
+      "id": "manageGetDocuments",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/feedback",
+      "id": "manageListFeedback",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/feedback/{id}",
+      "id": "manageGetFeedback",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/proposals",
+      "id": "manageListProposals",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/proposals/{id}",
+      "id": "manageGetProposals",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/imports",
+      "id": "manageListImports",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/imports/{id}",
+      "id": "manageGetImports",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/audit-events",
+      "id": "manageListAuditEvents",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/audit-events/{id}",
+      "id": "manageGetAuditEvents",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/ai-jobs",
+      "id": "manageListAiJobs",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.list",
+      "summary": "Listează colecția autorizată cu cursor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/ai-jobs/{id}",
+      "id": "manageGetAiJobs",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.get",
+      "summary": "Citește resursa organizației curente.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/dashboard",
+      "id": "manageDashboard",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.dashboard",
+      "summary": "Citește indicatorii organizației.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/organization",
+      "id": "manageOrganization",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.organization",
+      "summary": "Citește organizația și rolul curent.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/quotas",
+      "id": "manageQuotas",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.quotas",
+      "summary": "Citește volumele și spațiul alocate organizației, fără posibilitate de mărire prin API.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/products/{id}/trade-items",
+      "id": "manageProductTradeItems",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează resursele produsului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/products/{id}/documents",
+      "id": "manageProductDocuments",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează resursele produsului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/products/{id}/recipes",
+      "id": "manageProductRecipes",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează resursele produsului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/products/{id}/proposals",
+      "id": "manageProductProposals",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează resursele produsului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/trade-items/{id}/labels",
+      "id": "manageItemLabels",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează versiunile articolului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/trade-items/{id}/batches",
+      "id": "manageItemBatches",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează versiunile articolului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/trade-items/{id}/resolver-links",
+      "id": "manageItemResolverLinks",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează versiunile articolului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/batches/{id}/events",
+      "id": "manageBatchEvents",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează istoricul sau alertele lotului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/batches/{id}/alerts",
+      "id": "manageBatchAlerts",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Listează istoricul sau alertele lotului.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/feedback/{id}/decisions",
+      "id": "manageFeedbackDecisions",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Citește deciziile sau ciornele AI autorizate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/feedback/{id}/ai-results",
+      "id": "manageFeedbackAiResults",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Citește deciziile sau ciornele AI autorizate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/proposals/{id}/decisions",
+      "id": "manageProposalDecisions",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.children",
+      "summary": "Citește istoricul deciziilor.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/documents/{id}/content",
+      "id": "manageDownloadDocument",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.download",
+      "summary": "Descarcă documentul privat autorizat.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/labels/{id}/public-preview",
+      "id": "manageLabelPreview",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.preview",
+      "summary": "Previzualizează snapshotul publicabil fără publicare.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/label-validations",
+      "id": "manageValidateLabel",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "manage.validate",
+      "summary": "Validează eticheta fără salvare.",
+      "body": "Label"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/products/{id}/documents",
+      "id": "manageUploadDocument",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "manage.upload",
+      "summary": "Încarcă privat un document multipart, maximum 15 MB.",
+      "body": "Upload"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/products",
+      "id": "manageProductCreate",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "mutation:product.create",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Product"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/products/{id}/trade-items",
+      "id": "manageTradeCreate",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "mutation:trade.create",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "TradeItem"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/trade-items/{id}/labels",
+      "id": "manageLabelCreate",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "mutation:label.create",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Label"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/labels/{id}/publish",
+      "id": "manageLabelPublish",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:label.publish",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/trade-items/{id}/batches",
+      "id": "manageBatchCreate",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "mutation:batch.create",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Batch"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/batches/{id}/publish",
+      "id": "manageBatchPublish",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:batch.publish",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/batches/{id}/release",
+      "id": "manageBatchRelease",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:batch.release",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/batches/{id}/alerts",
+      "id": "manageAlertCreate",
+      "auth": "producer",
+      "scope": "alerts",
+      "handler": "mutation:alert.create",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Alert"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/alerts/{id}/resolve",
+      "id": "manageAlertResolve",
+      "auth": "producer",
+      "scope": "alerts",
+      "handler": "mutation:alert.resolve",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Resolution"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/products/{id}/recipes",
+      "id": "manageRecipeCreate",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "mutation:recipe.create",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Recipe"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/products/{id}/proposals",
+      "id": "manageProposalCreate",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "mutation:proposal.create",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Proposal"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/proposals/{id}/decide",
+      "id": "manageProposalDecide",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:proposal.decide",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Decision"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/documents/{id}/publish",
+      "id": "manageDocumentPublish",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:document.publish",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "DocumentPublication"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/feedback/{id}/moderate",
+      "id": "manageFeedbackModerate",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:feedback.moderate",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "Moderation"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/trade-items/{id}/resolver-links",
+      "id": "manageResolverDraft",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "mutation:resolver.draft",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "ResolverLink"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/resolver-links/{id}/publish",
+      "id": "manageResolverPublish",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:resolver.publish",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "ResolverApproval"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/resolver-links/{id}/withdraw",
+      "id": "manageResolverWithdraw",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "mutation:resolver.withdraw",
+      "summary": "Execută operația explicită, cu rol și cheie de idempotentă.",
+      "body": "ResolverWithdrawal"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/qr/item/{id}",
+      "id": "manageQrItem",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.qr",
+      "summary": "Obține URL-ul stabil pentru QR.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/qr/batch/{id}",
+      "id": "manageQrBatch",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.qr",
+      "summary": "Obține URL-ul stabil pentru QR.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/export",
+      "id": "manageExport",
+      "auth": "producer",
+      "scope": "export",
+      "handler": "manage.export",
+      "summary": "Exportă JSON sau NDJSON cu istoric și documente.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/import-stream",
+      "id": "manageImportStream",
+      "auth": "producer",
+      "scope": "import",
+      "handler": "manage.importStream",
+      "summary": "Verifică și importă un export NDJSON cu digest final.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/import",
+      "id": "manageImport",
+      "auth": "producer",
+      "scope": "import",
+      "handler": "manage.import",
+      "summary": "Verifică sau importă date private; dry_run este implicit true.",
+      "body": "Import"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/import-pbt",
+      "id": "manageImportpbt",
+      "auth": "producer",
+      "scope": "import",
+      "handler": "manage.import",
+      "summary": "Verifică sau importă date private; dry_run este implicit true.",
+      "body": "Import"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/connectors/{id}/events",
+      "id": "manageConnectorEvents",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.connector",
+      "summary": "Citește evenimentele sau mapările identităților externe.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/connectors/{id}/bindings",
+      "id": "manageConnectorBindings",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.connector",
+      "summary": "Citește evenimentele sau mapările identităților externe.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/connectors/{id}",
+      "id": "manageConnector",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.connector",
+      "summary": "Citește conectorul propriu.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/ai/capabilities",
+      "id": "manageAiCapabilities",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "manage.ai",
+      "summary": "Citește disponibilitatea AI fără secrete.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/ai-jobs",
+      "id": "manageQueueAiJob",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "manage.ai",
+      "summary": "Programează trierea feedbackului public moderat; nu execută AI în cererea HTTP.",
+      "body": "AiJob"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/access-tokens",
+      "id": "manageListAccessTokens",
+      "auth": "owner-session",
+      "scope": "",
+      "handler": "keys.list",
+      "summary": "Listează metadatele cheilor, fără secrete.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/access-tokens",
+      "id": "manageCreateAccessToken",
+      "auth": "owner-session",
+      "scope": "",
+      "handler": "keys.create",
+      "summary": "Emite o cheie; secretul este returnat o singură dată.",
+      "body": "ApiKey"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v2/manage/access-tokens/{id}",
+      "id": "manageRevokeAccessToken",
+      "auth": "owner-session",
+      "scope": "",
+      "handler": "keys.revoke",
+      "summary": "Revocă imediat cheia organizației.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/access-tokens/{id}/rotations",
+      "id": "manageRotateAccessToken",
+      "auth": "owner-session",
+      "scope": "",
+      "handler": "keys.rotate",
+      "summary": "Înlocuiește cheia, păstrează scopes și revocă cheia veche.",
+      "body": "ApiKeyRotation"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/auth/token",
+      "id": "inspectAccessToken",
+      "auth": "producer",
+      "scope": "",
+      "handler": "token.inspect",
+      "summary": "Inspectează identitatea și scopes ale credentialului curent.",
+      "body": ""
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v2/auth/token",
+      "id": "revokeCurrentToken",
+      "auth": "producer",
+      "scope": "",
+      "handler": "token.revoke",
+      "summary": "Revocă propriul credential Bearer.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/developer/apps",
+      "id": "developerListApps",
+      "auth": "session",
+      "scope": "",
+      "handler": "developer.apps",
+      "summary": "Administrează aplicațiile publice OAuth.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/developer/apps",
+      "id": "developerCreateApps",
+      "auth": "session",
+      "scope": "",
+      "handler": "developer.apps",
+      "summary": "Administrează aplicațiile publice OAuth.",
+      "body": "OAuthClient"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/developer/apps/{id}/suspend",
+      "id": "developerSuspendApp",
+      "auth": "session",
+      "scope": "",
+      "handler": "developer.suspend",
+      "summary": "Suspendă aplicația și invalidează toate granturile ei.",
+      "body": "Empty"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/identity/session",
+      "id": "identitySession",
+      "auth": "public",
+      "scope": "",
+      "handler": "identity.session",
+      "summary": "Citește sesiunea web și tokenul CSRF, fără privilegii implicite.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/identity/sessions",
+      "id": "identityLogin",
+      "auth": "session-optional",
+      "scope": "",
+      "handler": "identity.login",
+      "summary": "Conectează contul producătorului în browserul propriu.",
+      "body": "Login"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v2/identity/sessions/current",
+      "id": "identityLogout",
+      "auth": "session",
+      "scope": "",
+      "handler": "identity.logout",
+      "summary": "Închide sesiunea web curentă.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/identity/password",
+      "id": "identityChangePassword",
+      "auth": "session",
+      "scope": "",
+      "handler": "identity.password",
+      "summary": "Schimbă parola și revocă celelalte sesiuni și accesuri ale contului.",
+      "body": "PasswordChange"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/identity/access-revocations",
+      "id": "identityRevokeOtherAccess",
+      "auth": "session",
+      "scope": "",
+      "handler": "identity.access-revoke",
+      "summary": "Retrage celelalte sesiuni și credentialele contului după confirmarea parolei.",
+      "body": "AccessRevocation"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/identity/registrations",
+      "id": "identityRegister",
+      "auth": "session-optional",
+      "scope": "",
+      "handler": "identity.register",
+      "summary": "Înregistrează cont și organizație dacă înscrierile sunt active.",
+      "body": "Registration"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/identity/organizations",
+      "id": "identityOrganizations",
+      "auth": "session",
+      "scope": "",
+      "handler": "identity.organizations",
+      "summary": "Listează organizațiile contului propriu.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/identity/organization-selection",
+      "id": "identitySelectOrganization",
+      "auth": "session",
+      "scope": "",
+      "handler": "identity.select",
+      "summary": "Schimbă organizația activă după verificarea membership.",
+      "body": "OrganizationSelection"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/identity/grants",
+      "id": "identityListGrants",
+      "auth": "session",
+      "scope": "",
+      "handler": "identity.grants",
+      "summary": "Listează aplicațiile autorizate de producător.",
+      "body": ""
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v2/identity/grants/{id}",
+      "id": "identityRevokeGrant",
+      "auth": "session",
+      "scope": "",
+      "handler": "identity.grants",
+      "summary": "Retrage accesul unei aplicații autorizate.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/organizations",
+      "id": "adminListOrganizations",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "admin.list",
+      "summary": "Listează resursele de verificat; exclusiv administrator platformă.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/users",
+      "id": "adminListUsers",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "admin.list",
+      "summary": "Listează resursele de verificat; exclusiv administrator platformă.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/gtin-claims",
+      "id": "adminListGtinClaims",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "admin.list",
+      "summary": "Listează resursele de verificat; exclusiv administrator platformă.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/organizations/{id}/identity-reviews",
+      "id": "adminOrganizationVerify",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "admin:organization.verify",
+      "summary": "Înregistrează o decizie atribuită administratorului.",
+      "body": "AdminReview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/users/{id}/contact-reviews",
+      "id": "adminContactVerify",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "admin:contact.verify",
+      "summary": "Înregistrează o decizie atribuită administratorului.",
+      "body": "AdminReview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/gtin-claims/{id}/decisions",
+      "id": "adminGtinReview",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "admin:gtin.review",
+      "summary": "Înregistrează o decizie atribuită administratorului.",
+      "body": "AdminReview"
+    }
+  ],
+  "contract": "platform-openapi.json",
+  "operations": 258
+}

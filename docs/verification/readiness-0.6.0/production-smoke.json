@@ -1,0 +1,218 @@
+{
+  "release": "0.6.0",
+  "checked_at": "2026-10-25T13:19:58.155273+00:00",
+  "production_migration_007": "active: administrator confirmation and public readiness capabilities",
+  "read_only": true,
+  "passed": true,
+  "checks": [
+    {
+      "path": "/api/v2/public/status",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 140,
+      "body_sha256": "95eedc413f4fa08029c62c423ccd8c47bb33781cedb23d4a912d0efb183d0c6b"
+    },
+    {
+      "path": "/api/manifest.json",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 141,
+      "body_sha256": "12015c59568985ed80fe303246a7e85a10e1f490bef76189f0810ca8a2f303f5"
+    },
+    {
+      "path": "/api/docs/index.json",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 203,
+      "body_sha256": "f245493f3fe34897824f63879ddcc2ba507b28d00a8a1cf25e286c4f8dd60799"
+    },
+    {
+      "path": "/api/platform-openapi.json",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 1547,
+      "body_sha256": "1d2c1d4869b0fc7164cc1010df3c6d93a7fbd1cc1a9104ef09c740c586f97022"
+    },
+    {
+      "path": "/api/docs",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 265,
+      "body_sha256": "1e1c264817b50cbdd2cbbd5fec72243e1fe869e2190e97e97c40472adc72359a"
+    },
+    {
+      "path": "/llms.txt",
+      "method": "GET",
+      "accept": "text/plain",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 204,
+      "body_sha256": "be5a669e96cccf0244d313b2b4da3971e54946dff025b8b678e266eee09600c4"
+    },
+    {
+      "path": "/.well-known/gs1resolver",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 93,
+      "body_sha256": "374f9b630935aa9f09b6cf0437b35607abf8f25178824911cd174ddf222b123f"
+    },
+    {
+      "path": "/01/09520000000011",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 307,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/01/09520000000011",
+      "method": "GET",
+      "accept": "application/linkset+json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "efd6a0d821006718e5b5a745327e4491fadca34bdd8409b8ab3ec2c653b3f863"
+    },
+    {
+      "path": "/demo/paine-buna-tehnic",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 109,
+      "body_sha256": "5de2738ef1898908e3da81f65db3408d0136e5dbe3d9d584d864a22eba13b986"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 307,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01",
+      "method": "GET",
+      "accept": "application/linkset+json",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "e984766ec3d566da522e8a6b5ed4a4fb88e03dd3349a72a0d356545120d90f94"
+    },
+    {
+      "path": "/demo/paine-buna-tehnic/lot/DEMO-PBT-01",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 109,
+      "body_sha256": "0b51e7f563296aee05a8244d3a3391a94d6ef74cd4187173114626717f4c2f46"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01",
+      "method": "HEAD",
+      "accept": "text/html",
+      "status": 307,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/01/09520000000011/10/DEMO-PBT-01",
+      "method": "OPTIONS",
+      "accept": "text/html",
+      "status": 204,
+      "passed": true,
+      "milliseconds": 78,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/acasa/",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 110,
+      "body_sha256": "d8fd0699aac29cd5afe41c94ec0f86394ef54fd76ce37ea2d58e1bf8fd8a14ed"
+    },
+    {
+      "path": "/recuperare",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 78,
+      "body_sha256": "4294bb3c47e0a45c936480abd1fda3988501b50d23fcdbd46aa2ae6c6bf67193"
+    },
+    {
+      "path": "/api/v2/account/security",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 401,
+      "passed": true,
+      "milliseconds": 172,
+      "body_sha256": "698544c2d176766db1869b202999bb8101d1bac3886a898142a7ec5a63b2bc0c"
+    },
+    {
+      "path": "/api/v2/manage/trade-items",
+      "method": "GET",
+      "accept": "application/json",
+      "status": 401,
+      "passed": true,
+      "milliseconds": 109,
+      "body_sha256": "14236f7233a8d567b36deb171d055e6daf582bc7355c8b54f2877dc46c6cae5c"
+    },
+    {
+      "path": "/config/local.php",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 404,
+      "passed": true,
+      "milliseconds": 94,
+      "body_sha256": "2af7cedecacf126e4a8cb0b18086eb62c468c6f6512278e9f6288e2e7dfd00e2"
+    },
+    {
+      "path": "/storage/private/keys/application.key",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 404,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "41c8148bbc4376fdc315299b8db4689ae90cde365507b87157dbd6718c60dd9e"
+    },
+    {
+      "path": "/confidentialitate",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 125,
+      "body_sha256": "f39ccdaf7561e4552d5286f79e337a23cbb002330f597305857435d5fac5a302"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "accept": "text/html",
+      "status": 200,
+      "passed": true,
+      "milliseconds": 187,
+      "body_sha256": "39f46f24db181047bcb5aae5c3c252db7b9a7c429fd98711ca540742529c32e3"
+    }
+  ],
+  "count": 23,
+  "credentials_or_notifications_sent": false
+}

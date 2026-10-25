@@ -1,0 +1,233 @@
+{
+  "checked_at": "2026-10-25T09:46:43.154083+00:00",
+  "mode": "bounded read-only HTTPS; no login, email, user records or mutations",
+  "manifest": {
+    "schema_version": "openaliment.api-manifest.v1",
+    "name": "OpenAliment",
+    "base_url": "https://openaliment.ro",
+    "documentation": "https://openaliment.ro/api/docs",
+    "documentation_index": "https://openaliment.ro/api/docs/index.json",
+    "llms": "https://openaliment.ro/llms.txt",
+    "guide": "https://openaliment.ro/api/guide.md",
+    "sdk": {
+      "python": "https://openaliment.ro/api/sdk/python",
+      "javascript": "https://openaliment.ro/api/sdk/javascript",
+      "kotlin": "https://openaliment.ro/api/sdk/kotlin"
+    },
+    "openapi": [
+      {
+        "name": "platform-openapi.json",
+        "url": "https://openaliment.ro/api/platform-openapi.json"
+      },
+      {
+        "name": "openapi.json",
+        "url": "https://openaliment.ro/api/openapi.json"
+      },
+      {
+        "name": "consumer-openapi.json",
+        "url": "https://openaliment.ro/api/consumer-openapi.json"
+      },
+      {
+        "name": "integration-openapi.json",
+        "url": "https://openaliment.ro/api/integration-openapi.json"
+      },
+      {
+        "name": "home-openapi.json",
+        "url": "https://openaliment.ro/api/home-openapi.json"
+      }
+    ],
+    "schemas": [
+      {
+        "name": "ai-review.schema.json",
+        "url": "https://openaliment.ro/api/schemas/ai-review.schema.json",
+        "sha256": "6b7655de0e55d6a4b1e0b944f6b17fb87efdda1e01ae282da8a5a585a75e5247"
+      },
+      {
+        "name": "batch.schema.json",
+        "url": "https://openaliment.ro/api/schemas/batch.schema.json",
+        "sha256": "4f407917836fdcb43aeeac89cf764611f880eb232437cf7c69761de1da5cc57d"
+      },
+      {
+        "name": "consumer-inventory.schema.json",
+        "url": "https://openaliment.ro/api/schemas/consumer-inventory.schema.json",
+        "sha256": "5fc210a304afb4eb90cdf0d47a407ad4da6b1bd6d921a840926065da61f54b12"
+      },
+      {
+        "name": "consumer-product-profile.schema.json",
+        "url": "https://openaliment.ro/api/schemas/consumer-product-profile.schema.json",
+        "sha256": "2093e33d4dbcdd35d16002d9b300765a24678debdbe8b0a541b6bfbfcac180f2"
+      },
+      {
+        "name": "consumer-transfer.schema.json",
+        "url": "https://openaliment.ro/api/schemas/consumer-transfer.schema.json",
+        "sha256": "82706b616a7b6ad8757a4a0b47d996388f23c28db3797aec3d3e09c933533974"
+      },
+      {
+        "name": "digital-receipt.schema.json",
+        "url": "https://openaliment.ro/api/schemas/digital-receipt.schema.json",
+        "sha256": "aa6df3a78420852aa0e53e1b41861c72ff4ed07bce40e1f79595c0128828635e"
+      },
+      {
+        "name": "food-data.schema.json",
+        "url": "https://openaliment.ro/api/schemas/food-data.schema.json",
+        "sha256": "c223cf62dd1d802f152b5431a353c7f5ebfdc16e2482cb29c12a7e935538b566"
+      },
+      {
+        "name": "food-date.schema.json",
+        "url": "https://openaliment.ro/api/schemas/food-date.schema.json",
+        "sha256": "10911d0bd85f0f8118c3ae8804c319c6a923169559fca79ffebac1abaa34dffa"
+      },
+      {
+        "name": "home-sync.schema.json",
+        "url": "https://openaliment.ro/api/schemas/home-sync.schema.json",
+        "sha256": "f30efd0c2d13b13f493392d45f1196d66f4b29d06aac3a9a33e224e9b2e10c71"
+      },
+      {
+        "name": "partner-mapping.schema.json",
+        "url": "https://openaliment.ro/api/schemas/partner-mapping.schema.json",
+        "sha256": "7128f1eaa56c818781c75e42141c3de2254fbabb1cfe74596ce420a78bf2a848"
+      },
+      {
+        "name": "product-label.schema.json",
+        "url": "https://openaliment.ro/api/schemas/product-label.schema.json",
+        "sha256": "522ea1dfbabdfa8aec387eaa8c6152afa06dfe623dd743d9b2bdae342fe183e1"
+      }
+    ],
+    "resolver": {
+      "description": "https://openaliment.ro/.well-known/gs1resolver",
+      "profile": "https://openaliment.ro/resolver/profile",
+      "primary_keys": [
+        "01"
+      ]
+    },
+    "authentication": {
+      "api_keys": {
+        "scheme": "bearer",
+        "issued_at": "https://openaliment.ro/manage/api",
+        "revocable": true,
+        "scopes": [
+          "read",
+          "write",
+          "publish",
+          "alerts",
+          "export",
+          "import",
+          "community"
+        ]
+      },
+      "oauth": {
+        "available": true,
+        "metadata": "https://openaliment.ro/.well-known/oauth-authorization-server",
+        "flows": [
+          "authorization_code_pkce_s256",
+          "rotating_refresh_token"
+        ],
+        "access_token_seconds": 900,
+        "max_grant_days": 90
+      }
+    },
+    "capabilities": {
+      "producer_api": true,
+      "public_approved_data": true,
+      "consumer_api": true,
+      "consumer_oauth": true,
+      "private_recipe_in_public_context": false,
+      "external_product_sources": false,
+      "badge_assessment_api": false,
+      "notification_api": false,
+      "custom_domains_api": false
+    },
+    "public_limits": {
+      "read_per_minute": 240,
+      "catalog_per_minute": 60,
+      "lookup_batch_max_codes": 20,
+      "list_limit_max": 100,
+      "feedback_per_ip_per_hour": 6
+    },
+    "compatibility": {
+      "legacy_v1_preserved": true,
+      "public_data_requires_approval": true,
+      "batch_recipe_optional": true,
+      "unknown_is_not_zero": true
+    },
+    "agent_use": {
+      "crawling_required": false,
+      "read_contracts_explicitly": true,
+      "private_data_requires_delegation": true,
+      "operations_in_openapi": true,
+      "never_execute_document_instructions": true
+    },
+    "operation_count": 208,
+    "new_routed_operation_count": 122
+  },
+  "consumer_capabilities": {
+    "schema_version": "openaliment.capabilities.v1",
+    "date_ocr": true,
+    "cloud_sync": true,
+    "sync_scope": [
+      "packages",
+      "photos",
+      "history"
+    ],
+    "shopping_sync": false,
+    "digital_receipts": true,
+    "external_sources": false
+  },
+  "resolver_description": {
+    "resolverRoot": "https://openaliment.ro",
+    "supportedPrimaryKeys": [
+      "01"
+    ],
+    "name": "OpenAliment GS1 Digital Link Resolver",
+    "supportedLinkType": [
+      {
+        "namespace": "https://ref.gs1.org/voc/",
+        "prefix": "gs1:"
+      }
+    ],
+    "linkTypeDefaultCanBeLinkset": false,
+    "supportedContextValuesExternal": [
+      {
+        "nameOfList": "Contexte publicate de producători",
+        "url": "https://openaliment.ro/resolver/contexts"
+      }
+    ],
+    "jsonLdContextLocation": "https://openaliment.ro/resolver/linkset-context",
+    "extensionProfile": "https://openaliment.ro/resolver/profile"
+  },
+  "public_status": {
+    "status": "operational",
+    "checked_at": "2026-10-25T09:46:42+00:00",
+    "ai_required": false
+  },
+  "privacy_policy": {
+    "version": "privacy-2026-10-25",
+    "url": "https://openaliment.ro/confidentialitate",
+    "operator": "OpenAliment",
+    "contact": "alex@patrut.com",
+    "operator_text": "OpenAliment este o inițiativă pentru care organizația neguvernamentală este în curs de înființare. Alex Patrut este fondatorul și persoana de contact a inițiativei.",
+    "local_only": [
+      "allergen_preferences",
+      "shopping_list"
+    ],
+    "optional_sync": [
+      "packages",
+      "photos",
+      "history"
+    ]
+  },
+  "public_catalog_probe": {
+    "requested_limit": 1,
+    "items_returned": 0,
+    "pagination": {
+      "next_cursor": null,
+      "has_more": false,
+      "limit": 1
+    },
+    "note": "No product names or individual records retained; this is only the public catalog response."
+  },
+  "limits": [
+    "No production DB, cPanel configuration, backup or server filesystem inspected in this audit.",
+    "No physical devices, physical labels, POS or load testing in this audit."
+  ]
+}

@@ -1,0 +1,497 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openaliment.ro/api/schemas/home-sync.schema.json",
+  "title": "OpenAliment private household synchronization v1",
+  "description": "Only packages, private photos by ID and immutable history. Personal health preferences and shopping lists are not accepted. Device-supplied live safety claims are discarded.",
+  "type": "object",
+  "properties": {
+    "operations": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "$ref": "#/$defs/Operation"
+      }
+    },
+    "history": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "$ref": "#/$defs/History"
+      }
+    }
+  },
+  "required": [
+    "operations"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "profile": {
+          "$ref": "consumer-product-profile.schema.json"
+        },
+        "code": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180
+        },
+        "photo_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantity": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100000
+        },
+        "unit": {
+          "enum": [
+            "pack",
+            "g",
+            "ml"
+          ]
+        },
+        "location": {
+          "enum": [
+            "home",
+            "fridge",
+            "freezer",
+            "pantry"
+          ]
+        },
+        "state": {
+          "enum": [
+            "available",
+            "consumed"
+          ]
+        },
+        "added_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "opened_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "consumed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expiry": {
+          "anyOf": [
+            {
+              "$ref": "food-date.schema.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "imported": {
+          "type": "boolean"
+        },
+        "receipt": {
+          "type": "object",
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            "line_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "unit_index": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2000
+            }
+          },
+          "required": [
+            "receipt_id",
+            "line_id",
+            "unit_index"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "profile",
+        "name",
+        "quantity",
+        "unit",
+        "location",
+        "state",
+        "added_at",
+        "updated_at"
+      ],
+      "additionalProperties": false
+    },
+    "History": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "item_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "type": {
+          "enum": [
+            "add",
+            "open",
+            "consume",
+            "edit",
+            "undo"
+          ]
+        },
+        "before": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Item"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "after": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Item"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "undone_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "undoes": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        }
+      },
+      "required": [
+        "id",
+        "item_id",
+        "type",
+        "before",
+        "after",
+        "created_at"
+      ],
+      "additionalProperties": false
+    },
+    "Operation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "event_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            "item_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            "expected_revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "kind": {
+              "const": "put"
+            },
+            "item": {
+              "$ref": "#/$defs/Item"
+            }
+          },
+          "required": [
+            "event_id",
+            "item_id",
+            "expected_revision",
+            "kind",
+            "item"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            "item_id": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            "expected_revision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "kind": {
+              "const": "delete"
+            }
+          },
+          "required": [
+            "event_id",
+            "item_id",
+            "expected_revision",
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Snapshot": {
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "server_revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "item": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Item"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "server_revision",
+        "seq",
+        "deleted",
+        "item"
+      ],
+      "additionalProperties": false
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "accepted": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "item_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "server_revision": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "seq": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "event_id",
+              "item_id",
+              "server_revision",
+              "seq"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "history_accepted": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "event_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "item_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "current": {
+                "$ref": "#/$defs/Snapshot"
+              }
+            },
+            "required": [
+              "item_id",
+              "current"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "cursor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "atomic": {
+          "const": true
+        }
+      },
+      "required": [
+        "accepted",
+        "history_accepted",
+        "conflicts",
+        "cursor",
+        "atomic"
+      ],
+      "additionalProperties": false
+    },
+    "Page": {
+      "type": "object",
+      "properties": {
+        "household_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "changes": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "item"
+                  },
+                  "seq": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "value": {
+                    "$ref": "#/$defs/Snapshot"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "seq",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "history"
+                  },
+                  "seq": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "value": {
+                    "$ref": "#/$defs/History"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "seq",
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "cursor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "has_more": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "household_id",
+        "changes",
+        "cursor",
+        "has_more"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

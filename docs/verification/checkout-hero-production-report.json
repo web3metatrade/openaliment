@@ -1,0 +1,73 @@
+{
+  "suite": "Homepage checkout image and QR",
+  "base": "https://openaliment.ro",
+  "executed_at": "2026-10-24T05:54:05.235649+00:00",
+  "passed": 16,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Homepage replacement is the bread checkout scene",
+      "passed": true
+    },
+    {
+      "name": "Single H1 explains movement from barcode to QR",
+      "passed": true
+    },
+    {
+      "name": "Copy mentions compatible POS and coexistence",
+      "passed": true
+    },
+    {
+      "name": "Demo image clearly labeled as illustrative",
+      "passed": true
+    },
+    {
+      "name": "Responsive hero is prioritized and reserves image space",
+      "passed": true
+    },
+    {
+      "name": "Scene links to real demo resolver",
+      "passed": true
+    },
+    {
+      "name": "Existing commercial title and integration remain",
+      "passed": true
+    },
+    {
+      "name": "Anonymous homepage does not create session",
+      "passed": true
+    },
+    {
+      "name": "768 image matches release",
+      "passed": true
+    },
+    {
+      "name": "768 asset is cacheable and lightweight",
+      "passed": true
+    },
+    {
+      "name": "768 dimensions",
+      "passed": true
+    },
+    {
+      "name": "768 photographed QR independently decodes to demo lot",
+      "passed": true
+    },
+    {
+      "name": "1200 image matches release",
+      "passed": true
+    },
+    {
+      "name": "1200 asset is cacheable and lightweight",
+      "passed": true
+    },
+    {
+      "name": "1200 dimensions",
+      "passed": true
+    },
+    {
+      "name": "1200 photographed QR independently decodes to demo lot",
+      "passed": true
+    }
+  ]
+}

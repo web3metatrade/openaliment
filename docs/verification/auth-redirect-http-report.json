@@ -1,0 +1,239 @@
+{
+  "suite": "HTTP end-to-end",
+  "passed": 58,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Homepage serves complete Romanian page",
+      "passed": true
+    },
+    {
+      "name": "Homepage does not start anonymous session",
+      "passed": true
+    },
+    {
+      "name": "CSP and nosniff headers set",
+      "passed": true
+    },
+    {
+      "name": "Public API excludes unapproved pilot",
+      "passed": true
+    },
+    {
+      "name": "Batch page works with AI disabled",
+      "passed": true
+    },
+    {
+      "name": "Batch page cannot be served from stale cache",
+      "passed": true
+    },
+    {
+      "name": "Batch page shows historical label",
+      "passed": true
+    },
+    {
+      "name": "Private recipe is absent in HTML",
+      "passed": true
+    },
+    {
+      "name": "Private recipe URL is not public",
+      "passed": true
+    },
+    {
+      "name": "Unknown batch is 404",
+      "passed": true
+    },
+    {
+      "name": "Invalid GTIN URL is 400",
+      "passed": true
+    },
+    {
+      "name": "Unsupported serial is not mistaken for supported lot",
+      "passed": true
+    },
+    {
+      "name": "Linkset request is explicitly unsupported",
+      "passed": true
+    },
+    {
+      "name": "No false resolver descriptor",
+      "passed": true
+    },
+    {
+      "name": "GS1 lot lookup decodes reserved characters once",
+      "passed": true
+    },
+    {
+      "name": "Case-different unknown lot does not select nearest lot",
+      "passed": true
+    },
+    {
+      "name": "Manipulated date does not change approved date",
+      "passed": true
+    },
+    {
+      "name": "Tenant B token cannot read tenant A private object",
+      "passed": true
+    },
+    {
+      "name": "Read-only token cannot create product",
+      "passed": true
+    },
+    {
+      "name": "Unauthenticated private API is denied",
+      "passed": true
+    },
+    {
+      "name": "Cross-origin mutation denied",
+      "passed": true
+    },
+    {
+      "name": "Missing idempotency key rejected",
+      "passed": true
+    },
+    {
+      "name": "HTTP ERP retry returns same product",
+      "passed": true
+    },
+    {
+      "name": "HTTP ERP rejects reused key with different content",
+      "passed": true
+    },
+    {
+      "name": "First complete API flow has no recipe",
+      "passed": true
+    },
+    {
+      "name": "Public text is escaped against script injection",
+      "passed": true
+    },
+    {
+      "name": "QR destination opens exact ERP batch",
+      "passed": true
+    },
+    {
+      "name": "New recall visible immediately, before ingredient content",
+      "passed": true
+    },
+    {
+      "name": "Public API has no private columns",
+      "passed": true
+    },
+    {
+      "name": "Export requires export scope",
+      "passed": true
+    },
+    {
+      "name": "API documentation is available",
+      "passed": true
+    },
+    {
+      "name": "Unsupported HTTP method is 405",
+      "passed": true
+    },
+    {
+      "name": "Anonymous visitor can open login form",
+      "passed": true
+    },
+    {
+      "name": "Login sets secure session and reaches dashboard",
+      "passed": true
+    },
+    {
+      "name": "Authenticated GET /login redirects to own space",
+      "passed": true
+    },
+    {
+      "name": "Authenticated HEAD /login redirects to own space",
+      "passed": true
+    },
+    {
+      "name": "Authenticated GET /register redirects to own space",
+      "passed": true
+    },
+    {
+      "name": "Authenticated HEAD /register redirects to own space",
+      "passed": true
+    },
+    {
+      "name": "Cookie session mutation without CSRF is rejected",
+      "passed": true
+    },
+    {
+      "name": "QR generator page available to owner",
+      "passed": true
+    },
+    {
+      "name": "Owner page manage/products",
+      "passed": true
+    },
+    {
+      "name": "Owner page manage/items",
+      "passed": true
+    },
+    {
+      "name": "Owner page manage/labels",
+      "passed": true
+    },
+    {
+      "name": "Owner page manage/batches",
+      "passed": true
+    },
+    {
+      "name": "Owner page manage/api",
+      "passed": true
+    },
+    {
+      "name": "Owner page manage/import",
+      "passed": true
+    },
+    {
+      "name": "Owner page manage/feedback",
+      "passed": true
+    },
+    {
+      "name": "Owner page admin",
+      "passed": true
+    },
+    {
+      "name": "Streaming export has a verified terminal digest",
+      "passed": true
+    },
+    {
+      "name": "Streaming export includes private PBT provenance without credentials",
+      "passed": true
+    },
+    {
+      "name": "Streaming export row count matches terminal record",
+      "passed": true
+    },
+    {
+      "name": "Organization verification has an explicit administrative action",
+      "passed": true
+    },
+    {
+      "name": "GS1 right can be reviewed separately from label publication",
+      "passed": true
+    },
+    {
+      "name": "Previously issued GS1 URI survives rights dispute with notice",
+      "passed": true
+    },
+    {
+      "name": "Administrative GS1 decision can restore verified rights",
+      "passed": true
+    },
+    {
+      "name": "Contact verification is separate from registration",
+      "passed": true
+    },
+    {
+      "name": "Duplicate verified votes count once",
+      "passed": true
+    },
+    {
+      "name": "Verified vote can be withdrawn",
+      "passed": true
+    }
+  ]
+}

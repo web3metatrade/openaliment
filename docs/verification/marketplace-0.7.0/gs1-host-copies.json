@@ -1,0 +1,25 @@
+{
+  "source": "authenticated administrator UI; exact SHA-256 verification by server",
+  "documents": [
+    {
+      "edition": "Ediția 1.7.0",
+      "title": "GS1 Digital Link URI Syntax",
+      "verified": true
+    },
+    {
+      "edition": "Ediția 1.2.1",
+      "title": "GS1-Conformant Resolver",
+      "verified": true
+    },
+    {
+      "edition": "Ediția 1.0.0",
+      "title": "GS1 Digital Link URI: Compression",
+      "verified": true
+    },
+    {
+      "edition": "Ediția 26.0.0",
+      "title": "GS1 General Specifications",
+      "verified": true
+    }
+  ]
+}

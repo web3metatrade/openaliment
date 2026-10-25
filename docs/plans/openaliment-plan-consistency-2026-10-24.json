@@ -1,0 +1,33 @@
+{
+  "plan_id": "OPENALIMENT-FULL-2026-10-24",
+  "checked_at": "2026-10-24",
+  "type": "documentation_consistency_only",
+  "status": "passed",
+  "work_packages": 28,
+  "requirements": 56,
+  "acceptance_cases": 132,
+  "external_dependencies": 12,
+  "checks": {
+    "unique_ids": true,
+    "dependency_graph_acyclic": true,
+    "dependency_target_weeks_consistent": true,
+    "all_requirements_have_acceptance_cases": true,
+    "all_work_packages_have_direct_acceptance_cases": true,
+    "all_external_dependencies_have_owners_and_evidence": true,
+    "effort_sum_matches": true,
+    "calendar_end_matches_40_week_assumption": true,
+    "local_document_links_valid": true,
+    "acceptance_cases_remain_planned": true
+  },
+  "effort_person_days": {
+    "min": 421,
+    "max": 682
+  },
+  "calendar": {
+    "start": "2026-10-26",
+    "full_release_target": "2027-07-30",
+    "conditional": true
+  },
+  "implementation_acceptance_executed": false,
+  "production_modified": false
+}

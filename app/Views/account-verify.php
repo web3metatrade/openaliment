@@ -1,0 +1,5 @@
+<?php declare(strict_types=1); ?>
+<div class="container page-space reading-page"><div class="auth-card" data-account-verify><?=csrf()?><h1 class="page-title">Confirmă accesul</h1>
+<?php if($hasPasskeys):?><p>Folosește cheia de acces a contului. Telefonul sau dispozitivul îți poate cere amprenta, recunoașterea facială ori codul său.</p><button class="btn btn-primary" data-passkey-verify>Continuă cu cheia de acces</button><details class="mt-4"><summary>Nu mai am cheia</summary><form class="form-stack mt-3" data-passkey-recover><label>Cod de recuperare<input class="form-control" name="code" required autocomplete="off" maxlength="30"></label><button class="btn btn-outline-primary">Folosește codul</button></form></details>
+<?php else:?><p>Adaugă o cheie de acces pentru a proteja administrarea contului.</p><a class="btn btn-primary" href="/manage/security">Securitatea contului</a><?php endif?>
+<p role="status" aria-live="polite" data-account-status></p></div></div><script type="module" src="/assets/account-access.js?v=1"></script>

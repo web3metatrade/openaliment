@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-25T11:16:14.230445+00:00",
+  "source": "https://api.osv.dev/v1/query",
+  "query": {
+    "package": {
+      "name": "lbuchs/webauthn",
+      "ecosystem": "Packagist"
+    },
+    "version": "2.2.0"
+  },
+  "known_advisories": [],
+  "scope": "Point-in-time known advisories only; not a security certification."
+}

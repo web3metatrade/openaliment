@@ -1,0 +1,150 @@
+{
+  "release": "0.7.0",
+  "files_published": 69,
+  "deployments": 12,
+  "migration": "008 activated by authenticated administrator action",
+  "operations_assets": "12 fixed manifest files installed with pinned integrity",
+  "receipts": [
+    {
+      "id": "b1221f4566b943d3b192afcb75cd4c70",
+      "state": "applied",
+      "files": [
+        "app/Controllers/Gs1StandardsController.php",
+        "app/Controllers/MarketplaceController.php",
+        "app/Domain/Gs1Standards.php",
+        "app/Domain/Marketplace.php",
+        "app/Domain/Printing.php",
+        "app/Views/gs1-standards.php",
+        "app/Views/marketplace-manage.php",
+        "app/Views/marketplace-update.php",
+        "app/Views/marketplace.php",
+        "app/Views/printing.php",
+        "contracts/api-docs/marketplace.json",
+        "contracts/api-docs/postman-18.json",
+        "contracts/gs1/standards-catalog.json",
+        "database/migrations/008_marketplace.sql"
+      ]
+    },
+    {
+      "id": "141a6af93af3406c9786cd667b2b665b",
+      "state": "applied",
+      "files": [
+        "app/Core/Migrations.php"
+      ]
+    },
+    {
+      "id": "92b157399ab54d429c8f4ff573fc0399",
+      "state": "applied",
+      "files": [
+        "app/Core/Seo.php",
+        "app/Domain/OperationsAssets.php"
+      ]
+    },
+    {
+      "id": "fc54fb5867024340a83de3a0aa21e7dc",
+      "state": "applied",
+      "files": [
+        "app/Controllers/DiscoveryController.php",
+        "app/Controllers/PlatformApiController.php",
+        "app/Controllers/PublicController.php",
+        "app/Controllers/SetupController.php",
+        "app/Controllers/UpdatesController.php"
+      ]
+    },
+    {
+      "id": "01e49404a48a4c49a4a2436140a0d8d1",
+      "state": "applied",
+      "files": [
+        "public/assets/app.css"
+      ]
+    },
+    {
+      "id": "744ea23ca3b64a87bb2f39486a164859",
+      "state": "applied",
+      "files": [
+        "app/Views/admin.php",
+        "app/Views/layout.php",
+        "app/Views/manage.php",
+        "app/Views/updates.php"
+      ]
+    },
+    {
+      "id": "4c58c3b25d4a4b69a153d2334c212bcb",
+      "state": "applied",
+      "files": [
+        "contracts/api-docs/admin.json",
+        "contracts/api-docs/ai.json",
+        "contracts/api-docs/batches.json",
+        "contracts/api-docs/community.json",
+        "contracts/api-docs/connectors.json",
+        "contracts/api-docs/discovery.json",
+        "contracts/api-docs/documents.json",
+        "contracts/api-docs/guides.json",
+        "contracts/api-docs/home.json",
+        "contracts/api-docs/identity.json",
+        "contracts/api-docs/keys.json",
+        "contracts/api-docs/labels.json",
+        "contracts/api-docs/legacy.json",
+        "contracts/api-docs/oauth.json",
+        "contracts/api-docs/postman-02.json",
+        "contracts/api-docs/postman-05.json",
+        "contracts/api-docs/postman-06.json",
+        "contracts/api-docs/postman-07.json",
+        "contracts/api-docs/postman-08.json",
+        "contracts/api-docs/postman-09.json",
+        "contracts/api-docs/postman-10.json",
+        "contracts/api-docs/postman-11.json",
+        "contracts/api-docs/postman-12.json",
+        "contracts/api-docs/postman-13.json"
+      ]
+    },
+    {
+      "id": "bf01a5abf85b46c98e35e1dcdfae3fbb",
+      "state": "applied",
+      "files": [
+        "contracts/api-docs/postman-14.json",
+        "contracts/api-docs/postman-15.json",
+        "contracts/api-docs/postman-16.json",
+        "contracts/api-docs/postman-17.json",
+        "contracts/api-docs/products.json",
+        "contracts/api-docs/public.json",
+        "contracts/api-docs/resolver.json",
+        "contracts/api-docs/transfer.json"
+      ]
+    },
+    {
+      "id": "33a08f06427c4cf8afe6d2f0466ea440",
+      "state": "applied",
+      "files": [
+        "contracts/api-developer-guide.json",
+        "contracts/api-operation-catalog.json",
+        "contracts/api-postman-collection.json",
+        "contracts/data_model.json",
+        "contracts/openapi.json",
+        "contracts/operations-assets.json"
+      ]
+    },
+    {
+      "id": "da894260bbaf47128d850228bdaa36f2",
+      "state": "applied",
+      "files": [
+        "contracts/api-documentation.json",
+        "contracts/platform-openapi.json"
+      ]
+    },
+    {
+      "id": "ca5a59dee160451aa00d9f1ea61da9e3",
+      "state": "applied",
+      "files": [
+        "app/Core/ApiRoutes.php"
+      ]
+    },
+    {
+      "id": "9cdee5bd9f294a6b83b20df481126a32",
+      "state": "applied",
+      "files": [
+        "public/index.php"
+      ]
+    }
+  ]
+}

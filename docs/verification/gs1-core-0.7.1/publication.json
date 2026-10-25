@@ -1,0 +1,75 @@
+{
+  "release": "0.7.1",
+  "source_files": 29,
+  "deployments": 6,
+  "sql_migration": false,
+  "operations_assets": "Authenticated administrator installed the pinned 12-file manifest, including release metadata",
+  "transport_attestation": "Authenticated administrator recorded 182 checks representing the actual HTTPS matrix, timestamp shown 2026-10-25 17:11 Europe/Bucharest",
+  "receipts": [
+    {
+      "id": "84b92e1143704f8496b71f07b78a15e1",
+      "state": "applied",
+      "files": [
+        "app/Domain/ConsumerFood.php",
+        "app/Domain/HomeInventory.php",
+        "app/Domain/OperationsAssets.php",
+        "app/Domain/Printing.php",
+        "app/Domain/ResolverUri.php"
+      ]
+    },
+    {
+      "id": "9577ebcf42db40d089e1aea518349b96",
+      "state": "applied",
+      "files": [
+        "public/assets/home/app.js",
+        "public/assets/home/cloud-domain.js",
+        "public/assets/home/cloud.js",
+        "public/assets/home/domain.js",
+        "public/assets/home/entry.js",
+        "public/assets/home/ocr.js",
+        "public/assets/home/privacy.js",
+        "public/assets/home/receipt.js",
+        "public/assets/home/store.js",
+        "public/assets/home/sw.js",
+        "public/assets/home/transfer.js"
+      ]
+    },
+    {
+      "id": "2aace271739d4a7e87c170a3f69bd296",
+      "state": "applied",
+      "files": [
+        "app/Views/consumer-home.php",
+        "app/Views/demo-bread.php",
+        "app/Views/product.php"
+      ]
+    },
+    {
+      "id": "ee6881b5b6d6407191f53791547bda43",
+      "state": "applied",
+      "files": [
+        "contracts/api-docs/guides.json",
+        "contracts/api-docs/home.json",
+        "contracts/api-docs/postman-02.json",
+        "contracts/api-docs/public.json",
+        "contracts/api-docs/resolver.json"
+      ]
+    },
+    {
+      "id": "5446096b4761498296154556ba3f2ec9",
+      "state": "applied",
+      "files": [
+        "contracts/api-developer-guide.json",
+        "contracts/consumer-product-profile.schema.json",
+        "contracts/operations-assets.json"
+      ]
+    },
+    {
+      "id": "51acb31e4f9340769fd4d29a6b7a5d96",
+      "state": "applied",
+      "files": [
+        "contracts/api-documentation.json",
+        "contracts/platform-openapi.json"
+      ]
+    }
+  ]
+}

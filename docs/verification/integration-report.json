@@ -1,0 +1,285 @@
+{
+  "suite": "PHP domain + MariaDB integration",
+  "php": "8.4.27",
+  "database": "11.4.10-MariaDB",
+  "passed": 69,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "GTIN normalized, leading zero preserved",
+      "passed": true
+    },
+    {
+      "name": "Bad check digit rejected",
+      "passed": true
+    },
+    {
+      "name": "All-zero GTIN rejected",
+      "passed": true
+    },
+    {
+      "name": "Malformed GTIN rejected",
+      "passed": true
+    },
+    {
+      "name": "GS1 path round trip reserved characters",
+      "passed": true
+    },
+    {
+      "name": "Percent decoded exactly once",
+      "passed": true
+    },
+    {
+      "name": "Plus stays plus",
+      "passed": true
+    },
+    {
+      "name": "Malformed percent encoding rejected",
+      "passed": true
+    },
+    {
+      "name": "GS1 unsupported Unicode rejected",
+      "passed": true
+    },
+    {
+      "name": "GS1 lot length enforced",
+      "passed": true
+    },
+    {
+      "name": "Tenant B cannot read A product",
+      "passed": true
+    },
+    {
+      "name": "Tenant B cannot attach trade item to A product",
+      "passed": true
+    },
+    {
+      "name": "Viewer cannot mutate",
+      "passed": true
+    },
+    {
+      "name": "Draft label is not public",
+      "passed": true
+    },
+    {
+      "name": "Non-bread product published without recipe",
+      "passed": true
+    },
+    {
+      "name": "No implicit open licence or badge",
+      "passed": true
+    },
+    {
+      "name": "Batch recipe FK nullable",
+      "passed": true
+    },
+    {
+      "name": "Unpublished batch is not public",
+      "passed": true
+    },
+    {
+      "name": "Publication is separate from release",
+      "passed": true
+    },
+    {
+      "name": "Published batch maps exact label",
+      "passed": true
+    },
+    {
+      "name": "New label does not rewrite old lot",
+      "passed": true
+    },
+    {
+      "name": "Unknown mutation cannot overwrite label",
+      "passed": true
+    },
+    {
+      "name": "New alert visible on historical batch",
+      "passed": true
+    },
+    {
+      "name": "Resolving one alert keeps other alert",
+      "passed": true
+    },
+    {
+      "name": "Active alert blocks release",
+      "passed": true
+    },
+    {
+      "name": "Resolving alerts does not release automatically",
+      "passed": true
+    },
+    {
+      "name": "Public projection excludes private recipe",
+      "passed": true
+    },
+    {
+      "name": "Case-sensitive lot codes distinct",
+      "passed": true
+    },
+    {
+      "name": "Native QR handles Unicode lot",
+      "passed": true
+    },
+    {
+      "name": "Unverified GTIN cannot generate GS1 QR",
+      "passed": true
+    },
+    {
+      "name": "Verified product QR has no lot qualifier",
+      "passed": true
+    },
+    {
+      "name": "Conservative transport profile falls back safely",
+      "passed": true
+    },
+    {
+      "name": "Lot QR includes exact lot",
+      "passed": true
+    },
+    {
+      "name": "Tenant B cannot attach A label to B batch",
+      "passed": true
+    },
+    {
+      "name": "Cross-tenant FK blocks direct SQL injection of relationship",
+      "passed": true
+    },
+    {
+      "name": "Feedback retry is idempotent",
+      "passed": true
+    },
+    {
+      "name": "Changed feedback with same key rejected",
+      "passed": true
+    },
+    {
+      "name": "Negative review retained",
+      "passed": true
+    },
+    {
+      "name": "Safety cue routes locally without AI",
+      "passed": true
+    },
+    {
+      "name": "Safety report cannot be published directly",
+      "passed": true
+    },
+    {
+      "name": "Feedback without known batch keeps selected historical label",
+      "passed": true
+    },
+    {
+      "name": "AI unavailable leaves QR usable",
+      "passed": true
+    },
+    {
+      "name": "AI public context excludes private recipes",
+      "passed": true
+    },
+    {
+      "name": "AI context cannot read another tenant",
+      "passed": true
+    },
+    {
+      "name": "AI cannot read raw quality report",
+      "passed": true
+    },
+    {
+      "name": "AI output schema accepts correctly scoped draft",
+      "passed": true
+    },
+    {
+      "name": "AI invented citations rejected",
+      "passed": true
+    },
+    {
+      "name": "AI cannot propose executable live mutation",
+      "passed": true
+    },
+    {
+      "name": "AI worker saves draft only",
+      "passed": true
+    },
+    {
+      "name": "Export excludes accounts and API secrets",
+      "passed": true
+    },
+    {
+      "name": "Export preserves both labels and batch history",
+      "passed": true
+    },
+    {
+      "name": "Import tampering rejected",
+      "passed": true
+    },
+    {
+      "name": "Transfer rejects invalid batch calendar dates",
+      "passed": true
+    },
+    {
+      "name": "Transfer never trims lot identity silently",
+      "passed": true
+    },
+    {
+      "name": "Transfer import idempotent",
+      "passed": true
+    },
+    {
+      "name": "Imported lot remains private",
+      "passed": true
+    },
+    {
+      "name": "Imported GTIN rights reset",
+      "passed": true
+    },
+    {
+      "name": "Imported recipe remains private",
+      "passed": true
+    },
+    {
+      "name": "Imported label requires new approval before publication",
+      "passed": true
+    },
+    {
+      "name": "Transfer retains original history payload",
+      "passed": true
+    },
+    {
+      "name": "PBT dry run verifies integrity without creating pilot",
+      "passed": true
+    },
+    {
+      "name": "PBT repeat does not create another R1",
+      "passed": true
+    },
+    {
+      "name": "PBT R1 exact nominal mass preserved",
+      "passed": true
+    },
+    {
+      "name": "PBT has no fabricated batches",
+      "passed": true
+    },
+    {
+      "name": "Damaged BT01 preserved in quarantine",
+      "passed": true
+    },
+    {
+      "name": "PBT not public by import",
+      "passed": true
+    },
+    {
+      "name": "Proposal does not mutate approved label",
+      "passed": true
+    },
+    {
+      "name": "ERP mutation retry returns same resource",
+      "passed": true
+    },
+    {
+      "name": "ERP idempotency key cannot change payload",
+      "passed": true
+    }
+  ]
+}

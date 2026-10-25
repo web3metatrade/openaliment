@@ -1,0 +1,200 @@
+{
+  "date": "2026-10-24",
+  "request": "Comparație GS1 → OpenAliment, cu exemplul Pâine Bună Tehnic cerut de proprietar.",
+  "sources": [
+    {
+      "id": "gs1-ro",
+      "url": "https://gs1.ro/gs1-digital-link",
+      "observed": "2026-10-24",
+      "focus": [
+        "explicarea ecosistemului",
+        "scanare → resolver → resurse",
+        "exemplu public",
+        "GTIN versus simbol",
+        "Sunrise 2027"
+      ]
+    },
+    {
+      "id": "gs1-global",
+      "url": "https://www.gs1.org/standards/gs1-digital-link",
+      "focus": [
+        "identificator în URL",
+        "destinații multiple",
+        "conținut actualizabil"
+      ]
+    },
+    {
+      "id": "gs1-migration",
+      "url": "https://support.gs1.org/support/solutions/articles/43000743506/",
+      "focus": [
+        "tranziție graduală",
+        "coexistență 1D/2D"
+      ]
+    },
+    {
+      "id": "gs1-ambition",
+      "url": "https://support.gs1.org/support/solutions/articles/43000743530-what-is-ambition-2027-in-retail-",
+      "focus": [
+        "capacitate POS până la sfârșitul 2027"
+      ]
+    },
+    {
+      "id": "gs1-retail",
+      "url": "https://ref.gs1.org/guidelines/2d-in-retail/",
+      "focus": [
+        "calitatea și poziționarea codului",
+        "testarea procesării la POS",
+        "identificare granulară"
+      ]
+    },
+    {
+      "id": "gs1-product-id",
+      "url": "https://support.gs1.org/support/solutions/articles/43000745136-what-does-a-2d-barcode-with-gs1-digital-link-identify-",
+      "focus": [
+        "identifică produsul"
+      ]
+    },
+    {
+      "id": "gs1-carrier",
+      "url": "https://support.gs1.org/support/solutions/articles/43000734483-do-i-have-to-use-qr-codes-to-use-gs1-dl-",
+      "focus": [
+        "acces prin QR cu URL și telefon compatibil"
+      ]
+    },
+    {
+      "id": "gs1-persistence",
+      "url": "https://support.gs1.org/support/solutions/articles/43000734143-why-put-a-digital-link-uri-in-a-qr-code-on-pack-today-",
+      "focus": [
+        "adresă persistentă",
+        "domeniu independent",
+        "destinații actualizabile"
+      ]
+    },
+    {
+      "id": "gs1-dpp",
+      "url": "https://support.gs1.org/support/solutions/articles/43000758761-what-is-a-digital-product-passport-",
+      "focus": [
+        "DPP ca set de date și cerințe specifice"
+      ]
+    }
+  ],
+  "gaps_and_changes": [
+    {
+      "topic": "GTIN, EAN, QR și resolver",
+      "before": "Termeni folosiți, fără o explicație introductivă suficientă.",
+      "added": "Trei definiții și comparație în cinci rânduri.",
+      "where": "/gs1-digital-link",
+      "sources": [
+        "gs1-ro",
+        "gs1-global"
+      ]
+    },
+    {
+      "topic": "Perspectiva utilizatorului",
+      "before": "Accent mai ales pe administrarea producătorului.",
+      "added": "Exemple pentru client, aplicație/partener și echipa producătorului; autorizare separată.",
+      "sources": [
+        "gs1-ro",
+        "gs1-global"
+      ]
+    },
+    {
+      "topic": "Vizualizarea fluxului",
+      "before": "Ambalaj abstract și listă de beneficii.",
+      "added": "SVG original cu Pâine Bună Tehnic → OpenAliment → pagină publică/API, fără active grafice GS1.",
+      "sources": [
+        "gs1-ro"
+      ]
+    },
+    {
+      "topic": "Exemplu de produs versus lot",
+      "before": "Diferență explicată numai în text.",
+      "added": "Comutare accesibilă cu tastatura, două adrese ilustrative și explicația istoricului.",
+      "where": "/gs1-digital-link#exemplu",
+      "sources": [
+        "gs1-product-id",
+        "gs1-retail"
+      ]
+    },
+    {
+      "topic": "Actualizare după tipărire",
+      "before": "Afirmație comercială fără delimitarea identității și domeniului.",
+      "added": "Destinații versus identitate codificată; un lot diferit cere alt cod; istoricul se păstrează.",
+      "sources": [
+        "gs1-persistence"
+      ]
+    },
+    {
+      "topic": "Sunrise 2027 și POS",
+      "before": "Lipseau contextul și condițiile integrării în retail.",
+      "added": "Obiectivul industriei, tranziție graduală, teste cu retailerul, fără promisiune de compatibilitate POS automată.",
+      "sources": [
+        "gs1-ambition",
+        "gs1-migration",
+        "gs1-retail"
+      ]
+    },
+    {
+      "topic": "Resurse asociate",
+      "before": "Exemple limitate de destinații.",
+      "added": "Utilizare, ambalaj, resurse video găzduite extern, linkset și date aprobate.",
+      "sources": [
+        "gs1-global"
+      ]
+    },
+    {
+      "topic": "DPP și trasabilitate",
+      "before": "Nedelimitate față de identificarea unui lot.",
+      "added": "Clarificări despre datele suplimentare și integrarea participanților; fără certificare DPP sau lanț complet pretinse.",
+      "sources": [
+        "gs1-dpp",
+        "gs1-retail"
+      ]
+    }
+  ],
+  "pilot": {
+    "name": "Pâine Bună Tehnic",
+    "initiative": "OpenBread",
+    "recipe": "R1",
+    "technical_status": "experimental",
+    "gtin": "placeholder {GTIN}; no allocation or registry change",
+    "batch": "DEMO-PBT-01; illustrative only",
+    "documents_published": false,
+    "historical_sources_sha256": {
+      "OpenBread_Codex_v1_2026-10-23/04_import/product_pbt.json": "0c4942fc769814d5ad6d9e5fd14e1ba0ea371a539f4e5321cc42baac4b6b5f6b",
+      "OpenBread_Codex_v1_2026-10-23/04_import/recipe_r1_general.json": "1dcb786acbec1c9959a2adf8ecfe4dae4d8ef7632ff70ac031b6dbbc98490b38"
+    }
+  },
+  "not_advertised_as_implemented": [
+    "analytics de scanare în timp real",
+    "oprire automată a vânzării la POS",
+    "certificare GS1 sau DPP",
+    "domenii de producător deja activate",
+    "trasabilitate integrală a tuturor mișcărilor",
+    "dovezi de producție sau termen de valabilitate validate pentru pilot"
+  ],
+  "deployment": {
+    "id": "5b856f197ac54514983ed5d9478681f5",
+    "state": "applied",
+    "files_sha256": {
+      "app/Controllers/PublicController.php": "64c2314f432dffc8d6d43dcb99f8be1cb0d55e0b4c0671eededb0eba44b9729b",
+      "app/Core/Seo.php": "8c8c934b543609fed8e73363962dcab4d66f108ea8ad66b9c9c314dcfe13d5e7",
+      "app/Views/home.php": "7aa2f32e05b7584911f76ff07770e36af2d444b0bf05935b12af6837e2bb7cf2",
+      "app/Views/layout.php": "41bc37943f7d5cd821177d70e8c74628445cdb15536ce8aa0bacc259c96f374e",
+      "app/Views/digital-link-guide.php": "e2408660f549c358bd72a6ea6dfce641737edc6358d839712897832cf7816456",
+      "public/assets/app.css": "c88efcd697fc2e8c65ac2fd15d1f4fb61c0b536763f73e69f67274036eec73c8",
+      "public/assets/digital-link-journey.svg": "f3e5bfa3c4aaf4945951bcb7e1b0e483704417e1f7abb411487cca2fb325f8ef",
+      "public/assets/digital-link-guide.js": "6832e7428274d78b48ecf22a0c8d4ae4c27718bd67153135df3032a846d8801d"
+    }
+  },
+  "verification": {
+    "local_http": "content-guide-local-2026-10-24.json",
+    "production_seo": "landing-production-report.json",
+    "production_http_checks_passed": 32,
+    "php_syntax": 5,
+    "javascript_syntax": true,
+    "browser": "Desktop 1440x950, mobile 390x844; product/lot selection and keyboard Enter checked.",
+    "new_dependencies": 0,
+    "database_changes": false
+  }
+}

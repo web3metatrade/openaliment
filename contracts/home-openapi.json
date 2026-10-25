@@ -1,0 +1,3876 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAliment Acasă — API privat",
+    "version": "1.0.0",
+    "description": "Conturi personale, familii și sincronizare opțională, separate de administrarea producătorilor. Sesiunea web folosește cookie și X-Home-CSRF pentru modificări de la aceeași origine. Legăturile de conectare și invitațiile transmit secretul în fragment, apoi în corpul POST. Inventarul local și citirea produselor funcționează fără AI."
+  },
+  "servers": [
+    {
+      "url": "https://openaliment.ro"
+    }
+  ],
+  "security": [
+    {
+      "HomeCookie": []
+    }
+  ],
+  "paths": {
+    "/api/v2/home/session": {
+      "get": {
+        "summary": "Availability, optional private consumer principal, CSRF and own devices",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:read"
+            ]
+          }
+        ],
+        "operationId": "homeGetApiV2HomeSession"
+      }
+    },
+    "/api/v2/home/login/request": {
+      "post": {
+        "summary": "Request a 15-minute single-use email link; account created only after confirmation",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 190
+                  }
+                },
+                "required": [
+                  "email"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "operationId": "homePostApiV2HomeLoginRequest"
+      }
+    },
+    "/api/v2/home/login/preview": {
+      "post": {
+        "summary": "Read-only preview; never consumes the token",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "410": {
+            "description": "Link expired, already used or invalid"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "writeOnly": true
+                  }
+                },
+                "required": [
+                  "token"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "operationId": "homePostApiV2HomeLoginPreview"
+      }
+    },
+    "/api/v2/home/invites/preview": {
+      "post": {
+        "summary": "Read-only preview; never consumes the token",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "410": {
+            "description": "Link expired, already used or invalid"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "writeOnly": true
+                  }
+                },
+                "required": [
+                  "token"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "operationId": "homePostApiV2HomeInvitesPreview"
+      }
+    },
+    "/api/v2/home/login/confirm": {
+      "post": {
+        "summary": "Consume link once and connect this device",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "410": {
+            "description": "Link expired, already used or invalid"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "writeOnly": true
+                  },
+                  "device_name": {
+                    "type": "string",
+                    "maxLength": 120
+                  }
+                },
+                "required": [
+                  "token"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "operationId": "homePostApiV2HomeLoginConfirm"
+      }
+    },
+    "/api/v2/home/changes": {
+      "get": {
+        "summary": "Paginated current package snapshots, tombstones and immutable history",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "/api/schemas/home-sync.schema.json#/$defs/Page"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50
+            }
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:read"
+            ]
+          }
+        ],
+        "operationId": "homeGetApiV2HomeChanges"
+      }
+    },
+    "/api/v2/home/sync": {
+      "post": {
+        "summary": "Atomic batch with optimistic revisions and stable idempotency event IDs",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "/api/schemas/home-sync.schema.json#/$defs/Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "409": {
+            "description": "Revision conflicts: no new operations/history committed; previously accepted retries are returned. Reused IDs with different data return the standard error envelope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "/api/schemas/home-sync.schema.json#/$defs/Response"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "error_code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "/api/schemas/home-sync.schema.json"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:write"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeSync"
+      }
+    },
+    "/api/v2/home/photos/{id}": {
+      "post": {
+        "summary": "Store an immutable private JPEG; maximum 1 MB, 6000×6000; 32 MB per household",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:write"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomePhotosId"
+      },
+      "get": {
+        "summary": "Read a private household photo",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Private JPEG, no-store",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:read"
+            ]
+          }
+        ],
+        "operationId": "homeGetApiV2HomePhotosId"
+      }
+    },
+    "/api/v2/home/members": {
+      "get": {
+        "summary": "List accessible members",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:read"
+            ]
+          }
+        ],
+        "operationId": "homeGetApiV2HomeMembers"
+      }
+    },
+    "/api/v2/home/households": {
+      "get": {
+        "summary": "List accessible households",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:read"
+            ]
+          }
+        ],
+        "operationId": "homeGetApiV2HomeHouseholds"
+      }
+    },
+    "/api/v2/home/invites": {
+      "post": {
+        "summary": "Create one-use editor invitation valid 7 days; owner only",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:manage"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeInvites"
+      }
+    },
+    "/api/v2/home/join": {
+      "post": {
+        "summary": "Accept invitation once; joining never transfers ownership",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "writeOnly": true
+                  }
+                },
+                "required": [
+                  "token"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:write"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeJoin"
+      }
+    },
+    "/api/v2/home/switch": {
+      "post": {
+        "summary": "Select a household where the account already has membership",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "household_id": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{32}$"
+                  }
+                },
+                "required": [
+                  "household_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:write"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeSwitch"
+      }
+    },
+    "/api/v2/home/rename": {
+      "post": {
+        "summary": "Rename current household; owner only",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:manage"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeRename"
+      }
+    },
+    "/api/v2/home/members/{id}/remove": {
+      "post": {
+        "summary": "Remove member; owner only; existing downloaded copies cannot be recalled",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:manage"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeMembersIdRemove"
+      }
+    },
+    "/api/v2/home/devices/{id}/revoke": {
+      "post": {
+        "summary": "Revoke an own device immediately",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            }
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:write"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeDevicesIdRevoke"
+      }
+    },
+    "/api/v2/home/logout": {
+      "post": {
+        "summary": "Revoke current device and expire its cookie",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges. OAuth grants are fixed to one explicitly chosen household. join/switch require the browser flow and a new authorization; an app cannot revoke other devices.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "security": [
+          {
+            "HomeCookie": []
+          },
+          {
+            "HomeOAuth": [
+              "home:write"
+            ]
+          }
+        ],
+        "operationId": "homePostApiV2HomeLogout"
+      }
+    },
+    "/api/v2/home/account/action/request": {
+      "post": {
+        "summary": "Request email confirmation for own account erasure, ownership transfer or leaving a household; browser only",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "erase",
+                      "transfer",
+                      "leave"
+                    ]
+                  },
+                  "payload": {
+                    "type": "object",
+                    "properties": {
+                      "household_id": {
+                        "type": "string",
+                        "pattern": "^[a-f0-9]{32}$"
+                      },
+                      "account_id": {
+                        "type": "string",
+                        "pattern": "^[a-f0-9]{32}$"
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "operationId": "homePostApiV2HomeAccountActionRequest"
+      }
+    },
+    "/api/v2/home/account/action/preview": {
+      "post": {
+        "summary": "Preview or explicitly confirm the single-use, account/device-bound sensitive action; browser only",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "410": {
+            "description": "Confirmation expired, already used or invalid"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "writeOnly": true
+                  }
+                },
+                "required": [
+                  "token"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "operationId": "homePostApiV2HomeAccountActionPreview"
+      }
+    },
+    "/api/v2/home/account/action/confirm": {
+      "post": {
+        "summary": "Preview or explicitly confirm the single-use, account/device-bound sensitive action; browser only",
+        "description": "Private response: Cache-Control no-store. Changes never grant producer privileges.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Consumer device is not connected"
+          },
+          "403": {
+            "description": "Origin or household membership denied"
+          },
+          "419": {
+            "description": "Missing or invalid X-Home-CSRF"
+          },
+          "422": {
+            "description": "Invalid bounded input"
+          },
+          "429": {
+            "description": "Rate limited"
+          },
+          "503": {
+            "description": "Feature or email unavailable; local inventory still works"
+          },
+          "410": {
+            "description": "Confirmation expired, already used or invalid"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                    "writeOnly": true
+                  }
+                },
+                "required": [
+                  "token"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Home-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": "Read from authenticated GET session; kept only in memory."
+          }
+        ],
+        "operationId": "homePostApiV2HomeAccountActionConfirm"
+      }
+    },
+    "/api/v2/home/grants": {
+      "get": {
+        "summary": "List own authorized applications, browser session only",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "401": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "403": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "422": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "429": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "503": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "operationId": "homeGetApiV2HomeGrants"
+      }
+    },
+    "/api/v2/home/grants/{id}/revoke": {
+      "post": {
+        "summary": "Revoke an own application grant, browser session only",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "401": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "403": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "404": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "409": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "413": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "419": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "422": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "429": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          },
+          "503": {
+            "description": "Eroare API: cod, mesaj și identificatorul cererii pentru suport.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Correlation ID"
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Present on throttling, seconds until retry"
+              }
+            }
+          }
+        },
+        "operationId": "homePostApiV2HomeGrantsIdRevoke"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "HomeCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "oa_home",
+        "description": "HttpOnly, Secure in production, SameSite=Lax, Path=/api/v2/home/, 90-day rolling expiry. Never copy into exports."
+      },
+      "HomeOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://openaliment.ro/oauth/authorize",
+            "tokenUrl": "https://openaliment.ro/oauth/token",
+            "scopes": {
+              "home:read": "Read the chosen household",
+              "home:write": "Update the chosen household",
+              "home:manage": "Manage the chosen household, owner only"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {}
+  }
+}

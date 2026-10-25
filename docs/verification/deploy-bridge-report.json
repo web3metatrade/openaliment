@@ -1,0 +1,273 @@
+{
+  "suite": "Standalone HTTPS deployment bridge",
+  "environment": "Isolated local file tree; transport checks simulated by private localhost test router",
+  "passed": 65,
+  "failed": 0,
+  "skipped": 1,
+  "checks": [
+    {
+      "name": "Authenticated status uses standalone endpoint without loading private config",
+      "passed": true
+    },
+    {
+      "name": "Generated PHP contains only a hash, never the client key",
+      "passed": true
+    },
+    {
+      "name": "Responses prevent caching and do not start sessions",
+      "passed": true
+    },
+    {
+      "name": "Missing key is concealed with 404",
+      "passed": true
+    },
+    {
+      "name": "Wrong key is concealed with 404",
+      "passed": true
+    },
+    {
+      "name": "GET cannot authorize maintenance",
+      "passed": true
+    },
+    {
+      "name": "Plain HTTP is rejected even with valid key",
+      "passed": true
+    },
+    {
+      "name": "Unexpected hostname is rejected",
+      "passed": true
+    },
+    {
+      "name": "Cross-origin request is rejected",
+      "passed": true
+    },
+    {
+      "name": "Non-JSON content is rejected",
+      "passed": true
+    },
+    {
+      "name": "Malformed JSON is rejected",
+      "passed": true
+    },
+    {
+      "name": "JSON list cannot select an operation",
+      "passed": true
+    },
+    {
+      "name": "Unknown operations are rejected",
+      "passed": true
+    },
+    {
+      "name": "Deployment IDs cannot traverse paths",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: config/local.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: storage/private/document.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: OpenBread_Codex_v1_2026-10-23/original.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: public/openaliment-connect.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: ../config/local.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: /etc/passwd",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: app/../config/local.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: app/../../outside.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: app\\outside.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: app/%2e%2e/outside.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: app/.hidden/test.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: app/.htaccess/test.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: public/assets/test.php",
+      "passed": true
+    },
+    {
+      "name": "Protected or invalid path rejected: public/assets/.htaccess",
+      "passed": true
+    },
+    {
+      "name": "Scoped source read has matching digest",
+      "passed": true
+    },
+    {
+      "name": "Inspection reports absent files without arbitrary directory listings",
+      "passed": true
+    },
+    {
+      "name": "Invalid PHP is rejected before any update",
+      "passed": true
+    },
+    {
+      "name": "Missing opening tag cannot disguise PHP as plain text",
+      "passed": true
+    },
+    {
+      "name": "Content hashes are verified",
+      "passed": true
+    },
+    {
+      "name": "Malformed base64 is rejected",
+      "passed": true
+    },
+    {
+      "name": "Every file requires an explicit precondition",
+      "passed": true
+    },
+    {
+      "name": "Stale precondition cannot overwrite current file",
+      "passed": true
+    },
+    {
+      "name": "Duplicate paths cannot share a journal",
+      "passed": true
+    },
+    {
+      "name": "Per-file upload limit enforced",
+      "passed": true
+    },
+    {
+      "name": "Staging validates a multi-file update without activating it",
+      "passed": true
+    },
+    {
+      "name": "Existing deployment ID cannot be overwritten",
+      "passed": true
+    },
+    {
+      "name": "Staged deployment cannot be rolled back as applied",
+      "passed": true
+    },
+    {
+      "name": "Commit activates exact bytes and creates nested asset directory",
+      "passed": true
+    },
+    {
+      "name": "Private backup retains exact previous bytes",
+      "passed": true
+    },
+    {
+      "name": "Repeated commit is idempotent",
+      "passed": true
+    },
+    {
+      "name": "Deployment status is recoverable after an uncertain response",
+      "passed": true
+    },
+    {
+      "name": "Rollback restores old bytes and removes newly added code",
+      "passed": true
+    },
+    {
+      "name": "Repeated rollback is idempotent",
+      "passed": true
+    },
+    {
+      "name": "Rolled-back update cannot be silently recommitted",
+      "passed": true
+    },
+    {
+      "name": "Commit rechecks changes made since staging",
+      "passed": true
+    },
+    {
+      "name": "Staging corruption is detected before replacing code",
+      "passed": true
+    },
+    {
+      "name": "Rollback refuses to overwrite subsequent external changes",
+      "passed": true
+    },
+    {
+      "name": "Backup corruption is detected before restoration",
+      "passed": true
+    },
+    {
+      "name": "Restoration succeeds once backup integrity is restored",
+      "passed": true
+    },
+    {
+      "name": "Interrupted applying state supports explicit recovery",
+      "passed": true
+    },
+    {
+      "name": "Concurrent operations are rejected while maintenance lock is held",
+      "passed": true
+    },
+    {
+      "name": "Symlink ancestor rejection",
+      "skipped": "Windows account cannot create symbolic links"
+    },
+    {
+      "name": "Python client authenticates without printing keys",
+      "passed": true
+    },
+    {
+      "name": "Production client refuses plaintext HTTP",
+      "passed": true
+    },
+    {
+      "name": "Production client cannot send key to another hostname",
+      "passed": true
+    },
+    {
+      "name": "Client dry-run inspects changes without replacing files",
+      "passed": true
+    },
+    {
+      "name": "Client performs inspect-stage-commit and verifies remote bytes",
+      "passed": true
+    },
+    {
+      "name": "Client avoids redundant updates",
+      "passed": true
+    },
+    {
+      "name": "Client rollback uses the retained server backup",
+      "passed": true
+    },
+    {
+      "name": "Audit contains changes but never credentials or file contents",
+      "passed": true
+    },
+    {
+      "name": "Expired key cannot authorize maintenance",
+      "passed": true
+    },
+    {
+      "name": "Authenticated disable revokes the endpoint",
+      "passed": true
+    }
+  ]
+}

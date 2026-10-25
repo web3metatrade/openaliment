@@ -1,0 +1,202 @@
+{
+  "suite": "PBT demo HTTP and independent served SVG decoding",
+  "base": "https://openaliment.ro",
+  "executed_at": "2026-10-24T06:29:28.445754+00:00",
+  "decoder": "zxing-cpp",
+  "passed": 48,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "produs uses real resolver 307",
+      "passed": true
+    },
+    {
+      "name": "produs URI noindex",
+      "passed": true
+    },
+    {
+      "name": "produs exact raw query forwarding",
+      "passed": true
+    },
+    {
+      "name": "produs public page clearly simulation",
+      "passed": true
+    },
+    {
+      "name": "produs SEO excludes simulation",
+      "passed": true
+    },
+    {
+      "name": "produs anonymous page creates no session",
+      "passed": true
+    },
+    {
+      "name": "produs SVG download linked",
+      "passed": true
+    },
+    {
+      "name": "produs machine data retains simulation status",
+      "passed": true
+    },
+    {
+      "name": "produs explicit masterData resolution",
+      "passed": true
+    },
+    {
+      "name": "produs linkset uses uncompressed anchor",
+      "passed": true
+    },
+    {
+      "name": "produs linkset includes only truthful resources",
+      "passed": true
+    },
+    {
+      "name": "produs missing allergen evidence returns 404",
+      "passed": true
+    },
+    {
+      "name": "produs actual SVG matches release",
+      "passed": true
+    },
+    {
+      "name": "produs quiet zone and print dimension",
+      "passed": true
+    },
+    {
+      "name": "produs independent SVG decode scale 4 angle 0",
+      "passed": true
+    },
+    {
+      "name": "produs independent SVG decode scale 4 angle 90",
+      "passed": true
+    },
+    {
+      "name": "produs independent SVG decode scale 8 angle 0",
+      "passed": true
+    },
+    {
+      "name": "produs independent SVG decode scale 8 angle 90",
+      "passed": true
+    },
+    {
+      "name": "produs HEAD has no body",
+      "passed": true
+    },
+    {
+      "name": "produs JSON HEAD has no body",
+      "passed": true
+    },
+    {
+      "name": "lot uses real resolver 307",
+      "passed": true
+    },
+    {
+      "name": "lot URI noindex",
+      "passed": true
+    },
+    {
+      "name": "lot exact raw query forwarding",
+      "passed": true
+    },
+    {
+      "name": "lot public page clearly simulation",
+      "passed": true
+    },
+    {
+      "name": "lot SEO excludes simulation",
+      "passed": true
+    },
+    {
+      "name": "lot anonymous page creates no session",
+      "passed": true
+    },
+    {
+      "name": "lot SVG download linked",
+      "passed": true
+    },
+    {
+      "name": "lot machine data retains simulation status",
+      "passed": true
+    },
+    {
+      "name": "lot explicit masterData resolution",
+      "passed": true
+    },
+    {
+      "name": "lot linkset uses uncompressed anchor",
+      "passed": true
+    },
+    {
+      "name": "lot linkset includes only truthful resources",
+      "passed": true
+    },
+    {
+      "name": "lot missing allergen evidence returns 404",
+      "passed": true
+    },
+    {
+      "name": "lot actual SVG matches release",
+      "passed": true
+    },
+    {
+      "name": "lot quiet zone and print dimension",
+      "passed": true
+    },
+    {
+      "name": "lot independent SVG decode scale 4 angle 0",
+      "passed": true
+    },
+    {
+      "name": "lot independent SVG decode scale 4 angle 90",
+      "passed": true
+    },
+    {
+      "name": "lot independent SVG decode scale 8 angle 0",
+      "passed": true
+    },
+    {
+      "name": "lot independent SVG decode scale 8 angle 90",
+      "passed": true
+    },
+    {
+      "name": "lot HEAD has no body",
+      "passed": true
+    },
+    {
+      "name": "lot JSON HEAD has no body",
+      "passed": true
+    },
+    {
+      "name": "Unknown lot remains explicitly unknown",
+      "passed": true
+    },
+    {
+      "name": "Unknown lot page explains product fallback",
+      "passed": true
+    },
+    {
+      "name": "Other GS1 demo identifiers are not registered",
+      "passed": true
+    },
+    {
+      "name": "Invalid repeated digit identifier remains invalid",
+      "passed": true
+    },
+    {
+      "name": "Printable sheet contains two real symbols",
+      "passed": true
+    },
+    {
+      "name": "Public guide uses actual demo QR instead of placeholder",
+      "passed": true
+    },
+    {
+      "name": "Unregistered demo page not fabricated",
+      "passed": true
+    },
+    {
+      "name": "Demo has no public write operation",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "release": "0.6.0",
+  "checked_at": "2026-10-25T13:21:17.000611+00:00",
+  "origin": "https://openaliment.ro",
+  "authorization": "Da, publică 0.6.0 și activează 007",
+  "files": 123,
+  "deployments": [
+    {
+      "id": "5bbd5e0db35f43dba420da88df63cf25",
+      "state": "applied",
+      "files": [
+        "app/Controllers/AccountAccessController.php",
+        "app/Core/PrivateKey.php",
+        "app/Domain/AccountChallenges.php",
+        "app/Domain/AccountRecovery.php",
+        "app/Domain/BackupSettings.php",
+        "app/Domain/Backups.php",
+        "app/Domain/DocumentBlobs.php",
+        "app/Domain/DocumentScanner.php",
+        "app/Domain/ErasureRestore.php",
+        "app/Domain/HomePrivacy.php",
+        "app/Domain/Operations.php",
+        "app/Domain/OperationsAssets.php",
+        "app/Domain/Passkeys.php",
+        "app/Domain/ProducerSessions.php",
+        "app/Domain/PublicArchive.php",
+        "app/Domain/SecurityOutbox.php",
+        "app/Domain/TransferStream.php",
+        "app/Vendor/WebAuthn/src/Attestation/AttestationObject.php",
+        "app/Vendor/WebAuthn/src/Attestation/AuthenticatorData.php",
+        "app/Vendor/WebAuthn/src/Attestation/Format/AndroidKey.php",
+        "app/Vendor/WebAuthn/src/Attestation/Format/AndroidSafetyNet.php",
+        "app/Vendor/WebAuthn/src/Attestation/Format/Apple.php",
+        "app/Vendor/WebAuthn/src/Attestation/Format/FormatBase.php",
+        "app/Vendor/WebAuthn/src/Attestation/Format/None.php"
+      ]
+    },
+    {
+      "id": "b7702cb335104bf885568b523a3a8f38",
+      "state": "applied",
+      "files": [
+        "app/Vendor/WebAuthn/src/Attestation/Format/Packed.php",
+        "app/Vendor/WebAuthn/src/Attestation/Format/Tpm.php",
+        "app/Vendor/WebAuthn/src/Attestation/Format/U2f.php",
+        "app/Vendor/WebAuthn/src/Binary/ByteBuffer.php",
+        "app/Vendor/WebAuthn/src/CBOR/CborDecoder.php",
+        "app/Vendor/WebAuthn/src/WebAuthn.php",
+        "app/Vendor/WebAuthn/src/WebAuthnException.php",
+        "app/Views/account-recovery.php",
+        "app/Views/account-verify.php",
+        "app/Views/operations-panel.php",
+        "contracts/operations-assets.json",
+        "database/migrations/007_readiness.sql",
+        "public/assets/account-access.js",
+        "public/assets/home/privacy.js"
+      ]
+    },
+    {
+      "id": "5943232d1bf8450fafbf111e291bb35b",
+      "state": "applied",
+      "files": [
+        "app/Core/Db.php"
+      ]
+    },
+    {
+      "id": "7cca0923128048b7abec4c689a8982aa",
+      "state": "applied",
+      "files": [
+        "app/Core/Migrations.php"
+      ]
+    },
+    {
+      "id": "287a9b97530649acbc48d4793ef8bff4",
+      "state": "applied",
+      "files": [
+        "app/autoload.php"
+      ]
+    },
+    {
+      "id": "bb762466a1104c2ca79e15561946cc71",
+      "state": "applied",
+      "files": [
+        "app/Core/Auth.php",
+        "app/Core/Mailer.php",
+        "app/Core/Session.php",
+        "app/Domain/Accounts.php",
+        "app/Domain/ApiKeys.php",
+        "app/Domain/ApiPublic.php",
+        "app/Domain/Community.php",
+        "app/Domain/Documents.php",
+        "app/Domain/HomeHouseholds.php",
+        "app/Domain/Maintenance.php",
+        "app/Domain/PlatformInformation.php",
+        "app/Domain/Portability.php",
+        "app/Domain/ProducerQuota.php",
+        "tools/worker.php"
+      ]
+    },
+    {
+      "id": "fe0f0598c8614f5fba058e69a2be5722",
+      "state": "applied",
+      "files": [
+        "app/Controllers/AccountSecurityController.php",
+        "app/Controllers/DiscoveryController.php",
+        "app/Controllers/HomeController.php",
+        "app/Controllers/ManageController.php",
+        "app/Controllers/OAuthController.php",
+        "app/Controllers/PlatformApiController.php",
+        "app/Controllers/PublicController.php",
+        "app/Controllers/SetupController.php",
+        "app/Controllers/UpdatesController.php"
+      ]
+    },
+    {
+      "id": "01c79bae783f4383b5c2d95eb48c5724",
+      "state": "applied",
+      "files": [
+        "public/assets/app.css",
+        "public/assets/home/app.js",
+        "public/assets/home/cloud-domain.js",
+        "public/assets/home/cloud.js",
+        "public/assets/home/entry.js",
+        "public/assets/home/ocr.js",
+        "public/assets/home/receipt.js",
+        "public/assets/home/store.js",
+        "public/assets/home/sw.js",
+        "public/assets/home/transfer.js"
+      ]
+    },
+    {
+      "id": "5e0de160d66649cf9a82256116266216",
+      "state": "applied",
+      "files": [
+        "app/Views/about.php",
+        "app/Views/account-security.php",
+        "app/Views/api-explorer.php",
+        "app/Views/api-reference.php",
+        "app/Views/auth.php",
+        "app/Views/consumer-home.php",
+        "app/Views/layout.php",
+        "app/Views/manage.php",
+        "app/Views/privacy.php",
+        "app/Views/product.php",
+        "app/Views/recipe.php",
+        "app/Views/updates.php"
+      ]
+    },
+    {
+      "id": "1ce7dcf89d374f888ce0ad04488f359c",
+      "state": "applied",
+      "files": [
+        "contracts/api-docs/admin.json",
+        "contracts/api-docs/ai.json",
+        "contracts/api-docs/community.json",
+        "contracts/api-docs/discovery.json",
+        "contracts/api-docs/documents.json",
+        "contracts/api-docs/guides.json",
+        "contracts/api-docs/home.json",
+        "contracts/api-docs/identity.json",
+        "contracts/api-docs/legacy.json",
+        "contracts/api-docs/postman-02.json",
+        "contracts/api-docs/postman-04.json",
+        "contracts/api-docs/postman-05.json",
+        "contracts/api-docs/postman-06.json",
+        "contracts/api-docs/postman-07.json",
+        "contracts/api-docs/postman-08.json",
+        "contracts/api-docs/postman-09.json",
+        "contracts/api-docs/postman-10.json",
+        "contracts/api-docs/postman-11.json",
+        "contracts/api-docs/postman-12.json",
+        "contracts/api-docs/postman-13.json",
+        "contracts/api-docs/postman-14.json",
+        "contracts/api-docs/postman-15.json",
+        "contracts/api-docs/postman-16.json",
+        "contracts/api-docs/postman-17.json"
+      ]
+    },
+    {
+      "id": "1225d98c8e0249adb0b3ddb9ce5d36bf",
+      "state": "applied",
+      "files": [
+        "contracts/api-docs/products.json",
+        "contracts/api-docs/public.json",
+        "contracts/api-docs/transfer.json"
+      ]
+    },
+    {
+      "id": "261316ac3ee141d5aa22eeaef68323ef",
+      "state": "applied",
+      "files": [
+        "contracts/api-developer-guide.json",
+        "contracts/api-operation-catalog.json",
+        "contracts/api-postman-collection.json",
+        "contracts/data_model.json",
+        "contracts/home-openapi.json",
+        "contracts/openapi.json"
+      ]
+    },
+    {
+      "id": "b3a5ebd922aa493e9487488076a4098f",
+      "state": "applied",
+      "files": [
+        "contracts/api-documentation.json",
+        "contracts/platform-openapi.json"
+      ]
+    },
+    {
+      "id": "0b395a01a36848749272f9bf336301b6",
+      "state": "applied",
+      "files": [
+        "app/Core/ApiRoutes.php"
+      ]
+    },
+    {
+      "id": "f77265888f6348878eaf03d2a43afc36",
+      "state": "applied",
+      "files": [
+        "public/index.php"
+      ]
+    }
+  ],
+  "files_sha256": {
+    "app/Controllers/AccountAccessController.php": "3aac41f59cea310e660e0395524d1e3c1ae37e0b32705b6bc52e8b4f2c718cb0",
+    "app/Controllers/AccountSecurityController.php": "393725936507305eed3b9ff7556867326a074cd4d0f80b337df7451089d2adb3",
+    "app/Controllers/DiscoveryController.php": "f82793849e11e9bf6bfb7a68d1ebe08a67c28dab183d28779d1297179b1cbf77",
+    "app/Controllers/HomeController.php": "b211eff722146bb31b4bc8ccece0326ca1f6e2429931f4f11bf1c4b3d9e17c8c",
+    "app/Controllers/ManageController.php": "33b6f4b636ffcb0b118b2cae5af428c3666c23ff7a2430fa19cfc9b695587d1b",
+    "app/Controllers/OAuthController.php": "f1a295e3da46a233d255b9419ab1a6e7be7dc1528c948b669d789ecf4736659b",
+    "app/Controllers/PlatformApiController.php": "e177980369be99bb88e5e133845965556989f6f989133e31e58de40870f05fb8",
+    "app/Controllers/PublicController.php": "d7433b462cc2327c1d9b6dab44d2936dedcd9999f89147d914489ac6ef8ad547",
+    "app/Controllers/SetupController.php": "27908522b6e4493ac50c193ed2002c2f0d330e9126ecd399adc24346bf1f7f72",
+    "app/Controllers/UpdatesController.php": "4a4650f436f393ab2983413a85c3a32a01ea94601007a2cdac226d9878013fac",
+    "app/Core/ApiRoutes.php": "1ecc442061bd48b1563b3fbde862b92802a76f2abb15349f0183bece1f03333b",
+    "app/Core/Auth.php": "04f668d382654e98491f0d156e4f277192d11973ae036a1d132447496e1967fa",
+    "app/Core/Db.php": "de133e75b36aa36b02f135d678e87822bf46d144b4a8e37e9bae9bd09fa6b391",
+    "app/Core/Mailer.php": "9fdd354dd9eef12d518f7a121406f647552c566f4baeee55e068a2824a3ac8b9",
+    "app/Core/Migrations.php": "f218df4ce2b49a24abc348acd738c5f9af8446d3181f8d25a631164ce6920202",
+    "app/Core/PrivateKey.php": "e5d7f5f65292cc51ed6872fefaa8487e7b2d7d8a71c4ee588dfeb6fe3da87a59",
+    "app/Core/Session.php": "4ebb1fc494d17e01db90109696c34f3d5a6cc242d86629b6fcc9a729cfaa24ac",
+    "app/Domain/AccountChallenges.php": "290d1cd8d82a0e11d8be669d2b1d784d472813e5bdce9c61ad90280738fa871c",
+    "app/Domain/AccountRecovery.php": "d4947cce2b507bc1f2089959f25454ea4abb9498c13f7816317e7b9545b15ae8",
+    "app/Domain/Accounts.php": "b3f949e3bbb26711a849a4e82cd76d04c0b8b197728ef3b16c1b7a8506beaafb",
+    "app/Domain/ApiKeys.php": "2f7c95f0d0e596700a7207e15698a4331231353484156b1968ef623430899e77",
+    "app/Domain/ApiPublic.php": "58d72c21d58ae58fe09f1f2e1d5ce60eb431af0b5d9851dfe61a31eb8c2a2231",
+    "app/Domain/BackupSettings.php": "fcbb047b76628163029c62d7c6976cdd6383c5267b4f46023e769ad5cf840c7b",
+    "app/Domain/Backups.php": "c7ac3c843beeff52ceae0ac0293f7561db00139e7a7d31c66bfc68cf826be493",
+    "app/Domain/Community.php": "3aeb06bd3ef7a0d7c189f2e60202806ea1c3acea78505fc474ef85d3ddcedf01",
+    "app/Domain/DocumentBlobs.php": "e8ea169dd8b4d5cd264c3107fade8d98485e322d15fc4275e0a26063ccf6a966",
+    "app/Domain/DocumentScanner.php": "13e2e3c143b69f94c151d15b6e6a04b03d6b7b4b6712b0c14f2b3eff3d151576",
+    "app/Domain/Documents.php": "877badce62e493f7bf7fdcd0a983c7315d1ee4f8a5612afa7b7ca103d3653db5",
+    "app/Domain/ErasureRestore.php": "487089abb31f4755213919bc78b75aedb87916f4f51a5276b2f2673926377260",
+    "app/Domain/HomeHouseholds.php": "8e7b1cce6b585f5e90b681821005c670d3f4c5dda660bd7cb584eaf2ab364e2e",
+    "app/Domain/HomePrivacy.php": "a2c4fa8cc4d38019651b0b187dd4b4adb8a1ef3553be17d9f6458d67df88e144",
+    "app/Domain/Maintenance.php": "c92520ea56c77630ef1bf917636b8fc1bbc01b04e0993b70de892b77f032e9d8",
+    "app/Domain/Operations.php": "069b02e2a70b10d3a1180700b2c97b5df9f48f108b25ffaf5a5581ab7db360a3",
+    "app/Domain/OperationsAssets.php": "ba85771b57b649c39b088d50709a7f6b9db7263bf78a43df19d30a405d39d650",
+    "app/Domain/Passkeys.php": "c95377cbd1fd10fe7b7fb9145e952b4d8ba0db855c0ff2bfc73a8a3386ee728b",
+    "app/Domain/PlatformInformation.php": "5abeed41aef5191171c29f027eb35ea81e0223032ef9ce3d2e1c9739c05f92ea",
+    "app/Domain/Portability.php": "eb1a69af18b898d1dba9f3ed7b83e21f32a6c0093a2d552c1456667d24e9b578",
+    "app/Domain/ProducerQuota.php": "a9f4ce26d579c01c15fe0c56f1935e7e4c79484d0dba9943504c5063aa022ccc",
+    "app/Domain/ProducerSessions.php": "d3b700afba058d203ce874d7a089e84a9d6669a6e772a22d31ef9875609d6e17",
+    "app/Domain/PublicArchive.php": "2aa93f925961ff0533f67035447362d41678461836353f7a2847cdaa1725f05b",
+    "app/Domain/SecurityOutbox.php": "5d7612f9934d2234a17a21f2a6f43f3230bfe165e5a4324b3b6b6e534a70d742",
+    "app/Domain/TransferStream.php": "381b5cc6e8628e07cef15c8924c5dab68a24d08f0d9d6541d6c1a34a8a0d7f4c",
+    "app/Vendor/WebAuthn/src/Attestation/AttestationObject.php": "1dd9541e45c5d07cdac8a118b5eed7aec6d3d1d2f4442beae9d8701d5556d1d6",
+    "app/Vendor/WebAuthn/src/Attestation/AuthenticatorData.php": "4539fc9eab08ec38835b332c0afbd09832985c57a421043d12d92bc42e66762d",
+    "app/Vendor/WebAuthn/src/Attestation/Format/AndroidKey.php": "36b7120a882994914738d7520e2a99d8881c28e5db7ff416395f6dff8d186348",
+    "app/Vendor/WebAuthn/src/Attestation/Format/AndroidSafetyNet.php": "b469688d02a9af095dce47d22d6560fad583742e03cf7c3f639eed745ff51958",
+    "app/Vendor/WebAuthn/src/Attestation/Format/Apple.php": "2a3e7a26bf057c0488cbcdf9fa2ae047042a44c0d06eeccd3ebd9eeb32cc44f5",
+    "app/Vendor/WebAuthn/src/Attestation/Format/FormatBase.php": "426b68c571fbdbc880dc5eea85e61b37738293c6fd49aaa363ed0f1e0f495301",
+    "app/Vendor/WebAuthn/src/Attestation/Format/None.php": "c1db089954f2450f632b07f95491549ef50112f8cc822d21f72ee49ac1bc4771",
+    "app/Vendor/WebAuthn/src/Attestation/Format/Packed.php": "42b8740014e9846de50801a476b66c7b65fae4b1844c7e714650ef32e204bb76",
+    "app/Vendor/WebAuthn/src/Attestation/Format/Tpm.php": "3cfeba175dc6c88e6891a33bfbe8bcb5b5e357f3337439c91a51630402245a4a",
+    "app/Vendor/WebAuthn/src/Attestation/Format/U2f.php": "595aec3dd2e8985d6a01226a17cba8952881342ce52f99df486c96ac600a96a6",
+    "app/Vendor/WebAuthn/src/Binary/ByteBuffer.php": "ffc0a9efec90b9744cb2c7e91653b3c57c4bda75fee48cd2c3b4a44583eb227a",
+    "app/Vendor/WebAuthn/src/CBOR/CborDecoder.php": "3c4d302ce63b76c80350318cfa664db3d0b28fabff73a4560f009ec1ad6acb1f",
+    "app/Vendor/WebAuthn/src/WebAuthn.php": "6676f1bbdd8daf0b99a57ebd9855c92d36ddf99494106a4e35e5664e6ceb7c75",
+    "app/Vendor/WebAuthn/src/WebAuthnException.php": "9564ae6ae79a0c201971b7c6f691c76e50a925076d1f4a5a7b0fcf5645bb442c",
+    "app/Views/about.php": "245a594ff4b649913075808531c0bedae5b49a52a3114487eefab5ba71189a04",
+    "app/Views/account-recovery.php": "46c1c9c57685e497032a7fdd68d8d0c77326f934d0ca3f3604d2e5ad2e2c97f7",
+    "app/Views/account-security.php": "34586e38a902137f79c0c0fd83817ebe659b41452625d38e92efdc4864a22462",
+    "app/Views/account-verify.php": "24baf1fa68c95aee1fb7913b91cecb02704514feccc0c78c4b13c1ab7cb1244b",
+    "app/Views/api-explorer.php": "82f0692e33d2ac34c8b6653affb82ecd9b71e0fd051c6e103592099d5d5ed139",
+    "app/Views/api-reference.php": "48c1fb011183a7fadfc9d9fb0868089b942ddd04f0e9383073afcdf6b0911321",
+    "app/Views/auth.php": "aa4f9248c079a578ab3b5b593a34eeeb73718cd0dd28bff0eda9cbc015a7554b",
+    "app/Views/consumer-home.php": "8dd21c09124ec356f56a23f5ab9c48199b9d711fa79d386ec7585004a32452d3",
+    "app/Views/layout.php": "206304a0561b52f6c4ee12750cbdb5024fe9b811316e76b1f1320c3d8c1e4a15",
+    "app/Views/manage.php": "25f1738793e0a4136834774d86e4a7294e38d9f4a5fddc546df0ac0d4709dcd6",
+    "app/Views/operations-panel.php": "1ed311e715a0135c4d914ee53367f2fab48aaa2779e8e3c607ed4b6d9dcb4acc",
+    "app/Views/privacy.php": "3dd9d3ec59abdc5ea9d2174a46c4869daa74c35f28e5b6a7781953c5780812e1",
+    "app/Views/product.php": "af25575ab78b7072a8b69e710e5a76f3c7ffb9893d8add3c9c3153c7abde5f49",
+    "app/Views/recipe.php": "b53144d9c84c53d2b8ca375526ebc2eee4053a26e538299ca712238e095e1712",
+    "app/Views/updates.php": "421619d64765ccd5b9127d7e0f88f16b33864ecf50c61b7bc61035b0e55777c7",
+    "app/autoload.php": "4bdb0ff55ee59f56e99f7e60d332b5e75c3d1d3b573a55a95fa9a4bc084eb39d",
+    "contracts/api-developer-guide.json": "688b746812db188e007199828cb9f012f42489b97bca63fa543d264f9e338cee",
+    "contracts/api-docs/admin.json": "a645a4ef5027efd384cea99904c17658d8aa6cd7fc8600632cc0a2fc6f1a102a",
+    "contracts/api-docs/ai.json": "314dbfceb93c9ff956b46ca7a27e5b96e335db30d97354a8fbd573f19954c5ce",
+    "contracts/api-docs/community.json": "0d2edd9ecd67da015d6afa07df074fd08f94ea774a5e649ea9c3c1ccfa32a69a",
+    "contracts/api-docs/discovery.json": "4669ba617b6669fcdcbb5363e89fda40c827b4b83ae343387f411ed1753488be",
+    "contracts/api-docs/documents.json": "267e177a8a402f95bfc8b8d554cdaba8a32d9c225b2bc506ba10e2a7ee2e72ac",
+    "contracts/api-docs/guides.json": "73ec0d1aaac5bc0db9463c612ea125b902ed7f8119e6286aee39cfda08044d7d",
+    "contracts/api-docs/home.json": "b9c9dbcf003d6b48007a4eeb5d5ee26f7047f039cd6b41dcdc5d99cc12601fad",
+    "contracts/api-docs/identity.json": "ebcc64808f6e9336ad2bc8d57d92c35caf526716a6d2cef5800a9297eab6a707",
+    "contracts/api-docs/legacy.json": "facd9343e90c095c44a46460db900aa32ba88f949ec8c3652c9f0adcc80d71bd",
+    "contracts/api-docs/postman-02.json": "f0378e3fe33b506cc87ae3d56507a44e71eebfba1ab9d71c22ba65c8747b9498",
+    "contracts/api-docs/postman-04.json": "b595b96fc08cfbb3dff54a74f7ec673e2556f6efdb7152c8db4caa973f1404c8",
+    "contracts/api-docs/postman-05.json": "05cd5244a8263729dd5e843a3c9c4939d3818a1f1dfddf9d736074aba9a83afc",
+    "contracts/api-docs/postman-06.json": "9a94cfa3a9f8f6f222728948f5193c33059b0721d0c7344e7774ebd215c9c055",
+    "contracts/api-docs/postman-07.json": "5ac54d6e384e22cb089982114bf8abf6332e0e49ca4c31cfedc5c7246e73da0b",
+    "contracts/api-docs/postman-08.json": "0fb59f9290db6f9295f746f9609a66b825f0955d99ae260166c28b9c60e5b4bc",
+    "contracts/api-docs/postman-09.json": "9dc92f5ed835aec88e8551e97b843da072df29234850e893907e806fe011b120",
+    "contracts/api-docs/postman-10.json": "09198bac4eeb342617214f2ddc3d7bfd308b907e7d8f3bcda006783e730522d5",
+    "contracts/api-docs/postman-11.json": "477ddc5e376b651688d03a96ea682bdb45b1a331914a533bb5606f25a9f8ccb2",
+    "contracts/api-docs/postman-12.json": "89d2cd8e62e8371e6c91fcd51f115b03d450d39b18663b81e6084ecaf020d341",
+    "contracts/api-docs/postman-13.json": "511283a278484f9788276e783cd8f06e8bf80f777efa5b595a2e8378be8f64f7",
+    "contracts/api-docs/postman-14.json": "58109f0d9dbe6d1a6d107bb5b4ae83c8e6bfea324d704a6ea53fbb9dae9ab70c",
+    "contracts/api-docs/postman-15.json": "47adfd636d7d7a8111ebb4ae865077a2be81ba6ae9b843bb97850e92a0d3cf9e",
+    "contracts/api-docs/postman-16.json": "1840e283d45e0f1f6734ee937b83eb385f56795747193190e9167b042c0153c2",
+    "contracts/api-docs/postman-17.json": "89fcff4acf84b80ddfda11f0208033e4d8b2097e56a2c6e6f4f18d1956805048",
+    "contracts/api-docs/products.json": "9aea32f443bd89fe3ddd22d17d9b9a638f97edf1b114a2d88d7238822a95df83",
+    "contracts/api-docs/public.json": "d77e0a5e4feca7072873a6dac557bbfbc7f4f68eb0e9b873f2404af4d266a211",
+    "contracts/api-docs/transfer.json": "cfd44d4c6f0d218f7f6fa0e100662db3fb4731db91d8d97470242f19588ee345",
+    "contracts/api-documentation.json": "c69be6ea939a5e39d3062765827fd9786925a7d342eb34f1b90d3a0c391e2bea",
+    "contracts/api-operation-catalog.json": "e84dce4db7bf322c29f2d2934f0975fa1b4981b6586f3520a227d4c4fd8fe264",
+    "contracts/api-postman-collection.json": "93296594104a1372e80894155b61778cfe2a37841b0727e3748cded8a7273f62",
+    "contracts/data_model.json": "507063a91127657df78ff08bca8458a2f8cfb3f0b088b973e3836b285f2ec037",
+    "contracts/home-openapi.json": "69ca3d9da3909226191d9d837766337d992b0b919362636dbbe6a4918edf41e2",
+    "contracts/openapi.json": "d21020a032c42acf1da7b71be7a9565b71fd815031e1e1e8ed8cef530bd59626",
+    "contracts/operations-assets.json": "fc61e9397bfae61733eca2b64ead4cd38095b2f4ebc83b299ca37ec9af69b2df",
+    "contracts/platform-openapi.json": "1d2c1d4869b0fc7164cc1010df3c6d93a7fbd1cc1a9104ef09c740c586f97022",
+    "database/migrations/007_readiness.sql": "94683acc68dbf15603c1fbf4048ec9cb03367af45be0242c65ee4933d1343871",
+    "public/assets/account-access.js": "458a6ede8253235246ec66ad5524f5e04b2cffccfac1b7eb492a25e1e10c168c",
+    "public/assets/app.css": "1f8a33a74ae231b3c3ab4b1a5c9c0861460c63a7b07504522e0cd7453f7b3dac",
+    "public/assets/home/app.js": "3fd6b4d327baa289d11757c1ae54e3f10fa6b97c18e72be0f661635cc947ce0f",
+    "public/assets/home/cloud-domain.js": "bdd61f2f5474dbeac44cfd55d82b5e585b3f75aa02b8b6f6ce8793b63ab1fa1f",
+    "public/assets/home/cloud.js": "2bc6fe881712dd771b4a0698d98a6b70010c92e0a3ce4b7bac9ff1324e8f84d6",
+    "public/assets/home/entry.js": "08df69bc55e8c64d74ee9b60e72f88f5f9638a2295f94f87a72a974c2aada633",
+    "public/assets/home/ocr.js": "c53a1d8f5c7c402160e6fd453057d2efad42c413b695aee8f7aa3b6295e34f85",
+    "public/assets/home/privacy.js": "c1c77dc7783b7df787fa2a9654ea6e7d91c95b3f2d9687d8d7ccfa4d3b43cdd6",
+    "public/assets/home/receipt.js": "1d6229dd2fac705982b5901e26d127c1cfbdf8780e0223bad15a97f892959ef1",
+    "public/assets/home/store.js": "af6b4d5e977ba533ff24c6a2bdf8e1127508a452184b5f2e7462923eb0e77d32",
+    "public/assets/home/sw.js": "d01d211baea604ad900552435796a990777fafc56ba41e124cade1e1b78d68a1",
+    "public/assets/home/transfer.js": "52a1bbbf9e29e23990db417f754600ae7e46eabf8f35bd70b2244c464fad0aca",
+    "public/index.php": "23fbcfb0665027763f0c337c2f4c5d82d0cfd6e3d3e3ea3c293b25dd36f146f3",
+    "tools/worker.php": "97640c358d7544f3bcce9126f1e8300197dc59351f1dffa7357d7d534e039d31"
+  },
+  "transfer_verification": "Each applied deployment inspected and compared with SHA-256; previous copies retained by bridge",
+  "migration_007": {
+    "action": "install_readiness",
+    "result": "Protecția conturilor, documentelor și operațiunilor este activă.",
+    "confirmation": "Authenticated administrator view plus public readiness capability flags",
+    "operations_assets": "Ten fixed files installed; pinned manifest validated; no reinstall action remains"
+  },
+  "source_adjustment": {
+    "file": "app/Views/recipe.php",
+    "change": "PHP opening and closing tags only, zero output",
+    "php_lint": true,
+    "original_tokens_unchanged": true,
+    "repository_postcheck": {
+      "passed": 403,
+      "failed": 0
+    }
+  },
+  "pending_host_setup": [
+    "PHP CLI 8.4 diagnostic and scheduled worker",
+    "Encrypted backup configuration, separate key retention and verified offsite destination",
+    "Production restoration exercise",
+    "Antivirus engine transport configuration",
+    "Real inbox delivery and administrator passkey enrollment"
+  ]
+}

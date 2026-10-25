@@ -1,0 +1,64 @@
+{
+  "executed_at": "2026-10-24T09:18:47.637Z",
+  "environment": "pure client synchronization domain, simulated multiple devices and network races",
+  "passed": 14,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Guest data is not automatically marked for cloud",
+      "passed": true
+    },
+    {
+      "name": "Personal health preferences are excluded from wire payload",
+      "passed": true
+    },
+    {
+      "name": "Persisted outbox retries keep the same event identity after local edits",
+      "passed": true
+    },
+    {
+      "name": "Acknowledged self echo never overwrites an edit made while response was in flight",
+      "passed": true
+    },
+    {
+      "name": "Clean device accepts a remote change and invalidates stale undo",
+      "passed": true
+    },
+    {
+      "name": "Conflicting offline changes retain both choices without silent replacement",
+      "passed": true
+    },
+    {
+      "name": "Choosing family state keeps a newer live recall visible",
+      "passed": true
+    },
+    {
+      "name": "A concurrent local edit during fingerprinting is conservatively preserved",
+      "passed": true
+    },
+    {
+      "name": "Remote inventory does not change allergen preferences",
+      "passed": true
+    },
+    {
+      "name": "History undo remains correct even when backfilled before original action",
+      "passed": true
+    },
+    {
+      "name": "Cross-household response cannot be applied",
+      "passed": true
+    },
+    {
+      "name": "Local counters and live alerts do not create redundant cloud writes",
+      "passed": true
+    },
+    {
+      "name": "Malformed acknowledgements cannot poison revision metadata",
+      "passed": true
+    },
+    {
+      "name": "A backwards or malformed cursor cannot replace saved progress",
+      "passed": true
+    }
+  ]
+}

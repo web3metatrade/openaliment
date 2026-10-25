@@ -1,0 +1,4 @@
+ZXing Browser 0.2.1: MIT license, see ZXING-BROWSER-LICENSE.txt. Bundled ZXing core: Apache License 2.0.
+Tesseract.js 7.0.0 and tesseract.js-core 7.0.0: Apache License 2.0. English trained data: tessdata, Apache License 2.0; @tesseract.js-data/eng 1.0.0 packaging: MIT.
+Apache License 2.0 text: ../ocr/APACHE-LICENSE.txt.
+Sources, versions and SHA-256: docs/DEPENDENCIES.json in the distribution.

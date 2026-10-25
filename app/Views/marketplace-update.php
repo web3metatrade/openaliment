@@ -1,0 +1,2 @@
+<?php declare(strict_types=1); ?>
+<section class="panel"><h2>Marketplace și echipamente</h2><?php if(\App\Core\Migrations::marketplace()):?><p>Ofertele dezvoltatorilor și comenzile de tipărire serializată sunt active.</p><a href="/admin/marketplace">Verifică ofertele</a><?php else:?><form method="post"><?=csrf()?><button name="action" value="install_marketplace" class="btn btn-primary">Activează marketplace-ul și tipărirea</button></form><?php endif?></section>

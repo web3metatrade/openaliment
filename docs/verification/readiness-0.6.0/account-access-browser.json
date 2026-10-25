@@ -1,0 +1,43 @@
+{
+  "passed": 9,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Actual WebAuthn browser registration displays recovery codes once",
+      "passed": true
+    },
+    {
+      "name": "Security page has no desktop overflow",
+      "passed": true
+    },
+    {
+      "name": "Reload does not redisplay recovery secrets",
+      "passed": true
+    },
+    {
+      "name": "Security page has no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "Session cookie is HttpOnly",
+      "passed": true
+    },
+    {
+      "name": "Account secrets are not written to localStorage",
+      "passed": true
+    },
+    {
+      "name": "Password login asks for the enrolled second factor",
+      "passed": true
+    },
+    {
+      "name": "Browser signed assertion opens the producer workspace",
+      "passed": true
+    },
+    {
+      "name": "No browser exceptions in the account flow",
+      "passed": true
+    }
+  ],
+  "environment": "Local Edge virtual WebAuthn authenticator; no physical device claim"
+}

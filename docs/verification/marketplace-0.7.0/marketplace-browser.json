@@ -1,0 +1,163 @@
+{
+  "passed": 39,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "marketplace HTTP 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace fits viewport 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace has one primary heading 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-detail HTTP 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-detail fits viewport 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-detail has one primary heading 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-editor HTTP 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-editor fits viewport 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-editor has one primary heading 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-review HTTP 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-review fits viewport 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace-review has one primary heading 1440",
+      "passed": true
+    },
+    {
+      "name": "printing HTTP 1440",
+      "passed": true
+    },
+    {
+      "name": "printing fits viewport 1440",
+      "passed": true
+    },
+    {
+      "name": "printing has one primary heading 1440",
+      "passed": true
+    },
+    {
+      "name": "gs1-standards HTTP 1440",
+      "passed": true
+    },
+    {
+      "name": "gs1-standards fits viewport 1440",
+      "passed": true
+    },
+    {
+      "name": "gs1-standards has one primary heading 1440",
+      "passed": true
+    },
+    {
+      "name": "marketplace HTTP 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace fits viewport 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace has one primary heading 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-detail HTTP 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-detail fits viewport 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-detail has one primary heading 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-editor HTTP 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-editor fits viewport 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-editor has one primary heading 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-review HTTP 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-review fits viewport 390",
+      "passed": true
+    },
+    {
+      "name": "marketplace-review has one primary heading 390",
+      "passed": true
+    },
+    {
+      "name": "printing HTTP 390",
+      "passed": true
+    },
+    {
+      "name": "printing fits viewport 390",
+      "passed": true
+    },
+    {
+      "name": "printing has one primary heading 390",
+      "passed": true
+    },
+    {
+      "name": "gs1-standards HTTP 390",
+      "passed": true
+    },
+    {
+      "name": "gs1-standards fits viewport 390",
+      "passed": true
+    },
+    {
+      "name": "gs1-standards has one primary heading 390",
+      "passed": true
+    },
+    {
+      "name": "Serialized QR preview has a four-module quiet zone",
+      "passed": true
+    },
+    {
+      "name": "Actual QR decodes to exact GS1 URI with production dates",
+      "passed": true
+    },
+    {
+      "name": "No browser script errors",
+      "passed": true
+    }
+  ],
+  "physical_printer_or_pos": false
+}

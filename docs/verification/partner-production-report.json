@@ -1,0 +1,47 @@
+{
+  "environment": "production HTTPS read-only checks; no simulated catalog records created in production",
+  "date": "2026-10-24",
+  "migration": "003_integrations activated through authenticated admin; success observed in UI",
+  "deployments": [
+    "485b3cc2e0584a5d92782d99000f604a",
+    "3439fd3560fe4054b146af2d5dc65da7"
+  ],
+  "checks": [
+    {
+      "path": "/acasa/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/integration-openapi.json",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/schemas/partner-mapping.schema.json",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/schemas/digital-receipt.schema.json",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/v2/public/food?code=9520000000011",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/v2/public/capabilities",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "public_consumer_cors_preflight",
+      "status": 204,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

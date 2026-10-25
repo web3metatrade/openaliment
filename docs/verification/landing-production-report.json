@@ -1,0 +1,136 @@
+{
+  "suite": "Production landing and SEO",
+  "executed_at": "2026-10-24T06:29:27.433002+00:00",
+  "passed": 32,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Romanian commercial landing served",
+      "passed": true
+    },
+    {
+      "name": "Unique H1 and relevant title",
+      "passed": true
+    },
+    {
+      "name": "Canonical drops tracking and uses configured HTTPS authority",
+      "passed": true
+    },
+    {
+      "name": "Production home is indexable",
+      "passed": true
+    },
+    {
+      "name": "Anonymous landing creates no session",
+      "passed": true
+    },
+    {
+      "name": "Structured data describes truthful service and provider",
+      "passed": true
+    },
+    {
+      "name": "Open Graph image has fixed dimensions",
+      "passed": true
+    },
+    {
+      "name": "Commercial contact uses configured public address",
+      "passed": true
+    },
+    {
+      "name": "All landing anchor destinations exist",
+      "passed": true
+    },
+    {
+      "name": "Public landing destination /gs1-digital-link",
+      "passed": true
+    },
+    {
+      "name": "Unique canonical /gs1-digital-link",
+      "passed": true
+    },
+    {
+      "name": "Public landing destination /despre",
+      "passed": true
+    },
+    {
+      "name": "Unique canonical /despre",
+      "passed": true
+    },
+    {
+      "name": "Public landing destination /produse",
+      "passed": true
+    },
+    {
+      "name": "Unique canonical /produse",
+      "passed": true
+    },
+    {
+      "name": "Public landing destination /api/docs",
+      "passed": true
+    },
+    {
+      "name": "Unique canonical /api/docs",
+      "passed": true
+    },
+    {
+      "name": "Public landing destination /resolver/profile",
+      "passed": true
+    },
+    {
+      "name": "Unique canonical /resolver/profile",
+      "passed": true
+    },
+    {
+      "name": "Public landing destination /confidentialitate",
+      "passed": true
+    },
+    {
+      "name": "Unique canonical /confidentialitate",
+      "passed": true
+    },
+    {
+      "name": "Login remains noindex with anonymous form",
+      "passed": true
+    },
+    {
+      "name": "Missing page retains 404 and noindex",
+      "passed": true
+    },
+    {
+      "name": "Robots points at sitemap and protects private routes",
+      "passed": true
+    },
+    {
+      "name": "Sitemap XML lists public pages only",
+      "passed": true
+    },
+    {
+      "name": "Static asset deployed and cacheable /assets/app.css?v=5",
+      "passed": true
+    },
+    {
+      "name": "Static asset deployed and cacheable /assets/mark.svg",
+      "passed": true
+    },
+    {
+      "name": "Static asset deployed and cacheable /assets/openaliment-social.jpg",
+      "passed": true
+    },
+    {
+      "name": "Static asset deployed and cacheable /assets/digital-link-journey.svg",
+      "passed": true
+    },
+    {
+      "name": "Static asset deployed and cacheable /assets/digital-link-guide.js?v=1",
+      "passed": true
+    },
+    {
+      "name": "Downloadable OpenAPI includes resolver lifecycle",
+      "passed": true
+    },
+    {
+      "name": "HEAD homepage has no response body",
+      "passed": true
+    }
+  ]
+}
