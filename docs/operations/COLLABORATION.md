@@ -1,14 +1,28 @@
 # Colaborare GitHub și medii OpenAliment
 
-Repository: `https://github.com/web3metatrade/openaliment`. Administrator inițial: `web3metatrade`. Repository-ul este privat în etapa de pregătire; publicarea presupune verificarea conținutului și a licențelor materialelor distribuite.
+Repository public: `https://github.com/web3metatrade/openaliment`. Administrator inițial: `web3metatrade`. Codul public și licențele sunt separate de configurațiile, datele și materialele istorice private.
 
 ## Cod, review și pachete
 
-Fiecare modificare se dezvoltă într-un branch scurt `feature/...` sau `fix/...` și ajunge în `main` prin pull request. PR-ul descrie problema, comportamentul rezultat, verificările și compatibilitatea. Modificările nucleului GS1 indică ediția standardului, secțiunea și probele de regresie. Nu se schimbă fixture-urile doar pentru a accepta o implementare incorectă.
+Există două ramuri permanente: `dev`, implicită pentru contribuții și integrare, și `main`, pentru codul acceptat pentru producție. Un branch nu este o instalare: aprobarea unui PR, merge-ul și publicarea pe hosting sunt acțiuni separate.
 
-Workflow-ul CI folosește PHP 8.4, Node 24, Python 3.12 și baze MariaDB 10.6/11.4 dispensabile. Nu primește configurația sau credentialele hostingului. După verificările reușite pe `main`, construiește profilul `app` și păstrează ZIP-ul plus SHA-256 ca artifact identificat prin commit. Nu publică pe hosting. Probele browser se pot selecta la pornirea manuală a workflow-ului.
+1. Dezvoltatorul pornește din `dev`, într-un branch scurt `feature/...` sau `fix/...`, inclusiv în fork, și trimite PR către `dev`.
+2. După review și CI, branchul scurt se poate integra prin squash. Proprietarul instalează explicit pachetul verificat al commitului `dev` pe staging și consemnează rezultatul testării.
+3. Pentru o promovare se deschide PR `dev` → `main`, se verifică diferențele și dovezile stagingului și se rulează CI. Se folosește **merge commit**, fără squash sau rebase între ramurile permanente.
+4. Proprietarul decide separat publicarea în producție. Pachetul de producție este construit din commitul rezultat în `main`; conținutul său runtime trebuie să corespundă celui testat pe staging. Dacă au intrat alte modificări în `dev` între timp, promovarea și verificarea se repetă pentru diferențele noi.
+5. După promovare se deschide și integrează PR `main` → `dev`, tot prin merge commit, pentru păstrarea istoricului comun. Nu se resetează și nu se forțează ramurile permanente.
 
-La configurarea regulilor repository-ului, `main` trebuie să ceară verificările CI și review, să interzică force push și ștergerea și să invalideze aprobarea când se schimbă codul. Protejarea unui repository privat și regulile de mediu depind de planul GitHub; nu se consideră active până când interfața confirmă aplicarea lor. Pentru un repository public, protecția branchurilor este disponibilă și pe GitHub Free.
+O corecție urgentă poate porni din `main` într-un branch `hotfix/...` al repository-ului și ajunge prin PR în `main`, cu review și CI. Se sincronizează apoi `main` → `dev` și se publică explicit; eticheta „hotfix” nu ocolește verificările. Contribuitorii externi propun inițial corecția către `dev`, iar maintainerul pregătește separat un hotfix când este necesar.
+
+PR-ul descrie problema, comportamentul rezultat, verificările și compatibilitatea. Modificările nucleului GS1 indică ediția standardului, secțiunea și probele de regresie. Nu se schimbă fixture-urile doar pentru a accepta o implementare incorectă.
+
+Workflow-ul CI folosește PHP 8.4, Node 24, Python 3.12 și baze MariaDB 10.6/11.4 dispensabile. Nu primește configurația sau credentialele hostingului. După verificările reușite pe `dev` sau `main`, construiește profilul `app` și păstrează ZIP-ul plus SHA-256 ca artifact `cpanel-app-<branch>-<commit>`. PR-urile nu produc pachete publicabile. Nu există deploy automat. Probele browser se pot selecta la pornirea manuală a workflow-ului.
+
+Ambele ramuri cer un PR, cel puțin o aprobare, invalidarea aprobărilor vechi, rezolvarea discuțiilor și verificările `branch-flow`, `local (10.6)`, `local (11.4)` și `advisories`, cu branchul actualizat. Force push și ștergerea sunt interzise. Istoricul liniar nu este impus, deoarece promovările și sincronizările păstrează merge commits. `branch-flow` admite către `main` doar `dev` sau `hotfix/...` din repository-ul propriu; un branch cu același nume dintr-un fork nu primește acest drept. Acest control al destinației nu înlocuiește review-ul codului și al workflow-urilor.
+
+Proprietarul păstrează posibilitatea existentă de bypass a protecției branchului pentru configurarea inițială și urgențe. Aceasta nu este fluxul obișnuit de contribuție și nu acordă acces la hosting. Singurul maintainer nu își poate aproba propriul PR; înainte de review independent pentru PR-urile lui, se desemnează un al doilea reviewer de încredere.
+
+Mediul GitHub `production` permite numai branchul `main`, cu aprobare `web3metatrade` și fără bypass al regulilor mediului. Nu se folosește „Protected branches only”, deoarece și `dev` este protejat. Mediul `staging` permite numai `dev`, tot cu aprobarea proprietarului. Aceste gate-uri sunt pregătite pentru workflow-uri viitoare: CI-ul actual nu le invocă, nu conține secrete de hosting și nu publică fișiere.
 
 `CODEOWNERS` desemnează inițial administratorul. Autorul unui PR nu își poate aproba propriul PR: înainte să cerem obligatoriu aprobarea code owner-ului pentru toate modificările, adăugăm un al doilea maintainer de încredere sau atribuim zonele corespunzător. Aprobarea codului nu acordă drept de publicare în producție.
 
@@ -19,6 +33,8 @@ La configurarea regulilor repository-ului, `main` trebuie să ceară verificări
 | Dezvoltare locală / CI | loopback | `public/` | `openaliment_tests`, exclusiv dispensabilă |
 | Staging | `https://dev.openaliment.ro` | `/home/apelero/dev.openaliment.ro/public/` | bază și utilizator SQL proprii, date sintetice |
 | Producție | `https://openaliment.ro` | `/home/apelero/openaliment.ro/public/` | configurația și datele existente |
+
+Sursa pentru staging este un commit verificat din `dev`; sursa pentru producție este un commit acceptat în `main`. Crearea ramurilor nu actualizează fișierele instalate. Paginile publice ale stagingului sunt în prezent accesibile cu `noindex`; controlul general de acces la nivel de hosting nu este încă configurat.
 
 Stagingul și producția sunt în același cont cPanel `apelero`, conform deciziei proprietarului din 25.10.2026. Separarea directoarelor și bazelor nu izolează drepturile utilizatorului PHP. Nu se oferă colaboratorilor acces cPanel, FTP, chei de actualizare sau execuție de cod nerevizuit pe staging. PR-urile externe rulează numai în CI izolat. Pentru publicare delegată echipei sau preview-uri de PR pe hosting, stagingul se mută mai întâi într-un cont de sistem separat.
 

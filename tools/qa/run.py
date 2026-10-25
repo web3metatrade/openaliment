@@ -65,6 +65,7 @@ def main():
         run([sys.executable, 'tools/build/artifacts.py', '--check'], 'generated contracts')
         run([sys.executable, 'tests/test_repository.py'])
         run([sys.executable, 'tests/test_collaboration.py'])
+        run([sys.executable, 'tests/test_branch_policy.py'])
         run([sys.executable, 'tests/test_security_sources.py'])
         run([sys.executable, 'tools/qa/security_sources.py', '--check'], 'focused source security checks')
         run([args.php, 'tests/bootstrap-unit.php'])

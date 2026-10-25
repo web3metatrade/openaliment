@@ -2,6 +2,10 @@
 
 Describe the concrete problem and what changes for users or maintainers.
 
+Target `dev` for contributions. PRs into `main` promote this repository's `dev`
+or an explicit `hotfix/...` branch. Use a merge commit between permanent branches;
+do not squash a `dev` → `main` promotion or the `main` → `dev` synchronization.
+
 ## Validation
 
 List the relevant executed commands and results. Mark unexecuted checks explicitly.

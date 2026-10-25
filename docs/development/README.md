@@ -4,6 +4,14 @@ The application uses PHP MVC, PDO/MySQL and plain browser modules. Hosting requi
 
 ## Local tools
 
+Start a contribution from the default `dev` branch and open the PR against `dev`.
+`main` accepts promotion PRs from this repository's `dev`, or explicit `hotfix/...`
+branches. The required `branch-flow` check rejects normal contributions aimed at
+`main`. Merge permanent branches using merge commits, then synchronize `main`
+back into `dev`; squash is appropriate for short-lived feature branches only.
+CI produces commit-bound cPanel artifacts for both branches and never deploys
+them. See [the collaboration and environment guide](../operations/COLLABORATION.md).
+
 Use PHP 8.4+ with `pdo_mysql`, `mbstring`, `fileinfo` and `openssl`, Node 24+ and Python 3.12+. Install Node dependencies with `npm ci --ignore-scripts`. Install Python dependencies in a virtual environment:
 
 ```sh
