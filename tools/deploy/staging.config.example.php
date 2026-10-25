@@ -7,8 +7,8 @@ $expectedRoot = '/home/apelero/dev.openaliment.ro';
 if (realpath(dirname(__DIR__)) !== realpath($expectedRoot)) {
     throw new RuntimeException('Staging configuration cannot be used outside its dedicated project.');
 }
-$database = 'apelero_openaliment_dev';
-$databaseUser = 'apelero_openaliment_dev';
+$database = 'apelero_dev_openaliment';
+$databaseUser = 'apelero_dev_openaliment';
 $databasePassword = '';
 if (in_array($database, ['apelero_openaliment', 'openaliment_tests'], true) || $databaseUser === 'apelero_openaliment') {
     throw new RuntimeException('Production or disposable test credentials are not allowed for staging.');

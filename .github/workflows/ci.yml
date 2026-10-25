@@ -18,6 +18,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  branch-flow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python tools/qa/branch_policy.py
+
   local:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -43,7 +55,6 @@ jobs:
     env:
       OA_GS1_REFERENCE_DIR: tests/runtime/reference-gs1
       OA_TEST_DB_HOST: 127.0.0.1
-      OA_TEST_DB_PORT: ${{ job.services.database.ports['3306'] }}
       OA_TEST_DB_USER: openaliment_tests
       OA_TEST_DB_PASSWORD: synthetic-ci-only
     steps:
@@ -60,6 +71,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: requirements-dev.txt
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24'
@@ -71,8 +83,12 @@ jobs:
       - if: inputs.browser == true
         run: npx playwright install --with-deps chromium
       - if: inputs.browser != true
+        env:
+          OA_TEST_DB_PORT: ${{ job.services.database.ports['3306'] }}
         run: python tools/qa/run.py --suite local --reset-test-db
       - if: inputs.browser == true
+        env:
+          OA_TEST_DB_PORT: ${{ job.services.database.ports['3306'] }}
         run: python tools/qa/run.py --suite browser --reset-test-db
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -96,8 +112,8 @@ jobs:
 
   package:
     name: Build verified cPanel package
-    needs: [local, advisories]
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [local, advisories, branch-flow]
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -110,7 +126,7 @@ jobs:
       - run: python tools/package-release.py --profile app
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: cpanel-app-${{ github.sha }}
+          name: cpanel-app-${{ github.ref_name }}-${{ github.sha }}
           path: |
             release/*_app_cPanel.zip
             release/*_app_cPanel.zip.sha256
