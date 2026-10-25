@@ -4,7 +4,7 @@ import * as camera from './scanner.js?v=8';
 import {exportCopy,importCopy} from './transfer.js?v=8';
 import * as cloud from './cloud.js?v=8';
 const $=id=>document.getElementById(id),el=(tag,text,className)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;};
-let state=D.initial(),filter='available',selected=null,busyScan=false,lastScan=null,undoId=null,toastTimer=null,refreshing=false,renderVersion=0,pendingReceipt=null;
+let state=D.initial(),filter='available',selected=null,busyScan=false,lastScan=null,undoId=null,toastTimer=null,refreshing=false,renderVersion=0,pendingReceipt=null,dateOnly=false;
 const photoUrls=new Map();
 const button=(text,action,className='button secondary')=>{const b=el('button',text,className);b.type='button';if(action)b.dataset.action=action;return b;};
 const error=e=>toast(e?.message||'Nu am putut finaliza. Încearcă din nou.',null,true);
@@ -25,7 +25,7 @@ async function render(){
     if(item.photo_id){const img=el('img',undefined,'food-photo');img.alt='';img.width=66;img.height=76;const blob=await store.photo(item.photo_id);if(blob){if(!photoUrls.has(item.photo_id))photoUrls.set(item.photo_id,URL.createObjectURL(blob));img.src=photoUrls.get(item.photo_id);}main.append(img);}
     else{const placeholder=el('span','', 'food-photo food-placeholder');placeholder.append($('food-placeholder-icon').content.cloneNode(true));main.append(placeholder);}
     if(version!==renderVersion)return;const info=el('span',undefined,'food-info');info.append(el('span',item.name,'food-name'),el('span',s.text,'food-status '+s.tone));
-    const meta=[];if(item.opened_at)meta.push('Deschis '+new Intl.DateTimeFormat('ro-RO',{day:'numeric',month:'short'}).format(new Date(item.opened_at)));if(item.quantity!==1||item.unit!=='pack')meta.push(item.quantity+' '+(item.unit==='pack'?'ambalaje':item.unit));if(item.profile.simulation)meta.push('Demonstrație');if(meta.length)info.append(el('span',meta.join(' · '),'food-meta'));main.append(info);article.append(main);
+    const meta=[];if(item.opened_at)meta.push('Deschis '+new Intl.DateTimeFormat('ro-RO',{day:'numeric',month:'short'}).format(new Date(item.opened_at)));if(item.quantity!==1||item.unit!=='pack')meta.push(item.quantity+' '+(item.unit==='pack'?'ambalaje':item.unit));if(item.profile.simulation)meta.push('Demonstrație');if(meta.length)info.append(el('span',meta.join(' · '),'food-meta'));main.append(info);article.append(main);if(!item.expiry&&item.state!=='consumed'){const date=button('Adaugă data de pe ambalaj','date','food-date-action');date.dataset.item=item.id;article.append(date);}
     const warnings=D.allergenWarnings(item.profile,state.preferences.allergens);for(const w of warnings){const unknown=item.profile.food_data?.allergens?.status!=='declared';article.append(el('p',unknown?'Verifică alergenii pe ambalaj.':w,'food-warning'+(unknown?' muted':'')));}
     if(item.state!=='consumed'){const actions=el('div',undefined,'food-actions');const opened=button(item.opened_at?'Deja deschis':'Am deschis','open','');opened.dataset.item=item.id;opened.disabled=Boolean(item.opened_at);const consumed=button('Am terminat','consume','');consumed.dataset.item=item.id;actions.append(opened,consumed);article.append(actions);}box.append(article);
   }
@@ -42,16 +42,16 @@ async function lookup(code){
   const profile=D.unknownProfile(parsed);if(parsed.gtin14==='09520000000011'){profile.name='Pâine Bună Tehnic';profile.simulation=true;profile.source.kind='demonstration';profile.notices=['Exemplu demonstrativ. Termenul și valorile alimentare nu sunt validate.'];}return profile;
 }
 async function saveCode(code,{force=false}={}){
-  if(busyScan)return;busyScan=true;
+  if(busyScan)return false;busyScan=true;
   try{
-    let scanned;try{scanned=new URL(code);}catch{}if(scanned?.origin===location.origin&&scanned.pathname==='/acasa/'&&scanned.hash.startsWith('#bon=')){close('scanner');await openReceipt(new URLSearchParams(scanned.hash.slice(1)).get('bon'));return;}
+    let scanned;try{scanned=new URL(code);}catch{}if(scanned?.origin===location.origin&&scanned.pathname==='/acasa/'&&scanned.hash.startsWith('#bon=')){close('scanner');await openReceipt(new URLSearchParams(scanned.hash.slice(1)).get('bon'));return true;}
     const parsed=D.parseCode(code),now=Date.now();
     if(!force&&lastScan&&now-lastScan.time<8000&&D.scanIdentity(parsed,code)===lastScan.identity)return;
     $('scanner-status').textContent='Se adaugă alimentul…';const profile=await lookup(code);
     const result=await store.update(s=>D.addItem(s,profile,code));lastScan={code,identity:D.scanIdentity(parsed,code),time:Date.now()};
     $('scanner-status').textContent=profile.name+' · adăugat';$('scan-again').hidden=false;toast(profile.name+' · adăugat',result.event);navigator.vibrate?.(60);await render();
-    navigator.storage?.persist?.().catch(()=>{});
-  }catch(e){$('scanner-status').textContent=e.message||'Codul nu a putut fi citit.';if(!$('scanner').open)error(e);}finally{busyScan=false;}
+    navigator.storage?.persist?.().catch(()=>{});return true;
+  }catch(e){$('scanner-status').textContent=e.message||'Codul nu a putut fi citit.';if($('code-dialog').open){$('code-error').textContent=e.message||'Verifică codul de pe ambalaj.';$('code-error').hidden=false;const input=$('code-form').elements.code;input.setAttribute('aria-invalid','true');input.focus();}else if(!$('scanner').open)error(e);return false;}finally{busyScan=false;}
 }
 async function openReceipt(token){
   if(!/^[a-f0-9]{64}$/.test(token||''))throw Error('Legătura bonului nu este validă.');pendingReceipt=null;show('receipt-dialog');$('receipt-status').textContent='Se deschide bonul…';$('receipt-lines').replaceChildren();$('receipt-add').disabled=true;
@@ -76,7 +76,7 @@ async function detail(itemId){
   for(const text of p.notices||[])box.append(el('p',text,'subtle'));
   for(const text of D.allergenWarnings(p,state.preferences.allergens))box.append(el('p',text,'detail-alert'));
   const actions=el('div',undefined,'dialog-actions');if(item.state!=='consumed'){const o=button(item.opened_at?'Deja deschis':'Am deschis','open','button secondary');o.dataset.item=item.id;o.disabled=Boolean(item.opened_at);const c=button('Am terminat','consume','button primary');c.dataset.item=item.id;actions.append(o,c);}box.append(actions);
-  const edit=button(item.expiry?'Corectează':'Adaugă data de pe ambalaj','edit');box.append(edit);
+  if(!item.expiry){const date=button('Adaugă data de pe ambalaj','date');date.dataset.item=item.id;box.append(date);}box.append(button('Corectează alimentul','edit'));
   const texts=[['Ingrediente',p.ingredients],['Alergeni',p.allergen_text||'Nu avem o declarație verificată. Citește eticheta.'],['Păstrare',p.storage_text],['După deschidere',p.after_opening_text],['Nutriție',p.nutrition_text]];
   for(const [title,text] of texts)if(text){const sec=el('section',undefined,'detail-section');sec.append(el('h3',title),el('p',text));box.append(sec);}
   const opening=p.food_data?.after_opening;if(item.opened_at&&opening){box.append(el('p',`După deschidere: ${opening.hours} ore, dacă sunt respectate condițiile: ${opening.conditions}`,'subtle'));}
@@ -94,10 +94,10 @@ async function detail(itemId){
   if(p.public_url){const href=safeLink(p.public_url);if(href){const a=el('a','Pagina produsului','text-button');a.href=href;a.rel='noopener';source.append(a);}}
   if('speechSynthesis'in window){const b=button('Citește cu voce',null,'button secondary');b.addEventListener('click',()=>{speechSynthesis.cancel();const text=[item.name,s.text,p.allergen_text,...D.allergenWarnings(p,state.preferences.allergens)].filter(Boolean).join('. ');const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ro-RO';speechSynthesis.speak(utterance);});source.append(b);}box.append(source);show('details');
 }
-function edit(){
-  const i=state.items.find(i=>i.id===selected);if(!i)return;close('details');const f=$('edit-form');f.elements.name.value=i.name;f.elements.location.value=i.location;f.elements.quantity.value=i.quantity;f.elements.unit.value=i.unit;f.elements.date_kind.value=i.expiry?.kind||'unknown';f.elements.date_precision.value=i.expiry?.precision||'day';setDateType();f.elements.date_value.value=i.expiry?.value||'';$('date-photo-status').textContent='';show('editor');
+function edit(onlyDate=false){
+  const i=state.items.find(i=>i.id===selected);if(!i)return;close('details');dateOnly=onlyDate;$('editor-title').textContent=onlyDate?'Data de pe ambalaj':'Corectează alimentul';for(const group of $('edit-form').querySelectorAll('[data-edit-general]'))group.hidden=onlyDate;$('edit-error').hidden=true;const f=$('edit-form');f.elements.date_kind.removeAttribute('aria-invalid');f.elements.name.value=i.name;f.elements.location.value=i.location;f.elements.quantity.value=i.quantity;f.elements.unit.value=i.unit;f.elements.date_kind.value=i.expiry?.kind||'unknown';f.elements.date_precision.value=i.expiry?.precision||'day';setDateType();f.elements.date_value.value=i.expiry?.value||'';$('date-photo-status').textContent='';show('editor');if(onlyDate)f.elements.date_kind.focus();
 }
-function setDateType(){const f=$('edit-form'),precision=f.elements.date_precision.value;f.elements.date_value.type=precision==='month'?'month':precision==='year'?'number':'date';f.elements.date_value.min=precision==='year'?'1900':precision==='month'?'1900-01':'1900-01-01';f.elements.date_value.max=precision==='year'?'2200':precision==='month'?'2200-12':'2200-12-31';f.elements.date_value.required=f.elements.date_kind.value!=='unknown';}
+function setDateType(){const f=$('edit-form'),precision=f.elements.date_precision.value;f.elements.date_value.type=precision==='month'?'month':precision==='year'?'number':'date';f.elements.date_value.min=precision==='year'?'1900':precision==='month'?'1900-01':'1900-01-01';f.elements.date_value.max=precision==='year'?'2200':precision==='month'?'2200-12':'2200-12-31';f.elements.date_value.required=f.elements.date_kind.value!=='unknown';$('date-format').open=precision!=='day';}
 async function photoFile(file,maxSize=720){
   if(!file||file.size>25000000)throw Error('Alege o fotografie mai mică de 25 MB.');
   const object=URL.createObjectURL(file),image=new Image();try{image.src=object;await image.decode();if(image.naturalWidth*image.naturalHeight>30000000)throw Error('Fotografie prea mare.');const canvas=document.createElement('canvas'),ratio=Math.min(1,maxSize/Math.max(image.naturalWidth,image.naturalHeight));canvas.width=Math.max(1,Math.round(image.naturalWidth*ratio));canvas.height=Math.max(1,Math.round(image.naturalHeight*ratio));canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);const blob=await new Promise(r=>canvas.toBlob(r,'image/jpeg',.78));if(!blob)throw Error('Fotografia nu poate fi salvată.');return {image,canvas,blob,release:()=>URL.revokeObjectURL(object)};}catch{URL.revokeObjectURL(object);throw Error('Fotografia nu poate fi deschisă. Alege o imagine JPEG sau PNG.');}
@@ -114,8 +114,8 @@ async function refreshAlerts(){
 }
 document.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;try{
   if(b.dataset.close){close(b.dataset.close);return;}if(b.dataset.filter){filter=b.dataset.filter;for(const tab of document.querySelectorAll('[data-filter]')){const active=tab===b;tab.classList.toggle('active',active);tab.setAttribute('aria-pressed',String(active));}await render();return;}
-  const action=b.dataset.action;if(action==='scan'){await scan();return;}if(action==='photo'){$('photo-file').click();return;}if(action==='code'){close('scanner');show('code-dialog');return;}
-  if(action==='detail'){await detail(b.dataset.item);return;}if(action==='open'||action==='consume'){await act(b.dataset.item,action);if($('details').open)await detail(b.dataset.item);return;}if(action==='edit'){edit();return;}
+  const action=b.dataset.action;if(action==='scan'){await scan();return;}if(action==='photo'){$('photo-file').click();return;}if(action==='code'){close('scanner');$('code-error').hidden=true;$('code-form').elements.code.removeAttribute('aria-invalid');show('code-dialog');return;}
+  if(action==='detail'){await detail(b.dataset.item);return;}if(action==='open'||action==='consume'){await act(b.dataset.item,action);if($('details').open)await detail(b.dataset.item);return;}if(action==='date'){selected=b.dataset.item;edit(true);return;}if(action==='edit'){edit();return;}
   if(action==='settings'){for(const c of $('preferences').querySelectorAll('input'))c.checked=state.preferences.allergens.includes(c.value);show('settings');return;}
   if(action==='export'){b.disabled=true;try{const blob=await exportCopy(),a=el('a');a.href=URL.createObjectURL(blob);a.download='openaliment-acasa-'+D.today()+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),30000);toast('Copia este pregătită pentru salvare.');}finally{b.disabled=false;}return;}
   if(action==='import'){$('import-file').click();return;}if(action==='date-photo'){$('date-file').click();return;}
@@ -125,7 +125,8 @@ $('scan-again').addEventListener('click',()=>{if(lastScan)saveCode(lastScan.code
 $('scanner').addEventListener('close',()=>camera.stop());$('scanner').addEventListener('cancel',()=>camera.stop());
 document.addEventListener('visibilitychange',()=>{if(document.hidden)camera.stop();else{if($('scanner').open)close('scanner');refreshAlerts().catch(error);}});
 window.addEventListener('pagehide',()=>{camera.stop();globalThis.speechSynthesis?.cancel?.();});window.addEventListener('online',()=>{render().catch(error);refreshAlerts().catch(error);});window.addEventListener('offline',()=>render().catch(error));
-$('code-form').addEventListener('submit',async e=>{e.preventDefault();const b=e.submitter;b.disabled=true;try{await saveCode(e.target.elements.code.value,{force:true});close('code-dialog');}finally{b.disabled=false;}});
+$('code-form').addEventListener('submit',async e=>{e.preventDefault();const b=e.submitter||e.target.querySelector('button[type=submit]');if(b.disabled)return;b.disabled=true;$('code-error').hidden=true;e.target.elements.code.removeAttribute('aria-invalid');try{if(await saveCode(e.target.elements.code.value,{force:true}))close('code-dialog');}finally{b.disabled=false;}});
+$('code-form').elements.code.addEventListener('input',()=>{$('code-error').hidden=true;$('code-form').elements.code.removeAttribute('aria-invalid');});
 $('photo-file').addEventListener('change',async e=>{try{if(e.target.files[0])await addPhoto(e.target.files[0]);}catch(e){error(e);}finally{e.target.value='';}});
 $('date-file').addEventListener('change',async e=>{if(!e.target.files[0])return;let picture;try{
   picture=await photoFile(e.target.files[0],1800);const {recognize}=await import('./ocr.js?v=8');const result=await recognize(picture.canvas,text=>$('date-photo-status').textContent=text);const f=$('edit-form'),list=result.candidates;
@@ -135,7 +136,36 @@ $('date-file').addEventListener('change',async e=>{if(!e.target.files[0])return;
   f.elements.date_value.focus();
 }catch(e){$('date-photo-status').textContent='Fotografia nu a putut fi citită. Poți alege data de pe ambalaj.';error(e);}finally{picture?.release();e.target.value='';}});
 $('edit-form').elements.date_precision.addEventListener('change',()=>{const f=$('edit-form');f.elements.date_value.value='';setDateType();});$('edit-form').elements.date_kind.addEventListener('change',()=>{const f=$('edit-form');if(f.elements.date_kind.value==='unknown')f.elements.date_value.value='';setDateType();});
-$('edit-form').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;try{if(f.elements.date_value.value&&f.elements.date_kind.value==='unknown'){f.elements.date_kind.focus();throw Error('Alege tipul datei înscrise pe ambalaj sau Memento personal.');}const expiry=f.elements.date_kind.value==='unknown'?null:D.checkedDate({kind:f.elements.date_kind.value,value:f.elements.date_value.value,precision:f.elements.date_precision.value,source:'user'});const result=await store.update(s=>D.changeItem(s,selected,'edit',{name:f.elements.name.value,location:f.elements.location.value,quantity:Number(f.elements.quantity.value),unit:f.elements.unit.value,expiry}));close('editor');await render();toast('Corectare salvată.',result.event);}catch(e){error(e);}});
+$('edit-form').addEventListener('submit',async event=>{
+  event.preventDefault();
+  const form=event.target,submit=event.submitter||form.querySelector('button[type=submit]');
+  if(submit.disabled)return;
+  submit.disabled=true;
+  $('edit-error').hidden=true;
+  form.elements.date_kind.removeAttribute('aria-invalid');
+  try{
+    if(dateOnly&&form.elements.date_kind.value==='unknown'&&!form.elements.date_value.value){
+      form.elements.date_kind.focus();
+      throw Error('Alege tipul și data de pe ambalaj. Dacă nu le cunoști, poți închide acest panou.');
+    }
+    if(form.elements.date_value.value&&form.elements.date_kind.value==='unknown'){
+      form.elements.date_kind.setAttribute('aria-invalid','true');
+      form.elements.date_kind.focus();
+      throw Error('Alege tipul datei înscrise pe ambalaj sau Memento personal.');
+    }
+    const expiry=form.elements.date_kind.value==='unknown'?null:D.checkedDate({kind:form.elements.date_kind.value,value:form.elements.date_value.value,precision:form.elements.date_precision.value,source:'user'});
+    const changes=dateOnly?{expiry}:{name:form.elements.name.value,location:form.elements.location.value,quantity:Number(form.elements.quantity.value),unit:form.elements.unit.value,expiry};
+    const result=await store.update(state=>D.changeItem(state,selected,'edit',changes));
+    close('editor');
+    await render();
+    toast(dateOnly?'Data a fost salvată.':'Corectare salvată.',result.event);
+  }catch(error){
+    $('edit-error').textContent=error.message||'Verifică informațiile și încearcă din nou.';
+    $('edit-error').hidden=false;
+  }finally{
+    submit.disabled=false;
+  }
+});
 $('preferences').addEventListener('submit',async e=>{e.preventDefault();try{const selected=[...e.target.querySelectorAll('input:checked')].map(c=>c.value);await store.update(s=>s.preferences.allergens=selected);close('settings');await render();toast('Alegere păstrată pe dispozitiv.');}catch(e){error(e);}});
 $('import-file').addEventListener('change',async e=>{try{if(e.target.files[0]){const count=await importCopy(e.target.files[0]);await render();close('settings');toast(count?count+' alimente adăugate din copie.':'Alimentele erau deja salvate.');refreshAlerts().catch(()=>{});}}catch(e){error(e);}finally{e.target.value='';}});
 setInterval(()=>{if(!document.hidden)refreshAlerts().catch(()=>{});},60000);

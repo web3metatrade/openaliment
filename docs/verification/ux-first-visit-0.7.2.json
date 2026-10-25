@@ -1,0 +1,28 @@
+{
+  "release": "0.7.2",
+  "executed_at": "2026-10-25T18:59:36.640107+00:00",
+  "environment": "Isolated local MariaDB 11.4 and Edge browser; synthetic data and email; AI disabled",
+  "suites": 58,
+  "checks": 12847,
+  "failed_suites": 0,
+  "browser_suites": {
+    "tests/consumer-browser.cjs": 29,
+    "tests/account-access-browser.cjs": 9,
+    "tests/marketplace-browser.cjs": 39,
+    "tests/first-visit-browser.cjs": 44
+  },
+  "responsive_widths_css_px": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "sql_migration_required": false,
+  "gs1_core_changed": false,
+  "public_api_contract_changed": false,
+  "not_claimed": [
+    "Physical phone/camera/printer/POS validation",
+    "Participant study or eye tracking",
+    "Staging deployment before GitHub verification"
+  ]
+}
