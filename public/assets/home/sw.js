@@ -1,10 +1,10 @@
 'use strict';
-const CACHE='openaliment-home-8';
+const CACHE='openaliment-home-9';
 const SHELL='/acasa/';
 const MEDIA_CACHE='openaliment-home-media-1';
 const MEDIA=['/assets/vendor/zxing-browser.min.js','/assets/ocr/tesseract.min.js','/assets/ocr/worker.min.js','/assets/ocr/tesseract-core-lstm.js','/assets/ocr/tesseract-core-lstm.wasm','/assets/ocr/lang/eng.traineddata.gz'];
-const ASSETS=['/assets/home/home.css?v=8','/assets/home/app.js?v=8','/assets/home/domain.js?v=8','/assets/home/store.js?v=8','/assets/home/scanner.js?v=8','/assets/home/transfer.js?v=8','/assets/home/ocr.js?v=8','/assets/home/receipt.js?v=8','/assets/home/cloud.js?v=8','/assets/home/cloud-domain.js?v=8','/assets/home/privacy.js?v=8','/assets/mark.svg'];
-self.addEventListener('install',event=>event.waitUntil((async()=>{const c=await caches.open(CACHE);await c.addAll(ASSETS);const r=await fetch(SHELL,{cache:'no-store'});if(r.ok&&r.headers.get('X-OpenAliment-App')==='home')await c.put(SHELL,r);})()));
+const ASSETS=['/assets/home/home.css?v=9','/assets/home/app.js?v=9','/assets/home/domain.js?v=8','/assets/home/store.js?v=8','/assets/home/scanner.js?v=8','/assets/home/transfer.js?v=8','/assets/home/ocr.js?v=8','/assets/home/receipt.js?v=8','/assets/home/cloud.js?v=8','/assets/home/cloud-domain.js?v=8','/assets/home/privacy.js?v=8','/assets/mark.svg'];
+self.addEventListener('install',event=>event.waitUntil((async()=>{const c=await caches.open(CACHE);await c.addAll(ASSETS);const r=await fetch(SHELL,{cache:'no-store'});if(!r.ok||r.headers.get('X-OpenAliment-App')!=='home')throw Error('home_shell_unavailable');await c.put(SHELL,r);await self.skipWaiting();})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{const media=await caches.open(MEDIA_CACHE);for(const k of await caches.keys())if(k.startsWith('openaliment-home-')&&k!==CACHE&&k!==MEDIA_CACHE){const old=await caches.open(k);for(const path of MEDIA){if(await media.match(path))continue;const hit=await old.match(path);if(hit)await media.put(path,hit);}await caches.delete(k);}await self.clients.claim();})()));
 self.addEventListener('fetch',event=>{
   const u=new URL(event.request.url);

@@ -116,6 +116,7 @@ def main():
                 run([args.node, 'tests/consumer-browser.cjs'])
                 run([args.node, 'tests/account-access-browser.cjs'])
                 run([args.node, 'tests/marketplace-browser.cjs'])
+                run([args.node, 'tests/first-visit-browser.cjs'])
             run([args.php, 'tests/backup.php'])
     except (RuntimeError, OSError) as error:
         exit_code = 1
