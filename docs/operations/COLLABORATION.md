@@ -28,7 +28,7 @@ Configurația stagingului păstrează validările de transport ale modului `prod
 
 ## Instalare și actualizări
 
-Primul pachet de staging se extrage în rădăcina proiectului, **deasupra** `public/`. Baza propusă este `apelero_openaliment_dev`, cu utilizator SQL dedicat. Parola se completează numai în `config/local.php` pe hosting. Instalarea `/setup` se face cu tokenul privat de instalare, apoi tokenul se elimină din configurație. Nu se folosește contul SQL al producției.
+Primul pachet de staging se extrage în rădăcina proiectului, **deasupra** `public/`. Baza și utilizatorul SQL confirmate de proprietar sunt `apelero_dev_openaliment`. Utilizatorul primește acces numai la această bază. Parola se completează numai în `config/local.php` pe hosting. Instalarea `/setup` se face cu tokenul privat de instalare, apoi tokenul se elimină din configurație. Nu se folosește contul SQL al producției.
 
 Conexiunea HTTPS pentru staging se generează separat:
 

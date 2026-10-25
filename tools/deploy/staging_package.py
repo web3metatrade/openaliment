@@ -47,7 +47,7 @@ def build():
         '# Prima instalare staging\n\n'
         'Extrage arhiva in /home/apelero/dev.openaliment.ro/, deasupra public/.\n'
         'Foloseste PHP 8.4+ si Document Root /home/apelero/dev.openaliment.ro/public/.\n'
-        'Creeaza baza apelero_openaliment_dev si un utilizator SQL dedicat aceleiasi baze.\n'
+        'Baza si utilizatorul SQL confirmate sunt apelero_dev_openaliment. Acorda utilizatorului acces numai la aceasta baza.\n'
         'Completeaza datele SQL numai in config/local.php; parola este intentionat goala in acest pachet.\n'
         'Nu copia configuratii sau date de productie. Restrictioneaza stagingul echipei prin hosting.\n'
         'Dupa verificarea hosting-check.php, deschide /setup si creeaza contul administratorului.\n'

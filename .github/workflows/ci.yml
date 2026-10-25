@@ -43,7 +43,6 @@ jobs:
     env:
       OA_GS1_REFERENCE_DIR: tests/runtime/reference-gs1
       OA_TEST_DB_HOST: 127.0.0.1
-      OA_TEST_DB_PORT: ${{ job.services.database.ports['3306'] }}
       OA_TEST_DB_USER: openaliment_tests
       OA_TEST_DB_PASSWORD: synthetic-ci-only
     steps:
@@ -71,8 +70,12 @@ jobs:
       - if: inputs.browser == true
         run: npx playwright install --with-deps chromium
       - if: inputs.browser != true
+        env:
+          OA_TEST_DB_PORT: ${{ job.services.database.ports['3306'] }}
         run: python tools/qa/run.py --suite local --reset-test-db
       - if: inputs.browser == true
+        env:
+          OA_TEST_DB_PORT: ${{ job.services.database.ports['3306'] }}
         run: python tools/qa/run.py --suite browser --reset-test-db
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
