@@ -8,6 +8,8 @@ Codul propriu este publicat sub [MIT](LICENSE). [Licențele materialelor și bib
 
 Pentru colaboratori: [CONTRIBUTING.md](CONTRIBUTING.md), [indexul documentației](docs/README.md), [harta codului](docs/architecture/README.md) și [raportarea vulnerabilităților](SECURITY.md).
 
+Ramura implicită `dev` primește contribuțiile prin pull request și furnizează pachetele pentru staging. `main` păstrează codul acceptat pentru producție. Promovarea `dev` → `main` cere review și CI; niciun merge nu actualizează automat hostingul. Publicarea pe `dev.openaliment.ro` sau `openaliment.ro` rămâne explicită și controlată de proprietar.
+
 [Organizarea GitHub și a mediilor](docs/operations/COLLABORATION.md) descrie pull request-urile, stagingul, publicarea controlată și limitele contului cPanel comun. Repository-ul distribuie codul și date sintetice de test; arhiva istorică OpenBread, configurațiile private și capturile administrative rămân separate.
 
 **English:** See the [development guide](docs/development/README.md) for reproducible setup, isolated tests, generated contracts and cPanel packaging. The UI remains Romanian; hosting requires no Node, Python, Composer or shell.

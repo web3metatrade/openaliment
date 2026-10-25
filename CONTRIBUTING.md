@@ -11,6 +11,8 @@ Mulțumim pentru contribuții. Start with [the development guide](docs/developme
 
 ## Un pull request ușor de verificat
 
+- Pornește din `dev` și trimite PR-ul către `dev`, inclusiv din fork. `main` primește promovări din `dev` sau corecții urgente dintr-un branch `hotfix/...` al repository-ului. După promovare, sincronizăm `main` în `dev`. Vezi [fluxul complet](docs/operations/COLLABORATION.md).
+- Folosește squash pentru branchurile scurte, dar merge commit pentru `dev` → `main` și `main` → `dev`, ca să păstrăm istoricul comun. Aprobarea, merge-ul și publicarea pe hosting sunt acțiuni distincte.
 - Descrie problema, comportamentul rezultat și verificările executate.
 - Separă formatarea de schimbările funcționale. Folosește convențiile PSR-12 pentru PHP nou și module JS simple; nu adăuga dependențe runtime fără o nevoie concretă.
 - Păstrează compatibilitatea URL-urilor persistente, a importurilor și a contractelor publice. O modificare incompatibilă cere migrare și explicație în PR.

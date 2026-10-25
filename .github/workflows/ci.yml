@@ -18,6 +18,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  branch-flow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - run: python tools/qa/branch_policy.py
+
   local:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -100,8 +112,8 @@ jobs:
 
   package:
     name: Build verified cPanel package
-    needs: [local, advisories]
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [local, advisories, branch-flow]
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -114,7 +126,7 @@ jobs:
       - run: python tools/package-release.py --profile app
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: cpanel-app-${{ github.sha }}
+          name: cpanel-app-${{ github.ref_name }}-${{ github.sha }}
           path: |
             release/*_app_cPanel.zip
             release/*_app_cPanel.zip.sha256
