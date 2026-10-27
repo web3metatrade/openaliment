@@ -34,7 +34,9 @@
     "config/backup.local.example.php",
     "config/migrations.local.example.php",
     "config/restore.local.example.php",
-    "tools/standards/fetch.py"
+    "tools/standards/fetch.py",
+    "tools/external-worker.php",
+    "config/external.local.example.php"
   ],
   "documentation_directories": [
     "docs"

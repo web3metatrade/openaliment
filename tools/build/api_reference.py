@@ -259,7 +259,7 @@ FIELDS.update({
     'expires_in_days':'Valabilitatea linkului-capability în zile, de la emitere.',
     'expiry':'Termenul declarat/observat, cu tip, precizie și proveniență. null nu înseamnă termen nelimitat.',
     'exported_at':'Momentul exportului, ISO 8601, cu fus orar.',
-    'external_sources':'false: platforma nu interoghează automat baze externe pentru produse necunoscute.',
+    'external_sources':'Disponibilitatea sursei externe activate; căutarea se solicită separat, cu buget și proveniență.',
     'fat_g':'Grăsimi în grame pentru baza și prepararea declarate.',
     'feedback':'Copiile moderate exportabile ale feedbackului; originalele private și secretele de urmărire sunt excluse.',
     'feedback_id':'ID-ul feedbackului asociat propunerii sau jobului de analiză.',
@@ -509,6 +509,9 @@ def enrich(spec, routes, output):
     from marketplace_reference import install as install_marketplace
     marketplace_metadata=install_marketplace(add,FIELDS,obj,arr,nullable,ref,S,B,N,ID,DATE)
 
+    from external_reference import install as install_external
+    external_metadata=install_external(add,FIELDS,obj,arr,nullable,ref,S,B,N,ID,DATE)
+
     def local_schema(filename, pointer=''):
         root = json.loads((output / filename).read_text(encoding='utf-8'))
         def walk(node):
@@ -536,6 +539,8 @@ def enrich(spec, routes, output):
             if value.get('format')=='date-time':value['description']='Moment ISO 8601 cu fus orar explicit; păstrează offset-ul sau convertește explicit la UTC.'
             if key=='allergens' and value.get('type')=='object':value['description']='Declarația structurată a alergenilor: status, prezență și posibile urme. unknown nu înseamnă absență.'
             if key=='nutrition' and ('oneOf' in value or value.get('type')=='object'):value['description']='Declarația nutrițională structurată, cu status, bază, preparare, jurisdicție și valori explicite.'
+            if key=='allergens' and 'negative_declaration' in value.get('properties',{}):value['description']='Observații externe despre alergeni; reported și derived rămân distincte de declarația aprobată a producătorului.'
+            if key=='nutrition' and 'sets' in value.get('properties',{}):value['description']='Seturi nutritive externe cu baze, preparări și proveniențe distincte; estimated nu devine declarație de etichetă.'
             if key=='after_opening' and ('anyOf' in value or value.get('type')=='object'):value['description']='Fereastra de utilizare declarată după deschidere, în ore și cu condiții; null înseamnă necunoscut.'
             if key=='type' and value.get('enum')==['add','open','consume','edit','undo']:value['description']='Acțiunea din istoricul inventarului: adăugare, deschidere, consum, editare sau anulare.'
             if key=='state' and value.get('enum')==['available','consumed']:value['description']='Starea ambalajului personal: disponibil sau marcat consumat; distinctă de starea lotului producătorului.'
@@ -671,7 +676,7 @@ def enrich(spec, routes, output):
     add('PublicFeedback', table_schema('feedback', ['id', 'kind', 'rating', 'public_text', 'created_at', 'batch_id', 'product_info_version_id']))
     add('CatalogItem', obj({'id': ID, 'product_id': ID, 'gtin14': nullable(S(14)), 'identifier_status': S(24), 'product_info_version_id': ID, 'version_key': S(60), 'producer': S(180), 'name': S(180), 'category': S(80), 'net_quantity': S(100), 'url': {'type': 'string', 'format': 'uri'}}))
     unknown_food = {'schema_version': 'openaliment.food.v1', 'allergens': {'status': 'unknown', 'contains': [], 'may_contain': []}, 'nutrition': {'status': 'unknown', 'basis': None, 'preparation': None, 'jurisdiction': None, 'values': None, 'portion': None}, 'after_opening': None}
-    source = obj({'kind': {'enum': ['unavailable', 'demonstration', 'producer_approved']}, 'checked_at': TIME, 'version_id': ID, 'version': S(60), 'sha256': SHA, 'approved_at': DATE}, ['kind', 'checked_at'])
+    source = obj({'kind': {'enum': ['unavailable', 'demonstration', 'producer_approved','external']}, 'name':S(180),'license':S(120),'url':S(2048),'checked_at': TIME, 'version_id': ID, 'version': S(60), 'sha256': SHA, 'approved_at': DATE}, ['kind', 'checked_at'])
     consumer = obj({'schema_version': {'const': 'openaliment.consumer-product.v1'}, 'name': S(180), **{k: nullable(S(5000)) for k in ['category', 'producer', 'ingredients', 'allergen_text', 'storage_text', 'after_opening_text', 'nutrition_text', 'net_quantity', 'public_url', 'lot_code']}, **{k: nullable(ID) for k in ['product_id', 'trade_item_id', 'batch_id']}, 'gtin14': nullable(S(14)), 'batch_state': nullable(S(24)), 'food_data': ref('FoodData'), 'expiry': nullable(ref('FoodDate')), 'observed_dates': arr(ref('FoodDate')), 'alerts': arr(ref('PublicAlert')), 'alerts_checked_at': nullable(TIME), 'alert_scope': {'enum': ['unknown', 'product_only', 'batch']}, 'source': source, 'simulation': B, 'notices': arr(S())})
     consumer['required'].remove('batch_state')
     demo = {k: None for k in ['category', 'producer', 'product_id', 'trade_item_id', 'batch_id', 'lot_code', 'ingredients', 'allergen_text', 'storage_text', 'after_opening_text', 'nutrition_text', 'net_quantity', 'expiry', 'alerts_checked_at']}
@@ -727,7 +732,7 @@ def enrich(spec, routes, output):
     add('ConnectorPreview', obj({'schema_version': {'const': 'openaliment.integration-preview.v1'}, 'operation': {'enum': ['product', 'batch', 'receipt']}, 'mapping_sha256': SHA, 'canonical': {'oneOf': [canonical_product, canonical_batch, canonical_receipt]}, 'writes': {'const': False}, 'publication': {'const': 'requires_separate_approval'}}))
     result_fields = {'operation': {'enum': ['product', 'batch', 'receipt']}, 'mapping_id': ID, 'mapping_sha256': SHA, 'event_key': S(128)}
     add('ConnectorIngested', {'oneOf': [obj(dict(result_fields, product_id=ID, trade_item_id=ID, label_id=ID, state={'const': 'draft'})), obj(dict(result_fields, **schemas['BatchCreated']['properties'])), obj(dict(result_fields, id=ID, receipt_url=S(2048), expires_in_days={'const': 30}, simulation=B))]})
-    counts = obj({k: N for k in ['products', 'trade_items', 'product_info_versions', 'recipe_versions', 'batches', 'batch_events', 'alerts', 'documents', 'change_proposals', 'url_mappings', 'imports', 'resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings', 'feedback', 'audit_events']}, [])
+    counts = obj({k: N for k in ['products', 'trade_items', 'product_info_versions', 'recipe_versions', 'batches', 'batch_events', 'alerts', 'documents', 'change_proposals', 'url_mappings', 'imports', 'resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings', 'feedback', 'audit_events','external_sources']}, [])
     for key,field in counts['properties'].items():field['description']='Numărul înregistrărilor din colecția '+key+' din pachetul analizat, înaintea atribuirii ID-urilor locale.'
     add('ImportReport', obj({'schema_version': S(80), 'counts': counts, 'publication': {'const': 'private'}, 'verification': {'const': 'requires_reverification'},'id_map':{'type':'object','additionalProperties':copy.deepcopy(ID)},'history_preserved_in_import':{'const':True}},['schema_version','counts','publication','verification']))
     add('PilotImportReport', obj({'name': S(180), 'visibility': {'const': 'private'}, 'technical_status': {'const': 'experimental'}, 'recipe_identity': {'const': 'pbt:R1'}, 'nominal_input_mass_g': {'const': 3790}, 'originals': {'const': 18}, 'recovered': {'const': 7}, 'quarantine': {'const': 'PBT-SRC-06'}, 'cost': {'const': 'COST3 estimated'}, 'manifest_sha256': SHA, 'product_id': ID, 'recipe_id': ID}, ['name', 'visibility', 'technical_status', 'recipe_identity', 'nominal_input_mass_g', 'originals', 'recovered', 'quarantine', 'cost', 'manifest_sha256']))
@@ -744,7 +749,8 @@ def enrich(spec, routes, output):
         export_data[table] = arr(fields)
     export_data['feedback'] = arr(table_schema('feedback', ['id', 'product_id', 'batch_id', 'product_info_version_id', 'kind', 'rating', 'public_text', 'created_at'], raw=True))
     export_data['audit_events'] = arr(table_schema('audit_events', ['id', 'action', 'object_id', 'details_json', 'created_at'], raw=True))
-    add('ProducerTransfer', obj({'schema_version': {'const': 'openaliment.transfer.v1'}, 'exported_at': TIME, 'source_base_url': {'type': 'string', 'format': 'uri'}, 'organization': obj({'id': ID, 'display_name': S(180)}), 'data': obj(export_data, [k for k in export_data if k not in ['resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings']]), 'data_sha256': SHA}))
+    export_data['external_sources']=arr(obj({'label_id':ID,'revision':ref('ExternalFoodRecord'),'fields':arr(S(40)),'source_base_url':S(2048)}))
+    add('ProducerTransfer', obj({'schema_version': {'const': 'openaliment.transfer.v1'}, 'exported_at': TIME, 'source_base_url': {'type': 'string', 'format': 'uri'}, 'organization': obj({'id': ID, 'display_name': S(180)}), 'data': obj(export_data, [k for k in export_data if k not in ['resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings','external_sources']]), 'data_sha256': SHA}))
 
     # Acasă has a separate identity realm, cookies, CSRF and numeric sync cursor.
     add('HomeChanges', local_schema('home-sync.schema.json', '$defs/Page'))
@@ -775,7 +781,7 @@ def enrich(spec, routes, output):
     }
     for key, value in vocabs.items():
         add('Vocabulary' + key.title().replace('-', ''), value)
-    add('ConsumerCapabilities', obj({'schema_version': {'const': 'openaliment.capabilities.v1'}, 'date_ocr': B, 'cloud_sync': B, 'sync_scope': arr(S(40)), 'shopping_sync': {'const': False}, 'digital_receipts': B, 'external_sources': {'const': False}}))
+    add('ConsumerCapabilities', obj({'schema_version': {'const': 'openaliment.capabilities.v1'}, 'date_ocr': B, 'cloud_sync': B, 'sync_scope': arr(S(40)), 'shopping_sync': {'const': False}, 'digital_receipts': B, 'external_sources': B}))
     add('ServiceStatus', obj({'status': {'enum': ['operational', 'unavailable']}, 'checked_at': TIME, 'ai_required': {'const': False}}))
     for kind, columns in {'Organizations': ['id', 'display_name', 'identity_status', 'created_at'], 'Users': ['id', 'email', 'display_name', 'email_verified', 'active', 'created_at'], 'GtinClaims': ['id', 'tenant_id', 'name', 'gtin14', 'gtin_status', 'claim_evidence', 'verified_by', 'verified_at']}.items():
         add('Admin' + kind, table_schema({'Organizations': 'organizations', 'Users': 'users', 'GtinClaims': 'trade_items'}[kind], columns))
@@ -808,6 +814,8 @@ def enrich(spec, routes, output):
     def classify(path, method, op):
         r = registry.get((method, path))
         h = r['handler'] if r else ''
+        external=external_metadata(path,method,h)
+        if external:return external
         marketplace=marketplace_metadata(path,method,h)
         if marketplace:return marketplace
         readiness = readiness_metadata(path, method, h)
@@ -1175,6 +1183,8 @@ def enrich(spec, routes, output):
                     if example is None and path.endswith(('/preview', '/join')) and '/home/' in path:
                         example = {'token': '0' * 64}
                     media['example'] = copy.deepcopy(example) if example is not None else synth(media['schema'])
+            if path=='/api/v2/public/food/lookups':
+                op['responses']['202']={'description':'Căutare admisă sau reîncercare programată; respectă Retry-After.','headers':{'Retry-After':{'schema':{'type':'integer','minimum':1},'description':'Secunde până la următoarea verificare.'}}}
             # Each successful representation carries an explicit example, including text/binary.
             for status, response in op['responses'].items():
                 if not status.startswith('2'):
@@ -1201,6 +1211,14 @@ def enrich(spec, routes, output):
                 line = json.dumps(header, ensure_ascii=False, separators=(',', ':')) + '\n'
                 stream = line + json.dumps({'end': True, 'records': 0, 'sha256': hashlib.sha256(line.encode()).hexdigest()}, separators=(',', ':')) + '\n'
                 success['content']['application/x-ndjson'] = {'schema': {'type': 'string', 'description': 'Unele documente sunt base64 în rânduri. Digestul exclude propria linie finală; include LF pentru toate liniile precedente.'}, 'example': stream}
+            if path.startswith('/api/v2/public/external-assets/'):
+                op['responses']['200']['content']={mime:{'schema':{'type':'string','format':'binary'},'example':'(octeți verificați ai fotografiei licențiate)'} for mime in ['image/jpeg','image/png','image/webp']}
+            if path=='/api/v2/public/sources/openfoodfacts/export':
+                line=json.dumps({'manifest':{'schema_version':'openaliment.external-dataset.v1','provider':'openfoodfacts','license':'ODbL-1.0'}},separators=(',',':'))+'\n'
+                stream=line+json.dumps({'end':True,'records':0,'sha256':hashlib.sha256(line.encode()).hexdigest()},separators=(',',':'))+'\n'
+                op['responses']['200']['content']={'application/x-ndjson':{'schema':{'type':'string'},'example':stream}}
+            if path.startswith('/api/v2/manage/sources/openfoodfacts/publications/') and path.endswith('/package'):
+                op['responses']['200']['content']={'application/zip':{'schema':{'type':'string','format':'binary'},'example':'(ZIP cu products.csv, contribution.json și README.txt)'}}
             if path == '/oauth/revoke':
                 op['responses']['200'].pop('content', None)
                 op['responses']['200']['description'] = 'Revocare procesată, corp gol (inclusiv pentru token necunoscut). Nu apela response.json().'

@@ -39,7 +39,7 @@ schemas.update({
  'Import':obj({'dry_run':{'type':'boolean','default':True},'package':{'type':'object','additionalProperties':True}}),
  'ApiKey':obj({'name':text(120),'days':{'type':'integer','minimum':1,'maximum':365,'default':90},'scopes':{'type':'array','minItems':1,'uniqueItems':True,'items':{'type':'string','enum':['read','write','publish','alerts','export','import','community']}},'current_password':text(200)},['name','scopes']),
  'ApiKeyRotation':obj({'name':text(120),'days':{'type':'integer','minimum':1,'maximum':365},'current_password':text(200)}),
- 'OAuthClient':obj({'name':text(120),'redirect_uris':{'type':'array','minItems':1,'maxItems':10,'items':{'type':'string','format':'uri','maxLength':2048}},'scopes':{'type':'array','minItems':1,'maxItems':10,'items':{'type':'string','enum':['read','write','publish','alerts','export','import','community','home:read','home:write','home:manage']}}},['name','redirect_uris']),
+ 'OAuthClient':obj({'name':text(120),'redirect_uris':{'type':'array','minItems':1,'maxItems':10,'items':{'type':'string','format':'uri','maxLength':2048}},'scopes':{'type':'array','minItems':1,'maxItems':12,'items':{'type':'string','enum':['read','write','publish','alerts','export','import','community','home:read','home:write','home:manage']}}},['name','redirect_uris']),
  'Login':obj({'email':{'type':'string','format':'email','maxLength':190},'password':text(200)},['email','password']),
  'PasswordChange':obj({'current_password':text(200),'new_password':{'type':'string','minLength':12,'maxLength':200},'confirmation':text(200)},['current_password','new_password','confirmation']),
  'AccessRevocation':obj({'current_password':text(200)},['current_password']),
@@ -56,6 +56,10 @@ schemas.update({
 })
 from marketplace_reference import requests as marketplace_requests
 schemas.update(marketplace_requests(obj,text,ID))
+from external_contracts import requests as external_requests
+schemas.update(external_requests())
+for schema_name in ['ApiKey','OAuthClient']:
+ schemas[schema_name]['properties']['scopes']['items']['enum'] += ['sharing:manage','sharing:write']
 error_response={'description':'Eroare API: cod, mesaj și identificatorul cererii pentru suport.','content':{'application/json':{'schema':{'$ref':'#/components/schemas/Error'}}},'headers':{'X-Request-ID':{'schema':{'type':'string'},'description':'Correlation ID'},'Retry-After':{'schema':{'type':'integer'},'description':'Present on throttling, seconds until retry'}}}
 def operation_id(prefix,method,path):return prefix+method.title()+''.join(x.title() for x in re.findall(r'[A-Za-z0-9]+',path))
 missing=[
@@ -112,8 +116,9 @@ for r in routes:
  method=r['method'].lower();path=r['path'];handler=r['handler'];public=r['auth']=='public'
  op={'operationId':r['id'],'summary':r['summary'],'tags':[handler.split('.')[0].split(':')[0]],'security':[] if public or r['auth']=='session-optional' else ([{'Bearer':[]},{'ProducerSession':[]}] if r['auth']=='producer' else [{'ProducerSession':[]}]),'x-required-scope':r['scope'],'x-auth-context':r['auth'],'parameters':[],'responses':{}}
  op['description']='Datele publice sunt aprobate explicit. O valoare necunoscută nu înseamnă zero. Rețetele private nu intră în răspunsurile publice.' if public else 'Fiecare cerere verifică organizația, resursa, apartenența și rolul curent. Modificările din sesiunea web cer și X-CSRF-Token. Cheile API nu pot emite alte chei și nu acordă administrarea platformei.'
- if '{id}' in path:op['parameters'].append({'name':'id','in':'path','required':True,'schema':ID})
+ for parameter in re.findall(r'\{([a-z_]+)\}',path):op['parameters'].append({'name':parameter,'in':'path','required':True,'schema':ID})
  paged=handler in ['manage.list','manage.children','public.catalog','public.feedback'] or handler=='public.children' and '/products/' in path or handler=='community.votes' or handler=='admin.list' or handler=='keys.list' or handler=='manage.connector' and path.endswith('/events')
+ if handler in ['external.revisionIndex','external.bindings','external.conflicts','external.grants','external.publications']:paged=True
  if handler in ['marketplace.jobs','marketplace.catalog','marketplace.releases','marketplace.units','marketplace.selections']:paged=True
  if paged:
   op['parameters'] += [{'name':'cursor','in':'query','schema':ID,'description':'Last id from prior page. Omit on first request.'},{'name':'limit','in':'query','schema':{'type':'integer','minimum':1,'maximum':100,'default':20}}]
@@ -128,6 +133,7 @@ for r in routes:
  if handler=='manage.connector' and path.endswith('/bindings'):op['parameters'] += [{'name':'external_id','in':'query','schema':text(120),'description':'Exclusive cursor in next_external_id, rather than an internal id.'},{'name':'limit','in':'query','schema':{'type':'integer','minimum':1,'maximum':100}}]
  idempotent=handler.startswith(('mutation:','keys.create','keys.rotate')) or handler in ['manage.upload','manage.import','manage.importStream','manage.ai'] and method=='post' or handler=='developer.apps' and method=='post' or handler.startswith('admin:')
  if handler in ['marketplace.select','marketplace.createJob','marketplace.cancel','marketplace.reprint']:idempotent=True
+ if handler.startswith('external.') and r['auth']=='producer' and method=='post' and handler not in ['external.preview','external.publicationPreview']:idempotent=True
  if idempotent:op['parameters'].append({'name':'Idempotency-Key','in':'header','required':handler not in ['manage.import','manage.importStream'],'schema':{'type':'string','pattern':'^[A-Za-z0-9_.:-]{8,128}$'},'description':'Same key and payload on retries. Import dry_run=true does not require it. Key issuance replays metadata only, never the secret.'})
  if method in ['post','put','delete'] and not public and r['auth']!='session-optional':op['parameters'].append({'name':'X-CSRF-Token','in':'header','required':r['auth'] in ['owner-session','session','admin-session'],'schema':text(64),'description':'Obligatoriu pentru sesiunea web. Nu înlocuiește autentificarea Bearer la operațiile care permit tokenuri.'})
  if r['auth']=='print-agent':

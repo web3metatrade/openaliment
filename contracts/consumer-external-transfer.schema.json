@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAliment personal transfer v2 with licensed external observations",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "openaliment.home.transfer.v2"
+    },
+    "exported_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "inventory": {
+          "$ref": "consumer-inventory.schema.json"
+        },
+        "photos": {
+          "type": "array",
+          "maxItems": 5000,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "mime": {
+                "const": "image/jpeg"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "content_base64": {
+                "type": "string",
+                "maxLength": 1400000
+              }
+            },
+            "required": [
+              "id",
+              "mime",
+              "sha256",
+              "content_base64"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "external_records": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "$ref": "external-food-record.schema.json"
+          }
+        }
+      },
+      "required": [
+        "inventory",
+        "photos",
+        "external_records"
+      ],
+      "additionalProperties": false
+    },
+    "data_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "exported_at",
+    "data",
+    "data_sha256"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "openaliment.external-dataset.v1"
+    },
+    "provider": {
+      "const": "openfoodfacts"
+    },
+    "license": {
+      "const": "ODbL-1.0"
+    },
+    "source_environment": {
+      "enum": [
+        "production",
+        "staging"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000
+    },
+    "source_url": {
+      "type": "string",
+      "maxLength": 2048
+    }
+  },
+  "required": [
+    "provider",
+    "license",
+    "sha256",
+    "record_count"
+  ],
+  "additionalProperties": false
+}

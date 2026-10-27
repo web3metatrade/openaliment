@@ -1,8 +1,10 @@
 import * as D from './domain.js?v=8';
-import * as store from './store.js?v=8';
+import * as store from './store.js?v=10';
 import * as camera from './scanner.js?v=8';
-import {exportCopy,importCopy} from './transfer.js?v=8';
-import * as cloud from './cloud.js?v=8';
+import {exportCopy,importCopy} from './transfer.js?v=10';
+import * as cloud from './cloud.js?v=10';
+import * as external from './external.js?v=10';
+import * as E from './external-domain.js?v=10';
 const $=id=>document.getElementById(id),el=(tag,text,className)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;};
 let state=D.initial(),filter='available',selected=null,busyScan=false,lastScan=null,undoId=null,toastTimer=null,refreshing=false,renderVersion=0,pendingReceipt=null,dateOnly=false;
 const photoUrls=new Map();
@@ -22,11 +24,14 @@ async function render(){
   if(!items.length){const empty=el('div',undefined,'empty');empty.append(el('h2',filter==='consumed'?'Niciun aliment terminat':'Cumpărăturile ajung aici'),el('p',filter==='consumed'?'Când termini un produs, îl poți marca dintr-o atingere.':'Scanează ambalajul. Îți păstrăm alimentele la îndemână.'));if(filter!=='consumed')empty.append(button('Adaugă un aliment','scan','button primary'));box.append(empty);return;}
   for(const item of items){
     const s=D.status(item),article=el('article',undefined,'food-card'),main=button('',null,'food-main');main.dataset.item=item.id;main.dataset.action='detail';
+    const supplement=await external.forProfile(item.profile);
     if(item.photo_id){const img=el('img',undefined,'food-photo');img.alt='';img.width=66;img.height=76;const blob=await store.photo(item.photo_id);if(blob){if(!photoUrls.has(item.photo_id))photoUrls.set(item.photo_id,URL.createObjectURL(blob));img.src=photoUrls.get(item.photo_id);}main.append(img);}
+    else if(supplement?.images.find(i=>i.local_url)){const img=el('img',undefined,'food-photo');img.alt='';img.width=66;img.height=76;img.loading='lazy';img.src=supplement.images.find(i=>i.local_url).local_url;main.append(img);}
     else{const placeholder=el('span','', 'food-photo food-placeholder');placeholder.append($('food-placeholder-icon').content.cloneNode(true));main.append(placeholder);}
     if(version!==renderVersion)return;const info=el('span',undefined,'food-info');info.append(el('span',item.name,'food-name'),el('span',s.text,'food-status '+s.tone));
     const meta=[];if(item.opened_at)meta.push('Deschis '+new Intl.DateTimeFormat('ro-RO',{day:'numeric',month:'short'}).format(new Date(item.opened_at)));if(item.quantity!==1||item.unit!=='pack')meta.push(item.quantity+' '+(item.unit==='pack'?'ambalaje':item.unit));if(item.profile.simulation)meta.push('Demonstrație');if(meta.length)info.append(el('span',meta.join(' · '),'food-meta'));main.append(info);article.append(main);if(!item.expiry&&item.state!=='consumed'){const date=button('Adaugă data de pe ambalaj','date','food-date-action');date.dataset.item=item.id;article.append(date);}
     const warnings=D.allergenWarnings(item.profile,state.preferences.allergens);for(const w of warnings){const unknown=item.profile.food_data?.allergens?.status!=='declared';article.append(el('p',unknown?'Verifică alergenii pe ambalaj.':w,'food-warning'+(unknown?' muted':'')));}
+    if(supplement){info.append(el('span','Open Food Facts','food-meta'));for(const w of E.warnings(supplement,state.preferences.allergens))article.append(el('p',w,'food-warning'));}
     if(item.state!=='consumed'){const actions=el('div',undefined,'food-actions');const opened=button(item.opened_at?'Deja deschis':'Am deschis','open','');opened.dataset.item=item.id;opened.disabled=Boolean(item.opened_at);const consumed=button('Am terminat','consume','');consumed.dataset.item=item.id;actions.append(opened,consumed);article.append(actions);}box.append(article);
   }
 }
@@ -37,6 +42,7 @@ function renderShopping(box){
 }
 async function lookup(code){
   const parsed=D.parseCode(code),cache=state.items.find(i=>i.code===code||(parsed.gtin14&&i.profile.gtin14===parsed.gtin14&&i.profile.lot_code===parsed.lot_code&&(i.profile.gs1_qualifiers?.['22']??null)===(parsed.gs1_qualifiers?.['22']??null)));
+  if(navigator.onLine){try{return D.cleanProfile(await external.resolve(code));}catch{}}
   if(navigator.onLine){try{const r=await fetch('/api/v2/public/food?'+new URLSearchParams({code}),{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(5000)});const data=await r.json();if(r.ok)return D.cleanProfile(data);if(r.status>=400&&r.status<500)throw Object.assign(Error(data.message||'Codul nu este valid.'),{invalid:true});}catch(e){if(e.invalid)throw e;}}
   if(cache)return D.cachedProfile(cache.profile,parsed);
   const profile=D.unknownProfile(parsed);if(parsed.gtin14==='09520000000011'){profile.name='Pâine Bună Tehnic';profile.simulation=true;profile.source.kind='demonstration';profile.notices=['Exemplu demonstrativ. Termenul și valorile alimentare nu sunt validate.'];}return profile;
@@ -48,7 +54,7 @@ async function saveCode(code,{force=false}={}){
     const parsed=D.parseCode(code),now=Date.now();
     if(!force&&lastScan&&now-lastScan.time<8000&&D.scanIdentity(parsed,code)===lastScan.identity)return;
     $('scanner-status').textContent='Se adaugă alimentul…';const profile=await lookup(code);
-    const result=await store.update(s=>D.addItem(s,profile,code));lastScan={code,identity:D.scanIdentity(parsed,code),time:Date.now()};
+    const result=await store.update(s=>D.addItem(s,profile,code));lastScan={code,identity:D.scanIdentity(parsed,code),time:Date.now()};await external.hydrate();
     $('scanner-status').textContent=profile.name+' · adăugat';$('scan-again').hidden=false;toast(profile.name+' · adăugat',result.event);navigator.vibrate?.(60);await render();
     navigator.storage?.persist?.().catch(()=>{});return true;
   }catch(e){$('scanner-status').textContent=e.message||'Codul nu a putut fi citit.';if($('code-dialog').open){$('code-error').textContent=e.message||'Verifică codul de pe ambalaj.';$('code-error').hidden=false;const input=$('code-form').elements.code;input.setAttribute('aria-invalid','true');input.focus();}else if(!$('scanner').open)error(e);return false;}finally{busyScan=false;}
@@ -56,13 +62,13 @@ async function saveCode(code,{force=false}={}){
 async function openReceipt(token){
   if(!/^[a-f0-9]{64}$/.test(token||''))throw Error('Legătura bonului nu este validă.');pendingReceipt=null;show('receipt-dialog');$('receipt-status').textContent='Se deschide bonul…';$('receipt-lines').replaceChildren();$('receipt-add').disabled=true;
   const response=await fetch('/api/v2/home/receipts/preview',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'omit',cache:'no-store',body:JSON.stringify({token}),signal:AbortSignal.timeout(10000)});const raw=await response.json();if(!response.ok)throw Error(raw.message||'Bonul nu este disponibil.');
-  const {cleanReceipt}=await import('./receipt.js?v=8');pendingReceipt={...cleanReceipt(raw),schema_version:raw.schema_version};$('receipt-merchant').textContent=pendingReceipt.merchant;
+  const {cleanReceipt}=await import('./receipt.js?v=10');pendingReceipt={...cleanReceipt(raw),schema_version:raw.schema_version};$('receipt-merchant').textContent=pendingReceipt.merchant;
   $('receipt-status').textContent=(pendingReceipt.simulation?'Bon demonstrativ. ':'')+'Adaugă cumpărăturile dintr-o singură atingere. Datele de expirare lipsă rămân necunoscute.';
   for(const line of pendingReceipt.lines){const row=el('li');row.append(el('strong',line.name),el('span',' · '+line.quantity+' '+(line.unit==='pack'?(line.quantity===1?'ambalaj':'ambalaje'):line.unit)));$('receipt-lines').append(row);}$('receipt-add').disabled=false;
 }
 async function incomingLink(){const fragment=new URLSearchParams(location.hash.slice(1)),pending=fragment.get('add'),receipt=fragment.get('bon');if(!pending&&!receipt)return;history.replaceState(null,'','/acasa/');if(receipt){try{await openReceipt(receipt);}catch(e){$('receipt-status').textContent=e.message||'Bonul nu este disponibil.';error(e);}}else{const f=$('code-form');f.elements.code.value=pending;show('code-dialog');}}
 window.addEventListener('hashchange',()=>incomingLink().catch(error));
-$('receipt-add').addEventListener('click',async()=>{const receipt=pendingReceipt;if(!receipt)return;const b=$('receipt-add');b.disabled=true;try{const {importReceipt}=await import('./receipt.js?v=8');const count=await importReceipt(receipt,(n,total)=>$('receipt-status').textContent='Pregătim '+n+' din '+total+' alimente…');pendingReceipt=null;close('receipt-dialog');filter='available';document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b.dataset.filter===filter);b.setAttribute('aria-pressed',b.dataset.filter===filter);});await render();toast(count?count+' alimente adăugate.':'Cumpărăturile din acest bon erau deja adăugate.');}catch(e){error(e);}finally{b.disabled=false;}});
+$('receipt-add').addEventListener('click',async()=>{const receipt=pendingReceipt;if(!receipt)return;const b=$('receipt-add');b.disabled=true;try{const {importReceipt}=await import('./receipt.js?v=10');const count=await importReceipt(receipt,(n,total)=>$('receipt-status').textContent='Pregătim '+n+' din '+total+' alimente…');pendingReceipt=null;close('receipt-dialog');filter='available';document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b.dataset.filter===filter);b.setAttribute('aria-pressed',b.dataset.filter===filter);});await render();toast(count?count+' alimente adăugate.':'Cumpărăturile din acest bon erau deja adăugate.');}catch(e){error(e);}finally{b.disabled=false;}});
 async function scan(){
   show('scanner');$('scanner-status').textContent='Îndreaptă camera spre QR sau codul de bare.';
   try{await camera.start($('camera'),code=>saveCode(code),text=>$('scanner-status').textContent=text);}catch(e){$('scanner-status').textContent=e.name==='NotAllowedError'?'Permite accesul la cameră sau folosește o fotografie.':e.message;}
@@ -87,6 +93,7 @@ async function detail(itemId){
     const label=el('label','Cantitatea porției'),amount=el('input');amount.type='number';amount.min='0.1';amount.max='100000';amount.step='any';amount.inputMode='decimal';amount.value=String(n.portion?.amount||100);label.append(amount);
     const unit=n.basis==='per_100_ml'?'ml':n.basis==='per_portion'?n.portion.unit:'g';label.firstChild.textContent='Cantitatea porției ('+unit+')';const output=el('p');output.setAttribute('aria-live','polite');const calc=()=>{const r=D.carbs(p,Number(amount.value),unit);output.textContent=r?r.grams.toLocaleString('ro-RO')+' g carbohidrați':'Cantitatea de carbohidrați nu este cunoscută.';};amount.addEventListener('input',calc);calc();sec.append(label,output);box.append(sec);
   }
+  const supplement=await external.forProfile(p);if(supplement)externalDetail(box,item,supplement);
   const source=el('section',undefined,'detail-section');if(p.lot_code)source.append(el('p','Lot: '+p.lot_code));
   if(p.source?.version)source.append(el('p','Informații: '+p.source.version,'subtle'));
   source.append(el('p',item.imported?'Copie importată · sursa nu este reverificată.':p.source?.kind==='producer_approved'?'Informații publicate de producător.':'Verifică informațiile de pe ambalaj.','subtle'));
@@ -94,6 +101,23 @@ async function detail(itemId){
   if(p.public_url){const href=safeLink(p.public_url);if(href){const a=el('a','Pagina produsului','text-button');a.href=href;a.rel='noopener';source.append(a);}}
   if('speechSynthesis'in window){const b=button('Citește cu voce',null,'button secondary');b.addEventListener('click',()=>{speechSynthesis.cancel();const text=[item.name,s.text,p.allergen_text,...D.allergenWarnings(p,state.preferences.allergens)].filter(Boolean).join('. ');const utterance=new SpeechSynthesisUtterance(text);utterance.lang='ro-RO';speechSynthesis.speak(utterance);});source.append(b);}box.append(source);show('details');
 }
+function externalDetail(box,item,record){
+  const section=el('section',undefined,'detail-section');section.append(el('h3','Open Food Facts'),el('p','Fișă comunitară a produsului. Verifică ambalajul pentru lotul tău.','subtle'));
+  const images=record.images.filter(i=>i.local_url);if(images.length){const gallery=el('details');gallery.append(el('summary','Fotografii ale etichetei'));for(const image of images){const figure=el('figure'),img=el('img',undefined,'detail-photo');img.src=image.local_url;img.alt=({front:'Ambalaj',ingredients:'Ingrediente',nutrition:'Tabel nutrițional',packaging:'Ambalare'})[image.kind]||'Etichetă';img.loading='lazy';figure.append(img,el('figcaption',image.credit+' · '+image.license.id,'subtle'));gallery.append(figure);}section.append(gallery);}
+  if(record.source_environment==='staging')section.append(el('p','Mediul de test Open Food Facts · informații pentru verificarea integrării.','subtle'));
+  if(record.stale)section.append(el('p','Datele salvate pot fi depășite.','subtle'));
+  const observed=Date.parse(record.observed_at||record.fetched_at);if(Number.isFinite(observed))section.append(el('p','Fișă consultată: '+new Intl.DateTimeFormat('ro-RO',{dateStyle:'short',timeStyle:'short'}).format(new Date(observed))+'.','subtle'));
+  for(const text of E.warnings(record,state.preferences.allergens))section.append(el('p',text,'detail-alert'));
+  const allergens=record.allergens;if(allergens.contains.length||allergens.may_contain.length){section.append(el('h4','Alergeni în fișa comunitară'));if(allergens.contains.length)section.append(el('p','Conține: '+allergens.contains.map(k=>D.ALLERGENS[k]||k).join(', ')));if(allergens.may_contain.length)section.append(el('p','Posibile urme: '+allergens.may_contain.map(k=>D.ALLERGENS[k]||k).join(', ')));}
+  for(const [title,text]of [['Ingrediente',record.ingredients],['Cantitate',record.net_quantity],['Păstrare',record.storage_text]])if(text)section.append(el('h4',title),el('p',text));
+  if(!item.profile.lot_code&&!item.profile.batch_id&&record.sensitive_usable&&item.profile.food_data?.nutrition?.status!=='declared'){
+    const basis=record.nutrition.sets.find(n=>n.kind==='reported'&&n.preparation==='as_sold'&&['per_100_g','per_100_ml'].includes(n.basis)&&Number.isFinite(n.values.carbohydrate_g)&&!n.modifiers?.carbohydrate_g);
+    if(basis){const unit=basis.basis==='per_100_ml'?'ml':'g',label=el('label','Porția ta ('+unit+')'),input=el('input'),output=el('p');input.type='number';input.min='0.1';input.max='100000';input.value='100';input.step='any';input.inputMode='decimal';label.append(input);output.setAttribute('aria-live','polite');const calc=()=>{const grams=E.carbs(record,item.profile,Number(input.value),unit);output.textContent=grams===null?'Nu avem o valoare neechivocă pentru această porție.':grams.toLocaleString('ro-RO')+' g carbohidrați · conform fișei comunitare';};input.addEventListener('input',calc);calc();section.append(el('h4','Carbohidrați'),label,output,el('p','Valori raportate pentru produsul ca atare; fără estimarea dozelor de insulină.','subtle'));}
+  }
+  const href=safeLink(record.source_url);if(href){const link=el('a','Vezi fișa și contributorii','text-button');link.href=href;link.rel='noopener';section.append(link);}
+  section.append(el('p','Date: Open Food Facts · ODbL 1.0 / DbCL 1.0. Fotografii: CC BY-SA 3.0.','subtle'));box.append(section);
+}
+
 function edit(onlyDate=false){
   const i=state.items.find(i=>i.id===selected);if(!i)return;close('details');dateOnly=onlyDate;$('editor-title').textContent=onlyDate?'Data de pe ambalaj':'Corectează alimentul';for(const group of $('edit-form').querySelectorAll('[data-edit-general]'))group.hidden=onlyDate;$('edit-error').hidden=true;const f=$('edit-form');f.elements.date_kind.removeAttribute('aria-invalid');f.elements.name.value=i.name;f.elements.location.value=i.location;f.elements.quantity.value=i.quantity;f.elements.unit.value=i.unit;f.elements.date_kind.value=i.expiry?.kind||'unknown';f.elements.date_precision.value=i.expiry?.precision||'day';setDateType();f.elements.date_value.value=i.expiry?.value||'';$('date-photo-status').textContent='';show('editor');if(onlyDate)f.elements.date_kind.focus();
 }
@@ -108,7 +132,7 @@ async function addPhoto(file){
 async function refreshAlerts(){
   if(refreshing||!navigator.onLine)return;refreshing=true;try{
     const current=await store.read(),items=current.items.filter(i=>(i.state!=='consumed'||!i.consumed_at||Date.parse(i.consumed_at)>Date.now()-30*86400000)&&i.code&&(!i.profile.alerts_checked_at||Date.now()-Date.parse(i.profile.alerts_checked_at)>60000)).sort((a,b)=>(Date.parse(a.profile.alerts_checked_at)||0)-(Date.parse(b.profile.alerts_checked_at)||0)).slice(0,40);
-    for(let at=0;at<items.length;at+=4)await Promise.all(items.slice(at,at+4).map(async item=>{try{const r=await fetch('/api/v2/public/food?'+new URLSearchParams({code:item.code}),{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(5000)});if(!r.ok)return;const p=D.cleanProfile(await r.json());if(!p.alerts_checked_at)return;await store.update(s=>{const i=s.items.find(v=>v.id===item.id);if(!i)return;if(i.profile.alerts_checked_at&&Date.parse(i.profile.alerts_checked_at)>Date.parse(p.alerts_checked_at))return;for(const key of ['alerts','alerts_checked_at','alert_scope','batch_state','notices'])i.profile[key]=p[key];});}catch{}}));
+    for(let at=0;at<items.length;at+=4)await Promise.all(items.slice(at,at+4).map(async item=>{try{const r=await fetch('/api/v2/public/food/resolve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:item.code}),cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(5000)});if(!r.ok)return;const p=D.cleanProfile((await r.json()).profile);if(!p.alerts_checked_at)return;await store.update(s=>{const i=s.items.find(v=>v.id===item.id);if(!i)return;if(i.profile.alerts_checked_at&&Date.parse(i.profile.alerts_checked_at)>Date.parse(p.alerts_checked_at))return;for(const key of ['alerts','alerts_checked_at','alert_scope','batch_state','notices'])i.profile[key]=p[key];});}catch{}}));
     await render();
   }finally{refreshing=false;}
 }
@@ -120,7 +144,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('button');i
   if(action==='export'){b.disabled=true;try{const blob=await exportCopy(),a=el('a');a.href=URL.createObjectURL(blob);a.download='openaliment-acasa-'+D.today()+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),30000);toast('Copia este pregătită pentru salvare.');}finally{b.disabled=false;}return;}
   if(action==='import'){$('import-file').click();return;}if(action==='date-photo'){$('date-file').click();return;}
 }catch(e){error(e);}});
-$('undo').addEventListener('click',async()=>{if(!undoId)return;try{await store.update(s=>D.undo(s,undoId));toast('Acțiune anulată.');await render();}catch(e){error(e);}});
+$('undo').addEventListener('click',async()=>{if(!undoId)return;try{await store.update(s=>E.undo(s,undoId));toast('Acțiune anulată.');await render();}catch(e){error(e);}});
 $('scan-again').addEventListener('click',()=>{if(lastScan)saveCode(lastScan.code,{force:true});});
 $('scanner').addEventListener('close',()=>camera.stop());$('scanner').addEventListener('cancel',()=>camera.stop());
 document.addEventListener('visibilitychange',()=>{if(document.hidden)camera.stop();else{if($('scanner').open)close('scanner');refreshAlerts().catch(error);}});
@@ -174,3 +198,8 @@ window.addEventListener('home-cloud-status',e=>{if(navigator.onLine)$('connectio
 const channel='BroadcastChannel'in window?new BroadcastChannel('openaliment-home'):null;
 window.addEventListener('home-changed',()=>channel?.postMessage('changed'));if(channel)channel.onmessage=()=>render().catch(error);
 try{await render();if('serviceWorker'in navigator)navigator.serviceWorker.register('/acasa/sw.js',{scope:'/acasa/'}).catch(()=>{});await incomingLink();cloud.init(()=>{render().catch(error);refreshAlerts().catch(()=>{});}).catch(error);refreshAlerts().catch(()=>{});}catch(e){$('connection').textContent=e.message;$('inventory').setAttribute('aria-busy','false');error(e);}
+
+setInterval(()=>external.refresh().catch(()=>{}),60000);
+window.addEventListener('online',()=>external.refresh().catch(()=>{}));
+
+window.addEventListener('external-ready',()=>{render().then(()=>{if(selected&&$('details').open)return detail(selected);}).catch(error);});

@@ -10345,7 +10345,9 @@
                 "alerts",
                 "export",
                 "import",
-                "community"
+                "community",
+                "sharing:manage",
+                "sharing:write"
               ]
             }
           },
@@ -10404,7 +10406,7 @@
           "scopes": {
             "type": "array",
             "minItems": 1,
-            "maxItems": 10,
+            "maxItems": 12,
             "items": {
               "type": "string",
               "enum": [
@@ -10417,7 +10419,9 @@
                 "community",
                 "home:read",
                 "home:write",
-                "home:manage"
+                "home:manage",
+                "sharing:manage",
+                "sharing:write"
               ]
             }
           }
@@ -11184,6 +11188,388 @@
           "claim_token",
           "state",
           "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalResolve": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalLookup": {
+        "type": "object",
+        "properties": {
+          "gtin": {
+            "type": "string",
+            "pattern": "^(?:[0-9]{8}|[0-9]{12}|[0-9]{13}|[0-9]{14})$"
+          }
+        },
+        "required": [
+          "gtin"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalBinding": {
+        "type": "object",
+        "properties": {
+          "external_product_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        },
+        "required": [
+          "external_product_id"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalImport": {
+        "type": "object",
+        "properties": {
+          "revision_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "fields": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "enum": [
+                "name",
+                "ingredients",
+                "allergens",
+                "net_quantity",
+                "storage",
+                "nutrition"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "version_key": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "expected_label_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "completion": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string",
+                "maxLength": 1500
+              },
+              "operator": {
+                "type": "string",
+                "maxLength": 1500
+              },
+              "ingredients": {
+                "type": "string",
+                "maxLength": 5000
+              },
+              "allergens": {
+                "type": "string",
+                "maxLength": 1500
+              },
+              "net_quantity": {
+                "type": "string",
+                "maxLength": 1500
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "revision_id"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalDecision": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "enum": [
+              "accepted",
+              "rejected",
+              "different_market"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 1500
+          },
+          "version_key": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "fields": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "enum": [
+                "name",
+                "ingredients",
+                "allergens",
+                "net_quantity",
+                "storage",
+                "nutrition"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "completion": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string",
+                "maxLength": 1500
+              },
+              "operator": {
+                "type": "string",
+                "maxLength": 1500
+              },
+              "ingredients": {
+                "type": "string",
+                "maxLength": 5000
+              },
+              "allergens": {
+                "type": "string",
+                "maxLength": 1500
+              },
+              "net_quantity": {
+                "type": "string",
+                "maxLength": 1500
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "state",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalSensitiveEmpty": {
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string",
+            "maxLength": 200
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "ExternalConnection": {
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "organization_ref": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "transport": {
+            "const": "producer_package"
+          }
+        },
+        "required": [
+          "organization_ref"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalGrant": {
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "trade_item_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "fields": {
+            "type": "array",
+            "maxItems": 9,
+            "items": {
+              "enum": [
+                "name",
+                "category",
+                "ingredients",
+                "allergens",
+                "net_quantity",
+                "operator",
+                "storage",
+                "nutrition",
+                "origin"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "asset_ids": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            "uniqueItems": true
+          },
+          "mode": {
+            "const": "manual"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "public_data_confirmed": {
+            "const": true
+          },
+          "licenses_confirmed": {
+            "const": true
+          }
+        },
+        "required": [
+          "trade_item_id",
+          "fields",
+          "public_data_confirmed",
+          "licenses_confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalPublication": {
+        "type": "object",
+        "properties": {
+          "label_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "independently_verified": {
+            "type": "boolean"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "ExternalState": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "enum": [
+              "disabled",
+              "paused",
+              "public"
+            ]
+          },
+          "license_policy_confirmed": {
+            "type": "boolean"
+          },
+          "api_usage_registered_confirmed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalVisibility": {
+        "type": "object",
+        "properties": {
+          "visibility": {
+            "enum": [
+              "public",
+              "suspended"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "visibility",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ExternalDataset": {
+        "type": "object",
+        "properties": {
+          "manifest": {
+            "type": "object",
+            "properties": {
+              "schema_version": {
+                "const": "openaliment.external-dataset.v1"
+              },
+              "provider": {
+                "const": "openfoodfacts"
+              },
+              "license": {
+                "const": "ODbL-1.0"
+              },
+              "source_environment": {
+                "enum": [
+                  "production",
+                  "staging"
+                ]
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "record_count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000
+              },
+              "source_url": {
+                "type": "string",
+                "maxLength": 2048
+              }
+            },
+            "required": [
+              "provider",
+              "license",
+              "sha256",
+              "record_count"
+            ],
+            "additionalProperties": false
+          },
+          "content_base64": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 11500000
+          }
+        },
+        "required": [
+          "manifest",
+          "content_base64"
         ],
         "additionalProperties": false
       }

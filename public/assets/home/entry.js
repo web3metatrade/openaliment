@@ -4,7 +4,7 @@ document.addEventListener('click',async event=>{
   event.preventDefault();if(saving)return;saving=true;link.setAttribute('aria-busy','true');
   const code=link.dataset.homeAdd;
   try{
-    const {addItem,unknownProfile,parseCode}=await import('./domain.js?v=8');const {update}=await import('./store.js?v=8');
+    const {addItem,unknownProfile,parseCode}=await import('./domain.js?v=8');const {update}=await import('./store.js?v=10');
     let profile;try{const r=await fetch('/api/v2/public/food?'+new URLSearchParams({code}),{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(5000)});if(r.ok)profile=await r.json();}catch{}
     if(!profile){profile=unknownProfile(parseCode(code));profile.name=link.dataset.homeName||'Aliment';}
     await update(state=>addItem(state,profile,code));location.assign('/acasa/');

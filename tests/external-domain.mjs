@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+import * as E from '../public/assets/home/external-domain.js';
+import * as D from '../public/assets/home/domain.js';
+const checks=[];function test(name,fn){fn();checks.push({name,passed:true});}
+const make=()=>({schema_version:'openaliment.external-food.v1',provider:'openfoodfacts',id:'a'.repeat(32),gtin14:'03274080005003',name:'Aliment comunitar',revision:'12',sha256:'b'.repeat(64),observed_at:new Date().toISOString(),fetched_at:new Date().toISOString(),sensitive_usable:true,stale:false,source_url:'https://world.openfoodfacts.org/product/3274080005003',licenses:{database:{id:'ODbL-1.0'}},images:[],nutrition:{sets:[{kind:'reported',basis:'per_100_g',preparation:'as_sold',values:{carbohydrate_g:42},modifiers:{}}]},allergens:{status:'reported',contains:['milk'],may_contain:[]}});
+test('Observation schema is checked before local storage',()=>assert.throws(()=>E.cleanRecord({...make(),provider:'untrusted'})));
+test('Remote arbitrary media is never inserted into the page',()=>assert.equal(E.cleanRecord({...make(),images:[{local_url:'https://attacker.example/image'}]}).images[0].local_url,null));
+test('Same-origin image URL is normalized',()=>assert.equal(E.cleanRecord({...make(),images:[{local_url:'https://openaliment.ro/api/v2/public/external-assets/'+'a'.repeat(32)}]}).images[0].local_url,'/api/v2/public/external-assets/'+'a'.repeat(32)));
+test('Reported carbohydrates use explicit mass basis',()=>assert.equal(E.carbs(make(),{},50,'g'),21));
+test('No mass/volume inference',()=>assert.equal(E.carbs(make(),{},50,'ml'),null));
+test('Estimated values cannot drive the calculator',()=>{const r=make();r.nutrition.sets[0].kind='estimated';assert.equal(E.carbs(r,{},100,'g'),null);});
+test('Historic lot is never assigned generic current nutrition',()=>assert.equal(E.carbs(make(),{lot_code:'A'},100,'g'),null));
+test('Generic OFF nutrition cannot select a GS1 product variant or serial',()=>assert.equal(E.carbs(make(),{gs1_qualifiers:{'22':'2A','21':'SERIAL'}},100,'g'),null));
+test('Modifiers are not exact values',()=>{const r=make();r.nutrition.sets[0].modifiers.carbohydrate_g='<';assert.equal(E.carbs(r,{},100,'g'),null);});
+test('Conflicting reported sets disable calculation',()=>{const r=make();r.nutrition.sets.push({...r.nutrition.sets[0],values:{carbohydrate_g:45}});assert.equal(E.carbs(r,{},100,'g'),null);});
+test('Old offline records lose sensitive eligibility',()=>assert.equal(E.cleanRecord({...make(),observed_at:'2020-01-01T00:00:00Z'}).sensitive_usable,false));
+test('Absent allergen match is never assurance of absence',()=>assert.match(E.warnings(make(),['nuts'])[0],/nu este confirmată/));
+test('Unknown package enriches without changing expiry or quantity',()=>{const s=D.initial(),p=D.unknownProfile(D.parseCode('3274080005003')),r=D.addItem(s,p);r.item.quantity=2;r.item.expiry={kind:'best_before',value:'2028-01-01',precision:'day',source:'user'};const expiry=structuredClone(r.item.expiry);assert.equal(E.enrich(s,make()),1);assert.equal(r.item.quantity,2);assert.deepEqual(r.item.expiry,expiry);assert.equal(r.item.profile.food_data.nutrition.status,'unknown');assert.equal(s.events.at(-1).type,'edit');assert.equal(E.enrich(s,{...make(),id:'c'.repeat(32)}),0);});
+test('Approved producer profile is never replaced by OFF',()=>{const s=D.initial(),p=D.unknownProfile(D.parseCode('3274080005003'));p.source.kind='producer_approved';D.addItem(s,p);assert.equal(E.enrich(s,make()),0);});
+test('Personal correction survives asynchronous enrichment',()=>{const s=D.initial(),p=D.unknownProfile(D.parseCode('3274080005003')),r=D.addItem(s,p);r.item.name='Numele meu';E.enrich(s,make());assert.equal(r.item.name,'Numele meu');assert.equal(r.item.profile.name,'Aliment comunitar');});
+test('Asynchronous enrichment does not break undo of adding a package',()=>{const s=D.initial(),r=D.addItem(s,D.unknownProfile(D.parseCode('3274080005003')));E.enrich(s,make());E.undo(s,r.event.id);assert.equal(s.items.length,0);assert.equal(s.events.at(-1).undoes,r.event.id);});
+test('Undo never discards a personal edit after enrichment',()=>{const s=D.initial(),r=D.addItem(s,D.unknownProfile(D.parseCode('3274080005003')));E.enrich(s,make());D.changeItem(s,r.item.id,'edit',{quantity:2});assert.throws(()=>E.undo(s,r.event.id));assert.equal(s.items[0].quantity,2);});
+await writeFile(new URL('./runtime/reports/external-domain.json',import.meta.url),JSON.stringify({passed:checks.length,failed:0,checks}));console.log(JSON.stringify({passed:checks.length,failed:0}));

@@ -1,0 +1,1014 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "source_environment": {
+      "enum": [
+        "production",
+        "staging"
+      ]
+    },
+    "schema_version": {
+      "const": "openaliment.external-food.v1"
+    },
+    "provider": {
+      "const": "openfoodfacts"
+    },
+    "gtin14": {
+      "type": "string",
+      "pattern": "^[0-9]{14}$"
+    },
+    "source_code": {
+      "type": "string",
+      "pattern": "^(?:[0-9]{8}|[0-9]{12}|[0-9]{13}|[0-9]{14})$"
+    },
+    "name": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 180
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "name_language": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "brand": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 500
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "net_quantity": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 100
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ingredients": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 5000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ingredients_language": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "storage_text": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 1500
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "categories": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 150
+      }
+    },
+    "allergens": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "reported",
+            "derived",
+            "unknown"
+          ]
+        },
+        "contains": {
+          "type": "array",
+          "maxItems": 14,
+          "items": {
+            "enum": [
+              "gluten",
+              "crustaceans",
+              "eggs",
+              "fish",
+              "peanuts",
+              "soy",
+              "milk",
+              "nuts",
+              "celery",
+              "mustard",
+              "sesame",
+              "sulphites",
+              "lupin",
+              "molluscs"
+            ]
+          }
+        },
+        "may_contain": {
+          "type": "array",
+          "maxItems": 14,
+          "items": {
+            "enum": [
+              "gluten",
+              "crustaceans",
+              "eggs",
+              "fish",
+              "peanuts",
+              "soy",
+              "milk",
+              "nuts",
+              "celery",
+              "mustard",
+              "sesame",
+              "sulphites",
+              "lupin",
+              "molluscs"
+            ]
+          }
+        },
+        "unmapped": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "type": "string",
+            "maxLength": 150
+          }
+        },
+        "negative_declaration": {
+          "type": "boolean"
+        },
+        "source": {
+          "const": "openfoodfacts"
+        }
+      },
+      "required": [
+        "status",
+        "contains",
+        "may_contain",
+        "unmapped",
+        "negative_declaration",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "nutrition": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "available",
+            "unknown"
+          ]
+        },
+        "sets": {
+          "type": "array",
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "properties": {
+              "basis": {
+                "enum": [
+                  "per_100_g",
+                  "per_100_ml",
+                  "per_portion"
+                ]
+              },
+              "preparation": {
+                "enum": [
+                  "as_sold",
+                  "as_prepared"
+                ]
+              },
+              "values": {
+                "type": "object",
+                "properties": {
+                  "energy_kj": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "energy_kcal": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "fat_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "saturates_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "carbohydrate_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "sugars_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "polyols_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "fibre_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "protein_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  },
+                  "salt_g": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "modifiers": {
+                "type": "object",
+                "properties": {
+                  "energy_kj": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "energy_kcal": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "fat_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "saturates_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "carbohydrate_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "sugars_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "polyols_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "fibre_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "protein_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "salt_g": {
+                    "type": "string",
+                    "maxLength": 10
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "basis_source": {
+                "type": "string",
+                "maxLength": 40
+              },
+              "input_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "kind": {
+                "enum": [
+                  "reported",
+                  "estimated"
+                ]
+              },
+              "portion": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "basis",
+              "preparation",
+              "values",
+              "modifiers",
+              "basis_source",
+              "input_index",
+              "kind",
+              "portion"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "status",
+        "sets"
+      ],
+      "additionalProperties": false
+    },
+    "scores": {
+      "type": "object",
+      "properties": {
+        "nutriscore": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 20
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nova": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "environment": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 20
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "nutriscore",
+        "nova",
+        "environment"
+      ],
+      "additionalProperties": false
+    },
+    "origins": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 500
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "manufacturing_places": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 500
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "markets": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 150
+      }
+    },
+    "quality_errors": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "maxLength": 150
+      }
+    },
+    "images": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "enum": [
+              "front",
+              "ingredients",
+              "nutrition",
+              "packaging"
+            ]
+          },
+          "language": {
+            "type": "string",
+            "maxLength": 3
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2048
+          },
+          "source_asset_key": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "license": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 60
+              },
+              "url": {
+                "type": "string",
+                "maxLength": 2048
+              }
+            },
+            "required": [
+              "id",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          "credit": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "local_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "language",
+          "url",
+          "source_asset_key",
+          "license",
+          "credit",
+          "id",
+          "local_url"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "source_url": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "licenses": {
+      "type": "object",
+      "properties": {
+        "database": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "url": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          },
+          "required": [
+            "id",
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "contents": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "url": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          },
+          "required": [
+            "id",
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "images": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "url": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          },
+          "required": [
+            "id",
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "attribution": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "source_url": {
+          "type": "string",
+          "maxLength": 2048
+        }
+      },
+      "required": [
+        "database",
+        "contents",
+        "images",
+        "attribution",
+        "source_url"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "brand": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "net_quantity": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "ingredients": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "categories": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "allergens": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "nutrition": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "scores": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "origins": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        },
+        "manufacturing_places": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "const": "openfoodfacts"
+            },
+            "basis": {
+              "enum": [
+                "reported",
+                "derived",
+                "mixed",
+                "unknown"
+              ]
+            },
+            "source_url": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 3
+            }
+          },
+          "required": [
+            "provider",
+            "basis",
+            "source_url",
+            "language"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "brand",
+        "net_quantity",
+        "ingredients",
+        "categories",
+        "allergens",
+        "nutrition",
+        "scores",
+        "origins",
+        "manufacturing_places"
+      ],
+      "additionalProperties": false
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "external_product_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "revision": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 60
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "fetched_at": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "observed_at": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "source_modified_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 40
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_updated_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 40
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stale": {
+      "type": "boolean"
+    },
+    "sensitive_usable": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "source_environment",
+    "schema_version",
+    "provider",
+    "gtin14",
+    "source_code",
+    "name",
+    "name_language",
+    "brand",
+    "net_quantity",
+    "ingredients",
+    "ingredients_language",
+    "storage_text",
+    "categories",
+    "allergens",
+    "nutrition",
+    "scores",
+    "origins",
+    "manufacturing_places",
+    "markets",
+    "quality_errors",
+    "images",
+    "source_url",
+    "licenses",
+    "provenance",
+    "id",
+    "external_product_id",
+    "revision",
+    "sha256",
+    "fetched_at",
+    "observed_at",
+    "source_modified_at",
+    "source_updated_at",
+    "stale",
+    "sensitive_usable"
+  ],
+  "additionalProperties": false
+}

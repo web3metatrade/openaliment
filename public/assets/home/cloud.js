@@ -1,7 +1,7 @@
 import * as D from './domain.js?v=8';
-import * as store from './store.js?v=8';
+import * as store from './store.js?v=10';
 import * as C from './cloud-domain.js?v=8';
-import {initPrivacy,privacyState,incomingPrivacy,requestTransfer} from './privacy.js?v=8';
+import {initPrivacy,privacyState,incomingPrivacy,requestTransfer} from './privacy.js?v=10';
 const $=id=>document.getElementById(id),owner=D.id();
 let session=null,ready=false,busy=false,timer=null,loginToken=null,inviteToken=null,changed=()=>{},message='',initialized=false;
 const downloads=new Map();

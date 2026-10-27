@@ -4,7 +4,7 @@
   "created_on": "2026-10-23",
   "updated_on": "2026-10-24",
   "source_of_truth": "database/migrations/*.sql",
-  "source_sha256": "ca2b2a96cbd34980d49d2301e9afaed80b9d3b240cfc70acac54a49310d2892f",
+  "source_sha256": "b0dc474cd420da23de1e29e4dda12c283518f0c78676c8f05bf9dc7774ad0a07",
   "source_sha256_basis": "canonical JSON of ordered migration paths and SHA-256 hashes",
   "id_representation": "128 random bits, 32 lower-case hexadecimal characters",
   "modules": {
@@ -80,6 +80,14 @@
     {
       "path": "database/migrations/008_marketplace.sql",
       "sha256": "8e29b174103949866f139377d1c935e91f2c71cc87c28c2a8df61925f50047ee"
+    },
+    {
+      "path": "database/migrations/009_external_catalog.sql",
+      "sha256": "b466d73a3a0321f2a02c595fddbeb102c764c6d13623bd01c6cf615d87af8744"
+    },
+    {
+      "path": "database/migrations/010_external_sharing.sql",
+      "sha256": "097caa9f595a0730851855334b53fffa4331ffaba8dc378480a76ac2e89a4047"
     }
   ],
   "category_profiles": [
@@ -539,6 +547,84 @@
     {
       "name": "print_job_events",
       "definition_source": "database/migrations/008_marketplace.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "external_providers",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_products",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_provider_events",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_product_revisions",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_assets",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_jobs",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_provider_limits",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_dataset_runs",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "external_product_bindings",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "external_conflicts",
+      "definition_source": "database/migrations/009_external_catalog.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "external_connections",
+      "definition_source": "database/migrations/010_external_sharing.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "external_sharing_grants",
+      "definition_source": "database/migrations/010_external_sharing.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "external_publications",
+      "definition_source": "database/migrations/010_external_sharing.sql",
       "tenant_scoped": true,
       "household_scoped": false
     }

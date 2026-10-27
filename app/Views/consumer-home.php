@@ -1,6 +1,6 @@
 <?php declare(strict_types=1); ?>
 <!doctype html>
-<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#124e42"><meta name="robots" content="noindex,nofollow"><title>Acasă · OpenAliment</title><link rel="icon" href="/assets/mark.svg" type="image/svg+xml"><link rel="manifest" href="/acasa/manifest.webmanifest"><link rel="stylesheet" href="/assets/home/home.css?v=9"><script type="module" src="/assets/home/app.js?v=9"></script></head>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#124e42"><meta name="robots" content="noindex,nofollow"><title>Acasă · OpenAliment</title><link rel="icon" href="/assets/mark.svg" type="image/svg+xml"><link rel="manifest" href="/acasa/manifest.webmanifest"><link rel="stylesheet" href="/assets/home/home.css?v=9"><script type="module" src="/assets/home/app.js?v=10"></script></head>
 <body><a class="skip" href="#main">Sari la alimente</a>
 <template id="food-placeholder-icon"><?=icon('box')?></template>
 <header class="home-header"><a href="/" class="home-brand" aria-label="OpenAliment"><img src="/assets/mark.svg" width="30" height="30" alt=""><span>Acasă</span></a><button class="button primary" id="header-add" data-action="scan"><?=icon('plus')?> Adaugă</button></header>
