@@ -70,8 +70,21 @@ final class OpenFoodFacts
         if (($data['result']['id']??null)==='product_not_found' || ($data['status']??null)===0) {
             return ['found'=>false];
         }
-        if (!is_array($data['product']??null) || !in_array($data['status']??null, ['success',1], true)) {
+        if (!is_array($data['product']??null) || !in_array($data['status']??null, ['success','success_with_warnings',1], true)
+            || !empty($data['errors']) || (isset($data['result']) && ($data['result']['id']??null)!=='product_found')) {
             throw new Problem(502, 'external_result', 'Răspunsul sursei nu confirmă produsul.');
+        }
+        $sourceCode=$data['product']['code']??null;
+        if(!is_string($sourceCode)||self::gtin($sourceCode)!==$gtin)throw new Problem(422,'external_identity','Identificatorul returnat de sursă este diferit.');
+        // OFF normalizes zero-padded GS1 GTINs and reports the equivalent code as a warning.
+        // Accept only this documented, non-impacting case; unknown warnings require review.
+        $warnings=$data['warnings']??[];
+        if(!is_array($warnings)||!array_is_list($warnings)
+            ||(($data['status']??null)==='success_with_warnings'&&(!$warnings||($data['result']['id']??null)!=='product_found')))throw new Problem(502,'external_result','Avertizările sursei necesită verificare.');
+        foreach($warnings as$warning){
+            if(!is_array($warning)||($warning['message']['id']??null)!=='different_normalized_product_code'
+                ||($warning['impact']['id']??null)!=='none'||($warning['field']['id']??null)!=='code'
+                ||($warning['field']['value']??null)!==$sourceCode)throw new Problem(502,'external_result','Avertizările sursei necesită verificare.');
         }
         return ['found'=>true, 'product'=>$data['product']];
     }
