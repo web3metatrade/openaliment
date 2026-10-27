@@ -63,6 +63,9 @@ for _ in range(4):call(admin+'/worker','POST',{})
 artifact,_=call('/api/v2/public/sources/openfoodfacts/export',session=False);lines=artifact.splitlines(keepends=True);end=json.loads(lines[-1]);check('Licensed export has a verified final digest',end['sha256']==hashlib.sha256(b''.join(lines[:-1])).hexdigest())
 for path,needle in [('/surse/open-food-facts','Open Food Facts'),('/admin/sources','Surse externe'),('/manage/sources','Informații'),('/manage/items/'+f['item']+'/sources','Open Food Facts'),('/manage/sources/openfoodfacts/sharing','Distribuire'),('/api/docs/guides/surse-externe','Open Food Facts')]:
     body,_=call(path);check('UI renders '+path,needle.casefold() in body.decode().casefold())
+    if path=='/admin/sources':
+        html=body.decode()
+        check('Installed admin catalog exposes source controls without the installation button','Actualizează starea' in html and 'Procesează operațiile disponibile' in html and 'Instalează catalogul extern' not in html)
 call(admin+'/state','POST',{'state':'paused'});call('/api/v2/public/food/lookups','POST',{'gtin':f['gtin']},session=False,expected=503)
 fallback,_=call('/api/v2/public/food/resolve','POST',{'code':code},session=False);check('Paused provider never blocks a valid GS1 scan',fallback['profile']['gtin14']==f['gtin'] and fallback['supplement'] is None)
 call(admin+'/state','POST',{'state':'disabled'})

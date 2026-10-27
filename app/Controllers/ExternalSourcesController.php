@@ -37,7 +37,7 @@ final class ExternalSourcesController
                 $result=self::admin($action,(string)($_POST['resource_id']??''),$data,$user);
                 Session::flash(match($action){'state'=>'Starea sursei a fost actualizată.','datasetExport'=>'Exportul a fost programat.','worker'=>'Procesarea a fost executată.','datasetPreview'=>'Pachetul a trecut verificarea.','dataset'=>'Importul a fost programat.',default=>'Operațiunea a fost înregistrată.'});Http::redirect($path);
             }
-            Http::view('external-sources-admin',['title'=>'Surse externe','status'=>self::admin('status','',[],$user)]);exit;
+            Http::view('external-sources-admin',['title'=>'Surse externe','sourceStatus'=>self::admin('status','',[],$user)]);exit;
         }
         $p=Auth::browser();ExternalCatalog::required();$itemId=null;$report=null;
         if(preg_match('~\A/manage/items/([a-f0-9]{32})/sources\z~D',$path,$match))$itemId=$match[1];
