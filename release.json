@@ -1,7 +1,7 @@
 {
   "name": "OpenAliment",
-  "version": "0.7.2",
-  "date": "2026-10-25",
+  "version": "0.7.3",
+  "date": "2026-10-27",
   "php_minimum": "8.4",
-  "description": "Acces rapid la exemplul QR, primul produs și alimentele de acasă."
+  "description": "Aliniere consecventă a spațiului producătorului și a subsolului paginilor."
 }

@@ -1,5 +1,9 @@
 # Istoricul versiunilor
 
+## 0.7.3
+
+Aliniază „Contul meu” cu „Spațiul producătorului” pe același rând, păstrând controlul accesibil de pe telefon. Subsolul păstrează sloganul sub logo pe ecrane compacte și grupează documentația API împreună cu celelalte legături. Rutele, datele, permisiunile, contractele și nucleul GS1 rămân compatibile. Nu necesită migrare SQL.
+
 ## 0.7.2
 
 Aduce exemplul QR și intrarea „Alimentele mele” în partea de sus a paginii, cu navigare compactă pe telefon și titluri care descriu funcțiile. Pagina pâinii demonstrative arată întâi informațiile alimentare disponibile și necunoscute; identificatorii, QR-ul și proba POS rămân în detalii. Catalogul și marketplace-ul oferă continuări utile când sunt goale. Contul de producător fără produse prioritizează primul formular.
