@@ -24,8 +24,13 @@ function check(name,value){assert.ok(value,name);checks.push({name,passed:true})
   }
   await page.goto(BASE+'/manage/printing?job='+d.job_id);await page.locator('[data-qr] svg').waitFor();
   check('Serialized QR preview has a four-module quiet zone',await page.locator('[data-qr]').innerText().then(text=>text.includes('4 module')));
+  const [download]=await Promise.all([page.waitForEvent('download'),page.locator('[data-download-qr]').click()]);
+  await download.saveAs(path.join(ROOT,'tests/runtime/browser-qr.svg'));
+  await fs.writeFile(path.join(ROOT,'tests/runtime/browser-qr.expected.txt'),d.digital_link);
   await page.addScriptTag({url:BASE+'/assets/vendor/zxing-browser.min.js'});
-  const decoded=await page.evaluate(async()=>{const svg=document.querySelector('[data-qr] svg').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.removeAttribute('aria-label');svg.removeAttribute('role');svg.setAttribute('width','800');svg.setAttribute('height','800');const image='data:image/svg+xml;base64,'+btoa(new XMLSerializer().serializeToString(svg));return (await new ZXingBrowser.BrowserQRCodeReader().decodeFromImageUrl(image)).getText();});
+  // This is a generated pure symbol, not a camera photo. Avoid the JS detector's
+  // false finder candidates for some valid masks; QA also decodes the downloaded SVG with ZXing C++.
+  const decoded=await page.evaluate(async()=>{const svg=document.querySelector('[data-qr] svg').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.removeAttribute('aria-label');svg.removeAttribute('role');const pixels=Number(svg.getAttribute('viewBox').split(' ').pop())*12;svg.setAttribute('width',String(pixels));svg.setAttribute('height',String(pixels));const image='data:image/svg+xml;base64,'+btoa(new XMLSerializer().serializeToString(svg));const pureBarcode=1;return (await new ZXingBrowser.BrowserQRCodeReader(new Map([[pureBarcode,true]])).decodeFromImageUrl(image)).getText();});
   check('Actual QR decodes to exact GS1 URI with production dates',decoded===d.digital_link&&decoded.includes('/21/')&&decoded.includes('11=261025')&&decoded.includes('15=261030'));
   check('No browser script errors',errors.length===0);
   await fs.writeFile(path.join(ROOT,'tests/runtime/reports/marketplace-browser.json'),JSON.stringify({passed:checks.length,failed:0,checks,physical_printer_or_pos:false},null,2));console.log(JSON.stringify({passed:checks.length,failed:0}));

@@ -117,6 +117,15 @@ def main():
                 run([args.node, 'tests/consumer-browser.cjs'])
                 run([args.node, 'tests/account-access-browser.cjs'])
                 run([args.node, 'tests/marketplace-browser.cjs'])
+                previous_browser_qr = environment.get('OA_TEST_BROWSER_QR')
+                environment['OA_TEST_BROWSER_QR'] = '1'
+                try:
+                    run([sys.executable, 'tests/test_qr.py'], 'independent downloaded browser SVG decode')
+                finally:
+                    if previous_browser_qr is None:
+                        environment.pop('OA_TEST_BROWSER_QR', None)
+                    else:
+                        environment['OA_TEST_BROWSER_QR'] = previous_browser_qr
                 run([args.node, 'tests/first-visit-browser.cjs'])
                 run([args.node, 'tests/external-browser.cjs'])
             run([args.php, 'tests/backup.php'])
