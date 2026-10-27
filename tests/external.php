@@ -82,6 +82,26 @@ ExternalDatasets::step($run['id']);$step=ExternalDatasets::step($run['id']);
 offCheck('Dataset ingestion resumes without duplicating revisions',Db::one('SELECT accepted_count FROM external_dataset_runs WHERE id=?',[$run['id']])['accepted_count']==1);
 $export=ExternalDatasets::export();for($i=0;$i<100;$i++){if(ExternalDatasets::step($export['id'])['state']==='completed')break;}
 offCheck('A reusable licensed export completes',Db::one('SELECT state FROM external_dataset_runs WHERE id=?',[$export['id']])['state']==='completed');
+// Model the official v3 normalized-code response using synthetic food, never a live product fixture.
+$providerBody=['status'=>'success_with_warnings','result'=>['id'=>'product_found'],'errors'=>[],'warnings'=>[['message'=>['id'=>'different_normalized_product_code'],'impact'=>['id'=>'none'],'field'=>['id'=>'code','value'=>$code]]],'product'=>$product];
+$providerBody['product']['code']=$code;$acceptedBody=$providerBody;$requestedUrl='';
+$config=oa_test_config();$config['external_test_transport']=static function($url)use(&$providerBody,&$requestedUrl){$requestedUrl=$url;return ['status'=>200,'body'=>Db::json($providerBody),'mime'=>'application/json'];};Config::load($config);
+$accepted=OpenFoodFacts::product($gtin);
+offCheck('Equivalent OFF normalized code warning preserves the GS1 GTIN-14 request',$accepted['found']&&$accepted['product']['code']===$code&&str_contains($requestedUrl,'/product/'.$gtin.'.json'));
+$providerBody=$acceptedBody;$providerBody['warnings'][0]['impact']['id']='data_not_returned';
+offReject('A warning affecting returned data is not accepted as a valid product',fn()=>OpenFoodFacts::product($gtin),502);
+$providerBody=$acceptedBody;$providerBody['warnings'][0]['message']['id']='unknown_warning';
+offReject('Unknown source warnings require review',fn()=>OpenFoodFacts::product($gtin),502);
+$providerBody=$acceptedBody;$providerBody['errors']=[['message'=>['id'=>'invalid_field']]];
+offReject('HTTP 200 with semantic errors does not confirm a product',fn()=>OpenFoodFacts::product($gtin),502);
+$providerBody=$acceptedBody;$providerBody['status']='success_with_errors';
+offReject('A partial error status never becomes a successful read',fn()=>OpenFoodFacts::product($gtin),502);
+$providerBody=$acceptedBody;$providerBody['product']['code']=offCode('952111111111');
+offReject('Normalization warnings cannot substitute another GTIN',fn()=>OpenFoodFacts::product($gtin),422);
+$providerBody=$acceptedBody;$providerBody['result']['id']='product_updated';
+offReject('A write result cannot be mistaken for a successful product read',fn()=>OpenFoodFacts::product($gtin),502);
+$providerBody=$acceptedBody;$providerBody['warnings']=[];
+offReject('A warning status without its warning evidence is rejected',fn()=>OpenFoodFacts::product($gtin),502);
 $transportCalls=0;$config=oa_test_config();$config['external_test_transport']=static function($url)use(&$transportCalls,$product){$transportCalls++;$copy=$product;preg_match('~/product/([0-9]+)\.json~',$url,$match);$copy['code']=$match[1];return ['status'=>200,'body'=>Db::json(['status'=>'success','product'=>$copy]),'mime'=>'application/json'];};Config::load($config);
 $fresh=OpenFoodFacts::gtin(offCode('952'.(string)random_int(100000000,999999999)));
 Db::run('UPDATE external_provider_limits SET next_slot_at=NULL,cooldown_until=NULL WHERE provider_id=?',[OpenFoodFacts::PROVIDER]);

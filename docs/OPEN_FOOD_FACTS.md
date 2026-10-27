@@ -30,6 +30,8 @@ Buget implicit: 2 citiri produs/minut pe dev, maximum 8/minut în producție. Î
 
 Apelurile folosesc HTTPS, hosturi oficiale fixe, verificare TLS, fără redirect sau proxy și un resolver DNS asincron cu termen limitat. Fără capabilitatea libcurl `ASYNCHDNS`, rețeaua adaptorului este refuzată. Termenul cURL include DNS: 1,5 s pentru produs și 3,5 s pentru imagine. Răspunsurile și imaginile sunt limitate ca octeți; sunt verificate schema, MIME și pixelii. QR-ul nu face apel OFF în timpul rezoluției.
 
+GTIN-ul GS1 rămâne pe 14 cifre în OpenAliment și în cererea către OFF. OFF poate elimina zeroul de completare și răspunde `success_with_warnings`, cu avertizarea `different_normalized_product_code`. Adaptorul acceptă acest caz numai pentru `product_found`, fără erori, cu impact `none` și cod returnat echivalent aceluiași GTIN. Avertizările necunoscute ori care afectează datele sunt refuzate. Codul original al sursei se păstrează separat, conform [normalizării OFF](https://openfoodfacts.github.io/documentation/docs/Product-Opener/api/ref-barcode-normalization/).
+
 `429` deschide cooldown-ul conform `Retry-After`. Trei erori tehnice consecutive deschid circuitul pentru cinci minute. Erorile nu șterg observația bună. Un `not_found` are cache negativ de șase ore; trei confirmări ulterioare pentru o fișă cunoscută retrag disponibilitatea curentă, păstrând istoricul. Aceasta nu înseamnă rechemare alimentară.
 
 ## Import de subset și export
