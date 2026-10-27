@@ -1773,6 +1773,16 @@
     },
     {
       "method": "GET",
+      "path": "/api/v2/manage/sources/openfoodfacts/bindings",
+      "id": "externalOrganizationBindings",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.organizationBindings",
+      "summary": "Gestionează external organization bindings cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
       "path": "/api/v2/manage/items/{id}/sources",
       "id": "externalItemSources",
       "auth": "producer",
@@ -2043,5 +2053,5 @@
     }
   ],
   "contract": "platform-openapi.json",
-  "operations": 293
+  "operations": 294
 }

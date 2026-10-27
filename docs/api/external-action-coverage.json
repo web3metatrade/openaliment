@@ -1,0 +1,50 @@
+{
+  "schema_version": "openaliment.external-action-coverage.v1",
+  "module": "external",
+  "web_actions": {
+    "external-sources-admin.php": {
+      "state": "externalSourceState",
+      "worker": "externalRunWorker",
+      "datasetExport": "externalDatasetExport",
+      "datasetPreview": "externalDatasetPreview",
+      "dataset": "externalDatasetImport",
+      "datasetRetry": "externalDatasetRetry"
+    },
+    "external-sources-manage.php": {
+      "lookup": "externalLookup",
+      "preview": "externalImportPreview",
+      "draft": "externalImportDraft",
+      "decision": "externalConflictDecision"
+    },
+    "external-sharing.php": {
+      "connect": "externalConnect",
+      "disconnect": "externalDisconnect",
+      "grant": "externalSharingGrant",
+      "revoke": "externalSharingRevoke",
+      "publication": "externalCreatePublication"
+    }
+  },
+  "web_reads": {
+    "/surse/open-food-facts": ["externalSources"],
+    "/admin/sources": ["externalSourceStatus"],
+    "/manage/sources": ["externalOrganizationBindings", "externalConflicts"],
+    "/manage/items/{id}/sources": ["externalItemSources", "externalConflicts"],
+    "/manage/sources/openfoodfacts/sharing": ["externalConnection", "externalSharingGrants", "externalPublications", "externalProducerPackage"]
+  },
+  "api_and_client_operations": [
+    "externalResolve", "externalLookupStatus", "externalRevisionIndex",
+    "externalRevision", "externalAsset", "externalExport", "externalBind",
+    "externalDisconnectBinding", "externalPublicationPreview",
+    "externalConnectionVerify", "externalRevisionVisibility", "externalJobRetry"
+  ],
+  "operator_exceptions": {
+    "install_external": {
+      "view": "external-sources-admin.php",
+      "target": "/admin/updates",
+      "reason": "Instalarea migrărilor folosește fluxul web administrativ de actualizare. Nu este delegată cheilor ERP sau aplicațiilor terțe."
+    }
+  },
+  "local_actions": [
+    "Camera, OCR, cache-ul offline și completarea inventarului fără cont rămân locale. Rezolvarea și căutarea externă au API; fotografiile personale nu sunt trimise la OFF."
+  ]
+}

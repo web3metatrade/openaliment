@@ -17,6 +17,7 @@ final class ExternalRoutes
             ['GET','/api/v2/public/external-revisions/{id}','externalRevision','public','','revision',''],
             ['GET','/api/v2/public/external-assets/{id}','externalAsset','public','','asset',''],
             ['GET','/api/v2/public/sources/openfoodfacts/export','externalExport','public','','export',''],
+            ['GET','/api/v2/manage/sources/openfoodfacts/bindings','externalOrganizationBindings','producer','read','organizationBindings',''],
             ['GET','/api/v2/manage/items/{id}/sources','externalItemSources','producer','read','bindings',''],
             ['POST','/api/v2/manage/items/{id}/sources','externalBind','producer','write','bind','ExternalBinding'],
             ['POST','/api/v2/manage/items/{id}/sources/{binding}/disconnect','externalDisconnectBinding','producer','write','disconnectBinding','Empty'],

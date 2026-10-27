@@ -1,5 +1,5 @@
 """Every OFF operation through real loopback HTTP; upstream networking is disabled."""
-import base64,hashlib,http.cookiejar,io,json,os,urllib.error,urllib.parse,urllib.request,uuid,zipfile
+import base64,hashlib,http.cookiejar,io,json,os,re,urllib.error,urllib.parse,urllib.request,uuid,zipfile
 from pathlib import Path
 from api_contract_probe import validate,report
 ROOT=Path(__file__).resolve().parents[1];BASE=os.environ['OA_TEST_BASE_URL']
@@ -11,10 +11,11 @@ web=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookieja
 def check(name,ok):
     if not ok:raise AssertionError(name)
     checks.append({'name':name,'passed':True})
-def call(path,method='GET',data=None,session=True,expected=None,key=None):
+def call(path,method='GET',data=None,session=True,expected=None,key=None,token=None):
     if expected is None:expected=201 if method=='POST' and path.startswith('/api/v2/manage/') and not path.endswith('/preview') else 200
     headers={'Accept':'application/json'}
-    if method=='POST':
+    if token:headers['Authorization']='Bearer '+token;session=False
+    if method in ['POST','PUT','DELETE']:
         headers.update({'Content-Type':'application/json','Idempotency-Key':key or uuid.uuid4().hex})
         if session:headers['X-CSRF-Token']=csrf
     req=urllib.request.Request(BASE+path,None if data is None else json.dumps(data).encode(),headers,method=method)
@@ -51,6 +52,62 @@ with zipfile.ZipFile(io.BytesIO(package)) as z:
 call(sharing+'/sharing-grants/'+grant['id']+'/revoke','POST',{})
 call(sharing+'/publications/'+publication['id']+'/package',expected=404)
 call(sharing+'/connection/disconnect','POST',{})
+
+# Exercise the partner transport independently of the administrator's cookie.
+integration=f['integration_key'];reader=f['read_key'];foreign=f['foreign_key']
+organizationBindings=sharing+'/bindings'
+allBindings,_=call(organizationBindings+'?limit=1',token=reader)
+check('A partner enumerates organization bindings with a read-only key',len(allBindings['items'])==1 and allBindings['items'][0]['trade_item_id']==f['item'] and allBindings['limit']==1)
+call(organizationBindings+'?limit=101',token=reader,expected=422)
+call(organizationBindings,session=False,expected=401)
+foreignBindings,_=call(organizationBindings,token=foreign)
+check('Organization binding enumeration excludes other tenants',foreignBindings['items']==[])
+call(item,token=foreign,expected=404)
+call(item+'/openfoodfacts/preview','POST',payload,token=reader)
+call(item+'/openfoodfacts/drafts','POST',payload,token=reader,expected=403)
+call(sharing+'/connection','POST',{'organization_ref':'Forbidden'},token=reader,expected=403)
+call(admin+'/status',token=integration,expected=403)
+call(sharing+'/connection','POST',{'organization_ref':'Synthetic bearer partner'},token=integration)
+grants,_=call(sharing+'/sharing-grants',token=integration)
+version=max(g['version'] for g in grants['items'] if g['trade_item_id']==f['item'])
+bearerGrant,_=call(sharing+'/sharing-grants','POST',{'trade_item_id':f['item'],'fields':['name','ingredients'],'expected_version':version,'public_data_confirmed':True,'licenses_confirmed':True},token=integration)
+call(item+'/openfoodfacts/publications/preview','POST',{},token=integration)
+publicationKey=uuid.uuid4().hex
+bearerPublication,_=call(item+'/openfoodfacts/publications','POST',{},key=publicationKey,token=integration)
+duplicate,_=call(item+'/openfoodfacts/publications','POST',{},key=publicationKey,token=integration)
+check('Partner package creation is idempotent without browser cookies',duplicate==bearerPublication and bearerPublication['remote_confirmed'] is False)
+call(sharing+'/publications/'+bearerPublication['id']+'/package',token=integration)
+call(sharing+'/sharing-grants/'+bearerGrant['id']+'/revoke','POST',{},token=integration)
+call(sharing+'/publications/'+bearerPublication['id']+'/package',token=integration,expected=404)
+call(sharing+'/connection/disconnect','POST',{},token=integration)
+call(manage+'/access-tokens/'+f['integration_key_id'],'DELETE',{})
+call(organizationBindings,token=integration,expected=401)
+check('Revoking the partner key immediately blocks OFF access',True)
+
+# A third-party app uses explicit consent and PKCE, rather than an ERP key.
+client,_=call('/api/v2/developer/apps','POST',{'name':'Synthetic OFF OAuth app','redirect_uris':['https://off-partner.example.invalid/callback'],'scopes':['read','sharing:manage']},expected=201)
+verifier=uuid.uuid4().hex+uuid.uuid4().hex
+challenge=base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b'=').decode()
+oauthState=uuid.uuid4().hex
+params={'client_id':client['client_id'],'redirect_uri':'https://off-partner.example.invalid/callback','response_type':'code','state':oauthState,'code_challenge':challenge,'code_challenge_method':'S256','scope':'read sharing:manage'}
+consent,_=call('/oauth/authorize?'+urllib.parse.urlencode(params))
+requestId=re.search(rb'name="request_id" value="([a-f0-9]{32})"',consent).group(1).decode()
+form=urllib.parse.urlencode({'_csrf':csrf,'request_id':requestId,'resource_id':f['p']['tenant'],'decision':'approve'}).encode()
+request=urllib.request.Request(BASE+'/oauth/authorize',form,{'Content-Type':'application/x-www-form-urlencoded'},method='POST')
+try:response=web.open(request,timeout=20)
+except urllib.error.HTTPError as error:response=error
+body=response.read();validate('/oauth/authorize','POST',response.status,response.headers,body)
+check('OFF OAuth consent redirects only to the registered callback',response.status==303 and response.headers['Location'].startswith(params['redirect_uri']+'?'))
+query=urllib.parse.parse_qs(urllib.parse.urlsplit(response.headers['Location']).query)
+check('OFF OAuth authorization preserves state and issuer',query['state']==[oauthState] and query['iss']==[BASE])
+delegated,_=call('/oauth/token','POST',{'grant_type':'authorization_code','client_id':client['client_id'],'redirect_uri':params['redirect_uri'],'code':query['code'][0],'code_verifier':verifier},session=False)
+call(organizationBindings,token=delegated['access_token'])
+call(sharing+'/connection','POST',{'organization_ref':'Synthetic delegated OFF partner'},token=delegated['access_token'])
+call(item+'/openfoodfacts/drafts','POST',payload,token=delegated['access_token'],expected=403)
+call('/api/v2/identity/grants/'+delegated['grant_id'],'DELETE',{})
+call(organizationBindings,token=delegated['access_token'],expected=401)
+check('Delegated OFF scopes work and consent revocation blocks further access',True)
+
 call(admin+'/revisions/'+f['revision']+'/visibility','POST',{'visibility':'suspended','reason':'Synthetic withdrawal'})
 call('/api/v2/public/external-revisions/'+f['revision'],session=False,expected=404)
 call(admin+'/revisions/'+f['revision']+'/visibility','POST',{'visibility':'public','reason':'Synthetic reinstatement'})

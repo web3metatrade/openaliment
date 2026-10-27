@@ -8,6 +8,7 @@ Construiește integrări ERP, aplicații pentru consumatori și instrumente AI f
 - [Conectează un ERP](/api/docs/guides/flux-erp) — creează produsul, aprobă eticheta, adaugă lotul și obține adresa QR.
 - [Construiește o aplicație](/api/docs/guides/oauth) — autorizează accesul prin OAuth cu PKCE, fără parole incluse în aplicație.
 - [Integrează Acasă](/api/docs/guides/acasa) — sincronizează alimentele în familia aleasă de utilizator.
+- [Folosește Open Food Facts](/api/docs/guides/surse-externe) — recunoaște produse, compară informații și administrează contribuțiile autorizate.
 
 ## Primul apel
 

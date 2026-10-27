@@ -16,6 +16,8 @@
 - [API producători](API.md), [conectoare](INTEGRARI_PARTENERI.md), [Acasă și sincronizare](ACASA_SINCRONIZARE.md)
 - [Ghidul complet API v2, chei și OAuth](api/DEVELOPER_GUIDE.md), [OpenAPI al platformei](../contracts/platform-openapi.json)
 - [Portalul documentației API, Markdown și instrumente AI](api/README.md)
+- [Open Food Facts: toate operațiile API și permisiunile](api/pages/surse-externe.md), cu [matricea acțiunilor verificată automat](api/external-action-coverage.json)
+- [Auditul de acoperire API din 27 octombrie](audits/API_COMPLETENESS_2026-10-27.md), cu [rezultatele verificării](verification/api-completeness-2026-10-27.json)
 - [Inventarul complet al acțiunilor și API-urilor candidate](api/API_ACTION_INVENTORY_2026-10-24.md), cu [catalog JSON](api/API_ACTION_INVENTORY_2026-10-24.json)
 - [Nivelul resolverului GS1](GS1_IMPLEMENTATION.md) și [import/export](IMPORT_EXPORT.md)
 - [Edițiile oficiale GS1 și păstrarea copiilor private](standards/GS1.md)
