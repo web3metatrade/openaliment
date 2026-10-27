@@ -4,10 +4,19 @@
   const input=document.getElementById('api-search'),status=document.getElementById('api-search-status'),initialStatus=status.textContent;
   const fold=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('ro');
   const groups=[...root.querySelectorAll('[data-nav-group]')],initialOpen=new Map(groups.map(g=>[g,g.open]));
-  input.addEventListener('input',()=>{const words=fold(input.value.trim()).split(/\s+/).filter(Boolean);let count=0;
-    for(const row of root.querySelectorAll('[data-doc-search]')){const value=fold(row.dataset.docSearch);row.hidden=!words.every(word=>value.includes(word));if(!row.hidden)count++;}
-    for(const group of groups){group.hidden=![...group.querySelectorAll('[data-doc-search]')].some(row=>!row.hidden);if(group.tagName==='DETAILS')group.open=words.length?!group.hidden:initialOpen.get(group);}
-    status.textContent=words.length?count+' rezultate în documentație.':initialStatus;
+  const searchRows=[...root.querySelectorAll('[data-doc-search]')],results=document.getElementById('api-search-results');
+  const navigation=root.querySelector('nav[aria-label="Ghiduri și referință API"]');
+  input.addEventListener('input',()=>{
+    const query=fold(input.value.trim()),words=query.split(/\s+/).filter(Boolean);
+    results.hidden=!words.length;navigation.hidden=Boolean(words.length);results.querySelector('ul').replaceChildren();
+    if(!words.length){status.textContent=initialStatus;for(const group of groups)if(group.tagName==='DETAILS')group.open=initialOpen.get(group);return;}
+    const matches=searchRows.map((row,index)=>{
+      const title=fold(row.dataset.docTitle||''),endpoint=fold(row.dataset.docEndpoint||''),body=fold(row.dataset.docSearch);
+      const score=title.includes(query)?100:words.every(word=>title.includes(word))?80:words.every(word=>endpoint.includes(word))?60:words.every(word=>body.includes(word))?20:0;
+      return {row,index,score:score-(score&&endpoint.startsWith('/api/v1/')?10:0)};
+    }).filter(result=>result.score>0).sort((a,b)=>b.score-a.score||a.index-b.index);
+    for(const {row} of matches.slice(0,30)){const item=document.createElement('li');item.append(row.querySelector('a').cloneNode(true));results.querySelector('ul').append(item);}
+    status.textContent=matches.length?matches.length+' rezultate în documentație.'+(matches.length>30?' Primele 30 sunt afișate; restrânge căutarea.':''):'Nu am găsit rezultate. Încearcă denumirea acțiunii sau adresa API.';
   });
   document.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();root.querySelector('.api-sidebar').open=true;input.focus();input.select();}if(event.key==='Escape')root.querySelector('.api-page-menu').open=false;});
   const sidebar=root.querySelector('.api-sidebar'),mobile=matchMedia('(max-width: 800px)');sidebar.open=!mobile.matches;mobile.addEventListener('change',()=>{sidebar.open=!mobile.matches;});

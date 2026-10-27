@@ -1,10 +1,14 @@
-<?php declare(strict_types=1); ?>
+<?php declare(strict_types=1);
+$contactEmail=filter_var(\App\Core\Config::get('operator_contact'),FILTER_VALIDATE_EMAIL);
+$requestHref=$contactEmail?'mailto:'.$contactEmail.'?subject='.rawurlencode('Solicitare integrare OpenAliment'):'/#contact';
+$filtered=trim((string)($_GET['q']??''))!==''||trim((string)($_GET['category']??''))!=='';
+?>
 <div class="container page-space marketplace-page">
 <div class="eyebrow">MARKETPLACE</div>
 <div class="marketplace-heading"><div><h1 class="page-title"><?= $detail ? e($catalog['items'][0]['name']) : 'Conectează ce folosești deja.' ?></h1><p class="lead"><?= $detail ? e($catalog['items'][0]['summary']) : 'Integrări ERP, echipamente de etichetare și instrumente create de comunitate pentru OpenAliment.' ?></p></div><a class="btn btn-outline-primary" href="/developers/marketplace">Publică o integrare <?= icon('arrow') ?></a></div>
-<?php if (!$detail): ?><form method="get" class="row g-3 mb-4"><div class="col-md-6"><label>Caută o integrare<input name="q" class="form-control" maxlength="120" value="<?=e($_GET['q']??'')?>"></label></div><div class="col-md-4"><label>Categorie<input name="category" class="form-control" maxlength="64" value="<?=e($_GET['category']??'')?>"></label></div><div class="col-md-2 align-self-end"><button class="btn btn-primary">Caută</button></div></form><?php endif ?>
+<?php if (!$detail && ($catalog['items'] || $filtered)): ?><form method="get" class="row g-3 mb-4"><div class="col-md-6"><label>Caută o integrare<input name="q" class="form-control" maxlength="120" value="<?=e($_GET['q']??'')?>"></label></div><div class="col-md-4"><label>Categorie<input name="category" class="form-control" maxlength="64" value="<?=e($_GET['category']??'')?>"></label></div><div class="col-md-2 align-self-end"><button class="btn btn-primary">Caută</button></div></form><?php endif ?>
 <?php if ($detail): ?><a class="back-link" href="/marketplace">← Toate integrările</a><?php endif ?>
-<?php if (!$catalog['items']): ?><section class="panel"><h2>Loc pentru integrarea ta</h2><p>Dezvolți un conector, un agent pentru echipamente sau o aplicație care folosește OpenAliment? Prezintă soluția și compatibilitățile, apoi trimite-o pentru publicare.</p><a class="btn btn-primary" href="/developers/marketplace">Adaugă o integrare</a></section><?php endif ?>
+<?php if (!$catalog['items']): ?><section class="panel marketplace-empty"><h2><?=$filtered?'Nu am găsit o integrare pentru această căutare.':'Nu sunt integrări publicate.'?></h2><p>Ai nevoie de un conector ERP, o imprimantă sau alt instrument? Spune-ne ce sistem folosești și ce vrei să conectezi.</p><div class="button-row"><a class="btn btn-primary" href="<?=e($requestHref)?>"><?=$contactEmail?'Cere o integrare prin email':'Solicită o integrare'?> <?=icon('arrow')?></a><?php if($filtered):?><a href="/marketplace">Resetează căutarea</a><?php endif?></div><p class="mt-4 mb-0">Dezvolți o soluție? <a href="/developers/marketplace">Publică o integrare</a>.</p></section><?php endif ?>
 <div class="marketplace-grid<?= $detail ? ' marketplace-detail' : '' ?>">
 <?php foreach ($catalog['items'] as $entry): ?>
 <article class="panel marketplace-card"><div class="eyebrow"><?= e($entry['category']) ?></div>

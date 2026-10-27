@@ -1,5 +1,17 @@
 # Istoricul versiunilor
 
+## 0.7.3
+
+Aliniază „Contul meu” cu „Spațiul producătorului” pe același rând, păstrând controlul accesibil de pe telefon. Subsolul păstrează sloganul sub logo pe ecrane compacte și grupează documentația API împreună cu celelalte legături. Rutele, datele, permisiunile, contractele și nucleul GS1 rămân compatibile. Nu necesită migrare SQL.
+
+## 0.7.2
+
+Aduce exemplul QR și intrarea „Alimentele mele” în partea de sus a paginii, cu navigare compactă pe telefon și titluri care descriu funcțiile. Pagina pâinii demonstrative arată întâi informațiile alimentare disponibile și necunoscute; identificatorii, QR-ul și proba POS rămân în detalii. Catalogul și marketplace-ul oferă continuări utile când sunt goale. Contul de producător fără produse prioritizează primul formular.
+
+Acasă păstrează deschis dialogul după un cod invalid, cu eroare lângă câmp. Completarea datei se poate face direct din card, fără editarea denumirii, cantității sau locului. Alegerea tipului de dată rămâne explicită, iar precizia lună/an și editarea completă sunt disponibile separat. Preferințele au o etichetă vizibilă. Căutarea documentației API afișează scopul operației și versiunea, cu prioritate pentru potrivirile din titlu.
+
+PWA v9 actualizează resursele și păstrează baza IndexedDB existentă. Nu schimbă sintaxa GS1, rutele persistente, contractele API, permisiunile sau schema SQL. Testele de regresie includ recuperarea după cod invalid, salvarea datei fără modificarea altor câmpuri, navigarea responsive și crearea primului produs din altă categorie decât pâinea.
+
 ## 0.7.1
 
 Aliniază scanarea offline cu serverul pentru ordinea și setul calificatorilor, TPX, codificare unică, separatorul query `;` și segmentele punct interpretate înaintea normalizării browserului. Păstrează calificatorii observați și datele din cod în profil, inventar și sincronizare, fără acordarea unei aprobări. Filtrul scanărilor repetate diferențiază unitățile după GTIN + serie; cache-ul nu copiază seria sau data din codul altui ambalaj. Datele reprezentabile în fereastra GS1 nu mai au o restricție artificială la anii 20xx.

@@ -1,7 +1,7 @@
 {
   "name": "OpenAliment",
-  "version": "0.7.1",
-  "date": "2026-10-25",
+  "version": "0.7.3",
+  "date": "2026-10-27",
   "php_minimum": "8.4",
-  "description": "Compatibilitate GS1 între resolver, scanare, sincronizare și tipărire."
+  "description": "Aliniere consecventă a spațiului producătorului și a subsolului paginilor."
 }
