@@ -21,7 +21,7 @@ final class Accounts {
     public static function token(array $p,array $d): array {
         if($p['role']!=='owner'||$p['token']!==null)throw new Problem(403,'role','Numai administratorul organizației poate crea tokenuri din cont.');
         $scopes=$d['scopes']??['read'];if(!is_array($scopes)||!array_is_list($scopes)||!$scopes)throw new Problem(422,'scopes','Permisiuni incorecte.');
-        foreach($scopes as$scope)if(!is_string($scope)||!in_array($scope,['read','write','publish','alerts','export','import','community'],true))throw new Problem(422,'scopes','Permisiuni incorecte.');
+        foreach($scopes as$scope)if(!is_string($scope)||!in_array($scope,['read','write','publish','alerts','export','import','community','sharing:manage','sharing:write'],true))throw new Problem(422,'scopes','Permisiuni incorecte.');
         return Db::atomic(function()use($p,$d,$scopes){
         Db::one('SELECT id FROM organizations WHERE id=? FOR UPDATE',[$p['tenant']]);
         if((int)Db::one('SELECT COUNT(*) AS n FROM api_tokens WHERE tenant_id=? AND revoked_at IS NULL AND expires_at>?',[$p['tenant'],Db::now()])['n']>=30)throw new Problem(422,'key_quota','Revocă o cheie nefolosită înainte de a crea alta. Limita este de 30 de chei active.');

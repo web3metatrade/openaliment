@@ -41,3 +41,6 @@ THIRD_PARTY_NOTICES.md -text
 release.json -text
 LICENSING.md -text
 tools/standards/fetch.py -text
+
+config/external.local.example.php -text
+tools/external-worker.php -text

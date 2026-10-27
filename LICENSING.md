@@ -16,3 +16,9 @@ Licența MIT a platformei nu relicențiază următoarele materiale:
 Lista tehnică a componentelor este în [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Publicarea codului nu acordă automat drepturi GS1, licențe pentru rețete sau sigla de documentație deschisă. Înaintea publicării repository-ului, selecția materialelor care nu sunt cod software trebuie revizuită de titularul drepturilor.
 
 Standardele GS1 păstrate privat și catalogul lor de proveniență sunt descrise în [referința GS1](docs/standards/GS1.md). PDF-urile originale nu sunt relicențiate MIT; lectura publică folosește distribuția oficială GS1. Integrările marketplace își declară propriile licențe software, fără licențiere implicită prin simpla publicare a ofertei.
+
+## Date Open Food Facts
+
+Codul adaptorului urmează licența software a proiectului. Datele derivate din Open Food Facts rămân sub ODbL 1.0 (bază) și DbCL 1.0 (conținut), cu atribuire Open Food Facts și contributorilor. Fotografiile sursei rămân sub CC BY-SA 3.0 și își păstrează proveniența. Nu sunt relicențiate sub MIT. Vezi [politica de utilizare și operare](docs/OPEN_FOOD_FACTS.md) și [licențele oficiale OFF](https://openfoodfacts.github.io/documentation/docs/Product-Opener/api/tutorials/license-be-on-the-legal-side/).
+
+Distribuirea datelor proprii ale unui producător către OFF cere acord și drepturi explicite. Configurarea unui produs, găzduirea QR sau importul unei fișe nu licențiază automat rețeta ori documentația sa privată.

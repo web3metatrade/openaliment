@@ -15,7 +15,7 @@ final class ConsumerController {
         }
         if (!in_array($method,['GET','HEAD'],true)) throw new Problem(405,'method','Metodă nepermisă.');
         header('X-Robots-Tag: noindex, nofollow');
-        if ($path==='/api/v2/public/capabilities') Http::json(['schema_version'=>'openaliment.capabilities.v1','date_ocr'=>\App\Domain\ConsumerAssets::ready(),'cloud_sync'=>\App\Core\Config::get('home_sync_enabled',true)===true&&\App\Core\Migrations::home(),'sync_scope'=>['packages','photos','history'],'shopping_sync'=>false,'digital_receipts'=>\App\Core\Migrations::integrations(),'external_sources'=>false]);
+        if ($path==='/api/v2/public/capabilities') Http::json(['schema_version'=>'openaliment.capabilities.v1','date_ocr'=>\App\Domain\ConsumerAssets::ready(),'cloud_sync'=>\App\Core\Config::get('home_sync_enabled',true)===true&&\App\Core\Migrations::home(),'sync_scope'=>['packages','photos','history'],'shopping_sync'=>false,'digital_receipts'=>\App\Core\Migrations::integrations(),'external_sources'=>\App\Domain\ExternalCatalog::available()]);
         if ($path==='/api/v2/public/food') {
             $code=$_GET['code']??null;
             if (!is_string($code)) throw new Problem(422,'scan','Lipsește codul alimentului.');

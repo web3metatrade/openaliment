@@ -20,13 +20,14 @@ final class Portability {
         // No accounts, API credentials, raw reviews, private contacts or AI prompts in a transfer export.
         $data['feedback']=Db::all("SELECT id,product_id,batch_id,product_info_version_id,kind,rating,public_text,created_at FROM feedback WHERE tenant_id=? AND status='published' ORDER BY id",[$p['tenant']]);
         $data['audit_events']=Db::all('SELECT id,action,object_id,details_json,created_at FROM audit_events WHERE tenant_id=? ORDER BY created_at,id',[$p['tenant']]);
+        $sources=ExternalSources::portable($p);if($sources)$data['external_sources']=$sources;
         $json=Db::json($data);
         return ['schema_version'=>'openaliment.transfer.v1','exported_at'=>gmdate(DATE_ATOM),'source_base_url'=>Config::get('url'),'organization'=>Db::one('SELECT id,display_name FROM organizations WHERE id=?',[$p['tenant']]),'data'=>$data,'data_sha256'=>hash('sha256',$json)];
     }
     public static function stream(array $p): never {
         Auth::approve($p,'export');$org=Db::one('SELECT id,display_name FROM organizations WHERE id=?',[$p['tenant']]);
         header('Content-Type: application/x-ndjson; charset=utf-8');header('Content-Disposition: attachment; filename="openaliment-transfer.ndjson"');
-        $hash=hash_init('sha256');$count=0;
+        $hash=hash_init('sha256');$count=0;$externalSources=ExternalSources::portable($p);
         $emit=static function(array $value)use($hash):void{$line=Db::json($value)."\n";hash_update($hash,$line);echo $line;};
         $provenance=[];if(Migrations::readiness())foreach(Db::all('SELECT s.document_id,s.source_sha256,s.details_json,s.created_at FROM document_provenance s JOIN documents d ON d.id=s.document_id WHERE d.tenant_id=? ORDER BY s.created_at,s.id',[$p['tenant']])as$source){$id=$source['document_id'];unset($source['document_id']);$provenance[$id][]=$source;}
         $pdo=Db::pdo();$pdo->exec('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ');$pdo->beginTransaction();
@@ -41,6 +42,7 @@ final class Portability {
                     $emit(['table'=>$table,'row'=>$row]);$count++;if($count%100===0)flush();
                 }$statement->closeCursor();
             }
+            foreach($externalSources as$source){$emit(['table'=>'external_sources','row'=>$source]);$count++;}
             $pdo->commit();echo Db::json(['end'=>true,'records'=>$count,'sha256'=>hash_final($hash)])."\n";
         }finally{if($pdo->inTransaction())$pdo->rollBack();$pdo->setAttribute(\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);}
         exit;
@@ -51,6 +53,10 @@ final class Portability {
         foreach(['products','trade_items','product_info_versions','recipe_versions','batches','alerts','documents']as$t)if(!isset($d['data'][$t])||!is_array($d['data'][$t]))throw new Problem(422,'schema','Lipsește colecția '.$t.'.');
         foreach($d['data']['trade_items']as$item)if(!empty($item['gtin14']))DemoBread::assertCommercial(DigitalLink::gtin($item['gtin14']));
         if((!empty($d['data']['integration_connectors'])||!empty($d['data']['integration_mappings'])||!empty($d['data']['integration_bindings']))&&!Migrations::integrations())throw new Problem(422,'integration_schema','Activează conectoarele înainte de importul mapărilor.');
+        foreach($d['data']['external_sources']??[]as$source){
+            if(!is_array($source)||!is_array($source['revision']??null)||!is_array($source['fields']??null)||array_diff($source['fields'],ExternalSources::FIELDS))throw new Problem(422,'external_provenance','Proveniența externă din pachet este incorectă.');
+            \App\Core\Api::id((string)($source['label_id']??''));\App\Core\ApiInput::validate(json_decode(Db::json($source['revision']),true),'ExternalFoodRecord');
+        }
         $counts=[];foreach($d['data']as$k=>$rows){if(!is_array($rows)||count($rows)>10000)throw new Problem(422,'size','Colecție prea mare.');$counts[$k]=count($rows);}
         return ['schema_version'=>$d['schema_version'],'counts'=>$counts,'publication'=>'private','verification'=>'requires_reverification'];
     }

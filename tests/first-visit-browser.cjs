@@ -104,13 +104,13 @@ function check(name, value) {
     // This models the cache lifecycle, not every byte of the historical application.
     await upgradePage.evaluate(() => navigator.serviceWorker.register('/acasa/legacy-test-worker.js', {scope: '/acasa/'}));
     await upgradePage.waitForFunction(() => navigator.serviceWorker.controller?.scriptURL.endsWith('/legacy-test-worker.js') && navigator.serviceWorker.controller.state === 'activated');
-    await upgradePage.evaluate(() => caches.delete('openaliment-home-9'));
-    check('Legacy cache fixture is active before update', await upgradePage.evaluate(async () => (await caches.keys()).includes('openaliment-home-8') && !(await caches.keys()).includes('openaliment-home-9')));
+    await upgradePage.evaluate(() => caches.delete('openaliment-home-10'));
+    check('Legacy cache fixture is active before update', await upgradePage.evaluate(async () => (await caches.keys()).includes('openaliment-home-8') && !(await caches.keys()).includes('openaliment-home-10')));
     await upgradePage.evaluate(() => navigator.serviceWorker.register('/acasa/sw.js', {scope: '/acasa/'}));
     await upgradePage.waitForFunction(() => navigator.serviceWorker.controller?.scriptURL.endsWith('/acasa/sw.js') && navigator.serviceWorker.controller.state === 'activated');
-    check('PWA upgrade replaces simulated legacy worker without closing the page', await upgradePage.evaluate(async () => (await caches.keys()).includes('openaliment-home-9') && !(await caches.keys()).includes('openaliment-home-8')));
+    check('PWA upgrade replaces simulated legacy worker without closing the page', await upgradePage.evaluate(async () => (await caches.keys()).includes('openaliment-home-10') && !(await caches.keys()).includes('openaliment-home-8')));
     check('Updated PWA shell is cached before offline use', await upgradePage.evaluate(async () => {
-      const shell = await (await caches.open('openaliment-home-9')).match('/acasa/');
+      const shell = await (await caches.open('openaliment-home-10')).match('/acasa/');
       return shell?.ok && shell.headers.get('X-OpenAliment-App') === 'home';
     }));
     await upgradeContext.setOffline(true);

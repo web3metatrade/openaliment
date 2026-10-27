@@ -34,6 +34,7 @@ function oa_test_config(): array
     $config['mail'] = ['enabled' => true, 'transport' => 'test_file'];
     $config['ai']['enabled'] = false;
     $config['document_scanner'] = ['transport' => 'test_clean'];
+    $config['external'] = ['network_enabled'=>false, 'product_reads_per_minute'=>2];
     if (getenv('OA_TEST_SYNTHETIC_HANDOVER') === '1' || !is_readable(($config['handover_path'] ?? '') . '/HASHES.sha256')) {
         $synthetic = __DIR__ . '/runtime/legacy-handover';
         if (!is_readable($synthetic . '/HASHES.sha256')) {

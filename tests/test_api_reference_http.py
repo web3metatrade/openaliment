@@ -78,6 +78,7 @@ resource_ids = {'products': d['pid'], 'trade-items': d['item'], 'labels': d['lab
 for path, methods in SPEC['paths'].items():
     if 'get' not in methods or path.endswith('/authorize') or '/photos/' in path or any(family in path for family in ['/marketplace/', '/printing/', '/standards/']):
         continue
+    if methods['get']['operationId'].startswith('external'):continue  # Dedicated OFF suite validates these source-specific fixtures.
     operation = methods['get']
     actual = path
     if '{id}' in actual:

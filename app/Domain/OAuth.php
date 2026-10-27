@@ -5,7 +5,7 @@ use App\Core\{Api,Auth,Config,Db,Http,Problem,Session};
 
 /** Opaque, revocable grants. PKCE S256 is mandatory for every public client. */
 final class OAuth {
-    public const SCOPES=['read','write','publish','alerts','export','import','community','home:read','home:write','home:manage'];
+    public const SCOPES=['read','write','publish','alerts','export','import','community','sharing:manage','sharing:write','home:read','home:write','home:manage'];
     public static function clients(array $p): array {
         if($p['token']!==null)throw new Problem(403,'application_owner','Folosește contul pentru administrarea aplicațiilor.');
         return ['items'=>Db::all('SELECT id,name,redirect_uris_json,scopes_json,active,created_at FROM api_clients WHERE owner_user_id=? ORDER BY id LIMIT 100',[$p['user']])];
@@ -38,7 +38,7 @@ final class OAuth {
     }
     public static function scopes(mixed $value): array {
         if(is_string($value))$value=preg_split('/ +/',trim($value));
-        if(!is_array($value)||!array_is_list($value)||!$value||count($value)>10)throw new Problem(422,'invalid_scope','Permisiuni incorecte.');
+        if(!is_array($value)||!array_is_list($value)||!$value||count($value)>count(self::SCOPES))throw new Problem(422,'invalid_scope','Permisiuni incorecte.');
         foreach($value as $scope)if(!is_string($scope)||!in_array($scope,self::SCOPES,true))throw new Problem(422,'invalid_scope','Permisiune necunoscută.');
         return array_values(array_unique($value));
     }
@@ -90,6 +90,8 @@ final class OAuth {
                 if(!$m)throw new Problem(403,'membership','Nu ai acces la organizație.');
                 if(array_intersect($scopes,['publish','alerts','export','import'])&&!in_array($m['role'],['owner','quality'],true))throw new Problem(403,'role','Aceste permisiuni necesită un responsabil autorizat.');
                 if(in_array('write',$scopes,true)&&!in_array($m['role'],['owner','quality','editor'],true))throw new Problem(403,'role','Nu ai drept de modificare.');
+                if(in_array('sharing:manage',$scopes,true)&&$m['role']!=='owner')throw new Problem(403,'role','Acordurile de distribuire necesită proprietarul organizației.');
+                if(in_array('sharing:write',$scopes,true)&&!in_array($m['role'],['owner','quality'],true))throw new Problem(403,'role','Distribuirea necesită un responsabil autorizat.');
             }
             Db::insert('api_oauth_grants',['id'=>$grant,'client_id'=>$r['client_id'],'realm'=>$r['realm'],'user_id'=>$r['realm']==='producer'?$principal['id']:null,'tenant_id'=>$r['realm']==='producer'?$resource:null,'home_account_id'=>$r['realm']==='home'?$principal['account_id']:null,'household_id'=>$r['realm']==='home'?$resource:null,'home_device_id'=>$device,'scopes_json'=>$r['scopes_json'],'expires_at'=>gmdate('Y-m-d H:i:s',time()+90*86400),'created_at'=>Db::now()]);
             $code=bin2hex(random_bytes(32));Db::insert('api_oauth_codes',['code_hash'=>hash('sha256',$code),'request_id'=>$r['id'],'grant_id'=>$grant,'expires_at'=>gmdate('Y-m-d H:i:s',time()+120),'created_at'=>Db::now()]);

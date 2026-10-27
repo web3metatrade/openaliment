@@ -9,6 +9,7 @@ final class UpdatesController {
         $user=Auth::admin();
         if ($method==='POST') {
             Http::sameOrigin(); Session::verify();
+            if (($_POST['action']??'')==='install_external') {\App\Domain\OperationsAssets::install();Migrations::upgradeExternal(true);Session::flash('Catalogul extern și acordurile de distribuire sunt instalate. Activarea sursei se face separat.');Http::redirect('/admin/sources');}
             if (($_POST['action']??'')==='install_marketplace') { \App\Domain\OperationsAssets::install();Migrations::upgradeMarketplace();Session::flash('Marketplace-ul și tipărirea serializată sunt active.'); }
             elseif (($_POST['action']??'')==='install_resolver') { Migrations::upgradeResolver(); Session::flash('Actualizarea resolverului a fost aplicată.'); }
             elseif (($_POST['action']??'')==='install_readiness') { \App\Domain\OperationsAssets::install();Migrations::upgradeReadiness(); Session::flash('Protecția conturilor, documentelor și operațiunilor este activă.'); }

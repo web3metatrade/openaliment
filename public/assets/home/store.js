@@ -19,6 +19,9 @@ export async function read() {
     const tx=db.transaction('state','readonly'),r=tx.objectStore('state').get(KEY);r.onsuccess=()=>resolve(r.result||initial());r.onerror=()=>reject(r.error);
   });
 }
+export async function externalRead(id){const db=await open();return new Promise((resolve,reject)=>{const r=db.transaction('state','readonly').objectStore('state').get('external:'+id);r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>reject(r.error);});}
+export async function externalList(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('state','readonly'),r=tx.objectStore('state').openCursor(),out=[];r.onsuccess=()=>{const c=r.result;if(!c){resolve(out);return;}if(String(c.key).startsWith('external:'))out.push(c.value);c.continue();};r.onerror=()=>reject(r.error);});}
+export async function externalWrite(record){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('state','readwrite'),s=tx.objectStore('state'),r=s.openCursor(),keys=[];r.onsuccess=()=>{const c=r.result;if(c){if(String(c.key).startsWith('external:'))keys.push({key:c.key,time:c.value.fetched_at||''});c.continue();return;}keys.sort((a,b)=>a.time.localeCompare(b.time));while(keys.length>=128)s.delete(keys.shift().key);s.put(record,'external:'+record.id);};tx.oncomplete=()=>resolve();tx.onerror=tx.onabort=()=>reject(Error('La fișa externă nu mai este spațiu disponibil.'));});}
 export async function update(fn,photos=null) {
   const db=await open();return new Promise((resolve,reject)=>{
     const tx=db.transaction(photos?['state','photos']:['state'],'readwrite'),store=tx.objectStore('state'),r=store.get(KEY);let result,error;

@@ -1,5 +1,5 @@
 import * as D from './domain.js?v=8';
-import * as store from './store.js?v=8';
+import * as store from './store.js?v=10';
 export function cleanReceipt(raw) {
   if(!raw||raw.schema_version!=='openaliment.receipt.v1'||!/^[a-f0-9]{32}$/.test(raw.id)||typeof raw.merchant!=='string'||raw.merchant.length>180||!Array.isArray(raw.lines)||raw.lines.length<1||raw.lines.length>500)throw Error('Bonul nu este valid.');
   const seen=new Set(),lines=raw.lines.map(l=>{

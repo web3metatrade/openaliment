@@ -14,7 +14,7 @@ final class ApiGateway {
         $public=$docs||($route&&$route['auth']==='public')||$legacyPublic||in_array($path,['/api/v2/public/food','/api/v2/public/capabilities','/api/v2/public/status'],true);
         if($path==='/api/v2/identity/session')$public=false;
         if($public){
-            Api::publicCors();$allowed=in_array($path,['/api/v1/feedback','/api/v2/community/feedback','/api/v2/public/food-lookups','/api/v2/tools/identifiers/parse','/api/v2/tools/identifiers/validate'],true)?'POST, OPTIONS':'GET, HEAD, OPTIONS';
+            Api::publicCors();$allowed=$route&&$route['auth']==='public'?implode(', ',ApiRoutes::methods($path)):(in_array($path,['/api/v1/feedback'],true)?'POST, OPTIONS':'GET, HEAD, OPTIONS');
             header('Access-Control-Allow-Methods: '.$allowed);header('Access-Control-Allow-Headers: Content-Type, X-Status-Token, Idempotency-Key');
             Api::method($method,explode(', ',$allowed));
         }else self::cors($method);

@@ -1,4 +1,4 @@
-import * as store from './store.js?v=8';
+import * as store from './store.js?v=10';
 const $=id=>document.getElementById(id);
 let context=null,pending=null;
 function show(text){$('cloud-action-status').textContent=text;}

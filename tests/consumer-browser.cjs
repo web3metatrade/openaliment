@@ -9,7 +9,7 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));
 async function code(page,value){await page.getByRole('button',{name:'Adaugă',exact:true}).click();await page.getByRole('button',{name:'Introdu codul',exact:true}).click();await page.locator('#code-form input').fill(value);await page.getByRole('button',{name:'Adaugă alimentul',exact:true}).click();await page.locator('#code-dialog').waitFor({state:'hidden'});await pause(200);}
 (async()=>{
  const browser=await chromium.launch({...(process.env.OA_BROWSER_CHANNEL?{channel:process.env.OA_BROWSER_CHANNEL}:{}),headless:true});const errors=[],requests=[];
- const context=await browser.newContext({viewport:{width:1440,height:960},acceptDownloads:true});const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));context.on('request',r=>{if(/^https?:/.test(r.url()))requests.push({url:r.url(),method:r.method()});});
+ const context=await browser.newContext({viewport:{width:1440,height:960},acceptDownloads:true});const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));context.on('request',r=>{if(/^https?:/.test(r.url()))requests.push({url:r.url(),method:r.method(),body:r.postData()});});
  try{
   await page.goto(BASE+'/acasa/');await page.locator('#inventory[aria-busy=false]').waitFor();
   check('Guest first screen has no account gate',await page.getByRole('button',{name:'Adaugă un aliment',exact:true}).isVisible()&&await page.locator('input[type=password]').count()===0);
@@ -43,11 +43,11 @@ async function code(page,value){await page.getByRole('button',{name:'Adaugă',ex
   const serialBase=BASE+'/01/09520000000011/22/2A/10/DEMO-PBT-01/21/';
   await serialPage.getByRole('button',{name:'Adaugă un aliment',exact:true}).click();await serialPage.getByRole('button',{name:'Introdu codul',exact:true}).click();await serialPage.locator('#code-form input').fill(serialBase+'SERIAL-A?15=261030');await serialPage.getByRole('button',{name:'Adaugă alimentul',exact:true}).click();await serialPage.locator('#code-dialog').waitFor({state:'hidden'});
   await serialPage.evaluate(()=>navigator.serviceWorker.ready.then(()=>true));await serialContext.setOffline(true);await code(serialPage,serialBase+'SERIAL-B');
-  const serialState=await serialPage.evaluate(async()=>await (await import('/assets/home/store.js?v=8')).read());
+  const serialState=await serialPage.evaluate(async()=>await (await import('/assets/home/store.js?v=10')).read());
   check('Online and offline scans retain two different GS1 serials',serialState.items.length===2&&serialState.items[0].profile.gs1_qualifiers['21']==='SERIAL-A'&&serialState.items[1].profile.gs1_qualifiers['21']==='SERIAL-B');
   check('Offline cache retains CPV and never copies another packages barcode date',serialState.items[1].profile.gs1_qualifiers['22']==='2A'&&serialState.items[1].expiry===null);
   await serialContext.close();
-  await mobile.close();check('No health preference is sent as a network mutation',requests.every(r=>r.method==='GET')&&requests.every(r=>!r.url.includes('allergens=')));
+  await mobile.close();check('No health preference is sent as a network mutation',requests.every(r=>r.method==='GET'||r.method==='POST'&&['/api/v2/public/food/resolve','/api/v2/public/food/lookups'].includes(new URL(r.url).pathname)&&Object.keys(JSON.parse(r.body||'{}')).every(k=>['code','gtin'].includes(k)))&&requests.every(r=>!r.url.includes('allergens=')));
   check('OCR/scanning do not call an external host',requests.every(r=>r.url.startsWith(BASE)||r.url.startsWith('blob:')||r.url.startsWith('data:')));check('No unhandled browser exceptions',errors.length===0);
   await fs.writeFile(path.join(ROOT,'tests/runtime/reports/consumer-browser-report.json'),JSON.stringify({executed_at:new Date().toISOString(),environment:'Local isolated Edge desktop and mobile emulation; not physical Android/iPhone or POS',passed:checks.length,failed:0,checks},null,2));console.log(JSON.stringify({passed:checks.length,failed:0}));
  }catch(e){await page.screenshot({path:path.join(ROOT,'tests/runtime/previews/consumer-browser-failure.png'),fullPage:true}).catch(()=>{});console.error('BROWSER ERRORS',errors);console.error('EXTERNAL REQUESTS',requests.filter(r=>!r.url.startsWith(BASE)&&!r.url.startsWith('blob:')&&!r.url.startsWith('data:')));throw e;}finally{await browser.close();}

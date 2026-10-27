@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "revision_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "fields": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "enum": [
+          "name",
+          "ingredients",
+          "allergens",
+          "net_quantity",
+          "storage",
+          "nutrition"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "version_key": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "expected_label_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "completion": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "maxLength": 1500
+        },
+        "operator": {
+          "type": "string",
+          "maxLength": 1500
+        },
+        "ingredients": {
+          "type": "string",
+          "maxLength": 5000
+        },
+        "allergens": {
+          "type": "string",
+          "maxLength": 1500
+        },
+        "net_quantity": {
+          "type": "string",
+          "maxLength": 1500
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "revision_id"
+  ],
+  "additionalProperties": false
+}

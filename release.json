@@ -1,7 +1,7 @@
 {
   "name": "OpenAliment",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "date": "2026-10-27",
   "php_minimum": "8.4",
-  "description": "Aliniere consecventă a spațiului producătorului și a subsolului paginilor."
+  "description": "Open Food Facts: surse cu proveniență, Acasă, precompletare și contribuții autorizate prin pachete."
 }

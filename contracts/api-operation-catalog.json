@@ -1690,8 +1690,358 @@
       "handler": "admin:gtin.review",
       "summary": "Înregistrează o decizie atribuită administratorului.",
       "body": "AdminReview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/public/food/resolve",
+      "id": "externalResolve",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.resolve",
+      "summary": "Citește profilul aprobat și suplimentul extern separat, fără apel la OFF.",
+      "body": "ExternalResolve"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/public/food/lookups",
+      "id": "externalLookup",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.lookup",
+      "summary": "Caută un GTIN în OFF cu cache, buget persistent și termen limitat.",
+      "body": "ExternalLookup"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/food/lookups/{id}",
+      "id": "externalLookupStatus",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.lookupStatus",
+      "summary": "Gestionează external lookup status cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/sources",
+      "id": "externalSources",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.sources",
+      "summary": "Gestionează external sources cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/sources/openfoodfacts/revisions",
+      "id": "externalRevisionIndex",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.revisionIndex",
+      "summary": "Gestionează external revision index cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/external-revisions/{id}",
+      "id": "externalRevision",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.revision",
+      "summary": "Gestionează external revision cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/external-assets/{id}",
+      "id": "externalAsset",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.asset",
+      "summary": "Gestionează external asset cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/public/sources/openfoodfacts/export",
+      "id": "externalExport",
+      "auth": "public",
+      "scope": "",
+      "handler": "external.export",
+      "summary": "Gestionează external export cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/items/{id}/sources",
+      "id": "externalItemSources",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.bindings",
+      "summary": "Gestionează external item sources cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/items/{id}/sources",
+      "id": "externalBind",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "external.bind",
+      "summary": "Gestionează external bind cu proveniență și autorizare explicită.",
+      "body": "ExternalBinding"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/items/{id}/sources/{binding}/disconnect",
+      "id": "externalDisconnectBinding",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "external.disconnectBinding",
+      "summary": "Gestionează external disconnect binding cu proveniență și autorizare explicită.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/items/{id}/sources/openfoodfacts/preview",
+      "id": "externalImportPreview",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.preview",
+      "summary": "Gestionează external import preview cu proveniență și autorizare explicită.",
+      "body": "ExternalImport"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/items/{id}/sources/openfoodfacts/drafts",
+      "id": "externalImportDraft",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "external.draft",
+      "summary": "Creează o ciornă cu proveniență, fără aprobarea implicită a datelor.",
+      "body": "ExternalImport"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/source-conflicts",
+      "id": "externalConflicts",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.conflicts",
+      "summary": "Gestionează external conflicts cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/source-conflicts/{id}/decisions",
+      "id": "externalConflictDecision",
+      "auth": "producer",
+      "scope": "publish",
+      "handler": "external.decision",
+      "summary": "Gestionează external conflict decision cu proveniență și autorizare explicită.",
+      "body": "ExternalDecision"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/sources/openfoodfacts/connection",
+      "id": "externalConnection",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.connection",
+      "summary": "Gestionează external connection cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/sources/openfoodfacts/connection",
+      "id": "externalConnect",
+      "auth": "producer",
+      "scope": "sharing:manage",
+      "handler": "external.connect",
+      "summary": "Gestionează external connect cu proveniență și autorizare explicită.",
+      "body": "ExternalConnection"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/sources/openfoodfacts/connection/disconnect",
+      "id": "externalDisconnect",
+      "auth": "producer",
+      "scope": "sharing:manage",
+      "handler": "external.disconnect",
+      "summary": "Gestionează external disconnect cu proveniență și autorizare explicită.",
+      "body": "ExternalSensitiveEmpty"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/sources/openfoodfacts/sharing-grants",
+      "id": "externalSharingGrants",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.grants",
+      "summary": "Gestionează external sharing grants cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/sources/openfoodfacts/sharing-grants",
+      "id": "externalSharingGrant",
+      "auth": "producer",
+      "scope": "sharing:manage",
+      "handler": "external.grant",
+      "summary": "Gestionează external sharing grant cu proveniență și autorizare explicită.",
+      "body": "ExternalGrant"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/sources/openfoodfacts/sharing-grants/{id}/revoke",
+      "id": "externalSharingRevoke",
+      "auth": "producer",
+      "scope": "sharing:manage",
+      "handler": "external.revoke",
+      "summary": "Gestionează external sharing revoke cu proveniență și autorizare explicită.",
+      "body": "ExternalSensitiveEmpty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/items/{id}/sources/openfoodfacts/publications/preview",
+      "id": "externalPublicationPreview",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.publicationPreview",
+      "summary": "Gestionează external publication preview cu proveniență și autorizare explicită.",
+      "body": "ExternalPublication"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/items/{id}/sources/openfoodfacts/publications",
+      "id": "externalCreatePublication",
+      "auth": "producer",
+      "scope": "sharing:write",
+      "handler": "external.publication",
+      "summary": "Pregătește sau descarcă datele aprobate pentru importul producătorului; nu confirmă publicarea în OFF.",
+      "body": "ExternalPublication"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/sources/openfoodfacts/publications",
+      "id": "externalPublications",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "external.publications",
+      "summary": "Gestionează external publications cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/sources/openfoodfacts/publications/{id}/package",
+      "id": "externalProducerPackage",
+      "auth": "producer",
+      "scope": "export",
+      "handler": "external.package",
+      "summary": "Pregătește sau descarcă datele aprobate pentru importul producătorului; nu confirmă publicarea în OFF.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/state",
+      "id": "externalSourceState",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.state",
+      "summary": "Gestionează external source state cu proveniență și autorizare explicită.",
+      "body": "ExternalState"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/sources/openfoodfacts/status",
+      "id": "externalSourceStatus",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.status",
+      "summary": "Gestionează external source status cu proveniență și autorizare explicită.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/connections/{id}/verify",
+      "id": "externalConnectionVerify",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.verify",
+      "summary": "Gestionează external connection verify cu proveniență și autorizare explicită.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/revisions/{id}/visibility",
+      "id": "externalRevisionVisibility",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.visibility",
+      "summary": "Gestionează external revision visibility cu proveniență și autorizare explicită.",
+      "body": "ExternalVisibility"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/jobs/{id}/retry",
+      "id": "externalJobRetry",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.retry",
+      "summary": "Gestionează external job retry cu proveniență și autorizare explicită.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/datasets/preview",
+      "id": "externalDatasetPreview",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.datasetPreview",
+      "summary": "Gestionează external dataset preview cu proveniență și autorizare explicită.",
+      "body": "ExternalDataset"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/datasets",
+      "id": "externalDatasetImport",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.dataset",
+      "summary": "Gestionează external dataset import cu proveniență și autorizare explicită.",
+      "body": "ExternalDataset"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/datasets/{id}/retry",
+      "id": "externalDatasetRetry",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.datasetRetry",
+      "summary": "Gestionează external dataset retry cu proveniență și autorizare explicită.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/exports",
+      "id": "externalDatasetExport",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.datasetExport",
+      "summary": "Gestionează external dataset export cu proveniență și autorizare explicită.",
+      "body": "Empty"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/admin/sources/openfoodfacts/worker",
+      "id": "externalRunWorker",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "external.worker",
+      "summary": "Gestionează external run worker cu proveniență și autorizare explicită.",
+      "body": "Empty"
     }
   ],
   "contract": "platform-openapi.json",
-  "operations": 258
+  "operations": 293
 }

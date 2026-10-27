@@ -17,3 +17,7 @@ Playwright, sharp și pachetele Python din manifestele de dezvoltare se instalea
 Documentele PBT și imaginile sunt tratate separat în [LICENSING.md](LICENSING.md). Această listă nu atribuie platformei drepturi asupra mărcilor sau conținutului altor titulari.
 
 Standardele GS1 au propriile drepturi GS1 AISBL și nu sunt relicențiate MIT. Catalogul și copiile private sunt descrise în docs/standards/GS1.md; distribuția publică a PDF-urilor folosește adresele oficiale GS1.
+
+## Open Food Facts — date și fotografii opționale
+
+Sursă: https://world.openfoodfacts.org/ și contributorii săi. Bază: ODbL 1.0; conținut: DbCL 1.0; fotografii: CC BY-SA 3.0. Integrarea păstrează licențele în API, UI și export. Repository-ul nu distribuie dumpuri reale sau fotografii OFF în fixture-uri. Seturile nutritive estimate și scorurile calculate nu sunt declarații aprobate ale producătorului.

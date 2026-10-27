@@ -11,8 +11,8 @@ for methods in spec['paths'].values():
 guide=(ROOT/'docs/api/DEVELOPER_GUIDE.md').read_text(encoding='utf-8')
 LINKS={'../../contracts/platform-openapi.json':'/api/platform-openapi.json','../../tools/sdk/openaliment.py':'/api/sdk/python','../../tools/sdk/openaliment.mjs':'/api/sdk/javascript','../../tools/sdk/OpenAlimentClient.kt':'/api/sdk/kotlin','../INTEGRARI_PARTENERI.md':'/api/docs/guides/conectoare','../IMPORT_EXPORT.md':'/api/docs/guides/conectoare'}
 GUIDES=[('acces','Acces și permisiuni'),('api-public','Citire publică'),('flux-erp','Primul produs și lot'),('alerte','Alerte și retrageri'),('documente-feedback','Documente și feedback'),('chei','Chei, rotație și revocare'),('oauth','OAuth pentru aplicații'),('acasa','Acasă și sincronizare'),('conectoare','Conectoare, export și import'),('limite','Limite și erori'),('ai','Integrare cu AI'),('compatibilitate','Compatibilitate și publicare')]
-EXTRA_GUIDES=[('modele-date','Modele de date și reguli de integrare'),('erori-recuperare','Erori, reîncercări și depanare'),('exemple-executabile','Integrare completă și exemple executabile'),('testare','Testarea integrării și mediile de lucru'),('protectia-contului','Protecția contului și confirmări sensibile'),('marketplace','Marketplace, serializare și linia de producție')]
-GROUPS={'marketplace':'Marketplace și echipamente','public':'API public','products':'Produse și articole','labels':'Versiuni de etichetă','batches':'Loturi și alerte','documents':'Documente și rețete','resolver':'Resolver GS1 Digital Link','community':'Feedback, propuneri și voturi','connectors':'Conectoare și bonuri','transfer':'Import și export','home':'Acasă și familii','keys':'Chei API','oauth':'OAuth și autorizări','identity':'Cont și organizații','ai':'Joburi AI','admin':'Administrarea platformei','discovery':'Manifest, scheme și SDK','legacy':'Compatibilitate API v1'}
+EXTRA_GUIDES=[('surse-externe','Open Food Facts și proveniența datelor'),('modele-date','Modele de date și reguli de integrare'),('erori-recuperare','Erori, reîncercări și depanare'),('exemple-executabile','Integrare completă și exemple executabile'),('testare','Testarea integrării și mediile de lucru'),('protectia-contului','Protecția contului și confirmări sensibile'),('marketplace','Marketplace, serializare și linia de producție')]
+GROUPS={'external':'Surse externe și Open Food Facts','marketplace':'Marketplace și echipamente','public':'API public','products':'Produse și articole','labels':'Versiuni de etichetă','batches':'Loturi și alerte','documents':'Documente și rețete','resolver':'Resolver GS1 Digital Link','community':'Feedback, propuneri și voturi','connectors':'Conectoare și bonuri','transfer':'Import și export','home':'Acasă și familii','keys':'Chei API','oauth':'OAuth și autorizări','identity':'Cont și organizații','ai':'Joburi AI','admin':'Administrarea platformei','discovery':'Manifest, scheme și SDK','legacy':'Compatibilitate API v1'}
 def inline(text):
  text=html.escape(text)
  def link(m):
@@ -43,6 +43,7 @@ def render(markdown):
   out.append('<p>'+inline(' '.join(paragraph))+'</p>')
  return '\n'.join(out),toc
 def group(path):
+ if any(x in path for x in ['/sources','/external-revisions/','/external-assets/','/source-conflicts','/food/resolve','/food/lookups']):return 'external'
  if '/marketplace/' in path or '/printing/' in path or '/printing-agent/' in path:return 'marketplace'
  if path.startswith('/api/v1/'):return 'legacy'
  if path.startswith('/api/v2/public/'):return 'public'
