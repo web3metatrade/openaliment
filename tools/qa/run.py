@@ -65,6 +65,7 @@ def main():
         run([sys.executable, 'tools/build/artifacts.py', '--check'], 'generated contracts')
         run([sys.executable, 'tests/test_repository.py'])
         run([sys.executable, 'tests/test_external_seed.py'])
+        run([sys.executable, 'tests/test_external_api_coverage.py'])
         run([sys.executable, 'tests/test_collaboration.py'])
         run([sys.executable, 'tests/test_branch_policy.py'])
         run([sys.executable, 'tests/test_security_sources.py'])

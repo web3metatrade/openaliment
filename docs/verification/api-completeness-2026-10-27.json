@@ -1,0 +1,92 @@
+{
+  "schema_version": "openaliment.api-completeness-audit.v1",
+  "verified_date": "2026-10-27",
+  "base_commit": "70ad4aec7394268a52f9df92b93433cda4ffc29d",
+  "local_changes_published": false,
+  "contract_sha256": "b397c087985142ad3bf8f7aac77dd1d3cade5db05ea641316b5cf4217ed1276f",
+  "local": {
+    "qa_suites": 65,
+    "passed_checks": 14659,
+    "failed_suites": 0,
+    "browser_channel": "msedge",
+    "operations": 294,
+    "http_successful_operations": 294,
+    "missing_operations": [],
+    "external_operations": 36,
+    "external_form_actions": 15,
+    "external_coverage_checks": 191,
+    "external_http_checks": 23,
+    "external_response_checks": 79
+  },
+  "online_read_only": {
+    "environments": [
+      {
+        "base": "https://dev.openaliment.ro",
+        "contract": {
+          "version": "2.4.1",
+          "operations": 293,
+          "external_operations": 35,
+          "organization_bindings_present": false
+        },
+        "documentation": {
+          "operation_count": 293,
+          "keys": [
+            "schema_version",
+            "documentation",
+            "llms",
+            "operation_count",
+            "guide_count",
+            "pages"
+          ]
+        },
+        "manifest": {
+          "version": null,
+          "capabilities": {
+            "external_product_sources": true
+          }
+        }
+      },
+      {
+        "base": "https://openaliment.ro",
+        "contract": {
+          "version": "2.4.1",
+          "operations": 258,
+          "external_operations": 0,
+          "organization_bindings_present": false
+        },
+        "documentation": {
+          "operation_count": 258,
+          "keys": [
+            "schema_version",
+            "documentation",
+            "llms",
+            "operation_count",
+            "guide_count",
+            "pages"
+          ]
+        },
+        "manifest": {
+          "version": null,
+          "capabilities": {
+            "external_product_sources": false
+          }
+        }
+      }
+    ],
+    "external_markdown_pages_checked": 35,
+    "external_markdown_pages_matching_installed_commit": 35
+  },
+  "operator_exceptions": {
+    "install_external": {
+      "view": "external-sources-admin.php",
+      "target": "/admin/updates",
+      "reason": "Instalarea migrărilor folosește fluxul web administrativ de actualizare. Nu este delegată cheilor ERP sau aplicațiilor terțe."
+    }
+  },
+  "scope_notes": [
+    "HTTP success coverage validates contracts and authorization scenarios; it is not proof of every possible payload or downstream integration.",
+    "OFF upstream responses are simulated in local QA; online documentation reads do not run OFF jobs.",
+    "Automatic remote OFF writes remain disabled.",
+    "No deployment, hosting changes, cron changes or production mutations were performed."
+  ]
+}

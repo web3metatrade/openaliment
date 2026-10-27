@@ -44,6 +44,13 @@ Calculatorul Acasă folosește doar carbohidrați raportați fără calificatori
 
 ## Precompletarea etichetei producătorului
 
+`GET /api/v2/manage/sources/openfoodfacts/bindings` enumeră toate asocierile organizației, inclusiv cele deconectate. Folosește `limit` (1–100, implicit 20) și `cursor=next_cursor` până când `has_more=false`. Cursorul este opac; nu este dată sau număr de pagină. Lista pe articol se păstrează separat. Ambele cer scope `read` și exclud datele altor organizații.
+
+```bash
+curl --fail-with-body 'https://dev.openaliment.ro/api/v2/manage/sources/openfoodfacts/bindings?limit=20' \
+  -H "Authorization: Bearer $OPENALIMENT_API_TOKEN"
+```
+
 1. Citește `/api/v2/manage/items/{id}/sources` cu `read`.
 2. Cere o comparație prin `POST .../sources/openfoodfacts/preview`, indicând `revision_id` și câmpurile selectate.
 3. Creează o ciornă prin `POST .../sources/openfoodfacts/drafts` cu `write`, `Idempotency-Key`, `version_key` nou și `expected_label_id` citit anterior; folosește `null` pentru prima etichetă.
@@ -60,6 +67,71 @@ Proprietarul configurează o conexiune `producer_package` și un acord explicit 
 `POST .../publications/preview` arată contribuția fără scrieri. `POST .../publications` fixează pachetul în starea `package_ready`. Descărcarea autorizată include ZIP cu `products.csv`, `contribution.json` și instrucțiuni. Numai `code`, `product_name_ro`, `ingredients_text_ro` și `quantity` au mapare CSV automată în acest transport; celelalte câmpuri rămân în JSON, cu indicație de mapare manuală. Pachetul nu conține loturi, expirări sau rețete.
 
 Pregătirea sau descărcarea nu confirmă importul în OFF. Scrierea remote automată este dezactivată până la validarea unui transport cu OFF, a mandatului organizației și a mecanismelor de concurență. Un câmp importat din OFF nu este retrimis ca aport original fără confirmarea verificării independente. Revocarea acordului, conexiunii ori mandatului blochează pachetele neexpediate; copiile deja distribuite sub licență deschisă pot rămâne disponibile.
+
+## Toate operațiile surselor externe
+
+Referința fiecărei operații include adresa, metoda, corpul cererii, parametrii, exemplele și răspunsurile. Acțiunile de mai jos sunt disponibile prin API fără interpretarea formularelor HTML. Disponibilitatea depinde de migrarea și activarea sursei în instanța aleasă.
+
+### Acces public, fără cheie
+
+| Acțiune | Referință |
+| --- | --- |
+| Rezolvă scanarea din date locale | [externalResolve](/api/docs/reference/externalResolve) |
+| Caută un GTIN cu cache și limite | [externalLookup](/api/docs/reference/externalLookup) |
+| Urmărește rezultatul căutării | [externalLookupStatus](/api/docs/reference/externalLookupStatus) |
+| Consultă sursele și licențele | [externalSources](/api/docs/reference/externalSources) |
+| Enumeră reviziile publice, cu paginare | [externalRevisionIndex](/api/docs/reference/externalRevisionIndex) |
+| Descarcă observația și proveniența | [externalRevision](/api/docs/reference/externalRevision) |
+| Descarcă imaginea validată | [externalAsset](/api/docs/reference/externalAsset) |
+| Descarcă exportul NDJSON verificat | [externalExport](/api/docs/reference/externalExport) |
+
+### Organizația producătorului
+
+Cheile API și granturile OAuth folosesc scope-urile de mai jos, împreună cu rolul curent și apartenența la organizație. Mutațiile cer `Idempotency-Key`; comparațiile `preview` nu îl cer. Scope-ul nu înlocuiește acordul sau mandatul GTIN.
+
+| Acțiune | Scope | Referință |
+| --- | --- | --- |
+| Enumeră toate articolele asociate | `read` | [externalOrganizationBindings](/api/docs/reference/externalOrganizationBindings) |
+| Listează asocierile unui articol | `read` | [externalItemSources](/api/docs/reference/externalItemSources) |
+| Asociază articolul cu fișa aceluiași GTIN | `write` | [externalBind](/api/docs/reference/externalBind) |
+| Deconectează asocierea | `write` | [externalDisconnectBinding](/api/docs/reference/externalDisconnectBinding) |
+| Compară câmpurile înainte de import | `read` | [externalImportPreview](/api/docs/reference/externalImportPreview) |
+| Creează o ciornă selectivă | `write` | [externalImportDraft](/api/docs/reference/externalImportDraft) |
+| Listează diferențele organizației | `read` | [externalConflicts](/api/docs/reference/externalConflicts) |
+| Acceptă, respinge sau clasifică diferența | `publish` | [externalConflictDecision](/api/docs/reference/externalConflictDecision) |
+| Citește conexiunea OFF | `read` | [externalConnection](/api/docs/reference/externalConnection) |
+| Configurează conexiunea pentru pachete | `sharing:manage` | [externalConnect](/api/docs/reference/externalConnect) |
+| Deconectează distribuirea | `sharing:manage` | [externalDisconnect](/api/docs/reference/externalDisconnect) |
+| Citește istoricul acordurilor | `read` | [externalSharingGrants](/api/docs/reference/externalSharingGrants) |
+| Înregistrează o versiune de acord | `sharing:manage` | [externalSharingGrant](/api/docs/reference/externalSharingGrant) |
+| Revocă acordul | `sharing:manage` | [externalSharingRevoke](/api/docs/reference/externalSharingRevoke) |
+| Compară contribuția înainte de pregătire | `read` | [externalPublicationPreview](/api/docs/reference/externalPublicationPreview) |
+| Pregătește pachetul aprobat | `sharing:write` | [externalCreatePublication](/api/docs/reference/externalCreatePublication) |
+| Citește istoricul pachetelor | `read` | [externalPublications](/api/docs/reference/externalPublications) |
+| Descarcă pachetul eligibil | `export` | [externalProducerPackage](/api/docs/reference/externalProducerPackage) |
+
+Pregătirea și previzualizarea contribuțiilor necesită și rol `owner` sau `quality`. Operațiile `sharing:manage` necesită `owner`. Descărcarea pachetului verifică `export`, rolul `owner`/`quality` și eligibilitatea actuală. O cheie pentru întregul flux de contribuție are nevoie de `read`, `sharing:manage`, `sharing:write` și `export`, selectate explicit; precompletarea ciornelor cere separat `write`, iar deciziile asupra diferențelor cer `publish`.
+
+Revocarea cheii prin [manageRevokeAccessToken](/api/docs/reference/manageRevokeAccessToken) oprește imediat accesul acelei chei. Revocarea acordului și deconectarea OFF sunt operații distincte, cu istoric propriu. Un token ERP nu poate emite chei sau administra platforma.
+
+### Administrarea platformei
+
+Aceste operații au API, dar cer sesiunea administratorului și CSRF la scriere. Nu acceptă delegare prin cheile producătorilor. Importul folosește JSON cu NDJSON în `content_base64`; formularul web de upload este o alternativă pentru administrator.
+
+| Acțiune | Referință |
+| --- | --- |
+| Citește starea, cotele, coada și importurile | [externalSourceStatus](/api/docs/reference/externalSourceStatus) |
+| Activează, suspendă sau oprește sursa | [externalSourceState](/api/docs/reference/externalSourceState) |
+| Consemnează verificarea formatului de pachet | [externalConnectionVerify](/api/docs/reference/externalConnectionVerify) |
+| Suspendă sau restabilește o observație | [externalRevisionVisibility](/api/docs/reference/externalRevisionVisibility) |
+| Reprogramează un job | [externalJobRetry](/api/docs/reference/externalJobRetry) |
+| Verifică un subset fără import | [externalDatasetPreview](/api/docs/reference/externalDatasetPreview) |
+| Programează importul verificat | [externalDatasetImport](/api/docs/reference/externalDatasetImport) |
+| Reia un import sau export eșuat | [externalDatasetRetry](/api/docs/reference/externalDatasetRetry) |
+| Pregătește exportul licențiat | [externalDatasetExport](/api/docs/reference/externalDatasetExport) |
+| Procesează o porție a cozii | [externalRunWorker](/api/docs/reference/externalRunWorker) |
+
+Instalarea migrărilor se face prin fluxul administrativ `/admin/updates`. Configurarea cronului și a cotelor private aparține operatorului hostingului. Aceste operații nu sunt delegate partenerilor. Camera, OCR și inventarul fără cont rămân locale; API-ul nu impune încărcarea fotografiilor personale. Trimiterea automată către OFF nu este o capabilitate activă a acestui transport.
 
 ## Proveniență, licențe și migrare
 

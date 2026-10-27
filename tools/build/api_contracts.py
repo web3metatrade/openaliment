@@ -118,7 +118,7 @@ for r in routes:
  op['description']='Datele publice sunt aprobate explicit. O valoare necunoscută nu înseamnă zero. Rețetele private nu intră în răspunsurile publice.' if public else 'Fiecare cerere verifică organizația, resursa, apartenența și rolul curent. Modificările din sesiunea web cer și X-CSRF-Token. Cheile API nu pot emite alte chei și nu acordă administrarea platformei.'
  for parameter in re.findall(r'\{([a-z_]+)\}',path):op['parameters'].append({'name':parameter,'in':'path','required':True,'schema':ID})
  paged=handler in ['manage.list','manage.children','public.catalog','public.feedback'] or handler=='public.children' and '/products/' in path or handler=='community.votes' or handler=='admin.list' or handler=='keys.list' or handler=='manage.connector' and path.endswith('/events')
- if handler in ['external.revisionIndex','external.bindings','external.conflicts','external.grants','external.publications']:paged=True
+ if handler in ['external.revisionIndex','external.organizationBindings','external.bindings','external.conflicts','external.grants','external.publications']:paged=True
  if handler in ['marketplace.jobs','marketplace.catalog','marketplace.releases','marketplace.units','marketplace.selections']:paged=True
  if paged:
   op['parameters'] += [{'name':'cursor','in':'query','schema':ID,'description':'Last id from prior page. Omit on first request.'},{'name':'limit','in':'query','schema':{'type':'integer','minimum':1,'maximum':100,'default':20}}]

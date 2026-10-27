@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "OpenAliment Platform API",
-    "description": "293 operații. Exemplele folosesc date demonstrative. Configurează variabilele în mediul privat al clientului și folosește v2 pentru integrări noi. Scrierile modifică datele contului din mediul selectat.",
+    "description": "294 operații. Exemplele folosesc date demonstrative. Configurează variabilele în mediul privat al clientului și folosește v2 pentru integrări noi. Scrierile modifică datele contului din mediul selectat.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [

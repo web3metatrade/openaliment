@@ -98,6 +98,7 @@ final class ExternalSourcesController
         $p=Auth::principal($route['scope']);Api::limit('private-read',1,$p['token']??$p['user']);
         if($handler==='package')ExternalSharing::package($p,$id);
         $read=match($handler){
+            'organizationBindings'=>fn()=>ExternalSources::list($p),
             'bindings'=>fn()=>ExternalSources::list($p,$id),'preview'=>fn()=>ExternalSources::preview($p,$id,$data),
             'conflicts'=>fn()=>ExternalSources::conflicts($p),'connection'=>fn()=>ExternalSharing::connection($p),
             'grants'=>fn()=>ExternalSharing::grants($p),'publicationPreview'=>fn()=>ExternalSharing::preview($p,$id,$data),

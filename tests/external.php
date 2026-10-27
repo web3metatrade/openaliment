@@ -134,7 +134,10 @@ $imageConfig=oa_test_config();$imageConfig['external_test_transport']=static fn(
 \App\Domain\ExternalMedia::work($gtin);$asset=Db::one('SELECT id,state FROM external_assets WHERE external_product_id=?',[$current['external_product_id']]);
 offCheck('Validated media is served only from private verified storage',$asset['state']==='ready');
 Config::load(oa_test_config());
-file_put_contents(__DIR__.'/runtime/external-fixtures.json',Db::json(['email'=>$email,'password'=>$password,'p'=>$p,'item'=>$item,'label'=>$label,'gtin'=>$gtin,'code'=>$code,'revision'=>$current['id'],'external_product_id'=>$current['external_product_id'],'asset'=>$asset['id'],'product'=>$product,'binding'=>$binding['id'],'job'=>$one['id']]));
+$integration=Accounts::token($p,['name'=>'Synthetic OFF integration','days'=>1,'scopes'=>['read','write','publish','export','sharing:manage','sharing:write']]);
+$readKey=Accounts::token($p,['name'=>'Synthetic OFF reader','days'=>1,'scopes'=>['read']]);
+$foreignKey=Accounts::token($stranger,['name'=>'Synthetic other organization','days'=>1,'scopes'=>['read','write']]);
+file_put_contents(__DIR__.'/runtime/external-fixtures.json',Db::json(['email'=>$email,'password'=>$password,'p'=>$p,'item'=>$item,'label'=>$label,'gtin'=>$gtin,'code'=>$code,'revision'=>$current['id'],'external_product_id'=>$current['external_product_id'],'asset'=>$asset['id'],'product'=>$product,'binding'=>$binding['id'],'job'=>$one['id'],'integration_key'=>$integration['token'],'integration_key_id'=>$integration['id'],'read_key'=>$readKey['token'],'foreign_key'=>$foreignKey['token']]));
 ExternalCatalog::state($actor,['state'=>'paused']);
 offCheck('Source can pause without affecting native QR profile parsing',!ExternalCatalog::available()&&ConsumerFood::code($gtin)['gtin14']===$gtin);
 offReject('Paused source does not accept external lookups',fn()=>ExternalJobs::lookup($gtin),503);
