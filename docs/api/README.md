@@ -1,6 +1,6 @@
 # Documentația API
 
-Portalul este disponibil la [openaliment.ro/api/docs](https://openaliment.ro/api/docs). Are 17 ghiduri și câte o pagină pentru fiecare dintre cele 208 operații din contractul agregat. Navigarea grupează referința pe resurse și separă compatibilitatea v1. Căutarea folosește titlurile, metodele, adresele și identificatorii operațiilor.
+Portalul este disponibil la [openaliment.ro/api/docs](https://openaliment.ro/api/docs). Fiecare operație din contractul agregat și fiecare ghid au propria pagină. Contractul versiunii 0.8.0 auditate include 294 de operații, dintre care 36 pentru surse externe; aceste numere descriu codul și nu confirmă instalarea în producție. Navigarea grupează referința pe resurse și separă compatibilitatea v1. Căutarea folosește titlurile, metodele, adresele și identificatorii operațiilor. Disponibilitatea unei funcții se verifică în manifestul instanței.
 
 ## Pagini și formate
 
@@ -27,6 +27,8 @@ Controllerul dedicat servește documentația fără date private sau SQL de dome
 
 Pentru validare există `tests/api-documentation.php` și `tests/test_api_documentation.py`, incluse în runner. Sunt verificate toate paginile HTML/Markdown, paritatea Copy Page, contextul legăturilor AI, exemplele Python, CORS, HEAD, metodele refuzate și indexurile. Interacțiunile clipboard, meniul, căutarea și afișarea pe telefon se verifică și în browser.
 
+Pentru modulul OFF, [matricea acțiunilor](external-action-coverage.json) asociază formularele, listele și operațiile pentru clienți cu `operationId`. `tests/test_external_api_coverage.py` verifică matricea față de formulare, registrul runtime, permisiuni, paginare și paginile generate; testul rulează și în suita rapidă CI. Instalarea și configurarea hostingului sunt clasificate explicit ca operații de operator. Inventarul din 24 octombrie este un document istoric de proiectare, nu descrierea capabilităților release-ului curent.
+
 Organizarea este inspirată de [referința API Snipe-IT](https://snipe-it.readme.io/reference/api-overview), cu interfață proprie OpenAliment și fără dependență ReadMe pe hosting.
 
 ## Referință aprofundată — 0.5.2
@@ -37,6 +39,6 @@ Fiecare operație are răspunsuri concrete și exemple sintetice validate, param
 
 Exploratorul diferențiază exemplele statice de cererile reale. Pentru rutele publice GET și rutele Bearer eligibile, fetch folosește aceeași origine, fără cookie-uri sau redirect-uri, cu timeout și limită de răspuns. O scriere cere confirmare explicită. Tokenul se păstrează numai în DOM-ul paginii curente și se golește la ieșire; Copy Page și legăturile AI folosesc exclusiv Markdown-ul canonic. Sesiunile, consimțământul, fișierele și trimiterile publice nu sunt executate automat.
 
-Exemplul `tools/examples/erp_workflow.py`, disponibil și la `/api/docs/examples/erp-workflow.py`, persistă operațiile fără secrete și verifică produs → lot fără rețetă → QR prin citire publică. Publicarea necesită opțiunea explicită `--publish`. Suportul de testare include verificarea tuturor celor 206 operații pe HTTP local și probe pentru reluarea exemplului fără duplicate.
+Exemplul `tools/examples/erp_workflow.py`, disponibil și la `/api/docs/examples/erp-workflow.py`, persistă operațiile fără secrete și verifică produs → lot fără rețetă → QR prin citire publică. Publicarea necesită opțiunea explicită `--publish`. Suportul de testare verifică fiecare operație curentă pe HTTP local și reluarea exemplului fără duplicate; numărul efectiv este calculat din contract în `tests/test_api_coverage.py`.
 
 Testele suplimentare sunt `test_api_reference_quality.py` (exemple și contract), `test_api_reference_http.py` (execuție și răspunsuri reale locale), `api_contract_probe.py` (validare reutilizabilă) și `api-explorer.mjs` (confirmare, credențiale, origine, codificare, JSON și afișare). Ele sunt integrate în runner. Succesul local nu reprezintă certificare GS1/POS, lansare mobilă sau test de sarcină pentru hosting.

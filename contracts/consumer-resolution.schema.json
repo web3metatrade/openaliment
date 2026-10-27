@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "openaliment.consumer-resolution.v1"
+    },
+    "profile": {
+      "$ref": "consumer-product-profile.schema.json"
+    },
+    "supplement": {
+      "anyOf": [
+        {
+          "$ref": "external-food-record.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "external_state": {
+      "enum": [
+        "available",
+        "stale",
+        "queued",
+        "not_found",
+        "temporarily_unavailable",
+        "not_requested",
+        "not_applicable"
+      ]
+    },
+    "policy_version": {
+      "const": "openaliment.source-selection.v1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "profile",
+    "supplement",
+    "external_state",
+    "policy_version"
+  ],
+  "additionalProperties": false
+}

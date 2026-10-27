@@ -8,7 +8,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-GENERATORS = ['consumer_contracts.py', 'contracts.py', 'integration_contracts.py', 'home_contracts.py', 'api_contracts.py', 'api_documentation.py', 'operations_assets.py']
+GENERATORS = ['consumer_contracts.py', 'external_contracts.py', 'contracts.py', 'integration_contracts.py', 'home_contracts.py', 'api_contracts.py', 'api_documentation.py', 'operations_assets.py']
 
 
 def main():

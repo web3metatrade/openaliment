@@ -22,7 +22,7 @@ def allowed(relative, policy):
     if relative == 'config/local.php' or path.name.endswith('.local.php'):
         return False
     if relative.startswith('config/'):
-        return relative in ['config/config.example.php', 'config/mail.local.example.php', 'config/backup.local.example.php', 'config/migrations.local.example.php', 'config/restore.local.example.php']
+        return relative in ['config/config.example.php', 'config/mail.local.example.php', 'config/backup.local.example.php', 'config/migrations.local.example.php', 'config/restore.local.example.php','config/external.local.example.php']
     if path.suffix in policy['excluded_suffixes']:
         return False
     if relative.startswith(('tests/', 'output/', 'release/')):

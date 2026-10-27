@@ -64,6 +64,8 @@ def main():
         run([sys.executable, 'tools/qa/check.py', '--php', args.php, '--node', args.node], 'repository checks')
         run([sys.executable, 'tools/build/artifacts.py', '--check'], 'generated contracts')
         run([sys.executable, 'tests/test_repository.py'])
+        run([sys.executable, 'tests/test_external_seed.py'])
+        run([sys.executable, 'tests/test_external_api_coverage.py'])
         run([sys.executable, 'tests/test_collaboration.py'])
         run([sys.executable, 'tests/test_branch_policy.py'])
         run([sys.executable, 'tests/test_security_sources.py'])
@@ -75,7 +77,7 @@ def main():
         run([args.php, 'tests/api-documentation.php'])
         run([sys.executable, 'tests/test_api_reference_quality.py'])
         run([sys.executable, 'tests/test_public_content.py'])
-        for script in ['consumer-domain.mjs', 'cloud-client-domain.mjs', 'receipt-domain.mjs', 'api-explorer.mjs','gs1-compatibility.mjs']:
+        for script in ['consumer-domain.mjs', 'cloud-client-domain.mjs', 'receipt-domain.mjs', 'api-explorer.mjs','gs1-compatibility.mjs','external-domain.mjs']:
             run([args.node, 'tests/' + script])
         if args.suite != 'quick':
             run([sys.executable, 'tests/generators/legacy_handover.py'], 'synthetic legacy import package')
@@ -86,7 +88,7 @@ def main():
             environment['OA_TEST_BASE_URL'] = base
             environment['OA_ALLOW_TEST_RESET'] = '1'
             run([sys.executable, 'tests/generators/fixtures.py'])
-            for script in ['integration.php', 'resolver.php', 'demo-bread.php', 'consumer.php', 'integrations.php', 'mailer.php', 'home-cloud.php', 'api-platform.php', 'security.php', 'readiness.php', 'marketplace.php', 'gs1-reference.php', 'api-reference-fixtures.php']:
+            for script in ['integration.php', 'resolver.php', 'demo-bread.php', 'consumer.php', 'integrations.php', 'mailer.php', 'home-cloud.php', 'api-platform.php', 'security.php', 'readiness.php', 'marketplace.php', 'gs1-reference.php', 'api-reference-fixtures.php','external.php']:
                 run([args.php, 'tests/' + script])
             log = (RUNTIME / 'logs/php-server.log').open('wb')
             server = subprocess.Popen([args.php, '-S', f'localhost:{port}', '-t', 'public', 'tools/dev/test-router.php'], cwd=ROOT, env=environment, stdout=log, stderr=log, creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
@@ -102,7 +104,7 @@ def main():
                 time.sleep(.1)
             else:
                 raise RuntimeError('Local PHP test server did not become ready.')
-            for script in ['test_http.py', 'test_resolver_http.py', 'test_demo_bread.py', 'test_integrations_http.py', 'test_home_http.py', 'test_api_platform_http.py', 'test_security_http.py', 'test_api_reference_http.py', 'test_api_documentation.py', 'test_readiness_http.py','test_marketplace_http.py','test_gs1_compatibility_http.py']:
+            for script in ['test_http.py', 'test_resolver_http.py', 'test_demo_bread.py', 'test_integrations_http.py', 'test_home_http.py', 'test_api_platform_http.py', 'test_security_http.py', 'test_api_reference_http.py', 'test_api_documentation.py', 'test_readiness_http.py','test_marketplace_http.py','test_gs1_compatibility_http.py','test_external_http.py']:
                 if script=='test_api_reference_http.py':
                     run([args.php,'tests/api-reference-fixtures.php','--reset-rates'],'reset isolated reference rate counters')
                 run([sys.executable, 'tests/' + script])
@@ -116,7 +118,17 @@ def main():
                 run([args.node, 'tests/consumer-browser.cjs'])
                 run([args.node, 'tests/account-access-browser.cjs'])
                 run([args.node, 'tests/marketplace-browser.cjs'])
+                previous_browser_qr = environment.get('OA_TEST_BROWSER_QR')
+                environment['OA_TEST_BROWSER_QR'] = '1'
+                try:
+                    run([sys.executable, 'tests/test_qr.py'], 'independent downloaded browser SVG decode')
+                finally:
+                    if previous_browser_qr is None:
+                        environment.pop('OA_TEST_BROWSER_QR', None)
+                    else:
+                        environment['OA_TEST_BROWSER_QR'] = previous_browser_qr
                 run([args.node, 'tests/first-visit-browser.cjs'])
+                run([args.node, 'tests/external-browser.cjs'])
             run([args.php, 'tests/backup.php'])
     except (RuntimeError, OSError) as error:
         exit_code = 1

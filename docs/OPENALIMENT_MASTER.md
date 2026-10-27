@@ -87,3 +87,7 @@ Backup DB + storage + configurație privată, criptare/copie externă, restore �
 4. Importuri specifice furnizorilor, domenii proprii; test de tipar, restore și capacitate pe infrastructura efectivă.
 
 `VERIFICATION.md` diferențiază testele executate de scenariile istorice și de probele necesare pe cPanel. O verificare structurală a arhivei nu validează pâinea sau aplicația de producție.
+
+## Integrarea Open Food Facts — 0.8.0
+
+Specificația extinderii este [planul OFF](plans/OPEN_FOOD_FACTS_IMPLEMENTATION_PLAN_2026-10-27.md); comportamentul și limitele livrate sunt în [ghidul de operare](OPEN_FOOD_FACTS.md) și [ghidul API](api/pages/surse-externe.md). Observațiile externe nu schimbă mandatul GTIN, resolverul, etichetele aprobate, loturile istorice, licența rețetelor sau evaluarea siglei. Scrierea automată OFF rămâne oprită; transportul livrat pentru contribuții este pachetul producătorului.

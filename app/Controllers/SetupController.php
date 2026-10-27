@@ -14,7 +14,7 @@ final class SetupController {
             try{
                 Db::migration(static function(){ $sql=file_get_contents(ROOT.'/database/migrations/001_initial.sql');foreach(explode(';',$sql)as$statement)if(trim($statement)!=='')Db::pdo()->exec($statement);Db::run('INSERT IGNORE INTO schema_migrations (version,applied_at) VALUES (?,?)',['001_initial',Db::now()]); });
                 if(Db::one('SELECT id FROM users LIMIT 1'))throw new Problem(409,'setup','Baza conține deja conturi. Instalarea inițială este blocată.');
-                $account=Accounts::register($_POST,true);\App\Core\Migrations::upgradeResolver();\App\Core\Migrations::upgradeMarketplace();
+                $account=Accounts::register($_POST,true);\App\Core\Migrations::upgradeResolver();\App\Core\Migrations::upgradeExternal(true);
                 if(!is_dir(Config::get('storage')))mkdir(Config::get('storage'),0700,true);file_put_contents(Config::get('storage').'/installed.lock',Db::now(),LOCK_EX);Session::login($account['id']);Http::redirect('/manage');
             }finally{Db::run("SELECT RELEASE_LOCK('openaliment_setup')");}
         }

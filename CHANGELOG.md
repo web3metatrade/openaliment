@@ -1,5 +1,13 @@
 # Istoricul versiunilor
 
+## 0.8.0 — 2026-10-27
+
+- Catalog Open Food Facts separat de informațiile aprobate, cu observații imuabile, proveniență, licențe și imagini validate.
+- Recunoaștere Acasă prin GTIN, cu adăugare imediată, îmbogățire separată, copie offline și transfer v2 compatibil cu v1.
+- Precompletare selectivă în ciornă și analiză privată a diferențelor, fără modificarea automată a loturilor.
+- Acorduri explicite și revocabile pentru contribuții; pachete ZIP ale producătorilor, fără scriere remote automată.
+- API documentat, cozi cu lease și bugete persistente, import/export NDJSON, arhivare verificată și backup.
+
 ## 0.7.3
 
 Aliniază „Contul meu” cu „Spațiul producătorului” pe același rând, păstrând controlul accesibil de pe telefon. Subsolul păstrează sloganul sub logo pe ecrane compacte și grupează documentația API împreună cu celelalte legături. Rutele, datele, permisiunile, contractele și nucleul GS1 rămân compatibile. Nu necesită migrare SQL.

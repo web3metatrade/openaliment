@@ -3,6 +3,26 @@ declare(strict_types=1);
 namespace App\Core;
 
 final class Migrations {
+    public static function external(): bool {return Db::one("SELECT version FROM schema_migrations WHERE version='009_external_catalog'")!==null;}
+    public static function externalSharing(): bool {return Db::one("SELECT version FROM schema_migrations WHERE version='010_external_sharing'")!==null;}
+    public static function upgradeExternal(bool $sharing=false): void {
+        if(!Db::migrationActive()){Db::migration(static fn()=>self::upgradeExternal($sharing));return;}
+        self::upgradeMarketplace();
+        if(!Db::one("SELECT GET_LOCK('openaliment_schema',0) AS acquired")['acquired'])throw new Problem(409,'migration_busy','O actualizare este deja în curs.');
+        try {
+            foreach($sharing?['009_external_catalog','010_external_sharing']:['009_external_catalog'] as $version){
+                if(Db::one('SELECT version FROM schema_migrations WHERE version=?',[$version]))continue;
+                $sql=file_get_contents(ROOT.'/database/migrations/'.$version.'.sql');
+                if($sql===false)throw new Problem(503,'migration_missing','Actualizarea nu este disponibilă.');
+                foreach(explode(';',$sql) as $statement)if(trim($statement)!=='')Db::pdo()->exec($statement);
+                if($version==='009_external_catalog'){
+                    if(!Db::one("SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='external_products' AND CONSTRAINT_NAME='external_current_revision'"))Db::pdo()->exec('ALTER TABLE external_products ADD CONSTRAINT external_current_revision FOREIGN KEY (id,current_revision_id) REFERENCES external_product_revisions(external_product_id,id)');
+                    \App\Domain\ExternalCatalog::seed();
+                }
+                Db::run('INSERT IGNORE INTO schema_migrations (version,applied_at) VALUES (?,?)',[$version,Db::now()]);
+            }
+        }finally{Db::run("SELECT RELEASE_LOCK('openaliment_schema')");}
+    }
     private static ?bool $marketplace=null;
     public static function marketplace(): bool {return self::$marketplace??=Db::one("SELECT version FROM schema_migrations WHERE version='008_marketplace'")!==null;}
     public static function upgradeMarketplace(): void {

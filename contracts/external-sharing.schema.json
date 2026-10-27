@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "current_password": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "trade_item_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$"
+    },
+    "fields": {
+      "type": "array",
+      "maxItems": 9,
+      "items": {
+        "enum": [
+          "name",
+          "category",
+          "ingredients",
+          "allergens",
+          "net_quantity",
+          "operator",
+          "storage",
+          "nutrition",
+          "origin"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "asset_ids": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{32}$"
+      },
+      "uniqueItems": true
+    },
+    "mode": {
+      "const": "manual"
+    },
+    "expected_version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "public_data_confirmed": {
+      "const": true
+    },
+    "licenses_confirmed": {
+      "const": true
+    }
+  },
+  "required": [
+    "trade_item_id",
+    "fields",
+    "public_data_confirmed",
+    "licenses_confirmed"
+  ],
+  "additionalProperties": false
+}
