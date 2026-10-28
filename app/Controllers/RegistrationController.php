@@ -76,7 +76,12 @@ final class RegistrationController
         if ($handler === 'anaf.result') Http::json(OrganizationRegistry::check($route['resource_id']));
         if ($handler === 'anaf.profile') Http::json(OrganizationRegistry::profile($p));
         if ($handler === 'anaf.history') Http::json(OrganizationRegistry::history($p));
-        if ($handler === 'anaf.confirm') Api::mutation($p, $data, static fn(): array => OrganizationRegistry::confirm($p, $data), 200);
+        if ($handler === 'anaf.confirm') {
+            // Authenticate before replay and keep passwords out of fast idempotency hashes.
+            OrganizationRegistry::authorizeConfirmation($p, $data);
+            unset($data['current_password']);
+            Api::mutation($p, $data, static fn(): array => OrganizationRegistry::confirm($p, $data), 200);
+        }
         throw new Problem(404, 'route', 'Operațiunea ANAF nu a fost găsită.');
     }
 

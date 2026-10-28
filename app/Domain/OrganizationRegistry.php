@@ -255,8 +255,7 @@ final class OrganizationRegistry
 
     public static function confirm(array $p, array $data): array
     {
-        self::profileOwner($p);
-        if (!$p['token']) self::recentAccount($p['user'], $data);
+        self::authorizeConfirmation($p, $data);
         $id = Api::id(Catalog::text($data, 'organization_lookup_id', 32));
         $result = self::check($id, $p);
         if ($result['state'] !== 'found') throw new Problem(422, 'anaf_not_found', 'Firma nu a fost găsită în ANAF.');
@@ -275,6 +274,12 @@ final class OrganizationRegistry
     {
         Auth::write($p);
         if ($p['role'] !== 'owner') throw new Problem(403, 'role', 'Profilul fiscal se confirmă de proprietarul organizației.');
+    }
+
+    public static function authorizeConfirmation(array $p, array $data): void
+    {
+        self::profileOwner($p);
+        if (!$p['token']) self::recentAccount($p['user'], $data);
     }
 
     public static function recentAccount(string $userId, array $data): void

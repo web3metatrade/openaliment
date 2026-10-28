@@ -12,14 +12,14 @@ web=client();other=client();admin=client();checks=[]
 def check(name,ok):
  if not ok:raise AssertionError(name)
  checks.append({'name':name,'passed':True})
-def call(agent,path,method='GET',data=None,csrf=None,token=None,expected=200,form=False):
+def call(agent,path,method='GET',data=None,csrf=None,token=None,expected=200,form=False,idempotency=None):
  headers={'Accept':'application/json'}
  if csrf:headers['X-CSRF-Token']=csrf
  if token:headers['Authorization']='Bearer '+token
  if data is not None:
   raw=urllib.parse.urlencode(data).encode() if form else json.dumps(data).encode()
   headers['Content-Type']='application/x-www-form-urlencoded' if form else 'application/json'
-  headers['Idempotency-Key']='anaf-'+uuid.uuid4().hex
+  headers['Idempotency-Key']=idempotency or 'anaf-'+uuid.uuid4().hex
  else:raw=None
  req=urllib.request.Request(BASE+path,data=raw,headers=headers,method=method)
  try:res=agent.open(req,timeout=20)
@@ -49,7 +49,10 @@ check('Both addresses and empty values survive HTTP and database storage',profil
 history=call(web,'/api/v2/manage/organization/legal-profile/history?limit=1')[0];check('History is actually paginated',history['limit']==1 and len(history['items'])==1)
 new=call(web,'/api/v2/manage/organization/legal-profile/checks','POST',{'cui':'900000002'},csrf)[0]
 call(web,'/api/v2/manage/organization/legal-profile/confirm','POST',{'organization_lookup_id':new['id'],'expected_version_id':None},csrf,expected=409)
-updated=call(web,'/api/v2/manage/organization/legal-profile/confirm','POST',{'organization_lookup_id':new['id'],'expected_version_id':profile['profile']['id']},csrf)[0]
+confirm_body={'organization_lookup_id':new['id'],'expected_version_id':profile['profile']['id']};confirm_key='anaf-confirm-'+uuid.uuid4().hex
+updated=call(web,'/api/v2/manage/organization/legal-profile/confirm','POST',dict(confirm_body,current_password=account['password']),csrf,idempotency=confirm_key)[0]
+replayed=call(web,'/api/v2/manage/organization/legal-profile/confirm','POST',confirm_body,csrf,idempotency=confirm_key)[0]
+check('Confirmation replay excludes password material from the request hash',replayed['profile']['id']==updated['profile']['id'])
 check('Confirm creates another immutable version',updated['profile']['id']!=profile['profile']['id'])
 key=call(web,'/api/v2/manage/access-tokens','POST',{'name':'ANAF read-only test','days':1,'scopes':['read']},csrf,expected=201)[0]
 plain=client();call(plain,'/api/v2/manage/organization/legal-profile',token=key['token'])
