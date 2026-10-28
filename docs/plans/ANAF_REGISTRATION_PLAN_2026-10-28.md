@@ -1,6 +1,6 @@
 # Înregistrarea organizațiilor cu date ANAF
 
-Data analizei: 28 octombrie 2026. Stadiu: documentare oficială, probă reală și propunere de interfață; integrarea în aplicație nu este încă implementată. Planul vizează mai întâi `dev.openaliment.ro/register`.
+Data analizei: 28 octombrie 2026. Acesta este planul inițial pentru `dev.openaliment.ro/register`. Implementarea 0.9.0, migrarea aditivă 011, activarea distinctă pe staging și condițiile de revenire sunt descrise în [documentația implementării](../ANAF.md). [Ghidul API](../api/pages/inregistrare-anaf.md) și [matricea acțiunilor](../api/anaf-action-coverage.json) documentează contractele livrate. Formulările de mai jos păstrează perspectiva planului, fără a reprezenta confirmarea instalării pe un hosting.
 
 Înregistrarea unei organizații românești va porni de la CUI. După consultarea ANAF, persoana va vedea firma găsită și toate informațiile primite, va putea corecta CUI-ul și va crea contul pentru firma confirmată. Datele fiscale se salvează din răspunsul păstrat pe server. Denumirea sau adresa trimise din browser nu înlocuiesc sursa ANAF.
 
