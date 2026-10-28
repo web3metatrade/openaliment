@@ -79,6 +79,8 @@ for path, methods in SPEC['paths'].items():
     if 'get' not in methods or path.endswith('/authorize') or '/photos/' in path or any(family in path for family in ['/marketplace/', '/printing/', '/standards/']):
         continue
     if methods['get']['operationId'].startswith('external'):continue  # Dedicated OFF suite validates these source-specific fixtures.
+    if '/organization-lookups/' in path or '/legal-profile' in path:
+        continue  # Dedicated ANAF suite owns session-bound checks and fiscal fixtures; coverage is aggregated.
     operation = methods['get']
     actual = path
     if '{id}' in actual:
