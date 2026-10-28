@@ -34,6 +34,7 @@ final class Maintenance {
                 if(is_dir($sessionDirectory))foreach(new \DirectoryIterator($sessionDirectory)as$file){if($removed>=$batch)break;if($file->isFile()&&!$file->isLink()&&preg_match('/\Asess_[A-Za-z0-9,-]+\z/D',$file->getFilename())&&$file->getMTime()<time()-86400){$handle=@fopen($file->getPathname(),'r+');if($handle){if(flock($handle,LOCK_EX|LOCK_NB)){if(@unlink($file->getPathname()))$removed++;flock($handle,LOCK_UN);}fclose($handle);}}}
                 $counts['private_sessions']=$removed;
             }
+            $counts+=OrganizationRegistry::cleanup($batch);
             $counts['file_rates']=RateLimit::cleanup();$counts['security_logs']=SecurityLog::cleanup();
             $counts['public_archives']=PublicArchive::cleanup();
             $result=['state'=>'completed','batch_limit'=>$batch,'deleted'=>$counts];

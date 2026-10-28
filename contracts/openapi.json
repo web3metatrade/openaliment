@@ -10514,15 +10514,36 @@
             "type": "string",
             "maxLength": 180,
             "minLength": 1
+          },
+          "organization_lookup_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "cui": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1
           }
         },
         "required": [
           "email",
           "password",
-          "display_name",
-          "organization"
+          "display_name"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "anyOf": [
+          {
+            "required": [
+              "organization"
+            ]
+          },
+          {
+            "required": [
+              "organization_lookup_id",
+              "cui"
+            ]
+          }
+        ]
       },
       "OrganizationSelection": {
         "type": "object",
@@ -11570,6 +11591,48 @@
         "required": [
           "manifest",
           "content_base64"
+        ],
+        "additionalProperties": false
+      },
+      "OrganizationLookup": {
+        "type": "object",
+        "properties": {
+          "cui": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "description": "CUI românesc ca șir, cu prefix RO opțional. Nu trimite CNP."
+          }
+        },
+        "required": [
+          "cui"
+        ],
+        "additionalProperties": false
+      },
+      "OrganizationLegalConfirmation": {
+        "type": "object",
+        "properties": {
+          "organization_lookup_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "expected_version_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "current_password": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "organization_lookup_id",
+          "expected_version_id"
         ],
         "additionalProperties": false
       }

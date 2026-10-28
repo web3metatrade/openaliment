@@ -1,0 +1,427 @@
+{
+  "checked_at": "2026-10-28T17:33:55.393819+00:00",
+  "endpoint": "https://webservicesp.anaf.ro/api/PlatitorTvaRest/v9/tva",
+  "request": [
+    {
+      "cui": 14399840,
+      "data": "2026-10-28"
+    },
+    {
+      "cui": 1590082,
+      "data": "2026-10-28"
+    },
+    {
+      "cui": 1234,
+      "data": "2026-10-28"
+    }
+  ],
+  "http_status": 200,
+  "elapsed_seconds": 0.125,
+  "content_type": "application/json",
+  "response_bytes": 3704,
+  "response_sha256": "e6089478177dd7aa52ab07149a9767295de208e831bddfcfd1549664d7fc6ca3",
+  "top_level_keys": [
+    "found",
+    "notFound"
+  ],
+  "not_found": [
+    1234
+  ],
+  "sources": [
+    {
+      "url": "https://static.anaf.ro/static/10/Anaf/Informatii_R/servicii_web.html",
+      "file": "services.html",
+      "sha256": "3dc62bd4c5b921b78be4c387cf2c08e9b4f9b31182e7d0d40814bdb6d9b33fb2"
+    },
+    {
+      "url": "https://static.anaf.ro/static/10/Anaf/Informatii_R/Servicii_web/servicii_sincron.html",
+      "file": "synchronous.html",
+      "sha256": "c9e40a1d91248acbf696e09b92ec399f73e84f8b61e99e1b8100f6d84f9285ab"
+    },
+    {
+      "url": "https://static.anaf.ro/static/10/Anaf/Informatii_R/Servicii_web/doc_WS_V9.txt",
+      "file": "doc_WS_V9.txt",
+      "sha256": "9346a0f7435234fa9ddf73e9e72c43ae354577d6a7db3b44fa5ef54ad31ae185"
+    }
+  ],
+  "scope": "Research only: a public API probe, not an implemented OpenAliment registration flow.",
+  "found": [
+    {
+      "cui": 14399840,
+      "name": "DANTE INTERNATIONAL SA",
+      "leaf_paths_observed": 58
+    },
+    {
+      "cui": 1590082,
+      "name": "OMV PETROM SA",
+      "leaf_paths_observed": 58
+    }
+  ],
+  "groups": {
+    "date_generale": "Identificare și date generale",
+    "inregistrare_scop_Tva": "Înregistrare în scopuri de TVA",
+    "inregistrare_RTVAI": "TVA la încasare",
+    "stare_inactiv": "Inactivitate și reactivare",
+    "inregistrare_SplitTVA": "Plată defalcată TVA",
+    "adresa_sediu_social": "Sediul social",
+    "adresa_domiciliu_fiscal": "Domiciliul fiscal"
+  },
+  "observed_leaf_paths": [
+    {
+      "path": "date_generale.data",
+      "type": "string",
+      "label": "Data de referință",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.cui",
+      "type": "integer",
+      "label": "CUI",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.denumire",
+      "type": "string",
+      "label": "Denumire oficială",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.adresa",
+      "type": "string",
+      "label": "Domiciliu fiscal, adresă completă",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.telefon",
+      "type": "string",
+      "label": "Telefon",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "date_generale.fax",
+      "type": "string",
+      "label": "Fax",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "date_generale.codPostal",
+      "type": "string",
+      "label": "Cod poștal fiscal",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "date_generale.act",
+      "type": "string",
+      "label": "Act de autorizare",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "date_generale.stare_inregistrare",
+      "type": "string",
+      "label": "Stare de înregistrare, text ANAF",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.data_inreg_Reg_RO_e_Factura",
+      "type": "string",
+      "label": "Data înscrierii în Registrul RO e-Factura",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "date_generale.organFiscalCompetent",
+      "type": "string",
+      "label": "Organ fiscal competent",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.forma_de_proprietate",
+      "type": "string",
+      "label": "Forma de proprietate",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.forma_organizare",
+      "type": "string",
+      "label": "Forma de organizare",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.forma_juridica",
+      "type": "string",
+      "label": "Forma juridică",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.data_inregistrare",
+      "type": "string",
+      "label": "Data înregistrării",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.statusRO_e_Factura",
+      "type": "boolean",
+      "label": "Figurează în Registrul RO e-Factura",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.nrRegCom",
+      "type": "string",
+      "label": "Număr Registrul Comerțului",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.cod_CAEN",
+      "type": "string",
+      "label": "Cod CAEN, valoarea ANAF",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "date_generale.iban",
+      "type": "string",
+      "label": "IBAN",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_scop_Tva.scpTVA",
+      "type": "boolean",
+      "label": "Înregistrată în scopuri de TVA",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].data_inceput_ScpTVA",
+      "type": "string",
+      "label": "Începutul perioadei TVA",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].data_sfarsit_ScpTVA",
+      "type": "string",
+      "label": "Sfârșitul perioadei TVA",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].data_anul_imp_ScpTVA",
+      "type": "string",
+      "label": "Data operării anulării TVA",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].mesaj_ScpTVA",
+      "type": "string",
+      "label": "Temeiul sau mesajul anulării TVA",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_RTVAI.dataActualizareTvaInc",
+      "type": "string",
+      "label": "Data actualizării TVA la încasare",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_RTVAI.dataPublicareTvaInc",
+      "type": "string",
+      "label": "Data publicării TVA la încasare",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_RTVAI.dataInceputTvaInc",
+      "type": "string",
+      "label": "Început TVA la încasare",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_RTVAI.dataSfarsitTvaInc",
+      "type": "string",
+      "label": "Sfârșit TVA la încasare",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_RTVAI.tipActTvaInc",
+      "type": "string",
+      "label": "Tipul actualizării TVA la încasare",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_RTVAI.statusTvaIncasare",
+      "type": "boolean",
+      "label": "Aplică TVA la încasare",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "stare_inactiv.dataInactivare",
+      "type": "string",
+      "label": "Data inactivării",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "stare_inactiv.dataReactivare",
+      "type": "string",
+      "label": "Data reactivării",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "stare_inactiv.dataPublicare",
+      "type": "string",
+      "label": "Data publicării în registrul inactivilor",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "stare_inactiv.dataRadiere",
+      "type": "string",
+      "label": "Data radierii",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "stare_inactiv.statusInactivi",
+      "type": "boolean",
+      "label": "Figurează în registrul contribuabililor inactivi",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "inregistrare_SplitTVA.statusSplitTVA",
+      "type": "boolean",
+      "label": "Aplică plata defalcată a TVA",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "inregistrare_SplitTVA.dataInceputSplitTVA",
+      "type": "string",
+      "label": "Începutul plății defalcate TVA",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "inregistrare_SplitTVA.dataAnulareSplitTVA",
+      "type": "string",
+      "label": "Anularea plății defalcate TVA",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "adresa_sediu_social.sdenumire_Localitate",
+      "type": "string",
+      "label": "Localitate",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.sdenumire_Judet",
+      "type": "string",
+      "label": "Județ",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.scod_Judet",
+      "type": "string",
+      "label": "Cod județ",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.scod_JudetAuto",
+      "type": "string",
+      "label": "Indicativ auto județ",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.sdetalii_Adresa",
+      "type": "string",
+      "label": "Detalii adresă",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.scod_Postal",
+      "type": "string",
+      "label": "Cod poștal",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.sdenumire_Strada",
+      "type": "string",
+      "label": "Stradă",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.snumar_Strada",
+      "type": "string",
+      "label": "Număr",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.scod_Localitate",
+      "type": "string",
+      "label": "Cod localitate",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_sediu_social.stara",
+      "type": "string",
+      "label": "Țară",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddenumire_Localitate",
+      "type": "string",
+      "label": "Localitate",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddenumire_Strada",
+      "type": "string",
+      "label": "Stradă",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dnumar_Strada",
+      "type": "string",
+      "label": "Număr",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_Localitate",
+      "type": "string",
+      "label": "Cod localitate",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddenumire_Judet",
+      "type": "string",
+      "label": "Județ",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_Judet",
+      "type": "string",
+      "label": "Cod județ",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_JudetAuto",
+      "type": "string",
+      "label": "Indicativ auto județ",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddetalii_Adresa",
+      "type": "string",
+      "label": "Detalii adresă",
+      "empty_in_first_sample": false
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_Postal",
+      "type": "string",
+      "label": "Cod poștal",
+      "empty_in_first_sample": true
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dtara",
+      "type": "string",
+      "label": "Țară",
+      "empty_in_first_sample": true
+    }
+  ],
+  "differences_from_official_example": [
+    "Successful live response omits cod and message.",
+    "perioade_TVA is an array of period objects.",
+    "date_generale.data_inreg_Reg_RO_e_Factura is present live but absent from the documented example."
+  ],
+  "raw_response_location": "tests/runtime/anaf-2026-10-28/response.json (ignored; not part of the public repository)",
+  "openaliment_accounts_created": 0,
+  "anaf_authentication_used": false
+}

@@ -11,6 +11,13 @@ final class ApiRoutes {
         $add=static function(string $method,string $path,string $id,string $auth,string $scope,string $handler,string $summary,string $body='')use(&$routes):void{
             $routes[]=compact('method','path','id','auth','scope','handler','summary','body');
         };
+        $add('POST','/api/v2/identity/organization-lookups','organizationLookup','session-optional','','anaf.lookup','Consultă CUI-ul în ANAF pentru înregistrare.','OrganizationLookup');
+        $add('GET','/api/v2/identity/organization-lookups/{id}','organizationLookupResult','session-optional','','anaf.result','Recitește verificarea ANAF din aceeași sesiune.');
+        $add('GET','/api/v2/manage/organization/legal-profile','organizationLegalProfile','producer','read','anaf.profile','Citește profilul fiscal al organizației proprii.');
+        $add('GET','/api/v2/manage/organization/legal-profile/history','organizationLegalHistory','producer','read','anaf.history','Listează versiunile profilului fiscal.');
+        $add('POST','/api/v2/manage/organization/legal-profile/checks','organizationLegalCheck','producer','write','anaf.check','Reverifică CUI-ul fără înlocuirea profilului.','OrganizationLookup');
+        $add('POST','/api/v2/manage/organization/legal-profile/confirm','organizationLegalConfirm','producer','write','anaf.confirm','Confirmă o versiune nouă a profilului fiscal.','OrganizationLegalConfirmation');
+        $add('GET','/api/v2/admin/organizations/{id}/legal-profile','adminOrganizationLegalProfile','admin-session','','anaf.admin-profile','Citește profilul fiscal pentru verificarea administrativă.');
         $add('GET','/api/v2/public/standards/gs1','gs1StandardsCatalog','public','','standards.catalog','Citește edițiile oficiale GS1, proveniența și hashurile.');
         $add('GET','/api/v2/admin/standards/gs1','gs1StandardsStatus','admin-session','','standards.status','Verifică integritatea copiilor private ale standardelor GS1.');
         $add('POST','/api/v2/admin/standards/gs1/copies','gs1StandardsPreserve','admin-session','','standards.preserve','Păstrează copia privată a unei ediții oficiale cu hash fix.','Gs1Preserve');

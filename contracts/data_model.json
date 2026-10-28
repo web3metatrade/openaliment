@@ -4,7 +4,7 @@
   "created_on": "2026-10-23",
   "updated_on": "2026-10-24",
   "source_of_truth": "database/migrations/*.sql",
-  "source_sha256": "b0dc474cd420da23de1e29e4dda12c283518f0c78676c8f05bf9dc7774ad0a07",
+  "source_sha256": "31d15e72f6c6dce657123cdca80b50f9230f0f052be032e7818db335fa2a551a",
   "source_sha256_basis": "canonical JSON of ordered migration paths and SHA-256 hashes",
   "id_representation": "128 random bits, 32 lower-case hexadecimal characters",
   "modules": {
@@ -88,6 +88,10 @@
     {
       "path": "database/migrations/010_external_sharing.sql",
       "sha256": "097caa9f595a0730851855334b53fffa4331ffaba8dc378480a76ac2e89a4047"
+    },
+    {
+      "path": "database/migrations/011_organization_anaf.sql",
+      "sha256": "7fd884770361c54fc27d76fe7d01159a31a83175b7b0cb12e15108b16b20abc1"
     }
   ],
   "category_profiles": [
@@ -625,6 +629,30 @@
     {
       "name": "external_publications",
       "definition_source": "database/migrations/010_external_sharing.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "anaf_observations",
+      "definition_source": "database/migrations/011_organization_anaf.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "organization_registration_checks",
+      "definition_source": "database/migrations/011_organization_anaf.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "organization_legal_profiles",
+      "definition_source": "database/migrations/011_organization_anaf.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "organization_legal_profile_versions",
+      "definition_source": "database/migrations/011_organization_anaf.sql",
       "tenant_scoped": true,
       "household_scoped": false
     }

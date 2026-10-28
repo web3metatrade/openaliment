@@ -1,0 +1,20 @@
+{
+  "schema_version": "openaliment.anaf-action-coverage.v1",
+  "actions": [
+    {"action":"registration.lookup","page":"/register","operation_id":"organizationLookup"},
+    {"action":"registration.correct-cui","page":"/register","operation_id":"organizationLookup"},
+    {"action":"registration.read-result","page":"/register","operation_id":"organizationLookupResult"},
+    {"action":"registration.confirm-and-create","page":"/register","operation_id":"identityRegister"},
+    {"action":"organization.read-profile","page":"/manage/organization","operation_id":"organizationLegalProfile"},
+    {"action":"organization.read-history","page":"/manage/organization","operation_id":"organizationLegalHistory"},
+    {"action":"organization.check-profile","page":"/manage/organization","operation_id":"organizationLegalCheck"},
+    {"action":"organization.confirm-profile","page":"/manage/organization","operation_id":"organizationLegalConfirm"},
+    {"action":"organization.export-profile","page":"/manage/export","operation_id":"manageExport"},
+    {"action":"organization.import-profile","page":"/manage/import","operation_id":"manageImport"},
+    {"action":"admin.review-profile","page":"/admin/organizations/{id}","operation_id":"adminOrganizationLegalProfile"}
+  ],
+  "operator_only": [
+    {"action":"install_anaf","page":"/admin/updates","reason":"Schema activation requires the administrator and migration connection; no public arbitrary SQL API."},
+    {"action":"enable_anaf_staging","page":"/admin/updates","reason":"Writes a fixed private setting only for dev.openaliment.ro after administrator reauthentication; no producer API changes site-wide registration policy."}
+  ]
+}

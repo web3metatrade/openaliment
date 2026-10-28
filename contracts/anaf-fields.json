@@ -1,0 +1,304 @@
+{
+  "schema_version": "openaliment.anaf-fields.v1",
+  "groups": {
+    "date_generale": "Identificare și date generale",
+    "inregistrare_scop_Tva": "Înregistrare în scopuri de TVA",
+    "inregistrare_RTVAI": "TVA la încasare",
+    "stare_inactiv": "Inactivitate și reactivare",
+    "inregistrare_SplitTVA": "Plată defalcată TVA",
+    "adresa_sediu_social": "Sediul social",
+    "adresa_domiciliu_fiscal": "Domiciliul fiscal"
+  },
+  "fields": [
+    {
+      "path": "date_generale.data",
+      "type": "string",
+      "label": "Data de referință"
+    },
+    {
+      "path": "date_generale.cui",
+      "type": "integer",
+      "label": "CUI"
+    },
+    {
+      "path": "date_generale.denumire",
+      "type": "string",
+      "label": "Denumire oficială"
+    },
+    {
+      "path": "date_generale.adresa",
+      "type": "string",
+      "label": "Domiciliu fiscal, adresă completă"
+    },
+    {
+      "path": "date_generale.telefon",
+      "type": "string",
+      "label": "Telefon"
+    },
+    {
+      "path": "date_generale.fax",
+      "type": "string",
+      "label": "Fax"
+    },
+    {
+      "path": "date_generale.codPostal",
+      "type": "string",
+      "label": "Cod poștal fiscal"
+    },
+    {
+      "path": "date_generale.act",
+      "type": "string",
+      "label": "Act de autorizare"
+    },
+    {
+      "path": "date_generale.stare_inregistrare",
+      "type": "string",
+      "label": "Stare de înregistrare, text ANAF"
+    },
+    {
+      "path": "date_generale.data_inreg_Reg_RO_e_Factura",
+      "type": "string",
+      "label": "Data înscrierii în Registrul RO e-Factura"
+    },
+    {
+      "path": "date_generale.organFiscalCompetent",
+      "type": "string",
+      "label": "Organ fiscal competent"
+    },
+    {
+      "path": "date_generale.forma_de_proprietate",
+      "type": "string",
+      "label": "Forma de proprietate"
+    },
+    {
+      "path": "date_generale.forma_organizare",
+      "type": "string",
+      "label": "Forma de organizare"
+    },
+    {
+      "path": "date_generale.forma_juridica",
+      "type": "string",
+      "label": "Forma juridică"
+    },
+    {
+      "path": "date_generale.data_inregistrare",
+      "type": "string",
+      "label": "Data înregistrării"
+    },
+    {
+      "path": "date_generale.statusRO_e_Factura",
+      "type": "boolean",
+      "label": "Figurează în Registrul RO e-Factura"
+    },
+    {
+      "path": "date_generale.nrRegCom",
+      "type": "string",
+      "label": "Număr Registrul Comerțului"
+    },
+    {
+      "path": "date_generale.cod_CAEN",
+      "type": "string",
+      "label": "Cod CAEN, valoarea ANAF"
+    },
+    {
+      "path": "date_generale.iban",
+      "type": "string",
+      "label": "IBAN"
+    },
+    {
+      "path": "inregistrare_scop_Tva.scpTVA",
+      "type": "boolean",
+      "label": "Înregistrată în scopuri de TVA"
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].data_inceput_ScpTVA",
+      "type": "string",
+      "label": "Începutul perioadei TVA"
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].data_sfarsit_ScpTVA",
+      "type": "string",
+      "label": "Sfârșitul perioadei TVA"
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].data_anul_imp_ScpTVA",
+      "type": "string",
+      "label": "Data operării anulării TVA"
+    },
+    {
+      "path": "inregistrare_scop_Tva.perioade_TVA[].mesaj_ScpTVA",
+      "type": "string",
+      "label": "Temeiul sau mesajul anulării TVA"
+    },
+    {
+      "path": "inregistrare_RTVAI.dataActualizareTvaInc",
+      "type": "string",
+      "label": "Data actualizării TVA la încasare"
+    },
+    {
+      "path": "inregistrare_RTVAI.dataPublicareTvaInc",
+      "type": "string",
+      "label": "Data publicării TVA la încasare"
+    },
+    {
+      "path": "inregistrare_RTVAI.dataInceputTvaInc",
+      "type": "string",
+      "label": "Început TVA la încasare"
+    },
+    {
+      "path": "inregistrare_RTVAI.dataSfarsitTvaInc",
+      "type": "string",
+      "label": "Sfârșit TVA la încasare"
+    },
+    {
+      "path": "inregistrare_RTVAI.tipActTvaInc",
+      "type": "string",
+      "label": "Tipul actualizării TVA la încasare"
+    },
+    {
+      "path": "inregistrare_RTVAI.statusTvaIncasare",
+      "type": "boolean",
+      "label": "Aplică TVA la încasare"
+    },
+    {
+      "path": "stare_inactiv.dataInactivare",
+      "type": "string",
+      "label": "Data inactivării"
+    },
+    {
+      "path": "stare_inactiv.dataReactivare",
+      "type": "string",
+      "label": "Data reactivării"
+    },
+    {
+      "path": "stare_inactiv.dataPublicare",
+      "type": "string",
+      "label": "Data publicării în registrul inactivilor"
+    },
+    {
+      "path": "stare_inactiv.dataRadiere",
+      "type": "string",
+      "label": "Data radierii"
+    },
+    {
+      "path": "stare_inactiv.statusInactivi",
+      "type": "boolean",
+      "label": "Figurează în registrul contribuabililor inactivi"
+    },
+    {
+      "path": "inregistrare_SplitTVA.statusSplitTVA",
+      "type": "boolean",
+      "label": "Aplică plata defalcată a TVA"
+    },
+    {
+      "path": "inregistrare_SplitTVA.dataInceputSplitTVA",
+      "type": "string",
+      "label": "Începutul plății defalcate TVA"
+    },
+    {
+      "path": "inregistrare_SplitTVA.dataAnulareSplitTVA",
+      "type": "string",
+      "label": "Anularea plății defalcate TVA"
+    },
+    {
+      "path": "adresa_sediu_social.sdenumire_Localitate",
+      "type": "string",
+      "label": "Localitate"
+    },
+    {
+      "path": "adresa_sediu_social.sdenumire_Judet",
+      "type": "string",
+      "label": "Județ"
+    },
+    {
+      "path": "adresa_sediu_social.scod_Judet",
+      "type": "string",
+      "label": "Cod județ"
+    },
+    {
+      "path": "adresa_sediu_social.scod_JudetAuto",
+      "type": "string",
+      "label": "Indicativ auto județ"
+    },
+    {
+      "path": "adresa_sediu_social.sdetalii_Adresa",
+      "type": "string",
+      "label": "Detalii adresă"
+    },
+    {
+      "path": "adresa_sediu_social.scod_Postal",
+      "type": "string",
+      "label": "Cod poștal"
+    },
+    {
+      "path": "adresa_sediu_social.sdenumire_Strada",
+      "type": "string",
+      "label": "Stradă"
+    },
+    {
+      "path": "adresa_sediu_social.snumar_Strada",
+      "type": "string",
+      "label": "Număr"
+    },
+    {
+      "path": "adresa_sediu_social.scod_Localitate",
+      "type": "string",
+      "label": "Cod localitate"
+    },
+    {
+      "path": "adresa_sediu_social.stara",
+      "type": "string",
+      "label": "Țară"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddenumire_Localitate",
+      "type": "string",
+      "label": "Localitate"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddenumire_Strada",
+      "type": "string",
+      "label": "Stradă"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dnumar_Strada",
+      "type": "string",
+      "label": "Număr"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_Localitate",
+      "type": "string",
+      "label": "Cod localitate"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddenumire_Judet",
+      "type": "string",
+      "label": "Județ"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_Judet",
+      "type": "string",
+      "label": "Cod județ"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_JudetAuto",
+      "type": "string",
+      "label": "Indicativ auto județ"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.ddetalii_Adresa",
+      "type": "string",
+      "label": "Detalii adresă"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dcod_Postal",
+      "type": "string",
+      "label": "Cod poștal"
+    },
+    {
+      "path": "adresa_domiciliu_fiscal.dtara",
+      "type": "string",
+      "label": "Țară"
+    }
+  ]
+}

@@ -34,6 +34,7 @@
 
 ## Planuri și dovezi
 
+- [Înregistrarea cu CUI și ANAF v9](plans/ANAF_REGISTRATION_PLAN_2026-10-28.md) — analiză și flux propus, cu [proba publică și cele 58 de câmpuri observate](verification/anaf-v9-probe-2026-10-28.json) și [macheta locală](ux/ANAF_REGISTER_CONCEPT_2026-10-28.html); implementarea și operarea sunt descrise în [ghidul ANAF](ANAF.md).
 - [Planul detaliat pentru Open Food Facts](plans/OPEN_FOOD_FACTS_IMPLEMENTATION_PLAN_2026-10-27.md) — tabele, view-uri, API, operare și criterii de acceptare; [evaluarea strategiei](audits/OPEN_FOOD_FACTS_STRATEGY_REVIEW_2026-10-27.md). Implementarea 0.8.0 este descrisă în [ghidul de operare OFF](OPEN_FOOD_FACTS.md); activarea sursei este separată de instalare. [Raportul implementării](implementation/OPEN_FOOD_FACTS_0.8.0.md).
 - [Auditul nucleului GS1 și corecțiile 0.7.1](audits/GS1_CORE_COMPATIBILITY_2026-10-25.md)
 

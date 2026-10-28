@@ -5,6 +5,7 @@ use App\Core\{Auth,Config,Db,Http,Problem,Seo,Session};
 use App\Domain\{Accounts,Catalog,Community,DigitalLink};
 final class PublicController {
     public static function handle(string $method,string $path): void {
+        if($path==='/register'){RegistrationController::page($method);return;}
         if(in_array($path,['/api/consumer-openapi.json','/api/integration-openapi.json','/api/home-openapi.json'],true)||preg_match('~\A/api/schemas/(food-data|food-date|consumer-product-profile|consumer-inventory|consumer-transfer|partner-mapping|digital-receipt|home-sync)\.schema\.json\z~D',$path)){
             header('Access-Control-Allow-Origin: *');header('Access-Control-Allow-Methods: GET, HEAD, OPTIONS');
             header('Allow: GET, HEAD, OPTIONS');

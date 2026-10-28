@@ -21,13 +21,14 @@ final class Portability {
         $data['feedback']=Db::all("SELECT id,product_id,batch_id,product_info_version_id,kind,rating,public_text,created_at FROM feedback WHERE tenant_id=? AND status='published' ORDER BY id",[$p['tenant']]);
         $data['audit_events']=Db::all('SELECT id,action,object_id,details_json,created_at FROM audit_events WHERE tenant_id=? ORDER BY created_at,id',[$p['tenant']]);
         $sources=ExternalSources::portable($p);if($sources)$data['external_sources']=$sources;
+        $legalHistory=LegalPortability::export($p);if($legalHistory)$data['organization_legal_history']=$legalHistory;
         $json=Db::json($data);
         return ['schema_version'=>'openaliment.transfer.v1','exported_at'=>gmdate(DATE_ATOM),'source_base_url'=>Config::get('url'),'organization'=>Db::one('SELECT id,display_name FROM organizations WHERE id=?',[$p['tenant']]),'data'=>$data,'data_sha256'=>hash('sha256',$json)];
     }
     public static function stream(array $p): never {
         Auth::approve($p,'export');$org=Db::one('SELECT id,display_name FROM organizations WHERE id=?',[$p['tenant']]);
         header('Content-Type: application/x-ndjson; charset=utf-8');header('Content-Disposition: attachment; filename="openaliment-transfer.ndjson"');
-        $hash=hash_init('sha256');$count=0;$externalSources=ExternalSources::portable($p);
+        $hash=hash_init('sha256');$count=0;$externalSources=ExternalSources::portable($p);$legalHistory=LegalPortability::export($p);
         $emit=static function(array $value)use($hash):void{$line=Db::json($value)."\n";hash_update($hash,$line);echo $line;};
         $provenance=[];if(Migrations::readiness())foreach(Db::all('SELECT s.document_id,s.source_sha256,s.details_json,s.created_at FROM document_provenance s JOIN documents d ON d.id=s.document_id WHERE d.tenant_id=? ORDER BY s.created_at,s.id',[$p['tenant']])as$source){$id=$source['document_id'];unset($source['document_id']);$provenance[$id][]=$source;}
         $pdo=Db::pdo();$pdo->exec('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ');$pdo->beginTransaction();
@@ -43,6 +44,7 @@ final class Portability {
                 }$statement->closeCursor();
             }
             foreach($externalSources as$source){$emit(['table'=>'external_sources','row'=>$source]);$count++;}
+            foreach($legalHistory as$version){$emit(['table'=>'organization_legal_history','row'=>$version]);$count++;}
             $pdo->commit();echo Db::json(['end'=>true,'records'=>$count,'sha256'=>hash_final($hash)])."\n";
         }finally{if($pdo->inTransaction())$pdo->rollBack();$pdo->setAttribute(\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);}
         exit;
@@ -57,6 +59,7 @@ final class Portability {
             if(!is_array($source)||!is_array($source['revision']??null)||!is_array($source['fields']??null)||array_diff($source['fields'],ExternalSources::FIELDS))throw new Problem(422,'external_provenance','Proveniența externă din pachet este incorectă.');
             \App\Core\Api::id((string)($source['label_id']??''));\App\Core\ApiInput::validate(json_decode(Db::json($source['revision']),true),'ExternalFoodRecord');
         }
+        LegalPortability::validate($d['data']['organization_legal_history']??[]);
         $counts=[];foreach($d['data']as$k=>$rows){if(!is_array($rows)||count($rows)>10000)throw new Problem(422,'size','Colecție prea mare.');$counts[$k]=count($rows);}
         return ['schema_version'=>$d['schema_version'],'counts'=>$counts,'publication'=>'private','verification'=>'requires_reverification'];
     }
@@ -99,6 +102,7 @@ final class Portability {
             foreach($data['integration_bindings']??[]as$r)Db::insert('integration_bindings',['tenant_id'=>$p['tenant'],'connector_id'=>$map($r['connector_id']),'external_id'=>Catalog::text($r,'external_id',120),'product_id'=>$map($r['product_id']),'trade_item_id'=>$map($r['trade_item_id'])]);
             foreach($data['batch_events']??[]as$r)Catalog::event($p,$map($r['batch_id']),'imported_event',['source_event'=>$r]);
             foreach($data['batches']as$r)Db::insert('url_mappings',['id'=>Db::id(),'tenant_id'=>$p['tenant'],'source_url'=>rtrim((string)$d['source_base_url'],'/').'/b/'.$r['id'],'local_object_id'=>$map($r['id']),'created_at'=>Db::now()]);
+            LegalPortability::import($p,$data['organization_legal_history']??[]);
             $report['id_map']=$maps?:new \stdClass();$report['history_preserved_in_import']=true;
             Db::insert('imports',['id'=>Db::id(),'tenant_id'=>$p['tenant'],'source_key'=>$source,'package_sha256'=>$hash,'payload_json'=>Db::json(self::historyPayload($d)),'result_json'=>Db::json($report),'created_at'=>Db::now()]);Catalog::audit($p,'transfer.imported',Db::id(),['sha256'=>$hash]);return $report;
         });
