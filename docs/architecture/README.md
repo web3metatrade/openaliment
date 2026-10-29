@@ -19,6 +19,8 @@ OpenAliment păstrează un singur MVC PHP, fără framework și fără container
 
 Modulele de domeniu rămân în locațiile existente: catalog (`Catalog`, `Mutations`, `FoodData`, `FoodDate`), resolver (`DigitalLink`, `Resolver*`, `EpcDecoder`), documentație (`Documents`, `Portability`, `DemoBread`), comunitate (`Community`, `Ai`), integrări (`Integrations`, `PartnerMapping`, `DigitalReceipt`) și inventar personal (`Home*`, `ConsumerFood`).
 
+Programul de contribuitori, formare și parteneri folosește `ProgramController` pentru API și `ProgramWebController` pentru HTML, cu `ProgramService` ca hartă comună a cazurilor de utilizare. Domeniile `Contributors`, `ProgramLearning`, `ProgramAssessments`, `ProgramLabs`, `ProgramPartners`, `ProgramVerifications`, `ProgramMedia` și serviciile de acces/administrare/operare păstrează responsabilități separate. Registrul rutelor este `contracts/program/routes.json`; conținutul public și scenariile sunt contracte proprii, iar băncile reale de examen rămân în stocarea privată a instanței. Nu există un al doilea framework MVC sau un LMS extern.
+
 Nu se redenumesc clase, tabele sau endpointuri pentru a reflecta o reorganizare internă. Un strat suplimentar de servicii se introduce numai când reduce o responsabilitate complexă concretă. Directoarele `Views/components/` și modulele pe subnamespace nu sunt create artificial înainte de a exista o extragere verificată.
 
 Ordinea dispatch-ului rămâne importantă: resolverul înaintea rutelor generale și bonul confidențial înaintea prefixului API personal. Cookie-ul producătorului și cel personal rămân independente. Configurațiile și fișierele private rămân în afara `public/`; funcționarea QR nu depinde de AI sau SMTP.

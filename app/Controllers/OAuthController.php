@@ -30,6 +30,11 @@ final class OAuthController {
             $principal=HomeIdentity::principal(false);$resources=$principal?HomeHouseholds::list($principal):[];
             if(!$principal)$_SESSION['home_oauth_return']=$request['id'];
             $login='/acasa/#oauth='.$request['id'];
+        }elseif($request['realm']==='program'){
+            \App\Domain\ProgramAccess::installed();
+            $principal=Auth::user();if($principal)\App\Domain\Passkeys::full($principal);
+            $resources=$principal?[['id'=>$principal['id'],'name'=>'Contul meu · Învățare și parteneri','role'=>'owner']]:[];
+            $_SESSION['oauth_return']='/oauth/authorize?request='.$request['id'];$login='/login';
         }else{
             $principal=Auth::user();if($principal)\App\Domain\Passkeys::full($principal);$resources=$principal?Db::all('SELECT o.id,o.display_name AS name,m.role FROM memberships m JOIN organizations o ON o.id=m.tenant_id WHERE m.user_id=? ORDER BY o.id',[$principal['id']]):[];
             $_SESSION['oauth_return']='/oauth/authorize?request='.$request['id'];$login='/login';

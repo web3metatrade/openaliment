@@ -94,8 +94,10 @@ final class OrganizationRegistry
         return self::check($id, $p);
     }
 
-    private static function observe(string $cui): array
+    /** Internal observation; never confirms a producer profile or grants representation. */
+    public static function observe(string $cui): array
     {
+        $cui = AnafClient::cui($cui);
         $day = AnafClient::day();
         $cached = Db::one('SELECT * FROM anaf_observations WHERE cui=? AND queried_for=? AND reusable_until>? ORDER BY fetched_at DESC,id DESC LIMIT 1', [$cui, $day, Db::now()]);
         if ($cached) {
@@ -212,6 +214,15 @@ final class OrganizationRegistry
         Db::run("UPDATE organization_registration_checks SET state='consumed',consumed_at=? WHERE id=?", [Db::now(), $row['id']]);
     }
 
+    /** Internal attachment, within the caller's organization-creation transaction. */
+    public static function attachObservation(string $tenant, string $user, string $observationId): void
+    {
+        $observation = Db::one('SELECT * FROM anaf_observations WHERE id=?', [Api::id($observationId)])
+            ?? throw new Problem(404, 'anaf_observation', 'Verificarea nu a fost găsită.');
+        $current = Db::one('SELECT current_version_id FROM organization_legal_profiles WHERE tenant_id=?', [$tenant]);
+        self::save($tenant, $user, ['observation_id' => $observationId, 'cui' => $observation['cui'], 'expected_version_id' => $current['current_version_id'] ?? null]);
+    }
+
     private static function save(string $tenant, string $user, array $check): void
     {
         $observation = Db::one('SELECT * FROM anaf_observations WHERE id=?', [$check['observation_id']]);
@@ -323,7 +334,8 @@ final class OrganizationRegistry
         if (!Migrations::anaf()) return [];
         $old = gmdate('Y-m-d H:i:s', time() - 7 * 86400);
         $checks = Db::run('DELETE FROM organization_registration_checks WHERE expires_at<? LIMIT ' . $limit, [$old])->rowCount();
-        $observations = Db::run('DELETE FROM anaf_observations WHERE fetched_at<? AND NOT EXISTS (SELECT 1 FROM organization_registration_checks c WHERE c.observation_id=anaf_observations.id) AND NOT EXISTS (SELECT 1 FROM organization_legal_profile_versions v WHERE v.observation_id=anaf_observations.id) LIMIT ' . $limit, [gmdate('Y-m-d H:i:s', time() - 30 * 86400)])->rowCount();
+        $programReferences = Migrations::program() ? ' AND NOT EXISTS (SELECT 1 FROM program_verifications p WHERE p.observation_id=anaf_observations.id) AND NOT EXISTS (SELECT 1 FROM partner_profiles p WHERE p.observation_id=anaf_observations.id)' : '';
+        $observations = Db::run('DELETE FROM anaf_observations WHERE fetched_at<? AND NOT EXISTS (SELECT 1 FROM organization_registration_checks c WHERE c.observation_id=anaf_observations.id) AND NOT EXISTS (SELECT 1 FROM organization_legal_profile_versions v WHERE v.observation_id=anaf_observations.id)' . $programReferences . ' LIMIT ' . $limit, [gmdate('Y-m-d H:i:s', time() - 30 * 86400)])->rowCount();
         return ['anaf_checks' => $checks, 'anaf_observations' => $observations];
     }
 

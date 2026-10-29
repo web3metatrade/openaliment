@@ -2,7 +2,7 @@
 const siteMenu = document.querySelector('[data-site-menu]');
 if (siteMenu) {
   siteMenu.dataset.menuReady = '';
-  const compact = matchMedia('(max-width: 1100px)');
+  const compact = matchMedia('(max-width: 1279px)');
   const resizeMenu = () => { siteMenu.open = !compact.matches; };
   resizeMenu();
   compact.addEventListener('change', resizeMenu);

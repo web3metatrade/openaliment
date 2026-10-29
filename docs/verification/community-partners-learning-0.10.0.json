@@ -1,0 +1,604 @@
+{
+  "release": "0.10.0",
+  "verified_at": "2026-10-29T04:46:49.818519+00:00",
+  "environment": "isolated local PHP 8.4.27 / MariaDB 11.4; Microsoft Edge via Playwright",
+  "production_changed": false,
+  "staging_deployment_confirmed": false,
+  "completed": true,
+  "failed_commands": 0,
+  "commands_and_suites": 92,
+  "assertion_counters": 19706,
+  "counter_note": "Command counters include component checks and affected suites rerun after the full regression; they are not a claim of unique test cases.",
+  "api": {
+    "new_program_operations": 109,
+    "aggregate_operations": 410,
+    "successful_schema_validated_http_operations": 410,
+    "missing_operations": [],
+    "program_http_checks": 229
+  },
+  "browser": {
+    "checks": 58,
+    "viewports_px": [
+      390,
+      768,
+      1200,
+      1280,
+      1440
+    ],
+    "javascript_and_html_fallback": true
+  },
+  "backup": {
+    "checks": 21,
+    "encrypted_roundtrip": true,
+    "program_images_included": true,
+    "restore_does_not_reactivate_public_profiles_or_credentials": true
+  },
+  "boundaries": [
+    "Independent review and tenant isolation",
+    "Immutable course and examination editions",
+    "No exam answer keys in public API or candidate views",
+    "Consent withdrawal and credential revocation take effect immediately",
+    "Write and image quotas; audit retention and minimization",
+    "Synthetic bank rejected outside local test environment"
+  ],
+  "suite_results": [
+    {
+      "suite": "repository checks",
+      "passed": 530,
+      "exit_code": 0,
+      "seconds": 112.28
+    },
+    {
+      "suite": "generated contracts",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 6.83
+    },
+    {
+      "suite": "tests/test_repository.py",
+      "passed": 5,
+      "exit_code": 0,
+      "seconds": 22.2
+    },
+    {
+      "suite": "tests/test_external_seed.py",
+      "passed": 3,
+      "exit_code": 0,
+      "seconds": 0.38
+    },
+    {
+      "suite": "tests/test_external_api_coverage.py",
+      "passed": 191,
+      "exit_code": 0,
+      "seconds": 0.84
+    },
+    {
+      "suite": "tests/test_anaf_contracts.py",
+      "passed": 35,
+      "exit_code": 0,
+      "seconds": 0.31
+    },
+    {
+      "suite": "tests/test_program_contracts.py",
+      "passed": 521,
+      "exit_code": 0,
+      "seconds": 0.22
+    },
+    {
+      "suite": "tests/test_collaboration.py",
+      "passed": 5,
+      "exit_code": 0,
+      "seconds": 3.16
+    },
+    {
+      "suite": "tests/test_branch_policy.py",
+      "passed": 5,
+      "exit_code": 0,
+      "seconds": 0.34
+    },
+    {
+      "suite": "tests/test_security_sources.py",
+      "passed": 5,
+      "exit_code": 0,
+      "seconds": 0.47
+    },
+    {
+      "suite": "focused source security checks",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 4.22
+    },
+    {
+      "suite": "tests/bootstrap-unit.php",
+      "passed": 9,
+      "exit_code": 0,
+      "seconds": 0.36
+    },
+    {
+      "suite": "tests/anaf-unit.php",
+      "passed": 31,
+      "exit_code": 0,
+      "seconds": 0.36
+    },
+    {
+      "suite": "tests/program-unit.php",
+      "passed": 417,
+      "exit_code": 0,
+      "seconds": 0.39
+    },
+    {
+      "suite": "tests/gs1-compatibility.php",
+      "passed": 1051,
+      "exit_code": 0,
+      "seconds": 0.44
+    },
+    {
+      "suite": "tests/security-unit.php",
+      "passed": 33,
+      "exit_code": 0,
+      "seconds": 0.56
+    },
+    {
+      "suite": "tests/operations-unit.php",
+      "passed": 16,
+      "exit_code": 0,
+      "seconds": 0.39
+    },
+    {
+      "suite": "tests/api-documentation.php",
+      "passed": 854,
+      "exit_code": 0,
+      "seconds": 13.77
+    },
+    {
+      "suite": "tests/test_api_reference_quality.py",
+      "passed": 8179,
+      "exit_code": 0,
+      "seconds": 0.83
+    },
+    {
+      "suite": "tests/test_public_content.py",
+      "passed": 2580,
+      "exit_code": 0,
+      "seconds": 1.5
+    },
+    {
+      "suite": "tests/consumer-domain.mjs",
+      "passed": 35,
+      "exit_code": 0,
+      "seconds": 0.45
+    },
+    {
+      "suite": "tests/cloud-client-domain.mjs",
+      "passed": 14,
+      "exit_code": 0,
+      "seconds": 0.45
+    },
+    {
+      "suite": "tests/receipt-domain.mjs",
+      "passed": 11,
+      "exit_code": 0,
+      "seconds": 0.78
+    },
+    {
+      "suite": "tests/api-explorer.mjs",
+      "passed": 14,
+      "exit_code": 0,
+      "seconds": 0.59
+    },
+    {
+      "suite": "tests/gs1-compatibility.mjs",
+      "passed": 1047,
+      "exit_code": 0,
+      "seconds": 0.58
+    },
+    {
+      "suite": "tests/external-domain.mjs",
+      "passed": 17,
+      "exit_code": 0,
+      "seconds": 0.5
+    },
+    {
+      "suite": "synthetic legacy import package",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.83
+    },
+    {
+      "suite": "tests/generators/fixtures.py",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.53
+    },
+    {
+      "suite": "tests/integration.php",
+      "passed": 70,
+      "exit_code": 0,
+      "seconds": 4.2
+    },
+    {
+      "suite": "tests/resolver.php",
+      "passed": 54,
+      "exit_code": 0,
+      "seconds": 0.8
+    },
+    {
+      "suite": "tests/demo-bread.php",
+      "passed": 18,
+      "exit_code": 0,
+      "seconds": 0.39
+    },
+    {
+      "suite": "tests/consumer.php",
+      "passed": 43,
+      "exit_code": 0,
+      "seconds": 0.56
+    },
+    {
+      "suite": "tests/integrations.php",
+      "passed": 30,
+      "exit_code": 0,
+      "seconds": 0.7
+    },
+    {
+      "suite": "tests/mailer.php",
+      "passed": 11,
+      "exit_code": 0,
+      "seconds": 0.5
+    },
+    {
+      "suite": "tests/home-cloud.php",
+      "passed": 32,
+      "exit_code": 0,
+      "seconds": 1.39
+    },
+    {
+      "suite": "tests/api-platform.php",
+      "passed": 53,
+      "exit_code": 0,
+      "seconds": 1.31
+    },
+    {
+      "suite": "tests/security.php",
+      "passed": 37,
+      "exit_code": 0,
+      "seconds": 2.14
+    },
+    {
+      "suite": "tests/readiness.php",
+      "passed": 49,
+      "exit_code": 0,
+      "seconds": 8.36
+    },
+    {
+      "suite": "tests/marketplace.php",
+      "passed": 53,
+      "exit_code": 0,
+      "seconds": 1.2
+    },
+    {
+      "suite": "tests/gs1-reference.php",
+      "passed": 8,
+      "exit_code": 0,
+      "seconds": 1.03
+    },
+    {
+      "suite": "tests/api-reference-fixtures.php",
+      "passed": 1,
+      "exit_code": 0,
+      "seconds": 0.55
+    },
+    {
+      "suite": "tests/external.php",
+      "passed": 59,
+      "exit_code": 0,
+      "seconds": 1.33
+    },
+    {
+      "suite": "tests/anaf.php",
+      "passed": 24,
+      "exit_code": 0,
+      "seconds": 1.02
+    },
+    {
+      "suite": "tests/anaf-http-fixtures.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.47
+    },
+    {
+      "suite": "tests/program.php",
+      "passed": 107,
+      "exit_code": 0,
+      "seconds": 2.97
+    },
+    {
+      "suite": "tests/program-boundaries.php",
+      "passed": 32,
+      "exit_code": 0,
+      "seconds": 0.94
+    },
+    {
+      "suite": "tests/program-http-fixtures.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.44
+    },
+    {
+      "suite": "tests/test_http.py",
+      "passed": 58,
+      "exit_code": 0,
+      "seconds": 10.33
+    },
+    {
+      "suite": "tests/test_resolver_http.py",
+      "passed": 117,
+      "exit_code": 0,
+      "seconds": 7.7
+    },
+    {
+      "suite": "tests/test_demo_bread.py",
+      "passed": 48,
+      "exit_code": 0,
+      "seconds": 2.41
+    },
+    {
+      "suite": "tests/test_integrations_http.py",
+      "passed": 18,
+      "exit_code": 0,
+      "seconds": 1.45
+    },
+    {
+      "suite": "tests/test_home_http.py",
+      "passed": 16,
+      "exit_code": 0,
+      "seconds": 1.56
+    },
+    {
+      "suite": "tests/test_api_platform_http.py",
+      "passed": 87,
+      "exit_code": 0,
+      "seconds": 12.06
+    },
+    {
+      "suite": "tests/test_security_http.py",
+      "passed": 28,
+      "exit_code": 0,
+      "seconds": 4.39
+    },
+    {
+      "suite": "reset isolated reference rate counters",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.41
+    },
+    {
+      "suite": "tests/test_api_reference_http.py",
+      "passed": 220,
+      "exit_code": 0,
+      "seconds": 23.97
+    },
+    {
+      "suite": "tests/test_api_documentation.py",
+      "passed": 1749,
+      "exit_code": 0,
+      "seconds": 51.69
+    },
+    {
+      "suite": "tests/test_readiness_http.py",
+      "passed": 31,
+      "exit_code": 0,
+      "seconds": 4.38
+    },
+    {
+      "suite": "tests/test_marketplace_http.py",
+      "passed": 13,
+      "exit_code": 0,
+      "seconds": 3.91
+    },
+    {
+      "suite": "tests/test_gs1_compatibility_http.py",
+      "passed": 9,
+      "exit_code": 0,
+      "seconds": 0.78
+    },
+    {
+      "suite": "tests/test_external_http.py",
+      "passed": 23,
+      "exit_code": 0,
+      "seconds": 7.3
+    },
+    {
+      "suite": "tests/test_anaf_http.py",
+      "passed": 45,
+      "exit_code": 0,
+      "seconds": 3.83
+    },
+    {
+      "suite": "reset isolated program rate counters",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.39
+    },
+    {
+      "suite": "tests/test_program_http.py",
+      "passed": 230,
+      "exit_code": 0,
+      "seconds": 19.52
+    },
+    {
+      "suite": "tests/test_api_coverage.py",
+      "passed": 410,
+      "exit_code": 0,
+      "seconds": 0.39
+    },
+    {
+      "suite": "tests/test_api_sdk.py",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.77
+    },
+    {
+      "suite": "tests/api-sdk.mjs",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 1.09
+    },
+    {
+      "suite": "tests/qr-matrices.cjs",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.24
+    },
+    {
+      "suite": "tests/test_qr.py",
+      "passed": 6,
+      "exit_code": 0,
+      "seconds": 0.3
+    },
+    {
+      "suite": "tests/test_deploy_bridge.py",
+      "passed": 66,
+      "exit_code": 0,
+      "seconds": 3.03
+    },
+    {
+      "suite": "tests/consumer-browser.cjs",
+      "passed": 29,
+      "exit_code": 0,
+      "seconds": 11.17
+    },
+    {
+      "suite": "tests/account-access-browser.cjs",
+      "passed": 9,
+      "exit_code": 0,
+      "seconds": 6.95
+    },
+    {
+      "suite": "tests/marketplace-browser.cjs",
+      "passed": 39,
+      "exit_code": 0,
+      "seconds": 8.91
+    },
+    {
+      "suite": "independent downloaded browser SVG decode",
+      "passed": 7,
+      "exit_code": 0,
+      "seconds": 0.41
+    },
+    {
+      "suite": "tests/first-visit-browser.cjs",
+      "passed": 44,
+      "exit_code": 0,
+      "seconds": 13.41
+    },
+    {
+      "suite": "tests/external-browser.cjs",
+      "passed": 12,
+      "exit_code": 0,
+      "seconds": 6.3
+    },
+    {
+      "suite": "reset isolated ANAF browser counters",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.38
+    },
+    {
+      "suite": "tests/anaf-browser.cjs",
+      "passed": 12,
+      "exit_code": 0,
+      "seconds": 6.52
+    },
+    {
+      "suite": "prepare synthetic full-course bank and reset program browser counters",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.42
+    },
+    {
+      "suite": "tests/program-browser.cjs",
+      "passed": 58,
+      "exit_code": 0,
+      "seconds": 41.62
+    },
+    {
+      "suite": "tests/backup.php",
+      "passed": 21,
+      "exit_code": 0,
+      "seconds": 7.95
+    },
+    {
+      "suite": "Final syntax app/Domain/Backups.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.22
+    },
+    {
+      "suite": "Final syntax app/Domain/ProgramAccess.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.27
+    },
+    {
+      "suite": "Final syntax app/Domain/ProgramJobs.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.23
+    },
+    {
+      "suite": "Final syntax app/Domain/ProgramLabs.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "suite": "Final syntax tests/fixtures/program-backup.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "suite": "Final syntax tests/program-boundaries.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.22
+    },
+    {
+      "suite": "reset isolated final program counters",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 1.27
+    },
+    {
+      "suite": "Final syntax app/Core/Migrations.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.23
+    },
+    {
+      "suite": "Final syntax app/Controllers/ProgramController.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.23
+    },
+    {
+      "suite": "Final syntax app/Controllers/ProgramWebController.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.23
+    },
+    {
+      "suite": "Final syntax app/Domain/ProgramAdministration.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.23
+    }
+  ],
+  "limits": [
+    "Local fixtures are synthetic, including companies, laboratory evidence and email delivery.",
+    "Software tests are not GS1 accreditation or physical printer/POS certification.",
+    "Live staging installation, SMTP and cron require separate confirmation.",
+    "Production and main are outside this delivery."
+  ]
+}

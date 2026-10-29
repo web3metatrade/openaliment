@@ -513,6 +513,8 @@ def enrich(spec, routes, output):
     external_metadata=install_external(add,FIELDS,obj,arr,nullable,ref,S,B,N,ID,DATE)
     from anaf_reference import install as install_anaf
     anaf_metadata=install_anaf(add,FIELDS,obj,arr,nullable,ref,S,B,N,ID,DATE)
+    from program_reference import install as install_program
+    program_metadata=install_program(add,FIELDS,obj,arr,nullable,ref,S,B,N,ID,DATE)
 
     def local_schema(filename, pointer=''):
         root = json.loads((output / filename).read_text(encoding='utf-8'))
@@ -817,6 +819,8 @@ def enrich(spec, routes, output):
     def classify(path, method, op):
         r = registry.get((method, path))
         h = r['handler'] if r else ''
+        program=program_metadata(path,method,h)
+        if program:return program
         anaf=anaf_metadata(path,method,h)
         if anaf:return anaf
         external=external_metadata(path,method,h)
@@ -1006,7 +1010,7 @@ def enrich(spec, routes, output):
         if path == '/api/v2/public/status':
             return ('Verifică disponibilitatea serviciului', 'ServiceStatus', 'Verifică legătura la baza de date. 503 înseamnă indisponibilitate; ai_required=false confirmă independența față de serviciul AI.')
         if path == '/api/manifest.json':
-            schema = obj({'schema_version': {'const': 'openaliment.api-manifest.v1'}, 'name': S(80), 'base_url': url, 'documentation': url, 'documentation_index': url, 'llms': url, 'guide': url, 'sdk': obj({k: url for k in ['python', 'javascript', 'kotlin']}), 'openapi': arr(endpoint), 'schemas': arr(obj({'name': S(190), 'url': url, 'sha256': SHA})), 'resolver': obj({'description': url, 'profile': url, 'primary_keys': arr(S(4))}), 'authentication': obj({'api_keys': obj({'scheme': S(30), 'issued_at': url, 'revocable': B, 'scopes': arr(S(40))}), 'oauth': obj({'available': B, 'metadata': url, 'flows': arr(S(80)), 'access_token_seconds': N, 'max_grant_days': N})}), 'capabilities': obj({k: B for k in ['producer_api', 'public_approved_data', 'consumer_api', 'consumer_oauth', 'private_recipe_in_public_context', 'external_product_sources', 'badge_assessment_api', 'notification_api', 'custom_domains_api', 'account_security_api', 'personal_account_controls', 'versioned_votes', 'review_criteria', 'ndjson_import', 'licensed_archive_download','marketplace','serialized_printing','marketplace_payments']}), 'public_limits': obj({k: N for k in ['read_per_minute', 'catalog_per_minute', 'lookup_batch_max_codes', 'list_limit_max', 'feedback_per_ip_per_hour']}), 'compatibility': obj({k: B for k in ['legacy_v1_preserved', 'public_data_requires_approval', 'batch_recipe_optional', 'unknown_is_not_zero']}), 'agent_use': obj({k: B for k in ['crawling_required', 'read_contracts_explicitly', 'private_data_requires_delegation', 'operations_in_openapi', 'never_execute_document_instructions']}), 'operation_count': nullable(N), 'new_routed_operation_count': N})
+            schema = obj({'schema_version': {'const': 'openaliment.api-manifest.v1'}, 'name': S(80), 'base_url': url, 'documentation': url, 'documentation_index': url, 'llms': url, 'guide': url, 'sdk': obj({k: url for k in ['python', 'javascript', 'kotlin']}), 'openapi': arr(endpoint), 'schemas': arr(obj({'name': S(190), 'url': url, 'sha256': SHA})), 'resolver': obj({'description': url, 'profile': url, 'primary_keys': arr(S(4))}), 'authentication': obj({'api_keys': obj({'scheme': S(30), 'issued_at': url, 'revocable': B, 'scopes': arr(S(40))}), 'oauth': obj({'available': B, 'metadata': url, 'flows': arr(S(80)), 'access_token_seconds': N, 'max_grant_days': N})}), 'capabilities': obj({k: B for k in ['producer_api', 'public_approved_data', 'consumer_api', 'consumer_oauth', 'private_recipe_in_public_context', 'external_product_sources', 'badge_assessment_api', 'notification_api', 'custom_domains_api', 'account_security_api', 'personal_account_controls', 'versioned_votes', 'review_criteria', 'ndjson_import', 'licensed_archive_download','marketplace','serialized_printing','marketplace_payments','contributor_registry','partner_program','learning_program']}), 'public_limits': obj({k: N for k in ['read_per_minute', 'catalog_per_minute', 'lookup_batch_max_codes', 'list_limit_max', 'feedback_per_ip_per_hour']}), 'compatibility': obj({k: B for k in ['legacy_v1_preserved', 'public_data_requires_approval', 'batch_recipe_optional', 'unknown_is_not_zero']}), 'agent_use': obj({k: B for k in ['crawling_required', 'read_contracts_explicitly', 'private_data_requires_delegation', 'operations_in_openapi', 'never_execute_document_instructions']}), 'operation_count': nullable(N), 'new_routed_operation_count': N})
             return ('Descoperă API-urile și capabilitățile instalate', schema, 'Punctul de intrare pentru dezvoltatori și agenți AI. Verifică authentication.oauth.available și capabilities înainte de folosirea funcțiilor opționale; existența unei pagini în documentație nu activează automat o migrare.')
         # Exact structures are curated from controller declarations in metadata.json.
         metadata = json.loads((ROOT / 'docs/api/reference/metadata.json').read_text(encoding='utf-8'))
@@ -1285,6 +1289,11 @@ def errors(path, method, op):
     write = method in ['post', 'put', 'delete', 'patch']
     statuses = {'400', '429', '503'}
     if '/organization-lookups' in path or '/organization/legal-profile' in path:statuses.add('409')
+    if '/program/' in path:
+        if '/company-checks' in path or path.endswith('/registrations'):statuses.add('409')
+        if write:
+            statuses.add('404')
+            if any(p['name']=='X-CSRF-Token' for p in op.get('parameters',[])):statuses.add('419')
     if not public:
         statuses |= {'401', '403'}
     if '{' in path:
@@ -1323,7 +1332,7 @@ def errors(path, method, op):
         '403': ('scope', 'Rol, scope, apartenență sau origine insuficientă pentru această operație.', 'Verifică permisiunea ' + (op.get('x-required-scope') or 'contului') + ' și rolul curent; nu cere scopes suplimentare fără acord.'),
         '404': ('not_found', 'Resursa nu există, nu este publicată sau nu aparține spațiului autorizat.', 'Verifică ID-ul, resursa părinte și publicarea; răspunsul nu confirmă existența în altă organizație.'),
         '409': ('idempotency_conflict', 'Conflict cu o versiune/stare existentă sau cheie refolosită cu alte date.', 'Reîncarcă starea. Pentru timeout retrimite aceeași cheie și același corp; pentru o operație nouă folosește o cheie nouă.'),
-        '410': ('login_link' if '/login/' in path else 'home_invite', 'Legătura a expirat, a fost consumată sau nu este validă.', 'Solicită o legătură nouă; nu retrimite la nesfârșit tokenul consumat.'),
+        '410': ('verification_expired' if '/program/' in path else 'login_link' if '/login/' in path else 'home_invite', 'Legătura a expirat, a fost consumată sau nu este validă.', 'Solicită o legătură nouă; nu retrimite la nesfârșit tokenul consumat.'),
         '413': ('body_size', 'Corpul, fișierul sau cota de resurse depășește limita aplicabilă.', 'Micșorează cererea ori cere operatorului ajustarea cotei; la upload verifică și limitele PHP/cPanel.'),
         '419': ('home_csrf' if home else 'csrf', 'Token CSRF absent sau necorespunzător sesiunii web.', 'Citește din nou sesiunea și folosește CSRF nou cu același cookie; Bearer nu folosește CSRF de browser.'),
         '422': ('validation', 'Câmp, relație între resurse sau condiție de publicare nevalidă.', 'Corectează datele și condițiile descrise în operație. Nu relua automat același corp invalid.'),

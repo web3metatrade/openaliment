@@ -11,7 +11,7 @@
   const path = document.createElementNS(ns, 'path'); const d = [];
   for (let y = 0; y < qr.size; y++) for (let x = 0; x < qr.size; x++) if (qr.getModule(x, y)) d.push(`M${x + quiet},${y + quiet}h1v1h-1z`);
   path.setAttribute('d', d.join('')); path.setAttribute('fill', '#000'); svg.append(path); target.append(svg);
-  const note = document.createElement('p'); note.className = 'small muted'; note.textContent = `${qr.size} × ${qr.size} module · margine liberă: 4 module`; target.append(note);
+  if (!target.hasAttribute('data-qr-compact')) { const note = document.createElement('p'); note.className = 'small muted'; note.textContent = `${qr.size} × ${qr.size} module · margine liberă: 4 module`; target.append(note); }
   document.querySelector('[data-download-qr]')?.addEventListener('click', () => {
     const copy = svg.cloneNode(true); copy.setAttribute('xmlns', ns); copy.removeAttribute('role'); copy.removeAttribute('aria-label');
     const blob = new Blob([new XMLSerializer().serializeToString(copy)], {type: 'image/svg+xml'});

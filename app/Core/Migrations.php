@@ -3,6 +3,49 @@ declare(strict_types=1);
 namespace App\Core;
 
 final class Migrations {
+    public static function program(): bool
+    {
+        return Db::one("SELECT version FROM schema_migrations WHERE version='015_partners'") !== null;
+    }
+
+    public static function upgradeProgram(): void
+    {
+        if (!Db::migrationActive()) {
+            Db::migration(static fn() => self::upgradeProgram());
+            return;
+        }
+        // Personal OAuth, account security and the shared worker are prerequisites; OFF is optional.
+        self::upgradeReadiness();
+        if (self::program()) {
+            return;
+        }
+        if (!self::anaf()) {
+            self::upgradeAnaf();
+        }
+        if (!Db::one("SELECT GET_LOCK('openaliment_schema',0) AS acquired")['acquired']) {
+            throw new Problem(409, 'migration_busy', 'O actualizare este deja în curs.');
+        }
+        try {
+            foreach (['012_program', '013_learning', '014_assessments', '015_partners'] as $version) {
+                if (Db::one('SELECT version FROM schema_migrations WHERE version=?', [$version])) {
+                    continue;
+                }
+                $sql = file_get_contents(ROOT . '/database/migrations/' . $version . '.sql');
+                if (!is_string($sql)) {
+                    throw new Problem(503, 'migration_missing', 'Actualizarea programului nu este disponibilă.');
+                }
+                foreach (explode(';', $sql) as $statement) {
+                    if (trim($statement) !== '') {
+                        Db::pdo()->exec($statement);
+                    }
+                }
+                Db::run('INSERT IGNORE INTO schema_migrations (version,applied_at) VALUES (?,?)', [$version, Db::now()]);
+            }
+        } finally {
+            Db::run("SELECT RELEASE_LOCK('openaliment_schema')");
+        }
+    }
+
     public static function anaf(): bool {return Db::one("SELECT version FROM schema_migrations WHERE version='011_organization_anaf'")!==null;}
     public static function upgradeAnaf(): void {
         if(!Db::migrationActive()){Db::migration(static fn()=>self::upgradeAnaf());return;}

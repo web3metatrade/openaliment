@@ -40,6 +40,9 @@ function oa_test_config(): array
     foreach (json_decode(file_get_contents(__DIR__.'/fixtures/anaf-v9.json'),true,24,JSON_THROW_ON_ERROR) as $cui=>$response) {
         $config['anaf_test_responses'][(string)$cui] = json_encode($response,JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR);
     }
+    foreach (json_decode(file_get_contents(__DIR__.'/fixtures/program-companies.json'),true,24,JSON_THROW_ON_ERROR) as $cui=>$response) {
+        $config['anaf_test_responses'][(string)$cui] = json_encode($response,JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR);
+    }
     if (getenv('OA_TEST_SYNTHETIC_HANDOVER') === '1' || !is_readable(($config['handover_path'] ?? '') . '/HASHES.sha256')) {
         $synthetic = __DIR__ . '/runtime/legacy-handover';
         if (!is_readable($synthetic . '/HASHES.sha256')) {

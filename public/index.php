@@ -18,6 +18,7 @@ if($method==='HEAD')ob_start();
 try {
     if(strlen($path)>4096)throw new Problem(414,'uri','Adresa este prea lungă.');
     \App\Core\ApiGateway::begin($method,$path);
+    if(\App\Controllers\ProgramWebController::matches($path)){\App\Controllers\ProgramWebController::handle($method,$path);exit;}
     if(\App\Controllers\ExternalSourcesController::matches($path))\App\Controllers\ExternalSourcesController::web($method,$path);
     if(in_array($path,['/standarde/gs1','/admin/standards'],true)){\App\Controllers\Gs1StandardsController::web($method,$path);}
     elseif(\App\Controllers\MarketplaceController::matches($path)){\App\Controllers\MarketplaceController::web($method,$path);}

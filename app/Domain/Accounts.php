@@ -49,7 +49,8 @@ final class Accounts {
             if(\App\Core\Migrations::readiness())Db::run('UPDATE producer_sessions SET revoked_at=COALESCE(revoked_at,?) WHERE user_id=?',[Db::now(),$p['user']]);
             Db::run('UPDATE api_tokens SET revoked_at=COALESCE(revoked_at,?) WHERE user_id=?',[Db::now(),$p['user']]);
             if(\App\Core\Migrations::api())foreach(Db::all('SELECT id FROM api_oauth_grants WHERE user_id=? AND revoked_at IS NULL',[$p['user']])as$g)OAuth::revokeGrant($g['id']);
-            Catalog::audit($p,$action==='password'?'account.password_changed':'account.access_revoked',$p['user']);
+            if($p['tenant']??null)Catalog::audit($p,$action==='password'?'account.password_changed':'account.access_revoked',$p['user']);
+            elseif(\App\Core\Migrations::program())ProgramAccess::event(['id'=>$p['user']],'account',$p['user'],$action==='password'?'password_changed':'access_revoked');
         });
         $verified=!empty($_SESSION['mfa_verified_at']);Session::login($p['user'],$verified);SecurityOutbox::notice($p['user'],'access-revoked','Parola sau accesurile contului au fost actualizate.');\App\Core\SecurityLog::record('account.access_revoked',['user_id'=>$p['user']]);
     }

@@ -1,0 +1,826 @@
+{
+  "schema_version": "openaliment.course.v1",
+  "title": "Integrare și operare OpenAliment · GS1 Digital Link",
+  "version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "summary": "De la identificarea produsului la integrarea ERP, tipărire și operare. Curs cu exerciții, evaluare teoretică și probe practice pe specializări.",
+  "modules": [
+    {
+      "key": "M01",
+      "title": "Identitate și responsabilități",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "a88fe9dbd54ed4d2132c3953da229092",
+          "title": "Un produs, trei servicii independente",
+          "objective": "Separă găzduirea, documentația deschisă și evaluarea.",
+          "body": "Un producător poate publica un produs și loturile sale fără să încarce rețeta. Poate adăuga voluntar documentație tehnică și poate cere separat evaluarea acesteia. Fiecare serviciu are propriile permisiuni și condiții.\n\nPâine Bună Tehnic este pilotul inițiativei OpenBread, în cadrul OpenAliment. Rețeta R1, cercetările și scenariile de cost își păstrează proveniența. O estimare de cost nu devine rezultat experimental validat prin simpla publicare.\n\nExemplu: o fabrică de iaurt publică ingredientele, alergenii și lotul. Rețeta rămâne în ERP. Pagina QR trebuie să funcționeze și cu serviciul AI oprit. Publicarea nu acordă automat o licență deschisă, o siglă sau un drept asupra GTIN-ului.\n\nCa integrator, începe prin stabilirea informațiilor aprobate pentru publicare. Nu solicita secretul tehnologic dacă integrarea are nevoie doar de articol, etichetă și lot.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Un producător dorește doar pagini QR pentru iaurt. Ce este necesar?",
+            "options": [
+              "Articol, informații aprobate și lot; rețeta este opțională",
+              "Publicarea obligatorie a rețetei",
+              "Solicitarea automată a siglei"
+            ],
+            "answer": 0,
+            "explanation": "Serviciul QR este independent de rețetă, licență deschisă și evaluarea documentației."
+          }
+        },
+        {
+          "id": "0c8f5684afd3eaf197668760a48bfcab",
+          "title": "Cine poate administra identificatorul",
+          "objective": "Distinge dreptul de administrare de validarea matematică.",
+          "body": "GTIN-ul identifică un articol comercial. Validarea lungimii și a cifrei de control detectează erori de scriere, dar nu dovedește că firma are dreptul să folosească acel identificator. Un șir ales pentru demonstrație nu se imprimă pe produse comerciale ca identificator real.\n\nVerificarea ANAF confirmă datele furnizate de registrul fiscal pentru CUI și data consultată. Nu dovedește mandatul persoanei, licența GS1 sau proprietatea unei mărci. Aceste verificări sunt distincte.\n\nÎnainte de activarea identificatorilor verifică organizația, persoana care o reprezintă și documentele privind dreptul de administrare. Un conector ERP primește acces numai la organizația și operațiile autorizate. Instalarea lui nu îi conferă drepturi noi.\n\nAutorizația de partener OpenAliment privește competența de integrare în programul nostru. Nu este acreditare GS1 și nu certifică siguranța alimentară. Comunică exact domeniul și valabilitatea autorizației.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/genspecs/26.0.0/"
+            }
+          ],
+          "practice": {
+            "question": "Ce dovedește o cifră de control GTIN corectă?",
+            "options": [
+              "Doar validitatea matematică a identificatorului",
+              "Dreptul firmei de a-l administra",
+              "Acreditarea GS1 a integratorului"
+            ],
+            "answer": 0,
+            "explanation": "Dreptul de administrare necesită o verificare separată."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M02",
+      "title": "Date GS1 în codul QR",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "fd6de900e289a9d89c0a31d6e9935953",
+          "title": "Produs, lot și ambalaj individual",
+          "objective": "Alege nivelul corect de identificare.",
+          "body": "Codul de bare tradițional de tip EAN-13 conține în mod obișnuit identificatorul articolului. Un QR cu sintaxă GS1 Digital Link reprezintă identificatorii și atributele permise într-un URI web. El nu este o fotografie a întregii baze de date.\n\nPentru profilul GTIN folosit aici, AI 01 reprezintă GTIN-ul, AI 10 lotul, iar AI 21 seria. GTIN-ul se reprezintă cu 14 cifre în URI. Lotul identifică un grup de producție; seria distinge o unitate individuală. Două ambalaje ale aceluiași lot pot avea același URI de lot, dar au serii diferite dacă se urmărește fiecare unitate.\n\nO adresă generică de produs nu dovedește lotul scanat. Nu deduce lotul din data scanării sau din ultimul lot introdus. Dacă utilizatorul scanează numai produsul, cere lotul doar atunci când operația are nevoie de el.\n\nIdentificatorii din exemple sunt demonstrativi. Folosește în producție doar identificatori asupra cărora există drepturi verificate.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/digital-link/uri-syntax/1.7.0/"
+            }
+          ],
+          "practice": {
+            "question": "Ce diferențiază două ambalaje individuale ale aceluiași lot?",
+            "options": [
+              "Seria, AI 21",
+              "Același GTIN singur",
+              "Data la care consumatorul deschide pagina"
+            ],
+            "answer": 0,
+            "explanation": "Seria identifică unitatea; GTIN-ul și lotul pot fi comune."
+          }
+        },
+        {
+          "id": "7c430588d9904a2b1f2ed4af1454c1a1",
+          "title": "Date de producție și valabilitate",
+          "objective": "Deosebește identificatorii de atributele de dată.",
+          "body": "AI 11 poate reprezenta data producției, AI 15 termenul de durabilitate minimală și AI 17 data expirării. Aceste noțiuni au sensuri diferite. Nu transforma automat o dată „a se consuma de preferință înainte de” într-o dată „expiră la”.\n\nÎntr-un URI GTIN, calificatorii sunt în cale, iar atributele suplimentare de date sunt în query, conform regulilor standardului. Exemplul demonstrativ este:\n\nhttps://exemplu.ro/01/09520000000011/10/LOT1/21/S0001?11=261029&17=261105\n\nValorile datelor trebuie validate după regulile AI și semnificația de pe etichetă. Nu interpreta arbitrar o dată imposibilă și nu elimina zerouri semnificative. Păstrează și tipul datei în modelul ERP.\n\nResolverul și pagina pot furniza informații suplimentare, dar nu corectează în tăcere un cod imprimat greșit. O schimbare a datei aplicabile lotului cere istoric, aprobare și o decizie operațională privind etichetele deja tipărite.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/digital-link/uri-syntax/1.7.0/"
+            }
+          ],
+          "practice": {
+            "question": "AI 15 și AI 17 se pot înlocui automat unul cu celălalt?",
+            "options": [
+              "Nu; reprezintă noțiuni diferite",
+              "Da, dacă data calendaristică este identică",
+              "Da, dacă produsul este pâine"
+            ],
+            "answer": 0,
+            "explanation": "Semantica datei trebuie păstrată de la sursă până la etichetă."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M03",
+      "title": "Construirea URI-ului",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "28137f04e429494419de992771a1f113",
+          "title": "Ordine și codificare URL",
+          "objective": "Construiește URI-ul fără a altera lotul.",
+          "body": "În profilul GTIN, URI-ul începe cu schema HTTPS și domeniul, apoi /01/ și GTIN-ul de 14 cifre. Calificatorii urmează ordinea prevăzută pentru cheia primară; nu se ordonează alfabetic după preferința conectorului. Pentru GTIN cu lot și serie, folosește /10/ înainte de /21/.\n\nUn lot poate conține caractere care au semnificație specială în URL. Valoarea LOT/A+B%1 trebuie codificată ca un singur segment: LOT%2FA%2BB%251. Bara din lot nu creează un segment nou. Semnul plus din cale este un plus, nu spațiu.\n\nCodifică fiecare valoare exact o dată cu o funcție potrivită segmentelor de cale. Nu codifica întregul URI și nu decodifica repetat intrarea. Verifică după parsare că lotul recuperat este identic cu sursa ERP.\n\nLa QR-uri serializate, păstrează aceeași regulă pentru fiecare serie. Normalizarea URI-ului nu trebuie să modifice identitatea lotului sau a ambalajului.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/digital-link/uri-syntax/1.7.0/"
+            }
+          ],
+          "practice": {
+            "question": "Cum se reprezintă bara din valoarea lotului LOT/A?",
+            "options": [
+              "LOT%2FA, într-un singur segment",
+              "LOT/A, ca două segmente",
+              "LOT%252FA, prin codificare dublă"
+            ],
+            "answer": 0,
+            "explanation": "Codificarea segmentului păstrează identitatea lotului fără a schimba structura căii."
+          }
+        },
+        {
+          "id": "afbb26a51b54b1012a08f3f4dba39ca1",
+          "title": "Validare înainte de tipărire",
+          "objective": "Oprește o eroare înainte să ajungă pe ambalaj.",
+          "body": "Validează identificatorul, lungimea, setul de caractere și dependențele dintre AI înainte de rezervarea seriilor și înainte de randarea etichetei. Un QR lizibil optic poate conține un URI semantic incorect.\n\nFluxul minim este: date aprobate → construire URI → parsare și comparație cu sursa → generare simbol → verificare vizuală și scanare → verificarea răspunsului resolverului. Înregistrează versiunea șablonului și lotul operației.\n\nNu accepta un URL obișnuit cu „produs=123” drept GS1 Digital Link. Nu folosi 1111111111111 ca GTIN comercial doar pentru că pare de test. Folosește exemple marcate demonstrativ și un profil de test separat.\n\nTestează caractere rezervate, date invalide, GTIN cu cifră de control greșită, calificatori în ordine greșită și serii duplicate. La eroare, arată câmpul problematic și păstrează celelalte date pentru corectare.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/digital-link/uri-syntax/1.7.0/"
+            }
+          ],
+          "practice": {
+            "question": "Un QR poate fi scanat de telefon. Este suficient pentru conformitate?",
+            "options": [
+              "Nu; trebuie validate și sintaxa, identificatorii și utilizarea",
+              "Da, scanarea dovedește toate condițiile",
+              "Da, dacă folosește HTTPS"
+            ],
+            "answer": 0,
+            "explanation": "Lizibilitatea simbolului și conformitatea datelor sunt verificări diferite."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M04",
+      "title": "Resolver și descoperirea legăturilor",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "60ffa8800c17b5c89f143db2bb0695f6",
+          "title": "Pagină web sau resolver",
+          "objective": "Explică diferența fără promisiuni exagerate.",
+          "body": "O adresă în sintaxă GS1 Digital Link poate deschide o pagină de produs. Aceasta este utilă, dar nu demonstrează singură implementarea funcțiilor unui resolver conform standardului.\n\nResolverul gestionează legături către informații și servicii asociate identificatorului. El ia în considerare tipul legăturii, limba, formatul și granularitatea identificării, conform standardului și profilului declarat. Un simplu redirect fix nu reprezintă toate aceste funcții.\n\nUn client poate solicita legătura implicită sau un linkset. Un linkset descrie legăturile disponibile și atributele lor. Destinațiile trebuie să fie aprobate și sigure. Nici tipul legăturii, nici existența ei nu acordă acces la documente private.\n\nÎn OpenAliment, verifică declarația de conformitate și profilul implementat. Suportul GTIN nu înseamnă suport pentru orice cheie primară GS1. Într-o ofertă comercială, afirmă numai ceea ce este implementat și testat.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/resolver/1.2.1/"
+            }
+          ],
+          "practice": {
+            "question": "Un redirect fix către pagina produsului este un resolver complet?",
+            "options": [
+              "Nu; trebuie verificate funcțiile prevăzute de standard",
+              "Da, orice HTTP 302 este suficient",
+              "Da, dacă pagina are un logo"
+            ],
+            "answer": 0,
+            "explanation": "Standardul resolverului definește funcții suplimentare față de deschiderea unei pagini."
+          }
+        },
+        {
+          "id": "fde3dc230c473339840245478a5e2f0d",
+          "title": "Linkset, limbă și tip de legătură",
+          "objective": "Verifică rezultatul cererii unui client.",
+          "body": "O legătură are o destinație și atribute, între care tipul de relație, limba și tipul media. Aplicația trebuie să solicite și să interpreteze aceste atribute după standard, nu după textul unui buton din interfață.\n\nTestează aceeași identitate cu legătura implicită, un tip de legătură explicit și reprezentarea linkset. Verifică antetele HTTP, statusul, tipul media și destinația efectivă. Nu evalua resolverul doar cu o captură a paginii HTML.\n\nDatele de lot și de serie pot schimba contextul rezolvării. Respectă regulile de selecție și fallback din standard; nu lega toate cererile de ultimul lot. Un client care cere o resursă indisponibilă trebuie să primească un răspuns previzibil, fără divulgarea ciornelor.\n\nPentru integrare, păstrează teste de contract cu cereri și răspunsuri așteptate. Dacă există un profil limitat, documentează-l și verifică explicit cazurile nesuportate.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/resolver/1.2.1/"
+            }
+          ],
+          "practice": {
+            "question": "Ce trebuie verificat într-un test de linkset?",
+            "options": [
+              "Statusul HTTP, tipul media și legăturile cu atributele lor",
+              "Doar titlul paginii",
+              "Numai culoarea butonului QR"
+            ],
+            "answer": 0,
+            "explanation": "Interoperabilitatea se verifică la nivelul protocolului și al datelor."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M05",
+      "title": "Istoric și aprobare",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "b5757fcd6ac34a8d9a06fcf5e6a51b7f",
+          "title": "Etichete și loturi imuabile",
+          "objective": "Păstrează informația aplicabilă produselor deja fabricate.",
+          "body": "Articolul comercial, versiunea informațiilor publicabile, versiunea opțională a rețetei și lotul sunt obiecte distincte. Lotul indică versiunea aprobată care i se aplică.\n\nExemplu: lotul L1 de iaurt folosește eticheta V1. Producătorul aprobă V2 pentru producția viitoare. Pagina lotului L1 păstrează V1; nu afișează retrospectiv V2. O alertă curentă privind L1 rămâne vizibilă separat de istoricul etichetei.\n\nImportul ERP trebuie să trimită relația dintre lot și versiunea aprobată, nu doar identificatorul produsului. Dacă relația lipsește, nu alege automat ultima versiune. Returnează un conflict pe care operatorul îl poate rezolva.\n\nRețeta poate lipsi sau poate fi privată. Nici generarea QR-ului, nici o întrebare a consumatorului nu o fac publică. Documentează aprobatorul, momentul și motivul schimbării pentru a putea explica ulterior ce s-a tipărit.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Eticheta V2 este aprobată după fabricarea lotului L1 cu V1. Ce arată L1?",
+            "options": [
+              "V1, împreună cu eventualele alerte curente",
+              "V2, deoarece este cea mai recentă",
+              "O combinație automată dintre V1 și V2"
+            ],
+            "answer": 0,
+            "explanation": "Lotul păstrează versiunea aplicabilă; alertele curente se afișează distinct."
+          }
+        },
+        {
+          "id": "4198cf0ceda44e7ae92e2128623e6816",
+          "title": "Proveniență și licență",
+          "objective": "Nu confunda o sursă externă cu date aprobate de producător.",
+          "body": "Datele importate din Open Food Facts sunt observații dintr-o sursă externă. Păstrează proveniența, data, versiunea mapării și condițiile de licență. Nu le prezenta ca declarații aprobate de producător.\n\nO actualizare externă poate crea o diferență de analizat. Nu înlocuiește automat ingredientele sau alergenii aprobați pentru un lot vechi. Dacă sursele se contrazic, arată diferența persoanei autorizate și păstrează ambele observații în istoric.\n\nDocumentația deschisă are o licență aleasă explicit. Crearea unei pagini publice nu acordă automat dreptul de reutilizare a tuturor fotografiilor, rețetelor sau documentelor companiei. Exporturile trebuie să păstreze această distincție.\n\nAI folosește doar informațiile accesibile utilizatorului. Recenziile și sugestiile AI pot propune schimbări, dar nu aprobă și nu modifică direct informațiile publicate.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "O informație OFF contrazice eticheta aprobată. Ce face integrarea?",
+            "options": [
+              "Păstrează proveniența și propune diferența pentru analiză",
+              "Suprascrie automat eticheta lotului",
+              "Șterge observația fără istoric"
+            ],
+            "answer": 0,
+            "explanation": "Separarea surselor permite o decizie explicabilă și protejează istoricul."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M06",
+      "title": "API și integrare sigură",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "41b90d2a7765c7cddc57a12346de68a6",
+          "title": "Permisiuni și separarea organizațiilor",
+          "objective": "Acordă aplicației accesul minim necesar.",
+          "body": "O aplicație ERP folosește permisiuni explicite pentru organizația autorizată. O cheie de citire nu publică produse și nu creează alerte. Tokenurile pentru învățare sunt personale și nu trebuie confundate cu tokenurile ERP.\n\nPentru aplicații mobile și clienți publici, folosește OAuth Authorization Code cu PKCE S256. Nu include un secret de client în aplicația distribuită și nu cere parola utilizatorului pentru a o păstra în conector.\n\nVerifică accesul la fiecare obiect, nu doar la pagina de intrare. Schimbarea unui ID în URL nu trebuie să permită citirea unui lot al altei firme, a unui examen sau a unui document privat.\n\nPăstrează tokenurile în stocarea sigură a sistemului gazdă. Nu le include în loguri, capturi, URL-uri publice sau exemple de documentație. Retragerea accesului trebuie să oprească și cererile ulterioare ale conectorului.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Ce drept oferă automat o calificare de partener asupra datelor unui producător?",
+            "options": [
+              "Niciunul; este necesară autorizarea separată",
+              "Acces la toate firmele",
+              "Acces la toate rețetele"
+            ],
+            "answer": 0,
+            "explanation": "Competența profesională nu este o permisiune asupra datelor."
+          }
+        },
+        {
+          "id": "cec0ca4b52e02aea21beb2aa4b9215ee",
+          "title": "Reîncercări și conflicte",
+          "objective": "Evită dublarea operațiilor după o întrerupere.",
+          "body": "O conexiune se poate întrerupe după ce serverul a salvat datele, dar înainte ca ERP-ul să primească răspunsul. Folosește o cheie de idempotentă stabilă pentru aceeași operație logică și repetă aceeași cerere cu aceeași cheie.\n\nNu folosi aceeași cheie pentru alte date. Un conflict de idempotentă trebuie analizat, nu rezolvat prin ștergerea istoricului. Păstrează identificatorul evenimentului ERP și maparea către obiectul OpenAliment.\n\nReviziile previn suprascrierea concurentă. La răspuns de conflict, citește versiunea curentă, compară schimbările și cere decizia potrivită. Nu elimina verificarea reviziei pentru a „face să meargă”.\n\nRespectă Retry-After și limitele API. Reîncearcă erorile tranzitorii cu pauze și variație; nu repeta automat erorile de validare sau de permisiune. Coada locală trebuie să fie limitată și să permită diagnosticarea fără secrete.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "La timeout după salvare, cum reîncerci aceeași operație?",
+            "options": [
+              "Cu aceeași cheie și același conținut",
+              "Cu o cheie nouă la fiecare încercare",
+              "Fără verificarea reviziei"
+            ],
+            "answer": 0,
+            "explanation": "Idempotenta permite reluarea aceleiași operații fără dublare."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M07",
+      "title": "Integrarea ERP",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "3b7cec68bcc5321ce3044a0c8e109583",
+          "title": "Maparea datelor și agenți locali",
+          "objective": "Adaptează conectorul fără a schimba modelul standard.",
+          "body": "ERP-urile au scheme diferite. Conectorul mapează articolul, GTIN-ul, unitățile, ingredientele, lotul și datele de producție într-un contract stabil. Păstrează regulile de transformare într-o configurație versionată.\n\nUn agent local poate citi din sistemul partenerului cu drepturile minime necesare și poate trimite cereri HTTPS către OpenAliment. Platforma nu trebuie să primească acces SQL arbitrar la baza partenerului. Nu deschide baza ERP către internet pentru comoditate.\n\nSepară citirea din ERP, validarea, coada de sincronizare și confirmarea serverului. O eroare de mapare nu blochează toate liniile de producție. Oferă o listă clară de elemente respinse și motivul fiecăruia.\n\nFolosește identificatori externi stabili și exportă mapările la migrare. Numele produsului nu este o cheie unică și se poate schimba. O integrare flexibilă adaugă un adaptor nou, nu reguli speciale în parserul GS1.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Unde se adaptează câmpurile specifice unui ERP?",
+            "options": [
+              "În adaptorul și maparea versionată",
+              "În sintaxa GS1 a identificatorului",
+              "Prin acces SQL public arbitrar"
+            ],
+            "answer": 0,
+            "explanation": "Adaptorul se schimbă, în timp ce contractul și standardul rămân stabile."
+          }
+        },
+        {
+          "id": "1be42ad9cfa7bd89a1bf63359fd35dfc",
+          "title": "Simulare înaintea conectării reale",
+          "objective": "Probează contractul și erorile controlat.",
+          "body": "Începe cu o firmă sintetică și evenimente simulate: articol, etichetă, lot, publicare, corectare și export. Simularea validează contractul și gestionarea erorilor; nu dovedește conectarea la un ERP comercial real.\n\nInclude aceeași notificare de două ori, o notificare în ordine greșită, o actualizare cu revizie veche și accesul la un obiect din altă organizație. Verifică dacă rezultatele sunt explicabile și dacă reluarea produce o singură operație.\n\nÎntr-un proiect real, documentează versiunea ERP, drepturile contului local și cine aprobă informațiile publicabile. Testează întâi în mediul de probă al partenerului. Păstrează o procedură de oprire a sincronizării și o coadă exportabilă.\n\nRaportul final trebuie să distingă simularea, testul cu sistem real și proba pe linia de producție. Nu transforma un răspuns API de succes în dovada unei operații fizice.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Ce demonstrează o simulare ERP trecută?",
+            "options": [
+              "Comportamentul contractului testat, nu conectarea la un ERP real",
+              "Compatibilitate cu orice ERP existent",
+              "Tipărirea fizică pe linie"
+            ],
+            "answer": 0,
+            "explanation": "Dovezile trebuie raportate la nivelul efectiv testat."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M08",
+      "title": "Tipărire și serializare",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "5ca7db2bc341bf902001942fee17dbbc",
+          "title": "Rezervarea seriilor și reimprimare",
+          "objective": "Urmărește fiecare ambalaj fără a dubla identitatea.",
+          "body": "Într-o comandă serializată, fiecare ambalaj primește o serie unică în contextul identificatorului. Rezervă seriile înainte de trimiterea către echipament și înregistrează stările comenzii.\n\nPăstrează GTIN-ul, lotul, seria, versiunea datelor și șablonul de etichetă. Comanda poate fi transmisă ca JSON sau într-un limbaj precum ZPL, printr-un conector adaptat imprimantei. Transportul serializat al datelor și seria unică a ambalajului sunt două noțiuni distincte.\n\nUn ACK confirmă nivelul de protocol declarat de dispozitiv. Nu dovedește automat că eticheta a fost tipărită, aplicată și scanată corect. Modelează separat confirmarea tehnică și verificarea fizică.\n\nReimprimarea trebuie să aibă motiv, operator și legătură cu seria inițială. Decide controlat ce se întâmplă cu ambalajul vechi; nu crea două produse fizice active cu aceeași identitate individuală.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/genspecs/26.0.0/"
+            }
+          ],
+          "practice": {
+            "question": "Un ACK al imprimantei dovedește eticheta corect aplicată?",
+            "options": [
+              "Nu; este necesară proba fizică corespunzătoare",
+              "Da, întotdeauna",
+              "Da, dacă se folosește ZPL"
+            ],
+            "answer": 0,
+            "explanation": "Confirmarea de transport și dovada fizică sunt stări diferite."
+          }
+        },
+        {
+          "id": "255208663d8465ccbd41a8a92cbc9a85",
+          "title": "Calitatea simbolului și casa de marcat",
+          "objective": "Delimitează verificarea software de proba în magazin.",
+          "body": "Dimensiunea simbolului, zona liberă, contrastul, suportul și calitatea imprimării afectează citirea. Alegerea parametrilor se face pentru aplicația de scanare și după specificațiile GS1 relevante, nu doar după aspectul pe ecran.\n\nScanează o etichetă fizică reprezentativă, inclusiv după aplicarea pe ambalaj. Verifică iluminarea, deformarea, rezoluția și viteza liniei. Pentru o afirmație de compatibilitate POS, este necesară o probă cu sistemul și configurația magazinului vizat.\n\nUn telefon care deschide pagina nu dovedește că toate casele de marcat interpretează simbolul. Tranziția la 2D depinde și de infrastructura retailerului. Nu promite înlocuirea universală imediată a codului EAN în toate magazinele.\n\nLa evaluarea specializării de tipărire, atașează dovada fizică și explică ce s-a testat. Un laborator virtual sau o imagine generată rămâne o simulare și nu ține locul acestei probe.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/genspecs/26.0.0/"
+            }
+          ],
+          "practice": {
+            "question": "Ce permite o afirmație privind funcționarea într-un anumit POS?",
+            "options": [
+              "O probă fizică cu POS-ul și configurația respective",
+              "O captură a QR-ului în browser",
+              "Un test unit al generatorului"
+            ],
+            "answer": 0,
+            "explanation": "Compatibilitatea fizică și operațională se probează în mediul vizat."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M09",
+      "title": "Securitate și confidențialitate",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "72a61e3469aa79f16f1dae609d54e342",
+          "title": "Informații publicabile și AI",
+          "objective": "Menține aceeași limită de acces în toate canalele.",
+          "body": "Datele publicabile sunt un set aprobat explicit. Pagina QR, API-ul public, exportul public și răspunsul AI public trebuie să respecte aceeași limită. O rețetă privată nu devine accesibilă pentru că există în baza de date.\n\nUn prompt al utilizatorului nu poate extinde permisiunile. Documentele externe pot conține instrucțiuni rău intenționate; tratează-le ca date, nu ca reguli pentru agent. Verifică sursele și drepturile înainte de a construi contextul AI.\n\nSepară organizațiile în toate interogările și verifică dreptul asupra obiectului. Nu utiliza un ID greu de ghicit ca singură protecție. Logurile de diagnostic nu trebuie să păstreze tokenuri, parole sau răspunsurile corecte ale examenelor.\n\nTestul de securitate include cereri fără sesiune, token revocat, permisiune insuficientă și ID al altui utilizator. Pagina QR trebuie să rămână funcțională când AI este indisponibil.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Poate AI public folosi o rețetă privată pentru a răspunde mai bine?",
+            "options": [
+              "Nu; contextul trebuie limitat la datele accesibile",
+              "Da, dacă nu arată numele autorului",
+              "Da, dacă utilizatorul cere insistent"
+            ],
+            "answer": 0,
+            "explanation": "Permisiunile se aplică și contextului folosit de AI."
+          }
+        },
+        {
+          "id": "d29fbf3790eab5127456232a89ff7f27",
+          "title": "Fișiere, contacte și consimțământ",
+          "objective": "Publică numai datele și imaginile aprobate.",
+          "body": "Logo-ul companiei, fotografia contribuitorului și dovada practică au scopuri diferite. Verifică drepturile de utilizare și nu transforma o dovadă privată într-o imagine publică.\n\nImaginile încărcate sunt validate, decodificate și reexportate într-un format permis. Nu accepta HTML sau SVG încărcat de utilizator ca logo executabil. Limitele de dimensiune și stocare previn blocarea hostingului.\n\nANAF nu furnizează email în răspunsul v9. Adresa de contact a firmei se introduce separat și se verifică prin email. Telefonul poate fi publicat doar după verificarea prevăzută de program; dacă sursa este ANAF, păstrează această proveniență distinctă.\n\nPersoana decide publicarea profilului de contribuitor și a numelui pe calificare. Retragerea acordului trebuie să oprească afișarea, fără a elimina auditul necesar explicării deciziilor.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://static.anaf.ro/static/10/Anaf/Informatii_R/Servicii_web/doc_WS_V9.txt"
+            }
+          ],
+          "practice": {
+            "question": "Emailul companiei poate fi etichetat ca furnizat de ANAF v9?",
+            "options": [
+              "Nu; se introduce și se verifică separat",
+              "Da, dacă are domeniul firmei",
+              "Da, dacă îl scrie administratorul"
+            ],
+            "answer": 0,
+            "explanation": "Sursa fiecărui câmp trebuie comunicată corect."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M10",
+      "title": "Operare și continuitate",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "563ff710778b7c4c2bb25d8605686967",
+          "title": "Cronuri și lucrări limitate",
+          "objective": "Fă mentenanța fără a încetini scanarea QR.",
+          "body": "Scanarea publică trebuie să aibă un traseu rapid, fără interogări ANAF, procesare de imagini sau așteptarea AI. Sarcinile de fundal gestionează reîncercările, expirările și reverificările cu limite de timp și volum.\n\nCronul trebuie monitorizat prin ultima execuție și rezultat, nu doar prin existența comenzii în cPanel. O comandă PHP greșită poate exista în listă fără să lucreze. Verifică versiunea runtime și directorul scriptului.\n\nReverificările ANAF folosesc cache și buget comun de cereri. Distribuie-le în timp. Un registru indisponibil nu justifică păstrarea nelimitată a unei autorizări neverificate; afișarea publică aplică regulile de prospețime ale programului.\n\nPăstrează loguri fără secrete și alerte pentru cozi blocate. Limitează și rotește fișierele, imaginile și istoricul tehnic. Verifică spațiul disponibil înaintea unei operații mari.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Unde se face reverificarea periodică ANAF?",
+            "options": [
+              "Într-o lucrare de fundal limitată",
+              "La fiecare scanare QR",
+              "În JavaScript-ul fiecărui vizitator"
+            ],
+            "answer": 0,
+            "explanation": "Traseul QR rămâne independent de serviciile lente sau externe."
+          }
+        },
+        {
+          "id": "e8471e492f2bb12be2af150690335d17",
+          "title": "Copii, restaurare și incident",
+          "objective": "Probează recuperarea, nu doar crearea arhivei.",
+          "body": "O copie de siguranță utilă cuprinde baza de date, fișierele private și configurațiile necesare, păstrate cu acces controlat într-o destinație separată. O arhivă aflată doar pe același hosting nu acoperă pierderea acelui cont.\n\nRestaurarea se testează într-un mediu izolat. Verifică relațiile dintre produs, etichetă, lot, documente, calificări și autorizații, precum și integritatea fișierelor. Nu restaura peste producție pentru o simplă probă.\n\nLa incident, limitează accesul afectat, păstrează dovezile, evaluează impactul și urmează procedura de comunicare. Revocă tokenurile expuse și verifică efectul revocării. Nu șterge logurile pentru a ascunde eroarea.\n\nDocumentează ce s-a recuperat, până la ce moment și ce verificări au trecut. Dacă o funcție externă nu a fost probată, raportează limita explicit și nu o declara validată.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Ce confirmă o copie de siguranță recuperabilă?",
+            "options": [
+              "O restaurare verificată într-un mediu izolat",
+              "Doar existența fișierului ZIP",
+              "Numai un cron fără erori afișate"
+            ],
+            "answer": 0,
+            "explanation": "Recuperabilitatea este demonstrată prin restaurare și verificarea rezultatului."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M11",
+      "title": "Portabilitate și colaborare",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "999de064fb6c5582ea666d085953e8cd",
+          "title": "Export, import și schimbarea furnizorului",
+          "objective": "Păstrează identitatea și istoricul la migrare.",
+          "body": "Exportul trebuie să includă identificatorii, relațiile, versiunile, proveniența și licențele relevante. Nu exporta secretele de autentificare ca date de afaceri. O listă de nume de produse nu este un export complet al informațiilor de lot.\n\nLa import, validează schema și raportează diferențele înainte de aplicare. Schemele istorice OpenBread se recunosc fără a impune rețeta tuturor loturilor. Materialele recuperate sau deteriorate își păstrează avertizările.\n\nPăstrarea adreselor persistente și domeniile controlate de producător reduc dependența de un furnizor. O migrare a datelor nu dovedește automat dreptul de a administra identificatorii sau domeniul; verifică aceste drepturi separat.\n\nExportul personal al cursantului conține progresul și rezultatele proprii, fără cheia examenului. Importarea unei calificări externe nu creează automat autorizație în registrul OpenAliment.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Un import de date acordă automat dreptul asupra GTIN-urilor?",
+            "options": [
+              "Nu; drepturile se verifică separat",
+              "Da, dacă fișierul este JSON",
+              "Da, dacă exportul este recent"
+            ],
+            "answer": 0,
+            "explanation": "Portabilitatea datelor și dreptul de administrare sunt verificări distincte."
+          }
+        },
+        {
+          "id": "a9ffdfc1586876344506d3101d43bce5",
+          "title": "Comunitate și marketplace",
+          "objective": "Contribuie fără a ocoli verificările programului.",
+          "body": "Recunoașterea unei contribuții nu acordă rol de administrator. Profilurile contribuitorilor sunt publicate cu acord, iar categoriile pot include cod, documentație, cercetare, design, testare sau traducere.\n\nMarketplace-ul poate găzdui conectori ERP, tipărire și alte integrări utile. Aprobarea unei oferte nu este aceeași cu autorizarea companiei și nu dovedește compatibilitatea cu fiecare echipament. Versiunile, licența și dovezile trebuie să fie clare.\n\nUn colaborator lucrează prin ramură și pull request, cu verificări automate și review. Mediul dev este pentru probe; promovarea în producție urmează un pas controlat. Nu folosi conturi comune și nu trimite secrete în grupuri de mesagerie.\n\nPropunerile de îmbunătățire trebuie să păstreze standardul GS1 în nucleu. Serviciile noi se adaugă în jurul contractelor stabile, fără redefinirea semnificației identificatorilor.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Publicarea ca contribuitor oferă automat acces administrativ?",
+            "options": [
+              "Nu",
+              "Da, după primul commit",
+              "Da, dacă persoana are profil GitHub"
+            ],
+            "answer": 0,
+            "explanation": "Recunoașterea publică și permisiunile operaționale rămân separate."
+          }
+        }
+      ]
+    },
+    {
+      "key": "M12",
+      "title": "Evaluare și practică",
+      "specialization": null,
+      "lessons": [
+        {
+          "id": "67a457678c3f38845cf60839d6e2ecf9",
+          "title": "Regulile examenului",
+          "objective": "Înțelege pragurile și limitele evaluării.",
+          "body": "Examenul teoretic are 30 de întrebări extrase dintr-o ediție a băncii private. Durata standard este de 45 de minute, măsurată de server. Variantele pot fi în ordine diferită între tentative; reluarea paginii păstrează răspunsurile salvate și termenul inițial.\n\nPromovarea cere minimum 85% ponderat, minimum 70% în fiecare domeniu și toate întrebările critice corecte. O medie bună nu compensează o eroare critică privind identitatea, securitatea sau standardul. Răspunsurile multiple se evaluează ca set complet, fără punctaj pentru selecții parțiale.\n\nReîncercarea este permisă după 24 de ore, în limita a trei tentative în șapte zile. O adaptare de accesibilitate privind durata se stabilește înaintea primei tentative. Nu modifica ceasul dispozitivului pentru a prelungi examenul.\n\nRezultatul poate fi contestat. Reevaluarea păstrează versiunea veche și motivul deciziei; nu modifică retroactiv banca publicată.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Este suficient 90% total dacă o întrebare critică este greșită?",
+            "options": [
+              "Nu; toate întrebările critice trebuie corecte",
+              "Da, media depășește pragul",
+              "Da, dacă greșeala este la securitate"
+            ],
+            "answer": 0,
+            "explanation": "Pragurile globale, pe domeniu și critice se aplică simultan."
+          }
+        },
+        {
+          "id": "741e640eb3a3e1769d6fc8ec999d869a",
+          "title": "Probele practice și valabilitatea",
+          "objective": "Leagă teoria de dovezi și de firma reprezentată.",
+          "body": "Fiecare specializare cere două probe comune și o probă specifică. P01 verifică URI-uri de produs, lot și serie, inclusiv caractere rezervate. P02 verifică etichete, lot fără rețetă, istoric și alertă. Proba specializării acoperă ERP, tipărire, operare sau date de produs.\n\nVerificările automate ajută la corectare, dar calificarea practică necesită o evaluare independentă. Rubrica are patru criterii de câte 25 de puncte: identitate, istoric, securitate și explicație. Sunt necesare minimum 85 de puncte și toate verificările obligatorii.\n\nCalificarea aparține persoanei, este limitată în timp și poate fi suspendată sau revocată. Firma apare ca partener autorizat numai dacă îndeplinește și condițiile privind reprezentarea, datele fiscale, contactul și prezentarea aprobată.\n\nSchimbarea firmei nu șterge cursul persoanei și nu transferă mandatul vechii companii. O autorizare expirată nu se prezintă ca activă. Verificarea publică arată emitentul OpenAliment și domeniul exact al calificării.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Cine deține progresul cursului când persoana schimbă firma?",
+            "options": [
+              "Persoana; firma nouă cere verificări separate",
+              "Firma veche îl transferă automat",
+              "Orice utilizator cu același CUI"
+            ],
+            "answer": 0,
+            "explanation": "Calificarea personală și autorizarea companiei au cicluri de viață distincte."
+          }
+        }
+      ]
+    },
+    {
+      "key": "S01",
+      "title": "Specializare: integrare ERP",
+      "specialization": "erp-integration",
+      "lessons": [
+        {
+          "id": "a67348cb6e6316ce4343f9c88dbcec7f",
+          "title": "Contractul conectorului ERP",
+          "objective": "Proiectează un adaptor portabil și revocabil.",
+          "body": "Inventariază sursele ERP și definește maparea fiecărui câmp, unitatea și autoritatea care îl aprobă. Asociază evenimentele externe cu ID-uri stabile; păstrează revizia mapării în fiecare rezultat de sincronizare.\n\nÎn P03, pregătește o secvență cu operație reușită, duplicat, retry după timeout, conflict de revizie și două refuzuri de acces. Demonstrează că duplicatul nu creează un obiect nou și că exportul păstrează versiunea confirmată.\n\nAgentul local nu execută comenzi primite arbitrar din platformă. Configurația enumeră resursele și acțiunile permise, cu secrete păstrate local. Pentru depanare exportă identificatorii evenimentelor și codurile de eroare, fără date de autentificare.\n\nExplică procesul de instalare, oprire, actualizare și revocare. Un contract explicit permite realizarea altui adaptor pentru un ERP nou fără modificarea nucleului GS1.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Ce trebuie păstrat în auditul sincronizării?",
+            "options": [
+              "Evenimentul extern și versiunea mapării, fără secrete",
+              "Parola bazei ERP",
+              "Doar numele operatorului"
+            ],
+            "answer": 0,
+            "explanation": "Aceste date fac integrarea reproductibilă și diagnosticabilă."
+          }
+        },
+        {
+          "id": "c6f03e3934b0b0a1e9a562010e60c9b2",
+          "title": "Predarea unei integrări ERP",
+          "objective": "Pregătește probe și instrucțiuni operaționale.",
+          "body": "Raportul P03 include datele simulate, rezultatele așteptate și observațiile pentru fiecare retry sau conflict. Explică ce ar face operatorul dacă lotul sosește înaintea versiunii de etichetă.\n\nLa predarea unei integrări reale, verifică drepturile contului local, permisiunile API, limitele de coadă și procedura de migrare. Oprește sincronizarea controlat și confirmă că datele deja publicate rămân accesibile prin QR.\n\nNu cere acces de administrator de platformă pentru un simplu conector. Nu păstra un token global comun mai multor clienți. Fiecare producător trebuie să poată revoca independent accesul său.\n\nEvaluarea urmărește identitatea corectă a obiectelor, istoricul reviziilor, separarea firmelor și explicația modului de recuperare după eroare. O demonstrație de succes fără cazuri negative nu acoperă integrarea.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Cum trebuie revocat accesul unei firme la un conector comun?",
+            "options": [
+              "Independent, prin autorizarea acelei firme",
+              "Prin oprirea tuturor clienților",
+              "Prin ștergerea loturilor publicate"
+            ],
+            "answer": 0,
+            "explanation": "Izolarea autorizațiilor permite operarea și revocarea fără efecte asupra altor clienți."
+          }
+        }
+      ]
+    },
+    {
+      "key": "S02",
+      "title": "Specializare: integrare tipărire",
+      "specialization": "printing-integration",
+      "lessons": [
+        {
+          "id": "224e26b3280e0fbc55378e88082d2729",
+          "title": "Comandă de tipărire serializată",
+          "objective": "Construiește o probă verificabilă pentru fiecare unitate.",
+          "body": "În P04 pregătește cel puțin zece serii distincte, toate legate de GTIN-ul demonstrativ și de același lot. Pentru fiecare URI, verifică parsarea și recuperarea exactă a seriei.\n\nPrezintă ieșirea JSON sau ZPL și explică diferența dintre comandă, acceptarea ei de echipament și confirmarea fizică. Nu trimite comenzi către o imprimantă reală din laboratorul virtual.\n\nSimulează o reimprimare cu motiv și serie cunoscută. Explică politica pentru eticheta deteriorată și pentru ambalajul inițial. O serie nouă și reimprimarea unei serii existente sunt operații distincte.\n\nPentru calificarea completă de tipărire este necesară și dovada fizică revizuită de evaluator. Verificările software pot fi finalizate înainte, însă nu înlocuiesc această condiție.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/genspecs/26.0.0/"
+            }
+          ],
+          "practice": {
+            "question": "O reimprimare trebuie să păstreze ce informație?",
+            "options": [
+              "Motivul și legătura cu seria inițială",
+              "Doar ora curentă",
+              "Un GTIN nou ales aleator"
+            ],
+            "answer": 0,
+            "explanation": "Legătura cu operația inițială permite controlul duplicatelor."
+          }
+        },
+        {
+          "id": "1f49cb22ee6546085783e965b125bd2a",
+          "title": "Validarea pe linie și în retail",
+          "objective": "Definește nivelul exact al dovezii.",
+          "body": "Într-o probă reală notează modelul imprimantei, materialul, configurația simbolului și cititorul folosit. Verifică etichete reprezentative pentru viteza și condițiile liniei, nu doar un exemplar ideal.\n\nPentru proba POS, înregistrează configurația magazinului și rezultatul interpretării GTIN-ului și atributelor relevante. Nu pretinde că orice POS acceptă orice QR doar pentru că o cameră de telefon deschide URL-ul.\n\nDovada încărcată trebuie să excludă parole, chei și date personale inutile. O fotografie ajută evaluarea, dar explicația trebuie să precizeze ce s-a verificat efectiv și ce limite rămân.\n\nAutorizația OpenAliment nu înlocuiește verificările fizice și cerințele retailerului. Dacă se schimbă suportul sau configurația de imprimare, repetă proba corespunzătoare înainte de producție.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/genspecs/26.0.0/"
+            }
+          ],
+          "practice": {
+            "question": "Schimbarea materialului etichetei poate necesita retestare?",
+            "options": [
+              "Da; poate afecta calitatea citirii",
+              "Nu, URI-ul nu s-a schimbat",
+              "Nu, dacă imprimanta răspunde cu ACK"
+            ],
+            "answer": 0,
+            "explanation": "Calitatea fizică a simbolului depinde și de material și aplicare."
+          }
+        }
+      ]
+    },
+    {
+      "key": "S03",
+      "title": "Specializare: operarea platformei",
+      "specialization": "platform-operations",
+      "lessons": [
+        {
+          "id": "7afc4d47de75d3409694f423b2ce4f65",
+          "title": "Verificarea resolverului și a serviciilor",
+          "objective": "Testează nucleul fără a depinde de serviciile anexe.",
+          "body": "În P05 declară profilul implementat și verifică cereri standard, linkset și cazuri de eroare. O pagină HTML corectă nu este singura probă a resolverului. Nu declara suport pentru chei primare netestate.\n\nSepară serviciile auxiliare: AI, ANAF, email, OCR și surse externe. O indisponibilitate AI nu trebuie să blocheze pagina publică de lot. O reverificare ANAF nu se execută în traseul fiecărei scanări.\n\nMonitorizează latența, erorile și cache-ul fără a păstra identificatori personali inutili. Verifică și răspunsurile cu token revocat, destinație retrasă și lot vechi cu alertă curentă.\n\nPregătește o procedură de regresie înaintea promovării din dev în producție. Pachetul publicat trebuie să fie cel verificat, iar migrarea aditivă să aibă raport clar.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://ref.gs1.org/standards/resolver/1.2.1/"
+            }
+          ],
+          "practice": {
+            "question": "Ce profil trebuie afirmat public?",
+            "options": [
+              "Doar profilul implementat și testat",
+              "Toate cheile GS1 existente",
+              "Orice redirect care funcționează"
+            ],
+            "answer": 0,
+            "explanation": "Declarația de conformitate trebuie să corespundă implementării."
+          }
+        },
+        {
+          "id": "4cb7aa295f70fbafdff427211df8d836",
+          "title": "Restaurare și incident în P05",
+          "objective": "Demonstrează continuitatea datelor.",
+          "body": "Pregătește un set reprezentativ de date și o descriere a restaurării într-un mediu izolat. Compară versiunile, relațiile și hashurile fișierelor. O comparație JSON din laborator este o verificare virtuală, nu o restaurare completă a hostingului.\n\nExplică diferența dintre indisponibilitate, acces neautorizat și expunere de secret. Pentru fiecare, precizează cum limitezi impactul, păstrezi dovezile și verifici recuperarea.\n\nÎn raport nu include parole sau tokenuri. Păstrează referințe la dovezi și rezultatele testelor. Revocarea accesului compromis trebuie verificată printr-o cerere ulterioară refuzată.\n\nEvaluatorul urmărește consecvența dintre profilul declarat, probele de resolver, recuperarea istoricului și măsurile de securitate. O comandă cron existentă sau un ZIP creat nu este suficient.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Ce mediu se folosește pentru proba de restaurare?",
+            "options": [
+              "Un mediu izolat",
+              "Producția activă, fără pregătire",
+              "Orice bază a altui proiect"
+            ],
+            "answer": 0,
+            "explanation": "Izolarea protejează utilizatorii și permite verificarea controlată."
+          }
+        }
+      ]
+    },
+    {
+      "key": "S04",
+      "title": "Specializare: date de produs",
+      "specialization": "product-data",
+      "lessons": [
+        {
+          "id": "3718dee3d15cc9df7504094dc5845868",
+          "title": "Date aprobate și surse externe",
+          "objective": "Pregătește o propunere fără suprascriere automată.",
+          "body": "În P06 compară o observație externă cu datele aprobate ale unui produs. Marchează proveniența, momentul și câmpurile în conflict. Nu atribui producătorului o informație preluată din OFF înainte de confirmarea sa.\n\nArată câmpurile publicabile și păstrează rețeta privată în afara ieșirii publice. Verifică ingredientele, alergenii, cantitatea și tipul datei de valabilitate fără a inventa o concluzie medicală pentru utilizator.\n\nUn produs poate avea observații incomplete. Absența unei informații nu înseamnă absența alergenului. Afișarea trebuie să distingă necunoscut, declarat absent și declarat prezent.\n\nFolosește Pâine Bună Tehnic pentru a explica diferența dintre rețeta R1, cercetare și rezultate validate. Nu redenumi documentele istorice pentru a ascunde proveniența lor.",
+          "resources": [
+            {
+              "title": "Documentația API OpenAliment",
+              "url": "https://openaliment.ro/api/docs"
+            }
+          ],
+          "practice": {
+            "question": "Lipsa unui câmp despre alergeni înseamnă produs fără alergeni?",
+            "options": [
+              "Nu; informația poate fi necunoscută",
+              "Da, automat",
+              "Da, dacă există GTIN"
+            ],
+            "answer": 0,
+            "explanation": "Absența datelor nu este o declarație de absență a unui alergen."
+          }
+        },
+        {
+          "id": "d6008c9974aafea13835c091aba2868f",
+          "title": "Schimbarea companiei și portabilitate",
+          "objective": "Păstrează identitatea juridică și documentele istorice.",
+          "body": "Persoana care se mută la altă companie își păstrează progresul și calificarea personală. Firma nouă se verifică prin propriul CUI și mandat. Nu se modifică vechiul CUI pentru a reutiliza profilul public.\n\nAfilierea veche poate fi încheiată explicit. Autorizația companiei vechi depinde apoi de existența altor persoane calificate și de restul condițiilor. Produsele, GTIN-urile și documentele ei nu se transferă prin această operație.\n\nExportul păstrează versiunile, proveniența și licențele, iar importul aplică validările curente. Un certificat importat ca document nu devine o calificare activă în registru.\n\nExplică acest flux clientului prin pași clari: verifică firma nouă, confirmă datele, dovedește reprezentarea și alege afilierea. Istoricul face posibilă explicarea fiecărei decizii ulterioare.",
+          "resources": [
+            {
+              "title": "Referință oficială",
+              "url": "https://static.anaf.ro/static/10/Anaf/Informatii_R/Servicii_web/doc_WS_V9.txt"
+            }
+          ],
+          "practice": {
+            "question": "Schimbarea companiei permite înlocuirea CUI-ului vechiului profil?",
+            "options": [
+              "Nu; se creează o cerere distinctă pentru firma nouă",
+              "Da, pentru a păstra aceeași pagină",
+              "Da, dacă persoana a promovat examenul"
+            ],
+            "answer": 0,
+            "explanation": "Identitatea juridică și istoricul fiecărei firme trebuie păstrate."
+          }
+        }
+      ]
+    }
+  ],
+  "policy_version": "openaliment-partners-1.0"
+}

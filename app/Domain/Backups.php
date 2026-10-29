@@ -24,6 +24,7 @@ final class Backups {
                     try{while($row=$statement->fetch()){$line=Db::json($row)."\n";if(fwrite($handle,$line)!==strlen($line))throw new \RuntimeException('Backup dump write failed.');$manifest['tables'][$name]['rows']++;
                         if(in_array($name,['documents','home_photos'],true)&&isset($row['storage_key'])){if(isset($files[$row['storage_key']])&&$files[$row['storage_key']]!==$row['sha256'])throw new \RuntimeException('Conflicting private file hashes.');if(!isset($files[$row['storage_key']])){$path=DocumentBlobs::path($row['storage_key']);if(!hash_equals($row['sha256'],hash_file('sha256',$path)))throw new \RuntimeException('Private file does not match database hash.');}$files[$row['storage_key']]=$row['sha256'];}
                         if($name==='external_assets'&&($row['state']??null)==='ready'&&$row['storage_key'])$files['external/'.$row['storage_key']]=$row['sha256'];
+                        if($name==='program_assets'&&(int)$row['size_bytes']>0){if(!preg_match('/\A[a-f0-9]{32}\.png\z/D',$row['file_key']))throw new \RuntimeException('Invalid program media key.');$files['program-assets/'.$row['file_key']]=$row['sha256'];}
                         if($name==='external_product_revisions'&&$row['normalized_archive_key'])$files['external/'.$row['normalized_archive_key']]=$row['normalized_sha256'];
                         if($name==='external_dataset_runs'&&$row['artifact_key']&&in_array($row['state'],['queued','running','completed','failed','invalidated'],true)){$result=json_decode($row['result_json']??'null',true);$m=json_decode($row['manifest_json'],true);$files['external/'.$row['artifact_key']]=$row['kind']==='import'?($m['sha256']??null):($row['state']==='completed'?($result['sha256']??null):null);}
                     }}finally{$statement->closeCursor();$pdo->setAttribute(\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);}
@@ -90,6 +91,14 @@ final class Backups {
             if(isset($manifest['tables']['external_providers']))$target->exec("UPDATE external_providers SET read_state='paused',outbound_state='disabled'");
             if(isset($manifest['tables']['external_connections']))$target->exec("UPDATE external_connections SET state='disconnected'");
             if(isset($manifest['tables']['external_publications']))$target->exec("UPDATE external_publications SET state='cancelled' WHERE state IN ('pending','retry','package_ready')");
+            // A restored backup cannot prove that a later consent, mandate or credential revocation never happened.
+            if(isset($manifest['tables']['program_verifications']))$target->exec("UPDATE program_verifications SET state='invalidated',token_hash=NULL WHERE state IN ('pending','active')");
+            if(isset($manifest['tables']['program_staff_grants']))$target->exec('UPDATE program_staff_grants SET revoked_at=COALESCE(revoked_at,UTC_TIMESTAMP())');
+            if(isset($manifest['tables']['contributor_profiles']))$target->exec("UPDATE contributor_profiles SET state='withdrawn',consent_at=NULL,consent_version=NULL");
+            if(isset($manifest['tables']['learning_credentials']))$target->exec("UPDATE learning_credentials SET state='suspended',reason='Restaurare: reverificare necesară' WHERE state='active'");
+            if(isset($manifest['tables']['partner_profiles']))$target->exec("UPDATE partner_profiles SET state='suspended' WHERE state='active'");
+            if(isset($manifest['tables']['partner_contacts']))$target->exec('UPDATE partner_contacts SET verified_at=NULL,expires_at=NULL');
+            if(isset($manifest['tables']['program_assets']))$target->exec("UPDATE program_assets SET state='private' WHERE state='published'");
             file_put_contents($destination.'/RESTORE_REPORT.json',Db::json(['restored_at'=>gmdate(DATE_ATOM),'backup_sha256'=>hash_file('sha256',$file),'requires_latest_erasure_ledger'=>true,'sessions_and_tokens_revoked'=>true]),LOCK_EX);@chmod($destination.'/RESTORE_REPORT.json',0600);
             return ['tables'=>$tables,'files'=>count($manifest['entries'])-$tables,'access_revoked'=>true,'erasure_reconciliation_required'=>true];
         }finally{$target->exec('SET FOREIGN_KEY_CHECKS=1');$zip->close();}

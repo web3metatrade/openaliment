@@ -1,5 +1,14 @@
 # Istoricul versiunilor
 
+## 0.10.0 — 2026-10-29
+
+- Registru de contribuitori cu acord explicit, prezentări aprobate, imagini reencodate și retragere imediată.
+- Parteneri verificați prin ANAF și mandat separat, contacte confirmate, afiliere personală și schimbare de firmă fără transferul datelor producătorului.
+- Framework editorial pentru cursuri versionate, 32 de lecții inițiale, patru specializări, examene cu autosalvare și probe evaluate independent.
+- Calificări și autorizații cu valabilitate, verificare publică QR, contestații, revocare și controlul condițiilor la fiecare citire.
+- 109 operații API dedicate, OAuth personal separat, contracte tipizate, exemple, Postman, Markdown și matrice de acoperire.
+- Migrări aditive 012–015, mentenanță limitată, retenția dovezilor și restaurare fără reactivarea consimțămintelor sau autorizațiilor vechi.
+
 ## 0.9.0 — 2026-10-28
 
 - Înregistrare cu CUI și confirmarea completă a datelor ANAF v9, cu corectare și reverificare.

@@ -13,7 +13,7 @@ final class Operations {
         foreach($checks as&$check){$check['age_seconds']=max(0,time()-strtotime($check['checked_at'].' UTC'));$check['details']=json_decode($check['details_json'],true)?:new \stdClass();unset($check['details_json']);if($check['check_key']==='worker'&&$check['age_seconds']>180)$check['state']='stale';}unset($check);
         $ddl=null;try{$ddl=false;foreach(Db::all('SHOW GRANTS FOR CURRENT_USER()')as$grant)if(preg_match('/\b(?:ALL PRIVILEGES|CREATE|ALTER|DROP|GRANT OPTION)\b/i',implode(' ',$grant)))$ddl=true;}catch(\Throwable){}
         return ['php'=>['version'=>PHP_VERSION,'minimum'=>'8.4','supported_runtime'=>PHP_VERSION_ID>=80400],
-            'extensions'=>array_combine(['pdo_mysql','mbstring','fileinfo','openssl','zip'],array_map('extension_loaded',['pdo_mysql','mbstring','fileinfo','openssl','zip'])),
+            'extensions'=>array_combine(['pdo_mysql','mbstring','fileinfo','openssl','zip','gd'],array_map('extension_loaded',['pdo_mysql','mbstring','fileinfo','openssl','zip','gd'])),
             'filesystem_free_bytes'=>@disk_free_space((string)Config::get('storage'))?:null,'account_quota_observed'=>false,
             'runtime_database_ddl_privileges'=>$ddl,'migration_connection_configured'=>Db::migrationsConfigured(),
             'smtp_configured'=>Mailer::ready(),'document_scanner_configured'=>(Config::get('document_scanner',[])['transport']??'disabled')!=='disabled',
@@ -25,7 +25,7 @@ final class Operations {
     public static function worker(bool $withAi=true): array {
         if(!Db::one("SELECT GET_LOCK('oa_bounded_worker',0) AS acquired")['acquired'])return ['state'=>'busy'];
         try{self::record('worker','running');$maintenance=Maintenance::run();$mail=SecurityOutbox::work(1);$scans=DocumentScanner::work(1);$files=HomePrivacy::purgeFiles();HomePrivacy::exportLedger();$ai=$withAi?Ai::work():['state'=>'maintenance_only'];
-            $counts=['maintenance'=>$maintenance['state'],'security_mail'=>$mail,'document_scans'=>$scans,'private_files'=>$files,'ai'=>$ai];self::record('worker','completed',$counts);return ['state'=>'completed']+$counts;
+            $counts=['maintenance'=>$maintenance['state'],'security_mail'=>$mail,'document_scans'=>$scans,'private_files'=>$files,'program'=>ProgramJobs::work(),'ai'=>$ai];self::record('worker','completed',$counts);return ['state'=>'completed']+$counts;
         }catch(\Throwable $error){self::record('worker','failed',['error'=>'worker_failed']);throw $error;}
         finally{Db::run("SELECT RELEASE_LOCK('oa_bounded_worker')");}
     }

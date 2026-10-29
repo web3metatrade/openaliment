@@ -9,6 +9,9 @@ final class Seo {
             '/'=>['Alternativă GS1 Digital Link, QR și API | OpenAliment','Resolver GS1 Digital Link, pagini de produs și lot, QR-uri și integrare ERP prin API. Găzduire independentă pentru producători alimentari.'],
             '/despre'=>['Despre platforma OpenAliment','Pagini de produs și lot, resolver GS1 Digital Link și documentație alimentară deschisă. Află cum funcționează OpenAliment.'],
             '/gs1-digital-link'=>['GS1 Digital Link explicat: GTIN, QR și lot','Ghid GS1 Digital Link pentru alimente: GTIN, EAN și QR, exemple de produs și lot, resolver, integrare ERP și tranziția Sunrise 2027.'],
+            '/contribuitori'=>['Contribuitori OpenAliment','Oamenii care contribuie voluntar la codul, documentația, cercetarea și dezvoltarea OpenAliment.'],
+            '/parteneri'=>['Parteneri autorizați OpenAliment','Companii verificate în programul OpenAliment pentru integrare ERP, tipărire QR și date de produs.'],
+            '/invatare'=>['Cursuri GS1 Digital Link și integrare OpenAliment','Lecții despre GTIN, URI, resolver, API și tipărire, cu exerciții și evaluare pentru parteneri.'],
             '/marketplace'=>['Marketplace: conectori ERP, imprimante și integrări','Descoperă integrări OpenAliment: conectori ERP, agenți pentru echipamente de etichetare și instrumente ale comunității.'],
             '/standarde/gs1'=>['Standarde GS1: Digital Link, resolver și coduri QR','Edițiile oficiale GS1 folosite de OpenAliment, sursele, proveniența și legătura cu tipărirea în linia de producție.'],
             '/produse'=>['Produse alimentare și informații publice','Descoperă alimentele publicate pe OpenAliment: ingrediente, alergeni, producători și informații despre loturi.'],
@@ -20,7 +23,8 @@ final class Seo {
         $publicProduct=$product!==null&&preg_match('~\A/(?:p|t|b)/[a-f0-9]{32}\z~D',$path);
         $publicRecipe=preg_match('~\A/p/[a-f0-9]{32}/v/[^/]+\z~D',$path);
         $publicDocs=preg_match('~\A/api/docs/(?:guides|reference)/[A-Za-z0-9_-]+\z~D',$path)===1;
-        $public=($known||$publicProduct||$publicRecipe||$publicDocs||preg_match('~\A/marketplace/[a-z0-9-]+\z~D',$path))&&http_response_code()<400;
+        $publicProgram=preg_match('~\A/(?:contribuitori/[a-f0-9]{32}|parteneri/[a-f0-9]{32}|invatare/cursuri/[a-f0-9]{32}|invatare/editii/[a-f0-9]{32}/lectii/[a-f0-9]{32})\z~D',$path);
+        $public=($publicProgram||$known||$publicProduct||$publicRecipe||$publicDocs||preg_match('~\A/marketplace/[a-z0-9-]+\z~D',$path))&&http_response_code()<400;
         $indexable=$public&&Config::get('environment')==='production';
         if (!$indexable) header('X-Robots-Tag: noindex, nofollow');
         $pageTitle=$pages[$path][0]??($title?:'OpenAliment');
@@ -50,6 +54,7 @@ final class Seo {
         $paths=['/','/standarde/gs1','/gs1-digital-link','/despre','/produse','/api/docs','/resolver/profile'];
         if (Config::get('privacy_text')) $paths[]='/confidentialitate';
         try { if(Migrations::marketplace()) $paths[]='/marketplace'; } catch(\Throwable) {}
+        try { if(Migrations::program()) $paths=array_merge($paths,['/contribuitori','/parteneri','/invatare']); } catch(\Throwable) {}
         $xml='<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
         foreach ($paths as $path) $xml.='<url><loc>'.htmlspecialchars(rtrim(Config::get('url'),'/').$path,ENT_XML1|ENT_QUOTES,'UTF-8').'</loc></url>';
         return $xml.'</urlset>';

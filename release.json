@@ -1,7 +1,7 @@
 {
   "name": "OpenAliment",
-  "version": "0.9.0",
-  "date": "2026-10-28",
+  "version": "0.10.0",
+  "date": "2026-10-29",
   "php_minimum": "8.4",
-  "description": "Înregistrare cu CUI și ANAF v9, profil fiscal versionat, API și portabilitate."
+  "description": "Contribuitori, parteneri verificați ANAF, cursuri GS1 Digital Link, examene, probe practice și API-uri dedicate."
 }
