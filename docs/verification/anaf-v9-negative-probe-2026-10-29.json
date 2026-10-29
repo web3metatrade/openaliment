@@ -1,0 +1,21 @@
+{
+  "checked_on": "2026-10-29",
+  "endpoint": "https://webservicesp.anaf.ro/api/PlatitorTvaRest/v9/tva",
+  "request": [
+    {
+      "cui": 1234,
+      "data": "2026-10-29"
+    }
+  ],
+  "http_status": 404,
+  "content_type": "application/json",
+  "response_bytes": 30,
+  "response_sha256": "c552a3c8bb37fe4d281b066469fb2ca6ea09007b09bb4d35b0ca454015e726e1",
+  "response": {
+    "found": [],
+    "notFound": [
+      1234
+    ]
+  },
+  "interpretation": "A matching, validated negative ANAF result; normalized to HTTP 200 and state=not_found in OpenAliment. Generic 404 and 5xx responses remain upstream errors."
+}

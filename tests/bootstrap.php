@@ -36,6 +36,7 @@ function oa_test_config(): array
     $config['document_scanner'] = ['transport' => 'test_clean'];
     $config['external'] = ['network_enabled'=>false, 'product_reads_per_minute'=>2];
     $config['anaf_test_responses'] = [];
+    $config['anaf_test_http_statuses'] = ['1234' => 404];
     foreach (json_decode(file_get_contents(__DIR__.'/fixtures/anaf-v9.json'),true,24,JSON_THROW_ON_ERROR) as $cui=>$response) {
         $config['anaf_test_responses'][(string)$cui] = json_encode($response,JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR);
     }

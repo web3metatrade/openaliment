@@ -64,6 +64,8 @@ Un profil importat are `origin=imported` și `directly_verified=false`. Semnătu
 
 Integrarea interoghează un singur CUI, respectând limita ANAF de o cerere pe secundă. Cache-ul pentru o firmă găsită este de 6 ore, numai pentru aceeași zi de referință, iar rezultatele negăsite se reutilizează 5 minute. Confirmarea expiră în 20 de minute și nu se folosește după schimbarea zilei în Europe/Bucharest.
 
+ANAF poate folosi HTTP 404 pentru un rezultat exclusiv negativ. OpenAliment verifică lista `notFound` și CUI-ul solicitat, apoi întoarce HTTP 200 cu `state=not_found`. Un 404 generic, un răspuns nevalid sau o eroare de serviciu nu este transformată în firmă negăsită.
+
 Limitele inițiale sunt 6 verificări/15 minute/sesiune, 20/15 minute/IP și 300 de cereri externe/oră/instalare. Dev și producția coordonează intervalul de cel puțin 1,1 secunde într-un fișier privat comun al contului cPanel. Alte aplicații de pe același IP trebuie să își coordoneze propriul trafic. Cererile nu țin o tranzacție SQL sau sesiunea blocată pe durata apelului ANAF. Nu există import automat al tuturor firmelor și nici dependență ANAF pentru resolver.
 
 | HTTP sau rezultat | Semnificație și remediu |

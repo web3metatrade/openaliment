@@ -2,6 +2,8 @@
 
 OpenAliment 0.9.0 consultă serviciul public sincron ANAF v9 după CUI și data curentă în Europe/Bucharest. [Instrucțiunile oficiale](https://static.anaf.ro/static/10/Anaf/Informatii_R/Servicii_web/doc_WS_V9.txt) și [proba din 28 octombrie](verification/anaf-v9-probe-2026-10-28.json) fixează versiunea folosită și diferențele observate față de exemplul oficial.
 
+Proba separată din 29 octombrie a confirmat că ANAF răspunde HTTP 404 atunci când singurul CUI solicitat este negăsit, cu JSON `{"found":[],"notFound":[1234]}`. Integrarea acceptă acest răspuns numai după validarea completă a corpului și a CUI-ului. API-ul OpenAliment păstrează HTTP 200 cu `state=not_found`. Un 404 HTML, un JSON nevalid, un alt CUI sau un răspuns HTTP 5xx rămâne eroare 503.
+
 ## Înregistrare și confirmare
 
 `/register` cere întâi CUI și OK. Rezultatul arată firma și toate datele ANAF disponibile, inclusiv valorile nefurnizate. CUI-ul poate fi corectat; verificările noi înlocuiesc confirmările vechi din aceeași sesiune. Datele persoanei se cer după găsirea firmei. La creare, serverul folosește observația păstrată, nu datele fiscale din inputuri ascunse. Funcționează și fără JavaScript.
