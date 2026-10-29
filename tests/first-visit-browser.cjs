@@ -136,12 +136,15 @@ function check(name, value) {
     check('Marketplace empty search offers recovery', await page.getByRole('link', {name: 'Resetează căutarea', exact: true}).isVisible() && await page.getByRole('heading', {name: 'Nu am găsit o integrare pentru această căutare.'}).isVisible());
     const email = 'ux-browser-' + Date.now() + '@example.invalid';
     await page.goto(BASE + '/register');
+    await page.getByLabel('CUI', {exact: true}).fill('900000001');
+    await page.getByRole('button', {name: 'Verifică CUI-ul la ANAF', exact: true}).click();
+    await page.getByRole('heading', {name: 'Organizație sintetică ANAF A', exact: true}).waitFor();
     await page.locator('[name=display_name]').fill('UX test');
-    await page.locator('[name=organization]').fill('UX test organization');
     await page.locator('[name=email]').fill(email);
     await page.locator('[name=password]').fill('Synthetic-UX-' + Date.now() + '-only');
-    await page.getByRole('button', {name: 'Creează contul', exact: true}).click();
-    await page.waitForURL(BASE + '/manage');
+    await page.getByRole('button', {name: /Creează contul pentru această firmă/}).click();
+    await page.waitForURL(BASE + '/manage/organization');
+    await page.goto(BASE + '/manage');
     const create = page.getByRole('button', {name: 'Creează produsul', exact: true});
     const position = await create.boundingBox();
     check('Empty producer account prioritizes first product', await page.getByRole('heading', {name: 'Adaugă primul aliment'}).isVisible() && await page.locator('.stats-grid').count() === 0);

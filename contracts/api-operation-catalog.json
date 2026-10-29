@@ -2,6 +2,76 @@
   "schema_version": "openaliment.api-operations.v1",
   "routes": [
     {
+      "method": "POST",
+      "path": "/api/v2/identity/organization-lookups",
+      "id": "organizationLookup",
+      "auth": "session-optional",
+      "scope": "",
+      "handler": "anaf.lookup",
+      "summary": "Consultă CUI-ul în ANAF pentru înregistrare.",
+      "body": "OrganizationLookup"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/identity/organization-lookups/{id}",
+      "id": "organizationLookupResult",
+      "auth": "session-optional",
+      "scope": "",
+      "handler": "anaf.result",
+      "summary": "Recitește verificarea ANAF din aceeași sesiune.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/organization/legal-profile",
+      "id": "organizationLegalProfile",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "anaf.profile",
+      "summary": "Citește profilul fiscal al organizației proprii.",
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/manage/organization/legal-profile/history",
+      "id": "organizationLegalHistory",
+      "auth": "producer",
+      "scope": "read",
+      "handler": "anaf.history",
+      "summary": "Listează versiunile profilului fiscal.",
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/organization/legal-profile/checks",
+      "id": "organizationLegalCheck",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "anaf.check",
+      "summary": "Reverifică CUI-ul fără înlocuirea profilului.",
+      "body": "OrganizationLookup"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/manage/organization/legal-profile/confirm",
+      "id": "organizationLegalConfirm",
+      "auth": "producer",
+      "scope": "write",
+      "handler": "anaf.confirm",
+      "summary": "Confirmă o versiune nouă a profilului fiscal.",
+      "body": "OrganizationLegalConfirmation"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/admin/organizations/{id}/legal-profile",
+      "id": "adminOrganizationLegalProfile",
+      "auth": "admin-session",
+      "scope": "",
+      "handler": "anaf.admin-profile",
+      "summary": "Citește profilul fiscal pentru verificarea administrativă.",
+      "body": ""
+    },
+    {
       "method": "GET",
       "path": "/api/v2/public/standards/gs1",
       "id": "gs1StandardsCatalog",
@@ -2053,5 +2123,5 @@
     }
   ],
   "contract": "platform-openapi.json",
-  "operations": 294
+  "operations": 301
 }

@@ -5,6 +5,7 @@ use App\Core\{Auth,Db,Http,Problem,Session};
 use App\Domain\{Accounts,Catalog,Documents,Mutations,Portability};
 final class ManageController {
     public static function handle(string $method,string $path): void {
+        if($path==='/manage/organization'){RegistrationController::profilePage($method);return;}
         if($path==='/manage/security'){AccountSecurityController::handle($method);return;}
         if($path==='/manage/developers'){DeveloperController::handle($method);return;}
         if(preg_match('~\A/manage/connectors(?:/([a-f0-9]{32}))?\z~D',$path,$connectorMatch)){IntegrationManageController::handle($method,$connectorMatch[1]??null);return;}

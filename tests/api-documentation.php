@@ -8,7 +8,7 @@ function documentationCheck(string $name,bool $ok):void{global$checks;if(!$ok)th
 $catalog=ApiDocumentation::catalog();$spec=json_decode(file_get_contents(ROOT.'/contracts/platform-openapi.json'),true);
 $expected=array_sum(array_map(static fn($methods)=>count($methods),$spec['paths']));
 documentationCheck('Portal covers every real operation exactly once',$catalog['operation_count']===$expected&&count(array_filter($catalog['pages'],static fn($p)=>$p['kind']==='operation'))===$expected&&count($catalog['navigation'])===count($catalog['pages']));
-documentationCheck('Guide source split is complete',$catalog['guides']===20&&isset($catalog['pages']['protectia-contului'],$catalog['pages']['marketplace'],$catalog['pages']['surse-externe']));
+documentationCheck('Guide source split is complete',$catalog['guides']===21&&isset($catalog['pages']['protectia-contului'],$catalog['pages']['marketplace'],$catalog['pages']['surse-externe'],$catalog['pages']['inregistrare-anaf']));
 documentationCheck('Overview AI index remains a real link',str_contains(ApiDocumentation::page('/api/docs')['html'],'href="/llms.txt"'));
 documentationCheck('Session-only key rotation explicitly requires CSRF',array_any($spec['paths']['/api/v2/manage/access-tokens/{id}/rotations']['post']['parameters'],static fn($p)=>$p['name']==='X-CSRF-Token'&&$p['required']===true));
 foreach($catalog['pages']as$page){

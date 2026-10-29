@@ -6,7 +6,7 @@ use App\Core\{Db,Problem};
 /** Bounded NDJSON ingestion with exact transport digest, before any domain write. */
 final class TransferStream {
     public const MAX_BYTES=24000000;
-    private const TABLES=['products','trade_items','product_info_versions','recipe_versions','batches','batch_events','alerts','documents','change_proposals','url_mappings','imports','resolver_links','integration_connectors','integration_mappings','integration_bindings','feedback','audit_events','external_sources'];
+    private const TABLES=['products','trade_items','product_info_versions','recipe_versions','batches','batch_events','alerts','documents','change_proposals','url_mappings','imports','resolver_links','integration_connectors','integration_mappings','integration_bindings','feedback','audit_events','external_sources','organization_legal_history'];
     public static function read($stream): array {
         if(!is_resource($stream))throw new Problem(400,'stream','Fluxul nu este disponibil.');$header=null;$data=array_fill_keys(self::TABLES,[]);$hash=hash_init('sha256');$bytes=0;$records=0;$ended=false;
         while(($line=fgets($stream,self::MAX_BYTES+2))!==false){$bytes+=strlen($line);if($bytes>self::MAX_BYTES)throw new Problem(413,'body_size','Importul NDJSON depășește 24 MB.');if($ended||!str_ends_with($line,"\n"))throw new Problem(422,'stream','Fluxul conține date după final sau o linie incompletă.');

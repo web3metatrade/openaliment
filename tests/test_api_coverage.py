@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=json.loads((ROOT/'contracts/platform-openapi.json').read_text(encoding='utf-8'))
 expected={operation['operationId'] for methods in spec['paths'].values() for operation in methods.values()}
 observed=set()
-for name in ['api-reference-http.json','readiness-http.json','marketplace-http.json','external-http.json']:
+for name in ['api-reference-http.json','readiness-http.json','marketplace-http.json','external-http.json','anaf-http.json']:
     report=json.loads((ROOT/'tests/runtime/reports'/name).read_text(encoding='utf-8'))
     if report.get('failed')!=0:raise AssertionError('Failed HTTP suite: '+name)
     observed.update(report['successful_operations'])

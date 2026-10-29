@@ -3,6 +3,19 @@ declare(strict_types=1);
 namespace App\Core;
 
 final class Migrations {
+    public static function anaf(): bool {return Db::one("SELECT version FROM schema_migrations WHERE version='011_organization_anaf'")!==null;}
+    public static function upgradeAnaf(): void {
+        if(!Db::migrationActive()){Db::migration(static fn()=>self::upgradeAnaf());return;}
+        if(self::anaf())return;
+        if(!Db::one("SELECT GET_LOCK('openaliment_schema',0) AS acquired")['acquired'])throw new Problem(409,'migration_busy','O actualizare este deja în curs.');
+        try{
+            $sql=file_get_contents(ROOT.'/database/migrations/011_organization_anaf.sql');
+            if($sql===false)throw new Problem(503,'migration_missing','Actualizarea profilului fiscal nu este disponibilă.');
+            foreach(explode(';',$sql)as$statement)if(trim($statement)!=='')Db::pdo()->exec($statement);
+            if(!Db::one("SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='organization_legal_profiles' AND CONSTRAINT_NAME='legal_profile_current_version'"))Db::pdo()->exec('ALTER TABLE organization_legal_profiles ADD CONSTRAINT legal_profile_current_version FOREIGN KEY (tenant_id,current_version_id) REFERENCES organization_legal_profile_versions(tenant_id,id)');
+            Db::run('INSERT IGNORE INTO schema_migrations (version,applied_at) VALUES (?,?)',['011_organization_anaf',Db::now()]);
+        }finally{Db::run("SELECT RELEASE_LOCK('openaliment_schema')");}
+    }
     public static function external(): bool {return Db::one("SELECT version FROM schema_migrations WHERE version='009_external_catalog'")!==null;}
     public static function externalSharing(): bool {return Db::one("SELECT version FROM schema_migrations WHERE version='010_external_sharing'")!==null;}
     public static function upgradeExternal(bool $sharing=false): void {

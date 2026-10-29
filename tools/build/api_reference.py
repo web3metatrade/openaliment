@@ -511,6 +511,8 @@ def enrich(spec, routes, output):
 
     from external_reference import install as install_external
     external_metadata=install_external(add,FIELDS,obj,arr,nullable,ref,S,B,N,ID,DATE)
+    from anaf_reference import install as install_anaf
+    anaf_metadata=install_anaf(add,FIELDS,obj,arr,nullable,ref,S,B,N,ID,DATE)
 
     def local_schema(filename, pointer=''):
         root = json.loads((output / filename).read_text(encoding='utf-8'))
@@ -732,7 +734,7 @@ def enrich(spec, routes, output):
     add('ConnectorPreview', obj({'schema_version': {'const': 'openaliment.integration-preview.v1'}, 'operation': {'enum': ['product', 'batch', 'receipt']}, 'mapping_sha256': SHA, 'canonical': {'oneOf': [canonical_product, canonical_batch, canonical_receipt]}, 'writes': {'const': False}, 'publication': {'const': 'requires_separate_approval'}}))
     result_fields = {'operation': {'enum': ['product', 'batch', 'receipt']}, 'mapping_id': ID, 'mapping_sha256': SHA, 'event_key': S(128)}
     add('ConnectorIngested', {'oneOf': [obj(dict(result_fields, product_id=ID, trade_item_id=ID, label_id=ID, state={'const': 'draft'})), obj(dict(result_fields, **schemas['BatchCreated']['properties'])), obj(dict(result_fields, id=ID, receipt_url=S(2048), expires_in_days={'const': 30}, simulation=B))]})
-    counts = obj({k: N for k in ['products', 'trade_items', 'product_info_versions', 'recipe_versions', 'batches', 'batch_events', 'alerts', 'documents', 'change_proposals', 'url_mappings', 'imports', 'resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings', 'feedback', 'audit_events','external_sources']}, [])
+    counts = obj({k: N for k in ['products', 'trade_items', 'product_info_versions', 'recipe_versions', 'batches', 'batch_events', 'alerts', 'documents', 'change_proposals', 'url_mappings', 'imports', 'resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings', 'feedback', 'audit_events','external_sources','organization_legal_history']}, [])
     for key,field in counts['properties'].items():field['description']='Numărul înregistrărilor din colecția '+key+' din pachetul analizat, înaintea atribuirii ID-urilor locale.'
     add('ImportReport', obj({'schema_version': S(80), 'counts': counts, 'publication': {'const': 'private'}, 'verification': {'const': 'requires_reverification'},'id_map':{'type':'object','additionalProperties':copy.deepcopy(ID)},'history_preserved_in_import':{'const':True}},['schema_version','counts','publication','verification']))
     add('PilotImportReport', obj({'name': S(180), 'visibility': {'const': 'private'}, 'technical_status': {'const': 'experimental'}, 'recipe_identity': {'const': 'pbt:R1'}, 'nominal_input_mass_g': {'const': 3790}, 'originals': {'const': 18}, 'recovered': {'const': 7}, 'quarantine': {'const': 'PBT-SRC-06'}, 'cost': {'const': 'COST3 estimated'}, 'manifest_sha256': SHA, 'product_id': ID, 'recipe_id': ID}, ['name', 'visibility', 'technical_status', 'recipe_identity', 'nominal_input_mass_g', 'originals', 'recovered', 'quarantine', 'cost', 'manifest_sha256']))
@@ -750,7 +752,8 @@ def enrich(spec, routes, output):
     export_data['feedback'] = arr(table_schema('feedback', ['id', 'product_id', 'batch_id', 'product_info_version_id', 'kind', 'rating', 'public_text', 'created_at'], raw=True))
     export_data['audit_events'] = arr(table_schema('audit_events', ['id', 'action', 'object_id', 'details_json', 'created_at'], raw=True))
     export_data['external_sources']=arr(obj({'label_id':ID,'revision':ref('ExternalFoodRecord'),'fields':arr(S(40)),'source_base_url':S(2048)}))
-    add('ProducerTransfer', obj({'schema_version': {'const': 'openaliment.transfer.v1'}, 'exported_at': TIME, 'source_base_url': {'type': 'string', 'format': 'uri'}, 'organization': obj({'id': ID, 'display_name': S(180)}), 'data': obj(export_data, [k for k in export_data if k not in ['resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings','external_sources']]), 'data_sha256': SHA}))
+    export_data['organization_legal_history']=arr(ref('AnafTransferVersion'))
+    add('ProducerTransfer', obj({'schema_version': {'const': 'openaliment.transfer.v1'}, 'exported_at': TIME, 'source_base_url': {'type': 'string', 'format': 'uri'}, 'organization': obj({'id': ID, 'display_name': S(180)}), 'data': obj(export_data, [k for k in export_data if k not in ['resolver_links', 'integration_connectors', 'integration_mappings', 'integration_bindings','external_sources','organization_legal_history']]), 'data_sha256': SHA}))
 
     # Acasă has a separate identity realm, cookies, CSRF and numeric sync cursor.
     add('HomeChanges', local_schema('home-sync.schema.json', '$defs/Page'))
@@ -814,6 +817,8 @@ def enrich(spec, routes, output):
     def classify(path, method, op):
         r = registry.get((method, path))
         h = r['handler'] if r else ''
+        anaf=anaf_metadata(path,method,h)
+        if anaf:return anaf
         external=external_metadata(path,method,h)
         if external:return external
         marketplace=marketplace_metadata(path,method,h)
@@ -1099,6 +1104,9 @@ def enrich(spec, routes, output):
         'code_challenge_method': 'Valoarea S256; plain nu este acceptat.',
     }
     request_examples = {
+        '/api/v2/identity/organization-lookups': {'cui':'900000001'},
+        '/api/v2/manage/organization/legal-profile/checks': {'cui':'900000001'},
+        '/api/v2/manage/organization/legal-profile/confirm': {'organization_lookup_id':'1'*32,'expected_version_id':None},
         '/api/v2/manage/connectors': {'name': 'ERP demonstrativ', 'kind': 'catalog'},
         '/api/v2/manage/connectors/{connector_id}/mappings': {'version_key': 'M1', 'mapping': {'schema_version': 'openaliment.mapping.v1', 'fields': {'/trade_external_id': {'from': '/articol', 'op': 'text', 'required': True}, '/label_version_key': {'value': 'E1'}, '/lot_code': {'from': '/lot', 'op': 'text', 'required': True}}}},
         '/api/v2/manage/connectors/{connector_id}/preview': {'mapping_id': 'a' * 32, 'operation': 'batch', 'payload': {'articol': 'ERP-001', 'lot': 'EXEMPLU-001'}},
@@ -1121,6 +1129,14 @@ def enrich(spec, routes, output):
             op['summary'] = title
             op['description'] = description
             op['x-example-data'] = 'synthetic; not a production record or valid credential'
+            if path == '/api/v2/identity/organization-lookups':
+                op['security']=[{'ProducerSession':[]}]
+                op['parameters'].append({'name':'X-CSRF-Token','in':'header','required':True,'schema':S(64),'description':'csrf primit din identity/session, cu același cookie anonim.'})
+            if path == '/api/v2/identity/organization-lookups/{id}':op['security']=[{'ProducerSession':[]}]
+            if path == '/api/v2/manage/organization/legal-profile/checks':
+                op['parameters']=[p for p in op['parameters'] if p['name']!='Idempotency-Key']
+            if path == '/api/v2/manage/organization/legal-profile/confirm':
+                op['parameters'].append({'name':'Idempotency-Key','in':'header','required':True,'schema':{'type':'string','minLength':8,'maxLength':128,'pattern':'^[A-Za-z0-9_.:-]+$'}})
             if path.startswith('/api/v1/'):
                 op['x-compatibility'] = 'legacy-v1'
                 op['description'] += ' API v1 este păstrat pentru compatibilitate; integrările noi folosesc v2.'
@@ -1268,6 +1284,7 @@ def errors(path, method, op):
     home = path.startswith('/api/v2/home/')
     write = method in ['post', 'put', 'delete', 'patch']
     statuses = {'400', '429', '503'}
+    if '/organization-lookups' in path or '/organization/legal-profile' in path:statuses.add('409')
     if not public:
         statuses |= {'401', '403'}
     if '{' in path:
@@ -1299,6 +1316,7 @@ def errors(path, method, op):
             statuses.add('409')
     if oauth:
         statuses = {'400', '429', '503'}
+    if '/organization-lookups' in path or '/organization/legal-profile' in path:statuses.add('409')
     desc = {
         '400': ('json' if write else 'credential_in_url', 'Cerere neinterpretabilă, JSON invalid sau credential în URL.', 'Corectează formatul; trimite credentialele în antet/corp conform fluxului, fără retry automat.'),
         '401': ('invalid_token', 'Credential absent, expirat, revocat sau sesiune neconectată.', 'Reautorizează utilizatorul sau schimbă cheia; retry-ul identic nu repară autentificarea.'),

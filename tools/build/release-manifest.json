@@ -36,7 +36,8 @@
     "config/restore.local.example.php",
     "tools/standards/fetch.py",
     "tools/external-worker.php",
-    "config/external.local.example.php"
+    "config/external.local.example.php",
+    "config/anaf.local.example.php"
   ],
   "documentation_directories": [
     "docs"

@@ -58,6 +58,11 @@ from marketplace_reference import requests as marketplace_requests
 schemas.update(marketplace_requests(obj,text,ID))
 from external_contracts import requests as external_requests
 schemas.update(external_requests())
+from anaf_reference import requests as anaf_requests
+schemas.update(anaf_requests(obj,text,ID))
+schemas['Registration']['properties'].update({'organization_lookup_id':ID,'cui':text(32)})
+schemas['Registration']['required'].remove('organization')
+schemas['Registration']['anyOf']=[{'required':['organization']},{'required':['organization_lookup_id','cui']}]
 for schema_name in ['ApiKey','OAuthClient']:
  schemas[schema_name]['properties']['scopes']['items']['enum'] += ['sharing:manage','sharing:write']
 error_response={'description':'Eroare API: cod, mesaj și identificatorul cererii pentru suport.','content':{'application/json':{'schema':{'$ref':'#/components/schemas/Error'}}},'headers':{'X-Request-ID':{'schema':{'type':'string'},'description':'Correlation ID'},'Retry-After':{'schema':{'type':'integer'},'description':'Present on throttling, seconds until retry'}}}
@@ -119,7 +124,7 @@ for r in routes:
  for parameter in re.findall(r'\{([a-z_]+)\}',path):op['parameters'].append({'name':parameter,'in':'path','required':True,'schema':ID})
  paged=handler in ['manage.list','manage.children','public.catalog','public.feedback'] or handler=='public.children' and '/products/' in path or handler=='community.votes' or handler=='admin.list' or handler=='keys.list' or handler=='manage.connector' and path.endswith('/events')
  if handler in ['external.revisionIndex','external.organizationBindings','external.bindings','external.conflicts','external.grants','external.publications']:paged=True
- if handler in ['marketplace.jobs','marketplace.catalog','marketplace.releases','marketplace.units','marketplace.selections']:paged=True
+ if handler in ['marketplace.jobs','marketplace.catalog','marketplace.releases','marketplace.units','marketplace.selections','anaf.history']:paged=True
  if paged:
   op['parameters'] += [{'name':'cursor','in':'query','schema':ID,'description':'Last id from prior page. Omit on first request.'},{'name':'limit','in':'query','schema':{'type':'integer','minimum':1,'maximum':100,'default':20}}]
  if handler=='marketplace.catalog':op['parameters'] += [{'name':x,'in':'query','schema':text(120),'description':'q caută prefixul numelui; category selectează categoria exactă.'} for x in ['q','category']]
@@ -151,7 +156,7 @@ for r in routes:
  if handler.endswith('.download'):content={'application/octet-stream':{'schema':{'type':'string','format':'binary'}}};success='200'
  if handler=='public.archive':content={'application/zip':{'schema':{'type':'string','format':'binary'}}};success='200'
  if handler=='manage.export':content['application/x-ndjson']={'schema':{'type':'string','description':'Header, authorized records, final SHA-256 digest record.'}}
- if handler.startswith('marketplace.'):success='200'
+ if handler.startswith(('marketplace.','anaf.')):success='200'
  op['responses'][success]={'description':'Authorized result.','content':content,'headers':{'X-Request-ID':{'schema':text(64)},'RateLimit-Limit':{'schema':{'type':'integer'}},'RateLimit-Remaining':{'schema':{'type':'integer'}},'RateLimit-Reset':{'schema':{'type':'integer'},'description':'Seconds until this rate window resets.'}}}
  for code in ['400','401','403','404','405','409','413','415','419','422','429','503']:op['responses'][code]=copy.deepcopy(error_response)
  if handler.startswith('account.'):op['responses']['410']=copy.deepcopy(error_response)

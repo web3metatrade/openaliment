@@ -7,6 +7,11 @@ final class AdminController {
     public static function handle(string $method,string $path): void {
         if($path==='/admin/updates'){UpdatesController::handle($method);return;}
         $u=Auth::admin();
+        if(preg_match('~\A/admin/organizations/([a-f0-9]{32})\z~D',$path,$m)){
+            \App\Core\Api::method($method,['GET','HEAD']);$org=Db::one('SELECT id,display_name,identity_status FROM organizations WHERE id=?',[$m[1]]);
+            if(!$org)throw new Problem(404,'not_found','Organizația nu a fost găsită.');
+            Http::view('organization-profile-admin',['title'=>'Datele organizației','reviewOrganization'=>$org,'reviewProfile'=>\App\Domain\OrganizationRegistry::profile(['tenant'=>$org['id']])['profile']]);return;
+        }
         if($method==='POST'){
             Session::verify();$d=$_POST;$id=Catalog::text($d,'id',32);$reason=Catalog::text($d,'evidence',5000);
             \App\Domain\Administration::decide($u,(string)($d['action']??''),$id,$d);Session::flash('Verificarea a fost înregistrată.');Http::redirect('/admin');

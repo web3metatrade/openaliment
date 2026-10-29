@@ -9,6 +9,7 @@ final class PlatformApiController {
         $route=ApiRoutes::find($method==='HEAD'?'GET':$method,$path);
         if(!$route)throw new Problem(404,'route','Operațiunea API nu a fost găsită.');
         $handler=$route['handler'];$id=$route['resource_id'];$p=null;
+        if(str_starts_with($handler,'anaf.')){RegistrationController::api($method,$route);return;}
         if(str_starts_with($handler,'external.')){ExternalSourcesController::api($method,$route);return;}
         if(str_starts_with($handler,'standards.')){Gs1StandardsController::api($method,$route);return;}
         if(str_starts_with($handler,'marketplace.')){MarketplaceController::api($method,$route);return;}
@@ -124,7 +125,7 @@ final class PlatformApiController {
         Session::start();
         if($handler==='identity.session'){
             if(Api::bearer()!==null){$who=Auth::principal('');Http::json(['authenticated'=>true,'realm'=>'producer','organization_id'=>$who['tenant'],'role'=>$who['role'],'scopes'=>$who['scopes']]);}
-            $user=Auth::user();Http::json(['authenticated'=>$user!==null,'user'=>$user,'csrf'=>Session::csrf(),'registration_enabled'=>(bool)Config::get('registration_enabled')]);
+            $user=Auth::user();Http::json(['authenticated'=>$user!==null,'user'=>$user,'csrf'=>Session::csrf(),'registration_enabled'=>\App\Domain\RegistrationSettings::enabled()]);
         }
         if($method!=='GET'){Http::sameOrigin();Session::verify();}
         if($handler==='identity.login'){Accounts::login($d);$user=Auth::user();$pending=$user&&\App\Domain\Passkeys::required($user);Http::json(['authenticated'=>!$pending,'mfa_required'=>(bool)$pending,'verification_url'=>$pending?'/account/verify':null,'user'=>$user,'csrf'=>Session::csrf()]);}

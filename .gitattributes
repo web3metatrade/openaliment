@@ -44,3 +44,5 @@ tools/standards/fetch.py -text
 
 config/external.local.example.php -text
 tools/external-worker.php -text
+
+config/anaf.local.example.php -text

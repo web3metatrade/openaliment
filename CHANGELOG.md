@@ -1,5 +1,13 @@
 # Istoricul versiunilor
 
+## 0.9.0 — 2026-10-28
+
+- Înregistrare cu CUI și confirmarea completă a datelor ANAF v9, cu corectare și reverificare.
+- Profil fiscal privat și istoric imuabil, separat de mandat, identificatori GS1 și etichetele aprobate.
+- API pentru verificarea CUI, confirmare, profil, istoric și consultare administrativă; documentație OpenAPI, Markdown, Postman și AI.
+- Export/import al istoricului fiscal cu proveniență și reverificare separată.
+- Migrare aditivă 011; activarea înscrierilor pe staging este separată de instalarea codului.
+
 ## 0.8.0 — 2026-10-27
 
 - Catalog Open Food Facts separat de informațiile aprobate, cu observații imuabile, proveniență, licențe și imagini validate.

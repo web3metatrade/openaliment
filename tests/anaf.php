@@ -1,0 +1,54 @@
+<?php
+declare(strict_types=1);
+require __DIR__.'/bootstrap.php';
+ob_start();
+use App\Core\{Auth,Config,Db,Migrations,Problem,Session};
+use App\Domain\{Accounts,OrganizationRegistry,Portability};
+
+$checks=[];
+function legalCheck(string $name,bool $ok):void{global $checks;if(!$ok)throw new RuntimeException($name);$checks[]=['name'=>$name,'passed'=>true];echo 'PASS '.$name.PHP_EOL;}
+function legalReject(string $name,callable $run,int $status):void{try{$run();}catch(Problem $e){legalCheck($name,$e->status===$status);return;}throw new RuntimeException($name);}
+Migrations::upgradeAnaf();Migrations::upgradeAnaf();
+legalCheck('Additive ANAF migration can be applied repeatedly',Migrations::anaf());
+Session::start();
+$first=OrganizationRegistry::lookup(['cui'=>'RO 900000001']);
+legalCheck('ANAF lookup stores the immutable original response',$first['state']==='found'&&$first['source']['api_version']==='v9');
+$count=(int)Db::one('SELECT COUNT(*) AS n FROM anaf_observations')['n'];
+$second=OrganizationRegistry::lookup(['cui'=>'900000001']);
+legalCheck('Same-day cache avoids a second observation',(int)Db::one('SELECT COUNT(*) AS n FROM anaf_observations')['n']===$count&&$first['source']['sha256']===$second['source']['sha256']);
+legalReject('A new check invalidates the previous confirmation',fn()=>OrganizationRegistry::check($first['id']),409);
+$notFound=OrganizationRegistry::lookup(['cui'=>'1234']);legalCheck('A missing CUI is visible without creating an account',$notFound['state']==='not_found'&&$notFound['record']===null);
+$correct=OrganizationRegistry::lookup(['cui'=>'900000002']);
+$owner=$_SESSION['anaf_owner'];$_SESSION['anaf_owner']=bin2hex(random_bytes(32));legalReject('A different anonymous session cannot read the check',fn()=>OrganizationRegistry::check($correct['id']),404);$_SESSION['anaf_owner']=$owner;
+$data=['email'=>'anaf-'.Db::id().'@example.invalid','password'=>bin2hex(random_bytes(18)),'display_name'=>'Synthetic ANAF person','organization'=>'Forged company name','organization_lookup_id'=>$correct['id'],'cui'=>'900000001'];
+legalReject('Changing CUI before registration is refused',fn()=>Accounts::register($data),422);
+$data['cui']='900000002';$beforeGtin=(int)Db::one('SELECT COUNT(*) AS n FROM gtin_registry')['n'];$account=Accounts::register($data);
+$org=Db::one('SELECT * FROM organizations WHERE id=?',[$account['tenant_id']]);
+legalCheck('Saved organization name comes from ANAF, not browser input',$org['display_name']==='Organizație sintetică ANAF B');
+$p=['tenant'=>$account['tenant_id'],'user'=>$account['id'],'role'=>'owner','token'=>null];
+$profile=OrganizationRegistry::profile($p)['profile'];
+legalCheck('Confirmed profile preserves both addresses and exact identifier strings',$profile['record']['date_generale']['cod_CAEN']==='0610'&&$profile['record']['adresa_sediu_social']['scod_Postal']==='001234'&&$profile['record']['adresa_sediu_social']['sdenumire_Strada']!==$profile['record']['adresa_domiciliu_fiscal']['ddenumire_Strada']);
+legalCheck('ANAF lookup grants no representation, verified email or GTIN',$org['identity_status']==='unverified'&&(int)Db::one('SELECT email_verified FROM users WHERE id=?',[$account['id']])['email_verified']===0&&(int)Db::one('SELECT COUNT(*) AS n FROM gtin_registry')['n']===$beforeGtin);
+legalReject('Consumed reference cannot create another account',fn()=>Accounts::register(array_replace($data,['email'=>'anaf-replay-'.Db::id().'@example.invalid'])),409);
+$legacy=Accounts::register(['email'=>'anaf-legacy-'.Db::id().'@example.invalid','password'=>bin2hex(random_bytes(18)),'display_name'=>'Legacy person','organization'=>'Legacy organization']);
+legalCheck('Legacy registration remains compatible without a fiscal profile',OrganizationRegistry::profile(['tenant'=>$legacy['tenant_id']])['profile']===null);
+Session::login($account['id']);$p=Auth::principal();
+legalReject('An editor cannot rebind a company profile',fn()=>OrganizationRegistry::lookup(['cui'=>'900000002'],array_replace($p,['role'=>'editor'])),403);
+legalReject('Existing profile cannot change its CUI during refresh',fn()=>OrganizationRegistry::lookup(['cui'=>'900000001'],$p),409);
+$refresh=OrganizationRegistry::lookup(['cui'=>'900000002'],$p);
+legalReject('Stale expected version cannot overwrite the profile',fn()=>OrganizationRegistry::confirm($p,['organization_lookup_id'=>$refresh['id'],'expected_version_id'=>null]),409);
+$confirmed=OrganizationRegistry::confirm($p,['organization_lookup_id'=>$refresh['id'],'expected_version_id'=>$profile['id']]);
+legalCheck('Refresh appends history without deleting the first snapshot',$confirmed['profile']['id']!==$profile['id']&&count(OrganizationRegistry::history($p)['items'])===2);
+legalCheck('Another tenant sees none of this profile history',OrganizationRegistry::history(['tenant'=>$legacy['tenant_id']])['items']===[]);
+$expiry=OrganizationRegistry::lookup(['cui'=>'900000002'],$p);Db::run('UPDATE organization_registration_checks SET expires_at=? WHERE id=?',[gmdate('Y-m-d H:i:s',time()-1),$expiry['id']]);legalReject('Expired references require reverification',fn()=>OrganizationRegistry::check($expiry['id'],$p),409);
+$saved=Db::one('SELECT record_json FROM organization_legal_profile_versions WHERE id=?',[$profile['id']]);Db::run('UPDATE organization_legal_profile_versions SET record_json=? WHERE id=?',['{}',$profile['id']]);legalReject('Tampered history fails its integrity check',fn()=>OrganizationRegistry::history($p),503);Db::run('UPDATE organization_legal_profile_versions SET record_json=? WHERE id=?',[$saved['record_json'],$profile['id']]);
+$package=Portability::export($p);$destination=['tenant'=>$legacy['tenant_id'],'user'=>$legacy['id'],'role'=>'owner','token'=>null];
+legalCheck('JSON export contains every tax snapshot and raw source',count($package['data']['organization_legal_history'])===2&&isset($package['data']['organization_legal_history'][0]['response_json']));
+Portability::import($destination,$package,false);$imported=OrganizationRegistry::profile($destination)['profile'];
+legalCheck('Tax history can migrate without claiming direct ANAF verification',$imported['cui']==='900000002'&&$imported['origin']==='imported'&&$imported['directly_verified']===false&&count(OrganizationRegistry::history($destination)['items'])===2);
+legalCheck('Import preserves the source response hash',$imported['source']['sha256']===$profile['source']['sha256']);
+Session::start();$rollback=OrganizationRegistry::lookup(['cui'=>'900000001']);$base=(int)Db::one('SELECT COUNT(*) AS n FROM organizations')['n'];
+$bad=['email'=>'anaf-rollback-'.Db::id().'@example.invalid','password'=>bin2hex(random_bytes(18)),'display_name'=>[],'organization_lookup_id'=>$rollback['id'],'cui'=>'900000001'];
+legalReject('Failure during account creation rolls back the organization',fn()=>Accounts::register($bad),422);
+legalCheck('A failed transaction leaves no orphan organization',(int)Db::one('SELECT COUNT(*) AS n FROM organizations')['n']===$base&&OrganizationRegistry::check($rollback['id'])['state']==='found');
+$output=['passed'=>count($checks),'failed'=>0,'checks'=>$checks];file_put_contents(__DIR__.'/runtime/reports/anaf-domain.json',json_encode($output,JSON_PRETTY_PRINT));echo json_encode(['passed'=>count($checks),'failed'=>0]).PHP_EOL;

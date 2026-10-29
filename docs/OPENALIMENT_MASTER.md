@@ -91,3 +91,7 @@ Backup DB + storage + configurație privată, criptare/copie externă, restore �
 ## Integrarea Open Food Facts — 0.8.0
 
 Specificația extinderii este [planul OFF](plans/OPEN_FOOD_FACTS_IMPLEMENTATION_PLAN_2026-10-27.md); comportamentul și limitele livrate sunt în [ghidul de operare](OPEN_FOOD_FACTS.md) și [ghidul API](api/pages/surse-externe.md). Observațiile externe nu schimbă mandatul GTIN, resolverul, etichetele aprobate, loturile istorice, licența rețetelor sau evaluarea siglei. Scrierea automată OFF rămâne oprită; transportul livrat pentru contribuții este pachetul producătorului.
+
+## Profil fiscal și înregistrare cu ANAF — 0.9.0
+
+[Ghidul ANAF](ANAF.md) și [contractele API](api/pages/inregistrare-anaf.md) extind înregistrarea cu CUI, observații de sursă, confirmare și istoric fiscal privat. Migrarea 011 este aditivă. Consultarea nu verifică mandatul reprezentantului, drepturile GS1 sau sigla și nu rescrie etichetele și loturile aprobate. Compatibilitatea înregistrării API și a importurilor vechi fără profil fiscal este păstrată. Activarea stagingului este separată de publicarea codului și nu modifică producția.
