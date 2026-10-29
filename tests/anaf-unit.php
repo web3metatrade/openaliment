@@ -30,4 +30,13 @@ anafAssert('notFound is a separate successful business result',AnafClient::decod
 foreach(['adresa_sediu_social','stare_inactiv','inregistrare_scop_Tva']as$key){$malformed=$body;$malformed['found'][0][$key]='broken';anafReject('Malformed known section is rejected',fn()=>AnafClient::decode(json_encode($malformed),'900000001','2026-10-28'),503);}
 $malformed=$body;$malformed['found'][0]['inregistrare_scop_Tva']['scpTVA']='false';anafReject('String false is not a valid boolean',fn()=>AnafClient::decode(json_encode($malformed),'900000001','2026-10-28'),503);
 $malformed=['found'=>[],'notFound'=>[['cui'=>1234]]];anafReject('Malformed notFound is rejected safely',fn()=>AnafClient::decode(json_encode($malformed),'1234','2026-10-28'),503);
+
+$negative=json_encode($fixtures['1234'],JSON_THROW_ON_ERROR);
+anafAssert('ANAF HTTP 404 with matching notFound is a successful negative result',AnafClient::response(404,'application/json',$negative,'1234','2026-10-28')===$negative);
+anafAssert('ANAF HTTP 200 negative results remain compatible',AnafClient::response(200,'Application/JSON; charset=utf-8',$negative,'1234','2026-10-28')===$negative);
+anafReject('HTTP 404 for another CUI does not become not_found',fn()=>AnafClient::response(404,'application/json',$negative,'5678','2026-10-28'),503);
+anafReject('Generic HTML 404 remains an upstream error',fn()=>AnafClient::response(404,'text/html','<html>Not found</html>','1234','2026-10-28'),503);
+anafReject('Malformed JSON 404 remains an upstream error',fn()=>AnafClient::response(404,'application/json','{}','1234','2026-10-28'),503);
+anafReject('HTTP 500 with notFound cannot hide an upstream failure',fn()=>AnafClient::response(500,'application/json',$negative,'1234','2026-10-28'),503);
+anafReject('HTTP 404 with a found record is inconsistent and rejected',fn()=>AnafClient::response(404,'application/json',$raw,'900000001','2026-10-28'),503);
 echo json_encode(['passed'=>$count,'failed'=>0]).PHP_EOL;

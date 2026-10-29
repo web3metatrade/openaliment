@@ -133,7 +133,9 @@ final class AnafClient
             if (!isset($fixtures[$cui]) || !is_string($fixtures[$cui])) {
                 throw new Problem(503, 'anaf_unavailable', 'ANAF nu răspunde momentan. Reîncearcă verificarea.');
             }
-            return str_replace('__QUERY_DAY__', $day, $fixtures[$cui]);
+            $raw = str_replace('__QUERY_DAY__', $day, $fixtures[$cui]);
+            $statuses = Config::get('anaf_test_http_statuses', []);
+            return self::response((int) ($statuses[$cui] ?? 200), 'application/json', $raw, $cui, $day);
         }
         $options = OrganizationRegistry::settings();
         if (($options['network_enabled'] ?? true) !== true || !extension_loaded('curl')) {
@@ -167,9 +169,26 @@ final class AnafClient
         } finally {
             curl_close($handle);
         }
-        if ($ok === false || $status !== 200 || $type !== 'application/json') {
+        if ($ok === false) {
             header('Retry-After: 30');
             throw new Problem(503, 'anaf_unavailable', 'ANAF nu răspunde momentan. Datele tale nu au fost înregistrate.');
+        }
+        return self::response($status, $type, $body, $cui, $day);
+    }
+
+    /** A negative ANAF lookup can use HTTP 404; a generic 404 is never a result. */
+    public static function response(int $status, string $contentType, string $body, string $cui, string $day): string
+    {
+        $type = strtolower(trim(explode(';', $contentType)[0]));
+        if (!in_array($status, [200, 404], true) || $type !== 'application/json') {
+            if (!headers_sent()) {
+                header('Retry-After: 30');
+            }
+            throw new Problem(503, 'anaf_unavailable', 'ANAF nu răspunde momentan. Datele tale nu au fost înregistrate.');
+        }
+        $parsed = self::decode($body, $cui, $day);
+        if ($status === 404 && $parsed['state'] !== 'not_found') {
+            throw new Problem(503, 'anaf_response', 'Răspunsul ANAF nu confirmă CUI-ul solicitat.');
         }
         return $body;
     }
