@@ -1,13 +1,13 @@
 {
   "release": "0.10.0",
-  "verified_at": "2026-10-29T04:46:49.818519+00:00",
+  "verified_at": "2026-10-29T04:54:50.829342+00:00",
   "environment": "isolated local PHP 8.4.27 / MariaDB 11.4; Microsoft Edge via Playwright",
   "production_changed": false,
   "staging_deployment_confirmed": false,
   "completed": true,
   "failed_commands": 0,
-  "commands_and_suites": 92,
-  "assertion_counters": 19706,
+  "commands_and_suites": 94,
+  "assertion_counters": 20117,
   "counter_note": "Command counters include component checks and affected suites rerun after the full regression; they are not a claim of unique test cases.",
   "api": {
     "new_program_operations": 109,
@@ -17,7 +17,7 @@
     "program_http_checks": 229
   },
   "browser": {
-    "checks": 58,
+    "checks": 59,
     "viewports_px": [
       390,
       768,
@@ -52,7 +52,7 @@
       "suite": "generated contracts",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 6.83
+      "seconds": 5.78
     },
     {
       "suite": "tests/test_repository.py",
@@ -82,7 +82,7 @@
       "suite": "tests/test_program_contracts.py",
       "passed": 521,
       "exit_code": 0,
-      "seconds": 0.22
+      "seconds": 0.2
     },
     {
       "suite": "tests/test_collaboration.py",
@@ -124,7 +124,7 @@
       "suite": "tests/program-unit.php",
       "passed": 417,
       "exit_code": 0,
-      "seconds": 0.39
+      "seconds": 0.38
     },
     {
       "suite": "tests/gs1-compatibility.php",
@@ -145,16 +145,10 @@
       "seconds": 0.39
     },
     {
-      "suite": "tests/api-documentation.php",
-      "passed": 854,
-      "exit_code": 0,
-      "seconds": 13.77
-    },
-    {
       "suite": "tests/test_api_reference_quality.py",
       "passed": 8179,
       "exit_code": 0,
-      "seconds": 0.83
+      "seconds": 0.73
     },
     {
       "suite": "tests/test_public_content.py",
@@ -214,7 +208,7 @@
       "suite": "tests/integration.php",
       "passed": 70,
       "exit_code": 0,
-      "seconds": 4.2
+      "seconds": 3.97
     },
     {
       "suite": "tests/resolver.php",
@@ -310,19 +304,19 @@
       "suite": "tests/program.php",
       "passed": 107,
       "exit_code": 0,
-      "seconds": 2.97
+      "seconds": 3.11
     },
     {
       "suite": "tests/program-boundaries.php",
       "passed": 32,
       "exit_code": 0,
-      "seconds": 0.94
+      "seconds": 1.11
     },
     {
       "suite": "tests/program-http-fixtures.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.44
+      "seconds": 0.5
     },
     {
       "suite": "tests/test_http.py",
@@ -379,12 +373,6 @@
       "seconds": 23.97
     },
     {
-      "suite": "tests/test_api_documentation.py",
-      "passed": 1749,
-      "exit_code": 0,
-      "seconds": 51.69
-    },
-    {
       "suite": "tests/test_readiness_http.py",
       "passed": 31,
       "exit_code": 0,
@@ -424,13 +412,13 @@
       "suite": "tests/test_program_http.py",
       "passed": 230,
       "exit_code": 0,
-      "seconds": 19.52
+      "seconds": 18.28
     },
     {
       "suite": "tests/test_api_coverage.py",
       "passed": 410,
       "exit_code": 0,
-      "seconds": 0.39
+      "seconds": 0.23
     },
     {
       "suite": "tests/test_api_sdk.py",
@@ -514,13 +502,13 @@
       "suite": "prepare synthetic full-course bank and reset program browser counters",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.42
+      "seconds": 0.45
     },
     {
       "suite": "tests/program-browser.cjs",
-      "passed": 58,
+      "passed": 59,
       "exit_code": 0,
-      "seconds": 41.62
+      "seconds": 51.05
     },
     {
       "suite": "tests/backup.php",
@@ -538,25 +526,25 @@
       "suite": "Final syntax app/Domain/ProgramAccess.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.27
+      "seconds": 0.23
     },
     {
       "suite": "Final syntax app/Domain/ProgramJobs.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.23
+      "seconds": 0.22
     },
     {
       "suite": "Final syntax app/Domain/ProgramLabs.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.25
+      "seconds": 0.22
     },
     {
       "suite": "Final syntax tests/fixtures/program-backup.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.25
+      "seconds": 0.22
     },
     {
       "suite": "Final syntax tests/program-boundaries.php",
@@ -568,31 +556,55 @@
       "suite": "reset isolated final program counters",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 1.27
+      "seconds": 1.31
     },
     {
       "suite": "Final syntax app/Core/Migrations.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.23
+      "seconds": 0.31
     },
     {
       "suite": "Final syntax app/Controllers/ProgramController.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.23
+      "seconds": 0.3
     },
     {
       "suite": "Final syntax app/Controllers/ProgramWebController.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.23
+      "seconds": 0.31
     },
     {
       "suite": "Final syntax app/Domain/ProgramAdministration.php",
       "passed": 0,
       "exit_code": 0,
-      "seconds": 0.23
+      "seconds": 0.22
+    },
+    {
+      "suite": "Final syntax app/Domain/ApiDocumentation.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "suite": "Final syntax app/Views/program/admin.php",
+      "passed": 0,
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "suite": "tests/api-documentation.php",
+      "passed": 1264,
+      "exit_code": 0,
+      "seconds": 19.06
+    },
+    {
+      "suite": "tests/test_api_documentation.py",
+      "passed": 1749,
+      "exit_code": 0,
+      "seconds": 53.77
     }
   ],
   "limits": [
