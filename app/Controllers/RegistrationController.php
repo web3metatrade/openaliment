@@ -12,8 +12,11 @@ final class RegistrationController
     {
         Api::method($method, ['GET', 'HEAD', 'POST']);
         Api::limit('auth');
+        Session::start();
+        if ($method === 'GET' && ($_GET['context'] ?? '') === 'partner' && Migrations::program()) { $_SESSION['registration_context'] = 'partner'; }
+        $partnerContext = ($_SESSION['registration_context'] ?? '') === 'partner' && Migrations::program();
         if ($user = Auth::user()) {
-            Http::redirect(\App\Domain\Passkeys::required($user) && empty($_SESSION['mfa_verified_at']) ? '/account/verify' : '/manage');
+            Http::redirect(\App\Domain\Passkeys::required($user) && empty($_SESSION['mfa_verified_at']) ? '/account/verify' : ($partnerContext ? '/parteneri/inscriere' : (Migrations::program() ? \App\Domain\ProgramAccess::home($user) : '/manage')));
         }
         if (!Migrations::anaf()) {
             if ($method === 'POST') {
@@ -35,7 +38,12 @@ final class RegistrationController
                     if (empty($data['organization_lookup_id'])) throw new Problem(422, 'cui_confirmation', 'Verifică mai întâi CUI-ul firmei.');
                     Auth::rate('register|' . Api::clientIp(), 5, 3600);
                     $account = Accounts::register($data);
-                    Session::login($account['id']); Http::redirect('/manage/organization');
+                    Session::login($account['id']);
+                    if ($partnerContext) {
+                        $application = \App\Domain\ProgramPartners::fromRegisteredTenant(Auth::user(), $account['tenant_id']);
+                        Http::redirect('/parteneri/cereri/' . $application['id']);
+                    }
+                    Http::redirect('/manage/organization');
                 } else {
                     throw new Problem(422, 'action', 'Alege verificarea CUI-ului sau crearea contului.');
                 }
@@ -46,7 +54,7 @@ final class RegistrationController
                 }
             }
         }
-        Http::view('register', ['title' => 'Înregistrează organizația', 'registrationEnabled' => RegistrationSettings::enabled(), 'values' => $data, 'anafResult' => $result, 'registrationError' => $error], $status);
+        Http::view('register', ['title' => $partnerContext ? 'Înscrie firma ca partener' : 'Înregistrează organizația', 'partnerRegistration' => $partnerContext, 'registrationEnabled' => RegistrationSettings::enabled(), 'values' => $data, 'anafResult' => $result, 'registrationError' => $error], $status);
     }
 
     public static function api(string $method, array $route): never

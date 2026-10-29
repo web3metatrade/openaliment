@@ -1,0 +1,500 @@
+{
+  "900001001": {
+    "found": [
+      {
+        "date_generale": {
+          "data": "__QUERY_DAY__",
+          "cui": 900001001,
+          "denumire": "Companie sintetică program 1",
+          "adresa": "Domiciliu fiscal sintetic A",
+          "telefon": "",
+          "fax": "",
+          "codPostal": "",
+          "act": "",
+          "stare_inregistrare": "",
+          "data_inreg_Reg_RO_e_Factura": "",
+          "organFiscalCompetent": "",
+          "forma_de_proprietate": "",
+          "forma_organizare": "",
+          "forma_juridica": "",
+          "data_inregistrare": "",
+          "statusRO_e_Factura": false,
+          "nrRegCom": "JTEST1",
+          "cod_CAEN": "0610",
+          "iban": ""
+        },
+        "inregistrare_scop_Tva": {
+          "scpTVA": true,
+          "perioade_TVA": [
+            {
+              "data_inceput_ScpTVA": "2026-01-01",
+              "data_sfarsit_ScpTVA": "",
+              "data_anul_imp_ScpTVA": "",
+              "mesaj_ScpTVA": ""
+            }
+          ]
+        },
+        "inregistrare_RTVAI": {
+          "dataActualizareTvaInc": "",
+          "dataPublicareTvaInc": "",
+          "dataInceputTvaInc": "",
+          "dataSfarsitTvaInc": "",
+          "tipActTvaInc": "",
+          "statusTvaIncasare": false
+        },
+        "stare_inactiv": {
+          "dataInactivare": "",
+          "dataReactivare": "",
+          "dataPublicare": "",
+          "dataRadiere": "",
+          "statusInactivi": false
+        },
+        "inregistrare_SplitTVA": {
+          "statusSplitTVA": false,
+          "dataInceputSplitTVA": "",
+          "dataAnulareSplitTVA": ""
+        },
+        "adresa_sediu_social": {
+          "sdenumire_Localitate": "Localitate socială",
+          "sdenumire_Judet": "",
+          "scod_Judet": "",
+          "scod_JudetAuto": "",
+          "sdetalii_Adresa": "",
+          "scod_Postal": "001234",
+          "sdenumire_Strada": "Strada sintetică socială",
+          "snumar_Strada": "01",
+          "scod_Localitate": "",
+          "stara": ""
+        },
+        "adresa_domiciliu_fiscal": {
+          "ddenumire_Localitate": "Localitate fiscală",
+          "ddenumire_Strada": "Strada sintetică fiscală",
+          "dnumar_Strada": "02",
+          "dcod_Localitate": "",
+          "ddenumire_Judet": "",
+          "dcod_Judet": "",
+          "dcod_JudetAuto": "",
+          "ddetalii_Adresa": "",
+          "dcod_Postal": "",
+          "dtara": ""
+        }
+      }
+    ],
+    "notFound": []
+  },
+  "900001002": {
+    "found": [
+      {
+        "date_generale": {
+          "data": "__QUERY_DAY__",
+          "cui": 900001002,
+          "denumire": "Companie sintetică program 2",
+          "adresa": "Domiciliu fiscal sintetic A",
+          "telefon": "",
+          "fax": "",
+          "codPostal": "",
+          "act": "",
+          "stare_inregistrare": "",
+          "data_inreg_Reg_RO_e_Factura": "",
+          "organFiscalCompetent": "",
+          "forma_de_proprietate": "",
+          "forma_organizare": "",
+          "forma_juridica": "",
+          "data_inregistrare": "",
+          "statusRO_e_Factura": false,
+          "nrRegCom": "JTEST2",
+          "cod_CAEN": "0610",
+          "iban": ""
+        },
+        "inregistrare_scop_Tva": {
+          "scpTVA": true,
+          "perioade_TVA": [
+            {
+              "data_inceput_ScpTVA": "2026-01-01",
+              "data_sfarsit_ScpTVA": "",
+              "data_anul_imp_ScpTVA": "",
+              "mesaj_ScpTVA": ""
+            }
+          ]
+        },
+        "inregistrare_RTVAI": {
+          "dataActualizareTvaInc": "",
+          "dataPublicareTvaInc": "",
+          "dataInceputTvaInc": "",
+          "dataSfarsitTvaInc": "",
+          "tipActTvaInc": "",
+          "statusTvaIncasare": false
+        },
+        "stare_inactiv": {
+          "dataInactivare": "",
+          "dataReactivare": "",
+          "dataPublicare": "",
+          "dataRadiere": "",
+          "statusInactivi": false
+        },
+        "inregistrare_SplitTVA": {
+          "statusSplitTVA": false,
+          "dataInceputSplitTVA": "",
+          "dataAnulareSplitTVA": ""
+        },
+        "adresa_sediu_social": {
+          "sdenumire_Localitate": "Localitate socială",
+          "sdenumire_Judet": "",
+          "scod_Judet": "",
+          "scod_JudetAuto": "",
+          "sdetalii_Adresa": "",
+          "scod_Postal": "001234",
+          "sdenumire_Strada": "Strada sintetică socială",
+          "snumar_Strada": "01",
+          "scod_Localitate": "",
+          "stara": ""
+        },
+        "adresa_domiciliu_fiscal": {
+          "ddenumire_Localitate": "Localitate fiscală",
+          "ddenumire_Strada": "Strada sintetică fiscală",
+          "dnumar_Strada": "02",
+          "dcod_Localitate": "",
+          "ddenumire_Judet": "",
+          "dcod_Judet": "",
+          "dcod_JudetAuto": "",
+          "ddetalii_Adresa": "",
+          "dcod_Postal": "",
+          "dtara": ""
+        }
+      }
+    ],
+    "notFound": []
+  },
+  "900001003": {
+    "found": [
+      {
+        "date_generale": {
+          "data": "__QUERY_DAY__",
+          "cui": 900001003,
+          "denumire": "Companie sintetică program 3",
+          "adresa": "Domiciliu fiscal sintetic A",
+          "telefon": "",
+          "fax": "",
+          "codPostal": "",
+          "act": "",
+          "stare_inregistrare": "",
+          "data_inreg_Reg_RO_e_Factura": "",
+          "organFiscalCompetent": "",
+          "forma_de_proprietate": "",
+          "forma_organizare": "",
+          "forma_juridica": "",
+          "data_inregistrare": "",
+          "statusRO_e_Factura": false,
+          "nrRegCom": "JTEST3",
+          "cod_CAEN": "0610",
+          "iban": ""
+        },
+        "inregistrare_scop_Tva": {
+          "scpTVA": true,
+          "perioade_TVA": [
+            {
+              "data_inceput_ScpTVA": "2026-01-01",
+              "data_sfarsit_ScpTVA": "",
+              "data_anul_imp_ScpTVA": "",
+              "mesaj_ScpTVA": ""
+            }
+          ]
+        },
+        "inregistrare_RTVAI": {
+          "dataActualizareTvaInc": "",
+          "dataPublicareTvaInc": "",
+          "dataInceputTvaInc": "",
+          "dataSfarsitTvaInc": "",
+          "tipActTvaInc": "",
+          "statusTvaIncasare": false
+        },
+        "stare_inactiv": {
+          "dataInactivare": "",
+          "dataReactivare": "",
+          "dataPublicare": "",
+          "dataRadiere": "",
+          "statusInactivi": false
+        },
+        "inregistrare_SplitTVA": {
+          "statusSplitTVA": false,
+          "dataInceputSplitTVA": "",
+          "dataAnulareSplitTVA": ""
+        },
+        "adresa_sediu_social": {
+          "sdenumire_Localitate": "Localitate socială",
+          "sdenumire_Judet": "",
+          "scod_Judet": "",
+          "scod_JudetAuto": "",
+          "sdetalii_Adresa": "",
+          "scod_Postal": "001234",
+          "sdenumire_Strada": "Strada sintetică socială",
+          "snumar_Strada": "01",
+          "scod_Localitate": "",
+          "stara": ""
+        },
+        "adresa_domiciliu_fiscal": {
+          "ddenumire_Localitate": "Localitate fiscală",
+          "ddenumire_Strada": "Strada sintetică fiscală",
+          "dnumar_Strada": "02",
+          "dcod_Localitate": "",
+          "ddenumire_Judet": "",
+          "dcod_Judet": "",
+          "dcod_JudetAuto": "",
+          "ddetalii_Adresa": "",
+          "dcod_Postal": "",
+          "dtara": ""
+        }
+      }
+    ],
+    "notFound": []
+  },
+  "900001004": {
+    "found": [
+      {
+        "date_generale": {
+          "data": "__QUERY_DAY__",
+          "cui": 900001004,
+          "denumire": "Companie sintetică program 4",
+          "adresa": "Domiciliu fiscal sintetic A",
+          "telefon": "",
+          "fax": "",
+          "codPostal": "",
+          "act": "",
+          "stare_inregistrare": "",
+          "data_inreg_Reg_RO_e_Factura": "",
+          "organFiscalCompetent": "",
+          "forma_de_proprietate": "",
+          "forma_organizare": "",
+          "forma_juridica": "",
+          "data_inregistrare": "",
+          "statusRO_e_Factura": false,
+          "nrRegCom": "JTEST4",
+          "cod_CAEN": "0610",
+          "iban": ""
+        },
+        "inregistrare_scop_Tva": {
+          "scpTVA": true,
+          "perioade_TVA": [
+            {
+              "data_inceput_ScpTVA": "2026-01-01",
+              "data_sfarsit_ScpTVA": "",
+              "data_anul_imp_ScpTVA": "",
+              "mesaj_ScpTVA": ""
+            }
+          ]
+        },
+        "inregistrare_RTVAI": {
+          "dataActualizareTvaInc": "",
+          "dataPublicareTvaInc": "",
+          "dataInceputTvaInc": "",
+          "dataSfarsitTvaInc": "",
+          "tipActTvaInc": "",
+          "statusTvaIncasare": false
+        },
+        "stare_inactiv": {
+          "dataInactivare": "",
+          "dataReactivare": "",
+          "dataPublicare": "",
+          "dataRadiere": "",
+          "statusInactivi": false
+        },
+        "inregistrare_SplitTVA": {
+          "statusSplitTVA": false,
+          "dataInceputSplitTVA": "",
+          "dataAnulareSplitTVA": ""
+        },
+        "adresa_sediu_social": {
+          "sdenumire_Localitate": "Localitate socială",
+          "sdenumire_Judet": "",
+          "scod_Judet": "",
+          "scod_JudetAuto": "",
+          "sdetalii_Adresa": "",
+          "scod_Postal": "001234",
+          "sdenumire_Strada": "Strada sintetică socială",
+          "snumar_Strada": "01",
+          "scod_Localitate": "",
+          "stara": ""
+        },
+        "adresa_domiciliu_fiscal": {
+          "ddenumire_Localitate": "Localitate fiscală",
+          "ddenumire_Strada": "Strada sintetică fiscală",
+          "dnumar_Strada": "02",
+          "dcod_Localitate": "",
+          "ddenumire_Judet": "",
+          "dcod_Judet": "",
+          "dcod_JudetAuto": "",
+          "ddetalii_Adresa": "",
+          "dcod_Postal": "",
+          "dtara": ""
+        }
+      }
+    ],
+    "notFound": []
+  },
+  "900001005": {
+    "found": [
+      {
+        "date_generale": {
+          "data": "__QUERY_DAY__",
+          "cui": 900001005,
+          "denumire": "Companie sintetică program 5",
+          "adresa": "Domiciliu fiscal sintetic A",
+          "telefon": "",
+          "fax": "",
+          "codPostal": "",
+          "act": "",
+          "stare_inregistrare": "",
+          "data_inreg_Reg_RO_e_Factura": "",
+          "organFiscalCompetent": "",
+          "forma_de_proprietate": "",
+          "forma_organizare": "",
+          "forma_juridica": "",
+          "data_inregistrare": "",
+          "statusRO_e_Factura": false,
+          "nrRegCom": "JTEST5",
+          "cod_CAEN": "0610",
+          "iban": ""
+        },
+        "inregistrare_scop_Tva": {
+          "scpTVA": true,
+          "perioade_TVA": [
+            {
+              "data_inceput_ScpTVA": "2026-01-01",
+              "data_sfarsit_ScpTVA": "",
+              "data_anul_imp_ScpTVA": "",
+              "mesaj_ScpTVA": ""
+            }
+          ]
+        },
+        "inregistrare_RTVAI": {
+          "dataActualizareTvaInc": "",
+          "dataPublicareTvaInc": "",
+          "dataInceputTvaInc": "",
+          "dataSfarsitTvaInc": "",
+          "tipActTvaInc": "",
+          "statusTvaIncasare": false
+        },
+        "stare_inactiv": {
+          "dataInactivare": "",
+          "dataReactivare": "",
+          "dataPublicare": "",
+          "dataRadiere": "",
+          "statusInactivi": false
+        },
+        "inregistrare_SplitTVA": {
+          "statusSplitTVA": false,
+          "dataInceputSplitTVA": "",
+          "dataAnulareSplitTVA": ""
+        },
+        "adresa_sediu_social": {
+          "sdenumire_Localitate": "Localitate socială",
+          "sdenumire_Judet": "",
+          "scod_Judet": "",
+          "scod_JudetAuto": "",
+          "sdetalii_Adresa": "",
+          "scod_Postal": "001234",
+          "sdenumire_Strada": "Strada sintetică socială",
+          "snumar_Strada": "01",
+          "scod_Localitate": "",
+          "stara": ""
+        },
+        "adresa_domiciliu_fiscal": {
+          "ddenumire_Localitate": "Localitate fiscală",
+          "ddenumire_Strada": "Strada sintetică fiscală",
+          "dnumar_Strada": "02",
+          "dcod_Localitate": "",
+          "ddenumire_Judet": "",
+          "dcod_Judet": "",
+          "dcod_JudetAuto": "",
+          "ddetalii_Adresa": "",
+          "dcod_Postal": "",
+          "dtara": ""
+        }
+      }
+    ],
+    "notFound": []
+  },
+  "900001006": {
+    "found": [
+      {
+        "date_generale": {
+          "data": "__QUERY_DAY__",
+          "cui": 900001006,
+          "denumire": "Companie sintetică program 6",
+          "adresa": "Domiciliu fiscal sintetic A",
+          "telefon": "",
+          "fax": "",
+          "codPostal": "",
+          "act": "",
+          "stare_inregistrare": "",
+          "data_inreg_Reg_RO_e_Factura": "",
+          "organFiscalCompetent": "",
+          "forma_de_proprietate": "",
+          "forma_organizare": "",
+          "forma_juridica": "",
+          "data_inregistrare": "",
+          "statusRO_e_Factura": false,
+          "nrRegCom": "JTEST6",
+          "cod_CAEN": "0610",
+          "iban": ""
+        },
+        "inregistrare_scop_Tva": {
+          "scpTVA": true,
+          "perioade_TVA": [
+            {
+              "data_inceput_ScpTVA": "2026-01-01",
+              "data_sfarsit_ScpTVA": "",
+              "data_anul_imp_ScpTVA": "",
+              "mesaj_ScpTVA": ""
+            }
+          ]
+        },
+        "inregistrare_RTVAI": {
+          "dataActualizareTvaInc": "",
+          "dataPublicareTvaInc": "",
+          "dataInceputTvaInc": "",
+          "dataSfarsitTvaInc": "",
+          "tipActTvaInc": "",
+          "statusTvaIncasare": false
+        },
+        "stare_inactiv": {
+          "dataInactivare": "",
+          "dataReactivare": "",
+          "dataPublicare": "",
+          "dataRadiere": "",
+          "statusInactivi": false
+        },
+        "inregistrare_SplitTVA": {
+          "statusSplitTVA": false,
+          "dataInceputSplitTVA": "",
+          "dataAnulareSplitTVA": ""
+        },
+        "adresa_sediu_social": {
+          "sdenumire_Localitate": "Localitate socială",
+          "sdenumire_Judet": "",
+          "scod_Judet": "",
+          "scod_JudetAuto": "",
+          "sdetalii_Adresa": "",
+          "scod_Postal": "001234",
+          "sdenumire_Strada": "Strada sintetică socială",
+          "snumar_Strada": "01",
+          "scod_Localitate": "",
+          "stara": ""
+        },
+        "adresa_domiciliu_fiscal": {
+          "ddenumire_Localitate": "Localitate fiscală",
+          "ddenumire_Strada": "Strada sintetică fiscală",
+          "dnumar_Strada": "02",
+          "dcod_Localitate": "",
+          "ddenumire_Judet": "",
+          "dcod_Judet": "",
+          "dcod_JudetAuto": "",
+          "ddetalii_Adresa": "",
+          "dcod_Postal": "",
+          "dtara": ""
+        }
+      }
+    ],
+    "notFound": []
+  }
+}

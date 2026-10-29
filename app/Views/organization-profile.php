@@ -2,6 +2,7 @@
 <div class="container page-space registration-page"><a class="back-link" href="/manage">← Spațiul producătorului</a><div class="eyebrow">ORGANIZAȚIA TA</div><h1 class="page-title">Profilul organizației</h1>
 <?php if ($profileError): ?><p class="notice" role="alert"><?=e($profileError)?></p><?php endif?>
 <?php if ($legalProfile): ?><section class="panel"><h2><?=e($legalProfile['legal_name'])?></h2><p>CUI <?=e($legalProfile['cui'])?> · Confirmat <?=e(ro_time($legalProfile['confirmed_at']))?></p><p class="muted">Profil fiscal din ANAF. Verificarea reprezentantului și a drepturilor GS1 se face separat.</p></section><?php else: ?><section class="panel"><h2><?=e($organization['display_name'])?></h2><p>Profilul fiscal nu este completat.</p></section><?php endif?>
+<?php if (\App\Core\Migrations::program()): ?><p><a href="/parteneri/cont">Firma ta în programul de parteneri OpenAliment</a></p><?php endif ?>
 <?php if ($p['role'] === 'owner'): ?><section class="panel"><h2><?=$legalProfile ? 'Reverifică datele firmei' : 'Adaugă profilul fiscal'?></h2><form method="post" class="form-stack"><?=csrf()?><label>CUI<input class="form-control" name="cui" inputmode="numeric" required maxlength="32" value="<?=e($legalProfile['cui'] ?? '')?>" <?=$legalProfile ? 'readonly' : ''?>></label><button class="btn btn-outline-primary" name="intent" value="check">Verifică în ANAF</button></form></section><?php endif?>
 <?php if ($anafResult): ?>
 <?php if ($anafResult['state'] !== 'found'): ?><p class="notice">CUI-ul nu a fost găsit în ANAF.</p><?php else: ?>

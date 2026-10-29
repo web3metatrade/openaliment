@@ -5,7 +5,7 @@ use App\Core\{Config,Db,Problem};
 
 /** Fixed, hash-pinned release files; never accepts uploaded code or arbitrary destinations. */
 final class OperationsAssets {
-    private const MANIFEST_SHA256='86ccab52276bdab4a0325a185768c80132c35f61d0ce4a76796142eef2ab085d';
+    private const MANIFEST_SHA256='985b08928d802080be8ed115b3e460065bdf937b10c5dcbeb3331d34044810f5';
     private const PATHS=['tools/ops/backup.php','tools/ops/restore.php','tools/ops/reconcile-erasure.php','tools/ops/monitor.py','config/backup.local.example.php','config/migrations.local.example.php','config/restore.local.example.php','config/external.local.example.php','config/anaf.local.example.php','app/Vendor/WebAuthn/LICENSE','THIRD_PARTY_NOTICES.md','release.json','LICENSING.md','tools/standards/fetch.py','tools/external-worker.php'];
     public static function payload(): array {
         $raw=file_get_contents(ROOT.'/contracts/operations-assets.json');if(!is_string($raw)||!hash_equals(self::MANIFEST_SHA256,hash('sha256',$raw)))throw new Problem(503,'operations_assets','Resursele operaționale nu corespund versiunii instalate.');$value=json_decode($raw,true,32,JSON_THROW_ON_ERROR);

@@ -10406,7 +10406,7 @@
           "scopes": {
             "type": "array",
             "minItems": 1,
-            "maxItems": 12,
+            "maxItems": 20,
             "items": {
               "type": "string",
               "enum": [
@@ -10420,6 +10420,14 @@
                 "home:read",
                 "home:write",
                 "home:manage",
+                "learning:read",
+                "learning:write",
+                "partners:read",
+                "partners:write",
+                "contributors:read",
+                "contributors:write",
+                "assets:read",
+                "assets:write",
                 "sharing:manage",
                 "sharing:write"
               ]
@@ -11633,6 +11641,5419 @@
         "required": [
           "organization_lookup_id",
           "expected_version_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLesson": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "objective": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "maxLength": 190
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "title",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "practice": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 1000
+                },
+                "maxItems": 6
+              },
+              "answer": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5
+              },
+              "explanation": {
+                "type": "string",
+                "maxLength": 3000
+              }
+            },
+            "required": [
+              "question",
+              "options",
+              "answer",
+              "explanation"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "objective",
+          "body",
+          "resources",
+          "practice"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramModule": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "specialization": {
+            "anyOf": [
+              {
+                "enum": [
+                  "erp-integration",
+                  "printing-integration",
+                  "platform-operations",
+                  "product-data"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lessons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramLesson"
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [
+          "key",
+          "title",
+          "specialization",
+          "lessons"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramManifest": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "openaliment.course.v1"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "license": {
+            "enum": [
+              "CC-BY-4.0",
+              "CC-BY-SA-4.0",
+              "CC0-1.0"
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "modules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramModule"
+            },
+            "maxItems": 30
+          },
+          "policy_version": {
+            "const": "openaliment-partners-1.0"
+          }
+        },
+        "required": [
+          "schema_version",
+          "title",
+          "version",
+          "license",
+          "summary",
+          "modules",
+          "policy_version"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPracticeDefinition": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "maxItems": 6
+          },
+          "answer": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "explanation": {
+            "type": "string",
+            "maxLength": 3000
+          }
+        },
+        "required": [
+          "question",
+          "options",
+          "answer",
+          "explanation"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAssessmentPolicy": {
+        "type": "object",
+        "properties": {
+          "blueprint": {
+            "type": "object",
+            "properties": {
+              "identity": {
+                "const": [
+                  6,
+                  20
+                ]
+              },
+              "uri": {
+                "const": [
+                  6,
+                  20
+                ]
+              },
+              "resolver": {
+                "const": [
+                  6,
+                  20
+                ]
+              },
+              "data": {
+                "const": [
+                  4,
+                  15
+                ]
+              },
+              "api": {
+                "const": [
+                  4,
+                  15
+                ]
+              },
+              "operations": {
+                "const": [
+                  4,
+                  10
+                ]
+              }
+            },
+            "required": [
+              "identity",
+              "uri",
+              "resolver",
+              "data",
+              "api",
+              "operations"
+            ],
+            "additionalProperties": false
+          },
+          "minutes": {
+            "const": 45
+          },
+          "minimum_percent": {
+            "const": 85
+          },
+          "domain_minimum_percent": {
+            "const": 70
+          },
+          "all_critical_required": {
+            "const": true
+          },
+          "retry_hours": {
+            "const": 24
+          },
+          "attempts_per_week": {
+            "const": 3
+          },
+          "validity_days": {
+            "const": 365
+          }
+        },
+        "required": [
+          "blueprint",
+          "minutes",
+          "minimum_percent",
+          "domain_minimum_percent",
+          "all_critical_required",
+          "retry_hours",
+          "attempts_per_week",
+          "validity_days"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramBankQuestion": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "domain": {
+            "enum": [
+              "identity",
+              "uri",
+              "resolver",
+              "data",
+              "api",
+              "operations"
+            ]
+          },
+          "type": {
+            "enum": [
+              "single",
+              "multiple",
+              "matching",
+              "uri"
+            ]
+          },
+          "critical": {
+            "type": "boolean"
+          },
+          "stem": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "maxLength": 40
+                },
+                "text": {
+                  "type": "string",
+                  "maxLength": 2000
+                }
+              },
+              "required": [
+                "key",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "answer": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 500
+                },
+                "maxItems": 10
+              },
+              {
+                "type": "object",
+                "maxProperties": 10,
+                "additionalProperties": {
+                  "type": "string",
+                  "maxLength": 500
+                }
+              }
+            ]
+          },
+          "explanation": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "reference": {
+            "type": "string",
+            "maxLength": 2048,
+            "format": "uri"
+          }
+        },
+        "required": [
+          "key",
+          "domain",
+          "type",
+          "critical",
+          "stem",
+          "options",
+          "answer",
+          "explanation",
+          "reference"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramBankDocument": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "openaliment.assessment.v1"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "synthetic": {
+            "type": "boolean"
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramBankQuestion"
+            },
+            "maxItems": 1000,
+            "minItems": 100
+          },
+          "policy": {
+            "$ref": "#/components/schemas/ProgramAssessmentPolicy"
+          }
+        },
+        "required": [
+          "title",
+          "version",
+          "questions"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContributorProfile": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "code",
+                "documentation",
+                "research",
+                "design",
+                "testing",
+                "translation",
+                "support",
+                "community"
+              ]
+            },
+            "maxItems": 8
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 2048,
+              "format": "uri"
+            },
+            "maxItems": 5
+          },
+          "asset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "summary",
+          "categories",
+          "links",
+          "asset_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPartnerPresentationData": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2048,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "asset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "description",
+          "services",
+          "regions",
+          "languages",
+          "website",
+          "asset_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContactData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "kind": {
+            "enum": [
+              "email",
+              "phone"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 254
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "source": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "public_consent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "value",
+          "revision",
+          "source",
+          "verified",
+          "public_consent"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCompanyObservation": {
+        "type": "object",
+        "properties": {
+          "cui": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "state": {
+            "enum": [
+              "found",
+              "not_found"
+            ]
+          },
+          "record": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AnafRecord"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "maxItems": 1000
+          },
+          "source": {
+            "$ref": "#/components/schemas/AnafSource"
+          }
+        },
+        "required": [
+          "cui",
+          "state",
+          "record",
+          "warnings",
+          "source"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCredentialPublic": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "public_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "specialization": {
+            "enum": [
+              "erp-integration",
+              "printing-integration",
+              "platform-operations",
+              "product-data"
+            ]
+          },
+          "issuer": {
+            "const": "OpenAliment"
+          },
+          "issued_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "expires_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "course_release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "policy_version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "verification_url": {
+            "type": "string",
+            "maxLength": 2048,
+            "format": "uri"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          }
+        },
+        "required": [
+          "id",
+          "public_id",
+          "state",
+          "specialization",
+          "issuer",
+          "issued_at",
+          "expires_at",
+          "course_release_id",
+          "policy_version",
+          "verification_url"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAuthorization": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "profile_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "specialization": {
+            "enum": [
+              "erp-integration",
+              "printing-integration",
+              "platform-operations",
+              "product-data"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "issuer": {
+            "const": "OpenAliment"
+          },
+          "policy_version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "issued_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "expires_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "gs1_accreditation": {
+            "const": false
+          },
+          "company": {
+            "type": "object",
+            "properties": {
+              "cui": {
+                "type": "string",
+                "maxLength": 10
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 10000
+              }
+            },
+            "required": [
+              "cui",
+              "name"
+            ],
+            "additionalProperties": false,
+            "description": "Identitatea juridică a companiei autorizate, fără contacte sau rezultate personale."
+          },
+          "verification_url": {
+            "type": "string",
+            "maxLength": 2048,
+            "format": "uri"
+          }
+        },
+        "required": [
+          "id",
+          "profile_id",
+          "specialization",
+          "state",
+          "issuer",
+          "policy_version",
+          "issued_at",
+          "expires_at",
+          "gs1_accreditation",
+          "company",
+          "verification_url"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramSavedProgress": {
+        "type": "object",
+        "properties": {
+          "lesson_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "practice_passed": {
+            "type": "boolean"
+          },
+          "position_key": {
+            "type": "string",
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "lesson_id",
+          "revision",
+          "completed",
+          "practice_passed",
+          "position_key"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramRegistration": {
+        "type": "object",
+        "properties": {
+          "display_name": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "maxLength": 190,
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 12,
+            "writeOnly": true
+          },
+          "policy_accepted": {
+            "const": true
+          }
+        },
+        "required": [
+          "display_name",
+          "email",
+          "password",
+          "policy_accepted"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramToken": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "token"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramConfirmation": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "writeOnly": true
+          },
+          "accepted": {
+            "const": true
+          }
+        },
+        "required": [
+          "token",
+          "accepted"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramVerification": {
+        "type": "object",
+        "properties": {
+          "purpose": {
+            "enum": [
+              "personal_email",
+              "partner_contact",
+              "contributor_consent",
+              "partner_invite"
+            ]
+          },
+          "object_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "email": {
+            "type": "string",
+            "maxLength": 190,
+            "format": "email"
+          }
+        },
+        "required": [
+          "purpose"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAsset": {
+        "type": "object",
+        "properties": {
+          "purpose": {
+            "enum": [
+              "avatar",
+              "logo",
+              "lab_evidence",
+              "lesson"
+            ]
+          },
+          "content_base64": {
+            "type": "string",
+            "maxLength": 2800000,
+            "minLength": 1,
+            "writeOnly": true,
+            "description": "PNG/JPEG/WebP original de cel mult 2 MiB și 4 megapixeli; serverul reencodează în PNG și elimină metadatele."
+          },
+          "rights_confirmed": {
+            "const": true
+          }
+        },
+        "required": [
+          "purpose",
+          "content_base64",
+          "rights_confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramEnrollment": {
+        "type": "object",
+        "properties": {
+          "release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "specialization": {
+            "enum": [
+              "erp-integration",
+              "printing-integration",
+              "platform-operations",
+              "product-data"
+            ]
+          },
+          "policy_accepted": {
+            "const": true
+          }
+        },
+        "required": [
+          "release_id",
+          "specialization",
+          "policy_accepted"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramProgress": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "position_key": {
+            "type": "string",
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "expected_revision",
+          "completed"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPractice": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "answer": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          }
+        },
+        "required": [
+          "expected_revision",
+          "answer"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAttempt": {
+        "type": "object",
+        "properties": {
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        },
+        "required": [
+          "enrollment_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAnswer": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "answer": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 500
+                },
+                "maxItems": 10
+              },
+              {
+                "type": "object",
+                "maxProperties": 10,
+                "additionalProperties": {
+                  "type": "string",
+                  "maxLength": 500
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "expected_revision",
+          "answer"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLabCreate": {
+        "type": "object",
+        "properties": {
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "scenario": {
+            "enum": [
+              "P01",
+              "P02",
+              "P03",
+              "P04",
+              "P05",
+              "P06"
+            ]
+          }
+        },
+        "required": [
+          "enrollment_id",
+          "scenario"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLabSave": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "payload": {
+            "type": "object",
+            "maxProperties": 20,
+            "description": "Scenariu virtual P01–P06 conform ghidului. Nu acceptă SQL, comenzi, URL-uri de callback sau execuție de cod. Max. 100 KB.",
+            "additionalProperties": true
+          },
+          "evidence_asset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "expected_revision",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramVisibility": {
+        "type": "object",
+        "properties": {
+          "public_name": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "public_name"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContributor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "code",
+                "documentation",
+                "research",
+                "design",
+                "testing",
+                "translation",
+                "support",
+                "community"
+              ]
+            },
+            "maxItems": 8
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 2048,
+              "format": "uri"
+            },
+            "maxItems": 5
+          },
+          "asset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 100,
+            "pattern": "^[a-z0-9][a-z0-9-]{2,99}$"
+          },
+          "consent": {
+            "type": "boolean"
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          }
+        },
+        "required": [
+          "name",
+          "summary",
+          "categories"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramConsent": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "consent": {
+            "const": true
+          }
+        },
+        "required": [
+          "expected_revision",
+          "consent"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCompanyCheck": {
+        "type": "object",
+        "properties": {
+          "cui": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 2,
+            "description": "CUI românesc; prefixul RO este opțional. Nu trimite CNP."
+          }
+        },
+        "required": [
+          "cui"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramApplication": {
+        "type": "object",
+        "properties": {
+          "company_check_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "cui": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "company_confirmed": {
+            "const": true
+          },
+          "previous_profile_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "company_check_id",
+          "cui",
+          "company_confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPartnerPresentation": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2048,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "asset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          }
+        },
+        "required": [
+          "description",
+          "services",
+          "expected_revision"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContact": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "kind": {
+            "enum": [
+              "email",
+              "phone"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 254
+          },
+          "public_consent": {
+            "const": true
+          }
+        },
+        "required": [
+          "expected_revision",
+          "kind",
+          "value",
+          "public_consent"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramSubmission": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "policy_accepted": {
+            "const": true
+          }
+        },
+        "required": [
+          "expected_revision",
+          "policy_accepted"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramRevision": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          }
+        },
+        "required": [
+          "expected_revision"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramReason": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1
+          },
+          "current_password": {
+            "type": "string",
+            "maxLength": 200,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContributorReview": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "action": {
+            "enum": [
+              "approve",
+              "needs_changes",
+              "suspend"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          }
+        },
+        "required": [
+          "expected_revision",
+          "action",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCourse": {
+        "type": "object",
+        "properties": {
+          "manifest": {
+            "$ref": "#/components/schemas/ProgramManifest"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          }
+        },
+        "required": [
+          "manifest"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCoursePublish": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "rights_confirmed": {
+            "const": true
+          }
+        },
+        "required": [
+          "expected_revision",
+          "rights_confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramBank": {
+        "type": "object",
+        "properties": {
+          "bank": {
+            "$ref": "#/components/schemas/ProgramBankDocument"
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          }
+        },
+        "required": [
+          "bank"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramBankPublish": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "course_release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "reviewed": {
+            "const": true
+          },
+          "rights_confirmed": {
+            "const": true
+          }
+        },
+        "required": [
+          "expected_revision",
+          "course_release_id",
+          "reviewed",
+          "rights_confirmed"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLabReview": {
+        "type": "object",
+        "properties": {
+          "identity_points": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 25
+          },
+          "history_points": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 25
+          },
+          "security_points": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 25
+          },
+          "explanation_points": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 25
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1
+          },
+          "mandatory_checks": {
+            "type": "boolean"
+          },
+          "physical_proof_reviewed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "identity_points",
+          "history_points",
+          "security_points",
+          "explanation_points",
+          "reason",
+          "mandatory_checks"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPartnerReview": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "action": {
+            "enum": [
+              "approve",
+              "needs_changes",
+              "reject",
+              "suspend",
+              "withdraw"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1
+          },
+          "representation_verified": {
+            "type": "boolean"
+          },
+          "end_previous_affiliation": {
+            "type": "boolean"
+          },
+          "accept_existing_company": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "expected_revision",
+          "action",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPhoneReview": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          }
+        },
+        "required": [
+          "expected_revision",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramDecision": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "enum": [
+              "suspend",
+              "revoke",
+              "restore"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1
+          }
+        },
+        "required": [
+          "action",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramResultDecision": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1
+          },
+          "invalid_question_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{32}$"
+            },
+            "maxItems": 30
+          }
+        },
+        "required": [
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAccommodation": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "assessment_seconds": {
+            "type": "integer",
+            "minimum": 2700,
+            "maximum": 10800
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 1
+          }
+        },
+        "required": [
+          "expected_revision",
+          "assessment_seconds",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramStaff": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "role": {
+            "enum": [
+              "community_editor",
+              "course_editor",
+              "course_publisher",
+              "exam_reviewer",
+              "partner_reviewer"
+            ]
+          },
+          "current_password": {
+            "type": "string",
+            "maxLength": 200,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "user_id",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramEvents": {
+        "type": "object",
+        "properties": {
+          "object_kind": {
+            "enum": [
+              "contributor",
+              "partner_application",
+              "partner_authorization",
+              "credential",
+              "assessment_result",
+              "assessment_attempt",
+              "lab",
+              "enrollment",
+              "course",
+              "assessment_bank",
+              "assessment_release",
+              "staff"
+            ]
+          },
+          "object_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        },
+        "required": [
+          "object_kind",
+          "object_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramEmpty": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "ProgramPassword": {
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string",
+            "maxLength": 200,
+            "writeOnly": true
+          },
+          "new_password": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 12,
+            "writeOnly": true
+          },
+          "confirmation": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 12,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "current_password",
+          "new_password",
+          "confirmation"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCurrentPassword": {
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string",
+            "maxLength": 200,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "current_password"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramSecurityUpdated": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "access_revoked": {
+            "const": true
+          },
+          "csrf": {
+            "type": "string",
+            "maxLength": 64,
+            "writeOnly": true,
+            "description": "Token CSRF al sesiunii rotite; păstrează-l numai în clientul contului, fără logare sau publicare."
+          }
+        },
+        "required": [
+          "id",
+          "access_revoked",
+          "csrf"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPositionsImported": {
+        "type": "object",
+        "properties": {
+          "saved_positions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "credentials_accepted": {
+            "const": 0
+          },
+          "completion_accepted": {
+            "const": false
+          }
+        },
+        "required": [
+          "saved_positions",
+          "credentials_accepted",
+          "completion_accepted"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCreatedAccount": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "email_verified": {
+            "type": "boolean"
+          },
+          "next": {
+            "type": "string",
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "id",
+          "email_verified",
+          "next"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramVerificationSent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "const": "sent"
+          },
+          "expires_in": {
+            "const": 1800
+          }
+        },
+        "required": [
+          "id",
+          "state",
+          "expires_in"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramVerificationPreview": {
+        "type": "object",
+        "properties": {
+          "purpose": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "expires_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "details": {
+            "anyOf": [
+              {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ProgramContributorProfile"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "company": {
+                        "type": "string",
+                        "maxLength": 10000
+                      }
+                    },
+                    "required": [
+                      "company"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "purpose",
+          "expires_at",
+          "details"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramVerificationConfirmed": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "purpose": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "state": {
+            "const": "confirmed"
+          },
+          "next": {
+            "type": "string",
+            "maxLength": 200,
+            "pattern": "^/[^/].*"
+          }
+        },
+        "required": [
+          "id",
+          "purpose",
+          "state",
+          "next"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramMe": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "email": {
+            "type": "string",
+            "maxLength": 190,
+            "format": "email"
+          },
+          "email_verified": {
+            "type": "boolean"
+          },
+          "specializations": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "erp-integration",
+                "printing-integration",
+                "platform-operations",
+                "product-data"
+              ]
+            },
+            "maxItems": 4
+          },
+          "policy_version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "maxItems": 10
+          },
+          "is_admin": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "email_verified",
+          "specializations",
+          "policy_version",
+          "roles",
+          "is_admin"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAssetMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "purpose": {
+            "type": "string",
+            "maxLength": 30
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "mime": {
+            "const": "image/png"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "id",
+          "purpose",
+          "state",
+          "mime",
+          "bytes",
+          "width",
+          "height",
+          "url",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramState": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 30
+          }
+        },
+        "required": [
+          "id",
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCoursePublic": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ProgramManifest"
+          },
+          "state": {
+            "const": "published"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "release_id",
+          "manifest",
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCourseRelease": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "course_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ProgramManifest"
+          }
+        },
+        "required": [
+          "id",
+          "course_id",
+          "state",
+          "manifest"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLessonPublic": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "objective": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "maxLength": 190
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "title",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "practice": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 1000
+                },
+                "maxItems": 6
+              },
+              "answer": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5
+              },
+              "explanation": {
+                "type": "string",
+                "maxLength": 3000
+              }
+            },
+            "required": [
+              "question",
+              "options",
+              "answer",
+              "explanation"
+            ],
+            "additionalProperties": false
+          },
+          "release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "module": {
+            "type": "string",
+            "maxLength": 190
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "objective",
+          "body",
+          "resources",
+          "practice",
+          "release_id",
+          "module"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLessonEnrolled": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "objective": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "maxLength": 190
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "title",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "practice": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 1000
+                },
+                "maxItems": 6
+              },
+              "answer": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5
+              },
+              "explanation": {
+                "type": "string",
+                "maxLength": 3000
+              }
+            },
+            "required": [
+              "question",
+              "options",
+              "answer",
+              "explanation"
+            ],
+            "additionalProperties": false
+          },
+          "module": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "module_key": {
+            "type": "string",
+            "maxLength": 40
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "objective",
+          "body",
+          "resources",
+          "practice",
+          "module",
+          "module_key"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCourseDraft": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "current_release_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ProgramManifest"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "revision",
+          "state",
+          "current_release_id",
+          "manifest"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramEnrollmentSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "specialization": {
+            "enum": [
+              "erp-integration",
+              "printing-integration",
+              "platform-operations",
+              "product-data"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "assessment_seconds": {
+            "type": "integer",
+            "minimum": 2700,
+            "maximum": 10800
+          }
+        },
+        "required": [
+          "id",
+          "release_id",
+          "specialization",
+          "state",
+          "revision",
+          "assessment_seconds"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramEnrollmentData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "specialization": {
+            "enum": [
+              "erp-integration",
+              "printing-integration",
+              "platform-operations",
+              "product-data"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "policy_version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "assessment_seconds": {
+            "type": "integer",
+            "minimum": 2700,
+            "maximum": 10800
+          },
+          "theory_result_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lessons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramLessonEnrolled"
+            },
+            "maxItems": 200
+          },
+          "progress": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramSavedProgress"
+            },
+            "maxItems": 200
+          },
+          "course_ref": {
+            "type": "object",
+            "properties": {
+              "slug": {
+                "type": "string",
+                "maxLength": 100
+              },
+              "version": {
+                "type": "string",
+                "maxLength": 40
+              },
+              "sha256": {
+                "type": "string",
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "slug",
+              "version",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "release_id",
+          "specialization",
+          "state",
+          "policy_version",
+          "revision",
+          "assessment_seconds",
+          "theory_result_id",
+          "lessons",
+          "progress",
+          "course_ref"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramProgressSaved": {
+        "type": "object",
+        "properties": {
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "lesson_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "practice_passed": {
+            "type": "boolean"
+          },
+          "feedback": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 3000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "enrollment_id",
+          "lesson_id",
+          "revision",
+          "completed",
+          "practice_passed",
+          "feedback"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAttemptData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "due_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "result_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "server_time": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramAttemptItem"
+            },
+            "maxItems": 30
+          }
+        },
+        "required": [
+          "id",
+          "enrollment_id",
+          "state",
+          "due_at",
+          "result_id",
+          "server_time",
+          "items"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAttemptItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "question": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "single",
+                  "multiple",
+                  "matching",
+                  "uri"
+                ]
+              },
+              "stem": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 40
+                    },
+                    "text": {
+                      "type": "string",
+                      "maxLength": 2000
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 10
+              }
+            },
+            "required": [
+              "type",
+              "stem",
+              "options"
+            ],
+            "additionalProperties": false
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "answer": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "maxItems": 10
+                  },
+                  {
+                    "type": "object",
+                    "maxProperties": 10,
+                    "additionalProperties": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "position",
+          "question",
+          "revision",
+          "answer"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAnswerSaved": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "saved": {
+            "const": true
+          }
+        },
+        "required": [
+          "id",
+          "revision",
+          "saved"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "attempt_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "score_basis_points": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "critical_passed": {
+            "type": "boolean"
+          },
+          "details": {
+            "type": "object",
+            "properties": {
+              "domains": {
+                "type": "object",
+                "properties": {
+                  "identity": {
+                    "type": "object",
+                    "properties": {
+                      "correct": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "total": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "correct",
+                      "total"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "uri": {
+                    "type": "object",
+                    "properties": {
+                      "correct": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "total": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "correct",
+                      "total"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "resolver": {
+                    "type": "object",
+                    "properties": {
+                      "correct": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "total": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "correct",
+                      "total"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "correct": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "total": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "correct",
+                      "total"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "api": {
+                    "type": "object",
+                    "properties": {
+                      "correct": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "total": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "correct",
+                      "total"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "operations": {
+                    "type": "object",
+                    "properties": {
+                      "correct": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "total": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "correct",
+                      "total"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "identity",
+                  "uri",
+                  "resolver",
+                  "data",
+                  "api",
+                  "operations"
+                ],
+                "additionalProperties": false
+              },
+              "policy": {
+                "$ref": "#/components/schemas/ProgramAssessmentPolicy"
+              },
+              "invalid_question_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "maxItems": 30
+              }
+            },
+            "required": [
+              "domains",
+              "policy"
+            ],
+            "additionalProperties": false
+          },
+          "appeal": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "state": {
+                    "type": "string",
+                    "maxLength": 24
+                  },
+                  "at": {
+                    "type": "string",
+                    "maxLength": 32,
+                    "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+                  },
+                  "new_result_id": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{32}$"
+                  }
+                },
+                "required": [
+                  "reason",
+                  "state",
+                  "at"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "learner": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "attempt_id",
+          "enrollment_id",
+          "version",
+          "score_basis_points",
+          "passed",
+          "critical_passed",
+          "details",
+          "appeal"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLab": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "scenario": {
+            "type": "string",
+            "maxLength": 3
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "payload": {
+            "type": "object",
+            "maxProperties": 20,
+            "description": "Scenariu virtual P01–P06 conform ghidului. Nu acceptă SQL, comenzi, URL-uri de callback sau execuție de cod. Max. 100 KB.",
+            "additionalProperties": true
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "maxLength": 300
+                },
+                "passed": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "name",
+                "passed"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 30
+          },
+          "review": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "object",
+                    "properties": {
+                      "identity": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 25
+                      },
+                      "history": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 25
+                      },
+                      "security": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 25
+                      },
+                      "explanation": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 25
+                      }
+                    },
+                    "required": [
+                      "identity",
+                      "history",
+                      "security",
+                      "explanation"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "passed": {
+                    "type": "boolean"
+                  },
+                  "mandatory_checks": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 4000
+                  }
+                },
+                "required": [
+                  "points",
+                  "passed",
+                  "mandatory_checks",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence_asset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "simulation": {
+            "const": true
+          },
+          "learner": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "enrollment_id",
+          "scenario",
+          "revision",
+          "state",
+          "payload",
+          "checks",
+          "review",
+          "evidence_asset_id",
+          "simulation"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCredentialPrivate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "public_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "specialization": {
+            "enum": [
+              "erp-integration",
+              "printing-integration",
+              "platform-operations",
+              "product-data"
+            ]
+          },
+          "issuer": {
+            "const": "OpenAliment"
+          },
+          "issued_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "expires_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "course_release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "policy_version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "verification_url": {
+            "type": "string",
+            "maxLength": 2048,
+            "format": "uri"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "result_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        },
+        "required": [
+          "id",
+          "public_id",
+          "state",
+          "specialization",
+          "issuer",
+          "issued_at",
+          "expires_at",
+          "course_release_id",
+          "policy_version",
+          "verification_url",
+          "enrollment_id",
+          "result_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContributorPublic": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProgramContributorProfile"
+          },
+          "state": {
+            "const": "published"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "profile",
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContributorPrivate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProgramContributorProfile"
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "submitted_revision": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "consented": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "profile",
+          "state",
+          "revision",
+          "submitted_revision",
+          "consented"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramCompanyCheckResult": {
+        "type": "object",
+        "properties": {
+          "cui": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "state": {
+            "enum": [
+              "found",
+              "not_found"
+            ]
+          },
+          "record": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AnafRecord"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "maxItems": 1000
+          },
+          "source": {
+            "$ref": "#/components/schemas/AnafSource"
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "expires_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          }
+        },
+        "required": [
+          "cui",
+          "state",
+          "record",
+          "warnings",
+          "source",
+          "id",
+          "expires_at"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPartnerApplication": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "tenant_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "profile_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "previous_profile_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "identity_verified": {
+            "type": "boolean"
+          },
+          "presentation": {
+            "$ref": "#/components/schemas/ProgramPartnerPresentationData"
+          },
+          "company": {
+            "$ref": "#/components/schemas/ProgramCompanyObservation"
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramContactData"
+            },
+            "maxItems": 10
+          },
+          "decision": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "at": {
+                    "type": "string",
+                    "maxLength": 32,
+                    "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+                  }
+                },
+                "required": [
+                  "action",
+                  "reason",
+                  "at"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "maxItems": 20
+          },
+          "applicant": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 120
+              },
+              "email": {
+                "type": "string",
+                "maxLength": 190,
+                "format": "email"
+              },
+              "email_verified": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "email",
+              "email_verified"
+            ],
+            "additionalProperties": false
+          },
+          "existing_profile": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{32}$"
+                  },
+                  "cui": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 190
+                  }
+                },
+                "required": [
+                  "id",
+                  "cui",
+                  "name"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "tenant_id",
+          "profile_id",
+          "previous_profile_id",
+          "revision",
+          "state",
+          "identity_verified",
+          "presentation",
+          "company",
+          "contacts",
+          "decision",
+          "requirements"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPartnerPublic": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "slug": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "cui": {
+            "type": "string",
+            "maxLength": 10
+          },
+          "country": {
+            "const": "RO"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "maxItems": 20
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "asset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "maxLength": 20
+                },
+                "value": {
+                  "type": "string",
+                  "maxLength": 254
+                },
+                "source": {
+                  "type": "string",
+                  "maxLength": 24
+                },
+                "verified": {
+                  "const": true
+                }
+              },
+              "required": [
+                "kind",
+                "value",
+                "source",
+                "verified"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10
+          },
+          "authorizations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramAuthorization"
+            },
+            "maxItems": 100
+          },
+          "fiscal_checked_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "cui",
+          "country",
+          "description",
+          "services",
+          "regions",
+          "languages",
+          "website",
+          "asset_id",
+          "contacts",
+          "authorizations",
+          "fiscal_checked_at"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAffiliation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "profile_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "user_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "started_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "ended_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 32,
+                "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "profile_id",
+          "user_id",
+          "role",
+          "state",
+          "started_at",
+          "ended_at"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPartnerRefresh": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "maxItems": 20
+          },
+          "company": {
+            "$ref": "#/components/schemas/ProgramCompanyObservation"
+          }
+        },
+        "required": [
+          "id",
+          "requirements",
+          "company"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramBankSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 190
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "current_release_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "revision",
+          "current_release_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramBankDraft": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "current_release_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "bank": {
+            "$ref": "#/components/schemas/ProgramBankDocument"
+          }
+        },
+        "required": [
+          "id",
+          "revision",
+          "current_release_id",
+          "bank"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramBankPublished": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "bank_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "course_release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "const": "published"
+          },
+          "question_count": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 1000
+          }
+        },
+        "required": [
+          "id",
+          "bank_id",
+          "course_release_id",
+          "state",
+          "question_count"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAccommodationSaved": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "assessment_seconds": {
+            "type": "integer",
+            "minimum": 2700,
+            "maximum": 10800
+          }
+        },
+        "required": [
+          "id",
+          "revision",
+          "assessment_seconds"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramStaffGrant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "user_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "role",
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "action": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "details": {
+            "type": "object",
+            "description": "Detalii de audit aprobate pentru rolul delegat; fără chei, tokenuri sau răspunsuri corecte.",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "id",
+          "action",
+          "at",
+          "actor_id",
+          "details"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramWorker": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "state": {
+                "enum": [
+                  "not_installed",
+                  "busy"
+                ]
+              }
+            },
+            "required": [
+              "state"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "state": {
+                "const": "completed"
+              },
+              "expired_attempts": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "fiscal": {
+                "type": "string",
+                "maxLength": 24
+              },
+              "receipts_removed": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notification": {
+                "type": "string",
+                "maxLength": 24
+              },
+              "images_purged": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "evidence_minimized": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "state",
+              "expired_attempts",
+              "fiscal",
+              "receipts_removed",
+              "notification",
+              "images_purged",
+              "evidence_minimized"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "ProgramBankEdition": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "bank_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "course_release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "sha256": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bank": {
+            "$ref": "#/components/schemas/ProgramBankDocument"
+          }
+        },
+        "required": [
+          "id",
+          "bank_id",
+          "course_release_id",
+          "version",
+          "state",
+          "sha256",
+          "bank"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramContributorExport": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "openaliment.contributor-export.v1"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProgramContributorPrivate"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramEvent"
+            },
+            "maxItems": 500
+          }
+        },
+        "required": [
+          "schema_version",
+          "profile",
+          "history"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramLearnerExport": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "openaliment.learner-export.v1"
+          },
+          "exported_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "authoritative_for_authorization": {
+            "const": false
+          },
+          "learner": {
+            "$ref": "#/components/schemas/ProgramMe"
+          },
+          "enrollments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "release_id": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "specialization": {
+                  "enum": [
+                    "erp-integration",
+                    "printing-integration",
+                    "platform-operations",
+                    "product-data"
+                  ]
+                },
+                "state": {
+                  "type": "string",
+                  "maxLength": 24
+                },
+                "policy_version": {
+                  "type": "string",
+                  "maxLength": 40
+                },
+                "revision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+                },
+                "assessment_seconds": {
+                  "type": "integer",
+                  "minimum": 2700,
+                  "maximum": 10800
+                },
+                "theory_result_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "progress": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProgramSavedProgress"
+                  },
+                  "maxItems": 200
+                },
+                "course_ref": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "version": {
+                      "type": "string",
+                      "maxLength": 40
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "version",
+                    "sha256"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "id",
+                "release_id",
+                "specialization",
+                "state",
+                "policy_version",
+                "revision",
+                "assessment_seconds",
+                "theory_result_id",
+                "progress",
+                "course_ref"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramResult"
+            },
+            "maxItems": 500
+          },
+          "credentials": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramCredentialPrivate"
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "schema_version",
+          "exported_at",
+          "authoritative_for_authorization",
+          "learner",
+          "enrollments",
+          "results",
+          "credentials"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramImportPreview": {
+        "type": "object",
+        "properties": {
+          "package": {
+            "$ref": "#/components/schemas/ProgramLearnerExport"
+          }
+        },
+        "required": [
+          "package"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramImportChecked": {
+        "type": "object",
+        "properties": {
+          "valid": {
+            "const": true
+          },
+          "enrollment_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "credentials_accepted": {
+            "const": 0
+          },
+          "completion_accepted": {
+            "const": false
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "valid",
+          "enrollment_count",
+          "credentials_accepted",
+          "completion_accepted",
+          "note"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPartnerExport": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "openaliment.partner-export.v1"
+          },
+          "exported_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "application": {
+            "$ref": "#/components/schemas/ProgramPartnerApplication"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "action": {
+                  "type": "string",
+                  "maxLength": 40
+                },
+                "at": {
+                  "type": "string",
+                  "maxLength": 32,
+                  "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+                },
+                "details": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "required": [
+                "id",
+                "action",
+                "at",
+                "details"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 500
+          },
+          "credentials_transferred": {
+            "const": false
+          },
+          "producer_data_transferred": {
+            "const": false
+          }
+        },
+        "required": [
+          "schema_version",
+          "exported_at",
+          "application",
+          "history",
+          "credentials_transferred",
+          "producer_data_transferred"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramOAuthClient": {
+        "$ref": "#/components/schemas/OAuthClient"
+      },
+      "ProgramClient": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "redirect_uris": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "maxItems": 10
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "maxItems": 20
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "redirect_uris",
+          "scopes",
+          "active",
+          "created_at"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramClientCreated": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "client_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "client_type": {
+            "const": "public"
+          },
+          "token_endpoint_auth_method": {
+            "const": "none"
+          },
+          "redirect_uris": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 2048
+            },
+            "maxItems": 10
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [
+          "id",
+          "client_id",
+          "client_type",
+          "token_endpoint_auth_method",
+          "redirect_uris",
+          "scopes"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramGrant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "client_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "client_name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "maxItems": 20
+          },
+          "expires_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          }
+        },
+        "required": [
+          "id",
+          "client_id",
+          "client_name",
+          "scopes",
+          "expires_at",
+          "state"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAssetContent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "purpose": {
+            "type": "string",
+            "maxLength": 30
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "mime": {
+            "const": "image/png"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "content_base64": {
+            "type": "string",
+            "maxLength": 2800000
+          }
+        },
+        "required": [
+          "id",
+          "purpose",
+          "state",
+          "mime",
+          "bytes",
+          "width",
+          "height",
+          "url",
+          "sha256",
+          "content_base64"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramAdminEnrollment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "release_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "specialization": {
+            "enum": [
+              "erp-integration",
+              "printing-integration",
+              "platform-operations",
+              "product-data"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "assessment_seconds": {
+            "type": "integer",
+            "minimum": 2700,
+            "maximum": 10800
+          },
+          "user_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          }
+        },
+        "required": [
+          "id",
+          "release_id",
+          "specialization",
+          "state",
+          "revision",
+          "assessment_seconds",
+          "user_id"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramReviewItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "question": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "single",
+                  "multiple",
+                  "matching",
+                  "uri"
+                ]
+              },
+              "stem": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 40
+                    },
+                    "text": {
+                      "type": "string",
+                      "maxLength": 2000
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 10
+              }
+            },
+            "required": [
+              "type",
+              "stem",
+              "options"
+            ],
+            "additionalProperties": false
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Revizia citită înaintea modificării; 409 cere recitirea resursei."
+          },
+          "answer": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "maxItems": 10
+                  },
+                  {
+                    "type": "object",
+                    "maxProperties": 10,
+                    "additionalProperties": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "marking": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "maxItems": 10
+                  },
+                  {
+                    "type": "object",
+                    "maxProperties": 10,
+                    "additionalProperties": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  }
+                ]
+              },
+              "explanation": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "reference": {
+                "type": "string",
+                "maxLength": 2048
+              }
+            },
+            "required": [
+              "answer",
+              "explanation",
+              "reference"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "position",
+          "question",
+          "revision",
+          "answer",
+          "marking"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramReviewAttempt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "enrollment_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "state": {
+            "type": "string",
+            "maxLength": 24
+          },
+          "due_at": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "result_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "server_time": {
+            "type": "string",
+            "maxLength": 32,
+            "description": "Moment UTC în forma YYYY-MM-DD HH:mm:ss. Convertește explicit pentru afișare locală."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramReviewItem"
+            },
+            "maxItems": 30
+          },
+          "learner_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "private_review": {
+            "const": true
+          }
+        },
+        "required": [
+          "id",
+          "enrollment_id",
+          "state",
+          "due_at",
+          "result_id",
+          "server_time",
+          "items",
+          "learner_id",
+          "private_review"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageCoursePublic": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramCoursePublic"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageEnrollmentSummary": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramEnrollmentSummary"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPagePartnerApplication": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramPartnerApplication"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageBankSummary": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramBankSummary"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPagePartnerPublic": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramPartnerPublic"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageContributorPrivate": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramContributorPrivate"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageEvent": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramEvent"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramResult"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageAffiliation": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramAffiliation"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageCredentialPrivate": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramCredentialPrivate"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageAdminEnrollment": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramAdminEnrollment"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageStaffGrant": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramStaffGrant"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramItemsContributorPrivate": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramContributorPrivate"
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramItemsClient": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramClient"
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageContributorPublic": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramContributorPublic"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramItemsPartnerApplication": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramPartnerApplication"
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageCourseDraft": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramCourseDraft"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramPageLab": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramLab"
+            },
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "has_more": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor",
+          "has_more",
+          "limit"
+        ],
+        "additionalProperties": false
+      },
+      "ProgramItemsGrant": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgramGrant"
+            },
+            "maxItems": 200
+          }
+        },
+        "required": [
+          "items"
         ],
         "additionalProperties": false
       }

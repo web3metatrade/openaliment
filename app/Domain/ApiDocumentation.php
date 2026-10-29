@@ -29,7 +29,13 @@ final class ApiDocumentation {
     }
     public static function operation(array $page): array {
         $spec=json_decode(file_get_contents(ROOT.'/contracts/platform-openapi.json'),true,64,JSON_THROW_ON_ERROR);
-        return ['operation'=>$spec['paths'][$page['endpoint']][strtolower($page['method'])],'schemas'=>$spec['components']['schemas']];
+        $operation=$spec['paths'][$page['endpoint']][strtolower($page['method'])];
+        foreach($operation['responses']as$status=>$response){
+            if(!isset($response['$ref']))continue;
+            if(!preg_match('~\A#/components/responses/([A-Za-z0-9_-]+)\z~D',$response['$ref'],$match)||!isset($spec['components']['responses'][$match[1]]))throw new Problem(503,'documentation_unavailable','Descrierea răspunsului nu este disponibilă temporar.');
+            $operation['responses'][$status]=array_replace($spec['components']['responses'][$match[1]],array_diff_key($response,['$ref'=>true]));
+        }
+        return ['operation'=>$operation,'schemas'=>$spec['components']['schemas']];
     }
     public static function schema(array $schema,array $schemas): array {
         $ref=$schema['$ref']??'';return str_starts_with($ref,'#/components/schemas/')?($schemas[basename($ref)]??$schema):$schema;

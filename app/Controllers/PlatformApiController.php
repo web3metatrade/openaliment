@@ -9,6 +9,7 @@ final class PlatformApiController {
         $route=ApiRoutes::find($method==='HEAD'?'GET':$method,$path);
         if(!$route)throw new Problem(404,'route','Operațiunea API nu a fost găsită.');
         $handler=$route['handler'];$id=$route['resource_id'];$p=null;
+        if(str_starts_with($handler,'program.')){ProgramController::api($method,$route);return;}
         if(str_starts_with($handler,'anaf.')){RegistrationController::api($method,$route);return;}
         if(str_starts_with($handler,'external.')){ExternalSourcesController::api($method,$route);return;}
         if(str_starts_with($handler,'standards.')){Gs1StandardsController::api($method,$route);return;}

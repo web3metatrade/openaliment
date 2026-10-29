@@ -17,7 +17,7 @@ final class PublicController {
             Http::sameOrigin();
             if($path==='/feedback'){$d=$_POST;$d['consent']=isset($d['consent']);$result=Community::feedback($d);Http::view('message',['title'=>'Feedback înregistrat','message'=>'Mulțumim. Observația ta a fost trimisă producătorului pentru revizuire.']);return;}
             Session::verify();
-            if($path==='/login'){$return=$_SESSION['oauth_return']??$_SESSION['application_return']??'/manage';Accounts::login($_POST);$next=is_string($return)&&preg_match('~\A/(?:oauth/authorize\?request=[a-f0-9]{32}|developers/marketplace(?:/[a-f0-9]{32})?|manage/printing)\z~D',$return)?$return:'/manage';$u=Auth::user();if($u&&\App\Domain\Passkeys::required($u)){$_SESSION['mfa_return']=$next;Http::redirect('/account/verify');}Http::redirect($next);}
+            if($path==='/login'){$return=$_SESSION['oauth_return']??$_SESSION['application_return']??'/manage';Accounts::login($_POST);$next=is_string($return)&&preg_match('~\A/(?:oauth/authorize\?request=[a-f0-9]{32}|developers/marketplace(?:/[a-f0-9]{32})?|manage/printing|invatare/cont|parteneri/cont|contribuitori/cont|program/confirmare)\z~D',$return)?$return:((($logged=Auth::user())&&\App\Core\Migrations::program())?\App\Domain\ProgramAccess::home($logged):'/manage');$u=Auth::user();if($u&&\App\Domain\Passkeys::required($u)){$_SESSION['mfa_return']=$next;Http::redirect('/account/verify');}Http::redirect($next);}
             if($path==='/register'){Auth::rate('register|'.\App\Core\Api::clientIp(),5,3600);$r=Accounts::register($_POST);Session::login($r['id']);Http::redirect('/manage');}
             if($path==='/logout'){Session::start();\App\Domain\ProducerSessions::endCurrent();$_SESSION=[];session_destroy();setcookie('oa_session','',['expires'=>time()-3600,'path'=>'/','secure'=>Config::get('session_secure'),'httponly'=>true,'samesite'=>'Lax']);Http::redirect('/');}
             if(preg_match('~^/proposals/([a-f0-9]{32})/vote$~',$path,$m)){$expected=$_POST['expected_mutation_version']??null;if($expected!==null&&(!is_string($expected)||!ctype_digit($expected)||strlen($expected)>10))throw new Problem(422,'vote_version','Versiunea votului este incorectă.');Community::vote($m[1],($_POST['vote']??'')==='1',$expected===null?null:(int)$expected);Http::redirect('/produse');}
@@ -37,7 +37,7 @@ final class PublicController {
         if($path==='/gs1-digital-link'){Http::view('digital-link-guide');return;}
         if($path==='/login'||$path==='/register'){
             \App\Core\Api::limit('auth');
-            if($existing=Auth::user())Http::redirect(\App\Domain\Passkeys::required($existing)&&empty($_SESSION['mfa_verified_at'])?'/account/verify':'/manage');
+            if($existing=Auth::user())Http::redirect(\App\Domain\Passkeys::required($existing)&&empty($_SESSION['mfa_verified_at'])?'/account/verify':(\App\Core\Migrations::program()?\App\Domain\ProgramAccess::home($existing):'/manage'));
             Http::view('auth',['mode'=>$path==='/login'?'login':'register','title'=>$path==='/login'?'Intră în cont':'Înregistrează producătorul']);return;
         }
         if($path==='/produse'){

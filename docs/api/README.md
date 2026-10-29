@@ -1,6 +1,6 @@
 # Documentația API
 
-Portalul este disponibil la [openaliment.ro/api/docs](https://openaliment.ro/api/docs). Fiecare operație din contractul agregat și fiecare ghid au propria pagină. Contractul versiunii 0.8.0 auditate include 294 de operații, dintre care 36 pentru surse externe; aceste numere descriu codul și nu confirmă instalarea în producție. Navigarea grupează referința pe resurse și separă compatibilitatea v1. Căutarea folosește titlurile, metodele, adresele și identificatorii operațiilor. Disponibilitatea unei funcții se verifică în manifestul instanței.
+Portalul este disponibil la [openaliment.ro/api/docs](https://openaliment.ro/api/docs). Fiecare operație din contractul agregat și fiecare ghid au propria pagină. Contractul versiunii 0.10.0 include 410 operații, dintre care 109 pentru contribuitori, formare și parteneri și 36 pentru surse externe; aceste numere descriu codul și nu confirmă instalarea în producție. Navigarea grupează referința pe resurse și separă compatibilitatea v1. Căutarea folosește titlurile, metodele, adresele și identificatorii operațiilor. Disponibilitatea unei funcții se verifică în manifestul instanței.
 
 ## Pagini și formate
 
@@ -17,7 +17,7 @@ Legăturile către asistenți conțin numai adresa publică a paginii Markdown �
 
 ## Întreținere
 
-Sursa ghidurilor este [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md), iar introducerea este [pages/overview.md](pages/overview.md). Sursa operațiilor este [platform-openapi.json](../../contracts/platform-openapi.json), generat din registru și contractele active. Explicațiile și proiecțiile de răspuns sunt întreținute în `tools/build/api_reference.py`, cu metadatele declarative din `docs/api/reference/metadata.json`. Cele patru ghiduri aprofundate au surse în `docs/api/pages/`. Nu edita manual contractele generate.
+Sursa ghidurilor este [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md), iar introducerea este [pages/overview.md](pages/overview.md). Sursa operațiilor este [platform-openapi.json](../../contracts/platform-openapi.json), generat din registru și contractele active. Explicațiile și proiecțiile de răspuns sunt întreținute în `tools/build/api_reference.py`, cu metadatele declarative din `docs/api/reference/metadata.json`. Ghidurile aprofundate au surse în `docs/api/pages/`. Registrul programului este `contracts/program/routes.json`, cu schemele și exemplele în `tools/build/program_reference.py`; matricea se regenerează prin `python tools/build/program_matrix.py`. Nu edita manual contractele generate.
 
 Detaliile publice despre resolver, sincronizare, conectoare, transfer și compatibilitate sunt întreținute separat în `docs/api/sections/`, cu maparea explicită `DETAILS`. Rapoartele interne `GS1_IMPLEMENTATION.md`, `INTEGRARI_PARTENERI.md`, `ACASA_SINCRONIZARE.md`, `IMPORT_EXPORT.md` și `API.md` nu sunt incluse în portal. Planurile, rapoartele QA și instrucțiunile de dezvoltare aparțin documentației repository-ului; ghidurile publice descriu contractul și comportamentul disponibil. Păstrează avertizările reale despre demonstrații, date necunoscute și funcții indisponibile.
 

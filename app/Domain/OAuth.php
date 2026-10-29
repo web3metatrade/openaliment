@@ -5,7 +5,7 @@ use App\Core\{Api,Auth,Config,Db,Http,Problem,Session};
 
 /** Opaque, revocable grants. PKCE S256 is mandatory for every public client. */
 final class OAuth {
-    public const SCOPES=['read','write','publish','alerts','export','import','community','sharing:manage','sharing:write','home:read','home:write','home:manage'];
+    public const SCOPES=['read','write','publish','alerts','export','import','community','sharing:manage','sharing:write','home:read','home:write','home:manage','learning:read','learning:write','partners:read','partners:write','contributors:read','contributors:write','assets:read','assets:write'];
     public static function clients(array $p): array {
         if($p['token']!==null)throw new Problem(403,'application_owner','Folosește contul pentru administrarea aplicațiilor.');
         return ['items'=>Db::all('SELECT id,name,redirect_uris_json,scopes_json,active,created_at FROM api_clients WHERE owner_user_id=? ORDER BY id LIMIT 100',[$p['user']])];
@@ -19,7 +19,7 @@ final class OAuth {
         $scopes=self::scopes($data['scopes']??['read','home:read']);$id=Db::id();
         Db::insert('api_clients',['id'=>$id,'owner_user_id'=>$p['user'],'name'=>Catalog::text($data,'name',120),'redirect_uris_json'=>Db::json(array_values(array_unique($uris))),'scopes_json'=>Db::json($scopes),'created_at'=>Db::now()]);
         foreach(array_unique(array_filter(array_map(self::origin(...),$uris)))as$origin)Db::run('INSERT IGNORE INTO api_client_origins (client_id,origin) VALUES (?,?)',[$id,$origin]);
-        Catalog::audit($p,'oauth.client_created',$id);return ['id'=>$id,'client_id'=>$id,'client_type'=>'public','token_endpoint_auth_method'=>'none','redirect_uris'=>$uris,'scopes'=>$scopes];
+        if($p['tenant']??null)Catalog::audit($p,'oauth.client_created',$id);else ProgramAccess::event(['id'=>$p['user']],'oauth_client',$id,'created');return ['id'=>$id,'client_id'=>$id,'client_type'=>'public','token_endpoint_auth_method'=>'none','redirect_uris'=>$uris,'scopes'=>$scopes];
     }
     public static function redirect(mixed $uri): void {
         if(!is_string($uri)||strlen($uri)>2048||preg_match('/[\x00-\x20\x7f\\\\]/',$uri))throw new Problem(422,'redirect_uri','Adresă de revenire incorectă.');
@@ -55,15 +55,18 @@ final class OAuth {
         $scopes=self::scopes($data['scope']??'read');
         if(array_diff($scopes,json_decode($client['scopes_json'],true)))throw new Problem(400,'invalid_scope','Aplicația nu are aceste permisiuni înregistrate.');
         $home=array_filter($scopes,static fn($s)=>str_starts_with($s,'home:'));
+        $program=array_filter($scopes,static fn($s)=>preg_match('/\A(?:learning|partners|contributors|assets):/',$s));
+        if($program&&count($program)!==count($scopes))throw new Problem(400,'invalid_scope','Accesul la program se autorizează separat de producător și Acasă.');
+        if($program)ProgramAccess::installed();
         if($home&&count($home)!==count($scopes))throw new Problem(400,'invalid_scope','Accesul personal și cel de producător se autorizează separat.');
         if($home&&Config::get('home_sync_enabled',true)!==true)throw new Problem(503,'home_unavailable','Accesul personal sincronizat nu este activat.');
         $state=$data['state']??null;
         if(!is_string($state)||strlen($state)<8||strlen($state)>512||preg_match('/[\x00-\x1f\x7f]/',$state))throw new Problem(400,'invalid_request','State trebuie să conțină între 8 și 512 octeți.');
         $request=Db::id();
-        Db::atomic(function()use($request,$id,$home,$uri,$state,$challenge,$scopes){
+        Db::atomic(function()use($request,$id,$home,$program,$uri,$state,$challenge,$scopes){
             Db::one('SELECT id FROM api_clients WHERE id=? FOR UPDATE',[$id]);
             if((int)Db::one('SELECT COUNT(*) AS n FROM api_oauth_requests WHERE client_id=? AND consumed_at IS NULL AND expires_at>?',[$id,Db::now()])['n']>=100)throw new Problem(429,'authorization_capacity','Aplicația are prea multe cereri de autorizare în așteptare.');
-            Db::insert('api_oauth_requests',['id'=>$request,'client_id'=>$id,'realm'=>$home?'home':'producer','redirect_uri'=>$uri,'state_value'=>$state,'challenge'=>$challenge,'scopes_json'=>Db::json($scopes),'expires_at'=>gmdate('Y-m-d H:i:s',time()+600),'created_at'=>Db::now()]);
+            Db::insert('api_oauth_requests',['id'=>$request,'client_id'=>$id,'realm'=>$home?'home':($program?'program':'producer'),'redirect_uri'=>$uri,'state_value'=>$state,'challenge'=>$challenge,'scopes_json'=>Db::json($scopes),'expires_at'=>gmdate('Y-m-d H:i:s',time()+600),'created_at'=>Db::now()]);
         });
         return self::pending($request);
     }
@@ -83,6 +86,11 @@ final class OAuth {
                 if(in_array('home:manage',$scopes,true)&&$m['role']!=='owner')throw new Problem(403,'home_owner','Administrarea familiei necesită proprietarul.');
                 if(in_array('home:write',$scopes,true)&&!in_array($m['role'],['owner','editor'],true))throw new Problem(403,'home_role','Nu ai drept de modificare în familie.');
                 $device=Db::id();Db::insert('home_devices',['id'=>$device,'account_id'=>$principal['account_id'],'household_id'=>$resource,'name'=>mb_substr($r['client_name'],0,120),'token_hash'=>hash('sha256',random_bytes(32)),'expires_at'=>gmdate('Y-m-d H:i:s',time()+90*86400),'last_seen_at'=>Db::now(),'created_at'=>Db::now()]);
+            }elseif($r['realm']==='program'){
+                ProgramAccess::installed();
+                Db::one('SELECT id FROM users WHERE id=? FOR UPDATE',[$principal['id']]);
+                if($resource!==$principal['id']||!Db::one('SELECT id FROM users WHERE id=? AND active=1',[$principal['id']]))throw new Problem(403,'program_resource','Autorizează numai datele contului propriu.');
+                if((int)Db::one('SELECT COUNT(*) AS n FROM api_oauth_grants WHERE user_id=? AND revoked_at IS NULL AND expires_at>?',[$principal['id'],Db::now()])['n']>=200)throw new Problem(422,'grant_quota','Retrage o autorizare nefolosită înainte de a adăuga alta.');
             }else{
                 Db::one('SELECT id FROM users WHERE id=? FOR UPDATE',[$principal['id']]);
                 if((int)Db::one('SELECT COUNT(*) AS n FROM api_oauth_grants WHERE user_id=? AND revoked_at IS NULL AND expires_at>?',[$principal['id'],Db::now()])['n']>=200)throw new Problem(422,'grant_quota','Retrage o autorizare nefolosită înainte de a adăuga alta.');
@@ -93,10 +101,11 @@ final class OAuth {
                 if(in_array('sharing:manage',$scopes,true)&&$m['role']!=='owner')throw new Problem(403,'role','Acordurile de distribuire necesită proprietarul organizației.');
                 if(in_array('sharing:write',$scopes,true)&&!in_array($m['role'],['owner','quality'],true))throw new Problem(403,'role','Distribuirea necesită un responsabil autorizat.');
             }
-            Db::insert('api_oauth_grants',['id'=>$grant,'client_id'=>$r['client_id'],'realm'=>$r['realm'],'user_id'=>$r['realm']==='producer'?$principal['id']:null,'tenant_id'=>$r['realm']==='producer'?$resource:null,'home_account_id'=>$r['realm']==='home'?$principal['account_id']:null,'household_id'=>$r['realm']==='home'?$resource:null,'home_device_id'=>$device,'scopes_json'=>$r['scopes_json'],'expires_at'=>gmdate('Y-m-d H:i:s',time()+90*86400),'created_at'=>Db::now()]);
+            Db::insert('api_oauth_grants',['id'=>$grant,'client_id'=>$r['client_id'],'realm'=>$r['realm'],'user_id'=>$r['realm']!=='home'?$principal['id']:null,'tenant_id'=>$r['realm']==='producer'?$resource:null,'home_account_id'=>$r['realm']==='home'?$principal['account_id']:null,'household_id'=>$r['realm']==='home'?$resource:null,'home_device_id'=>$device,'scopes_json'=>$r['scopes_json'],'expires_at'=>gmdate('Y-m-d H:i:s',time()+90*86400),'created_at'=>Db::now()]);
             $code=bin2hex(random_bytes(32));Db::insert('api_oauth_codes',['code_hash'=>hash('sha256',$code),'request_id'=>$r['id'],'grant_id'=>$grant,'expires_at'=>gmdate('Y-m-d H:i:s',time()+120),'created_at'=>Db::now()]);
             Db::run('UPDATE api_oauth_requests SET consumed_at=? WHERE id=?',[Db::now(),$r['id']]);
             if($r['realm']==='producer')Catalog::audit(['tenant'=>$resource,'user'=>$principal['id']],'oauth.granted',$grant,['client_id'=>$r['client_id'],'scopes'=>$scopes]);
+            elseif($r['realm']==='program')ProgramAccess::event($principal,'oauth',$grant,'granted',['client_id'=>$r['client_id'],'scopes'=>$scopes]);
             else HomeAudit::record(array_replace($principal,['household_id'=>$resource]),'oauth.granted',$grant,['client_id'=>$r['client_id'],'scopes'=>$scopes]);
             return self::callback($r,['code'=>$code]);
         });
@@ -143,6 +152,7 @@ final class OAuth {
         $g=Db::one('SELECT g.* FROM api_oauth_grants g JOIN api_clients c ON c.id=g.client_id AND c.active=1 WHERE g.id=? AND g.revoked_at IS NULL AND g.expires_at>?',[$id,Db::now()]);
         if(!$g)return null;
         if($g['realm']==='producer')return Db::one('SELECT m.role FROM memberships m JOIN users u ON u.id=m.user_id AND u.active=1 WHERE m.tenant_id=? AND m.user_id=?',[$g['tenant_id'],$g['user_id']])?$g:null;
+        if($g['realm']==='program')return Db::one('SELECT id FROM users WHERE id=? AND active=1',[$g['user_id']])?$g:null;
         return Db::one('SELECT m.role FROM home_members m JOIN home_devices d ON d.account_id=m.account_id AND d.household_id=m.household_id WHERE m.household_id=? AND m.account_id=? AND d.id=? AND d.revoked_at IS NULL AND d.expires_at>?',[$g['household_id'],$g['home_account_id'],$g['home_device_id'],Db::now()])?$g:null;
     }
     public static function access(string $secret,string $scope,string $realm): array {

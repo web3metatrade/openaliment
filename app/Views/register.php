@@ -4,8 +4,8 @@ $values = $values ?? [];
 $found = $anafResult && $anafResult['state'] === 'found';
 ?>
 <div class="container page-space registration-page">
-<div class="eyebrow">SPAȚIUL PRODUCĂTORULUI</div>
-<h1 class="page-title">Înregistrează organizația</h1>
+<div class="eyebrow"><?=!empty($partnerRegistration) ? 'PARTENERI OPENALIMENT' : 'SPAȚIUL PRODUCĂTORULUI'?></div>
+<h1 class="page-title"><?=!empty($partnerRegistration) ? 'Înscrie firma ca partener' : 'Înregistrează organizația'?></h1>
 <p class="muted">Găsim datele firmei tale pornind de la CUI.</p>
 <?php if (!$registrationEnabled): ?>
 <section class="panel"><p>Înscrierile se fac prin administratorul platformei.</p><a href="/login">Ai deja cont? Intră în cont</a></section>

@@ -10,6 +10,8 @@
 - [Implementarea auditului și starea release-ului 0.6.0](implementation/PRODUCTION_READINESS_IMPLEMENTATION_2026-10-25.md)
 - [Marketplace, tipărire serializată și referințe GS1 — 0.7.0](implementation/MARKETPLACE_GS1_0.7.0.md)
 
+- [Programul de contribuitori, cursuri și parteneri: operare](operations/PARTNER_PROGRAM.md) și [matricea celor 109 operații API](api/PROGRAM_ACTION_MATRIX.md)
+
 ## Specificații și contracte active
 
 - [Master OpenAliment](OPENALIMENT_MASTER.md)

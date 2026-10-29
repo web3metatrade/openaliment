@@ -4,7 +4,7 @@
   "created_on": "2026-10-23",
   "updated_on": "2026-10-24",
   "source_of_truth": "database/migrations/*.sql",
-  "source_sha256": "31d15e72f6c6dce657123cdca80b50f9230f0f052be032e7818db335fa2a551a",
+  "source_sha256": "caae56ff243a2c360d093cdfb0c69eb9a7d9fd4116f1cde3383c1a836f404f6c",
   "source_sha256_basis": "canonical JSON of ordered migration paths and SHA-256 hashes",
   "id_representation": "128 random bits, 32 lower-case hexadecimal characters",
   "modules": {
@@ -92,6 +92,22 @@
     {
       "path": "database/migrations/011_organization_anaf.sql",
       "sha256": "7fd884770361c54fc27d76fe7d01159a31a83175b7b0cb12e15108b16b20abc1"
+    },
+    {
+      "path": "database/migrations/012_program.sql",
+      "sha256": "e929e08b09f7a0bbc5f541bc6719fb2db93ec4e7cce356229868040f0e6a24ba"
+    },
+    {
+      "path": "database/migrations/013_learning.sql",
+      "sha256": "0bb5ec90379ee13ede35a8db72e5c0ddd514b9d728c422f0008456b933cf05bd"
+    },
+    {
+      "path": "database/migrations/014_assessments.sql",
+      "sha256": "769dd029057e24281cf158fb8cf2f889c0dd5fa1f935d6725b43b72d10335a35"
+    },
+    {
+      "path": "database/migrations/015_partners.sql",
+      "sha256": "2d8c52147230d3b61e699188759feefbbe846d16d09636b1a92e72a32e353e56"
     }
   ],
   "category_profiles": [
@@ -654,6 +670,144 @@
       "name": "organization_legal_profile_versions",
       "definition_source": "database/migrations/011_organization_anaf.sql",
       "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "program_staff_grants",
+      "definition_source": "database/migrations/012_program.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "program_events",
+      "definition_source": "database/migrations/012_program.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "program_assets",
+      "definition_source": "database/migrations/012_program.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "program_jobs",
+      "definition_source": "database/migrations/012_program.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "contributor_profiles",
+      "definition_source": "database/migrations/012_program.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "program_verifications",
+      "definition_source": "database/migrations/012_program.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "learning_courses",
+      "definition_source": "database/migrations/013_learning.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "learning_releases",
+      "definition_source": "database/migrations/013_learning.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "learning_enrollments",
+      "definition_source": "database/migrations/013_learning.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "learning_progress",
+      "definition_source": "database/migrations/013_learning.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "assessment_banks",
+      "definition_source": "database/migrations/014_assessments.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "assessment_releases",
+      "definition_source": "database/migrations/014_assessments.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "assessment_attempts",
+      "definition_source": "database/migrations/014_assessments.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "assessment_items",
+      "definition_source": "database/migrations/014_assessments.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "assessment_results",
+      "definition_source": "database/migrations/014_assessments.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "assessment_lab_runs",
+      "definition_source": "database/migrations/014_assessments.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "learning_credentials",
+      "definition_source": "database/migrations/014_assessments.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "partner_applications",
+      "definition_source": "database/migrations/015_partners.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "partner_profiles",
+      "definition_source": "database/migrations/015_partners.sql",
+      "tenant_scoped": true,
+      "household_scoped": false
+    },
+    {
+      "name": "partner_profile_versions",
+      "definition_source": "database/migrations/015_partners.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "partner_affiliations",
+      "definition_source": "database/migrations/015_partners.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "partner_contacts",
+      "definition_source": "database/migrations/015_partners.sql",
+      "tenant_scoped": false,
+      "household_scoped": false
+    },
+    {
+      "name": "partner_authorizations",
+      "definition_source": "database/migrations/015_partners.sql",
+      "tenant_scoped": false,
       "household_scoped": false
     }
   ],

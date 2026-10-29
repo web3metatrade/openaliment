@@ -11,8 +11,8 @@ for methods in spec['paths'].values():
 guide=(ROOT/'docs/api/DEVELOPER_GUIDE.md').read_text(encoding='utf-8')
 LINKS={'../../contracts/platform-openapi.json':'/api/platform-openapi.json','../../tools/sdk/openaliment.py':'/api/sdk/python','../../tools/sdk/openaliment.mjs':'/api/sdk/javascript','../../tools/sdk/OpenAlimentClient.kt':'/api/sdk/kotlin','../INTEGRARI_PARTENERI.md':'/api/docs/guides/conectoare','../IMPORT_EXPORT.md':'/api/docs/guides/conectoare'}
 GUIDES=[('acces','Acces și permisiuni'),('api-public','Citire publică'),('flux-erp','Primul produs și lot'),('alerte','Alerte și retrageri'),('documente-feedback','Documente și feedback'),('chei','Chei, rotație și revocare'),('oauth','OAuth pentru aplicații'),('acasa','Acasă și sincronizare'),('conectoare','Conectoare, export și import'),('limite','Limite și erori'),('ai','Integrare cu AI'),('compatibilitate','Compatibilitate și publicare')]
-EXTRA_GUIDES=[('inregistrare-anaf','Înregistrare cu CUI și profil fiscal ANAF'),('surse-externe','Open Food Facts și proveniența datelor'),('modele-date','Modele de date și reguli de integrare'),('erori-recuperare','Erori, reîncercări și depanare'),('exemple-executabile','Integrare completă și exemple executabile'),('testare','Testarea integrării și mediile de lucru'),('protectia-contului','Protecția contului și confirmări sensibile'),('marketplace','Marketplace, serializare și linia de producție')]
-GROUPS={'external':'Surse externe și Open Food Facts','marketplace':'Marketplace și echipamente','public':'API public','products':'Produse și articole','labels':'Versiuni de etichetă','batches':'Loturi și alerte','documents':'Documente și rețete','resolver':'Resolver GS1 Digital Link','community':'Feedback, propuneri și voturi','connectors':'Conectoare și bonuri','transfer':'Import și export','home':'Acasă și familii','keys':'Chei API','oauth':'OAuth și autorizări','identity':'Cont și organizații','ai':'Joburi AI','admin':'Administrarea platformei','discovery':'Manifest, scheme și SDK','legacy':'Compatibilitate API v1'}
+EXTRA_GUIDES=[('comunitate-parteneri','Contribuitori și parteneri OpenAliment'),('invatare-evaluare','Cursuri, examene și calificări'),('program-oauth','OAuth pentru comunitate și învățare'),('inregistrare-anaf','Înregistrare cu CUI și profil fiscal ANAF'),('surse-externe','Open Food Facts și proveniența datelor'),('modele-date','Modele de date și reguli de integrare'),('erori-recuperare','Erori, reîncercări și depanare'),('exemple-executabile','Integrare completă și exemple executabile'),('testare','Testarea integrării și mediile de lucru'),('protectia-contului','Protecția contului și confirmări sensibile'),('marketplace','Marketplace, serializare și linia de producție')]
+GROUPS={'program-community':'Contribuitori','program-partners':'Parteneri autorizați','program-learning':'Cursuri și participare','program-assessments':'Examene și calificări','external':'Surse externe și Open Food Facts','marketplace':'Marketplace și echipamente','public':'API public','products':'Produse și articole','labels':'Versiuni de etichetă','batches':'Loturi și alerte','documents':'Documente și rețete','resolver':'Resolver GS1 Digital Link','community':'Feedback, propuneri și voturi','connectors':'Conectoare și bonuri','transfer':'Import și export','home':'Acasă și familii','keys':'Chei API','oauth':'OAuth și autorizări','identity':'Cont și organizații','ai':'Joburi AI','admin':'Administrarea platformei','discovery':'Manifest, scheme și SDK','legacy':'Compatibilitate API v1'}
 def inline(text):
  text=html.escape(text)
  def link(m):
@@ -43,6 +43,11 @@ def render(markdown):
   out.append('<p>'+inline(' '.join(paragraph))+'</p>')
  return '\n'.join(out),toc
 def group(path):
+ if '/program/' in path:
+  if any(x in path for x in ['/contributors','/contributor']):return 'program-community'
+  if any(x in path for x in ['/partners','/authorizations','/contacts']):return 'program-partners'
+  if any(x in path for x in ['/banks','/assessment-releases','/attempts','/results','/labs','/credentials','/accommodations']):return 'program-assessments'
+  return 'program-learning'
  if any(x in path for x in ['/sources','/external-revisions/','/external-assets/','/source-conflicts','/food/resolve','/food/lookups']):return 'external'
  if '/marketplace/' in path or '/printing/' in path or '/printing-agent/' in path:return 'marketplace'
  if path.startswith('/api/v1/'):return 'legacy'
@@ -176,7 +181,7 @@ for path,methods in spec['paths'].items():
    md+='\n'
   for mime,content in op.get('requestBody',{}).get('content',{}).items():
    md+='## Corpul cererii\n\nTip: `'+mime+'`.\n\n'
-   if 'example' in content:md+='### Exemplu de cerere\n\n```'+('text' if mime=='application/x-ndjson' else 'json')+'\n'+(content['example'] if mime=='application/x-ndjson' else json.dumps(content['example'],ensure_ascii=False,indent=2))+'\n```\n\n'
+   if 'example' in content:md+='### Exemplu de cerere\n\n```'+('text' if mime=='application/x-ndjson' else 'json')+'\n'+(content['example'] if mime=='application/x-ndjson' else json.dumps(content['example'],ensure_ascii=False,**({'separators':(',',':')} if '/program/' in path else {'indent':2})))+'\n```\n\n'
    md+='### Câmpuri și reguli\n\n'+fields_markdown(content.get('schema',{}))
    md+='### Schema cererii\n\n```json\n'+schema_text(content.get('schema',{}))+'\n```\n\n'
   md+='## Exemple de integrare\n\nValorile sunt demonstrative. Înlocuiește ID-urile și folosește doar propriile permisiuni.\n\n'
@@ -186,7 +191,7 @@ for path,methods in spec['paths'].items():
    md+='### '+status+' — '+response.get('description','Răspuns')+'\n\n'
    for mime,content in response.get('content',{}).items():
     md+='`'+mime+'`\n\n'
-    if 'example' in content:md+='Exemplu sintetic:\n\n```'+('json' if 'json' in mime and mime!='application/x-ndjson' else 'text')+'\n'+(json.dumps(content['example'],ensure_ascii=False,indent=2) if not isinstance(content['example'],str) else content['example'])+'\n```\n\n'
+    if 'example' in content:md+='Exemplu sintetic:\n\n```'+('json' if 'json' in mime and mime!='application/x-ndjson' else 'text')+'\n'+(json.dumps(content['example'],ensure_ascii=False,**({'separators':(',',':')} if '/program/' in path else {'indent':2})) if not isinstance(content['example'],str) else content['example'])+'\n```\n\n'
     for name,example in content.get('examples',{}).items():md+=example.get('summary',name)+'\n\n```json\n'+json.dumps(example['value'],ensure_ascii=False,indent=2)+'\n```\n\n'
     if status.startswith('2'):md+=fields_markdown(content.get('schema',{}))
     md+='Schema:\n\n```json\n'+schema_text(content.get('schema',{}))+'\n```\n\n'
@@ -219,7 +224,7 @@ for path,methods in spec['paths'].items():
   elif media=='image/jpeg':body={'mode':'file','file':{}};headers.append({'key':'Content-Type','value':media})
   elif media=='application/x-ndjson':body={'mode':'raw','raw':content['example'],'options':{'raw':{'language':'text'}}};headers.append({'key':'Content-Type','value':media})
   elif media:
-   body={'mode':'raw','raw':json.dumps(content['example'],ensure_ascii=False,indent=2),'options':{'raw':{'language':'json'}}};headers.append({'key':'Content-Type','value':media})
+   body={'mode':'raw','raw':json.dumps(content['example'],ensure_ascii=False,**({'separators':(',',':')} if '/program/' in path else {'indent':2})),'options':{'raw':{'language':'json'}}};headers.append({'key':'Content-Type','value':media})
   auth={'type':'bearer','bearer':[{'key':'token','value':'{{access_token}}','type':'string'}]} if any('Bearer' in s or 'HomeOAuth' in s for s in op.get('security',[])) else {'type':'noauth'}
   request={'method':method.upper(),'header':headers,'url':{'raw':'{{base_url}}'+target+('?'+'&'.join(q['key']+'='+q['value'] for q in query if not q['disabled']) if any(not q['disabled'] for q in query) else ''),'host':['{{base_url}}'],'path':target.lstrip('/').split('/'),'query':query},'description':op['description']+'\n\noperationId: '+op['operationId']+'\nDocumentație: '+BASE+'/api/docs/reference/'+op['operationId'],'auth':auth}
   if body:request['body']=body
@@ -229,7 +234,7 @@ for path,methods in spec['paths'].items():
   for code,response in op['responses'].items():
    for mime,media in response.get('content',{}).items():
     values=[('Exemplu sintetic',media['example'])] if 'example' in media else [(e.get('summary',name),e['value']) for name,e in media.get('examples',{}).items()]
-    for label,value in values:responses.append({'name':code+' · '+label,'originalRequest':request,'status':response['description'],'code':int(code),'header':[{'key':'Content-Type','value':mime}],'body':value if isinstance(value,str) else json.dumps(value,ensure_ascii=False,indent=2)})
+    for label,value in values:responses.append({'name':code+' · '+label,'originalRequest':request,'status':response['description'],'code':int(code),'header':[{'key':'Content-Type','value':mime}],'body':value if isinstance(value,str) else json.dumps(value,ensure_ascii=False,**({'separators':(',',':')} if '/program/' in path else {'indent':2}))})
   folders[category]['item'].append({'name':op['summary'],'request':request,'response':responses})
 for name in sorted(variables):postman['variable'].append({'key':name,'value':{'gtin':'09520000000011','lot':'DEMO-PBT-01'}.get(name,'')})
 for name in ['X-CSRF-Token','X-Home-CSRF','X-Status-Token']:postman['variable'].append({'key':name,'value':''})

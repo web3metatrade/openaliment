@@ -60,6 +60,10 @@ from external_contracts import requests as external_requests
 schemas.update(external_requests())
 from anaf_reference import requests as anaf_requests
 schemas.update(anaf_requests(obj,text,ID))
+from program_reference import requests as program_requests
+schemas.update(program_requests(obj,text,ID))
+schemas['OAuthClient']['properties']['scopes']['items']['enum'] += ['learning:read','learning:write','partners:read','partners:write','contributors:read','contributors:write','assets:read','assets:write']
+schemas['OAuthClient']['properties']['scopes']['maxItems']=20
 schemas['Registration']['properties'].update({'organization_lookup_id':ID,'cui':text(32)})
 schemas['Registration']['required'].remove('organization')
 schemas['Registration']['anyOf']=[{'required':['organization']},{'required':['organization_lookup_id','cui']}]
@@ -125,9 +129,16 @@ for r in routes:
  paged=handler in ['manage.list','manage.children','public.catalog','public.feedback'] or handler=='public.children' and '/products/' in path or handler=='community.votes' or handler=='admin.list' or handler=='keys.list' or handler=='manage.connector' and path.endswith('/events')
  if handler in ['external.revisionIndex','external.organizationBindings','external.bindings','external.conflicts','external.grants','external.publications']:paged=True
  if handler in ['marketplace.jobs','marketplace.catalog','marketplace.releases','marketplace.units','marketplace.selections','anaf.history']:paged=True
+ if handler.startswith('program.'):
+  from program_reference import definitions as program_definitions
+  paged=program_definitions()[1][handler[8:]].startswith('Page')
+  if r['auth']=='program':op['security']=[{'Bearer':[]},{'ProducerSession':[]}]
+  op['description']='Program personal: contribuții, formare și cereri ale companiilor. Permisiunile producătorului și tokenurile ERP nu acordă acces aici. Rolurile de evaluator nu acordă administrarea platformei.'
  if paged:
   op['parameters'] += [{'name':'cursor','in':'query','schema':ID,'description':'Last id from prior page. Omit on first request.'},{'name':'limit','in':'query','schema':{'type':'integer','minimum':1,'maximum':100,'default':20}}]
  if handler=='marketplace.catalog':op['parameters'] += [{'name':x,'in':'query','schema':text(120),'description':'q caută prefixul numelui; category selectează categoria exactă.'} for x in ['q','category']]
+ if handler=='program.public_contributors':op['parameters'] += [{'name':x,'in':'query','schema':text(100),'description':'q caută prefixul numelui; category selectează categoria exactă a contribuției.'} for x in ['q','category']]
+ if handler=='program.public_partners':op['parameters'] += [{'name':x,'in':'query','schema':text(120),'description':'q caută prefixul numelui; specialization și region cer valoarea exactă a specializării active, respectiv regiunii declarate.'} for x in ['q','specialization','region']]
  if handler=='public.catalog':
   op['parameters'] += [{'name':x,'in':'query','schema':text(120),'description':'Prefix search for q; exact match for the other fields.'} for x in ['q','category','producer','gtin']]
  if handler=='public.feedback':op['parameters'] += [{'name':x,'in':'query','schema':ID} for x in ['label_id','batch_id']]
@@ -138,9 +149,12 @@ for r in routes:
  if handler=='manage.connector' and path.endswith('/bindings'):op['parameters'] += [{'name':'external_id','in':'query','schema':text(120),'description':'Exclusive cursor in next_external_id, rather than an internal id.'},{'name':'limit','in':'query','schema':{'type':'integer','minimum':1,'maximum':100}}]
  idempotent=handler.startswith(('mutation:','keys.create','keys.rotate')) or handler in ['manage.upload','manage.import','manage.importStream','manage.ai'] and method=='post' or handler=='developer.apps' and method=='post' or handler.startswith('admin:')
  if handler in ['marketplace.select','marketplace.createJob','marketplace.cancel','marketplace.reprint']:idempotent=True
+ if handler.startswith('program.') and method in ['post','put','delete'] and handler[8:] not in ['register','verification_preview','verification_confirm','verification_request','asset_upload','company_check','partner_refresh','admin_worker','password_change','access_revoke']:idempotent=True
  if handler.startswith('external.') and r['auth']=='producer' and method=='post' and handler not in ['external.preview','external.publicationPreview']:idempotent=True
  if idempotent:op['parameters'].append({'name':'Idempotency-Key','in':'header','required':handler not in ['manage.import','manage.importStream'],'schema':{'type':'string','pattern':'^[A-Za-z0-9_.:-]{8,128}$'},'description':'Same key and payload on retries. Import dry_run=true does not require it. Key issuance replays metadata only, never the secret.'})
  if method in ['post','put','delete'] and not public and r['auth']!='session-optional':op['parameters'].append({'name':'X-CSRF-Token','in':'header','required':r['auth'] in ['owner-session','session','admin-session'],'schema':text(64),'description':'Obligatoriu pentru sesiunea web. Nu înlocuiește autentificarea Bearer la operațiile care permit tokenuri.'})
+ if handler.startswith('program.') and method in ['post','put','delete']:
+  op['parameters']=[p for p in op['parameters'] if p['name']!='X-CSRF-Token']+[{'name':'X-CSRF-Token','in':'header','required':r['auth']!='program','schema':text(64),'description':'Obligatoriu în sesiunea web, inclusiv la înscriere și confirmări. Cu OAuth Bearer nu este necesar.'}]
  if r['auth']=='print-agent':
   op['security']=[{'Bearer':[]}];op['parameters']=[p for p in op['parameters'] if p['name']!='X-CSRF-Token']
  if r['body']:op['requestBody']={'required':True,'content':{'multipart/form-data' if r['body']=='Upload' else 'application/json':{'schema':{'$ref':'#/components/schemas/'+r['body']}}}}
@@ -156,10 +170,11 @@ for r in routes:
  if handler.endswith('.download'):content={'application/octet-stream':{'schema':{'type':'string','format':'binary'}}};success='200'
  if handler=='public.archive':content={'application/zip':{'schema':{'type':'string','format':'binary'}}};success='200'
  if handler=='manage.export':content['application/x-ndjson']={'schema':{'type':'string','description':'Header, authorized records, final SHA-256 digest record.'}}
- if handler.startswith(('marketplace.','anaf.')):success='200'
+ if handler.startswith(('marketplace.','anaf.','program.')):success='200'
  op['responses'][success]={'description':'Authorized result.','content':content,'headers':{'X-Request-ID':{'schema':text(64)},'RateLimit-Limit':{'schema':{'type':'integer'}},'RateLimit-Remaining':{'schema':{'type':'integer'}},'RateLimit-Reset':{'schema':{'type':'integer'},'description':'Seconds until this rate window resets.'}}}
  for code in ['400','401','403','404','405','409','413','415','419','422','429','503']:op['responses'][code]=copy.deepcopy(error_response)
  if handler.startswith('account.'):op['responses']['410']=copy.deepcopy(error_response)
+ if handler.startswith('program.verification_'):op['responses']['410']=copy.deepcopy(error_response)
  if handler=='marketplace.download':op['responses']={'303':{'description':'Pachet gratuit distribuit prin HTTPS de dezvoltator. Verifică SHA-256 după descărcare.','headers':{'Location':{'schema':{'type':'string','format':'uri'},'description':'Adresa HTTPS aprobată a pachetului publicat.'}}}}
  if handler=='marketplace.download':op['responses']['409']=copy.deepcopy(error_response)
  combined['paths'].setdefault(path,{})[method]=op

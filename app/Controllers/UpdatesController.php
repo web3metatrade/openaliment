@@ -9,6 +9,7 @@ final class UpdatesController {
         $user=Auth::admin();
         if ($method==='POST') {
             Http::sameOrigin(); Session::verify();
+            if (($_POST['action']??'')==='install_program') {\App\Domain\OrganizationRegistry::recentAccount($user['id'],$_POST);\App\Domain\OperationsAssets::install();Migrations::upgradeProgram();\App\Domain\ProgramLearning::seed($user);Session::flash('Programul pentru contribuitori, parteneri și învățare este instalat.');Http::redirect('/admin/program');}
             if (($_POST['action']??'')==='install_anaf') {\App\Domain\OperationsAssets::install();Migrations::upgradeAnaf();Session::flash('Profilul fiscal ANAF este instalat. Înscrierile se activează separat.');Http::redirect('/admin/updates');}
             if (($_POST['action']??'')==='enable_anaf_staging') {\App\Domain\OrganizationRegistry::recentAccount($user['id'],$_POST);\App\Domain\RegistrationSettings::enableStaging();Session::flash('Înregistrarea cu CUI este activă pe staging.');Http::redirect('/admin/updates');}
             if (($_POST['action']??'')==='install_external') {\App\Domain\OperationsAssets::install();Migrations::upgradeExternal(true);Session::flash('Catalogul extern și acordurile de distribuire sunt instalate. Activarea sursei se face separat.');Http::redirect('/admin/sources');}

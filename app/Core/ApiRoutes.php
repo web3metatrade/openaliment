@@ -133,7 +133,7 @@ final class ApiRoutes {
         $add('DELETE','/api/v2/identity/grants/{id}','identityRevokeGrant','session','','identity.grants','Retrage accesul unei aplicații autorizate.');
         foreach(['organizations','users','gtin-claims']as$r)$add('GET','/api/v2/admin/'.$r,'adminList'.str_replace('-','',ucwords($r,'-')),'admin-session','','admin.list','Listează resursele de verificat; exclusiv administrator platformă.');
         foreach([['organizations/{id}/identity-reviews','organization.verify'],['users/{id}/contact-reviews','contact.verify'],['gtin-claims/{id}/decisions','gtin.review']]as[$path,$action])$add('POST','/api/v2/admin/'.$path,'admin'.str_replace('.','',ucwords($action,'.')),'admin-session','','admin:'.$action,'Înregistrează o decizie atribuită administratorului.','AdminReview');
-        return self::$cache=array_merge($routes,ExternalRoutes::all());
+        return self::$cache=array_merge($routes,ExternalRoutes::all(),ProgramRoutes::all());
     }
     public static function methods(string $path): array {
         $methods=[];foreach(['GET','POST','PUT','DELETE','PATCH']as$method)if(self::find($method,$path))$methods[]=$method;
